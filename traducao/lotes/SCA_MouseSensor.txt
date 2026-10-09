@@ -1,0 +1,6 @@
+Logic brick do sensor de mouse.
+As coordenadas [x, y] atuais do mouse, em coordenadas do frame (pixels).
+O modo do sensor.
+Lê o estado de um botão do mouse.
+O código do botão cujo estado você quer ler; use uma `destas constantes`
+O estado do botão, que pode ser uma `destas constantes`

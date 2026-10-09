@@ -1,0 +1,100 @@
+Introdução
+Exemplo usando um `Range.types.SCA_MouseSensor` e dois `Range.types.KX_ObjectActuator` para fazer o mouse look:
+Também dá para fazer isso com o `Range.types.KX_MouseActuator`.
+Para usar um sensor de movimento do mouse "Mouse" e um
+atuador de movimento para olhar com o mouse:
+scale define a velocidade do movimento
+Converte as coordenadas do mouse para ver quanto o mouse andou.
+Define o quanto mover: X é aplicado em coordenadas do mundo...
+...Y é aplicado em coordenadas locais
+Ativa os dois atuadores
+Centraliza o mouse
+Obsoleto.
+Materiais definidos pelas configurações de texture face.
+Materiais que imitam os materiais do Blender com multitextura.
+Materiais que imitam os materiais do Blender com GLSL.
+Desliga o vsync; liga o vsync; liga o vsync adaptativo, se suportado. O vsync adaptativo liga o vsync quando o frame rate está acima da taxa de atualização do monitor e desliga quando o frame rate fica baixo demais.
+Olho esquerdo em uso no render estereoscópico.
+Olho direito em uso no render estereoscópico.
+HDR
+Usa formato de imagem com 8 bits por canal.
+Usa formato de imagem com float de 16 bits por canal.
+Usa formato de imagem com float de 32 bits por canal.
+Funções
+Pega a largura da janela (em pixels)
+Pega a altura da janela (em pixels)
+Define a largura e a altura da janela (em pixels). Também funciona em tela cheia.
+Só funciona no player separado, não no player embutido no Blender.
+Largura em pixels
+Altura em pixels
+Define se a janela fica em tela cheia ou não.
+`True` para tela cheia, `False` para janela.
+Diz se a janela está em tela cheia.
+Só funciona no player separado, não no player embutido no Blender; lá sempre devolve False.
+Pega as dimensões da tela (por exemplo, do monitor) em pixels. Pode devolver o tamanho da área inteira, somando todos os monitores; por exemplo, `(3840, 1080)` para dois monitores 1080p lado a lado.
+Grava um arquivo de imagem com o que está na tela no fim do frame.
+A imagem é gravada em *'filename'*. O caminho pode ser absoluto (ex.: `/home/foo/image`) ou relativo, começando com `//` (ex.: `//image`). Caminhos absolutos não funcionam igual em todos os sistemas. Se o nome tiver um `#`, ele é trocado por um número que aumenta a cada vez, para tirar vários prints sem sobrescrever os anteriores (ex.: `image-#`).
+As configurações da imagem vêm das configurações de render (formato do arquivo e seus ajustes, gamma, conversão de espaço de cor etc.). A resolução da imagem é a do framebuffer, ou seja, o tamanho e a proporção da janela. No player separado, em vez do embutido, só arquivos PNG são suportados, e as conversões de cor extras também não.
+Caminho e nome do arquivo a gravar
+Obsoleto; não faz nada.
+Mostra ou esconde o cursor do mouse do sistema.
+**`visible`**:
+Define a posição do cursor do mouse.
+Coordenada X, em pixels da tela.
+Coordenada Y, em pixels da tela.
+Obsoleto e não funciona mais. Use `Range.types.KX_WorldInfo.horizonColor` ou `Range.types.KX_WorldInfo.zenithColor`.
+Define a separação dos olhos no modo estéreo. Em geral, distância focal/30 dá um valor confortável.
+A distância entre o olho esquerdo e o direito.
+Pega a separação dos olhos atual do modo estéreo.
+Define a distância focal do modo estéreo. O valor inicial é a distância focal da câmera atual.
+A distância focal.
+Pega a distância focal atual do modo estéreo.
+Pega qual olho estereoscópico está sendo renderizado agora. Serve principalmente num callback `Range.types.KX_Scene.pre_draw`, para ajustar as matrizes de projeção da câmera para cada olho.
+Obsoleto e não funciona mais.
+Define o modo de material usado no render OpenGL.
+Modo de material
+As mudanças só valem para cenas criadas depois.
+Pega o modo de material usado no render OpenGL.
+Liga ou desliga uma configuração de material GLSL.
+**`setting`**:
+**`enable`**:
+Pega o estado de uma configuração de material GLSL.
+Define o nível de filtragem anisotrópica das texturas.
+O novo nível de filtragem anisotrópica
+Mudar este valor pode recriar todas as texturas, o que pode ser lento.
+Pega o nível de filtragem anisotrópica das texturas.
+Define o nível de anti-aliasing.
+O novo nível de anti-aliasing
+Mudar este valor recria todos os buffers fora da tela, o que pode ser lento.
+Pega o nível de anti-aliasing configurado.
+Muda como o mipmapping é usado.
+Pega a configuração atual de mipmapping.
+Desenha uma linha na cena 3D.
+O começo da linha
+O fim da linha
+A cor da linha
+Liga o efeito de motion blur.
+A intensidade do motion blur.
+Desliga o efeito de motion blur.
+Mostra ou esconde o frame rate.
+Mostra ou esconde o profiler.
+Mostra ou esconde as propriedades de depuração.
+Liga ou desliga a inclusão automática das propriedades de depuração na lista.
+Limpa a lista de propriedades de depuração.
+Define o vsync
+Um destes: VSYNC_OFF, VSYNC_ON, VSYNC_ADAPTIVE
+Pega o valor atual do vsync
+Versão em tempo de jogo das configurações de Dynamic Resolution da cena. A cena 3D é renderizada numa escala do tamanho da janela e esticada para a tela; a janela em si não muda. Com a resolução dinâmica, a escala desce `step` quando o tempo de GPU do frame passa do alvo e sobe de novo quando sobra tempo. `minScale == maxScale` dá uma escala de render fixa. Fica pausada enquanto "Show Render Queries" estiver ligado (os dois usam uma consulta de tempo da GPU).
+False renderiza a 100%.
+O frame rate com que o tempo de GPU é comparado.
+Escala mínima, em porcentagem (25-100).
+Escala máxima, em porcentagem (25-100).
+Quanto a escala muda a cada ajuste, em porcentagem (1-25).
+A escala de render atual; 1.0 = resolução completa.
+pega o modo estéreo
+pega a correção de aberração cromática da lente VR
+pega a intensidade da distorção da lente VR
+-- volume em [0, 1], aplicado ao dispositivo de áudio real da engine
+define o modo estéreo (constantes STEREO_*)
+define a correção de aberração cromática da lente VR (0..0.1, padrão 0.01)
+define a intensidade da distorção da lente VR (0..1, padrão 0.3)

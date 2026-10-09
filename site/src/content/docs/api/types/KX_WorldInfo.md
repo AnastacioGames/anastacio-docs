@@ -147,11 +147,67 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 current value of a World weather setting (bool or float)
 
+### atmosphereAltitude
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### atmosphereIntensity
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### atmosphereMieDensity
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### atmosphereMieDirection
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### atmosphereRayleighColor
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### atmosphereRayleighDensity
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### auroraColors
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
 ### backgroundColor
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
 
+### moonBrightness
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### moonSize
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### skyType
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### starStyle
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
 ### sunSize
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### useSkyAurora
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### useSkyMoon
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### useSkyStars
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
 

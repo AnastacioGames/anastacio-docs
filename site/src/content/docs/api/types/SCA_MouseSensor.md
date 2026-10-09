@@ -7,28 +7,28 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-Mouse Sensor logic brick.
+Logic brick do sensor de mouse.
 
 ### position
 
-current [x, y] coordinates of the mouse, in frame coordinates (pixels).
+As coordenadas [x, y] atuais do mouse, em coordenadas do frame (pixels).
 
 **Tipo:** [integer, interger]
 
 ### mode
 
-sensor mode.
+O modo do sensor.
 
 **Tipo:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_WHEELUP(4) * KX_MOUSESENSORMODE_WHEELDOWN(5) * KX_MOUSESENSORMODE_MOVEMENT(6)
 
 ### getButtonStatus(button)
 
-Get the mouse button status.
+Lê o estado de um botão do mouse.
 
-- **`button`**: The code that represents the key you want to get the state of, use one of `these constants`
+- **`button`**: O código do botão cujo estado você quer ler; use uma `destas constantes`
   - tipo: int
 
-**Retorna:** The state of the given key, can be one of `these constants`
+**Retorna:** O estado do botão, que pode ser uma `destas constantes`
 
 **Tipo do retorno:** int
 

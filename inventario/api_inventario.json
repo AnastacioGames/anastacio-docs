@@ -808,6 +808,48 @@
      "tipo": "metodo",
      "status": "novo",
      "origem": "desconhecida"
+    },
+    "fxaaEnabled": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "fxaaEdgeThreshold": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "fxaaEdgeThresholdMin": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "fxaaSubpix": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "fxaaSearchSteps": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "grainEnabled": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "grainStrength": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
     }
    }
   },
@@ -5786,6 +5828,90 @@
      "status": "novo",
      "origem": "snapshot",
      "commit": "28775369"
+    },
+    "skyType": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "useSkyStars": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "starStyle": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "useSkyMoon": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "moonSize": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "moonBrightness": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "useSkyAurora": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "auroraColors": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "atmosphereIntensity": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "atmosphereRayleighColor": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "atmosphereRayleighDensity": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "atmosphereMieDensity": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "atmosphereMieDirection": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "atmosphereAltitude": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
     }
    }
   },

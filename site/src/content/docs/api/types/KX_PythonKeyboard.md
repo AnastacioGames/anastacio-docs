@@ -7,17 +7,17 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-The current keyboard.
+O teclado atual.
 
 ### inputs
 
-A dictionary containing the input of each keyboard key. (read-only).
+Dicionário com a entrada de cada tecla do teclado (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
 ### events
 
-A dictionary containing the status of each keyboard event or key. (read-only).
+Dicionário com o estado de cada evento ou tecla do teclado (somente leitura).
 
 :::danger[Obsoleto use :data:`inputs`]
 
@@ -27,13 +27,13 @@ A dictionary containing the status of each keyboard event or key. (read-only).
 
 ### activeInputs
 
-A dictionary containing the input of only the active keyboard keys. (read-only).
+Dicionário com a entrada só das teclas ativas (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
 ### active_events
 
-A dictionary containing the status of only the active keyboard events or keys. (read-only).
+Dicionário com o estado só dos eventos ou teclas ativas (somente leitura).
 
 :::danger[Obsoleto use :data:`activeInputs`]
 
@@ -43,20 +43,20 @@ A dictionary containing the status of only the active keyboard events or keys. (
 
 ### text
 
-The typed unicode text from the last frame.
+O texto unicode digitado no último frame.
 
 **Tipo:** string
 
 ### getClipboard()
 
-Gets the clipboard text.
+Lê o texto da área de transferência.
 
 **Tipo do retorno:** string
 
 ### setClipboard(text)
 
-Sets the clipboard text.
+Define o texto da área de transferência.
 
-- **`text`**: New clipboard text
+- **`text`**: O novo texto da área de transferência
   - tipo: string
 

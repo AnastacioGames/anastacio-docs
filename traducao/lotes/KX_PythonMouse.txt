@@ -1,0 +1,10 @@
+O mouse atual.
+A normalização do mouse usa a coordenada máxima da largura e da altura, ou seja, `Range.render.getWindowWidth() - 1` ou `Range.render.getWindowHeight() - 1`.
+Um script que põe o mouse no centro fica parecido com este exemplo:
+Repare no uso da divisão inteira para arredondar uma coordenada.
+Dicionário com a entrada de cada evento do mouse (somente leitura).
+Dicionário com o estado de cada evento do mouse (somente leitura).
+Dicionário com a entrada só dos eventos ativos do mouse (somente leitura).
+Dicionário com o estado só dos eventos ativos do mouse (somente leitura).
+A posição x e y normalizada do cursor do mouse.
+A visibilidade do cursor do mouse.

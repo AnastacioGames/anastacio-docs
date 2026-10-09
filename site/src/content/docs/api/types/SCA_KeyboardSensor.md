@@ -7,55 +7,55 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-A keyboard sensor detects player key presses.
+Um sensor de teclado detecta as teclas apertadas pelo jogador.
 
-See module `Range.events` for keycode values.
+Veja o módulo `Range.events` para os códigos de tecla.
 
 ### key
 
-The key code this sensor is looking for.
+O código da tecla que este sensor procura.
 
 **Tipo:** keycode from `Range.events` module
 
 ### hold1
 
-The key code for the first modifier this sensor is looking for.
+O código da primeira tecla modificadora que este sensor procura.
 
 **Tipo:** keycode from `Range.events` module
 
 ### hold2
 
-The key code for the second modifier this sensor is looking for.
+O código da segunda tecla modificadora que este sensor procura.
 
 **Tipo:** keycode from `Range.events` module
 
 ### toggleProperty
 
-The name of the property that indicates whether or not to log keystrokes as a string.
+O nome da propriedade que indica se as teclas digitadas devem ser registradas como texto.
 
 **Tipo:** string
 
 ### targetProperty
 
-The name of the property that receives keystrokes in case in case a string is logged.
+O nome da propriedade que recebe as teclas digitadas, quando elas são registradas como texto.
 
 **Tipo:** string
 
 ### useAllKeys
 
-Flag to determine whether or not to accept all keys.
+Define se o sensor aceita todas as teclas.
 
 **Tipo:** boolean
 
 ### inputs
 
-A list of pressed input keys that have either been pressed, or just released, or are active this frame. (read-only).
+Lista das teclas de entrada que foram apertadas, acabaram de ser soltas ou estão ativas neste frame (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
 ### events
 
-a list of pressed keys that have either been pressed, or just released, or are active this frame. (read-only).
+Lista das teclas que foram apertadas, acabaram de ser soltas ou estão ativas neste frame (somente leitura).
 
 :::danger[Obsoleto use :data:`inputs`]
 
@@ -65,12 +65,12 @@ a list of pressed keys that have either been pressed, or just released, or are a
 
 ### getKeyStatus(keycode)
 
-Get the status of a key.
+Lê o estado de uma tecla.
 
-- **`keycode`**: The code that represents the key you want to get the state of, use one of `these constants`
+- **`keycode`**: O código do botão cujo estado você quer ler; use uma `destas constantes`
   - tipo: integer
 
-**Retorna:** The state of the given key, can be one of `these constants`
+**Retorna:** O estado do botão, que pode ser uma `destas constantes`
 
 **Tipo do retorno:** int
 

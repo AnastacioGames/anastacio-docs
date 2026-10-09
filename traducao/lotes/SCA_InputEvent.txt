@@ -1,0 +1,10 @@
+Eventos de uma entrada de teclado ou mouse.
+Lista dos estados da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_NONE` e `Range.logic.KX_INPUT_ACTIVE`. A lista sempre tem um valor. O primeiro valor da lista é o último valor da lista no frame anterior (somente leitura).
+Lista dos eventos da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_JUST_ACTIVATED` e `Range.logic.KX_INPUT_JUST_RELEASED`. A lista pode estar vazia (somente leitura).
+Lista dos valores da entrada desde o último frame. No teclado contém 1 ou 0; no mouse, a coordenada do mouse ou o movimento da roda. A lista sempre tem um valor; só nas entradas de teclado o tamanho dela é o de `queue` + 1. O primeiro valor da lista é o último valor da lista no frame anterior (somente leitura).
+Exemplo para pegar as coordenadas do mouse sem normalizar:
+True se a entrada estava inativa desde o último frame.
+True se a entrada estava ativa desde o último frame.
+True se a entrada foi ativada desde o último frame.
+True se a entrada foi solta desde o último frame.
+O tipo da entrada. Uma `destas constantes`

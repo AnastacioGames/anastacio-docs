@@ -15,7 +15,7 @@ Undoes the rotation caused by the mouse actuator.
 
 ### visible
 
-The visibility of the mouse cursor.
+A visibilidade do cursor do mouse.
 
 **Tipo:** boolean
 

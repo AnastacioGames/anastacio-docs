@@ -7,11 +7,11 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 
 
-A Light object.
+Um objeto de luz.
 
 ```python
 
-# Turn on a red alert light.
+# Liga uma luz vermelha de alerta.
 import Range
 
 co = Range.logic.getCurrentController()
@@ -23,149 +23,149 @@ light.color = [1.0, 0.0, 0.0]
 
 ### SPOT
 
-A spot light source. See attribute `type`
+Uma luz spot. Veja o atributo `type`
 
 ### SUN
 
-A point light source with no attenuation. See attribute `type`
+Uma luz pontual sem atenuação. Veja o atributo `type`
 
 ### NORMAL
 
-A point light source. See attribute `type`
+Uma luz pontual. Veja o atributo `type`
 
 ### HEMI
 
-A hemi light source. See attribute `type`
+Uma luz hemi. Veja o atributo `type`
 
 ### type
 
-The type of light - must be SPOT, SUN or NORMAL
+O tipo da luz: SPOT, SUN ou NORMAL
 
 ### energy
 
-The brightness of this light.
+O brilho desta luz.
 
 **Tipo:** float
 
 ### shadowClipStart
 
-The shadowmap clip start, below which objects will not generate shadows.
+O início do corte do shadow map; objetos mais perto que isso não geram sombra.
 
 **Tipo:** float (read only)
 
 ### shadowClipEnd
 
-The shadowmap clip end, beyond which objects will not generate shadows.
+O fim do corte do shadow map; objetos além disso não geram sombra.
 
 **Tipo:** float (read only)
 
 ### shadowFrustumSize
 
-Size of the frustum used for creating the shadowmap.
+Tamanho do frustum usado para criar o shadow map.
 
 **Tipo:** float (read only)
 
 ### shadowBindId
 
-The OpenGL shadow texture bind number/id.
+O número/id de bind da textura de sombra no OpenGL.
 
 **Tipo:** int (read only)
 
 ### shadowMapType
 
-The shadow shadow map type (0 -> Simple; 1 -> Variance)
+O tipo de shadow map (0 -> Simples; 1 -> Variance)
 
 **Tipo:** int (read only)
 
 ### shadowBias
 
-The shadow buffer sampling bias.
+O bias de amostragem do buffer de sombra.
 
 **Tipo:** float (read only)
 
 ### shadowBleedBias
 
-The bias for reducing light-bleed on variance shadow maps.
+O bias para reduzir o vazamento de luz nos shadow maps do tipo variance.
 
 **Tipo:** float (read only)
 
 ### useShadow
 
-Returns True if the light has Shadow option activated, else returns False.
+Devolve True se a luz tem a opção Shadow ligada; caso contrário, False.
 
 **Tipo:** boolean (read only)
 
 ### shadowColor
 
-The color of this light shadows. Black = (0.0, 0.0, 0.0), White = (1.0, 1.0, 1.0).
+A cor das sombras desta luz. Preto = (0.0, 0.0, 0.0), branco = (1.0, 1.0, 1.0).
 
 **Tipo:** `mathutils.Color` (read only)
 
 ### shadowMatrix
 
-Matrix that converts a vector in camera space to shadow buffer depth space.
+Matriz que converte um vetor do espaço da câmera para o espaço de profundidade do buffer de sombra.
 
-Computed as: mat4_perspective_to_depth * mat4_lamp_to_perspective * mat4_world_to_lamp * mat4_cam_to_world.
+Calculada como: mat4_perspective_to_depth * mat4_lamp_to_perspective * mat4_world_to_lamp * mat4_cam_to_world.
 
-mat4_perspective_to_depth is a fixed matrix defined as follow:
+mat4_perspective_to_depth é uma matriz fixa, definida assim:
 
 0.5 0.0 0.0 0.5 0.0 0.5 0.0 0.5 0.0 0.0 0.5 0.5 0.0 0.0 0.0 1.0
 
-.. note:
+Observação:
 
-There is one matrix of that type per lamp casting shadow in the scene.
+Existe uma matriz dessas para cada lâmpada que projeta sombra na cena.
 
 **Tipo:** Matrix4x4 (read only)
 
 ### distance
 
-The maximum distance this light can illuminate. (SPOT and NORMAL lights only).
+A distância máxima que esta luz ilumina (só luzes SPOT e NORMAL).
 
 **Tipo:** float
 
 ### color
 
-The color of this light. Black = [0.0, 0.0, 0.0], White = [1.0, 1.0, 1.0].
+A cor desta luz. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0].
 
 **Tipo:** list [r, g, b]
 
 ### lin_attenuation
 
-The linear component of this light's attenuation. (SPOT and NORMAL lights only).
+A parte linear da atenuação desta luz (só luzes SPOT e NORMAL).
 
 **Tipo:** float
 
 ### quad_attenuation
 
-The quadratic component of this light's attenuation (SPOT and NORMAL lights only).
+A parte quadrática da atenuação desta luz (só luzes SPOT e NORMAL).
 
 **Tipo:** float
 
 ### spotsize
 
-The cone angle of the spot light, in degrees (SPOT lights only).
+O ângulo do cone da luz spot, em graus (só luzes SPOT).
 
 **Tipo:** float in [0 - 180].
 
 ### spotblend
 
-Specifies the intensity distribution of the spot light (SPOT lights only).
+A distribuição da intensidade da luz spot (só luzes SPOT).
 
 **Tipo:** float in [0 - 1]
 
 :::note
-Higher values result in a more focused light source.
+Valores mais altos deixam a luz mais concentrada.
 :::
 
 ### staticShadow
 
-Enables static shadows. By default (staticShadow=False) the shadow cast by the lamp is recalculated every frame. When this is not needed, set staticShadow=True. In that case, call :py`updateShadow` to request a shadow update.
+Liga as sombras estáticas. Por padrão (staticShadow=False), a sombra da lâmpada é recalculada a cada frame. Quando isso não for preciso, defina staticShadow=True e chame `updateShadow` para pedir uma atualização da sombra.
 
 **Tipo:** boolean.
 
 ### updateShadow()
 
-Set the shadow to be updated next frame if the lamp uses a static shadow, see `staticShadow`.
+Pede para a sombra ser atualizada no próximo frame, se a lâmpada usa sombra estática. Veja `staticShadow`.
 
 ## Sem documentação da Range
 

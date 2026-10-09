@@ -1,0 +1,28 @@
+Introdução
+Este módulo guarda as constantes de teclas usadas pelo SCA_KeyboardSensor.
+Configura um sensor de teclado conectado para aceitar F1
+'Keyboard' é um sensor de teclado
+Faz o esquema de todas as teclas
+key[0] == Range.events.keycode = event.type, key[1] = input
+Ativa para a frente!
+Ativa para trás!
+Ativa para a esquerda!
+Ativa para a direita!
+O esquema de todas as teclas sem sensor de teclado (mas você vai
+precisar de um sensor Always com o modo pulse ligado)
+Só encurtando os nomes aqui
+Funções
+Devolve o nome em texto de um evento de tecla. Gera ValueError se o evento for inválido.
+Constante de evento de tecla de `Range.events` ou do sensor de teclado.
+Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o evento não puder virar um caractere.
+Defina como true se o shift estiver apertado.
+Teclas (constantes)
+Teclas do mouse
+Teclas do teclado
+Letras
+Números
+Teclas modificadoras
+Setas
+Teclado numérico
+Teclas de função
+Outras teclas

@@ -1,0 +1,13 @@
+Um sensor de teclado detecta as teclas apertadas pelo jogador.
+Veja o módulo `Range.events` para os códigos de tecla.
+O código da tecla que este sensor procura.
+O código da primeira tecla modificadora que este sensor procura.
+O código da segunda tecla modificadora que este sensor procura.
+O nome da propriedade que indica se as teclas digitadas devem ser registradas como texto.
+O nome da propriedade que recebe as teclas digitadas, quando elas são registradas como texto.
+Define se o sensor aceita todas as teclas.
+Lista das teclas de entrada que foram apertadas, acabaram de ser soltas ou estão ativas neste frame (somente leitura).
+Lista das teclas que foram apertadas, acabaram de ser soltas ou estão ativas neste frame (somente leitura).
+Lê o estado de uma tecla.
+O código da tecla cujo estado você quer ler; use uma `destas constantes`
+O estado da tecla, que pode ser uma `destas constantes`

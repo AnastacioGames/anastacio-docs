@@ -1,0 +1,31 @@
+Um objeto de luz.
+Liga uma luz vermelha de alerta.
+Uma luz spot. Veja o atributo `type`
+Uma luz pontual sem atenuação. Veja o atributo `type`
+Uma luz pontual. Veja o atributo `type`
+Uma luz hemi. Veja o atributo `type`
+O tipo da luz: SPOT, SUN ou NORMAL
+O brilho desta luz.
+O início do corte do shadow map; objetos mais perto que isso não geram sombra.
+O fim do corte do shadow map; objetos além disso não geram sombra.
+Tamanho do frustum usado para criar o shadow map.
+O número/id de bind da textura de sombra no OpenGL.
+O tipo de shadow map (0 -> Simples; 1 -> Variance)
+O bias de amostragem do buffer de sombra.
+O bias para reduzir o vazamento de luz nos shadow maps do tipo variance.
+Devolve True se a luz tem a opção Shadow ligada; caso contrário, False.
+A cor das sombras desta luz. Preto = (0.0, 0.0, 0.0), branco = (1.0, 1.0, 1.0).
+Matriz que converte um vetor do espaço da câmera para o espaço de profundidade do buffer de sombra.
+Calculada como: mat4_perspective_to_depth * mat4_lamp_to_perspective * mat4_world_to_lamp * mat4_cam_to_world.
+mat4_perspective_to_depth é uma matriz fixa, definida assim:
+Observação:
+Existe uma matriz dessas para cada lâmpada que projeta sombra na cena.
+A distância máxima que esta luz ilumina (só luzes SPOT e NORMAL).
+A cor desta luz. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0].
+A parte linear da atenuação desta luz (só luzes SPOT e NORMAL).
+A parte quadrática da atenuação desta luz (só luzes SPOT e NORMAL).
+O ângulo do cone da luz spot, em graus (só luzes SPOT).
+A distribuição da intensidade da luz spot (só luzes SPOT).
+Valores mais altos deixam a luz mais concentrada.
+Liga as sombras estáticas. Por padrão (staticShadow=False), a sombra da lâmpada é recalculada a cada frame. Quando isso não for preciso, defina staticShadow=True e chame `updateShadow` para pedir uma atualização da sombra.
+Pede para a sombra ser atualizada no próximo frame, se a lâmpada usa sombra estática. Veja `staticShadow`.

@@ -22,7 +22,7 @@ Since this API is not well documented, it can be unclear what kind of values to 
 For more examples of Bullet physics and how to use them see the [pybullet forum](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
 :::
 
-## Functions
+## Funções
 
 ### createConstraint( \
 

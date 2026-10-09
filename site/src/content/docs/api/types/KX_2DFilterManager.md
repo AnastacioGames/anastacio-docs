@@ -76,3 +76,31 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
+### fxaaEdgeThreshold
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### fxaaEdgeThresholdMin
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### fxaaEnabled
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### fxaaSearchSteps
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### fxaaSubpix
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### grainEnabled
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### grainStrength
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+

@@ -1,0 +1,67 @@
+Um objeto de câmera.
+Veja `sphereInsideFrustum` e `boxInsideFrustum`
+O valor da lente da câmera.
+Fator que multiplica a distância até a câmera para ajustar os níveis de detalhe. Um valor < 1.0 faz a distância usada para calcular os níveis de detalhe diminuir.
+O campo de visão da câmera.
+A escala da visão da câmera no modo ortográfico.
+A distância de corte próxima (near clip) da câmera.
+A distância de corte distante (far clip) da câmera.
+O deslocamento horizontal da câmera.
+O deslocamento vertical da câmera.
+True se a câmera usa projeção em perspectiva; False para projeção ortográfica.
+True se a câmera faz frustum culling.
+True se esta câmera é usada para calcular a distância dos objetos no culling de atividade.
+A matriz de projeção 4x4 da câmera.
+Antes do primeiro frame renderizado, é a matriz identidade (vale para qualquer Python rodado no frame 1).
+A matriz de projeção 4x4 do olho esquerdo.
+A matriz de projeção 4x4 do olho direito.
+A matriz model view 4x4 da câmera (somente leitura).
+Esta matriz é recalculada a cada frame a partir da posição e da orientação da câmera. Antes do primeiro frame renderizado, é a matriz identidade (vale para qualquer Python rodado no frame 1).
+A transformação da câmera para o mundo (somente leitura).
+Esta matriz é recalculada a cada frame a partir da posição e da orientação da câmera.
+A transformação do mundo para a câmera (somente leitura).
+Recalculada a cada frame a partir da posição e da orientação da câmera.
+É a inversa de camera_to_world.
+True quando a câmera é usada como viewport; defina True para ligar uma viewport para esta câmera.
+Testa a esfera dada contra o frustum da visão.
+O centro da esfera (em coordenadas do mundo).
+O raio da esfera
+`INSIDE`, `OUTSIDE` ou `INTERSECT`
+Logo que a câmera é iniciada, o resultado é inválido, porque a matriz de projeção ainda não foi definida.
+Uma esfera de raio 4.0 em [x, y, z] = [1.0, 1.0, 1.0]
+A esfera está dentro do frustum!
+Faça algo útil!
+A esfera está fora do frustum
+Testa a caixa dada contra o frustum da visão.
+Os oito (8) cantos da caixa (em coordenadas do mundo).
+Caixa a testar...
+A caixa está dentro ou cruza o frustum!
+A caixa está fora do frustum!
+Testa o ponto dado contra o frustum da visão.
+O ponto a testar (em coordenadas do mundo).
+True se o ponto está dentro do frustum de visão desta câmera.
+Testa o ponto [0.0, 0.0, 0.0]
+O ponto está dentro do frustum!
+Devolve a transformação da câmera para o mundo.
+A matriz de transformação da câmera para o mundo.
+Devolve a transformação do mundo para a câmera.
+Devolve a inversa de getCameraToWorld().
+A matriz de transformação do mundo para a câmera.
+Coloca a viewport desta câmera por cima de todas as outras.
+Define a região desta viewport na tela, em pixels.
+Use `Range.render.getWindowHeight` e `Range.render.getWindowWidth` para calcular valores relativos à tela inteira.
+Coordenada da esquerda desta viewport, em pixels
+Coordenada de baixo desta viewport, em pixels
+Coordenada da direita desta viewport, em pixels
+Coordenada de cima desta viewport, em pixels
+Pega a posição de um objeto projetada na tela.
+Para um objeto no meio da tela, coord = [0.5, 0.5]
+Nome do objeto ou lista [x, y, z]
+A posição do objeto em coordenadas de tela.
+Pega o vetor que sai da posição da câmera na direção da coordenada de tela.
+Eixo X
+Eixo Y
+O vetor a partir da coordenada de tela.
+Pega o vetor da direção da frente da câmera:
+Olha na direção de uma coordenada de tela (x, y) e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop. O raio funciona como KX_GameObject->rayCastTo.
+Pega um objeto com a propriedade "wall" na frente da câmera, a até 100 de distância:

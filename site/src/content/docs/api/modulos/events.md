@@ -3,50 +3,50 @@ title: "Range.events"
 description: "Referência do módulo Range.events"
 ---
 
-## Intro
+## Introdução
 
-This module holds key constants for the SCA_KeyboardSensor.
+Este módulo guarda as constantes de teclas usadas pelo SCA_KeyboardSensor.
 
 ```python
 
-# Set a connected keyboard sensor to accept F1
+# Configura um sensor de teclado conectado para aceitar F1
 import Range
 
 co = Range.logic.getCurrentController()
-# 'Keyboard' is a keyboard sensor
+# 'Keyboard' é um sensor de teclado
 sensor = co.sensors["Keyboard"]
 sensor.key = Range.events.F1KEY
 ```
 
 ```python
 
-# Do the all keys thing
+# Faz o esquema de todas as teclas
 import Range
 
 co = Range.logic.getCurrentController()
-# 'Keyboard' is a keyboard sensor
+# 'Keyboard' é um sensor de teclado
 sensor = co.sensors["Keyboard"]
 
 for key, input in sensor.inputs:
 	# key[0] == Range.events.keycode = event.type, key[1] = input
 	if Range.logic.KX_INPUT_JUST_ACTIVATED in input.queue:
 		if key == Range.events.WKEY:
-			# Activate Forward!
+			# Ativa para a frente!
 		if key == Range.events.SKEY:
-			# Activate Backward!
+			# Ativa para trás!
 		if key == Range.events.AKEY:
-			# Activate Left!
+			# Ativa para a esquerda!
 		if key == Range.events.DKEY:
-			# Activate Right!
+			# Ativa para a direita!
 ```
 
 ```python
 
-# The all keys thing without a keyboard sensor (but you will
-# need an always sensor with pulse mode on)
+# O esquema de todas as teclas sem sensor de teclado (mas você vai
+# precisar de um sensor Always com o modo pulse ligado)
 import Range
 
-# Just shortening names here
+# Só encurtando os nomes aqui
 keyboard = Range.logic.keyboard
 JUST_ACTIVATED = Range.logic.KX_INPUT_JUST_ACTIVATED
 
@@ -60,31 +60,31 @@ if JUST_ACTIVATED in keyboard.inputs[Range.events.DKEY].queue:
 	print("Activate Right!")
 ```
 
-## Functions
+## Funções
 
 ### EventToString(event)
 
-Return the string name of a key event. Will raise a ValueError error if its invalid.
+Devolve o nome em texto de um evento de tecla. Gera ValueError se o evento for inválido.
 
-- **`event`**: key event constant from `Range.events` or the keyboard sensor.
+- **`event`**: Constante de evento de tecla de `Range.events` ou do sensor de teclado.
   - tipo: int
 
 **Tipo do retorno:** string
 
 ### EventToCharacter(event, shift)
 
-Return the string name of a key event. Returns an empty string if the event cant be represented as a character.
+Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o evento não puder virar um caractere.
 
   - tipo: int
-- **`event`**: key event constant from `Range.events` or the keyboard sensor.
+- **`event`**: Constante de evento de tecla de `Range.events` ou do sensor de teclado.
   - tipo: bool
-- **`shift`**: set to true if shift is held.
+- **`shift`**: Defina como true se o shift estiver apertado.
 
 **Tipo do retorno:** string
 
-## Keys (Constants)
+## Teclas (constantes)
 
-## Mouse Keys
+## Teclas do mouse
 
 ### LEFTMOUSE
 
@@ -128,9 +128,9 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### MOUSEY
 
-## Keyboard Keys
+## Teclas do teclado
 
-## Alphabet keys
+## Letras
 
 ### AKEY
 
@@ -234,7 +234,7 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### ZKEY
 
-## Number keys
+## Números
 
 ### ZEROKEY
 
@@ -274,7 +274,7 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### NINEKEY
 
-## Modifiers Keys
+## Teclas modificadoras
 
 ### CAPSLOCKKEY
 
@@ -302,7 +302,7 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### LEFTSHIFTKEY
 
-## Arrow Keys
+## Setas
 
 ### LEFTARROWKEY
 
@@ -318,7 +318,7 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### UPARROWKEY
 
-## Numberpad Keys
+## Teclado numérico
 
 ### PAD0
 
@@ -382,7 +382,7 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### PADPLUSKEY
 
-## Function Keys
+## Teclas de função
 
 ### F1KEY
 
@@ -458,7 +458,7 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ### F19KEY
 
-## Other Keys
+## Outras teclas
 
 ### ACCENTGRAVEKEY
 

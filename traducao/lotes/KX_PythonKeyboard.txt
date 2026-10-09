@@ -1,0 +1,9 @@
+O teclado atual.
+Dicionário com a entrada de cada tecla do teclado (somente leitura).
+Dicionário com o estado de cada evento ou tecla do teclado (somente leitura).
+Dicionário com a entrada só das teclas ativas (somente leitura).
+Dicionário com o estado só dos eventos ou teclas ativas (somente leitura).
+O texto unicode digitado no último frame.
+Lê o texto da área de transferência.
+Define o texto da área de transferência.
+O novo texto da área de transferência

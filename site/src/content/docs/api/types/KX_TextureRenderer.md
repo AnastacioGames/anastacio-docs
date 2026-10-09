@@ -47,7 +47,7 @@ The projection view matrix far plane, used for culling.
 
 ### lodDistanceFactor
 
-The factor to multiply distance to camera to adjust levels of detail. A float < 1.0f will make the distance to camera used to compute levels of detail decrease.
+Fator que multiplica a distância até a câmera para ajustar os níveis de detalhe. Um valor < 1.0 faz a distância usada para calcular os níveis de detalhe diminuir.
 
 **Tipo:** float
 

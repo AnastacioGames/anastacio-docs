@@ -3,21 +3,21 @@ title: "Range.render"
 description: "Referência do módulo Range.render"
 ---
 
-## Intro
+## Introdução
 
-Example of using a `Range.types.SCA_MouseSensor`, and two `Range.types.KX_ObjectActuator` to implement MouseLook:
+Exemplo usando um `Range.types.SCA_MouseSensor` e dois `Range.types.KX_ObjectActuator` para fazer o mouse look:
 
 :::note
-This can also be achieved with the `Range.types.KX_MouseActuator`.
+Também dá para fazer isso com o `Range.types.KX_MouseActuator`.
 :::
 
 ```python
 
-# To use a mouse movement sensor "Mouse" and a
-# motion actuator to mouse look:
+# Para usar um sensor de movimento do mouse "Mouse" e um
+# atuador de movimento para olhar com o mouse:
 import Range
 
-# scale sets the speed of motion
+# scale define a velocidade do movimento
 scale = 1.0, 0.5
 
 co = Range.logic.getCurrentController()
@@ -26,7 +26,7 @@ mouse = co.sensors["Mouse"]
 lmotion = co.actuators["LMove"]
 wmotion = co.actuators["WMove"]
 
-# Transform the mouse coordinates to see how far the mouse has moved.
+# Converte as coordenadas do mouse para ver quanto o mouse andou.
 def mousePos():
    x = (Range.render.getWindowWidth() / 2 - mouse.position[0]) * scale[0]
    y = (Range.render.getWindowHeight() / 2 - mouse.position[1]) * scale[1]
@@ -34,19 +34,19 @@ def mousePos():
 
 pos = mousePos()
 
-# Set the amount of motion: X is applied in world coordinates...
+# Define o quanto mover: X é aplicado em coordenadas do mundo...
 wmotion.useLocalTorque = False
 wmotion.torque = ((0.0, 0.0, pos[0]))
 
-# ...Y is applied in local coordinates
+# ...Y é aplicado em coordenadas locais
 lmotion.useLocalTorque = True
 lmotion.torque = ((-pos[1], 0.0, 0.0))
 
-# Activate both actuators
+# Ativa os dois atuadores
 co.activate(lmotion)
 co.activate(wmotion)
 
-# Centre the mouse
+# Centraliza o mouse
 Range.render.setMousePosition(int(Range.render.getWindowWidth() / 2), int(Range.render.getWindowHeight() / 2))
 ```
 
@@ -54,191 +54,191 @@ Range.render.setMousePosition(int(Range.render.getWindowWidth() / 2), int(Range.
 
 ### KX_TEXFACE_MATERIAL
 
-Deprecated.
+Obsoleto.
 
-Materials as defined by the texture face settings.
+Materiais definidos pelas configurações de texture face.
 
 ### KX_BLENDER_MULTITEX_MATERIAL
 
-Deprecated.
+Obsoleto.
 
-Materials approximating blender materials with multitexturing.
+Materiais que imitam os materiais do Blender com multitextura.
 
 ### KX_BLENDER_GLSL_MATERIAL
 
-Deprecated.
+Obsoleto.
 
-Materials approximating blender materials with GLSL.
+Materiais que imitam os materiais do Blender com GLSL.
 
-Disables vsync Enables vsync Enables adaptive vsync if supported. Adaptive vsync enables vsync if the framerate is above the monitors refresh rate. Otherwise, vsync is diabled if the framerate is too low.
+Desliga o vsync; liga o vsync; liga o vsync adaptativo, se suportado. O vsync adaptativo liga o vsync quando o frame rate está acima da taxa de atualização do monitor e desliga quando o frame rate fica baixo demais.
 
 ### LEFT_EYE
 
-Left eye being used during stereoscopic rendering.
+Olho esquerdo em uso no render estereoscópico.
 
 ### RIGHT_EYE
 
-Right eye being used during stereoscopic rendering.
+Olho direito em uso no render estereoscópico.
 
 ## HDR
 
 ### HDR_NONE
 
-Use 8 bit per channel image format.
+Usa formato de imagem com 8 bits por canal.
 
 ### HDR_HALF_FLOAT
 
-Use 16 bit float per channel image format.
+Usa formato de imagem com float de 16 bits por canal.
 
 ### HDR_FULL_FLOAT
 
-Use 32 bit float per channel image format.
+Usa formato de imagem com float de 32 bits por canal.
 
-## Functions
+## Funções
 
 ### getWindowWidth()
 
-Gets the width of the window (in pixels)
+Pega a largura da janela (em pixels)
 
 **Tipo do retorno:** integer
 
 ### getWindowHeight()
 
-Gets the height of the window (in pixels)
+Pega a altura da janela (em pixels)
 
 **Tipo do retorno:** integer
 
 ### setWindowSize(width, height)
 
-Set the width and height of the window (in pixels). This also works for fullscreen applications.
+Define a largura e a altura da janela (em pixels). Também funciona em tela cheia.
 
 :::note
-Only works in the standalone player, not the Blender-embedded player.
+Só funciona no player separado, não no player embutido no Blender.
 :::
 
-- **`width`**: width in pixels
+- **`width`**: Largura em pixels
   - tipo: integer
-- **`height`**: height in pixels
+- **`height`**: Altura em pixels
   - tipo: integer
 
 ### setFullScreen(enable)
 
-Set whether or not the window should be fullscreen.
+Define se a janela fica em tela cheia ou não.
 
 :::note
-Only works in the standalone player, not the Blender-embedded player.
+Só funciona no player separado, não no player embutido no Blender.
 :::
 
-- **`enable`**: `True` to set full screen, `False` to set windowed.
+- **`enable`**: `True` para tela cheia, `False` para janela.
   - tipo: bool
 
 ### getFullScreen()
 
-Returns whether or not the window is fullscreen.
+Diz se a janela está em tela cheia.
 
 :::note
-Only works in the standalone player, not the Blender-embedded player; there it always returns False.
+Só funciona no player separado, não no player embutido no Blender; lá sempre devolve False.
 :::
 
 **Tipo do retorno:** bool
 
 ### getDisplayDimensions()
 
-Get the display dimensions, in pixels, of the display (e.g., the monitor). Can return the size of the entire view, so the combination of all monitors; for example, `(3840, 1080)` for two side-by-side 1080p monitors.
+Pega as dimensões da tela (por exemplo, do monitor) em pixels. Pode devolver o tamanho da área inteira, somando todos os monitores; por exemplo, `(3840, 1080)` para dois monitores 1080p lado a lado.
 
 **Tipo do retorno:** tuple (width, height)
 
 ### makeScreenshot(filename)
 
-Writes an image file with the displayed image at the frame end.
+Grava um arquivo de imagem com o que está na tela no fim do frame.
 
-The image is written to *'filename'*. The path may be absolute (eg. `/home/foo/image`) or relative when started with `//` (eg. `//image`). Note that absolute paths are not portable between platforms. If the filename contains a `#`, it will be replaced by an incremental index so that screenshots can be taken multiple times without overwriting the previous ones (eg. `image-#`).
+A imagem é gravada em *'filename'*. O caminho pode ser absoluto (ex.: `/home/foo/image`) ou relativo, começando com `//` (ex.: `//image`). Caminhos absolutos não funcionam igual em todos os sistemas. Se o nome tiver um `#`, ele é trocado por um número que aumenta a cada vez, para tirar vários prints sem sobrescrever os anteriores (ex.: `image-#`).
 
-Settings for the image are taken from the render settings (file format and respective settings, gamma and colospace conversion, etc). The image resolution matches the framebuffer, meaning, the window size and aspect ratio. When running from the standalone player, instead of the embedded player, only PNG files are supported. Additional color conversions are also not supported.
+As configurações da imagem vêm das configurações de render (formato do arquivo e seus ajustes, gamma, conversão de espaço de cor etc.). A resolução da imagem é a do framebuffer, ou seja, o tamanho e a proporção da janela. No player separado, em vez do embutido, só arquivos PNG são suportados, e as conversões de cor extras também não.
 
-- **`filename`**: path and name of the file to write
+- **`filename`**: Caminho e nome do arquivo a gravar
   - tipo: string
 
 ### enableVisibility(visible)
 
-Deprecated; doesn't do anything.
+Obsoleto; não faz nada.
 
 ### showMouse(visible)
 
-Enables or disables the operating system mouse cursor.
+Mostra ou esconde o cursor do mouse do sistema.
 
 - **`visible`**:
   - tipo: boolean
 
 ### setMousePosition(x, y)
 
-Sets the mouse cursor position.
+Define a posição do cursor do mouse.
 
-- **`x`**: X-coordinate in screen pixel coordinates.
+- **`x`**: Coordenada X, em pixels da tela.
   - tipo: integer
-- **`y`**: Y-coordinate in screen pixel coordinates.
+- **`y`**: Coordenada Y, em pixels da tela.
   - tipo: integer
 
 ### setBackgroundColor(rgba)
 
-Deprecated and no longer functional. Use `Range.types.KX_WorldInfo.horizonColor` or `Range.types.KX_WorldInfo.zenithColor` instead.
+Obsoleto e não funciona mais. Use `Range.types.KX_WorldInfo.horizonColor` ou `Range.types.KX_WorldInfo.zenithColor`.
 
 ### setEyeSeparation(eyesep)
 
-Sets the eye separation for stereo mode. Usually Focal Length/30 provides a confortable value.
+Define a separação dos olhos no modo estéreo. Em geral, distância focal/30 dá um valor confortável.
 
-- **`eyesep`**: The distance between the left and right eye.
+- **`eyesep`**: A distância entre o olho esquerdo e o direito.
   - tipo: float
 
 ### getEyeSeparation()
 
-Gets the current eye separation for stereo mode.
+Pega a separação dos olhos atual do modo estéreo.
 
 **Tipo do retorno:** float
 
 ### setFocalLength(focallength)
 
-Sets the focal length for stereo mode. It uses the current camera focal length as initial value.
+Define a distância focal do modo estéreo. O valor inicial é a distância focal da câmera atual.
 
-- **`focallength`**: The focal length.
+- **`focallength`**: A distância focal.
   - tipo: float
 
 ### getFocalLength()
 
-Gets the current focal length for stereo mode.
+Pega a distância focal atual do modo estéreo.
 
 **Tipo do retorno:** float
 
 ### getStereoEye()
 
-Gets the current stereoscopy eye being rendered. This function is mainly used in a `Range.types.KX_Scene.pre_draw` callback function to customize the camera projection matrices for each stereoscopic eye.
+Pega qual olho estereoscópico está sendo renderizado agora. Serve principalmente num callback `Range.types.KX_Scene.pre_draw`, para ajustar as matrizes de projeção da câmera para cada olho.
 
 **Tipo do retorno:** LEFT_EYE, RIGHT_EYE
 
 ### setMaterialMode(mode)
 
-Deprecated and no longer functional.
+Obsoleto e não funciona mais.
 
-Set the material mode to use for OpenGL rendering.
+Define o modo de material usado no render OpenGL.
 
-- **`mode`**: material mode
+- **`mode`**: Modo de material
   - tipo: KX_TEXFACE_MATERIAL, KX_BLENDER_MULTITEX_MATERIAL, KX_BLENDER_GLSL_MATERIAL
 
 :::note
-Changes will only affect newly created scenes.
+As mudanças só valem para cenas criadas depois.
 :::
 
 ### getMaterialMode(mode)
 
-Deprecated and no longer functional.
+Obsoleto e não funciona mais.
 
-Get the material mode to use for OpenGL rendering.
+Pega o modo de material usado no render OpenGL.
 
 **Tipo do retorno:** KX_TEXFACE_MATERIAL, KX_BLENDER_MULTITEX_MATERIAL, KX_BLENDER_GLSL_MATERIAL
 
 ### setGLSLMaterialSetting(setting, enable)
 
-Enables or disables a GLSL material setting.
+Liga ou desliga uma configuração de material GLSL.
 
 - **`setting`**:
   - tipo: string (lights, shaders, shadows, ramps, nodes, extra_textures)
@@ -247,7 +247,7 @@ Enables or disables a GLSL material setting.
 
 ### getGLSLMaterialSetting(setting)
 
-Get the state of a GLSL material setting.
+Pega o estado de uma configuração de material GLSL.
 
 - **`setting`**:
   - tipo: string (lights, shaders, shadows, ramps, nodes, extra_textures)
@@ -256,139 +256,139 @@ Get the state of a GLSL material setting.
 
 ### setAnisotropicFiltering(level)
 
-Set the anisotropic filtering level for textures.
+Define o nível de filtragem anisotrópica das texturas.
 
-- **`level`**: The new anisotropic filtering level to use
+- **`level`**: O novo nível de filtragem anisotrópica
   - tipo: integer (must be one of 1, 2, 4, 8, 16)
 
 :::note
-Changing this value can cause all textures to be recreated, which can be slow.
+Mudar este valor pode recriar todas as texturas, o que pode ser lento.
 :::
 
 ### getAnisotropicFiltering()
 
-Get the anisotropic filtering level used for textures.
+Pega o nível de filtragem anisotrópica das texturas.
 
 **Tipo do retorno:** integer (one of 1, 2, 4, 8, 16)
 
 ### setAntiAliasing(level)
 
-Set the anti aliasing level.
+Define o nível de anti-aliasing.
 
-- **`level`**: The new anti aliasing level to use
+- **`level`**: O novo nível de anti-aliasing
   - tipo: integer (must be one of 0, 2, 4, 8, 16)
 
 :::note
-Changing this value cause all off screens to be recreated, which can be slow.
+Mudar este valor recria todos os buffers fora da tela, o que pode ser lento.
 :::
 
 ### getAntiAliasing()
 
-Get the anti aliasing level setting.
+Pega o nível de anti-aliasing configurado.
 
 **Tipo do retorno:** integer (one of 0, 2, 4, 8, 16)
 
 ### setMipmapping(value)
 
-Change how to use mipmapping.
+Muda como o mipmapping é usado.
 
   - tipo: RAS_MIPMAP_NONE, RAS_MIPMAP_NEAREST, RAS_MIPMAP_LINEAR
 
 :::note
-Changing this value can cause all textures to be recreated, which can be slow.
+Mudar este valor pode recriar todas as texturas, o que pode ser lento.
 :::
 
 ### getMipmapping()
 
-Get the current mipmapping setting.
+Pega a configuração atual de mipmapping.
 
 **Tipo do retorno:** RAS_MIPMAP_NONE, RAS_MIPMAP_NEAREST, RAS_MIPMAP_LINEAR
 
 ### drawLine(fromVec,toVec,color)
 
-Draw a line in the 3D scene.
+Desenha uma linha na cena 3D.
 
-- **`fromVec`**: the origin of the line
+- **`fromVec`**: O começo da linha
   - tipo: list [x, y, z]
-- **`toVec`**: the end of the line
+- **`toVec`**: O fim da linha
   - tipo: list [x, y, z]
-- **`color`**: the color of the line
+- **`color`**: A cor da linha
   - tipo: list [r, g, b, a]
 
 ### enableMotionBlur(factor)
 
-Enable the motion blur effect.
+Liga o efeito de motion blur.
 
-- **`factor`**: the ammount of motion blur to display.
+- **`factor`**: A intensidade do motion blur.
   - tipo: float [0.0 - 1.0]
 
 ### disableMotionBlur()
 
-Disable the motion blur effect.
+Desliga o efeito de motion blur.
 
 ### showFramerate(enable)
 
-Show or hide the framerate.
+Mostra ou esconde o frame rate.
 
 - **`enable`**:
   - tipo: boolean
 
 ### showProfile(enable)
 
-Show or hide the profile.
+Mostra ou esconde o profiler.
 
 - **`enable`**:
   - tipo: boolean
 
 ### showProperties(enable)
 
-Show or hide the debug properties.
+Mostra ou esconde as propriedades de depuração.
 
 - **`enable`**:
   - tipo: boolean
 
 ### autoDebugList(enable)
 
-Enable or disable auto adding debug properties to the debug list.
+Liga ou desliga a inclusão automática das propriedades de depuração na lista.
 
 - **`enable`**:
   - tipo: boolean
 
 ### clearDebugList()
 
-Clears the debug property list.
+Limpa a lista de propriedades de depuração.
 
 ### setVsync(value)
 
-Set the vsync value
+Define o vsync
 
-- **`value`**: One of VSYNC_OFF, VSYNC_ON, VSYNC_ADAPTIVE
+- **`value`**: Um destes: VSYNC_OFF, VSYNC_ON, VSYNC_ADAPTIVE
   - tipo: integer
 
 ### getVsync()
 
-Get the current vsync value
+Pega o valor atual do vsync
 
 **Tipo do retorno:** One of VSYNC_OFF, VSYNC_ON, VSYNC_ADAPTIVE
 
 ### setDynamicResolution(enabled, targetFPS=60, minScale=50, maxScale=100, step=5)
 
-Runtime version of the scene's Dynamic Resolution settings. The 3D scene is rendered at a scale of the window size and stretched to the screen; the window itself does not change. With dynamic resolution the scale goes down by `step` when the GPU time of a frame is above the target and back up when there is time left. `minScale == maxScale` gives a fixed render scale. Paused while "Show Render Queries" is on (both use a GPU timer query).
+Versão em tempo de jogo das configurações de Dynamic Resolution da cena. A cena 3D é renderizada numa escala do tamanho da janela e esticada para a tela; a janela em si não muda. Com a resolução dinâmica, a escala desce `step` quando o tempo de GPU do frame passa do alvo e sobe de novo quando sobra tempo. `minScale == maxScale` dá uma escala de render fixa. Fica pausada enquanto "Show Render Queries" estiver ligado (os dois usam uma consulta de tempo da GPU).
 
-- **`enabled`**: False renders at 100%.
+- **`enabled`**: False renderiza a 100%.
   - tipo: boolean
-- **`targetFPS`**: Frame rate the GPU time is compared to.
+- **`targetFPS`**: O frame rate com que o tempo de GPU é comparado.
   - tipo: integer
-- **`minScale`**: Lowest scale, in percent (25-100).
+- **`minScale`**: Escala mínima, em porcentagem (25-100).
   - tipo: integer
-- **`maxScale`**: Highest scale, in percent (25-100).
+- **`maxScale`**: Escala máxima, em porcentagem (25-100).
   - tipo: integer
-- **`step`**: Scale change per adjustment, in percent (1-25).
+- **`step`**: Quanto a escala muda a cada ajuste, em porcentagem (1-25).
   - tipo: integer
 
 ### getRenderScale()
 
-Current render scale, 1.0 = full resolution.
+A escala de render atual; 1.0 = resolução completa.
 
 **Tipo do retorno:** float
 
@@ -406,19 +406,19 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-get the stereo mode
+pega o modo estéreo
 
 ### getVRChromaticAberration()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-get the VR lens chromatic aberration correction
+pega a correção de aberração cromática da lente VR
 
 ### getVRLensStrength()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-get the VR lens distortion strength
+pega a intensidade da distorção da lente VR
 
 ### setCustomMouse(string path)
 
@@ -428,25 +428,25 @@ get the VR lens distortion strength
 
 <span class="ae-badge pendente">sem documentação</span> <small>função</small>
 
--- volume in [0, 1], applies to the engine's actual audio device
+-- volume em [0, 1], aplicado ao dispositivo de áudio real da engine
 
 ### setStereoMode()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-set the stereo mode (STEREO_* constants)
+define o modo estéreo (constantes STEREO_*)
 
 ### setVRChromaticAberration()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-set the VR lens chromatic aberration correction (0..0.1, default 0.01)
+define a correção de aberração cromática da lente VR (0..0.1, padrão 0.01)
 
 ### setVRLensStrength()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-set the VR lens distortion strength (0..1, default 0.3)
+define a intensidade da distorção da lente VR (0..1, padrão 0.3)
 
 ### showDebugPhysics(bool debug)
 

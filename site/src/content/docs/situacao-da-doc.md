@@ -29,7 +29,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
 | `KX_2DFilter` | 6 | 6 | 0 |  |
-| `KX_2DFilterManager` | 10 | 3 | 7 |  |
+| `KX_2DFilterManager` | 17 | 3 | 14 |  |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 0 | 2 |  |
@@ -94,7 +94,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_VehicleWrapper` | 30 | 16 | 14 |  |
 | `KX_VertexProxy` | 28 | 28 | 0 |  |
 | `KX_VisibilityActuator` | 3 | 3 | 0 |  |
-| `KX_WorldInfo` | 22 | 19 | 3 | 1 |
+| `KX_WorldInfo` | 36 | 19 | 17 | 1 |
 | `SCA_2DFilterActuator` | 5 | 5 | 0 |  |
 | `SCA_ANDController` | 0 | 0 | 0 |  |
 | `SCA_ActuatorSensor` | 1 | 1 | 0 |  |

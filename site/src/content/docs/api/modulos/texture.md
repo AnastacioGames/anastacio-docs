@@ -1087,7 +1087,7 @@ Returns a new input filter object to be used with `ImageBuff` object when the im
 
 Source filter RGBA32.
 
-## Functions
+## Funções
 
 ### getLastError()
 

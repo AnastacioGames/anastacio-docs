@@ -7,171 +7,171 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 
 
-A Camera object.
+Um objeto de câmera.
 
 ### INSIDE
 
-See `sphereInsideFrustum` and `boxInsideFrustum`
+Veja `sphereInsideFrustum` e `boxInsideFrustum`
 
 ### INTERSECT
 
-See `sphereInsideFrustum` and `boxInsideFrustum`
+Veja `sphereInsideFrustum` e `boxInsideFrustum`
 
 ### OUTSIDE
 
-See `sphereInsideFrustum` and `boxInsideFrustum`
+Veja `sphereInsideFrustum` e `boxInsideFrustum`
 
 ### lens
 
-The camera's lens value.
+O valor da lente da câmera.
 
 **Tipo:** float
 
 ### lodDistanceFactor
 
-The factor to multiply distance to camera to adjust levels of detail. A float < 1.0f will make the distance to camera used to compute levels of detail decrease.
+Fator que multiplica a distância até a câmera para ajustar os níveis de detalhe. Um valor < 1.0 faz a distância usada para calcular os níveis de detalhe diminuir.
 
 **Tipo:** float
 
 ### fov
 
-The camera's field of view value.
+O campo de visão da câmera.
 
 **Tipo:** float
 
 ### ortho_scale
 
-The camera's view scale when in orthographic mode.
+A escala da visão da câmera no modo ortográfico.
 
 **Tipo:** float
 
 ### near
 
-The camera's near clip distance.
+A distância de corte próxima (near clip) da câmera.
 
 **Tipo:** float
 
 ### far
 
-The camera's far clip distance.
+A distância de corte distante (far clip) da câmera.
 
 **Tipo:** float
 
 ### shift_x
 
-The camera's horizontal shift.
+O deslocamento horizontal da câmera.
 
 **Tipo:** float
 
 ### shift_y
 
-The camera's vertical shift.
+O deslocamento vertical da câmera.
 
 **Tipo:** float
 
 ### perspective
 
-True if this camera has a perspective transform, False for an orthographic projection.
+True se a câmera usa projeção em perspectiva; False para projeção ortográfica.
 
 **Tipo:** boolean
 
 ### frustum_culling
 
-True if this camera is frustum culling.
+True se a câmera faz frustum culling.
 
 **Tipo:** boolean
 
 ### activityCulling
 
-True if this camera is used to compute object distance for object activity culling.
+True se esta câmera é usada para calcular a distância dos objetos no culling de atividade.
 
 **Tipo:** boolean
 
 ### projection_matrix
 
-This camera's 4x4 projection matrix.
+A matriz de projeção 4x4 da câmera.
 
 :::note
-This is the identity matrix prior to rendering the first frame (any Python done on frame 1).
+Antes do primeiro frame renderizado, é a matriz identidade (vale para qualquer Python rodado no frame 1).
 :::
 
 **Tipo:** 4x4 Matrix [[float]]
 
 ### projectionMatrixLeft
 
-This camera's 4x4 left eye projection matrix.
+A matriz de projeção 4x4 do olho esquerdo.
 
 :::note
-This is the identity matrix prior to rendering the first frame (any Python done on frame 1).
+Antes do primeiro frame renderizado, é a matriz identidade (vale para qualquer Python rodado no frame 1).
 :::
 
 **Tipo:** 4x4 Matrix [[float]]
 
 ### projectionMatrixRight
 
-This camera's 4x4 right eye projection matrix.
+A matriz de projeção 4x4 do olho direito.
 
 :::note
-This is the identity matrix prior to rendering the first frame (any Python done on frame 1).
+Antes do primeiro frame renderizado, é a matriz identidade (vale para qualquer Python rodado no frame 1).
 :::
 
 **Tipo:** 4x4 Matrix [[float]]
 
 ### modelview_matrix
 
-This camera's 4x4 model view matrix. (read-only).
+A matriz model view 4x4 da câmera (somente leitura).
 
 **Tipo:** 4x4 Matrix [[float]]
 
 :::note
-This matrix is regenerated every frame from the camera's position and orientation. Also, this is the identity matrix prior to rendering the first frame (any Python done on frame 1).
+Esta matriz é recalculada a cada frame a partir da posição e da orientação da câmera. Antes do primeiro frame renderizado, é a matriz identidade (vale para qualquer Python rodado no frame 1).
 :::
 
 ### camera_to_world
 
-This camera's camera to world transform. (read-only).
+A transformação da câmera para o mundo (somente leitura).
 
 **Tipo:** 4x4 Matrix [[float]]
 
 :::note
-This matrix is regenerated every frame from the camera's position and orientation.
+Esta matriz é recalculada a cada frame a partir da posição e da orientação da câmera.
 :::
 
 ### world_to_camera
 
-This camera's world to camera transform. (read-only).
+A transformação do mundo para a câmera (somente leitura).
 
 **Tipo:** 4x4 Matrix [[float]]
 
 :::note
-Regenerated every frame from the camera's position and orientation.
+Recalculada a cada frame a partir da posição e da orientação da câmera.
 :::
 
 :::note
-This is camera_to_world inverted.
+É a inversa de camera_to_world.
 :::
 
 ### useViewport
 
-True when the camera is used as a viewport, set True to enable a viewport for this camera.
+True quando a câmera é usada como viewport; defina True para ligar uma viewport para esta câmera.
 
 **Tipo:** boolean
 
 ### sphereInsideFrustum(centre, radius)
 
-Tests the given sphere against the view frustum.
+Testa a esfera dada contra o frustum da visão.
 
-- **`centre`**: The centre of the sphere (in world coordinates.)
+- **`centre`**: O centro da esfera (em coordenadas do mundo).
   - tipo: list [x, y, z]
-- **`radius`**: the radius of the sphere
+- **`radius`**: O raio da esfera
   - tipo: float
 
-**Retorna:** `INSIDE`, `OUTSIDE` or `INTERSECT`
+**Retorna:** `INSIDE`, `OUTSIDE` ou `INTERSECT`
 
 **Tipo do retorno:** integer
 
 :::note
-When the camera is first initialized the result will be invalid because the projection matrix has not been set.
+Logo que a câmera é iniciada, o resultado é inválido, porque a matriz de projeção ainda não foi definida.
 :::
 
 ```python
@@ -180,25 +180,25 @@ from Range import logic
 cont = logic.getCurrentController()
 cam = cont.owner
 
-# A sphere of radius 4.0 located at [x, y, z] = [1.0, 1.0, 1.0]
+# Uma esfera de raio 4.0 em [x, y, z] = [1.0, 1.0, 1.0]
 if (cam.sphereInsideFrustum([1.0, 1.0, 1.0], 4) != cam.OUTSIDE):
-    # Sphere is inside frustum !
-    # Do something useful !
+    # A esfera está dentro do frustum!
+    # Faça algo útil!
 else:
-    # Sphere is outside frustum
+    # A esfera está fora do frustum
 ```
 
 ### boxInsideFrustum(box)
 
-Tests the given box against the view frustum.
+Testa a caixa dada contra o frustum da visão.
 
-- **`box`**: Eight (8) corner points of the box (in world coordinates.)
+- **`box`**: Os oito (8) cantos da caixa (em coordenadas do mundo).
   - tipo: list of lists
 
-**Retorna:** `INSIDE`, `OUTSIDE` or `INTERSECT`
+**Retorna:** `INSIDE`, `OUTSIDE` ou `INTERSECT`
 
 :::note
-When the camera is first initialized the result will be invalid because the projection matrix has not been set.
+Logo que a câmera é iniciada, o resultado é inválido, porque a matriz de projeção ainda não foi definida.
 :::
 
 ```python
@@ -207,7 +207,7 @@ from Range import logic
 cont = logic.getCurrentController()
 cam = cont.owner
 
-# Box to test...
+# Caixa a testar...
 box = []
 box.append([-1.0, -1.0, -1.0])
 box.append([-1.0, -1.0,  1.0])
@@ -219,25 +219,25 @@ box.append([ 1.0,  1.0, -1.0])
 box.append([ 1.0,  1.0,  1.0])
 
 if (cam.boxInsideFrustum(box) != cam.OUTSIDE):
-  # Box is inside/intersects frustum !
-  # Do something useful !
+  # A caixa está dentro ou cruza o frustum!
+  # Faça algo útil!
 else:
-  # Box is outside the frustum !
+  # A caixa está fora do frustum!
 ```
 
 ### pointInsideFrustum(point)
 
-Tests the given point against the view frustum.
+Testa o ponto dado contra o frustum da visão.
 
-- **`point`**: The point to test (in world coordinates.)
+- **`point`**: O ponto a testar (em coordenadas do mundo).
   - tipo: 3D Vector
 
-**Retorna:** True if the given point is inside this camera's viewing frustum.
+**Retorna:** True se o ponto está dentro do frustum de visão desta câmera.
 
 **Tipo do retorno:** boolean
 
 :::note
-When the camera is first initialized the result will be invalid because the projection matrix has not been set.
+Logo que a câmera é iniciada, o resultado é inválido, porque a matriz de projeção ainda não foi definida.
 :::
 
 ```python
@@ -246,94 +246,94 @@ from Range import logic
 cont = logic.getCurrentController()
 cam = cont.owner
 
-# Test point [0.0, 0.0, 0.0]
+# Testa o ponto [0.0, 0.0, 0.0]
 if (cam.pointInsideFrustum([0.0, 0.0, 0.0])):
-  # Point is inside frustum !
-  # Do something useful !
+  # O ponto está dentro do frustum!
+  # Faça algo útil!
 else:
-  # Box is outside the frustum !
+  # A caixa está fora do frustum!
 ```
 
 ### getCameraToWorld()
 
-Returns the camera-to-world transform.
+Devolve a transformação da câmera para o mundo.
 
-**Retorna:** the camera-to-world transform matrix.
+**Retorna:** A matriz de transformação da câmera para o mundo.
 
 **Tipo do retorno:** matrix (4x4 list)
 
 ### getWorldToCamera()
 
-Returns the world-to-camera transform.
+Devolve a transformação do mundo para a câmera.
 
-This returns the inverse matrix of getCameraToWorld().
+Devolve a inversa de getCameraToWorld().
 
-**Retorna:** the world-to-camera transform matrix.
+**Retorna:** A matriz de transformação do mundo para a câmera.
 
 **Tipo do retorno:** matrix (4x4 list)
 
 ### setOnTop()
 
-Set this cameras viewport ontop of all other viewport.
+Coloca a viewport desta câmera por cima de todas as outras.
 
 ### setViewport(left, bottom, right, top)
 
-Sets the region of this viewport on the screen in pixels.
+Define a região desta viewport na tela, em pixels.
 
-Use `Range.render.getWindowHeight` and `Range.render.getWindowWidth` to calculate values relative to the entire display.
+Use `Range.render.getWindowHeight` e `Range.render.getWindowWidth` para calcular valores relativos à tela inteira.
 
-- **`left`**: left pixel coordinate of this viewport
+- **`left`**: Coordenada da esquerda desta viewport, em pixels
   - tipo: integer
-- **`bottom`**: bottom pixel coordinate of this viewport
+- **`bottom`**: Coordenada de baixo desta viewport, em pixels
   - tipo: integer
-- **`right`**: right pixel coordinate of this viewport
+- **`right`**: Coordenada da direita desta viewport, em pixels
   - tipo: integer
-- **`top`**: top pixel coordinate of this viewport
+- **`top`**: Coordenada de cima desta viewport, em pixels
   - tipo: integer
 
 ### getScreenPosition(object)
 
-Gets the position of an object projected on screen space.
+Pega a posição de um objeto projetada na tela.
 
 ```python
 
-# For an object in the middle of the screen, coord = [0.5, 0.5]
+# Para um objeto no meio da tela, coord = [0.5, 0.5]
 coord = camera.getScreenPosition(object)
 ```
 
-- **`object`**: object name or list [x, y, z]
+- **`object`**: Nome do objeto ou lista [x, y, z]
   - tipo: `KX_GameObject` or 3D Vector
 
-**Retorna:** the object's position in screen coordinates.
+**Retorna:** A posição do objeto em coordenadas de tela.
 
 **Tipo do retorno:** list [x, y]
 
 ### getScreenVect(x, y)
 
-Gets the vector from the camera position in the screen coordinate direction.
+Pega o vetor que sai da posição da câmera na direção da coordenada de tela.
 
-- **`x`**: X Axis
+- **`x`**: Eixo X
   - tipo: float
-- **`y`**: Y Axis
+- **`y`**: Eixo Y
   - tipo: float
 
 **Tipo do retorno:** 3D Vector
 
-**Retorna:** The vector from screen coordinate.
+**Retorna:** O vetor a partir da coordenada de tela.
 
 ```python
 
-# Gets the vector of the camera front direction:
+# Pega o vetor da direção da frente da câmera:
 m_vect = camera.getScreenVect(0.5, 0.5)
 ```
 
 ### getScreenRay(x, y, dist=inf, property=None)
 
-Look towards a screen coordinate (x, y) and find first object hit within dist that matches prop. The ray is similar to KX_GameObject->rayCastTo.
+Olha na direção de uma coordenada de tela (x, y) e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop. O raio funciona como KX_GameObject->rayCastTo.
 
-- **`x`**: X Axis
+- **`x`**: Eixo X
   - tipo: float
-- **`y`**: Y Axis
+- **`y`**: Eixo Y
   - tipo: float
 - **`dist`**: Distância máxima (pode ser negativa, para olhar para trás); 0 ou omitido detecta até o alvo
   - tipo: float
@@ -346,7 +346,7 @@ Look towards a screen coordinate (x, y) and find first object hit within dist th
 
 ```python
 
-# Gets an object with a property "wall" in front of the camera within a distance of 100:
+# Pega um objeto com a propriedade "wall" na frente da câmera, a até 100 de distância:
 target = camera.getScreenRay(0.5, 0.5, 100, "wall")
 ```
 

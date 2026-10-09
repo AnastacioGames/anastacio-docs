@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 105 classes, 8 módulos | documentados 1018 · sem doc 248 · novos 470 · só no rst 111
+**Total:** 105 classes, 8 módulos | documentados 1018 · sem doc 248 · novos 491 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -27,11 +27,12 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_Camera` | 80 | 31 | 0 | 49 | 0 | sim |
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `KX_ParticleSystem` | 21 | 0 | 0 | 21 | 0 | **não** |
+| `KX_WorldInfo` | 36 | 19 | 0 | 17 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
+| `KX_2DFilterManager` | 17 | 3 | 0 | 14 | 0 | sim |
 | `KX_VehicleWrapper` | 30 | 16 | 0 | 14 | 0 | sim |
 | `KX_Scene` | 37 | 28 | 0 | 9 | 0 | sim |
 | `EXP_BaseListValue` | 7 | 0 | 0 | 7 | 0 | **não** |
-| `KX_2DFilterManager` | 10 | 3 | 0 | 7 | 0 | sim |
 | `KX_PythonJoystick` | 15 | 8 | 0 | 7 | 0 | sim |
 | `KX_VRHeadSensor` | 6 | 0 | 0 | 6 | 0 | **não** |
 | `KX_InputSystem` | 5 | 0 | 0 | 5 | 0 | **não** |
@@ -43,7 +44,6 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_FontObject` | 7 | 4 | 0 | 3 | 0 | sim |
 | `KX_RaySensor` | 14 | 11 | 0 | 3 | 0 | sim |
 | `KX_SteeringActuator` | 14 | 11 | 0 | 3 | 0 | sim |
-| `KX_WorldInfo` | 22 | 19 | 0 | 3 | 0 | sim |
 | `BL_ActionActuator` | 12 | 10 | 0 | 2 | 0 | sim |
 | `KX_AnimationEvent` | 2 | 0 | 0 | 2 | 0 | **não** |
 | `KX_GameActuator` | 4 | 2 | 0 | 2 | 0 | sim |
@@ -143,7 +143,7 @@ Origem pelo git: **137** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **BL_ActionActuator** (source/source/gameengine/Converter/BL_ActionActuator.cpp): `layer`, `layerWeight`
 - **EXP_BaseListValue** (source/source/gameengine/Expressions/intern/BaseListValue.cpp): `append`, `reverse`, `index`, `count`, `get`, `filter`, `from_id`
 - **EXP_BaseListWrapper** (source/source/gameengine/Expressions/intern/BaseListWrapper.cpp): `get`
-- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`
+- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `fxaaEnabled`, `fxaaEdgeThreshold`, `fxaaEdgeThresholdMin`, `fxaaSubpix`, `fxaaSearchSteps`, `grainEnabled`, `grainStrength`
 - **KX_AnimationEvent** (source/source/gameengine/Ketsji/KX_AnimationEvent.cpp): `getFireCount`, `triggers` (só leitura)
 - **KX_AnimationEventManager** (source/source/gameengine/Ketsji/KX_AnimationEventManager.cpp): `events` (só leitura)
 - **KX_BlenderMaterial** (source/source/gameengine/Ketsji/KX_BlenderMaterial.cpp): `passIndex`
@@ -172,7 +172,7 @@ Origem pelo git: **137** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_SteeringActuator** (source/source/gameengine/Ketsji/KX_SteeringActuator.cpp): `steeringVec` (só leitura), `facingMode`, `lockZVelocity`
 - **KX_VRHeadSensor** (source/source/gameengine/Ketsji/KX_VRHeadSensor.cpp): `mode` ✦2026-10-01, `angle` ✦2026-10-01, `time` ✦2026-10-01, `pitch` (só leitura) ✦2026-10-01, `yaw` (só leitura) ✦2026-10-01, `roll` (só leitura) ✦2026-10-01
 - **KX_VehicleWrapper** (source/source/gameengine/Ketsji/KX_VehicleWrapper.cpp): `setWheelIsDriveWheel`, `getCurrentSpeedKmh`, `getCurrentSpeedMps`, `getForwardVector`, `getCoordinateSystem`, `setCoordinateSystem`, `resetSuspension`, `getWheelConfig`, `getWheelState`, `savePreset`, `loadPreset`, `rebuildPreset`, `constraint_id` (só leitura), `constraint_type` (só leitura)
-- **KX_WorldInfo** (source/source/gameengine/Ketsji/KX_WorldInfo.cpp): `getWeather` ✦2026-10-03, `backgroundColor`, `sunSize`
+- **KX_WorldInfo** (source/source/gameengine/Ketsji/KX_WorldInfo.cpp): `getWeather` ✦2026-10-03, `backgroundColor`, `sunSize`, `skyType`, `useSkyStars`, `starStyle`, `useSkyMoon`, `moonSize`, `moonBrightness`, `useSkyAurora`, `auroraColors`, `atmosphereIntensity`, `atmosphereRayleighColor`, `atmosphereRayleighDensity`, `atmosphereMieDensity`, `atmosphereMieDirection`, `atmosphereAltitude`
 - **SCA_DelaySensor** (source/source/gameengine/GameLogic/SCA_DelaySensor.cpp): `useDelta`
 - **SCA_ISensor** (source/source/gameengine/GameLogic/SCA_ISensor.cpp): `useDeltaTime`
 - **SCA_MouseSensor** (source/source/gameengine/GameLogic/SCA_MouseSensor.cpp): `holdTime` ✦2026-10-01

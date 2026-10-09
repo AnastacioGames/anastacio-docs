@@ -7,12 +7,12 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-The current mouse.
+O mouse atual.
 
 :::caution
-Mouse normalization is using the maximum coordinate in width and height, whether `Range.render.getWindowWidth() - 1` or `Range.render.getWindowHeight() - 1`.
+A normalização do mouse usa a coordenada máxima da largura e da altura, ou seja, `Range.render.getWindowWidth() - 1` ou `Range.render.getWindowHeight() - 1`.
 
-A script setting the mouse at center is similar to the following example:
+Um script que põe o mouse no centro fica parecido com este exemplo:
 
 ```python
 
@@ -24,18 +24,18 @@ center_x, center_y = (w // 2) / w, (h // 2) / h
 Range.logic.mouse.position = center_x, center_y
 ```
 
-Note the usage of floor division to round an existing coordinate.
+Repare no uso da divisão inteira para arredondar uma coordenada.
 :::
 
 ### inputs
 
-A dictionary containing the input of each mouse event. (read-only).
+Dicionário com a entrada de cada evento do mouse (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
 ### events
 
-a dictionary containing the status of each mouse event. (read-only).
+Dicionário com o estado de cada evento do mouse (somente leitura).
 
 :::danger[Obsoleto use :data:`inputs`]
 
@@ -45,13 +45,13 @@ a dictionary containing the status of each mouse event. (read-only).
 
 ### activeInputs
 
-A dictionary containing the input of only the active mouse events. (read-only).
+Dicionário com a entrada só dos eventos ativos do mouse (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
 ### active_events
 
-a dictionary containing the status of only the active mouse events. (read-only).
+Dicionário com o estado só dos eventos ativos do mouse (somente leitura).
 
 :::danger[Obsoleto use :data:`activeInputs`]
 
@@ -61,13 +61,13 @@ a dictionary containing the status of only the active mouse events. (read-only).
 
 ### position
 
-The normalized x and y position of the mouse cursor.
+A posição x e y normalizada do cursor do mouse.
 
 **Tipo:** tuple (x, y)
 
 ### visible
 
-The visibility of the mouse cursor.
+A visibilidade do cursor do mouse.
 
 **Tipo:** boolean
 

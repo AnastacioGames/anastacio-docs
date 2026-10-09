@@ -7,23 +7,23 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-State actuator changes the state mask of parent object.
+O atuador State muda a máscara de estado do objeto pai.
 
 ### operation
 
-Type of bit operation to be applied on object state mask.
+Tipo de operação de bits aplicada à máscara de estado do objeto.
 
-You can use one of `these constants`
+Você pode usar uma `destas constantes`
 
 **Tipo:** integer
 
 ### mask
 
-Value that defines the bits that will be modified by the operation.
+Valor que define os bits que serão modificados pela operação.
 
-The bits that are 1 in the mask will be updated in the object state.
+Os bits que valem 1 na máscara são atualizados no estado do objeto.
 
-The bits that are 0 are will be left unmodified expect for the Copy operation which copies the mask to the object state.
+Os bits que valem 0 ficam sem mudança, exceto na operação Copy, que copia a máscara para o estado do objeto.
 
 **Tipo:** integer
 

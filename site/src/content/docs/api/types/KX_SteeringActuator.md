@@ -7,41 +7,41 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Steering Actuator for navigation.
+Atuador Steering para navegação.
 
 ### behavior
 
-The steering behavior to use.
+O comportamento de steering a usar.
 
 **Tipo:** one of `these constants`
 
 ### velocity
 
-Velocity magnitude
+Módulo da velocidade
 
 **Tipo:** float
 
 ### acceleration
 
-Max acceleration
+Aceleração máxima
 
 **Tipo:** float
 
 ### turnspeed
 
-Max turn speed
+Velocidade máxima de giro
 
 **Tipo:** float
 
 ### distance
 
-Relax distance
+Distância de relaxamento
 
 **Tipo:** float
 
 ### target
 
-Target object
+Objeto alvo
 
 **Tipo:** `KX_GameObject`
 
@@ -53,25 +53,25 @@ Navigation mesh
 
 ### selfterminated
 
-Terminate when target is reached
+Termina quando o alvo é alcançado
 
 **Tipo:** boolean
 
 ### enableVisualization
 
-Enable debug visualization
+Liga a visualização de depuração
 
 **Tipo:** boolean
 
 ### pathUpdatePeriod
 
-Path update period
+Período de atualização do caminho
 
 **Tipo:** int
 
 ### path
 
-Path point list.
+Lista de pontos do caminho.
 
 **Tipo:** list of `mathutils.Vector`
 

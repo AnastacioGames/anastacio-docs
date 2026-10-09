@@ -1,0 +1,8 @@
+Um objeto de fonte.
+Mostra uma mensagem sobre a tecla de saída usando um objeto de fonte.
+O texto mostrado por este objeto de fonte.
+A resolução da fonte.
+Resoluções altas podem usar muita memória e travar.
+O tamanho (fator de escala) do objeto de fonte, a partir da origem dele (afeta a resolução do texto).
+Tamanhos grandes podem usar muita memória e travar.
+O tamanho (largura e altura) do texto atual, em unidades do Blender.

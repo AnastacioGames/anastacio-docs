@@ -1,0 +1,288 @@
+===== BL_ArmatureConstraint
+Proxy para uma constraint de armature. Permite mudar a constraint em tempo real. Obtido por `BL_ArmatureObject`.constraints.
+Nem todas as constraints de armature são suportadas na GE.
+Tipo da constraint (somente leitura).
+Use uma `destas constantes`.
+Nome da constraint, montado como <bone_name>:<constraint_name>, na lista constraints.
+Este nome também é a chave de índice em `BL_ArmatureObject`.
+fração do efeito da constraint que é aplicada. Entre 0 e 1.
+Posição do alvo entre a cabeça e a cauda do bone alvo: 0=cabeça, 1=cauda.
+Só é usado se o alvo for um bone (ou seja, se o objeto alvo for uma armature).
+erro linear da constraint em tempo de execução (em unidades do Blender) no frame atual.
+É um valor de tempo de execução, atualizado a cada frame pelo solver de IK. Só existe em constraints IK com o solver iTaSC.
+Erro de rotação da constraint em tempo de execução (em radianos) no frame atual.
+Só é definido se a constraint tiver parte de rotação, por exemplo, uma constraint IK CopyPose+Rotation.
+Objeto alvo principal da constraint. A posição deste objeto na GE é usada como alvo da constraint.
+Objeto alvo secundário da constraint. A posição deste objeto na GE é usada como alvo secundário da constraint.
+Por enquanto isto só é usado como pole target em constraints IK.
+True se a constraint está ativa.
+Uma constraint inativa não atualiza lin_error nem rot_error.
+Peso da constraint IK, entre 0 e 1.
+Só definido para constraints IK.
+Tipo de constraint IK (somente leitura).
+Combinação das flags de opção da constraint IK (somente leitura).
+Distância que a constraint tenta manter do alvo; só usada quando ik_type=CONSTRAINT_IK_DISTANCE.
+Modo adicional da constraint IK. Por enquanto só é usado na constraint Distance:
+===== KX_BlenderMaterial
+Esta é a interface para os materiais na game engine.
+Os materiais definem o estado de render aplicado aos objetos de malha.
+O exemplo abaixo mostra uma configuração simples de shader GLSL que mistura dinamicamente dois canais de textura num material. Todos os materiais do objeto que roda este script devem ter duas texturas usando UV maps separados nos dois primeiros canais de textura.
+O código funciona nos modos de render Multitexture e GLSL.
+pega o primeiro canal de textura do material
+pega o segundo canal de textura do material
+passa outro uniform para o shader
+O shader do material.
+Inteiros usados na mistura de pixels, (src, dst), iguais aos do método setBlending.
+Devolve o shader do material.
+o shader do material
+Devolve o bind code/id/número/nome OpenGL da textura do material.
+Define o número do slot de textura
+o bind code/id/número/nome OpenGL da textura do material
+A transparência alpha do material.
+Quão dura (nítida) é a reflexão especular do material.
+Quantidade de luz emitida.
+Quantidade de luz ambiente no material.
+Transparência alpha das áreas especulares.
+Quão intensa (brilhante) é a reflexão especular do material.
+A quantidade de reflexão difusa do material.
+A cor especular do material.
+A cor difusa do material.
+Lista de todas as texturas do material.
+Define as funções aritméticas de cor dos pixels.
+Define como os fatores de mistura de origem de vermelho, verde, azul e alpha são calculados; um destes... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
+Define como os fatores de mistura de destino de vermelho, verde, azul e alpha são calculados; um destes... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
+===== KX_Mesh
+Um objeto de malha.
+Só dá para mudar as propriedades dos vértices de uma malha, não a topologia dela.
+Para usar malhas bem, é bom saber um pouco de como a game engine lida com elas.
+O jeito certo de percorrer todos os `KX_VertexProxy` de um game object
+Faça algo com o vértice aqui...
+... ex.: pinta o vértice de vermelho.
+Devolve a lista de polígonos desta malha.
+Pega o nome do material indicado.
+o material indicado.
+o nome do material ligado.
+Pega o nome da textura do material indicado.
+o material indicado
+o nome da textura do material ligado.
+Pega o tamanho do array de vértices ligado ao material indicado.
+Há um array de vértices para cada material.
+o número de vértices no array de vértices.
+Pega o vértice indicado da malha.
+o índice no array de vértices.
+um objeto de vértice.
+Pega o polígono indicado da malha.
+número do polígono
+um objeto de polígono.
+Transforma os vértices de uma malha.
+índice do material; -1 transforma todos.
+matriz de transformação.
+Transforma as UVs dos vértices de uma malha.
+índice de UV opcional; -1 para todos, senão 0 ou 1.
+índice de UV opcional de onde copiar; -1 para transformar a UV atual.
+Troca o material do slot `matid` pelo material `material`.
+O índice do material.
+O material substituto.
+Trocar o material de uma malha usada por muitos objetos pode ser lento. Não chame esta função a cada frame
+Devolve uma cópia da malha.
+uma cópia da malha em uso.
+Devolve uma árvore BVH baseada na geometria da malha. Os índices dos elementos da árvore são iguais aos índices dos polígonos.
+A matriz de transformação 4x4 aplicada aos vértices.
+O epsilon de distância da árvore.
+Uma árvore BVH baseada na geometria da malha.
+===== KX_PolyProxy
+Um polígono guarda o índice dos vértices que o formam.
+Nota: os atributos do polígono são somente leitura; para mudar as configurações de um vértice, pegue o vertex proxy.
+O nome do material do polígono; vazio se não houver material.
+O material do polígono.
+O nome da textura do polígono.
+O índice do material do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+índice do primeiro vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+índice do segundo vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+índice do terceiro vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+estado de visibilidade do polígono: 1=visível, 0=invisível.
+estado de colisão do polígono: 1=recebe colisão, 0=sem colisão.
+Devolve a lista de vértices deste polígono.
+Devolve o nome do material do polígono com o prefixo MA
+nome do material
+O material do polígono
+O nome da textura
+Devolve o índice do material bucket do polígono. Este índice e os devolvidos por getVertexIndex() são necessários para pegar o vertex proxy a partir de `MeshProxy`.
+o índice do material na malha
+Devolve o número de vértices do polígono.
+número de vértices.
+Diz se o polígono está visível ou não
+0=invisível, 1=visível
+Diz se o polígono recebe colisão ou não
+0=sem colisão, 1=recebe colisão
+Devolve o índice, na malha, de um vértice do polígono. Este índice e o devolvido por getMaterialIndex() são necessários para pegar o vertex proxy a partir de `MeshProxy`.
+índice do vértice no polígono: 0->2
+inteiro
+índice do vértice na malha
+Devolve um mesh proxy
+mesh proxy
+===== KX_PythonJoystick
+Uma interface Python para um joystick.
+O nome dado ao joystick pelo sistema operacional (somente leitura)
+Uma lista dos valores dos botões ativos (somente leitura)
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
+Cada um dá o valor de um eixo entre -1.0 e 1.0, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
+esquerda:[-1.0, 0.0, ...]
+direita:[1.0, 0.0, ...]
+baixo:[0.0, 1.0, ...]
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
+As direções do hat são estas...
+0:Nenhuma
+2:Direita
+4:Baixo
+8:Esquerda
+3:Cima - Direita
+6:Baixo - Direita
+12:Baixo - Esquerda
+9:Cima - Esquerda
+O número de eixos do joystick neste índice (somente leitura).
+O número de botões do joystick neste índice (somente leitura).
+O número de hats do joystick neste índice (somente leitura).
+Começa a vibração.
+=
+Para a vibração.
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
+Força do motor de alta frequência do joystick (em geral fica à direita).
+Duração da vibração em milissegundos.
+Verifica o status da vibração do joystick
+Verifica se o joystick suporta vibração
+===== KX_VehicleWrapper
+=
+TODO - descrição
+Adiciona uma roda ao veículo
+O objeto a usar como roda.
+A posição onde prender a roda, relativa ao centro do objeto chassi.
+O vetor de direção apontando para baixo, até onde o veículo deve colidir com o chão.
+O eixo em torno do qual a roda gira, relativo ao chassi.
+O comprimento da suspensão quando nenhuma força está sendo aplicada.
+O raio da roda (metade do diâmetro).
+True se a roda deve virar com o volante; em geral usado nas rodas da frente.
+Aplica uma força de freio à roda indicada
+a força de freio
+índice da roda em que a força deve ser aplicada
+Aplica uma força de motor à roda indicada
+a força do motor
+Pega o ID da constraint
+o id da constraint
+Devolve o tipo da constraint.
+tipo da constraint
+Devolve o número de rodas.
+o número de rodas deste veículo
+Devolve a orientação da roda como quaternion.
+o índice da roda
+TODO Descrição
+Devolve a posição da roda indicada
+vetor de posição
+Devolve a rotação da roda indicada
+a rotação da roda
+Define a influência de rolagem da roda indicada. Quanto maior a influência, mais o veículo tende a capotar nas curvas.
+a influência de rolagem da roda
+Define o esterço da roda indicada
+o esterço da roda
+Define a compressão da roda indicada
+a compressão da roda
+Define o amortecimento da roda indicada
+o amortecimento da roda
+Define a rigidez da roda indicada
+a rigidez da roda
+Define o atrito do pneu da roda indicada
+o atrito do pneu
+Define a máscara do ray cast.
+===== KX_WorldInfo
+Um objeto de mundo.
+Deixa a cor da névoa vermelha.
+Tipo de atenuação quadrática usada para esmaecer a névoa.
+Tipo de atenuação linear usada para esmaecer a névoa.
+Tipo de atenuação quadrática inversa usada para esmaecer a névoa.
+Devolve o estado da névoa.
+O ponto de início da névoa.
+A distância, a partir do ponto de início, para a névoa chegar a 100%.
+A intensidade da névoa.
+O tipo de névoa: deve ser KX_MIST_QUADRATIC, KX_MIST_LINEAR ou KX_MIST_INV_QUADRATIC
+A cor da névoa. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0]. A névoa e a cor de fundo devem ter sempre a mesma cor.
+A cor do horizonte. Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0]. A névoa e a cor do horizonte devem ter sempre a mesma cor.
+A cor do zênite. Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0].
+A cor da luz ambiente. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0].
+Quantidade de correção de cor exponencial da luz.
+O intervalo de cor que será mapeado para 0 - 1.
+A energia da luz de ambiente.
+Devolve True se Environment Lighting estiver ligado; senão, False
+White: devolve 0 SkyColor: devolve 1 SkyTexture: devolve 2
+Muda uma configuração de clima do World em tempo de execução (o prefixo "weather." é opcional). Booleanos: `rain`, `ripples`, `splash`, `puddles`, `puddle_ssr`, `ripple_puddle_only`, `splash_puddle_only` (os dois também ligam `puddles`), `aura`, `lightning`, `lightning_side`, `clouds`, `lens_flare`, `mist`. Floats: `rain_intensity`, `rain_density`, `rain_speed`, `rain_wind`, `rain_darken`, `rain_streak_width`, `ripple_intensity`, `ripple_normal`, `ripple_size`, `ripple_rate`, `splash_normal`, `splash_min_up`, `splash_size`, `splash_rate`, `splash_intensity`, `splash_distance`, `puddle_amount`, `puddle_size`, `puddle_darkness`, `puddle_reflection`, `puddle_distance`, `puddle_min_up`, `aura_size`, `aura_rate`, `aura_intensity`, `aura_distance`, `lightning_rate`, `lightning_intensity`, `lightning_distance`, `lightning_width`, `cloud_coverage`, `cloud_scale`, `cloud_speed`, `flare_scale`, `flare_intensity`, `mist_*`.
+nome da configuração
+novo valor
+nome de configuração desconhecido
+Dispara um raio agora (World > Rain precisa estar ligado; os raios automáticos podem ficar desligados).
+mostra o raio; False dá só um clarão distante atrás das nuvens
+valor atual de uma configuração de clima do World (bool ou float)
+===== SCA_JoystickSensor
+Este sensor detecta eventos do joystick do jogador.
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
+Cada um dá o valor de um eixo entre -32767 e 32767, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
+esquerda:[-32767, 0, ...]
+direita:[32767, 0, ...]
+baixo:[0, 32767, ...]
+como `axisValues`, mas devolve um único valor de eixo, definido pelo sensor (somente leitura).
+Use só em sensores do tipo "Single Axis"; senão, levanta um erro.
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
+As direções do hat são estas...
+0:Nenhuma
+2:Direita
+4:Baixo
+8:Esquerda
+3:Cima - Direita
+6:Baixo - Direita
+12:Baixo - Esquerda
+9:Cima - Esquerda
+Como `hatValues`, mas devolve uma única direção de hat, definida pelo sensor (somente leitura).
+O número de eixos do joystick neste índice (somente leitura).
+O número de botões do joystick neste índice (somente leitura).
+O número de hats do joystick neste índice (somente leitura).
+True se há um joystick conectado neste índice (somente leitura).
+O índice do joystick a usar (de 0 a 7). O primeiro joystick é sempre 0.
+Limite do eixo. Movimentos do eixo abaixo deste limite não disparam evento. Use valores entre 0 e 32767; valores menores são mais sensíveis.
+O índice do botão a que o sensor reage (primeiro botão = 0). Com a opção "All Events" ligada, esta opção não tem efeito.
+O eixo a que este sensor reage, como uma lista de dois valores [axisIndex, axisDirection]
+axisIndex: o índice do eixo usado para detectar movimento, 1=controle de direção principal, 2=controle de direção secundário.
+axisDirection: 0=direita, 1=cima, 2=esquerda, 3=baixo.
+O hat a que o sensor reage, como uma lista de dois valores: [hatIndex, hatDirection]
+hatIndex: o índice do hat usado para detectar movimento, 1=hat principal, 2=hat secundário (4 no máximo).
+hatDirection: 1-12.
+Uma lista com os índices dos botões apertados agora.
+o índice do botão, 0=primeiro botão
+Se o botão indicado está apertado agora.
+===== SCA_RandomActuator
+Atuador Random
+Semente do gerador de números aleatórios.
+Sementes iguais produzem séries iguais. Se a semente for 0, o gerador produz o mesmo valor em toda chamada.
+o primeiro parâmetro da distribuição ativa.
+Veja a documentação dos tipos de gerador para o significado deste valor.
+o segundo parâmetro da distribuição ativa.
+Tipo de distribuição (somente leitura). Pode ser uma `destas constantes`
+o nome da propriedade que recebe o valor aleatório.
+Se os tipos do gerador e da propriedade não combinarem, a atribuição é ignorada.
+Faz este gerador produzir um valor booleano constante.
+O valor a devolver.
+Faz este gerador produzir uma distribuição booleana uniforme.
+O gerador gera True ou False com 50% de chance.
+Faz este gerador produzir uma distribuição de Bernoulli.
+Define a proporção de valores False a produzir. * 0.0: sempre gera True * 1.0: sempre gera False
+Faz este gerador produzir sempre o valor dado.
+o valor que este gerador produz.
+Faz este gerador produzir um valor aleatório entre os limites inferior e superior dados (inclusive).
+Gera um número com distribuição de Poisson.
+Faz uma série de testes de Bernoulli com o parâmetro value. Devolve o número de tentativas até ter sucesso.
+Sempre gera o valor dado.
+Gera um float aleatório entre lower_bound e upper_bound com distribuição uniforme.
+Gera um float aleatório da distribuição normal dada.
+O valor médio dos números gerados
+O desvio padrão dos números gerados.
+Gera números com distribuição exponencial negativa.
+O "tempo" de meia-vida é definido por half_life.

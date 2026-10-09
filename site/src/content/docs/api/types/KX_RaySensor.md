@@ -7,71 +7,71 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-A ray sensor detects the first object in a given direction.
+Um sensor Ray detecta o primeiro objeto numa direção.
 
 ### propName
 
-The property the ray is looking for.
+A propriedade que o raio procura.
 
 **Tipo:** string
 
 ### range
 
-The distance of the ray.
+A distância do raio.
 
 **Tipo:** float
 
 ### useMaterial
 
-Whether or not to look for a material (false = property).
+Se procura um material ou não (false = propriedade).
 
 **Tipo:** boolean
 
 ### useXRay
 
-Whether or not to use XRay.
+Se usa XRay ou não.
 
 **Tipo:** boolean
 
 ### mask
 
-The collision mask (16 layers mapped to a 16-bit integer) combined with each object's collision group, to hit only a subset of the objects in the scene. Only those objects for which `collisionGroup & mask` is true can be hit.
+A máscara de colisão (16 layers mapeadas num inteiro de 16 bits) combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só os objetos em que `collisionGroup & mask` é verdadeiro podem ser atingidos.
 
 **Tipo:** bitfield
 
 ### hitObject
 
-The game object that was hit by the ray. (read-only).
+O game object atingido pelo raio (somente leitura).
 
 **Tipo:** `KX_GameObject`
 
 ### hitPosition
 
-The position (in worldcoordinates) where the object was hit by the ray. (read-only).
+A posição (em coordenadas do mundo) em que o objeto foi atingido pelo raio (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### hitNormal
 
-The normal (in worldcoordinates) of the object at the location where the object was hit by the ray. (read-only).
+A normal (em coordenadas do mundo) do objeto no ponto em que foi atingido pelo raio (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### hitMaterial
 
-The material of the object in the face hit by the ray. (read-only).
+O material do objeto na face atingida pelo raio (somente leitura).
 
 **Tipo:** string
 
 ### rayDirection
 
-The direction from the ray (in worldcoordinates). (read-only).
+A direção do raio (em coordenadas do mundo) (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### axis
 
-The axis the ray is pointing on.
+O eixo para onde o raio aponta.
 
 **Tipo:** integer from 0 to 5
 

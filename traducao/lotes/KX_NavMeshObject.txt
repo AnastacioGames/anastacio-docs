@@ -1,0 +1,21 @@
+Interface Python para usar e controlar navigation meshes.
+Uma navigation mesh com a propriedade de jogo Boolean `dynamic_navmesh` igual a True é construída em tiles quando o jogo começa, para que obstáculos possam recortá-la em tempo de execução. Objetos com "Create Obstacle" recortam automaticamente; `addObstacle` adiciona qualquer outro objeto. Os caminhos podem ser um pouco diferentes dos da navigation mesh estática.
+True quando a navigation mesh foi construída em tiles e obstáculos podem recortá-la (somente leitura).
+Aumenta quando a navigation mesh é reconstruída ou termina de mudar por causa de obstáculos (somente leitura). Caminhos achados com uma versão mais antiga podem atravessar obstáculos novos.
+Acha o caminho do ponto de início até o ponto de destino.
+o ponto de início
+Vetor 3D
+o ponto de destino
+um caminho como lista de pontos
+Lança um raio do ponto de início até o ponto de destino.
+o fator de acerto
+Desenha uma malha de depuração da navigation mesh. Numa navigation mesh dinâmica, os cilindros de obstáculo são desenhados em amarelo.
+o modo de desenho (uma `destas constantes`)
+inteiro
+None
+Reconstrói a navigation mesh.
+Faz o objeto recortar todas as navigation meshes dinâmicas da cena, acompanhando-o quando ele se move. Chamar de novo muda o raio. Não tem efeito em navigation meshes estáticas.
+o obstáculo, na mesma cena da navigation mesh
+o raio, no mundo, do cilindro do obstáculo; 0.0 usa o raio do "Create Obstacle" do objeto ou metade do tamanho da bounding box
+Faz o objeto parar de recortar as navigation meshes dinâmicas, inclusive objetos com "Create Obstacle".
+o obstáculo

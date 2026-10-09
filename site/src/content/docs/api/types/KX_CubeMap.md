@@ -7,33 +7,33 @@ Classe base: [`KX_TextureRenderer`](../kx_texturerenderer/)
 
 
 
-Python API for realtime cube map textures.
+API Python para texturas de cube map em tempo real.
 
 ```python
 
 import Range
 
 scene = Range.logic.getCurrentScene()
-# The object using a realtime cube map in its material.
+# O objeto que usa um cube map em tempo real no material.
 obj = scene.objects["Suzanne"]
 
 mat = obj.meshes[0].materials[0]
-# Obtain the realtime cube map from the material texture.
+# Pega o cube map em tempo real a partir da textura do material.
 cubemap = mat.textures[0].renderer
 
-# Set the render position to the "Cube" object position.
+# Põe a posição de render na posição do objeto "Cube".
 cubemap.viewpointObject = scene.objects["Cube"]
 
-# Change the culling clip start and clip end.
+# Muda o clip start e o clip end do culling.
 cubemap.clipStart = 5.0
 cubemap.clipEnd = 20.0
 
-# Disable render on third layer.
+# Desliga o render na terceira layer.
 cubemap.ignoreLayers = (1 << 2)
 
-# Disable per frame update.
+# Desliga a atualização por frame.
 cubemap.autoUpdate = False
-# Ask to update for this frame only.
+# Pede atualização só neste frame.
 cubemap.update()
 ```
 

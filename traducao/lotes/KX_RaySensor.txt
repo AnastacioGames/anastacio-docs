@@ -1,0 +1,18 @@
+Um sensor Ray detecta o primeiro objeto numa direção.
+A propriedade que o raio procura.
+A distância do raio.
+Se procura um material ou não (false = propriedade).
+Se usa XRay ou não.
+A máscara de colisão (16 layers mapeadas num inteiro de 16 bits) combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só os objetos em que `collisionGroup & mask` é verdadeiro podem ser atingidos.
+O game object atingido pelo raio (somente leitura).
+A posição (em coordenadas do mundo) em que o objeto foi atingido pelo raio (somente leitura).
+A normal (em coordenadas do mundo) do objeto no ponto em que foi atingido pelo raio (somente leitura).
+O material do objeto na face atingida pelo raio (somente leitura).
+A direção do raio (em coordenadas do mundo) (somente leitura).
+O eixo para onde o raio aponta.
+KX_RAY_AXIS_POS_X
+KX_RAY_AXIS_POS_Y
+KX_RAY_AXIS_POS_Z
+KX_RAY_AXIS_NEG_X
+KX_RAY_AXIS_NEG_Y
+KX_RAY_AXIS_NEG_Z

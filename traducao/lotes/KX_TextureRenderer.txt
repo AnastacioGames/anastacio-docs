@@ -1,0 +1,8 @@
+API Python para objetos que fazem um render guardado numa textura.
+Define se o texture renderer é atualizado automaticamente a cada frame.
+O objeto de onde o texture renderer vai renderizar a cena.
+Liga o render da cena pelo texture renderer.
+As layers a ignorar no render.
+O plano near da matriz de projeção, usado no culling.
+O plano far da matriz de projeção, usado no culling.
+Pede para atualizar este texture renderer na etapa de render. Só tem efeito quando `autoUpdate` está desligado.

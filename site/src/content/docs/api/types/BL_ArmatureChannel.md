@@ -7,268 +7,268 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-Proxy to armature pose channel. Allows to read and set armature pose. The attributes are identical to RNA attributes, but mostly in read-only mode.
+Proxy para um canal de pose da armature. Permite ler e definir a pose da armature. Os atributos são iguais aos do RNA, mas a maioria é somente leitura.
 
 ### name
 
-channel name (=bone name), read-only.
+nome do canal (= nome do bone), somente leitura.
 
 **Tipo:** string
 
 ### bone
 
-return the bone object corresponding to this pose channel, read-only.
+devolve o objeto bone correspondente a este canal de pose, somente leitura.
 
 **Tipo:** `BL_ArmatureBone`
 
 ### parent
 
-return the parent channel object, None if root channel, read-only.
+devolve o canal pai, None se for o canal raiz, somente leitura.
 
 **Tipo:** `BL_ArmatureChannel`
 
 ### has_ik
 
-true if the bone is part of an active IK chain, read-only. This flag is not set when an IK constraint is defined but not enabled (miss target information for example).
+true se o bone faz parte de uma cadeia IK ativa, somente leitura. Esta flag não é ligada quando uma constraint IK existe mas não está ativa (por exemplo, sem informação de alvo).
 
 **Tipo:** boolean
 
 ### ik_dof_x
 
-true if the bone is free to rotation in the X axis, read-only.
+true se o bone gira livre no eixo X, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_dof_y
 
-true if the bone is free to rotation in the Y axis, read-only.
+true se o bone gira livre no eixo Y, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_dof_z
 
-true if the bone is free to rotation in the Z axis, read-only.
+true se o bone gira livre no eixo Z, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_limit_x
 
-true if a limit is imposed on X rotation, read-only.
+true se há limite na rotação X, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_limit_y
 
-true if a limit is imposed on Y rotation, read-only.
+true se há limite na rotação Y, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_limit_z
 
-true if a limit is imposed on Z rotation, read-only.
+true se há limite na rotação Z, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_rot_control
 
-true if channel rotation should applied as IK constraint, read-only.
+true se a rotação do canal deve ser aplicada como constraint IK, somente leitura.
 
 **Tipo:** boolean
 
 ### ik_lin_control
 
-true if channel size should applied as IK constraint, read-only.
+true se o tamanho do canal deve ser aplicado como constraint IK, somente leitura.
 
 **Tipo:** boolean
 
 ### location
 
-displacement of the bone head in armature local space, read-write.
+deslocamento da cabeça do bone no espaço local da armature, leitura e escrita.
 
 **Tipo:** vector [X, Y, Z].
 
 :::note
-You can only move a bone if it is unconnected to its parent. An action playing on the armature may change the value. An IK chain does not update this value, see joint_rotation.
+Só dá para mover um bone se ele não estiver conectado ao pai. Uma action tocando na armature pode mudar o valor. Uma cadeia IK não atualiza este valor; veja joint_rotation.
 :::
 
 :::note
-Changing this field has no immediate effect, the pose is updated when the armature is updated during the graphic render (see `BL_ArmatureObject.update`).
+Mudar este campo não tem efeito imediato; a pose é atualizada quando a armature é atualizada durante o render (veja `BL_ArmatureObject.update`).
 :::
 
 ### scale
 
-scale of the bone relative to its parent, read-write.
+escala do bone relativa ao pai, leitura e escrita.
 
 **Tipo:** vector [sizeX, sizeY, sizeZ].
 
 :::note
-An action playing on the armature may change the value.  An IK chain does not update this value, see joint_rotation.
+Uma action tocando na armature pode mudar o valor. Uma cadeia IK não atualiza este valor; veja joint_rotation.
 :::
 
 :::note
-Changing this field has no immediate effect, the pose is updated when the armature is updated during the graphic render (see `BL_ArmatureObject.update`)
+Mudar este campo não tem efeito imediato; a pose é atualizada quando a armature é atualizada durante o render (veja `BL_ArmatureObject.update`)
 :::
 
 ### rotation_quaternion
 
-rotation of the bone relative to its parent expressed as a quaternion, read-write.
+rotação do bone relativa ao pai, como quaternion, leitura e escrita.
 
 **Tipo:** vector [qr, qi, qj, qk].
 
 :::note
-This field is only used if rotation_mode is 0. An action playing on the armature may change the value.  An IK chain does not update this value, see joint_rotation.
+Este campo só é usado se rotation_mode for 0. Uma action tocando na armature pode mudar o valor. Uma cadeia IK não atualiza este valor; veja joint_rotation.
 :::
 
 :::note
-Changing this field has no immediate effect, the pose is updated when the armature is updated during the graphic render (see `BL_ArmatureObject.update`)
+Mudar este campo não tem efeito imediato; a pose é atualizada quando a armature é atualizada durante o render (veja `BL_ArmatureObject.update`)
 :::
 
 ### rotation_euler
 
-rotation of the bone relative to its parent expressed as a set of euler angles, read-write.
+rotação do bone relativa ao pai, como ângulos de Euler, leitura e escrita.
 
 **Tipo:** vector [X, Y, Z].
 
 :::note
-This field is only used if rotation_mode is > 0. You must always pass the angles in [X, Y, Z] order; the order of applying the angles to the bone depends on rotation_mode. An action playing on the armature may change this field.  An IK chain does not update this value, see joint_rotation.
+Este campo só é usado se rotation_mode for > 0. Passe os ângulos sempre na ordem [X, Y, Z]; a ordem em que são aplicados ao bone depende de rotation_mode. Uma action tocando na armature pode mudar este campo. Uma cadeia IK não atualiza este valor; veja joint_rotation.
 :::
 
 :::note
-Changing this field has no immediate effect, the pose is updated when the armature is updated during the graphic render (see `BL_ArmatureObject.update`)
+Mudar este campo não tem efeito imediato; a pose é atualizada quando a armature é atualizada durante o render (veja `BL_ArmatureObject.update`)
 :::
 
 ### rotation_mode
 
-Method of updating the bone rotation, read-write.
+Método de atualização da rotação do bone, leitura e escrita.
 
 **Tipo:** integer (one of `these constants`)
 
 ### channel_matrix
 
-pose matrix in bone space (deformation of the bone due to action, constraint, etc), Read-only. This field is updated after the graphic render, it represents the current pose.
+matriz da pose no espaço do bone (deformação do bone por action, constraint etc.), somente leitura. Este campo é atualizado depois do render e representa a pose atual.
 
 **Tipo:** matrix [4][4]
 
 ### pose_matrix
 
-pose matrix in armature space, read-only, This field is updated after the graphic render, it represents the current pose.
+matriz da pose no espaço da armature, somente leitura. Este campo é atualizado depois do render e representa a pose atual.
 
 **Tipo:** matrix [4][4]
 
 ### pose_head
 
-position of bone head in armature space, read-only.
+posição da cabeça do bone no espaço da armature, somente leitura.
 
 **Tipo:** vector [x, y, z]
 
 ### pose_tail
 
-position of bone tail in armature space, read-only.
+posição da cauda do bone no espaço da armature, somente leitura.
 
 **Tipo:** vector [x, y, z]
 
 ### ik_min_x
 
-minimum value of X rotation in degree (<= 0) when X rotation is limited (see ik_limit_x), read-only.
+valor mínimo da rotação X em graus (<= 0) quando a rotação X é limitada (veja ik_limit_x), somente leitura.
 
 **Tipo:** float
 
 ### ik_max_x
 
-maximum value of X rotation in degree (>= 0) when X rotation is limited (see ik_limit_x), read-only.
+valor máximo da rotação X em graus (>= 0) quando a rotação X é limitada (veja ik_limit_x), somente leitura.
 
 **Tipo:** float
 
 ### ik_min_y
 
-minimum value of Y rotation in degree (<= 0) when Y rotation is limited (see ik_limit_y), read-only.
+valor mínimo da rotação Y em graus (<= 0) quando a rotação Y é limitada (veja ik_limit_y), somente leitura.
 
 **Tipo:** float
 
 ### ik_max_y
 
-maximum value of Y rotation in degree (>= 0) when Y rotation is limited (see ik_limit_y), read-only.
+valor máximo da rotação Y em graus (>= 0) quando a rotação Y é limitada (veja ik_limit_y), somente leitura.
 
 **Tipo:** float
 
 ### ik_min_z
 
-minimum value of Z rotation in degree (<= 0) when Z rotation is limited (see ik_limit_z), read-only.
+valor mínimo da rotação Z em graus (<= 0) quando a rotação Z é limitada (veja ik_limit_z), somente leitura.
 
 **Tipo:** float
 
 ### ik_max_z
 
-maximum value of Z rotation in degree (>= 0) when Z rotation is limited (see ik_limit_z), read-only.
+valor máximo da rotação Z em graus (>= 0) quando a rotação Z é limitada (veja ik_limit_z), somente leitura.
 
 **Tipo:** float
 
 ### ik_stiffness_x
 
-bone rotation stiffness in X axis, read-only.
+rigidez de rotação do bone no eixo X, somente leitura.
 
 **Tipo:** float between 0 and 1
 
 ### ik_stiffness_y
 
-bone rotation stiffness in Y axis, read-only.
+rigidez de rotação do bone no eixo Y, somente leitura.
 
 **Tipo:** float between 0 and 1
 
 ### ik_stiffness_z
 
-bone rotation stiffness in Z axis, read-only.
+rigidez de rotação do bone no eixo Z, somente leitura.
 
 **Tipo:** float between 0 and 1
 
 ### ik_stretch
 
-ratio of scale change that is allowed, 0=bone can't change size, read-only.
+proporção de mudança de escala permitida; 0 = o bone não muda de tamanho, somente leitura.
 
 **Tipo:** float
 
 ### ik_rot_weight
 
-weight of rotation constraint when ik_rot_control is set, read-write.
+peso da constraint de rotação quando ik_rot_control está ligado, leitura e escrita.
 
 **Tipo:** float between 0 and 1
 
 ### ik_lin_weight
 
-weight of size constraint when ik_lin_control is set, read-write.
+peso da constraint de tamanho quando ik_lin_control está ligado, leitura e escrita.
 
 **Tipo:** float between 0 and 1
 
 ### joint_rotation
 
-Control bone rotation in term of joint angle (for robotic applications), read-write.
+Controla a rotação do bone em termos de ângulo de junta (para aplicações de robótica), leitura e escrita.
 
-When writing to this attribute, you pass a [x, y, z] vector and an appropriate set of euler angles or quaternion is calculated according to the rotation_mode.
+Ao escrever neste atributo, você passa um vetor [x, y, z] e um conjunto adequado de ângulos de Euler ou quaternion é calculado conforme rotation_mode.
 
-When you read this attribute, the current pose matrix is converted into a [x, y, z] vector representing the joint angles.
+Ao ler este atributo, a matriz da pose atual é convertida num vetor [x, y, z] que representa os ângulos da junta.
 
-The value and the meaning of the x, y, z depends on the ik_dof_x/ik_dof_y/ik_dof_z attributes:
+O valor e o significado de x, y e z dependem dos atributos ik_dof_x/ik_dof_y/ik_dof_z:
 
-* 1DoF joint X, Y or Z: the corresponding x, y, or z value is used an a joint angle in radiant
-* 2DoF joint X+Y or Z+Y: treated as 2 successive 1DoF joints: first X or Z, then Y. The x or z value is used as a joint angle in radiant along the X or Z axis, followed by a rotation along the new Y axis of y radiants.
-* 2DoF joint X+Z: treated as a 2DoF joint with rotation axis on the X/Z plane. The x and z values are used as the coordinates of the rotation vector in the X/Z plane.
-* 3DoF joint X+Y+Z: treated as a revolute joint. The [x, y, z] vector represents the equivalent rotation vector to bring the joint from the rest pose to the new pose.
+* Junta de 1 grau de liberdade X, Y ou Z: o valor x, y ou z correspondente é usado como ângulo da junta em radianos
+* Junta de 2 graus de liberdade X+Y ou Z+Y: tratada como 2 juntas de 1 grau seguidas, primeiro X ou Z, depois Y. O valor x ou z é usado como ângulo da junta em radianos no eixo X ou Z, seguido de uma rotação de y radianos no novo eixo Y.
+* Junta de 2 graus de liberdade X+Z: tratada como uma junta de 2 graus com eixo de rotação no plano X/Z. Os valores x e z são usados como coordenadas do vetor de rotação no plano X/Z.
+* Junta de 3 graus de liberdade X+Y+Z: tratada como uma junta de revolução. O vetor [x, y, z] representa o vetor de rotação equivalente que leva a junta da rest pose à nova pose.
 
 **Tipo:** vector [x, y, z]
 
 :::note
-The bone must be part of an IK chain if you want to set the ik_dof_x/ik_dof_y/ik_dof_z attributes via the UI, but this will interfere with this attribute since the IK solver will overwrite the pose. You can stay in control of the armature if you create an IK constraint but do not finalize it (e.g. don't set a target) the IK solver will not run but the IK panel will show up on the UI for each bone in the chain.
+O bone precisa fazer parte de uma cadeia IK para você definir os atributos ik_dof_x/ik_dof_y/ik_dof_z pela UI, mas isso atrapalha este atributo, porque o solver de IK sobrescreve a pose. Dá para manter o controle da armature criando uma constraint IK sem terminá-la (por exemplo, sem definir alvo): o solver de IK não roda, mas o painel IK aparece na UI para cada bone da cadeia.
 :::
 
 :::note
-[0, 0, 0] always corresponds to the rest pose.
+[0, 0, 0] sempre corresponde à rest pose.
 :::
 
 :::note
-You must request the armature pose to update and wait for the next graphic frame to see the effect of setting this attribute (see `BL_ArmatureObject.update`).
+É preciso pedir a atualização da pose da armature e esperar o próximo frame gráfico para ver o efeito deste atributo (veja `BL_ArmatureObject.update`).
 :::
 
 :::note
-You can read the result of the calculation in rotation or euler_rotation attributes after setting this attribute.
+Depois de definir este atributo, dá para ler o resultado do cálculo nos atributos rotation ou euler_rotation.
 :::
 

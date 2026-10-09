@@ -7,5 +7,5 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-This class has no python functions
+Esta classe não tem funções Python
 

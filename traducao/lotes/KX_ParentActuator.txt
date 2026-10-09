@@ -1,0 +1,6 @@
+O atuador parent define ou remove o objeto pai de um objeto.
+o objeto que este atuador define como pai.
+O modo deste atuador.
+Se a forma do objeto deve ser adicionada à forma composta do pai ao fazer o parent.
+Só tem efeito se o pai já for uma forma composta.
+Se o objeto deve virar ghost ao fazer o parent. Só tem efeito se a forma não for adicionada à forma composta do pai.

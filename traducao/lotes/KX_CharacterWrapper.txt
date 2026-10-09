@@ -1,0 +1,18 @@
+Um wrapper que expõe as opções de física de personagem.
+Se o personagem está no chão ou não (somente leitura).
+O valor de gravidade usado para o personagem.
+A velocidade de queda do personagem.
+O número máximo de pulos que o personagem pode dar antes de tocar o chão. O padrão é 1. 2 permite pulo duplo, e assim por diante.
+A contagem de pulos atual. Serve para ter lógicas diferentes para pulo simples e pulo duplo, por exemplo, uma animação diferente no segundo pulo.
+A velocidade de pulo do personagem.
+A inclinação máxima que o personagem consegue subir.
+A velocidade e a direção em que o personagem anda, em coordenadas do mundo. Use isto em vez de applyMovement() para mover o personagem do jeito certo.
+O personagem pula com base na sua velocidade de pulo.
+A direção em que o personagem pula.
+Define a velocidade linear do personagem por um período.
+Este método define a velocidade do personagem pelo centro de massa durante um período.
+Vetor de velocidade linear.
+Período em que a velocidade linear é aplicada.
+* False: velocidade "global", ou seja, relativa à orientação do mundo. * True: velocidade "local", ou seja, relativa à orientação do objeto.
+Suaviza o movimento causado pela direção de caminhada.
+Zera a velocidade e a direção de caminhada do personagem.

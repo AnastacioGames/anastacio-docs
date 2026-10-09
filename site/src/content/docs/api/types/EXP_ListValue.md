@@ -7,39 +7,39 @@ Classe base: [`EXP_PropValue`](../exp_propvalue/)
 
 
 
-This is a list like object used in the game engine internally that behaves similar to a python list in most ways.
+Este é um objeto parecido com lista, usado internamente pela game engine, que na maioria dos casos se comporta como uma lista Python.
 
-As well as the normal index lookup (`val= clist[i]`), EXP_ListValue supports string lookups (`val= scene.objects["Cube"]`)
+Além da busca normal por índice (`val= clist[i]`), EXP_ListValue aceita busca por string (`val= scene.objects["Cube"]`)
 
-Other operations such as `len(clist)`, `list(clist)`, `clist[0:10]` are also supported.
+Outras operações, como `len(clist)`, `list(clist)` e `clist[0:10]`, também são suportadas.
 
 ### append(val)
 
-Add an item to the list (like pythons append)
+Adiciona um item à lista (como o append do Python)
 
 :::caution
-Appending values to the list can cause crashes when the list is used internally by the game engine.
+Adicionar valores à lista pode travar o jogo quando a lista é usada internamente pela game engine.
 :::
 
 ### count(val)
 
-Count the number of instances of a value in the list.
+Conta quantas vezes um valor aparece na lista.
 
-**Retorna:** number of instances
+**Retorna:** número de ocorrências
 
 **Tipo do retorno:** integer
 
 ### index(val)
 
-Return the index of a value in the list.
+Devolve o índice de um valor na lista.
 
-**Retorna:** The index of the value in the list.
+**Retorna:** O índice do valor na lista.
 
 **Tipo do retorno:** integer
 
 ### reverse()
 
-Reverse the order of the list.
+Inverte a ordem da lista.
 
 ### get(key, default=None)
 
@@ -49,17 +49,17 @@ Devolve o valor da chave, ou o valor padrão se a chave não existir.
 
 ### filter(name, prop)
 
-Return a list of items with name matching `name` regex and with a property matching `prop` regex. If `name` is empty every items are checked, if `prop` is empty no property check is proceeded.
+Devolve uma lista dos itens cujo nome casa com a regex `name` e que têm uma propriedade que casa com a regex `prop`. Se `name` estiver vazio, todos os itens são verificados; se `prop` estiver vazio, as propriedades não são verificadas.
 
-**Retorna:** The list of matching items.
+**Retorna:** A lista dos itens que casam.
 
 ### from_id(id)
 
-This is a funtion especially for the game engine to return a value with a spesific id.
+Esta é uma função feita para a game engine devolver um valor com um id específico.
 
-Since object names are not always unique, the id of an object can be used to get an object from the EXP_ValueList.
+Como os nomes de objeto nem sempre são únicos, o id de um objeto pode ser usado para pegá-lo no EXP_ValueList.
 
-Example:
+Exemplo:
 
 ```python
 
@@ -67,15 +67,15 @@ myObID=id(gameObject)
 ob= scene.objects.from_id(myObID)
 ```
 
-Where `myObID` is an int or long from the id function.
+Em que `myObID` é um int ou long vindo da função id.
 
-This has the advantage that you can store the id in places you could not store a gameObject.
+A vantagem é que dá para guardar o id em lugares onde não dá para guardar um gameObject.
 
 :::caution
-The id is derived from a memory location and will be different each time the game engine starts.
+O id vem de um endereço de memória e muda a cada vez que a game engine inicia.
 :::
 
 :::caution
-The id can't be stored as an integer in game object properties, as those only have a limited range that the id may not be contained in. Instead an id can be stored as a string game property and converted back to an integer for use in from_id lookups.
+O id não pode ser guardado como inteiro em propriedades de game object, porque elas têm um intervalo limitado em que o id pode não caber. Em vez disso, guarde o id como propriedade de jogo string e converta de volta para inteiro para usar no from_id.
 :::
 

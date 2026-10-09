@@ -7,17 +7,17 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-The game actuator loads a new .blend file, restarts the current .blend file or quits the game.
+O atuador de jogo carrega um novo arquivo .blend, reinicia o .blend atual ou fecha o jogo.
 
 ### fileName
 
-the new .blend file to load.
+o novo arquivo .blend a carregar.
 
 **Tipo:** string
 
 ### mode
 
-The mode of this actuator. Can be on of `these constants`
+O modo deste atuador. Pode ser uma `destas constantes`
 
 **Tipo:** Int
 

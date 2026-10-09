@@ -7,7 +7,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-A bounding volume box of a game object. Used to get and alterate the volume box or AABB.
+Uma caixa de volume de um game object. Usada para ler e alterar a caixa de volume ou AABB.
 
 ```python
 
@@ -17,11 +17,11 @@ from mathutils import Vector
 owner = logic.getCurrentController().owner
 box = owner.cullingBox
 
-# Disable auto update to allow modify the box.
+# Desliga a atualização automática para permitir modificar a caixa.
 box.autoUpdate = False
 
 print(box)
-# Increase the height of the box of 1.
+# Aumenta a altura da caixa em 1.
 box.max = box.max + Vector((0, 0, 1))
 
 print(box)
@@ -29,31 +29,31 @@ print(box)
 
 ### min
 
-The minimal point in x, y and z axis of the bounding box.
+O ponto mínimo da bounding box nos eixos x, y e z.
 
 **Tipo:** `mathutils.Vector`
 
 ### max
 
-The maximal point in x, y and z axis of the bounding box.
+O ponto máximo da bounding box nos eixos x, y e z.
 
 **Tipo:** `mathutils.Vector`
 
 ### center
 
-The center of the bounding box. (read only)
+O centro da bounding box (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### radius
 
-The radius of the bounding box. (read only)
+O raio da bounding box (somente leitura).
 
 **Tipo:** float
 
 ### autoUpdate
 
-Allow to update the bounding box if the mesh is modified.
+Permite atualizar a bounding box se a malha for modificada.
 
 **Tipo:** boolean
 

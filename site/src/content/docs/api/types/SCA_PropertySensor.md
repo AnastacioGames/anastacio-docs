@@ -7,35 +7,35 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-Activates when the game object property matches.
+Ativa quando a propriedade do game object corresponde.
 
 ### mode
 
-Type of check on the property. Can be one of `these constants`
+Tipo de verificação da propriedade. Pode ser uma `destas constantes`
 
 **Tipo:** integer.
 
 ### propName
 
-the property the sensor operates.
+a propriedade com que o sensor opera.
 
 **Tipo:** string
 
 ### value
 
-the value with which the sensor compares to the value of the property.
+o valor que o sensor compara com o valor da propriedade.
 
 **Tipo:** string
 
 ### min
 
-the minimum value of the range used to evaluate the property when in interval mode.
+o valor mínimo do intervalo usado para avaliar a propriedade no modo interval.
 
 **Tipo:** string
 
 ### max
 
-the maximum value of the range used to evaluate the property when in interval mode.
+o valor máximo do intervalo usado para avaliar a propriedade no modo interval.
 
 **Tipo:** string
 

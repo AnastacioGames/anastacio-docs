@@ -1,0 +1,5 @@
+Atuador Message
+As mensagens só são enviadas para objetos com o nome de propriedade indicado.
+O campo assunto da mensagem.
+O corpo da mensagem.
+Envia uma propriedade em vez de uma mensagem com corpo normal.

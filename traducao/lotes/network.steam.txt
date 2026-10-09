@@ -1,0 +1,1 @@
+Módulo `Range.network.steam` da Anastacio Engine. Também acessível como `bge.network.steam`.

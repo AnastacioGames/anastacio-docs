@@ -1,0 +1,3 @@
+Esta classe tem a lista de todos os níveis de detalhe usados por um game object.
+Devolve a lista de todos os níveis de detalhe do lod manager.
+Multiplicador da distância até a câmera.

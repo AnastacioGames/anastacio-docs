@@ -1,0 +1,2 @@
+Um controlador AND só ativa quando todos os sensores ligados estão ativos.
+Não há métodos Python especiais para este controlador.

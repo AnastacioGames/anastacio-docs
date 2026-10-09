@@ -1,0 +1,3 @@
+O atuador de jogo carrega um novo arquivo .blend, reinicia o .blend atual ou fecha o jogo.
+o novo arquivo .blend a carregar.
+O modo deste atuador. Pode ser uma `destas constantes`

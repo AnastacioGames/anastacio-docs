@@ -1,0 +1,36 @@
+Este sensor detecta eventos do joystick do jogador.
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
+Cada um dá o valor de um eixo entre -32767 e 32767, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
+esquerda:[-32767, 0, ...]
+direita:[32767, 0, ...]
+baixo:[0, 32767, ...]
+como `axisValues`, mas devolve um único valor de eixo, definido pelo sensor (somente leitura).
+Use só em sensores do tipo "Single Axis"; senão, levanta um erro.
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
+As direções do hat são estas...
+0:Nenhuma
+2:Direita
+4:Baixo
+8:Esquerda
+3:Cima - Direita
+6:Baixo - Direita
+12:Baixo - Esquerda
+9:Cima - Esquerda
+Como `hatValues`, mas devolve uma única direção de hat, definida pelo sensor (somente leitura).
+O número de eixos do joystick neste índice (somente leitura).
+O número de botões do joystick neste índice (somente leitura).
+O número de hats do joystick neste índice (somente leitura).
+True se há um joystick conectado neste índice (somente leitura).
+O índice do joystick a usar (de 0 a 7). O primeiro joystick é sempre 0.
+Limite do eixo. Movimentos do eixo abaixo deste limite não disparam evento. Use valores entre 0 e 32767; valores menores são mais sensíveis.
+O índice do botão a que o sensor reage (primeiro botão = 0). Com a opção "All Events" ligada, esta opção não tem efeito.
+O eixo a que este sensor reage, como uma lista de dois valores [axisIndex, axisDirection]
+axisIndex: o índice do eixo usado para detectar movimento, 1=controle de direção principal, 2=controle de direção secundário.
+axisDirection: 0=direita, 1=cima, 2=esquerda, 3=baixo.
+O hat a que o sensor reage, como uma lista de dois valores: [hatIndex, hatDirection]
+hatIndex: o índice do hat usado para detectar movimento, 1=hat principal, 2=hat secundário (4 no máximo).
+hatDirection: 1-12.
+Uma lista com os índices dos botões apertados agora.
+o índice do botão, 0=primeiro botão
+Se o botão indicado está apertado agora.

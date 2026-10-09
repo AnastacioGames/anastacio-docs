@@ -1,0 +1,10 @@
+Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.
+Adiciona um filtro no passe `index`, do tipo `type`, com o fragment program se for filtro personalizado.
+O índice do passe do filtro.
+O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
+O fragment program do shader do filtro. Só é usado se `type` for `Range.logic.RAS_2DFILTER_CUSTOMFILTER`; se vazio ou omitido, o filtro é criado sem shader, esperando uma chamada a `BL_Shader.setSourceList` (opcional).
+O filtro 2D.
+Remove o filtro do passe `index`.
+Devolve o filtro do passe `index`.
+**aviso:** Se o filtro 2D for adicionado por um `SCA_2DFilterActuator`, ele só fica disponível depois que o programa do filtro 2D for linkado. O script Python que pega o filtro precisa rodar um frame depois. Dá para usar um sensor Delay.
+O filtro no passe indicado, ou None.

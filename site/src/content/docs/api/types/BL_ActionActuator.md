@@ -7,65 +7,65 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Action Actuators apply an action to an actor.
+Os atuadores Action aplicam uma action a um ator.
 
 ### action
 
-The name of the action to set as the current action.
+O nome da action a usar como action atual.
 
 **Tipo:** string
 
 ### frameStart
 
-Specifies the starting frame of the animation.
+Define o frame inicial da animação.
 
 **Tipo:** float
 
 ### frameEnd
 
-Specifies the ending frame of the animation.
+Define o frame final da animação.
 
 **Tipo:** float
 
 ### blendIn
 
-Specifies the number of frames of animation to generate when making transitions between actions.
+Define o número de frames de animação gerados nas transições entre actions.
 
 **Tipo:** float
 
 ### priority
 
-Sets the priority of this actuator. Actuators will lower priority numbers will override actuators with higher numbers.
+Define a prioridade deste atuador. Atuadores com número de prioridade menor sobrepõem os de número maior.
 
 **Tipo:** integer
 
 ### frame
 
-Sets the current frame for the animation.
+Define o frame atual da animação.
 
 **Tipo:** float
 
 ### propName
 
-Sets the property to be used in FromProp playback mode.
+Define a propriedade usada no modo de reprodução FromProp.
 
 **Tipo:** string
 
 ### mode
 
-The operation mode of the actuator. Can be one of `these constants`.
+O modo de operação do atuador. Pode ser uma `destas constantes`.
 
 **Tipo:** integer
 
 ### useContinue
 
-The actions continue option, True or False. When True, the action will always play from where last left off, otherwise negative events to this actuator will reset it to its start frame.
+A opção continue das actions, True ou False. Com True, a action sempre toca de onde parou; senão, eventos negativos neste atuador voltam ela ao frame inicial.
 
 **Tipo:** boolean
 
 ### framePropName
 
-The name of the property that is set to the current frame number.
+O nome da propriedade que recebe o número do frame atual.
 
 **Tipo:** string
 

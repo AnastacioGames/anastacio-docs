@@ -7,129 +7,129 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-This sensor detects player joystick events.
+Este sensor detecta eventos do joystick do jogador.
 
 ### axisValues
 
-The state of the joysticks axis as a list of values `numAxis` long. (read-only).
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
 
 **Tipo:** list of ints.
 
-Each specifying the value of an axis between -32767 and 32767 depending on how far the axis is pushed, 0 for nothing. The first 2 values are used by most joysticks and gamepads for directional control. 3rd and 4th values are only on some joysticks and can be used for arbitary controls.
+Cada um dá o valor de um eixo entre -32767 e 32767, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
 
-* left:[-32767, 0, ...]
-* right:[32767, 0, ...]
+* esquerda:[-32767, 0, ...]
+* direita:[32767, 0, ...]
 * up:[0, -32767, ...]
-* down:[0, 32767, ...]
+* baixo:[0, 32767, ...]
 
 ### axisSingle
 
-like `axisValues` but returns a single axis value that is set by the sensor. (read-only).
+como `axisValues`, mas devolve um único valor de eixo, definido pelo sensor (somente leitura).
 
 **Tipo:** integer
 
 :::note
-Only use this for "Single Axis" type sensors otherwise it will raise an error.
+Use só em sensores do tipo "Single Axis"; senão, levanta um erro.
 :::
 
 ### hatValues (Deprecated. Use :data:button instead)
 
-The state of the joysticks hats as a list of values `numHats` long. (read-only).
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
 
 **Tipo:** list of ints
 
-Each specifying the direction of the hat from 1 to 12, 0 when inactive.
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
 
-Hat directions are as follows...
+As direções do hat são estas...
 
-* 0:None
+* 0:Nenhuma
 * 1:Up
-* 2:Right
-* 4:Down
-* 8:Left
-* 3:Up - Right
-* 6:Down - Right
-* 12:Down - Left
-* 9:Up - Left
+* 2:Direita
+* 4:Baixo
+* 8:Esquerda
+* 3:Cima - Direita
+* 6:Baixo - Direita
+* 12:Baixo - Esquerda
+* 9:Cima - Esquerda
 
 ### hatSingle (Deprecated. Use :data:button instead)
 
-Like `hatValues` but returns a single hat direction value that is set by the sensor. (read-only).
+Como `hatValues`, mas devolve uma única direção de hat, definida pelo sensor (somente leitura).
 
 **Tipo:** integer
 
 ### numAxis
 
-The number of axes for the joystick at this index. (read-only).
+O número de eixos do joystick neste índice (somente leitura).
 
 **Tipo:** integer
 
 ### numButtons
 
-The number of buttons for the joystick at this index. (read-only).
+O número de botões do joystick neste índice (somente leitura).
 
 **Tipo:** integer
 
 ### numHats (Deprecated. Use :data:numButtons instead)
 
-The number of hats for the joystick at this index. (read-only).
+O número de hats do joystick neste índice (somente leitura).
 
 **Tipo:** integer
 
 ### connected
 
-True if a joystick is connected at this joysticks index. (read-only).
+True se há um joystick conectado neste índice (somente leitura).
 
 **Tipo:** boolean
 
 ### index
 
-The joystick index to use (from 0 to 7). The first joystick is always 0.
+O índice do joystick a usar (de 0 a 7). O primeiro joystick é sempre 0.
 
 **Tipo:** integer
 
 ### threshold
 
-Axis threshold. Joystick axis motion below this threshold wont trigger an event. Use values between (0 and 32767), lower values are more sensitive.
+Limite do eixo. Movimentos do eixo abaixo deste limite não disparam evento. Use valores entre 0 e 32767; valores menores são mais sensíveis.
 
 **Tipo:** integer
 
 ### button
 
-The button index the sensor reacts to (first button = 0). When the "All Events" toggle is set, this option has no effect.
+O índice do botão a que o sensor reage (primeiro botão = 0). Com a opção "All Events" ligada, esta opção não tem efeito.
 
 **Tipo:** integer
 
 ### axis
 
-The axis this sensor reacts to, as a list of two values [axisIndex, axisDirection]
+O eixo a que este sensor reage, como uma lista de dois valores [axisIndex, axisDirection]
 
-* axisIndex: the axis index to use when detecting axis movement, 1=primary directional control, 2=secondary directional control.
-* axisDirection: 0=right, 1=up, 2=left, 3=down.
+* axisIndex: o índice do eixo usado para detectar movimento, 1=controle de direção principal, 2=controle de direção secundário.
+* axisDirection: 0=direita, 1=cima, 2=esquerda, 3=baixo.
 
 **Tipo:** [integer, integer]
 
 ### hat (Deprecated. Use :data:button instead)
 
-The hat the sensor reacts to, as a list of two values: [hatIndex, hatDirection]
+O hat a que o sensor reage, como uma lista de dois valores: [hatIndex, hatDirection]
 
-* hatIndex: the hat index to use when detecting hat movement, 1=primary hat, 2=secondary hat (4 max).
+* hatIndex: o índice do hat usado para detectar movimento, 1=hat principal, 2=hat secundário (4 no máximo).
 * hatDirection: 1-12.
 
 **Tipo:** [integer, integer]
 
 ### getButtonActiveList()
 
-**Retorna:** A list containing the indicies of the currently pressed buttons.
+**Retorna:** Uma lista com os índices dos botões apertados agora.
 
 **Tipo do retorno:** list
 
 ### getButtonStatus(buttonIndex)
 
-- **`buttonIndex`**: the button index, 0=first button
+- **`buttonIndex`**: o índice do botão, 0=primeiro botão
   - tipo: integer
 
-**Retorna:** The current pressed state of the specified button.
+**Retorna:** Se o botão indicado está apertado agora.
 
 **Tipo do retorno:** boolean
 

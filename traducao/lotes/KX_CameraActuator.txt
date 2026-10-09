@@ -1,0 +1,7 @@
+Aplica mudanças a uma câmera.
+força do movimento de seguir da câmera.
+O eixo da câmera: (0, 1, 2) para `XYZ` positivo, (3, 4, 5) para `XYZ` negativo.
+distância mínima até o objeto alvo mantida pelo atuador.
+distância máxima a manter do objeto alvo.
+altura a manter acima do objeto alvo.
+o objeto que este atuador segue.

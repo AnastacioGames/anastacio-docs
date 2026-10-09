@@ -1,0 +1,336 @@
+===== imgui
+=
+-- desenhado acima de todas as janelas, para fades
+-- texture_id é um bind code OpenGL puro
+-- >0 pixels, <0 alinhado à direita da borda da janela (-1 = largura total)
+-- idx é uma das constantes imgui.COL_*
+ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
+-- posição relativa à janela atual
+-- liga/desliga a entrada + libera o mouse para a UI de jogo desenhada em Python
+-- mesma convenção de push_item_width, só para o próximo widget
+===== network
+=
+Chama um RPC do jogo registrado com @rpc; obj faz dela uma chamada de objeto (o alvo 'owner' e owner_only usam o dono dele). False quando recusada aqui (sem sessão, alvo errado...).
+Abre um servidor. Valores zero ou vazios usam o painel Network da cena.
+Entra em 'host', 'host:port' ou '[v6]:port'.
+-> (obj, point, distance) ou None. Servidor: raio contra as hitboxes como o cliente as viu (compensação de lag, 1 s de histórico); -1 = agora.
+, transform=True, velocity=False, angular_velocity=False, always_relevant=False, priority=1.0, quantize=None) -> int. Igual à caixa Replicate; rode antes de host()/join(), na mesma ordem em todos os peers. quantize={name: (min, max, bits)} envia propriedades Float em menos bits.
+Só no servidor: centro de relevância (objeto ou posição) e raio de um cliente; raio 0 envia tudo. Sem centro: o primeiro objeto que o cliente possui. Tudo None: volta ao Relevance Radius da cena.
+Só no servidor: adiciona uma cópia do objeto inativo 'prototype' e a replica.
+===== network.steam
+=
+===== BL_ArmatureObject
+Um objeto armature.
+A lista de constraints de armature definidas nesta armature. Os elementos podem ser acessados por índice ou por string. O formato da chave em string é '<bone_name>:<constraint_name>'.
+A lista de canais da armature. Os elementos podem ser acessados por índice ou pelo nome do bone.
+Garante que a armature será atualizada no próximo frame gráfico.
+Isto não é necessário se um KX_ArmatureActuator no modo run estiver ativo ou se uma action estiver tocando. Use esta função nos outros casos. Ela precisa ser chamada a cada frame para garantir que a armature seja atualizada continuamente.
+Desenha linhas que representam a armature, para vê-la em tempo real.
+===== EXP_BaseListValue
+=
+===== EXP_BaseListWrapper
+=
+===== EXP_PyObjectPlus
+EXP_PyObjectPlus é a classe base da maioria dos outros tipos da Game Engine.
+Testa se o objeto foi liberado pela game engine e não é mais válido.
+Normalmente isso não é problema, mas ao guardar dados da game engine no módulo GameLogic, em KX_Scenes ou em outros KX_GameObjects, é possível manter uma referência a dados inválidos. Chamar um atributo ou método de um objeto inválido levanta um SystemError.
+O atributo invalid permite testar esse caso sem tratar exceções.
+===== EXP_Value
+Esta classe é a base de outras classes.
+O nome deste objeto derivado de EXP_Value (somente leitura).
+===== KX_2DFilterOffScreen
+Off screen personalizado de filtro 2D.
+A largura do off screen; -1 se o off screen pode ser redimensionado dinamicamente (somente leitura).
+A altura do off screen; -1 se o off screen pode ser redimensionado dinamicamente (somente leitura).
+O bind code das texturas de cor ligadas ao off screen (somente leitura).
+Se o off screen pode ser redimensionado dinamicamente (`width` ou `height` igual a -1), os bind codes podem mudar.
+O bind code da textura de profundidade ligada ao off screen (somente leitura).
+Se o off screen pode ser redimensionado dinamicamente (`width` ou `height` igual a -1), o bind code pode mudar.
+===== KX_AddObjectActuator
+Atuador Edit Object (no modo Add Object)
+Um atuador Add Object é ignorado se, no início do jogo, o objeto ligado não existir (ou estiver vazio) ou estiver numa layer ativa.
+o objeto que este atuador adiciona.
+o último objeto adicionado por este atuador (somente leitura).
+o tempo de vida dos objetos adicionados, em frames. Use 0 para desligar a remoção automática.
+a velocidade linear inicial dos objetos adicionados.
+a velocidade angular inicial dos objetos adicionados.
+adiciona o objeto sem precisar chamar SCA_PythonController.activate()
+Use objectLastCreated para pegar o objeto recém-criado.
+===== KX_AnimationEvent
+=
+===== KX_AnimationEventManager
+=
+===== KX_ArmatureSensor
+O sensor de armature detecta condições em armatures.
+O tipo de medida que o sensor faz quando está ativo.
+Pode ser uma `destas constantes`
+O objeto de constraint que este sensor observa.
+O limite usado na comparação com o erro da constraint. O erro linear só é atualizado em constraints IK CopyPose/Distance com o solver iTaSC. O erro de rotação só é atualizado em constraints IK CopyPose+rotação com o solver iTaSC. O erro linear em CopyPose é sempre >= 0: é a norma da distância entre o alvo e o bone. O erro de rotação em CopyPose é sempre >= 0: é a norma do vetor de rotação equivalente entre as orientações do bone e do alvo. O erro linear em Distance pode ser positivo se a distância entre o bone e o alvo for maior que a desejada, e negativo se for menor.
+===== KX_BatchGroup
+O batch group é uma classe que contém uma malha resultante da junção das malhas usadas por objetos. As malhas são juntadas com a transformação dos objetos que as usam. Uma instância desta classe não pertence a um objeto, mas é compartilhada entre objetos. Por isso, uma instância de `KX_BatchGroup` precisa ser criada passando como argumento uma lista de pelo menos um objeto com as malhas a juntar. Dá para fazer isso de um jeito parecido com:
+Configurações de render próprias de cada objeto, como `KX_GameObject.layer` e `KX_GameObject.color`, são compartilhadas ao usar batch groups. Elas vêm do objeto `referenceObject`.
+A lista dos objetos juntados (somente leitura).
+O objeto usado para as configurações de render (layer, cor...).
+Junta as malhas usando a transformação dos objetos que as usam.
+Os objetos a juntar.
+Separa as malhas dos objetos e restaura as malhas originais.
+Os objetos a separar.
+Destrói o batch group e restaura todos os objetos para as malhas originais.
+===== KX_BoundingBox
+Uma caixa de volume de um game object. Usada para ler e alterar a caixa de volume ou AABB.
+Desliga a atualização automática para permitir modificar a caixa.
+Aumenta a altura da caixa em 1.
+O ponto mínimo da bounding box nos eixos x, y e z.
+O ponto máximo da bounding box nos eixos x, y e z.
+O centro da bounding box (somente leitura).
+O raio da bounding box (somente leitura).
+Permite atualizar a bounding box se a malha for modificada.
+===== KX_CameraActuator
+Aplica mudanças a uma câmera.
+força do movimento de seguir da câmera.
+O eixo da câmera: (0, 1, 2) para `XYZ` positivo, (3, 4, 5) para `XYZ` negativo.
+distância mínima até o objeto alvo mantida pelo atuador.
+distância máxima a manter do objeto alvo.
+altura a manter acima do objeto alvo.
+o objeto que este atuador segue.
+===== KX_ChangeColorActuator
+=
+===== KX_CollisionContactPoint
+Um ponto de contato de colisão passado aos callbacks de colisão.
+O ponto de contato no espaço do objeto dono.
+O ponto de contato no espaço do objeto colisor.
+O ponto de contato no espaço do mundo.
+A normal do contato no espaço do objeto dono.
+O atrito combinado do objeto dono e do colisor.
+O atrito de rolagem combinado do objeto dono e do colisor.
+A restituição combinada do objeto dono e do colisor.
+O impulso aplicado ao objeto dono.
+===== KX_CollisionSensor
+O sensor de colisão detecta colisões entre objetos.
+A propriedade ou o material com que colidir.
+Define se o sensor procura uma propriedade ou um material. KX_True = procura material; KX_False = procura propriedade.
+Quando ligado, mudanças no conjunto de objetos em colisão geram um pulso.
+O último objeto que colidiu (somente leitura).
+Uma lista dos objetos em colisão (somente leitura).
+O material do objeto na face atingida pelo raio (somente leitura).
+===== KX_CubeMap
+API Python para texturas de cube map em tempo real.
+O objeto que usa um cube map em tempo real no material.
+Pega o cube map em tempo real a partir da textura do material.
+Põe a posição de render na posição do objeto "Cube".
+Muda o clip start e o clip end do culling.
+Desliga o render na terceira layer.
+Desliga a atualização por frame.
+Pede atualização só neste frame.
+===== KX_DynamicActuator
+Atuador Dynamic.
+o tipo de operação do atuador, 0-4
+=
+=
+=
+=
+=
+o valor de massa para a operação KX_DYN_SET_MASS.
+===== KX_EndObjectActuator
+Atuador Edit Object (no modo End Object)
+Este atuador não tem métodos Python.
+===== KX_FontObject
+Um objeto de fonte.
+Mostra uma mensagem sobre a tecla de saída usando um objeto de fonte.
+O texto mostrado por este objeto de fonte.
+A resolução da fonte.
+Resoluções altas podem usar muita memória e travar.
+O tamanho (fator de escala) do objeto de fonte, a partir da origem dele (afeta a resolução do texto).
+Tamanhos grandes podem usar muita memória e travar.
+O tamanho (largura e altura) do texto atual, em unidades do Blender.
+===== KX_GameActuator
+O atuador de jogo carrega um novo arquivo .blend, reinicia o .blend atual ou fecha o jogo.
+o novo arquivo .blend a carregar.
+O modo deste atuador. Pode ser uma `destas constantes`
+===== KX_InputSystem
+=
+===== KX_InputTable
+=
+===== KX_LibLoadStatus
+Um objeto com informações sobre uma operação LibLoad().
+Mostra uma mensagem quando um LibLoad assíncrono termina
+Um callback chamado quando o carregamento da lib termina.
+O status atual do carregamento da lib.
+O progresso atual do carregamento da lib, como valor normalizado de 0.0 a 1.0.
+O nome da biblioteca sendo carregada (o primeiro argumento de LibLoad).
+O tempo, em segundos, que o carregamento levou (0 até a operação terminar).
+===== KX_LightningActuator
+=
+===== KX_LodLevel
+Um nível de LOD do lod manager de um game object.
+A malha usada neste nível de LOD (somente leitura).
+O número do nível de LOD (somente leitura).
+Distância a partir da qual este nível de detalhe é usado (somente leitura).
+Mudança mínima do fator de distância, em porcentagem, para voltar ao nível de detalhe anterior (somente leitura).
+True se o nível de LOD usa uma malha diferente da malha original do objeto (somente leitura).
+True se o nível de LOD usa um material diferente do material original da malha do objeto (somente leitura).
+True se o nível de LOD usa substituição de histerese (somente leitura).
+===== KX_LodManager
+Esta classe tem a lista de todos os níveis de detalhe usados por um game object.
+Devolve a lista de todos os níveis de detalhe do lod manager.
+Multiplicador da distância até a câmera.
+===== KX_MeshBuilder
+=
+===== KX_MeshBuilderSlot
+=
+===== KX_MovementSensor
+=
+===== KX_NearSensor
+O sensor near é uma forma especializada de sensor de toque.
+O sensor near ativa quando um objeto está dentro desta distância.
+O sensor near desativa quando o objeto passa desta distância.
+===== KX_NetworkMessageActuator
+Atuador Message
+As mensagens só são enviadas para objetos com o nome de propriedade indicado.
+O campo assunto da mensagem.
+O corpo da mensagem.
+Envia uma propriedade em vez de uma mensagem com corpo normal.
+===== KX_NetworkMessageSensor
+O logic brick do sensor Message.
+Por enquanto só redes loopback (locais) são suportadas.
+O assunto que o sensor procura.
+O número de mensagens recebidas desde o último frame (somente leitura).
+A lista dos assuntos das mensagens recebidas (somente leitura).
+A lista dos corpos das mensagens recebidas (somente leitura).
+===== KX_ParentActuator
+O atuador parent define ou remove o objeto pai de um objeto.
+o objeto que este atuador define como pai.
+O modo deste atuador.
+Se a forma do objeto deve ser adicionada à forma composta do pai ao fazer o parent.
+Só tem efeito se o pai já for uma forma composta.
+Se o objeto deve virar ghost ao fazer o parent. Só tem efeito se a forma não for adicionada à forma composta do pai.
+===== KX_ParticleSystem
+=
+===== KX_PlanarMap
+API Python para texturas de planar map em tempo real.
+Normal do plano usada para calcular a orientação de reflexão ou refração da câmera de render.
+===== KX_RadarSensor
+O sensor radar é um sensor near com um objeto sensor em forma de cone.
+A origem do cone usado no teste. A origem fica no meio do cone (somente leitura).
+O centro da face de baixo do cone usado no teste (somente leitura).
+A altura do cone usado no teste.
+O ângulo do cone (em graus) usado no teste.
+O eixo em que o cone do radar é lançado.
+=
+===== KX_SceneActuator
+Logic brick do atuador Scene.
+Atuadores de cena que usam um nome de cena são ignorados se, no início do jogo, a cena com esse nome não existir ou estiver vazia
+Isto gera um aviso no console:
+o nome da cena para trocar/sobrepor/pôr por baixo/remover/suspender/retomar.
+a câmera para a qual trocar.
+Ao definir o atributo, dá para usar um `KX_Camera` ou o nome da câmera.
+Use True para reiniciar a cena.
+O modo do atuador.
+===== KX_Speaker
+=
+===== KX_StateActuator
+O atuador State muda a máscara de estado do objeto pai.
+Tipo de operação de bits aplicada à máscara de estado do objeto.
+Você pode usar uma `destas constantes`
+Valor que define os bits que serão modificados pela operação.
+Os bits que valem 1 na máscara são atualizados no estado do objeto.
+Os bits que valem 0 ficam sem mudança, exceto na operação Copy, que copia a máscara para o estado do objeto.
+===== KX_TextureRenderer
+API Python para objetos que fazem um render guardado numa textura.
+Define se o texture renderer é atualizado automaticamente a cada frame.
+O objeto de onde o texture renderer vai renderizar a cena.
+Liga o render da cena pelo texture renderer.
+As layers a ignorar no render.
+O plano near da matriz de projeção, usado no culling.
+O plano far da matriz de projeção, usado no culling.
+Pede para atualizar este texture renderer na etapa de render. Só tem efeito quando `autoUpdate` está desligado.
+===== KX_VRHeadSensor
+=
+===== KX_VisibilityActuator
+Atuador Visibility.
+se o atuador deixa o objeto pai visível ou invisível.
+se o atuador torna o objeto pai um occluder ou não.
+se a visibilidade/oclusão deve ser propagada a todos os filhos do objeto.
+===== SCA_2DFilterActuator
+Cria, liga e desliga filtros 2D.
+As propriedades a seguir não têm efeito imediato. É preciso ativar o atuador para ver o resultado. O atuador não é persistente: ele para sozinho depois de configurar o filtro, mas o filtro continua ativo. Para parar um filtro, ative o atuador com 'type' igual a `RAS_2DFILTER_DISABLED` ou `RAS_2DFILTER_NOFILTER`.
+código-fonte do shader personalizado.
+ação no motion blur: 0=liga, 1=desliga.
+Tipo de filtro 2D; use uma `destas constantes`.
+número de ordem do filtro na pilha de filtros 2D. Os filtros rodam em ordem crescente de passNb.
+Só pode haver um filtro por passNb.
+argumento do filtro de motion blur.
+===== SCA_ANDController
+Um controlador AND só ativa quando todos os sensores ligados estão ativos.
+Não há métodos Python especiais para este controlador.
+===== SCA_ActuatorSensor
+O sensor Actuator detecta mudanças no estado de um atuador do objeto pai. Ele gera um pulso positivo quando o atuador é ativado e um pulso negativo quando é desativado.
+o nome do atuador que o sensor está monitorando.
+===== SCA_AlwaysSensor
+Este sensor está sempre ativo.
+===== SCA_AnimationEventSensor
+=
+===== SCA_DelaySensor
+O sensor Delay gera disparos positivos e negativos em momentos precisos, contados em frames. O parâmetro delay define a duração do período OFF inicial. Um disparo positivo é gerado no fim desse período.
+O parâmetro duration define a duração do período ON que vem depois do OFF. Há um disparo negativo no fim do período ON. Se duration for 0, o sensor fica ON e não há disparo negativo.
+O sensor roda o ciclo OFF-ON uma vez, a menos que a opção repeat esteja ligada: aí o ciclo OFF-ON se repete sem parar (ou só o OFF, se duration for 0).
+Use `SCA_ISensor.reset` a qualquer momento para reiniciar o sensor.
+duração do período OFF inicial em número de frames; 0 para disparar na hora.
+duração do período ON em número de frames, depois do período OFF inicial.
+Se duration for maior que 0, um disparo negativo é enviado no fim do pulso ON.
+1 se o ciclo OFF-ON deve se repetir sem parar, 0 se deve rodar uma vez.
+Número de vezes que o atuador vai repetir.
+===== SCA_IController
+Classe base de todos os logic bricks de controlador.
+A máscara de bits de estado do controlador. Pode ser usada com o estado do GameObject para testar se o controlador está ativo.
+Uma lista dos sensores ligados a este controlador.
+Os sensores não pertencem necessariamente ao mesmo objeto.
+Quando objetos são instanciados em dupligroups, as ligações com objetos de fora do dupligroup podem se perder.
+Uma lista dos atuadores ligados a este controlador.
+Quando ligado, o controlador sempre roda antes de todos os outros controladores que não têm isto ligado.
+A ordem de execução entre controladores de alta prioridade não é garantida.
+===== SCA_ILogicBrick
+Classe base de todos os logic bricks.
+Define a ordem em que os controladores são avaliados e os atuadores são ativados (prioridade menor roda primeiro).
+O game object ao qual este logic brick está ligado (somente leitura).
+O nome deste logic brick (somente leitura).
+===== SCA_IObject
+Esta classe não tem funções Python
+===== SCA_NANDController
+Um controlador NAND ativa quando nem todos os sensores ligados estão ativos.
+Não há métodos Python especiais para este controlador.
+===== SCA_NORController
+Um controlador NOR só ativa quando todos os sensores ligados estão desativados.
+Não há métodos Python especiais para este controlador.
+===== SCA_ORController
+Um controlador OR ativa quando qualquer sensor ligado ativa.
+Não há métodos Python especiais para este controlador.
+===== SCA_PropertyActuator
+Atuador Property
+a propriedade sobre a qual operar.
+o valor com que o atuador opera.
+TODO - adicionar as constantes ao dicionário de game logic!.
+===== SCA_PropertySensor
+Ativa quando a propriedade do game object corresponde.
+Tipo de verificação da propriedade. Pode ser uma `destas constantes`
+a propriedade com que o sensor opera.
+o valor que o sensor compara com o valor da propriedade.
+o valor mínimo do intervalo usado para avaliar a propriedade no modo interval.
+o valor máximo do intervalo usado para avaliar a propriedade no modo interval.
+===== SCA_RandomSensor
+Este sensor ativa aleatoriamente.
+A semente do gerador de números aleatórios.
+===== SCA_XNORController
+Um controlador XNOR ativa quando todos os sensores ligados estão iguais (ativos ou inativos).
+Não há métodos Python especiais para este controlador.
+===== SCA_XORController
+Um controlador XOR ativa quando as entradas estão misturadas, mas não quando todas estão ligadas ou desligadas.
+Não há métodos Python especiais para este controlador.
+===== Texture
+=
+Fecha o decklink dinâmico e restaura o original
+Atualiza o decklink a partir da fonte
+===== EXP_PropValue
+Esta classe não tem funções Python
+===== SCA_IActuator
+Classe base de todos os logic bricks de atuador.

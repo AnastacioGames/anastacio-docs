@@ -1,0 +1,2 @@
+Um controlador OR ativa quando qualquer sensor ligado ativa.
+Não há métodos Python especiais para este controlador.

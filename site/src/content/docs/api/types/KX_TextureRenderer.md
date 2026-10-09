@@ -7,41 +7,41 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-Python API for object doing a render stored in a texture.
+API Python para objetos que fazem um render guardado numa textura.
 
 ### autoUpdate
 
-Choose to update automatically each frame the texture renderer or not.
+Define se o texture renderer é atualizado automaticamente a cada frame.
 
 **Tipo:** boolean
 
 ### viewpointObject
 
-The object where the texture renderer will render the scene.
+O objeto de onde o texture renderer vai renderizar a cena.
 
 **Tipo:** `KX_GameObject`
 
 ### enabled
 
-Enable the texture renderer to render the scene.
+Liga o render da cena pelo texture renderer.
 
 **Tipo:** boolean
 
 ### ignoreLayers
 
-The layers to ignore when rendering.
+As layers a ignorar no render.
 
 **Tipo:** bitfield
 
 ### clipStart
 
-The projection view matrix near plane, used for culling.
+O plano near da matriz de projeção, usado no culling.
 
 **Tipo:** float
 
 ### clipEnd
 
-The projection view matrix far plane, used for culling.
+O plano far da matriz de projeção, usado no culling.
 
 **Tipo:** float
 
@@ -53,5 +53,5 @@ Fator que multiplica a distância até a câmera para ajustar os níveis de deta
 
 ### update()
 
-Request to update this texture renderer during the rendering stage. This function is effective only when `autoUpdate` is disabled.
+Pede para atualizar este texture renderer na etapa de render. Só tem efeito quando `autoUpdate` está desligado.
 

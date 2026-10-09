@@ -7,31 +7,31 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-The parent actuator can set or remove an objects parent object.
+O atuador parent define ou remove o objeto pai de um objeto.
 
 ### object
 
-the object this actuator sets the parent too.
+o objeto que este atuador define como pai.
 
 **Tipo:** `KX_GameObject` or None
 
 ### mode
 
-The mode of this actuator.
+O modo deste atuador.
 
 **Tipo:** integer from 0 to 1.
 
 ### compound
 
-Whether the object shape should be added to the parent compound shape when parenting.
+Se a forma do objeto deve ser adicionada à forma composta do pai ao fazer o parent.
 
-Effective only if the parent is already a compound shape.
+Só tem efeito se o pai já for uma forma composta.
 
 **Tipo:** boolean
 
 ### ghost
 
-Whether the object should be made ghost when parenting Effective only if the shape is not added to the parent compound shape.
+Se o objeto deve virar ghost ao fazer o parent. Só tem efeito se a forma não for adicionada à forma composta do pai.
 
 **Tipo:** boolean
 

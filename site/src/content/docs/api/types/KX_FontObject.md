@@ -7,11 +7,11 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 
 
-A Font object.
+Um objeto de fonte.
 
 ```python
 
-# Display a message about the exit key using a Font object.
+# Mostra uma mensagem sobre a tecla de saída usando um objeto de fonte.
 import Range
 
 co = Range.logic.getCurrentController()
@@ -27,33 +27,33 @@ font.text = "Press key '%s' to quit the game." % exit_key
 
 ### text
 
-The text displayed by this Font object.
+O texto mostrado por este objeto de fonte.
 
 **Tipo:** string
 
 ### resolution
 
-The resolution of the font police.
+A resolução da fonte.
 
 :::caution
-High resolution can use a lot of memory and may crash.
+Resoluções altas podem usar muita memória e travar.
 :::
 
 **Tipo:** float (0.1 to 50.0)
 
 ### size
 
-The size (scale factor) of the font object, scaled from font object origin (affects text resolution).
+O tamanho (fator de escala) do objeto de fonte, a partir da origem dele (afeta a resolução do texto).
 
 :::caution
-High size can use a lot of memory and may crash.
+Tamanhos grandes podem usar muita memória e travar.
 :::
 
 **Tipo:** float (0.0001 to 40.0)
 
 ### dimensions
 
-The size (width and height) of the current text in Blender Units.
+O tamanho (largura e altura) do texto atual, em unidades do Blender.
 
 **Tipo:** `mathutils.Vector`
 

@@ -7,7 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-An AND controller activates only when all linked sensors are activated.
+Um controlador AND só ativa quando todos os sensores ligados estão ativos.
 
-There are no special python methods for this controller.
+Não há métodos Python especiais para este controlador.
 

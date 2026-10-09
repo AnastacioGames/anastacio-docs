@@ -1,0 +1,51 @@
+KX_ConstraintWrapper
+Devolve o ID da constraint
+o ID da constraint
+Define os limites da constraint
+**`axis`**:
+Lowerlimit == Upperlimit -> o eixo fica travado
+Lowerlimit > Upperlimit -> o eixo fica livre
+Lowerlimit < Upperlimit -> o eixo fica limitado a esse intervalo
+Para PHY_LINEHINGE_CONSTRAINT = 2 ou PHY_ANGULAR_CONSTRAINT = 3:
+axis = 3 é um limite da constraint, com valor de limite inferior/superior
+3: ângulo do eixo X
+Define o limite mínimo do eixo
+Define o limite máximo do eixo
+Para PHY_CONE_TWIST_CONSTRAINT = 4:
+axis = 3..5 são limites da constraint, valores de limite superior
+4: ângulo do eixo Y
+5: ângulo do eixo Z
+Para PHY_GENERIC_6DOF_CONSTRAINT = 12:
+axis = 0..2 são limites da constraint, com valor de limite inferior/superior
+0: posição no eixo X
+1: posição no eixo Y
+2: posição no eixo Z
+axis = 3..5 são ângulos (Euler) relativos da constraint, em radianos
+axis = 6..8 são motores de translação, com value0 = velocidade alvo, value1 = força máxima do motor
+6: posição no eixo X
+7: posição no eixo Y
+8: posição no eixo Z
+axis = 9..11 são motores de rotação, com value0 = velocidade alvo, value1 = força máxima do motor
+9: ângulo do eixo X
+10: ângulo do eixo Y
+11: ângulo do eixo Z
+Define a velocidade linear do eixo
+Define o limite de força máxima do eixo
+axis = 12..14 são molas lineares em cada posição de liberdade
+12: posição no eixo X
+13: posição no eixo Y
+14: posição no eixo Z
+axis = 15..17 são molas angulares em cada ângulo de liberdade, em radianos
+15: ângulo do eixo X
+16: ângulo do eixo Y
+17: ângulo do eixo Z
+Define a rigidez da mola
+Tendência da mola de voltar à posição original
+Pega a posição ou o ângulo de Euler de uma constraint 6DOF genérica
+axis = 0..2 são valores de constraint linear
+posição
+ângulo
+Devolve o ID da constraint (somente leitura)
+Devolve o tipo da constraint (somente leitura)
+O limite de impulso que quebra a constraint; se a constraint quebrar, `enabled` vira `False`.
+O status da constraint. Use `True` para restaurar uma constraint depois de quebrada.

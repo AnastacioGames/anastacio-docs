@@ -1,0 +1,10 @@
+Atuador Vibration.
+Índice do joystick.
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
+Força do motor de alta frequência do joystick (em geral fica à direita).
+Duração da vibração em milissegundos.
+Verifica o status da vibração do joystick
+Verifica se o joystick suporta vibração
+Começa a vibração.
+None
+Para a vibração.

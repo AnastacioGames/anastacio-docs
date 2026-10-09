@@ -7,7 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-An OR controller activates when any connected sensor activates.
+Um controlador OR ativa quando qualquer sensor ligado ativa.
 
-There are no special python methods for this controller.
+Não há métodos Python especiais para este controlador.
 

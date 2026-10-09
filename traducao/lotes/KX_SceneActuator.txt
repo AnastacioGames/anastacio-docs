@@ -1,0 +1,8 @@
+Logic brick do atuador Scene.
+Atuadores de cena que usam um nome de cena são ignorados se, no início do jogo, a cena com esse nome não existir ou estiver vazia
+Isto gera um aviso no console:
+o nome da cena para trocar/sobrepor/pôr por baixo/remover/suspender/retomar.
+a câmera para a qual trocar.
+Ao definir o atributo, dá para usar um `KX_Camera` ou o nome da câmera.
+Use True para reiniciar a cena.
+O modo do atuador.

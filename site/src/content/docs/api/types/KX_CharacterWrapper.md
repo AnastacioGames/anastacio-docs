@@ -7,86 +7,86 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-A wrapper to expose character physics options.
+Um wrapper que expõe as opções de física de personagem.
 
 ### onGround
 
-Whether or not the character is on the ground. (read-only)
+Se o personagem está no chão ou não (somente leitura).
 
 **Tipo:** boolean
 
 ### gravity
 
-The gravity value used for the character.
+O valor de gravidade usado para o personagem.
 
 **Tipo:** float
 
 ### fallSpeed
 
-The character falling speed.
+A velocidade de queda do personagem.
 
 **Tipo:** float
 
 ### maxJumps
 
-The maximum number of jumps a character can perform before having to touch the ground. By default this is set to 1. 2 allows for a double jump, etc.
+O número máximo de pulos que o personagem pode dar antes de tocar o chão. O padrão é 1. 2 permite pulo duplo, e assim por diante.
 
 **Tipo:** int in [0, 255], default 1
 
 ### jumpCount
 
-The current jump count. This can be used to have different logic for a single jump versus a double jump. For example, a different animation for the second jump.
+A contagem de pulos atual. Serve para ter lógicas diferentes para pulo simples e pulo duplo, por exemplo, uma animação diferente no segundo pulo.
 
 **Tipo:** int
 
 ### jumpSpeed
 
-The character jumping speed.
+A velocidade de pulo do personagem.
 
 **Tipo:** float
 
 ### maxSlope
 
-The maximum slope which the character can climb.
+A inclinação máxima que o personagem consegue subir.
 
 **Tipo:** float
 
 ### walkDirection
 
-The speed and direction the character is traveling in using world coordinates. This should be used instead of applyMovement() to properly move the character.
+A velocidade e a direção em que o personagem anda, em coordenadas do mundo. Use isto em vez de applyMovement() para mover o personagem do jeito certo.
 
 **Tipo:** Vector((x, y, z))
 
 ### jump()
 
-The character jumps based on it's jump speed.
+O personagem pula com base na sua velocidade de pulo.
 
 ### jumpDirection
 
-The direction the character is jumping.
+A direção em que o personagem pula.
 
 **Tipo:** Vector((x, y, z))
 
 ### setVelocity(velocity, time, local=False)
 
-Sets the character's linear velocity for a given period.
+Define a velocidade linear do personagem por um período.
 
-This method sets character's velocity through it's center of mass during a period.
+Este método define a velocidade do personagem pelo centro de massa durante um período.
 
-- **`velocity`**: Linear velocity vector.
+- **`velocity`**: Vetor de velocidade linear.
   - tipo: 3D Vector
-- **`time`**: Period while applying linear velocity.
+- **`time`**: Período em que a velocidade linear é aplicada.
   - tipo: float
-- **`local`**: * False: you get the "global" velocity ie: relative to world orientation. * True: you get the "local" velocity ie: relative to object orientation.
+- **`local`**: * False: velocidade "global", ou seja, relativa à orientação do mundo. * True: velocidade "local", ou seja, relativa à orientação do objeto.
   - tipo: boolean
 
 ### smoothMovement
 
-Smooth movement caused by walking direction.
+Suaviza o movimento causado pela direção de caminhada.
 
 **Tipo:** float (0.0 to 1.0)
 
 ### reset()
 
-Resets the character velocity and walk direction.
+Zera a velocidade e a direção de caminhada do personagem.
 

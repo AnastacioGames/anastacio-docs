@@ -1,0 +1,16 @@
+Atuador Edit Object, no modo Replace Mesh.
+Atuadores Replace Mesh são ignorados se, no início do jogo, a malha com o nome indicado não existir.
+Isto gera um aviso no console
+Nível de detalhe
+Troca a malha de um game object conforme a profundidade dele na vista da câmera.
+Liste aqui as malhas de detalhe
+Malha (nome, perto, longe)
+As malhas se sobrepõem para não "pipocar" na borda da distância.
+Acha a malha de menor detalhe para a profundidade
+A malha é diferente - troca.
+Confere se a malha atual não serve melhor.
+`MeshProxy` ou o nome da malha que vai substituir a atual.
+Use None para desligar o atuador.
+com true, a malha exibida é substituída.
+com true, a malha de física é substituída.
+Substitui a malha na hora, sem atraso.

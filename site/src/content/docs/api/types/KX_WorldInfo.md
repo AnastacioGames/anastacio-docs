@@ -7,11 +7,11 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-A world object.
+Um objeto de mundo.
 
 ```python
 
-# Set the mist color to red.
+# Deixa a cor da névoa vermelha.
 import Range
 
 sce = Range.logic.getCurrentScene()
@@ -21,101 +21,101 @@ sce.world.mistColor = [1.0, 0.0, 0.0]
 
 ### KX_MIST_QUADRATIC
 
-Type of quadratic attenuation used to fade mist.
+Tipo de atenuação quadrática usada para esmaecer a névoa.
 
 ### KX_MIST_LINEAR
 
-Type of linear attenuation used to fade mist.
+Tipo de atenuação linear usada para esmaecer a névoa.
 
 ### KX_MIST_INV_QUADRATIC
 
-Type of inverse quadratic attenuation used to fade mist.
+Tipo de atenuação quadrática inversa usada para esmaecer a névoa.
 
 ### mistEnable
 
-Return the state of the mist.
+Devolve o estado da névoa.
 
 **Tipo:** bool
 
 ### mistStart
 
-The mist start point.
+O ponto de início da névoa.
 
 **Tipo:** float
 
 ### mistDistance
 
-The mist distance fom the start point to reach 100% mist.
+A distância, a partir do ponto de início, para a névoa chegar a 100%.
 
 **Tipo:** float
 
 ### mistIntensity
 
-The mist intensity.
+A intensidade da névoa.
 
 **Tipo:** float
 
 ### mistType
 
-The type of mist - must be KX_MIST_QUADRATIC, KX_MIST_LINEAR or KX_MIST_INV_QUADRATIC
+O tipo de névoa: deve ser KX_MIST_QUADRATIC, KX_MIST_LINEAR ou KX_MIST_INV_QUADRATIC
 
 ### mistColor
 
-The color of the mist. Black = [0.0, 0.0, 0.0], White = [1.0, 1.0, 1.0]. Mist and background color sould always set to the same color.
+A cor da névoa. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0]. A névoa e a cor de fundo devem ter sempre a mesma cor.
 
 **Tipo:** `mathutils.Color`
 
 ### horizonColor
 
-The horizon color. Black = [0.0, 0.0, 0.0, 1.0], White = [1.0, 1.0, 1.0, 1.0]. Mist and horizon color should always be set to the same color.
+A cor do horizonte. Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0]. A névoa e a cor do horizonte devem ter sempre a mesma cor.
 
 **Tipo:** `mathutils.Vector`
 
 ### zenithColor
 
-The zenith color. Black = [0.0, 0.0, 0.0, 1.0], White = [1.0, 1.0, 1.0, 1.0].
+A cor do zênite. Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0].
 
 **Tipo:** `mathutils.Vector`
 
 ### ambientColor
 
-The color of the ambient light. Black = [0.0, 0.0, 0.0], White = [1.0, 1.0, 1.0].
+A cor da luz ambiente. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0].
 
 **Tipo:** `mathutils.Color`
 
 ### exposure
 
-Amount of exponential color correction for light.
+Quantidade de correção de cor exponencial da luz.
 
 **Tipo:** float between 0.0 and 1.0 inclusive
 
 ### range
 
-The color range that will be mapped to 0 - 1.
+O intervalo de cor que será mapeado para 0 - 1.
 
 **Tipo:** float between 0.2 and 5.0 inclusive
 
 ### envLightEnergy
 
-The environment light energy.
+A energia da luz de ambiente.
 
 **Tipo:** float from 0.0 to infinite
 
 ### envLightEnabled
 
-Returns True if Environment Lighting is enabled. Else returns False
+Devolve True se Environment Lighting estiver ligado; senão, False
 
 **Tipo:** bool (read only)
 
 ### envLightColor
 
-White:       returns 0 SkyColor:    returns 1 SkyTexture:  returns 2
+White: devolve 0 SkyColor: devolve 1 SkyTexture: devolve 2
 
 **Tipo:** int (read only)
 
 ### setWeather(name, value)
 
-Changes a World weather setting at runtime (the "weather." prefix is optional). Booleans: `rain`, `ripples`, `splash`, `puddles`, `puddle_ssr`, `ripple_puddle_only`, `splash_puddle_only` (both also turn `puddles` on), `aura`, `lightning`, `lightning_side`, `clouds`, `lens_flare`, `mist`. Floats: `rain_intensity`, `rain_density`, `rain_speed`, `rain_wind`, `rain_darken`, `rain_streak_width`, `ripple_intensity`, `ripple_normal`, `ripple_size`, `ripple_rate`, `splash_normal`, `splash_min_up`, `splash_size`, `splash_rate`, `splash_intensity`, `splash_distance`, `puddle_amount`, `puddle_size`, `puddle_darkness`, `puddle_reflection`, `puddle_distance`, `puddle_min_up`, `aura_size`, `aura_rate`, `aura_intensity`, `aura_distance`, `lightning_rate`, `lightning_intensity`, `lightning_distance`, `lightning_width`, `cloud_coverage`, `cloud_scale`, `cloud_speed`, `flare_scale`, `flare_intensity`, `mist_*`.
+Muda uma configuração de clima do World em tempo de execução (o prefixo "weather." é opcional). Booleanos: `rain`, `ripples`, `splash`, `puddles`, `puddle_ssr`, `ripple_puddle_only`, `splash_puddle_only` (os dois também ligam `puddles`), `aura`, `lightning`, `lightning_side`, `clouds`, `lens_flare`, `mist`. Floats: `rain_intensity`, `rain_density`, `rain_speed`, `rain_wind`, `rain_darken`, `rain_streak_width`, `ripple_intensity`, `ripple_normal`, `ripple_size`, `ripple_rate`, `splash_normal`, `splash_min_up`, `splash_size`, `splash_rate`, `splash_intensity`, `splash_distance`, `puddle_amount`, `puddle_size`, `puddle_darkness`, `puddle_reflection`, `puddle_distance`, `puddle_min_up`, `aura_size`, `aura_rate`, `aura_intensity`, `aura_distance`, `lightning_rate`, `lightning_intensity`, `lightning_distance`, `lightning_width`, `cloud_coverage`, `cloud_scale`, `cloud_speed`, `flare_scale`, `flare_intensity`, `mist_*`.
 
 ```python
 
@@ -123,18 +123,18 @@ scene.world.setWeather("aura", True)
 scene.world.setWeather("splash_size", 1.5)
 ```
 
-- **`name`**: setting name
+- **`name`**: nome da configuração
   - tipo: string
-- **`value`**: new value
+- **`value`**: novo valor
   - tipo: bool or float
 
-**Erro:** unknown setting name
+**Erro:** nome de configuração desconhecido
 
 ### strikeLightning(bolt=True)
 
-Strikes a lightning now (World > Rain must be on; automatic lightning can stay off).
+Dispara um raio agora (World > Rain precisa estar ligado; os raios automáticos podem ficar desligados).
 
-- **`bolt`**: show a bolt; False gives only a far flash behind the clouds
+- **`bolt`**: mostra o raio; False dá só um clarão distante atrás das nuvens
   - tipo: bool
 
 ## Sem documentação da Range
@@ -145,35 +145,49 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
-current value of a World weather setting (bool or float)
+valor atual de uma configuração de clima do World (bool ou float)
 
 ### atmosphereAltitude
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Altitude do observador na atmosfera.
 
 ### atmosphereIntensity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Intensidade do céu atmosférico.
 
 ### atmosphereMieDensity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Densidade do espalhamento Mie (névoa e halo em volta do sol).
 
 ### atmosphereMieDirection
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Direção do espalhamento Mie: quanto o brilho se concentra perto do sol.
 
 ### atmosphereRayleighColor
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Cor do espalhamento Rayleigh (o azul do céu), como `[r, g, b]`. Valores negativos viram 0.
 
 ### atmosphereRayleighDensity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Densidade do espalhamento Rayleigh.
 
 ### auroraColors
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Paleta de cores da aurora: `'GREEN'`, `'CLASSIC'` ou `'SHIFTING'`.
 
 ### backgroundColor
 
@@ -181,19 +195,27 @@ current value of a World weather setting (bool or float)
 
 ### moonBrightness
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Brilho da lua.
 
 ### moonSize
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tamanho da lua no céu.
 
 ### skyType
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tipo de céu do World: `'FLAT'`, `'GRADIENT'`, `'PROCEDURAL'` ou `'ATMOSPHERIC'`. Mudar recompila o shader do world no frame seguinte; materiais de objetos mantêm o tipo de céu com que foram compilados.
 
 ### starStyle
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Estilo das estrelas: `'SIMPLE'`, `'REALISTIC'` ou `'CONSTELLATIONS'`.
 
 ### sunSize
 
@@ -201,13 +223,19 @@ current value of a World weather setting (bool or float)
 
 ### useSkyAurora
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga ou desliga a aurora no céu.
 
 ### useSkyMoon
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga ou desliga a lua no céu. Muda na hora, sem recompilar o shader.
 
 ### useSkyStars
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga ou desliga as estrelas no céu.
 

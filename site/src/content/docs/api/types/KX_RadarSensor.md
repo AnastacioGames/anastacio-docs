@@ -7,35 +7,35 @@ Classe base: [`KX_NearSensor`](../kx_nearsensor/)
 
 
 
-Radar sensor is a near sensor with a conical sensor object.
+O sensor radar é um sensor near com um objeto sensor em forma de cone.
 
 ### coneOrigin
 
-The origin of the cone with which to test. The origin is in the middle of the cone. (read-only).
+A origem do cone usado no teste. A origem fica no meio do cone (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### coneTarget
 
-The center of the bottom face of the cone with which to test. (read-only).
+O centro da face de baixo do cone usado no teste (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### distance
 
-The height of the cone with which to test.
+A altura do cone usado no teste.
 
 **Tipo:** float
 
 ### angle
 
-The angle of the cone (in degrees) with which to test.
+O ângulo do cone (em graus) usado no teste.
 
 **Tipo:** float
 
 ### axis
 
-The axis on which the radar cone is cast.
+O eixo em que o cone do radar é lançado.
 
 **Tipo:** integer from 0 to 5
 

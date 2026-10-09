@@ -1,0 +1,8 @@
+Uma caixa de volume de um game object. Usada para ler e alterar a caixa de volume ou AABB.
+Desliga a atualização automática para permitir modificar a caixa.
+Aumenta a altura da caixa em 1.
+O ponto mínimo da bounding box nos eixos x, y e z.
+O ponto máximo da bounding box nos eixos x, y e z.
+O centro da bounding box (somente leitura).
+O raio da bounding box (somente leitura).
+Permite atualizar a bounding box se a malha for modificada.

@@ -1,0 +1,20 @@
+Um objeto de textura com os atributos de uma textura de material.
+Quanto a textura afeta a refletividade difusa.
+Quanto a textura afeta a cor difusa.
+Quanto a textura afeta o alpha.
+Quanto a textura afeta a refletividade especular.
+Quanto a textura afeta a cor especular.
+Quanto a textura afeta a hardness.
+Quanto a textura afeta a emissão.
+Quanto a textura afeta a cor de espelho.
+Quanto a textura afeta os valores de normal.
+Altura do parallax occlusion mapping.
+Número de passos para fazer o efeito de parallax.
+Bias aplicado ao mipmapping.
+Bind code/Id/número da textura.
+Texture renderer desta textura.
+Índice de refração usado para calcular a refração.
+Quanto da refração é misturada com a reflexão.
+Deslocamento aplicado às coordenadas UV da textura (principalmente translação nos eixos U e V).
+Escala aplicada às coordenadas UV da textura.
+Rotação aplicada às coordenadas UV da textura.

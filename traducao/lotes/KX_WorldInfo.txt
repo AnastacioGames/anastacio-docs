@@ -1,0 +1,26 @@
+Um objeto de mundo.
+Deixa a cor da névoa vermelha.
+Tipo de atenuação quadrática usada para esmaecer a névoa.
+Tipo de atenuação linear usada para esmaecer a névoa.
+Tipo de atenuação quadrática inversa usada para esmaecer a névoa.
+Devolve o estado da névoa.
+O ponto de início da névoa.
+A distância, a partir do ponto de início, para a névoa chegar a 100%.
+A intensidade da névoa.
+O tipo de névoa: deve ser KX_MIST_QUADRATIC, KX_MIST_LINEAR ou KX_MIST_INV_QUADRATIC
+A cor da névoa. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0]. A névoa e a cor de fundo devem ter sempre a mesma cor.
+A cor do horizonte. Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0]. A névoa e a cor do horizonte devem ter sempre a mesma cor.
+A cor do zênite. Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0].
+A cor da luz ambiente. Preto = [0.0, 0.0, 0.0], branco = [1.0, 1.0, 1.0].
+Quantidade de correção de cor exponencial da luz.
+O intervalo de cor que será mapeado para 0 - 1.
+A energia da luz de ambiente.
+Devolve True se Environment Lighting estiver ligado; senão, False
+White: devolve 0 SkyColor: devolve 1 SkyTexture: devolve 2
+Muda uma configuração de clima do World em tempo de execução (o prefixo "weather." é opcional). Booleanos: `rain`, `ripples`, `splash`, `puddles`, `puddle_ssr`, `ripple_puddle_only`, `splash_puddle_only` (os dois também ligam `puddles`), `aura`, `lightning`, `lightning_side`, `clouds`, `lens_flare`, `mist`. Floats: `rain_intensity`, `rain_density`, `rain_speed`, `rain_wind`, `rain_darken`, `rain_streak_width`, `ripple_intensity`, `ripple_normal`, `ripple_size`, `ripple_rate`, `splash_normal`, `splash_min_up`, `splash_size`, `splash_rate`, `splash_intensity`, `splash_distance`, `puddle_amount`, `puddle_size`, `puddle_darkness`, `puddle_reflection`, `puddle_distance`, `puddle_min_up`, `aura_size`, `aura_rate`, `aura_intensity`, `aura_distance`, `lightning_rate`, `lightning_intensity`, `lightning_distance`, `lightning_width`, `cloud_coverage`, `cloud_scale`, `cloud_speed`, `flare_scale`, `flare_intensity`, `mist_*`.
+nome da configuração
+novo valor
+nome de configuração desconhecido
+Dispara um raio agora (World > Rain precisa estar ligado; os raios automáticos podem ficar desligados).
+mostra o raio; False dá só um clarão distante atrás das nuvens
+valor atual de uma configuração de clima do World (bool ou float)

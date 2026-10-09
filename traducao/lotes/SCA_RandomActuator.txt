@@ -1,0 +1,27 @@
+Atuador Random
+Semente do gerador de números aleatórios.
+Sementes iguais produzem séries iguais. Se a semente for 0, o gerador produz o mesmo valor em toda chamada.
+o primeiro parâmetro da distribuição ativa.
+Veja a documentação dos tipos de gerador para o significado deste valor.
+o segundo parâmetro da distribuição ativa.
+Tipo de distribuição (somente leitura). Pode ser uma `destas constantes`
+o nome da propriedade que recebe o valor aleatório.
+Se os tipos do gerador e da propriedade não combinarem, a atribuição é ignorada.
+Faz este gerador produzir um valor booleano constante.
+O valor a devolver.
+Faz este gerador produzir uma distribuição booleana uniforme.
+O gerador gera True ou False com 50% de chance.
+Faz este gerador produzir uma distribuição de Bernoulli.
+Define a proporção de valores False a produzir. * 0.0: sempre gera True * 1.0: sempre gera False
+Faz este gerador produzir sempre o valor dado.
+o valor que este gerador produz.
+Faz este gerador produzir um valor aleatório entre os limites inferior e superior dados (inclusive).
+Gera um número com distribuição de Poisson.
+Faz uma série de testes de Bernoulli com o parâmetro value. Devolve o número de tentativas até ter sucesso.
+Sempre gera o valor dado.
+Gera um float aleatório entre lower_bound e upper_bound com distribuição uniforme.
+Gera um float aleatório da distribuição normal dada.
+O valor médio dos números gerados
+O desvio padrão dos números gerados.
+Gera números com distribuição exponencial negativa.
+O "tempo" de meia-vida é definido por half_life.

@@ -1,0 +1,19 @@
+O atuador Mouse controla a visibilidade do cursor do mouse e gira o objeto pai conforme o movimento do mouse.
+Desfaz a rotação causada pelo atuador Mouse.
+O movimento do mouse no eixo x afeta a rotação do objeto.
+O movimento do mouse no eixo y afeta a rotação do objeto.
+Quanto o mouse precisa andar antes de a rotação começar.
+Os valores da lista devem ficar entre 0.0 e 0.5.
+O mouse fica travado no centro da tela no eixo x.
+O mouse fica travado no centro da tela no eixo y.
+O eixo 3D do objeto que gira com o movimento do mouse. ([x, y])
+KX_ACT_MOUSE_OBJECT_AXIS_X
+KX_ACT_MOUSE_OBJECT_AXIS_Y
+KX_ACT_MOUSE_OBJECT_AXIS_Z
+A rotação causada pelo movimento do mouse no eixo x é local.
+A rotação causada pelo movimento do mouse no eixo y é local.
+Quanto de rotação o movimento do mouse nos eixos x e y causa.
+Valores negativos invertem a rotação.
+Os ângulos mínimo e máximo de rotação causada pelo movimento do mouse no eixo x, em graus. limit_x[0] é o mínimo, limit_x[1] é o máximo.
+Os ângulos mínimo e máximo de rotação causada pelo movimento do mouse no eixo y, em graus. limit_y[0] é o mínimo, limit_y[1] é o máximo.
+O deslocamento de rotação atual causado pelo atuador Mouse, em graus.

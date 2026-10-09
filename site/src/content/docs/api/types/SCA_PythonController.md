@@ -7,47 +7,47 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-A Python controller uses a Python script to activate it's actuators, based on it's sensors.
+Um controlador Python usa um script Python para ativar seus atuadores, com base nos seus sensores.
 
 ### owner
 
-The object the controller is attached to.
+O objeto ao qual o controlador está ligado.
 
 **Tipo:** `KX_GameObject`
 
 ### script
 
-The value of this variable depends on the execution methid.
+O valor desta variável depende do modo de execução.
 
-* When 'Script' execution mode is set this value contains the entire python script as a single string (not the script name as you might expect) which can be modified to run different scripts.
-* When 'Module' execution mode is set this value will contain a single line string - module name and function "module.func" or "package.modile.func" where the module names are python textblocks or external scripts.
+* No modo de execução 'Script', este valor contém o script Python inteiro numa única string (não o nome do script, como seria de esperar), que pode ser modificada para rodar outros scripts.
+* No modo de execução 'Module', este valor contém uma string de uma linha: o nome do módulo e a função, "module.func" ou "package.modile.func", em que os nomes de módulo são textblocks Python ou scripts externos.
 
 **Tipo:** string
 
 :::note
-Once this is set the script name given for warnings will remain unchanged.
+Depois que isto é definido, o nome do script usado nos avisos não muda mais.
 :::
 
 ### mode
 
-the execution mode for this controller (read-only).
+o modo de execução deste controlador (somente leitura).
 
-* Script: 0, Execite the `script` as a python code.
-* Module: 1, Execite the `script` as a module and function.
+* Script: 0, executa o `script` como código Python.
+* Module: 1, executa o `script` como módulo e função.
 
 **Tipo:** integer
 
 ### activate(actuator)
 
-Activates an actuator attached to this controller.
+Ativa um atuador ligado a este controlador.
 
-- **`actuator`**: The actuator to operate on.
+- **`actuator`**: O atuador sobre o qual operar.
   - tipo: actuator or the actuator name as a string
 
 ### deactivate(actuator)
 
-Deactivates an actuator attached to this controller.
+Desativa um atuador ligado a este controlador.
 
-- **`actuator`**: The actuator to operate on.
+- **`actuator`**: O atuador sobre o qual operar.
   - tipo: actuator or the actuator name as a string
 

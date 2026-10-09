@@ -7,55 +7,55 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Armature Actuators change constraint condition on armatures.
+Os atuadores Armature mudam a condição das constraints em armatures.
 
 ### type
 
-The type of action that the actuator executes when it is active.
+O tipo de ação que o atuador executa quando está ativo.
 
-Can be one of `these constants`
+Pode ser uma `destas constantes`
 
 **Tipo:** integer
 
 ### constraint
 
-The constraint object this actuator is controlling.
+O objeto de constraint que este atuador controla.
 
 **Tipo:** `BL_ArmatureConstraint`
 
 ### target
 
-The object that this actuator will set as primary target to the constraint it controls.
+O objeto que este atuador define como alvo principal da constraint que controla.
 
 **Tipo:** `KX_GameObject`
 
 ### subtarget
 
-The object that this actuator will set as secondary target to the constraint it controls.
+O objeto que este atuador define como alvo secundário da constraint que controla.
 
 **Tipo:** `KX_GameObject`.
 
 :::note
-Currently, the only secondary target is the pole target for IK constraint.
+Por enquanto, o único alvo secundário é o pole target das constraints IK.
 :::
 
 ### weight
 
-The weight this actuator will set on the constraint it controls.
+O peso que este atuador define na constraint que controla.
 
 **Tipo:** float.
 
 :::note
-Currently only the IK constraint has a weight. It must be a value between 0 and 1.
+Por enquanto só a constraint IK tem peso. Deve ser um valor entre 0 e 1.
 :::
 
 :::note
-A weight of 0 disables a constraint while still updating constraint runtime values (see `BL_ArmatureConstraint`)
+Peso 0 desliga a constraint, mas continua atualizando os valores dela em tempo de execução (veja `BL_ArmatureConstraint`)
 :::
 
 ### influence
 
-The influence this actuator will set on the constraint it controls.
+A influência que este atuador define na constraint que controla.
 
 **Tipo:** float.
 

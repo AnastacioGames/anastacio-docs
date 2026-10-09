@@ -7,29 +7,29 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Message Actuator
+Atuador Message
 
 ### propName
 
-Messages will only be sent to objects with the given property name.
+As mensagens só são enviadas para objetos com o nome de propriedade indicado.
 
 **Tipo:** string
 
 ### subject
 
-The subject field of the message.
+O campo assunto da mensagem.
 
 **Tipo:** string
 
 ### body
 
-The body of the message.
+O corpo da mensagem.
 
 **Tipo:** string
 
 ### usePropBody
 
-Send a property instead of a regular body message.
+Envia uma propriedade em vez de uma mensagem com corpo normal.
 
 **Tipo:** boolean
 

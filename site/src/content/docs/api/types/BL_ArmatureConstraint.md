@@ -7,121 +7,121 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-Proxy to Armature Constraint. Allows to change constraint on the fly. Obtained through `BL_ArmatureObject`.constraints.
+Proxy para uma constraint de armature. Permite mudar a constraint em tempo real. Obtido por `BL_ArmatureObject`.constraints.
 
 :::note
-Not all armature constraints are supported in the GE.
+Nem todas as constraints de armature são suportadas na GE.
 :::
 
 ### type
 
-Type of constraint, (read-only).
+Tipo da constraint (somente leitura).
 
-Use one of `these constants`.
+Use uma `destas constantes`.
 
 **Tipo:** integer, one of CONSTRAINT_TYPE_* constants
 
 ### name
 
-Name of constraint constructed as <bone_name>:<constraint_name>. constraints list.
+Nome da constraint, montado como <bone_name>:<constraint_name>, na lista constraints.
 
 **Tipo:** string
 
-This name is also the key subscript on `BL_ArmatureObject`.
+Este nome também é a chave de índice em `BL_ArmatureObject`.
 
 ### enforce
 
-fraction of constraint effect that is enforced. Between 0 and 1.
+fração do efeito da constraint que é aplicada. Entre 0 e 1.
 
 **Tipo:** float
 
 ### headtail
 
-Position of target between head and tail of the target bone: 0=head, 1=tail.
+Posição do alvo entre a cabeça e a cauda do bone alvo: 0=cabeça, 1=cauda.
 
 **Tipo:** float.
 
 :::note
-Only used if the target is a bone (i.e target object is an armature.
+Só é usado se o alvo for um bone (ou seja, se o objeto alvo for uma armature).
 :::
 
 ### lin_error
 
-runtime linear error (in Blender units) on constraint at the current frame.
+erro linear da constraint em tempo de execução (em unidades do Blender) no frame atual.
 
-This is a runtime value updated on each frame by the IK solver. Only available on IK constraint and iTaSC solver.
+É um valor de tempo de execução, atualizado a cada frame pelo solver de IK. Só existe em constraints IK com o solver iTaSC.
 
 **Tipo:** float
 
 ### rot_error
 
-Runtime rotation error (in radiant) on constraint at the current frame.
+Erro de rotação da constraint em tempo de execução (em radianos) no frame atual.
 
 **Tipo:** float.
 
-This is a runtime value updated on each frame by the IK solver. Only available on IK constraint and iTaSC solver.
+É um valor de tempo de execução, atualizado a cada frame pelo solver de IK. Só existe em constraints IK com o solver iTaSC.
 
-It is only set if the constraint has a rotation part, for example, a CopyPose+Rotation IK constraint.
+Só é definido se a constraint tiver parte de rotação, por exemplo, uma constraint IK CopyPose+Rotation.
 
 ### target
 
-Primary target object for the constraint. The position of this object in the GE will be used as target for the constraint.
+Objeto alvo principal da constraint. A posição deste objeto na GE é usada como alvo da constraint.
 
 **Tipo:** `KX_GameObject`.
 
 ### subtarget
 
-Secondary target object for the constraint. The position of this object in the GE will be used as secondary target for the constraint.
+Objeto alvo secundário da constraint. A posição deste objeto na GE é usada como alvo secundário da constraint.
 
 **Tipo:** `KX_GameObject`.
 
-Currently this is only used for pole target on IK constraint.
+Por enquanto isto só é usado como pole target em constraints IK.
 
 ### active
 
-True if the constraint is active.
+True se a constraint está ativa.
 
 **Tipo:** boolean
 
 :::note
-An inactive constraint does not update lin_error and rot_error.
+Uma constraint inativa não atualiza lin_error nem rot_error.
 :::
 
 ### ik_weight
 
-Weight of the IK constraint between 0 and 1.
+Peso da constraint IK, entre 0 e 1.
 
-Only defined for IK constraint.
+Só definido para constraints IK.
 
 **Tipo:** float
 
 ### ik_type
 
-Type of IK constraint, (read-only).
+Tipo de constraint IK (somente leitura).
 
-Use one of `these constants`.
+Use uma `destas constantes`.
 
 **Tipo:** integer.
 
 ### ik_flag
 
-Combination of IK constraint option flags, read-only.
+Combinação das flags de opção da constraint IK (somente leitura).
 
-Use one of `these constants`.
+Use uma `destas constantes`.
 
 **Tipo:** integer
 
 ### ik_dist
 
-Distance the constraint is trying to maintain with target, only used when ik_type=CONSTRAINT_IK_DISTANCE.
+Distância que a constraint tenta manter do alvo; só usada quando ik_type=CONSTRAINT_IK_DISTANCE.
 
 **Tipo:** float
 
 ### ik_mode
 
-Use one of `these constants`.
+Use uma `destas constantes`.
 
-Additional mode for IK constraint. Currently only used for Distance constraint:
+Modo adicional da constraint IK. Por enquanto só é usado na constraint Distance:
 
 **Tipo:** integer
 

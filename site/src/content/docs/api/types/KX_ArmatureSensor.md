@@ -7,25 +7,25 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-Armature sensor detect conditions on armatures.
+O sensor de armature detecta condições em armatures.
 
 ### type
 
-The type of measurement that the sensor make when it is active.
+O tipo de medida que o sensor faz quando está ativo.
 
-Can be one of `these constants`
+Pode ser uma `destas constantes`
 
 **Tipo:** integer.
 
 ### constraint
 
-The constraint object this sensor is watching.
+O objeto de constraint que este sensor observa.
 
 **Tipo:** `BL_ArmatureConstraint`
 
 ### value
 
-The threshold used in the comparison with the constraint error The linear error is only updated on CopyPose/Distance IK constraint with iTaSC solver The rotation error is only updated on CopyPose+rotation IK constraint with iTaSC solver The linear error on CopyPose is always >= 0: it is the norm of the distance between the target and the bone The rotation error on CopyPose is always >= 0: it is the norm of the equivalent rotation vector between the bone and the target orientations The linear error on Distance can be positive if the distance between the bone and the target is greater than the desired distance, and negative if the distance is smaller.
+O limite usado na comparação com o erro da constraint. O erro linear só é atualizado em constraints IK CopyPose/Distance com o solver iTaSC. O erro de rotação só é atualizado em constraints IK CopyPose+rotação com o solver iTaSC. O erro linear em CopyPose é sempre >= 0: é a norma da distância entre o alvo e o bone. O erro de rotação em CopyPose é sempre >= 0: é a norma do vetor de rotação equivalente entre as orientações do bone e do alvo. O erro linear em Distance pode ser positivo se a distância entre o bone e o alvo for maior que a desejada, e negativo se for menor.
 
 **Tipo:** float
 

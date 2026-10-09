@@ -7,11 +7,11 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-The mouse actuator gives control over the visibility of the mouse cursor and rotates the parent object according to mouse movement.
+O atuador Mouse controla a visibilidade do cursor do mouse e gira o objeto pai conforme o movimento do mouse.
 
 ### reset()
 
-Undoes the rotation caused by the mouse actuator.
+Desfaz a rotação causada pelo atuador Mouse.
 
 ### visible
 
@@ -21,39 +21,39 @@ A visibilidade do cursor do mouse.
 
 ### use_axis_x
 
-Mouse movement along the x axis effects object rotation.
+O movimento do mouse no eixo x afeta a rotação do objeto.
 
 **Tipo:** boolean
 
 ### use_axis_y
 
-Mouse movement along the y axis effects object rotation.
+O movimento do mouse no eixo y afeta a rotação do objeto.
 
 **Tipo:** boolean
 
 ### threshold
 
-Amount of movement from the mouse required before rotation is triggered.
+Quanto o mouse precisa andar antes de a rotação começar.
 
 **Tipo:** `mathutils.Vector`
 
-The values in the list should be between 0.0 and 0.5.
+Os valores da lista devem ficar entre 0.0 e 0.5.
 
 ### reset_x
 
-Mouse is locked to the center of the screen on the x axis.
+O mouse fica travado no centro da tela no eixo x.
 
 **Tipo:** boolean
 
 ### reset_y
 
-Mouse is locked to the center of the screen on the y axis.
+O mouse fica travado no centro da tela no eixo y.
 
 **Tipo:** boolean
 
 ### object_axis
 
-The object's 3D axis to rotate with the mouse movement. ([x, y])
+O eixo 3D do objeto que gira com o movimento do mouse. ([x, y])
 
 **Tipo:** list (vector of 2 integers from 0 to 2)
 
@@ -63,39 +63,39 @@ The object's 3D axis to rotate with the mouse movement. ([x, y])
 
 ### local_x
 
-Rotation caused by mouse movement along the x axis is local.
+A rotação causada pelo movimento do mouse no eixo x é local.
 
 **Tipo:** boolean
 
 ### local_y
 
-Rotation caused by mouse movement along the y axis is local.
+A rotação causada pelo movimento do mouse no eixo y é local.
 
 **Tipo:** boolean
 
 ### sensitivity
 
-The amount of rotation caused by mouse movement along the x and y axis.
+Quanto de rotação o movimento do mouse nos eixos x e y causa.
 
 **Tipo:** `mathutils.Vector`
 
-Negative values invert the rotation.
+Valores negativos invertem a rotação.
 
 ### limit_x
 
-The minimum and maximum angle of rotation caused by mouse movement along the x axis in degrees. limit_x[0] is minimum, limit_x[1] is maximum.
+Os ângulos mínimo e máximo de rotação causada pelo movimento do mouse no eixo x, em graus. limit_x[0] é o mínimo, limit_x[1] é o máximo.
 
 **Tipo:** `mathutils.Vector`
 
 ### limit_y
 
-The minimum and maximum angle of rotation caused by mouse movement along the y axis in degrees. limit_y[0] is minimum, limit_y[1] is maximum.
+Os ângulos mínimo e máximo de rotação causada pelo movimento do mouse no eixo y, em graus. limit_y[0] é o mínimo, limit_y[1] é o máximo.
 
 **Tipo:** `mathutils.Vector`
 
 ### angle
 
-The current rotational offset caused by the mouse actuator in degrees.
+O deslocamento de rotação atual causado pelo atuador Mouse, em graus.
 
 **Tipo:** `mathutils.Vector`
 

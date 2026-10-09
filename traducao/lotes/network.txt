@@ -1,0 +1,8 @@
+Módulo `Range.network` da Anastacio Engine. Também acessível como `bge.network`.
+Chama um RPC do jogo registrado com @rpc; obj faz dela uma chamada de objeto (o alvo 'owner' e owner_only usam o dono dele). False quando recusada aqui (sem sessão, alvo errado...).
+Abre um servidor. Valores zero ou vazios usam o painel Network da cena.
+Entra em 'host', 'host:port' ou '[v6]:port'.
+-> (obj, point, distance) ou None. Servidor: raio contra as hitboxes como o cliente as viu (compensação de lag, 1 s de histórico); -1 = agora.
+, transform=True, velocity=False, angular_velocity=False, always_relevant=False, priority=1.0, quantize=None) -> int. Igual à caixa Replicate; rode antes de host()/join(), na mesma ordem em todos os peers. quantize={name: (min, max, bits)} envia propriedades Float em menos bits.
+Só no servidor: centro de relevância (objeto ou posição) e raio de um cliente; raio 0 envia tudo. Sem centro: o primeiro objeto que o cliente possui. Tudo None: volta ao Relevance Radius da cena.
+Só no servidor: adiciona uma cópia do objeto inativo 'prototype' e a replica.

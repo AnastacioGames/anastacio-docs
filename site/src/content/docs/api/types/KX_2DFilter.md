@@ -7,10 +7,10 @@ Classe base: [`BL_Shader`](../bl_shader/)
 
 
 
-2D filter shader object. Can be alterated with `BL_Shader`'s functions.
+Objeto de shader de filtro 2D. Pode ser alterado com as funções de `BL_Shader`.
 
 :::caution
-The vertex shader must not apply modelview and projection transformation. It should be similar to:
+O vertex shader não deve aplicar as transformações de modelview e projeção. Ele deve ficar parecido com:
 
 ```glsl
 
@@ -23,7 +23,7 @@ void main()
 
 ### mipmap
 
-Request mipmap generation of the render `bgl_RenderedTexture` texture. Accessing mipmapping level is similar to:
+Pede a geração de mipmaps da textura de render `bgl_RenderedTexture`. Acessar um nível de mipmap fica parecido com:
 
 ```glsl
 
@@ -40,54 +40,54 @@ void main()
 
 ### offScreen
 
-The custom off screen the filter render to (read-only).
+O off screen personalizado em que o filtro renderiza (somente leitura).
 
 **Tipo:** `Range.types.KX_2DFilterOffScreen` or None
 
 ### setTexture(index, bindCode, samplerName="")
 
-Set specified texture bind code `bindCode` in specified slot `index`. Any call to `setTexture` should be followed by a call to `BL_Shader.setSampler` with the same `index` if `sampleName` is not specified.
+Coloca o bind code de textura `bindCode` no slot `index`. Toda chamada a `setTexture` deve vir seguida de uma chamada a `BL_Shader.setSampler` com o mesmo `index` se `sampleName` não for passado.
 
-- **`index`**: The texture slot.
+- **`index`**: O slot da textura.
   - tipo: integer
-- **`bindCode`**: The texture bind code/Id.
+- **`bindCode`**: O bind code/Id da textura.
   - tipo: integer
-- **`samplerName`**: The shader sampler name set to `index` if `samplerName` is passed in the function. (optional)
+- **`samplerName`**: O nome do sampler do shader ligado a `index`, se `samplerName` for passado à função (opcional).
   - tipo: string
 
 ### setCubeMap(index, bindCode, samplerName="")
 
-Set specified cube map texture bind code `bindCode` in specified slot `index`. Any call to `setCubeMap` should be followed by a call to `BL_Shader.setSampler` with the same `index` if `sampleName` is not specified.
+Coloca o bind code de textura cube map `bindCode` no slot `index`. Toda chamada a `setCubeMap` deve vir seguida de uma chamada a `BL_Shader.setSampler` com o mesmo `index` se `sampleName` não for passado.
 
-- **`index`**: The texture slot.
+- **`index`**: O slot da textura.
   - tipo: integer
-- **`bindCode`**: The cube map texture bind code/Id.
+- **`bindCode`**: O bind code/Id da textura cube map.
   - tipo: integer
-- **`samplerName`**: The shader sampler name set to `index` if `samplerName` is passed in the function. (optional)
+- **`samplerName`**: O nome do sampler do shader ligado a `index`, se `samplerName` for passado à função (opcional).
   - tipo: string
 
 ### addOffScreen(slots, depth=False, width=-1, height=-1, hdr=bge.render.HDR_NONE, mipmap=False)
 
-Register a custom off screen to render the filter to.
+Registra um off screen personalizado para o filtro renderizar.
 
-- **`slots`**: The number of color texture attached to the off screen, between 0 and 8 excluded.
+- **`slots`**: O número de texturas de cor ligadas ao off screen, de 0 a 8 (8 excluído).
   - tipo: integer
-- **`depth`**: True of the off screen use a depth texture (optional).
+- **`depth`**: True se o off screen usa uma textura de profundidade (opcional).
   - tipo: boolean
-- **`width`**: The off screen width, -1 if it can be resized dynamically when the viewport dimensions changed (optional).
+- **`width`**: A largura do off screen; -1 se ele pode ser redimensionado dinamicamente quando as dimensões da viewport mudam (opcional).
   - tipo: integer
-- **`height`**: The off screen height, -1 if it can be resized dynamically when the viewport dimensions changed (optional).
+- **`height`**: A altura do off screen; -1 se ele pode ser redimensionado dinamicamente quando as dimensões da viewport mudam (opcional).
   - tipo: integer
-- **`hdr`**: The image quality HDR of the color textures (optional).
+- **`hdr`**: A qualidade de imagem HDR das texturas de cor (opcional).
   - tipo: one of `these constants`
-- **`mipmap`**: True if the color texture generate mipmap at the end of the filter rendering (optional).
+- **`mipmap`**: True se a textura de cor gera mipmaps no fim do render do filtro (opcional).
   - tipo: boolean
 
 :::note
-If the off screen is created using a dynamic size (`width` and `height` to -1) its bind codes will be unavailable before the next render of the filter and the it can change when the viewport is resized.
+Se o off screen é criado com tamanho dinâmico (`width` e `height` iguais a -1), os bind codes ficam indisponíveis até o próximo render do filtro e podem mudar quando a viewport é redimensionada.
 :::
 
 ### removeOffScreen()
 
-Unregister the custom off screen the filter render to.
+Remove o registro do off screen personalizado em que o filtro renderiza.
 

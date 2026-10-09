@@ -7,53 +7,53 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Vibration Actuator.
+Atuador Vibration.
 
 ### joyindex
 
-Joystick index.
+Índice do joystick.
 
 **Tipo:** integer (0 to 7)
 
 ### strengthLeft
 
-Strength of the Low frequency joystick's motor (placed at left position usually).
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
 
 **Tipo:** float (0.0 to 1.0)
 
 ### strengthRight
 
-Strength of the High frequency joystick's motor (placed at right position usually).
+Força do motor de alta frequência do joystick (em geral fica à direita).
 
 **Tipo:** float (0.0 to 1.0)
 
 ### duration
 
-Duration of the vibration in milliseconds.
+Duração da vibração em milissegundos.
 
 **Tipo:** integer (0 to infinite)
 
 ### isVibrating
 
-Check status of joystick vibration
+Verifica o status da vibração do joystick
 
 **Tipo:** bool (true vibrating and false stopped)
 
 ### hasVibration
 
-Check if the joystick supports vibration
+Verifica se o joystick suporta vibração
 
 **Tipo:** bool (true supported and false not supported)
 
 ### startVibration()
 
-Starts the vibration.
+Começa a vibração.
 
 **Retorna:** None
 
 ### stopVibration()
 
-Stops the vibration.
+Para a vibração.
 
 **Retorna:** None
 

@@ -1,0 +1,2 @@
+Um controlador XOR ativa quando as entradas estão misturadas, mas não quando todas estão ligadas ou desligadas.
+Não há métodos Python especiais para este controlador.

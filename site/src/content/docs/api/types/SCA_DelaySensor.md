@@ -7,37 +7,37 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-The Delay sensor generates positive and negative triggers at precise time, expressed in number of frames. The delay parameter defines the length of the initial OFF period. A positive trigger is generated at the end of this period.
+O sensor Delay gera disparos positivos e negativos em momentos precisos, contados em frames. O parâmetro delay define a duração do período OFF inicial. Um disparo positivo é gerado no fim desse período.
 
-The duration parameter defines the length of the ON period following the OFF period. There is a negative trigger at the end of the ON period. If duration is 0, the sensor stays ON and there is no negative trigger.
+O parâmetro duration define a duração do período ON que vem depois do OFF. Há um disparo negativo no fim do período ON. Se duration for 0, o sensor fica ON e não há disparo negativo.
 
-The sensor runs the OFF-ON cycle once unless the repeat option is set: the OFF-ON cycle repeats indefinately (or the OFF cycle if duration is 0).
+O sensor roda o ciclo OFF-ON uma vez, a menos que a opção repeat esteja ligada: aí o ciclo OFF-ON se repete sem parar (ou só o OFF, se duration for 0).
 
-Use `SCA_ISensor.reset` at any time to restart sensor.
+Use `SCA_ISensor.reset` a qualquer momento para reiniciar o sensor.
 
 ### delay
 
-length of the initial OFF period as number of frame, 0 for immediate trigger.
+duração do período OFF inicial em número de frames; 0 para disparar na hora.
 
 **Tipo:** integer.
 
 ### duration
 
-length of the ON period in number of frame after the initial OFF period.
+duração do período ON em número de frames, depois do período OFF inicial.
 
-If duration is greater than 0, a negative trigger is sent at the end of the ON pulse.
+Se duration for maior que 0, um disparo negativo é enviado no fim do pulso ON.
 
 **Tipo:** integer
 
 ### repeat
 
-1 if the OFF-ON cycle should be repeated indefinately, 0 if it should run once.
+1 se o ciclo OFF-ON deve se repetir sem parar, 0 se deve rodar uma vez.
 
 **Tipo:** integer
 
 ### repeatTimes
 
-Number of times the actuator will repeat.
+Número de vezes que o atuador vai repetir.
 
 **Tipo:** integer.
 

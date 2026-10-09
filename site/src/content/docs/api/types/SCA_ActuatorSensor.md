@@ -7,11 +7,11 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-Actuator sensor detect change in actuator state of the parent object. It generates a positive pulse if the corresponding actuator is activated and a negative pulse if the actuator is deactivated.
+O sensor Actuator detecta mudanças no estado de um atuador do objeto pai. Ele gera um pulso positivo quando o atuador é ativado e um pulso negativo quando é desativado.
 
 ### actuator
 
-the name of the actuator that the sensor is monitoring.
+o nome do atuador que o sensor está monitorando.
 
 **Tipo:** string
 

@@ -1,0 +1,50 @@
+Um vértice guarda informações de posição, UV, cor e normal.
+Nota: a simulação de física NÃO é atualizada por enquanto; a física não reage a mudanças na posição do vértice.
+A posição do vértice.
+As coordenadas de textura do vértice.
+A lista de coordenadas de textura do vértice.
+A normal do vértice.
+A tangente do vértice (somente leitura), calculada a partir do UV map usado pelo nó Normal Map ou Tangent do material (o UV map ativo por padrão). O componente w guarda o sinal da bitangente.
+A cor do vértice.
+Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0]
+A lista de cores do vértice.
+A coordenada x do vértice.
+A coordenada y do vértice.
+A coordenada z do vértice.
+A coordenada de textura u do vértice.
+A coordenada de textura v do vértice.
+A segunda coordenada de textura u do vértice.
+A segunda coordenada de textura v do vértice.
+O componente vermelho da cor do vértice. 0.0 <= r <= 1.0.
+O componente verde da cor do vértice. 0.0 <= g <= 1.0.
+O componente azul da cor do vértice. 0.0 <= b <= 1.0.
+O componente alpha da cor do vértice. 0.0 <= a <= 1.0.
+Pega a posição deste vértice.
+a posição deste vértice em coordenadas locais.
+Define a posição deste vértice.
+a nova posição deste vértice em coordenadas locais.
+Pega as coordenadas UV (de textura) deste vértice.
+as coordenadas UV (de textura) deste vértice.
+Define as coordenadas UV (de textura) deste vértice.
+Pega as 2ªs coordenadas UV (de textura) deste vértice.
+Define as 2ªs coordenadas UV (de textura) deste vértice.
+argumento opcional, FLAT==1, SECOND_UV==2; o padrão é SECOND_UV
+Pega a cor deste vértice.
+A cor é representada como quatro bytes empacotados num inteiro, no formato RGBA.
+Como o Python não tem como pegar cada byte sem deslocamento de bits, use o módulo struct para acessar a cor de um jeito independente da máquina.
+Por isso, é recomendado usar os atributos r, g, b e a ou o atributo color.
+col = (r, g, b, a)
+black = (  0, 0, 0, 255)
+white = (255, 255, 255, 255)
+cor empacotada. Inteiro de 4 bytes com um byte por canal de cor, no formato RGBA.
+Define a cor deste vértice.
+Veja getRGBA() para o formato de col e os problemas dele. Use os atributos r, g, b e a ou o atributo color.
+setRGBA() também aceita uma lista de quatro componentes como argumento col. A lista representa a cor como [r, g, b, a], com preto = [0.0, 0.0, 0.0, 1.0] e branco = [1.0, 1.0, 1.0, 1.0]
+Vermelho
+Verde em little endian, roxo transparente em big endian
+Verde em todas as plataformas.
+a nova cor deste vértice, no formato RGBA empacotado.
+Pega o vetor normal deste vértice.
+vetor normal normalizado.
+Define o vetor normal deste vértice.
+a nova normal deste vértice.

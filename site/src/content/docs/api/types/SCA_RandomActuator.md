@@ -7,115 +7,115 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Random Actuator
+Atuador Random
 
 ### seed
 
-Seed of the random number generator.
+Semente do gerador de números aleatórios.
 
 **Tipo:** integer.
 
-Equal seeds produce equal series. If the seed is 0, the generator will produce the same value on every call.
+Sementes iguais produzem séries iguais. Se a semente for 0, o gerador produz o mesmo valor em toda chamada.
 
 ### para1
 
-the first parameter of the active distribution.
+o primeiro parâmetro da distribuição ativa.
 
 **Tipo:** float, read-only.
 
-Refer to the documentation of the generator types for the meaning of this value.
+Veja a documentação dos tipos de gerador para o significado deste valor.
 
 ### para2
 
-the second parameter of the active distribution.
+o segundo parâmetro da distribuição ativa.
 
 **Tipo:** float, read-only
 
-Refer to the documentation of the generator types for the meaning of this value.
+Veja a documentação dos tipos de gerador para o significado deste valor.
 
 ### distribution
 
-Distribution type. (read-only). Can be one of `these constants`
+Tipo de distribuição (somente leitura). Pode ser uma `destas constantes`
 
 **Tipo:** integer
 
 ### propName
 
-the name of the property to set with the random value.
+o nome da propriedade que recebe o valor aleatório.
 
 **Tipo:** string
 
-If the generator and property types do not match, the assignment is ignored.
+Se os tipos do gerador e da propriedade não combinarem, a atribuição é ignorada.
 
 ### setBoolConst(value)
 
-Sets this generator to produce a constant boolean value.
+Faz este gerador produzir um valor booleano constante.
 
-- **`value`**: The value to return.
+- **`value`**: O valor a devolver.
   - tipo: boolean
 
 ### setBoolUniform()
 
-Sets this generator to produce a uniform boolean distribution.
+Faz este gerador produzir uma distribuição booleana uniforme.
 
-The generator will generate True or False with 50% chance.
+O gerador gera True ou False com 50% de chance.
 
 ### setBoolBernouilli(value)
 
-Sets this generator to produce a Bernouilli distribution.
+Faz este gerador produzir uma distribuição de Bernoulli.
 
-- **`value`**: Specifies the proportion of False values to produce. * 0.0: Always generate True * 1.0: Always generate False
+- **`value`**: Define a proporção de valores False a produzir. * 0.0: sempre gera True * 1.0: sempre gera False
   - tipo: float
 
 ### setIntConst(value)
 
-Sets this generator to always produce the given value.
+Faz este gerador produzir sempre o valor dado.
 
-- **`value`**: the value this generator produces.
+- **`value`**: o valor que este gerador produz.
   - tipo: integer
 
 ### setIntUniform(lower_bound, upper_bound)
 
-Sets this generator to produce a random value between the given lower and upper bounds (inclusive).
+Faz este gerador produzir um valor aleatório entre os limites inferior e superior dados (inclusive).
 
   - tipo: integer
   - tipo: integer
 
 ### setIntPoisson(value)
 
-Generate a Poisson-distributed number.
+Gera um número com distribuição de Poisson.
 
-This performs a series of Bernouilli tests with parameter value. It returns the number of tries needed to achieve succes.
+Faz uma série de testes de Bernoulli com o parâmetro value. Devolve o número de tentativas até ter sucesso.
 
   - tipo: float
 
 ### setFloatConst(value)
 
-Always generate the given value.
+Sempre gera o valor dado.
 
   - tipo: float
 
 ### setFloatUniform(lower_bound, upper_bound)
 
-Generates a random float between lower_bound and upper_bound with a uniform distribution.
+Gera um float aleatório entre lower_bound e upper_bound com distribuição uniforme.
 
   - tipo: float
   - tipo: float
 
 ### setFloatNormal(mean, standard_deviation)
 
-Generates a random float from the given normal distribution.
+Gera um float aleatório da distribuição normal dada.
 
-- **`mean`**: The mean (average) value of the generated numbers
+- **`mean`**: O valor médio dos números gerados
   - tipo: float
-- **`standard_deviation`**: The standard deviation of the generated numbers.
+- **`standard_deviation`**: O desvio padrão dos números gerados.
   - tipo: float
 
 ### setFloatNegativeExponential(half_life)
 
-Generate negative-exponentially distributed numbers.
+Gera números com distribuição exponencial negativa.
 
-The half-life 'time' is characterized by half_life.
+O "tempo" de meia-vida é definido por half_life.
 
   - tipo: float
 

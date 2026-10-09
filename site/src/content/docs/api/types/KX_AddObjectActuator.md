@@ -7,10 +7,10 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Edit Object Actuator (in Add Object Mode)
+Atuador Edit Object (no modo Add Object)
 
 :::caution
-An Add Object actuator will be ignored if at game start, the linked object doesn't exist (or is empty) or the linked object is in an active layer.
+Um atuador Add Object é ignorado se, no início do jogo, o objeto ligado não existir (ou estiver vazio) ou estiver numa layer ativa.
 
 ```none
 
@@ -20,39 +20,39 @@ Error: GameObject 'Name' has a AddObjectActuator 'ActuatorName' without object (
 
 ### object
 
-the object this actuator adds.
+o objeto que este atuador adiciona.
 
 **Tipo:** `KX_GameObject` or None
 
 ### objectLastCreated
 
-the last added object from this actuator (read-only).
+o último objeto adicionado por este atuador (somente leitura).
 
 **Tipo:** `KX_GameObject` or None
 
 ### time
 
-the lifetime of added objects, in frames. Set to 0 to disable automatic deletion.
+o tempo de vida dos objetos adicionados, em frames. Use 0 para desligar a remoção automática.
 
 **Tipo:** float
 
 ### linearVelocity
 
-the initial linear velocity of added objects.
+a velocidade linear inicial dos objetos adicionados.
 
 **Tipo:** list [vx, vy, vz]
 
 ### angularVelocity
 
-the initial angular velocity of added objects.
+a velocidade angular inicial dos objetos adicionados.
 
 **Tipo:** list [vx, vy, vz]
 
 ### instantAddObject()
 
-adds the object without needing to calling SCA_PythonController.activate()
+adiciona o objeto sem precisar chamar SCA_PythonController.activate()
 
 :::note
-Use objectLastCreated to get the newly created object.
+Use objectLastCreated para pegar o objeto recém-criado.
 :::
 

@@ -7,109 +7,109 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Sound Actuator.
+Atuador Sound.
 
-The `startSound`, `pauseSound` and `stopSound` do not require the actuator to be activated - they act instantly provided that the actuator has been activated once at least.
+`startSound`, `pauseSound` e `stopSound` não exigem que o atuador esteja ativo: agem na hora, desde que o atuador tenha sido ativado pelo menos uma vez.
 
 ### volume
 
-The volume (gain) of the sound.
+O volume (ganho) do som.
 
 **Tipo:** float
 
 ### time
 
-The current position in the audio stream (in seconds).
+A posição atual no stream de áudio (em segundos).
 
 **Tipo:** float
 
 ### pitch
 
-The pitch of the sound.
+O pitch do som.
 
 **Tipo:** float
 
 ### mode
 
-The operation mode of the actuator. Can be one of `these constants`
+O modo de operação do atuador. Pode ser uma `destas constantes`
 
 **Tipo:** integer
 
 ### sound
 
-The sound the actuator should play.
+O som que o atuador deve tocar.
 
 **Tipo:** Audaspace factory
 
 ### is3D
 
-Whether or not the actuator should be using 3D sound. (read-only)
+Se o atuador usa som 3D ou não (somente leitura)
 
 **Tipo:** boolean
 
 ### volume_maximum
 
-The maximum gain of the sound, no matter how near it is.
+O ganho máximo do som, não importa quão perto ele esteja.
 
 **Tipo:** float
 
 ### volume_minimum
 
-The minimum gain of the sound, no matter how far it is away.
+O ganho mínimo do som, não importa quão longe ele esteja.
 
 **Tipo:** float
 
 ### distance_reference
 
-The distance where the sound has a gain of 1.0.
+A distância em que o som tem ganho 1.0.
 
 **Tipo:** float
 
 ### distance_maximum
 
-The maximum distance at which you can hear the sound.
+A distância máxima em que dá para ouvir o som.
 
 **Tipo:** float
 
 ### attenuation
 
-The influence factor on volume depending on distance.
+O fator de influência no volume conforme a distância.
 
 **Tipo:** float
 
 ### cone_angle_inner
 
-The angle of the inner cone.
+O ângulo do cone interno.
 
 **Tipo:** float
 
 ### cone_angle_outer
 
-The angle of the outer cone.
+O ângulo do cone externo.
 
 **Tipo:** float
 
 ### cone_volume_outer
 
-The gain outside the outer cone (the gain in the outer cone will be interpolated between this value and the normal gain in the inner cone).
+O ganho fora do cone externo (o ganho dentro do cone externo é interpolado entre este valor e o ganho normal do cone interno).
 
 **Tipo:** float
 
 ### startSound()
 
-Starts the sound.
+Começa o som.
 
 **Retorna:** None
 
 ### pauseSound()
 
-Pauses the sound.
+Pausa o som.
 
 **Retorna:** None
 
 ### stopSound()
 
-Stops the sound.
+Para o som.
 
 **Retorna:** None
 

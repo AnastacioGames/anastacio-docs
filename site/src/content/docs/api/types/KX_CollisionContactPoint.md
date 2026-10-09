@@ -7,7 +7,7 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-A collision contact point passed to the collision callbacks.
+Um ponto de contato de colisão passado aos callbacks de colisão.
 
 ```python
 
@@ -31,49 +31,49 @@ own.collisionCallbacks = [oncollision]
 
 ### localPointA
 
-The contact point in the owner object space.
+O ponto de contato no espaço do objeto dono.
 
 **Tipo:** `mathutils.Vector`
 
 ### localPointB
 
-The contact point in the collider object space.
+O ponto de contato no espaço do objeto colisor.
 
 **Tipo:** `mathutils.Vector`
 
 ### worldPoint
 
-The contact point in world space.
+O ponto de contato no espaço do mundo.
 
 **Tipo:** `mathutils.Vector`
 
 ### normal
 
-The contact normal in owner object space.
+A normal do contato no espaço do objeto dono.
 
 **Tipo:** `mathutils.Vector`
 
 ### combinedFriction
 
-The combined friction of the owner and collider object.
+O atrito combinado do objeto dono e do colisor.
 
 **Tipo:** float
 
 ### combinedRollingFriction
 
-The combined rolling friction of the owner and collider object.
+O atrito de rolagem combinado do objeto dono e do colisor.
 
 **Tipo:** float
 
 ### combinedRestitution
 
-The combined restitution of the owner and collider object.
+A restituição combinada do objeto dono e do colisor.
 
 **Tipo:** float
 
 ### appliedImpulse
 
-The applied impulse to the owner object.
+O impulso aplicado ao objeto dono.
 
 **Tipo:** float
 

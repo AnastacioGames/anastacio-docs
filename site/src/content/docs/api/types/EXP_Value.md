@@ -7,11 +7,11 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-This class is a basis for other classes.
+Esta classe é a base de outras classes.
 
 ### name
 
-The name of this EXP_Value derived object (read-only).
+O nome deste objeto derivado de EXP_Value (somente leitura).
 
 **Tipo:** string
 

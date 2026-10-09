@@ -7,74 +7,74 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-A Python interface to a joystick.
+Uma interface Python para um joystick.
 
 ### name
 
-The name assigned to the joystick by the operating system. (read-only)
+O nome dado ao joystick pelo sistema operacional (somente leitura)
 
 **Tipo:** string
 
 ### activeButtons
 
-A list of active button values. (read-only)
+Uma lista dos valores dos botões ativos (somente leitura)
 
 **Tipo:** list
 
 ### axisValues
 
-The state of the joysticks axis as a list of values `numAxis` long. (read-only).
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
 
 **Tipo:** list of ints.
 
-Each specifying the value of an axis between -1.0 and 1.0 depending on how far the axis is pushed, 0 for nothing. The first 2 values are used by most joysticks and gamepads for directional control. 3rd and 4th values are only on some joysticks and can be used for arbitary controls.
+Cada um dá o valor de um eixo entre -1.0 e 1.0, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
 
-* left:[-1.0, 0.0, ...]
-* right:[1.0, 0.0, ...]
+* esquerda:[-1.0, 0.0, ...]
+* direita:[1.0, 0.0, ...]
 * up:[0.0, -1.0, ...]
-* down:[0.0, 1.0, ...]
+* baixo:[0.0, 1.0, ...]
 
 ### hatValues (Deprecated. Use :data:`activeButtons` instead)
 
-The state of the joysticks hats as a list of values `numHats` long. (read-only).
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
 
 **Tipo:** list of ints
 
-Each specifying the direction of the hat from 1 to 12, 0 when inactive.
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
 
-Hat directions are as follows...
+As direções do hat são estas...
 
-* 0:None
+* 0:Nenhuma
 * 1:Up
-* 2:Right
-* 4:Down
-* 8:Left
-* 3:Up - Right
-* 6:Down - Right
-* 12:Down - Left
-* 9:Up - Left
+* 2:Direita
+* 4:Baixo
+* 8:Esquerda
+* 3:Cima - Direita
+* 6:Baixo - Direita
+* 12:Baixo - Esquerda
+* 9:Cima - Esquerda
 
 ### numAxis
 
-The number of axes for the joystick at this index. (read-only).
+O número de eixos do joystick neste índice (somente leitura).
 
 **Tipo:** integer
 
 ### numButtons
 
-The number of buttons for the joystick at this index. (read-only).
+O número de botões do joystick neste índice (somente leitura).
 
 **Tipo:** integer
 
 ### numHats (Deprecated. Use :data:`numButtons` instead)
 
-The number of hats for the joystick at this index. (read-only).
+O número de hats do joystick neste índice (somente leitura).
 
 **Tipo:** integer
 
 ### startVibration()
 
-Starts the vibration.
+Começa a vibração.
 
 **Retorna:** None
 
@@ -82,7 +82,7 @@ Starts the vibration.
 
 <span class="ae-badge pendente">sem documentação</span>
 
-Stops the vibration.
+Para a vibração.
 
 **Retorna:** None
 
@@ -90,7 +90,7 @@ Stops the vibration.
 
 <span class="ae-badge pendente">sem documentação</span>
 
-Strength of the Low frequency joystick's motor (placed at left position usually).
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
 
 **Tipo:** float (0.0 to 1.0)
 
@@ -98,7 +98,7 @@ Strength of the Low frequency joystick's motor (placed at left position usually)
 
 <span class="ae-badge pendente">sem documentação</span>
 
-Strength of the High frequency joystick's motor (placed at right position usually).
+Força do motor de alta frequência do joystick (em geral fica à direita).
 
 **Tipo:** float (0.0 to 1.0)
 
@@ -106,7 +106,7 @@ Strength of the High frequency joystick's motor (placed at right position usuall
 
 <span class="ae-badge pendente">sem documentação</span>
 
-Duration of the vibration in milliseconds.
+Duração da vibração em milissegundos.
 
 **Tipo:** integer (0 to infinite)
 
@@ -114,7 +114,7 @@ Duration of the vibration in milliseconds.
 
 <span class="ae-badge pendente">sem documentação</span>
 
-Check status of joystick vibration
+Verifica o status da vibração do joystick
 
 **Tipo:** bool (true vibrating and false stopped)
 
@@ -122,7 +122,7 @@ Check status of joystick vibration
 
 <span class="ae-badge pendente">sem documentação</span>
 
-Check if the joystick supports vibration
+Verifica se o joystick suporta vibração
 
 **Tipo:** bool (true supported and false not supported)
 

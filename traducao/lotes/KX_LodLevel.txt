@@ -1,0 +1,8 @@
+Um nível de LOD do lod manager de um game object.
+A malha usada neste nível de LOD (somente leitura).
+O número do nível de LOD (somente leitura).
+Distância a partir da qual este nível de detalhe é usado (somente leitura).
+Mudança mínima do fator de distância, em porcentagem, para voltar ao nível de detalhe anterior (somente leitura).
+True se o nível de LOD usa uma malha diferente da malha original do objeto (somente leitura).
+True se o nível de LOD usa um material diferente do material original da malha do objeto (somente leitura).
+True se o nível de LOD usa substituição de histerese (somente leitura).

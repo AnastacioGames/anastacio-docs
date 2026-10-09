@@ -7,5 +7,5 @@ Classe base: [`SCA_ILogicBrick`](../sca_ilogicbrick/)
 
 
 
-Base class for all actuator logic bricks.
+Classe base de todos os logic bricks de atuador.
 

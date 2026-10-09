@@ -1,0 +1,9 @@
+O sensor Delay gera disparos positivos e negativos em momentos precisos, contados em frames. O parâmetro delay define a duração do período OFF inicial. Um disparo positivo é gerado no fim desse período.
+O parâmetro duration define a duração do período ON que vem depois do OFF. Há um disparo negativo no fim do período ON. Se duration for 0, o sensor fica ON e não há disparo negativo.
+O sensor roda o ciclo OFF-ON uma vez, a menos que a opção repeat esteja ligada: aí o ciclo OFF-ON se repete sem parar (ou só o OFF, se duration for 0).
+Use `SCA_ISensor.reset` a qualquer momento para reiniciar o sensor.
+duração do período OFF inicial em número de frames; 0 para disparar na hora.
+duração do período ON em número de frames, depois do período OFF inicial.
+Se duration for maior que 0, um disparo negativo é enviado no fim do pulso ON.
+1 se o ciclo OFF-ON deve se repetir sem parar, 0 se deve rodar uma vez.
+Número de vezes que o atuador vai repetir.

@@ -7,17 +7,17 @@ Classe base: [`KX_CollisionSensor`](../kx_collisionsensor/)
 
 
 
-A near sensor is a specialised form of touch sensor.
+O sensor near é uma forma especializada de sensor de toque.
 
 ### distance
 
-The near sensor activates when an object is within this distance.
+O sensor near ativa quando um objeto está dentro desta distância.
 
 **Tipo:** float
 
 ### resetDistance
 
-The near sensor deactivates when the object exceeds this distance.
+O sensor near desativa quando o objeto passa desta distância.
 
 **Tipo:** float
 

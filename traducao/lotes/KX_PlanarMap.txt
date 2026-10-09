@@ -1,0 +1,2 @@
+API Python para texturas de planar map em tempo real.
+Normal do plano usada para calcular a orientação de reflexão ou refração da câmera de render.

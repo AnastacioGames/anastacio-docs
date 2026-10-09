@@ -7,17 +7,17 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-This sensor activates randomly.
+Este sensor ativa aleatoriamente.
 
 ### lastDraw
 
-The seed of the random number generator.
+A semente do gerador de números aleatórios.
 
 **Tipo:** integer
 
 ### seed
 
-The seed of the random number generator.
+A semente do gerador de números aleatórios.
 
 **Tipo:** integer
 

@@ -7,23 +7,23 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Visibility Actuator.
+Atuador Visibility.
 
 ### visibility
 
-whether the actuator makes its parent object visible or invisible.
+se o atuador deixa o objeto pai visível ou invisível.
 
 **Tipo:** boolean
 
 ### useOcclusion
 
-whether the actuator makes its parent object an occluder or not.
+se o atuador torna o objeto pai um occluder ou não.
 
 **Tipo:** boolean
 
 ### useRecursion
 
-whether the visibility/occlusion should be propagated to all children of the object.
+se a visibilidade/oclusão deve ser propagada a todos os filhos do objeto.
 
 **Tipo:** boolean
 

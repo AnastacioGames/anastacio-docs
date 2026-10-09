@@ -1396,9 +1396,87 @@ um raio cai agora (a chuva precisa estar ligada)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+### bendAngle
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Quanto o objeto entorta a cada impacto.
+
+### bendAxis
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Eixo em que o objeto entorta: `'X'`, `'Y'` ou `'Z'`.
+
+### bendMaxAngle
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Ângulo máximo que o objeto pode entortar.
+
+### burstSpeed
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Velocidade com que os fragmentos saem quando o objeto quebra.
+
+### debrisLifetime
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tempo de vida dos fragmentos depois da quebra.
+
+### decal
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Objeto usado como decalque de arranhão nas colisões, ou `None`. Precisa ser um objeto do arquivo da cena.
+
+### decalLife
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tempo de vida de cada decalque.
+
+### decalSize
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tamanho dos decalques.
+
+### dentImpulse
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Impulso mínimo de colisão para amassar o objeto.
+
+### fragments
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Nome do grupo com os fragmentos usados quando o objeto quebra, ou `None`. Só em objetos destrutíveis; senão levanta `AttributeError`.
+
+### impactImpulse
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Impulso mínimo de colisão para um objeto explosivo detonar.
+
+### isDeformable
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+`True` se o objeto tem as configurações de deformação ligadas (amassar, entortar, decalques).
+
 ### linearVelocity
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### maxDecals
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Número máximo de decalques ao mesmo tempo neste objeto.
 
 ### parentRecursive
 
@@ -1411,4 +1489,34 @@ um raio cai agora (a chuva precisa estar ligada)
 ### passIndex
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### useBreakOnCollision
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Se o objeto quebra ao colidir.
+
+### useChainReaction
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Se a explosão deste objeto detona outros explosivos por perto.
+
+### useDentOnCollision
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Se o objeto amassa ao colidir.
+
+### useExplodeOnImpact
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Se o objeto explosivo detona ao sofrer um impacto acima de `impactImpulse`.
+
+### useInheritVelocity
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Se os fragmentos herdam a velocidade do objeto ao quebrar.
 

@@ -1,0 +1,7 @@
+Um objeto com informações sobre uma operação LibLoad().
+Mostra uma mensagem quando um LibLoad assíncrono termina
+Um callback chamado quando o carregamento da lib termina.
+O status atual do carregamento da lib.
+O progresso atual do carregamento da lib, como valor normalizado de 0.0 a 1.0.
+O nome da biblioteca sendo carregada (o primeiro argumento de LibLoad).
+O tempo, em segundos, que o carregamento levou (0 até a operação terminar).

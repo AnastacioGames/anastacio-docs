@@ -7,11 +7,11 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-An object providing information about a LibLoad() operation.
+Um objeto com informações sobre uma operação LibLoad().
 
 ```python
 
-# Print a message when an async LibLoad is done
+# Mostra uma mensagem quando um LibLoad assíncrono termina
 import Range
 
 def finished_cb(status):
@@ -22,31 +22,31 @@ Range.logic.LibLoad('myblend.blend', 'Scene', asynchronous=True).onFinish = fini
 
 ### onFinish
 
-A callback that gets called when the lib load is done.
+Um callback chamado quando o carregamento da lib termina.
 
 **Tipo:** callable
 
 ### finished
 
-The current status of the lib load.
+O status atual do carregamento da lib.
 
 **Tipo:** boolean
 
 ### progress
 
-The current progress of the lib load as a normalized value from 0.0 to 1.0.
+O progresso atual do carregamento da lib, como valor normalizado de 0.0 a 1.0.
 
 **Tipo:** float
 
 ### libraryName
 
-The name of the library being loaded (the first argument to LibLoad).
+O nome da biblioteca sendo carregada (o primeiro argumento de LibLoad).
 
 **Tipo:** string
 
 ### timeTaken
 
-The amount of time, in seconds, the lib load took (0 until the operation is complete).
+O tempo, em segundos, que o carregamento levou (0 até a operação terminar).
 
 **Tipo:** float
 

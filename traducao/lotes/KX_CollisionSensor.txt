@@ -1,0 +1,7 @@
+O sensor de colisão detecta colisões entre objetos.
+A propriedade ou o material com que colidir.
+Define se o sensor procura uma propriedade ou um material. KX_True = procura material; KX_False = procura propriedade.
+Quando ligado, mudanças no conjunto de objetos em colisão geram um pulso.
+O último objeto que colidiu (somente leitura).
+Uma lista dos objetos em colisão (somente leitura).
+O material do objeto na face atingida pelo raio (somente leitura).

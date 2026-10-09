@@ -1,0 +1,47 @@
+{
+ "KX_WorldInfo": {
+  "skyType": "Tipo de céu do World: `'FLAT'`, `'GRADIENT'`, `'PROCEDURAL'` ou `'ATMOSPHERIC'`. Mudar recompila o shader do world no frame seguinte; materiais de objetos mantêm o tipo de céu com que foram compilados.",
+  "useSkyStars": "Liga ou desliga as estrelas no céu.",
+  "starStyle": "Estilo das estrelas: `'SIMPLE'`, `'REALISTIC'` ou `'CONSTELLATIONS'`.",
+  "useSkyMoon": "Liga ou desliga a lua no céu. Muda na hora, sem recompilar o shader.",
+  "moonSize": "Tamanho da lua no céu.",
+  "moonBrightness": "Brilho da lua.",
+  "useSkyAurora": "Liga ou desliga a aurora no céu.",
+  "auroraColors": "Paleta de cores da aurora: `'GREEN'`, `'CLASSIC'` ou `'SHIFTING'`.",
+  "atmosphereIntensity": "Intensidade do céu atmosférico.",
+  "atmosphereRayleighColor": "Cor do espalhamento Rayleigh (o azul do céu), como `[r, g, b]`. Valores negativos viram 0.",
+  "atmosphereRayleighDensity": "Densidade do espalhamento Rayleigh.",
+  "atmosphereMieDensity": "Densidade do espalhamento Mie (névoa e halo em volta do sol).",
+  "atmosphereMieDirection": "Direção do espalhamento Mie: quanto o brilho se concentra perto do sol.",
+  "atmosphereAltitude": "Altitude do observador na atmosfera."
+ },
+ "KX_2DFilterManager": {
+  "fxaaEnabled": "Liga ou desliga o FXAA da cena (Scene > Post-process). `True` ou `False`.",
+  "fxaaEdgeThreshold": "Contraste mínimo, relativo, para uma borda receber FXAA, de 0.0 a 1.0. Valores menores suavizam mais bordas.",
+  "fxaaEdgeThresholdMin": "Contraste mínimo absoluto para o FXAA agir, de 0.0 a 1.0. Evita processar áreas escuras.",
+  "fxaaSubpix": "Quanto o FXAA suaviza detalhes menores que um pixel, de 0.0 a 1.0.",
+  "fxaaSearchSteps": "Número de passos da busca de bordas do FXAA (inteiro, a partir de 2). Mais passos pegam bordas mais longas e custam mais.",
+  "grainEnabled": "Liga ou desliga o grão de filme da cena.",
+  "grainStrength": "Força do grão de filme, de 0.0 a 1.0."
+ },
+ "KX_GameObject": {
+  "isDeformable": "`True` se o objeto tem as configurações de deformação ligadas (amassar, entortar, decalques).",
+  "fragments": "Nome do grupo com os fragmentos usados quando o objeto quebra, ou `None`. Só em objetos destrutíveis; senão levanta `AttributeError`.",
+  "burstSpeed": "Velocidade com que os fragmentos saem quando o objeto quebra.",
+  "debrisLifetime": "Tempo de vida dos fragmentos depois da quebra.",
+  "useBreakOnCollision": "Se o objeto quebra ao colidir.",
+  "useInheritVelocity": "Se os fragmentos herdam a velocidade do objeto ao quebrar.",
+  "impactImpulse": "Impulso mínimo de colisão para um objeto explosivo detonar.",
+  "useExplodeOnImpact": "Se o objeto explosivo detona ao sofrer um impacto acima de `impactImpulse`.",
+  "useChainReaction": "Se a explosão deste objeto detona outros explosivos por perto.",
+  "dentImpulse": "Impulso mínimo de colisão para amassar o objeto.",
+  "useDentOnCollision": "Se o objeto amassa ao colidir.",
+  "bendAxis": "Eixo em que o objeto entorta: `'X'`, `'Y'` ou `'Z'`.",
+  "bendAngle": "Quanto o objeto entorta a cada impacto.",
+  "bendMaxAngle": "Ângulo máximo que o objeto pode entortar.",
+  "decal": "Objeto usado como decalque de arranhão nas colisões, ou `None`. Precisa ser um objeto do arquivo da cena.",
+  "decalSize": "Tamanho dos decalques.",
+  "decalLife": "Tempo de vida de cada decalque.",
+  "maxDecals": "Número máximo de decalques ao mesmo tempo neste objeto."
+ }
+}

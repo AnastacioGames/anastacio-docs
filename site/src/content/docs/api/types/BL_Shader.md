@@ -7,17 +7,17 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-BL_Shader is a class used to compile and use custom shaders scripts. It supports vertex, fragment and geometry shader scripts. The shader is compiled with a generated header for the three shaders scripts. This header set the `#version` directive, so the user must not define his own `#version`.
+BL_Shader é uma classe usada para compilar e usar scripts de shader personalizados. Suporta vertex, fragment e geometry shaders. O shader é compilado com um cabeçalho gerado para os três scripts. Esse cabeçalho define a diretiva `#version`, então o usuário não deve definir a sua própria `#version`.
 
 ### enabled
 
-Set shader enabled to use.
+Liga o shader para uso.
 
 **Tipo:** boolean
 
 ### objectCallbacks
 
-The list of python callbacks executed when the shader is used to render an object. All the functions can expect as argument the object currently rendered.
+A lista de callbacks Python executados quando o shader é usado para renderizar um objeto. Todas as funções recebem como argumento o objeto sendo renderizado.
 
 ```python
 
@@ -29,227 +29,227 @@ def callback(object):
 
 ### bindCallbacks
 
-The list of python callbacks executed when the shader is begin used to render.
+A lista de callbacks Python executados quando o shader começa a ser usado no render.
 
 **Tipo:** list of functions and/or methods
 
 ### setUniformfv(name, fList)
 
-Set a uniform with a list of float values
+Define um uniform com uma lista de valores float
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`fList`**: a list (2, 3 or 4 elements) of float values
+- **`fList`**: uma lista (2, 3 ou 4 elementos) de valores float
   - tipo: list[float]
 
 ### delSource()
 
-Clear the shader. Use this method before the source is changed with `setSource`.
+Limpa o shader. Use este método antes de mudar o código com `setSource`.
 
 ### getFragmentProg()
 
-Returns the fragment program.
+Devolve o fragment program.
 
-**Retorna:** The fragment program.
+**Retorna:** O fragment program.
 
 **Tipo do retorno:** string
 
 ### getVertexProg()
 
-Get the vertex program.
+Pega o vertex program.
 
-**Retorna:** The vertex program.
+**Retorna:** O vertex program.
 
 **Tipo do retorno:** string
 
 ### isValid()
 
-Check if the shader is valid.
+Verifica se o shader é válido.
 
-**Retorna:** True if the shader is valid
+**Retorna:** True se o shader é válido
 
 **Tipo do retorno:** boolean
 
 ### setAttrib(enum)
 
-Set attribute location. (The parameter is ignored a.t.m. and the value of "tangent" is always used.)
+Define a location do atributo. (O parâmetro é ignorado por enquanto e o valor de "tangent" é sempre usado.)
 
-- **`enum`**: attribute location value
+- **`enum`**: valor da location do atributo
   - tipo: integer
 
 ### setSampler(name, index)
 
-Set uniform texture sample index.
+Define o índice de sampler de textura do uniform.
 
-- **`name`**: Uniform name
+- **`name`**: Nome do uniform
   - tipo: string
-- **`index`**: Texture sample index.
+- **`index`**: Índice do sampler de textura.
   - tipo: integer
 
 ### setSource(vertexProgram, fragmentProgram, apply)
 
-Set the vertex and fragment programs
+Define os programas de vertex e fragment
 
 - **`vertexProgram`**: Vertex program
   - tipo: string
 - **`fragmentProgram`**: Fragment program
   - tipo: string
-- **`apply`**: Enable the shader.
+- **`apply`**: Liga o shader.
   - tipo: boolean
 
 ### setSourceList(sources, apply)
 
-Set the vertex, fragment and geometry shader programs.
+Define os programas de vertex, fragment e geometry shader.
 
-- **`sources`**: Dictionary of all programs. The keys `vertex`, `fragment` and `geometry` represent shader programs of the same name. `geometry` is an optional program. This dictionary can be similar to: .. code-block:: python sources = { "vertex" : vertexProgram, "fragment" : fragmentProgram, "geometry" : geometryProgram }
+- **`sources`**: Dicionário com todos os programas. As chaves `vertex`, `fragment` e `geometry` representam os programas de mesmo nome. `geometry` é opcional. Este dicionário pode ficar parecido com: .. code-block:: python sources = { "vertex" : vertexProgram, "fragment" : fragmentProgram, "geometry" : geometryProgram }
   - tipo: dict
-- **`apply`**: Enable the shader.
+- **`apply`**: Liga o shader.
   - tipo: boolean
 
 ### setUniform1f(name, fx)
 
-Set a uniform with 1 float value.
+Define um uniform com 1 valor float.
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`fx`**: Uniform value
+- **`fx`**: Valor do uniform
   - tipo: float
 
 ### setUniform1i(name, ix)
 
-Set a uniform with an integer value.
+Define um uniform com um valor inteiro.
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`ix`**: the uniform value
+- **`ix`**: o valor do uniform
   - tipo: integer
 
 ### setUniform2f(name, fx, fy)
 
-Set a uniform with 2 float values
+Define um uniform com 2 valores float
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`fx`**: first float value
+- **`fx`**: primeiro valor float
   - tipo: float
-- **`fy`**: second float value
+- **`fy`**: segundo valor float
   - tipo: float
 
 ### setUniform2i(name, ix, iy)
 
-Set a uniform with 2 integer values
+Define um uniform com 2 valores inteiros
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`ix`**: first integer value
+- **`ix`**: primeiro valor inteiro
   - tipo: integer
-- **`iy`**: second integer value
+- **`iy`**: segundo valor inteiro
   - tipo: integer
 
 ### setUniform3f(name, fx, fy, fz)
 
-Set a uniform with 3 float values.
+Define um uniform com 3 valores float.
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`fx`**: first float value
+- **`fx`**: primeiro valor float
   - tipo: float
-- **`fy`**: second float value
+- **`fy`**: segundo valor float
   - tipo: float
-- **`fz`**: third float value
+- **`fz`**: terceiro valor float
   - tipo: float
 
 ### setUniform3i(name, ix, iy, iz)
 
-Set a uniform with 3 integer values
+Define um uniform com 3 valores inteiros
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`ix`**: first integer value
+- **`ix`**: primeiro valor inteiro
   - tipo: integer
-- **`iy`**: second integer value
+- **`iy`**: segundo valor inteiro
   - tipo: integer
-- **`iz`**: third integer value
+- **`iz`**: terceiro valor inteiro
   - tipo: integer
 
 ### setUniform4f(name, fx, fy, fz, fw)
 
-Set a uniform with 4 float values.
+Define um uniform com 4 valores float.
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`fx`**: first float value
+- **`fx`**: primeiro valor float
   - tipo: float
-- **`fy`**: second float value
+- **`fy`**: segundo valor float
   - tipo: float
-- **`fz`**: third float value
+- **`fz`**: terceiro valor float
   - tipo: float
-- **`fw`**: fourth float value
+- **`fw`**: quarto valor float
   - tipo: float
 
 ### setUniform4i(name, ix, iy, iz, iw)
 
-Set a uniform with 4 integer values
+Define um uniform com 4 valores inteiros
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`ix`**: first integer value
+- **`ix`**: primeiro valor inteiro
   - tipo: integer
-- **`iy`**: second integer value
+- **`iy`**: segundo valor inteiro
   - tipo: integer
-- **`iz`**: third integer value
+- **`iz`**: terceiro valor inteiro
   - tipo: integer
-- **`iw`**: fourth integer value
+- **`iw`**: quarto valor inteiro
   - tipo: integer
 
 ### setUniformDef(name, type)
 
-Define a new uniform
+Define um novo uniform
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`type`**: uniform type, one of `these constants`
+- **`type`**: tipo do uniform, uma `destas constantes`
   - tipo: integer
 
 ### setUniformMatrix3(name, mat, transpose)
 
-Set a uniform with a 3x3 matrix value
+Define um uniform com uma matriz 3x3
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`mat`**: A 3x3 matrix [[f, f, f], [f, f, f], [f, f, f]]
+- **`mat`**: Uma matriz 3x3 [[f, f, f], [f, f, f], [f, f, f]]
   - tipo: 3x3 matrix
-- **`transpose`**: set to True to transpose the matrix
+- **`transpose`**: use True para transpor a matriz
   - tipo: boolean
 
 ### setUniformMatrix4(name, mat, transpose)
 
-Set a uniform with a 4x4 matrix value
+Define um uniform com uma matriz 4x4
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`mat`**: A 4x4 matrix [[f, f, f, f], [f, f, f, f], [f, f, f, f], [f, f, f, f]]
+- **`mat`**: Uma matriz 4x4 [[f, f, f, f], [f, f, f, f], [f, f, f, f], [f, f, f, f]]
   - tipo: 4x4 matrix
-- **`transpose`**: set to True to transpose the matrix
+- **`transpose`**: use True para transpor a matriz
   - tipo: boolean
 
 ### setUniformiv(name, iList)
 
-Set a uniform with a list of integer values
+Define um uniform com uma lista de valores inteiros
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
-- **`iList`**: a list (2, 3 or 4 elements) of integer values
+- **`iList`**: uma lista (2, 3 ou 4 elementos) de valores inteiros
   - tipo: list[integer]
 
 ### setUniformEyef(name)
 
-Set a uniform with a float value that reflects the eye being render in stereo mode: 0.0 for the left eye, 0.5 for the right eye. In non stereo mode, the value of the uniform is fixed to 0.0. The typical use of this uniform is in stereo mode to sample stereo textures containing the left and right eye images in a top-bottom order.
+Define um uniform com um valor float que indica o olho sendo renderizado no modo estéreo: 0.0 para o olho esquerdo, 0.5 para o direito. Fora do modo estéreo, o valor fica fixo em 0.0. O uso típico é no modo estéreo, para ler texturas estéreo com as imagens dos olhos esquerdo e direito em ordem de cima para baixo.
 
-- **`name`**: the uniform name
+- **`name`**: o nome do uniform
   - tipo: string
 
 ### validate()
 
-Validate the shader object.
+Valida o objeto de shader.
 

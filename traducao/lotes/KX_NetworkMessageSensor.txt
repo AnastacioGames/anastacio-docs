@@ -1,0 +1,6 @@
+O logic brick do sensor Message.
+Por enquanto só redes loopback (locais) são suportadas.
+O assunto que o sensor procura.
+O número de mensagens recebidas desde o último frame (somente leitura).
+A lista dos assuntos das mensagens recebidas (somente leitura).
+A lista dos corpos das mensagens recebidas (somente leitura).

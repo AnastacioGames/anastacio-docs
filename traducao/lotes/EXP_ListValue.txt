@@ -1,0 +1,19 @@
+Este é um objeto parecido com lista, usado internamente pela game engine, que na maioria dos casos se comporta como uma lista Python.
+Além da busca normal por índice (`val= clist[i]`), EXP_ListValue aceita busca por string (`val= scene.objects["Cube"]`)
+Outras operações, como `len(clist)`, `list(clist)` e `clist[0:10]`, também são suportadas.
+Adiciona um item à lista (como o append do Python)
+Adicionar valores à lista pode travar o jogo quando a lista é usada internamente pela game engine.
+Conta quantas vezes um valor aparece na lista.
+número de ocorrências
+Devolve o índice de um valor na lista.
+O índice do valor na lista.
+Inverte a ordem da lista.
+Devolve uma lista dos itens cujo nome casa com a regex `name` e que têm uma propriedade que casa com a regex `prop`. Se `name` estiver vazio, todos os itens são verificados; se `prop` estiver vazio, as propriedades não são verificadas.
+A lista dos itens que casam.
+Esta é uma função feita para a game engine devolver um valor com um id específico.
+Como os nomes de objeto nem sempre são únicos, o id de um objeto pode ser usado para pegá-lo no EXP_ValueList.
+Exemplo:
+Em que `myObID` é um int ou long vindo da função id.
+A vantagem é que dá para guardar o id em lugares onde não dá para guardar um gameObject.
+O id vem de um endereço de memória e muda a cada vez que a game engine inicia.
+O id não pode ser guardado como inteiro em propriedades de game object, porque elas têm um intervalo limitado em que o id pode não caber. Em vez disso, guarde o id como propriedade de jogo string e converta de volta para inteiro para usar no from_id.

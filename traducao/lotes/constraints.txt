@@ -1,0 +1,90 @@
+A Bullet Physics cuida da detecção de colisão e da dinâmica de corpos rígidos da game engine.
+Recursos:
+Simulação de veículos.
+Constraints de corpo rígido: hinge e ponto a ponto (ball socket).
+Acesso às configurações internas da física,
+como o tempo de desativação, e recursos de depuração
+Como esta API não é bem documentada, pode não ficar claro que valores usar nos parâmetros. Em geral, os amortecimentos devem ficar entre 0 e 1 e as rigidezes não devem passar muito de 10.
+Exemplos
+Para mais exemplos da física Bullet e de como usá-la, veja o [fórum do pybullet](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
+physicsid_1, physicsid_2, constraint_type, \ pivot_x=0.0, pivot_y=0.0, pivot_z=0.0, \ axis_x=0.0, axis_y=0.0, axis_z=0.0, flag=0)
+Cria uma constraint.
+O physics id do primeiro objeto da constraint.
+O physics id do segundo objeto da constraint.
+O tipo da constraint; veja `Create Constraint Constants`_.
+Posição X do pivô (opcional).
+Posição Y do pivô (opcional).
+Posição Z do pivô (opcional).
+Ângulo do eixo X em graus (opcional).
+Ângulo do eixo Y em graus (opcional).
+Ângulo do eixo Z em graus (opcional).
+128 para desligar a colisão entre os corpos ligados (opcional).
+Um wrapper de constraint.
+Cria uma constraint de veículo.
+O physics id do objeto chassi da constraint.
+Um wrapper de constraint de veículo.
+Exporta um arquivo que representa o mundo da dinâmica (em geral com extensão `.bullet`).
+Veja [Bullet binary serialization](http://bulletphysics.org/mediawiki-1.5.8/index.php/Bullet_binary_serialization)_.
+Caminho do arquivo.
+O id da constraint.
+O último impulso aplicado.
+O id da constraint de veículo.
+Um objeto de constraint de veículo.
+O game object com a física de personagem.
+Wrapper de personagem.
+Remove uma constraint.
+O id da constraint a remover.
+Muito experimental, não recomendado
+Define o modo de CCD (detecção contínua de colisão) no ambiente de física.
+O novo modo de CCD.
+Um padrão razoável é 0.02 (se as unidades forem metros)
+Define limites ligados ao gerenciamento de pontos de contato.
+O novo limite de quebra de contato.
+Define o limite de velocidade angular.
+Novo limite angular de desativação.
+Define o limite de velocidade linear.
+Novo limite linear de desativação.
+Define o tempo depois do qual um corpo rígido parado é desativado.
+O tempo de desativação.
+Define o modo de depuração.
+O novo modo de depuração; veja `Debug Mode Constants`_.
+Define a força da gravidade.
+Força da gravidade em X.
+Força da gravidade em Y.
+Força da gravidade em Z.
+Não implementado
+Define o amortecimento linear do ar para corpos rígidos.
+Define o número de iterações de um solver de constraints iterativo.
+Novo número de iterações.
+Define a tolerância de penetração de contato da cena de física ativa. Um valor positivo deixa os objetos se sobreporem até `slop` unidades do Blender antes de o solver do Bullet aplicar a correção de posição. O padrão é `0.0`.
+É uma configuração do solver para a cena inteira: afeta todos os contatos físicos da cena ativa. Não muda a margem de colisão de um objeto nem o ponto em que as colisões são detectadas. Use valores pequenos, adequados à escala da cena.
+Tolerância de penetração em unidades do Blender. Use um valor finito e não negativo.
+Define o número de substeps de cada passo da física. Troca qualidade por desempenho.
+Novo número de substeps.
+Define a constante de amortecimento de um solver baseado em penalidade.
+Novo amortecimento do solver.
+Define a constante de mola de um solver baseado em penalidade.
+Novo tau do solver.
+Define o tipo do solver.
+O novo tipo do solver.
+Define a constante de sobre-relaxação sucessiva.
+Novo valor de sor.
+String constante simbólica que indica erro.
+Constantes de modo de depuração
+Modo de depuração a usar com `setDebugMode`.
+Sem depuração.
+Desenha wireframe na depuração.
+Desenha a Axis Aligned Bounding Box na depuração.
+Desenha o texto dos recursos na depuração.
+Desenha os pontos de contato na depuração.
+Depuração sem texto de ajuda.
+Desenha texto na depuração.
+Desenha os tempos de profile na depuração.
+Liga a comparação sat na depuração.
+Desliga o LCP do Bullet.
+Liga a detecção contínua de colisão na depuração.
+Desenha as constraints na depuração.
+Desenha os limites das constraints na depuração.
+Desenha um wireframe rápido na depuração.
+Constantes de criação de constraint
+Tipo de constraint a usar com `createConstraint`.

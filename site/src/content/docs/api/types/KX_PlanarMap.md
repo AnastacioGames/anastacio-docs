@@ -7,11 +7,11 @@ Classe base: [`KX_TextureRenderer`](../kx_texturerenderer/)
 
 
 
-Python API for realtime planar map textures.
+API Python para texturas de planar map em tempo real.
 
 ### normal
 
-Plane normal used to compute the reflection or refraction orientation of the render camera.
+Normal do plano usada para calcular a orientação de reflexão ou refração da câmera de render.
 
 **Tipo:** `mathutils.Vector`
 

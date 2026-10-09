@@ -1,0 +1,4 @@
+Classe base de todos os logic bricks.
+Define a ordem em que os controladores são avaliados e os atuadores são ativados (prioridade menor roda primeiro).
+O game object ao qual este logic brick está ligado (somente leitura).
+O nome deste logic brick (somente leitura).

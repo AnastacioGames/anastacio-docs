@@ -1,0 +1,9 @@
+Módulo `Range.imgui` da Anastacio Engine. Também acessível como `bge.imgui`.
+-- desenhado acima de todas as janelas, para fades
+-- texture_id é um bind code OpenGL puro
+-- >0 pixels, <0 alinhado à direita da borda da janela (-1 = largura total)
+-- idx é uma das constantes imgui.COL_*
+ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
+-- posição relativa à janela atual
+-- liga/desliga a entrada + libera o mouse para a UI de jogo desenhada em Python
+-- mesma convenção de push_item_width, só para o próximo widget

@@ -7,17 +7,17 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-This class contains a list of all levels of detail used by a game object.
+Esta classe tem a lista de todos os níveis de detalhe usados por um game object.
 
 ### levels
 
-Return the list of all levels of detail of the lod manager.
+Devolve a lista de todos os níveis de detalhe do lod manager.
 
 **Tipo:** list of `KX_LodLevel`
 
 ### distanceFactor
 
-Method to multiply the distance to the camera.
+Multiplicador da distância até a câmera.
 
 **Tipo:** float
 

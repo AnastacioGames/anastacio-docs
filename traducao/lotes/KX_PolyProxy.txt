@@ -1,0 +1,30 @@
+Um polígono guarda o índice dos vértices que o formam.
+Nota: os atributos do polígono são somente leitura; para mudar as configurações de um vértice, pegue o vertex proxy.
+O nome do material do polígono; vazio se não houver material.
+O material do polígono.
+O nome da textura do polígono.
+O índice do material do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+índice do primeiro vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+índice do segundo vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+índice do terceiro vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
+estado de visibilidade do polígono: 1=visível, 0=invisível.
+estado de colisão do polígono: 1=recebe colisão, 0=sem colisão.
+Devolve a lista de vértices deste polígono.
+Devolve o nome do material do polígono com o prefixo MA
+nome do material
+O material do polígono
+O nome da textura
+Devolve o índice do material bucket do polígono. Este índice e os devolvidos por getVertexIndex() são necessários para pegar o vertex proxy a partir de `MeshProxy`.
+o índice do material na malha
+Devolve o número de vértices do polígono.
+número de vértices.
+Diz se o polígono está visível ou não
+0=invisível, 1=visível
+Diz se o polígono recebe colisão ou não
+0=sem colisão, 1=recebe colisão
+Devolve o índice, na malha, de um vértice do polígono. Este índice e o devolvido por getMaterialIndex() são necessários para pegar o vertex proxy a partir de `MeshProxy`.
+índice do vértice no polígono: 0->2
+inteiro
+índice do vértice na malha
+Devolve um mesh proxy
+mesh proxy

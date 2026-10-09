@@ -1,0 +1,2 @@
+Um controlador NOR só ativa quando todos os sensores ligados estão desativados.
+Não há métodos Python especiais para este controlador.

@@ -1,0 +1,4 @@
+EXP_PyObjectPlus é a classe base da maioria dos outros tipos da Game Engine.
+Testa se o objeto foi liberado pela game engine e não é mais válido.
+Normalmente isso não é problema, mas ao guardar dados da game engine no módulo GameLogic, em KX_Scenes ou em outros KX_GameObjects, é possível manter uma referência a dados inválidos. Chamar um atributo ou método de um objeto inválido levanta um SystemError.
+O atributo invalid permite testar esse caso sem tratar exceções.

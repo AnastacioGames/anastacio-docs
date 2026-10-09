@@ -1,0 +1,9 @@
+Atuador Edit Object (no modo Add Object)
+Um atuador Add Object é ignorado se, no início do jogo, o objeto ligado não existir (ou estiver vazio) ou estiver numa layer ativa.
+o objeto que este atuador adiciona.
+o último objeto adicionado por este atuador (somente leitura).
+o tempo de vida dos objetos adicionados, em frames. Use 0 para desligar a remoção automática.
+a velocidade linear inicial dos objetos adicionados.
+a velocidade angular inicial dos objetos adicionados.
+adiciona o objeto sem precisar chamar SCA_PythonController.activate()
+Use objectLastCreated para pegar o objeto recém-criado.

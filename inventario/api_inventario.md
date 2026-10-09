@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 105 classes, 8 módulos | documentados 1018 · sem doc 248 · novos 491 · só no rst 111
+**Total:** 105 classes, 8 módulos | documentados 1018 · sem doc 248 · novos 509 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -23,7 +23,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 | Nome | Itens | Documentados | Sem doc | Novos | Só no rst | rst? |
 |---|---:|---:|---:|---:|---:|:---:|
-| `KX_GameObject` | 169 | 118 | 0 | 51 | 0 | sim |
+| `KX_GameObject` | 187 | 118 | 0 | 69 | 0 | sim |
 | `KX_Camera` | 80 | 31 | 0 | 49 | 0 | sim |
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `KX_ParticleSystem` | 21 | 0 | 0 | 21 | 0 | **não** |
@@ -131,7 +131,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **137** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **176** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
 - **Range.events** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `OSKEY`, `JOYSTICKA`, `JOYSTICKB`, `JOYSTICKX`, `JOYSTICKY`, `JOYSTICKBACK`, `JOYSTICKGUIDE`, `JOYSTICKLEFTSTICK`, `JOYSTICKRIGHTSTICK`, `JOYSTICKRIGHTSHOUDER`, `JOYSTICKLEFTSHOUDER`, `JOYSTICKPADUP`, `JOYSTICKPADDOWN`, `JOYSTICKPADLEFT`, `JOYSTICKPADRIGHT`
@@ -143,7 +143,7 @@ Origem pelo git: **137** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **BL_ActionActuator** (source/source/gameengine/Converter/BL_ActionActuator.cpp): `layer`, `layerWeight`
 - **EXP_BaseListValue** (source/source/gameengine/Expressions/intern/BaseListValue.cpp): `append`, `reverse`, `index`, `count`, `get`, `filter`, `from_id`
 - **EXP_BaseListWrapper** (source/source/gameengine/Expressions/intern/BaseListWrapper.cpp): `get`
-- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `fxaaEnabled`, `fxaaEdgeThreshold`, `fxaaEdgeThresholdMin`, `fxaaSubpix`, `fxaaSearchSteps`, `grainEnabled`, `grainStrength`
+- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09
 - **KX_AnimationEvent** (source/source/gameengine/Ketsji/KX_AnimationEvent.cpp): `getFireCount`, `triggers` (só leitura)
 - **KX_AnimationEventManager** (source/source/gameengine/Ketsji/KX_AnimationEventManager.cpp): `events` (só leitura)
 - **KX_BlenderMaterial** (source/source/gameengine/Ketsji/KX_BlenderMaterial.cpp): `passIndex`
@@ -152,7 +152,7 @@ Origem pelo git: **137** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_ChangeColorActuator** (source/source/gameengine/Ketsji/KX_ChangeColorActuator.cpp): `useLerp`, `lerp`, `color`
 - **KX_FontObject** (source/source/gameengine/Ketsji/KX_FontObject.cpp): `useShadows`, `shadowOffset`, `shadowColor`
 - **KX_GameActuator** (source/source/gameengine/Ketsji/KX_GameActuator.cpp): `saveLocation`, `extensionName`
-- **KX_GameObject** (source/source/gameengine/Ketsji/KX_GameObject.cpp): `setCcdMotionThreshold`, `setCcdSweptSphereRadius`, `setSoftLinearStiffness`, `setSoftAngularStiffness`, `setSoftVolume`, `setSoftVsRigidHardness`, `setSoftVsKineticHardness`, `setSoftVsSoftHardness`, `setSoftVsRigidImpulseSplitCluster`, `setSoftVsKineticImpulseSplitCluster`, `setSoftVsSoftImpulseSplitCluster`, `setSoftVelocitiesCorrectionFactor`, `setSoftDampingCoefficient`, `setSoftDragCoefficient`, `setSoftLiftCoefficient`, `setSoftPressureCoefficient`, `setSoftVolumeConversationCoefficient`, `setSoftDynamicFrictionCoefficient`, `setSoftPoseMatchingCoefficient`, `setSoftRigidContactsHardness`, `setSoftKineticContactsHardness`, `setSoftContactsHardness`, `setSoftAnchorsHardness`, `setSoftVelocitySolverIterations`, `setSoftPositionSolverIterations`, `setSoftDriftSolverIterations`, `setSoftClusterSolverIterations`, `setSoftPoseMatching`, `lookAt`, `setHalfAnimations`, `suspendAnimations` ✦2026-09-16, `resumeAnimations` ✦2026-09-16, `getVehicle`, `getVehicleSteeringWheel`, `getVehicleMaxTorque`, `getVehicleMaxRPM`, `getVehicleGearRatios`, `getVehicleGearboxType`, `getTurnTo`, `strikeLightning`, `setActionLayerWeight`, `setActionLayerSpeed`, `animationEventManager` (só leitura), `parentRecursive` (só leitura), `anisotropicFriction` ✦2026-10-04, `anisotropicFrictionCoefficients` ✦2026-10-04, `passIndex`, `linearVelocity`, `angularVelocity`, `activitycullingdistance` (só leitura), `particles` (só leitura)
+- **KX_GameObject** (source/source/gameengine/Ketsji/KX_GameObject.cpp): `setCcdMotionThreshold`, `setCcdSweptSphereRadius`, `setSoftLinearStiffness`, `setSoftAngularStiffness`, `setSoftVolume`, `setSoftVsRigidHardness`, `setSoftVsKineticHardness`, `setSoftVsSoftHardness`, `setSoftVsRigidImpulseSplitCluster`, `setSoftVsKineticImpulseSplitCluster`, `setSoftVsSoftImpulseSplitCluster`, `setSoftVelocitiesCorrectionFactor`, `setSoftDampingCoefficient`, `setSoftDragCoefficient`, `setSoftLiftCoefficient`, `setSoftPressureCoefficient`, `setSoftVolumeConversationCoefficient`, `setSoftDynamicFrictionCoefficient`, `setSoftPoseMatchingCoefficient`, `setSoftRigidContactsHardness`, `setSoftKineticContactsHardness`, `setSoftContactsHardness`, `setSoftAnchorsHardness`, `setSoftVelocitySolverIterations`, `setSoftPositionSolverIterations`, `setSoftDriftSolverIterations`, `setSoftClusterSolverIterations`, `setSoftPoseMatching`, `lookAt`, `setHalfAnimations`, `suspendAnimations` ✦2026-09-16, `resumeAnimations` ✦2026-09-16, `getVehicle`, `getVehicleSteeringWheel`, `getVehicleMaxTorque`, `getVehicleMaxRPM`, `getVehicleGearRatios`, `getVehicleGearboxType`, `getTurnTo`, `strikeLightning`, `setActionLayerWeight`, `setActionLayerSpeed`, `animationEventManager` (só leitura), `parentRecursive` (só leitura), `anisotropicFriction` ✦2026-10-04, `anisotropicFrictionCoefficients` ✦2026-10-04, `isDeformable` (só leitura) ✦2026-10-09, `fragments` ✦2026-10-09, `burstSpeed` ✦2026-10-09, `debrisLifetime` ✦2026-10-09, `useBreakOnCollision` ✦2026-10-09, `useInheritVelocity` ✦2026-10-09, `impactImpulse` ✦2026-10-09, `useExplodeOnImpact` ✦2026-10-09, `useChainReaction` ✦2026-10-09, `dentImpulse` ✦2026-10-09, `useDentOnCollision` ✦2026-10-09, `bendAxis` ✦2026-10-09, `bendAngle` ✦2026-10-09, `bendMaxAngle` ✦2026-10-09, `decal` ✦2026-10-09, `decalSize` ✦2026-10-09, `decalLife` ✦2026-10-09, `maxDecals` ✦2026-10-09, `passIndex`, `linearVelocity`, `angularVelocity`, `activitycullingdistance` (só leitura), `particles` (só leitura)
 - **KX_InputSystem** (source/source/gameengine/Ketsji/KX_InputSystem.cpp): `reloadInputMaps`, `changeKeyMap`, `changeSensitivity`, `changeJoystickIndex`, `inputMaps` (só leitura)
 - **KX_InputTable** (source/source/gameengine/Ketsji/KX_InputTable.cpp): `released` (só leitura), `active` (só leitura), `activated` (só leitura), `values` (só leitura)
 - **KX_LightObject** (source/source/gameengine/Ketsji/KX_LightObject.cpp): `autoShadowUpdate` ✦2026-10-07
@@ -172,7 +172,7 @@ Origem pelo git: **137** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_SteeringActuator** (source/source/gameengine/Ketsji/KX_SteeringActuator.cpp): `steeringVec` (só leitura), `facingMode`, `lockZVelocity`
 - **KX_VRHeadSensor** (source/source/gameengine/Ketsji/KX_VRHeadSensor.cpp): `mode` ✦2026-10-01, `angle` ✦2026-10-01, `time` ✦2026-10-01, `pitch` (só leitura) ✦2026-10-01, `yaw` (só leitura) ✦2026-10-01, `roll` (só leitura) ✦2026-10-01
 - **KX_VehicleWrapper** (source/source/gameengine/Ketsji/KX_VehicleWrapper.cpp): `setWheelIsDriveWheel`, `getCurrentSpeedKmh`, `getCurrentSpeedMps`, `getForwardVector`, `getCoordinateSystem`, `setCoordinateSystem`, `resetSuspension`, `getWheelConfig`, `getWheelState`, `savePreset`, `loadPreset`, `rebuildPreset`, `constraint_id` (só leitura), `constraint_type` (só leitura)
-- **KX_WorldInfo** (source/source/gameengine/Ketsji/KX_WorldInfo.cpp): `getWeather` ✦2026-10-03, `backgroundColor`, `sunSize`, `skyType`, `useSkyStars`, `starStyle`, `useSkyMoon`, `moonSize`, `moonBrightness`, `useSkyAurora`, `auroraColors`, `atmosphereIntensity`, `atmosphereRayleighColor`, `atmosphereRayleighDensity`, `atmosphereMieDensity`, `atmosphereMieDirection`, `atmosphereAltitude`
+- **KX_WorldInfo** (source/source/gameengine/Ketsji/KX_WorldInfo.cpp): `getWeather` ✦2026-10-03, `backgroundColor`, `sunSize`, `skyType` ✦2026-10-09, `useSkyStars` ✦2026-10-09, `starStyle` ✦2026-10-09, `useSkyMoon` ✦2026-10-09, `moonSize` ✦2026-10-09, `moonBrightness` ✦2026-10-09, `useSkyAurora` ✦2026-10-09, `auroraColors` ✦2026-10-09, `atmosphereIntensity` ✦2026-10-09, `atmosphereRayleighColor` ✦2026-10-09, `atmosphereRayleighDensity` ✦2026-10-09, `atmosphereMieDensity` ✦2026-10-09, `atmosphereMieDirection` ✦2026-10-09, `atmosphereAltitude` ✦2026-10-09
 - **SCA_DelaySensor** (source/source/gameengine/GameLogic/SCA_DelaySensor.cpp): `useDelta`
 - **SCA_ISensor** (source/source/gameengine/GameLogic/SCA_ISensor.cpp): `useDeltaTime`
 - **SCA_MouseSensor** (source/source/gameengine/GameLogic/SCA_MouseSensor.cpp): `holdTime` ✦2026-10-01

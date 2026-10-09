@@ -7,7 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-An NAND controller activates when all linked sensors are not active.
+Um controlador NAND ativa quando nem todos os sensores ligados estão ativos.
 
-There are no special python methods for this controller.
+Não há métodos Python especiais para este controlador.
 

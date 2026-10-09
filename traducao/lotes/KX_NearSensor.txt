@@ -1,0 +1,3 @@
+O sensor near é uma forma especializada de sensor de toque.
+O sensor near ativa quando um objeto está dentro desta distância.
+O sensor near desativa quando o objeto passa desta distância.

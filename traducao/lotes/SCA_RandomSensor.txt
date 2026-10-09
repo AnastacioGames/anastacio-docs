@@ -1,0 +1,2 @@
+Este sensor ativa aleatoriamente.
+A semente do gerador de números aleatórios.

@@ -7,5 +7,5 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-This sensor is always activated.
+Este sensor está sempre ativo.
 

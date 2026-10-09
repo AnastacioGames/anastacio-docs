@@ -7,27 +7,27 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 
 
-An armature object.
+Um objeto armature.
 
 ### constraints
 
-The list of armature constraint defined on this armature. Elements of the list can be accessed by index or string. The key format for string access is '<bone_name>:<constraint_name>'.
+A lista de constraints de armature definidas nesta armature. Os elementos podem ser acessados por índice ou por string. O formato da chave em string é '<bone_name>:<constraint_name>'.
 
 **Tipo:** list of `BL_ArmatureConstraint`
 
 ### channels
 
-The list of armature channels. Elements of the list can be accessed by index or name the bone.
+A lista de canais da armature. Os elementos podem ser acessados por índice ou pelo nome do bone.
 
 **Tipo:** list of `BL_ArmatureChannel`
 
 ### update()
 
-Ensures that the armature will be updated on next graphic frame.
+Garante que a armature será atualizada no próximo frame gráfico.
 
-This action is unecessary if a KX_ArmatureActuator with mode run is active or if an action is playing. Use this function in other cases. It must be called on each frame to ensure that the armature is updated continously.
+Isto não é necessário se um KX_ArmatureActuator no modo run estiver ativo ou se uma action estiver tocando. Use esta função nos outros casos. Ela precisa ser chamada a cada frame para garantir que a armature seja atualizada continuamente.
 
 ### draw()
 
-Draw lines that represent armature to view it in real time.
+Desenha linhas que representam a armature, para vê-la em tempo real.
 

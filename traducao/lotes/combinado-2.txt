@@ -1,0 +1,383 @@
+===== BL_ActionActuator
+Os atuadores Action aplicam uma action a um ator.
+O nome da action a usar como action atual.
+Define o frame inicial da animação.
+Define o frame final da animação.
+Define o número de frames de animação gerados nas transições entre actions.
+Define a prioridade deste atuador. Atuadores com número de prioridade menor sobrepõem os de número maior.
+Define o frame atual da animação.
+Define a propriedade usada no modo de reprodução FromProp.
+O modo de operação do atuador. Pode ser uma `destas constantes`.
+A opção continue das actions, True ou False. Com True, a action sempre toca de onde parou; senão, eventos negativos neste atuador voltam ela ao frame inicial.
+O nome da propriedade que recebe o número do frame atual.
+===== BL_ArmatureActuator
+Os atuadores Armature mudam a condição das constraints em armatures.
+O tipo de ação que o atuador executa quando está ativo.
+Pode ser uma `destas constantes`
+O objeto de constraint que este atuador controla.
+O objeto que este atuador define como alvo principal da constraint que controla.
+O objeto que este atuador define como alvo secundário da constraint que controla.
+Por enquanto, o único alvo secundário é o pole target das constraints IK.
+O peso que este atuador define na constraint que controla.
+Por enquanto só a constraint IK tem peso. Deve ser um valor entre 0 e 1.
+Peso 0 desliga a constraint, mas continua atualizando os valores dela em tempo de execução (veja `BL_ArmatureConstraint`)
+A influência que este atuador define na constraint que controla.
+===== BL_ArmatureBone
+Proxy para a estrutura de bone do Blender. Todos os campos são somente leitura e seguem os nomes do RNA. Todos os atributos de espaço correspondem à rest pose.
+nome do bone.
+true quando a cabeça do bone está presa à cauda do pai.
+true quando o bone não herda rotação nem escala do bone pai.
+true quando o bone herda a escala do bone pai.
+número de segmentos de B-bone.
+rotação do bone em torno do eixo cabeça-cauda.
+posição da cabeça do bone no espaço do bone pai.
+comprimento do bone.
+posição da cabeça do bone no espaço da armature.
+posição da cauda do bone no espaço da armature.
+matriz da cabeça do bone no espaço da armature.
+Esta matriz não tem parte de escala.
+matriz de rotação do bone no espaço do bone pai.
+bone pai, ou None para o bone raiz.
+lista dos filhos do bone.
+===== BL_Texture
+Um objeto de textura com os atributos de uma textura de material.
+Quanto a textura afeta a refletividade difusa.
+Quanto a textura afeta a cor difusa.
+Quanto a textura afeta o alpha.
+Quanto a textura afeta a refletividade especular.
+Quanto a textura afeta a cor especular.
+Quanto a textura afeta a hardness.
+Quanto a textura afeta a emissão.
+Quanto a textura afeta a cor de espelho.
+Quanto a textura afeta os valores de normal.
+Altura do parallax occlusion mapping.
+Número de passos para fazer o efeito de parallax.
+Bias aplicado ao mipmapping.
+Bind code/Id/número da textura.
+Texture renderer desta textura.
+Índice de refração usado para calcular a refração.
+Quanto da refração é misturada com a reflexão.
+Deslocamento aplicado às coordenadas UV da textura (principalmente translação nos eixos U e V).
+Escala aplicada às coordenadas UV da textura.
+Rotação aplicada às coordenadas UV da textura.
+===== KX_2DFilter
+Objeto de shader de filtro 2D. Pode ser alterado com as funções de `BL_Shader`.
+O vertex shader não deve aplicar as transformações de modelview e projeção. Ele deve ficar parecido com:
+Pede a geração de mipmaps da textura de render `bgl_RenderedTexture`. Acessar um nível de mipmap fica parecido com:
+O off screen personalizado em que o filtro renderiza (somente leitura).
+Coloca o bind code de textura `bindCode` no slot `index`. Toda chamada a `setTexture` deve vir seguida de uma chamada a `BL_Shader.setSampler` com o mesmo `index` se `sampleName` não for passado.
+O slot da textura.
+O bind code/Id da textura.
+O nome do sampler do shader ligado a `index`, se `samplerName` for passado à função (opcional).
+Coloca o bind code de textura cube map `bindCode` no slot `index`. Toda chamada a `setCubeMap` deve vir seguida de uma chamada a `BL_Shader.setSampler` com o mesmo `index` se `sampleName` não for passado.
+O bind code/Id da textura cube map.
+Registra um off screen personalizado para o filtro renderizar.
+O número de texturas de cor ligadas ao off screen, de 0 a 8 (8 excluído).
+True se o off screen usa uma textura de profundidade (opcional).
+A largura do off screen; -1 se ele pode ser redimensionado dinamicamente quando as dimensões da viewport mudam (opcional).
+A altura do off screen; -1 se ele pode ser redimensionado dinamicamente quando as dimensões da viewport mudam (opcional).
+A qualidade de imagem HDR das texturas de cor (opcional).
+True se a textura de cor gera mipmaps no fim do render do filtro (opcional).
+Se o off screen é criado com tamanho dinâmico (`width` e `height` iguais a -1), os bind codes ficam indisponíveis até o próximo render do filtro e podem mudar quando a viewport é redimensionada.
+Remove o registro do off screen personalizado em que o filtro renderiza.
+===== KX_2DFilterManager
+Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.
+Adiciona um filtro no passe `index`, do tipo `type`, com o fragment program se for filtro personalizado.
+O índice do passe do filtro.
+O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
+O fragment program do shader do filtro. Só é usado se `type` for `Range.logic.RAS_2DFILTER_CUSTOMFILTER`; se vazio ou omitido, o filtro é criado sem shader, esperando uma chamada a `BL_Shader.setSourceList` (opcional).
+O filtro 2D.
+Remove o filtro do passe `index`.
+Devolve o filtro do passe `index`.
+**aviso:** Se o filtro 2D for adicionado por um `SCA_2DFilterActuator`, ele só fica disponível depois que o programa do filtro 2D for linkado. O script Python que pega o filtro precisa rodar um frame depois. Dá para usar um sensor Delay.
+O filtro no passe indicado, ou None.
+===== KX_CharacterWrapper
+Um wrapper que expõe as opções de física de personagem.
+Se o personagem está no chão ou não (somente leitura).
+O valor de gravidade usado para o personagem.
+A velocidade de queda do personagem.
+O número máximo de pulos que o personagem pode dar antes de tocar o chão. O padrão é 1. 2 permite pulo duplo, e assim por diante.
+A contagem de pulos atual. Serve para ter lógicas diferentes para pulo simples e pulo duplo, por exemplo, uma animação diferente no segundo pulo.
+A velocidade de pulo do personagem.
+A inclinação máxima que o personagem consegue subir.
+A velocidade e a direção em que o personagem anda, em coordenadas do mundo. Use isto em vez de applyMovement() para mover o personagem do jeito certo.
+O personagem pula com base na sua velocidade de pulo.
+A direção em que o personagem pula.
+Define a velocidade linear do personagem por um período.
+Este método define a velocidade do personagem pelo centro de massa durante um período.
+Vetor de velocidade linear.
+Período em que a velocidade linear é aplicada.
+* False: velocidade "global", ou seja, relativa à orientação do mundo. * True: velocidade "local", ou seja, relativa à orientação do objeto.
+Suaviza o movimento causado pela direção de caminhada.
+Zera a velocidade e a direção de caminhada do personagem.
+===== KX_ConstraintActuator
+Um atuador Constraint limita a posição, rotação, distância ou orientação de um objeto.
+Constante de tempo da constraint, em frames (não usada pela constraint Force field).
+Constante de tempo da rotação, em frames (só para a constraint de distância); 0 = usa damp também na rotação.
+A direção de referência, em coordenadas do mundo, da constraint de orientação.
+Combinação binária `destas constantes`
+tempo de ativação do atuador. O atuador se desliga depois desse número de frames. Com 0, o atuador não tem limite de tempo.
+o nome da propriedade ou material para a detecção por raio da constraint de distância.
+O limite inferior da constraint. Nas constraints de rotação e orientação, é em radianos.
+a distância alvo da constraint de distância.
+o limite superior da constraint. Nas constraints de rotação e orientação, é em radianos.
+o comprimento do raio da constraint de distância.
+tipo de constraint. Use uma `destas constantes`
+===== KX_MouseActuator
+O atuador Mouse controla a visibilidade do cursor do mouse e gira o objeto pai conforme o movimento do mouse.
+Desfaz a rotação causada pelo atuador Mouse.
+O movimento do mouse no eixo x afeta a rotação do objeto.
+O movimento do mouse no eixo y afeta a rotação do objeto.
+Quanto o mouse precisa andar antes de a rotação começar.
+Os valores da lista devem ficar entre 0.0 e 0.5.
+O mouse fica travado no centro da tela no eixo x.
+O mouse fica travado no centro da tela no eixo y.
+O eixo 3D do objeto que gira com o movimento do mouse. ([x, y])
+=
+=
+=
+A rotação causada pelo movimento do mouse no eixo x é local.
+A rotação causada pelo movimento do mouse no eixo y é local.
+Quanto de rotação o movimento do mouse nos eixos x e y causa.
+Valores negativos invertem a rotação.
+Os ângulos mínimo e máximo de rotação causada pelo movimento do mouse no eixo x, em graus. limit_x[0] é o mínimo, limit_x[1] é o máximo.
+Os ângulos mínimo e máximo de rotação causada pelo movimento do mouse no eixo y, em graus. limit_y[0] é o mínimo, limit_y[1] é o máximo.
+O deslocamento de rotação atual causado pelo atuador Mouse, em graus.
+===== KX_MouseFocusSensor
+O sensor Mouse focus detecta quando o mouse está sobre o game object atual.
+O sensor Mouse focus transforma as coordenadas do mouse do espaço 2D do dispositivo para o espaço 3D e lança um raio a partir da câmera.
+A origem do raio no espaço do mundo (a posição da vista).
+O alvo do raio no espaço do mundo.
+`rayTarget` - `raySource`, normalizado.
+o último objeto sob o mouse.
+A posição, no espaço do mundo, da interseção do raio.
+a normal, no espaço do mundo, da face no ponto de interseção.
+as coordenadas UV no ponto de interseção.
+Se o objeto não tem mapeamento UV, devolve [0, 0].
+As coordenadas UV não são normalizadas; podem ser < 0 ou > 1 dependendo do mapeamento UV.
+Quando ligado, passar o mouse sobre outro objeto gera um pulso (só usado com a opção 'Mouse Over Any' do sensor).
+Se ligado, o sensor enxerga através de game objects que não têm a propriedade ou o material escolhido.
+A máscara de colisão (16 layers mapeadas num inteiro de 16 bits) combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só os objetos em que `collisionGroup & mask` é verdadeiro podem ser atingidos.
+A propriedade ou o material que o sensor procura.
+Define se o sensor procura uma propriedade ou um material. KX_True = procura material; KX_False = procura propriedade.
+===== KX_NavMeshObject
+Interface Python para usar e controlar navigation meshes.
+Uma navigation mesh com a propriedade de jogo Boolean `dynamic_navmesh` igual a True é construída em tiles quando o jogo começa, para que obstáculos possam recortá-la em tempo de execução. Objetos com "Create Obstacle" recortam automaticamente; `addObstacle` adiciona qualquer outro objeto. Os caminhos podem ser um pouco diferentes dos da navigation mesh estática.
+True quando a navigation mesh foi construída em tiles e obstáculos podem recortá-la (somente leitura).
+Aumenta quando a navigation mesh é reconstruída ou termina de mudar por causa de obstáculos (somente leitura). Caminhos achados com uma versão mais antiga podem atravessar obstáculos novos.
+Acha o caminho do ponto de início até o ponto de destino.
+o ponto de início
+Vetor 3D
+o ponto de destino
+um caminho como lista de pontos
+Lança um raio do ponto de início até o ponto de destino.
+o fator de acerto
+Desenha uma malha de depuração da navigation mesh. Numa navigation mesh dinâmica, os cilindros de obstáculo são desenhados em amarelo.
+o modo de desenho (uma `destas constantes`)
+inteiro
+=
+Reconstrói a navigation mesh.
+Faz o objeto recortar todas as navigation meshes dinâmicas da cena, acompanhando-o quando ele se move. Chamar de novo muda o raio. Não tem efeito em navigation meshes estáticas.
+o obstáculo, na mesma cena da navigation mesh
+o raio, no mundo, do cilindro do obstáculo; 0.0 usa o raio do "Create Obstacle" do objeto ou metade do tamanho da bounding box
+Faz o objeto parar de recortar as navigation meshes dinâmicas, inclusive objetos com "Create Obstacle".
+o obstáculo
+===== KX_ObjectActuator
+O atuador de objeto ("Motion Actuator") aplica força, torque, deslocamento, deslocamento angular, velocidade ou velocidade angular a um objeto. O controle servo permite regular a força para atingir uma velocidade alvo.
+A força aplicada pelo atuador.
+Flag que diz se a força é local.
+O torque aplicado pelo atuador.
+Flag que diz se o torque é local.
+O vetor de deslocamento aplicado pelo atuador.
+Flag que diz se o dLoc é local.
+O vetor de deslocamento angular aplicado pelo atuador
+Como o deslocamento é aplicado a cada frame, é preciso ajustá-lo pelo frame rate, ou a experiência de jogo vai depender da velocidade do computador do jogador.
+Flag que diz se o dRot é local.
+A velocidade linear aplicada pelo atuador.
+Flag que diz se a velocidade linear é local.
+Esta é a velocidade alvo dos controladores servo.
+A velocidade angular aplicada pelo atuador.
+Flag que diz se a velocidade angular é local.
+O parâmetro de amortecimento do controlador servo.
+O limite mín./máx. de força no eixo X, e liga ou desliga os limites no controlador servo.
+O limite mín./máx. de força no eixo Y, e liga ou desliga os limites no controlador servo.
+O limite mín./máx. de força no eixo Z, e liga ou desliga os limites no controlador servo.
+Os coeficientes PID do controlador servo.
+O objeto usado como referência para calcular a velocidade no controlador servo.
+===== KX_PythonComponent
+Um componente Python pode ser comparado a logic bricks Python com parâmetros. O componente Python é um script carregado pela UI; esse script define uma classe de componente herdando de `KX_PythonComponent`. Essa classe precisa ter um dicionário de propriedades, `args`, e duas funções padrão: `start` e `update`.
+O script precisa ter extensão .py.
+As propriedades do componente são carregadas do atributo `args` pela UI no carregamento. Quando o jogo começa, a função `start` é chamada recebendo um dicionário com o nome e o valor das propriedades. A função `update` é chamada a cada frame na etapa de lógica, antes dos logic bricks; o papel dela é tratar e processar tudo.
+O exemplo de componente a seguir move e gira o objeto ao apertar as teclas W, A, S e D.
+Como os componentes são carregados pela primeira vez fora do bge, `bge` é um módulo falso que só contém a classe `KX_PythonComponent`, para não importar todos os módulos do bge. Isso é mais seguro, mas dá problema no carregamento quando o usuário quer usar funções ou atributos dos módulos do bge além da classe `KX_PythonComponent`. A saída é não chamar essas funções no carregamento fora da Range. Para detectar isso, o módulo bge tem o atributo `__component__` quando é importado fora da Range.
+O exemplo de componente a seguir adiciona um objeto "Cube" na inicialização e o move no eixo x a cada update. Ele mostra que dá para usar funções da cena e carregar o componente fora do bge definindo atributos globais numa condição no começo do script.
+Os tipos de propriedade suportados são float, integer, boolean, string, set (para enumeração) e Vector 2D, 3D e 4D. O exemplo a seguir mostra todos esses tipos.
+O objeto dono do componente.
+Dicionário das propriedades do componente; as chaves são strings e o valor pode ser: float, integer, Vector(2D/3D/4D), set, string.
+Inicializa o componente.
+O dicionário com o nome e o valor das propriedades.
+Esta função precisa ser herdada na classe do componente Python.
+Processa a lógica do componente.
+Função chamada quando o componente é destruído.
+===== KX_PythonMotion
+Sensores de movimento do dispositivo (celular ou tablet), disponíveis como `Range.logic.motion`.
+Os valores vêm do navegador no runtime Web (`DeviceMotionEvent` e `DeviceOrientationEvent`), inclusive no app Android, que roda o runtime Web dentro de uma WebView. Nas outras plataformas ainda não há fonte de sensores: `available` é `False`, os vetores são zero e `tilt` é `(0.0, 0.0)`, para que o mesmo script rode em todo lugar.
+Os vetores usam os eixos da tela como ela está sendo mostrada, em retrato ou paisagem: x para a direita, y para o topo da tela e z para fora da tela, na direção do jogador.
+Um objeto controlado pela inclinação:
+um toque na tela
+`True` enquanto os sensores estão mandando dados. Vira `False` quando nenhuma leitura chegou no último segundo (sem sensor, navegador de desktop, página em segundo plano) (somente leitura).
+Velocidade de rotação em torno de cada eixo da tela, em radianos por segundo (somente leitura).
+Aceleração incluindo a gravidade, em m/s². Com o dispositivo parado, deitado de face para cima, fica perto de `(0, 0, 9.8)` (somente leitura).
+Só a gravidade, em m/s², apontando para cima como em `accelerometer`. Quando o dispositivo não informa a aceleração sem gravidade, ela é estimada a partir de `accelerometer` com um filtro passa-baixa (somente leitura).
+Ângulos de orientação do dispositivo `(alpha, beta, gamma)` em graus, exatamente como o navegador entrega. Seguem os eixos do dispositivo, não os da tela (somente leitura).
+Quanto o dispositivo está inclinado em relação à posição neutra, de -1.0 a 1.0 em cada eixo: a direção da tela para onde uma bola rolaria. `x` é positivo quando a borda direita da tela desce, `y` quando a borda de cima desce. A posição neutra é o dispositivo deitado, até `calibrate` ser chamado (somente leitura).
+Usa a posição atual como neutra para `tilt`, para o jogador segurar o dispositivo do jeito que preferir.
+`True` se havia uma leitura do sensor para calibrar, `False` se não.
+===== KX_RaySensor
+Um sensor Ray detecta o primeiro objeto numa direção.
+A propriedade que o raio procura.
+A distância do raio.
+Se procura um material ou não (false = propriedade).
+Se usa XRay ou não.
+A máscara de colisão (16 layers mapeadas num inteiro de 16 bits) combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só os objetos em que `collisionGroup & mask` é verdadeiro podem ser atingidos.
+O game object atingido pelo raio (somente leitura).
+A posição (em coordenadas do mundo) em que o objeto foi atingido pelo raio (somente leitura).
+A normal (em coordenadas do mundo) do objeto no ponto em que foi atingido pelo raio (somente leitura).
+O material do objeto na face atingida pelo raio (somente leitura).
+A direção do raio (em coordenadas do mundo) (somente leitura).
+O eixo para onde o raio aponta.
+=
+=
+=
+=
+=
+=
+===== KX_ReplaceMeshActuator
+Atuador Edit Object, no modo Replace Mesh.
+Atuadores Replace Mesh são ignorados se, no início do jogo, a malha com o nome indicado não existir.
+Isto gera um aviso no console
+Nível de detalhe
+Troca a malha de um game object conforme a profundidade dele na vista da câmera.
+Liste aqui as malhas de detalhe
+Malha (nome, perto, longe)
+As malhas se sobrepõem para não "pipocar" na borda da distância.
+Acha a malha de menor detalhe para a profundidade
+A malha é diferente - troca.
+Confere se a malha atual não serve melhor.
+`MeshProxy` ou o nome da malha que vai substituir a atual.
+Use None para desligar o atuador.
+com true, a malha exibida é substituída.
+com true, a malha de física é substituída.
+Substitui a malha na hora, sem atraso.
+===== KX_SoundActuator
+Atuador Sound.
+`startSound`, `pauseSound` e `stopSound` não exigem que o atuador esteja ativo: agem na hora, desde que o atuador tenha sido ativado pelo menos uma vez.
+O volume (ganho) do som.
+A posição atual no stream de áudio (em segundos).
+O pitch do som.
+O modo de operação do atuador. Pode ser uma `destas constantes`
+O som que o atuador deve tocar.
+Se o atuador usa som 3D ou não (somente leitura)
+O ganho máximo do som, não importa quão perto ele esteja.
+O ganho mínimo do som, não importa quão longe ele esteja.
+A distância em que o som tem ganho 1.0.
+A distância máxima em que dá para ouvir o som.
+O fator de influência no volume conforme a distância.
+O ângulo do cone interno.
+O ângulo do cone externo.
+O ganho fora do cone externo (o ganho dentro do cone externo é interpolado entre este valor e o ganho normal do cone interno).
+Começa o som.
+=
+Pausa o som.
+Para o som.
+===== KX_SteeringActuator
+Atuador Steering para navegação.
+O comportamento de steering a usar.
+Módulo da velocidade
+Aceleração máxima
+Velocidade máxima de giro
+Distância de relaxamento
+Objeto alvo
+Navigation mesh
+Termina quando o alvo é alcançado
+Liga a visualização de depuração
+Período de atualização do caminho
+Lista de pontos do caminho.
+===== KX_TrackToActuator
+Atuador Edit Object no modo Track To.
+Atuadores Track To são ignorados se, no início do jogo, o objeto a seguir for inválido.
+Isto gera um aviso no console:
+o objeto que este atuador segue.
+o tempo, em frames, de atraso do movimento de seguir.
+o movimento de seguir usa 3D.
+O eixo que aponta para cima.
+=
+=
+=
+O eixo que aponta para o objeto alvo.
+=
+=
+=
+=
+=
+=
+===== SCA_ISensor
+Classe base de todos os logic bricks de sensor.
+Flag que liga e desliga o modo de pulso positivo.
+Flag que liga e desliga o modo de pulso negativo.
+A frequência dos sensores em modo de pulso. (Obsoleto: use SCA_ISensor.skippedTicks)
+Número de ticks de lógica pulados entre 2 pulsos ativos
+level: opção que define se detecta o nível ou a transição de borda ao entrar num estado. Só faz diferença em transições de estado de lógica (atuador State). Um detector de nível gera um pulso na hora, negativo ou positivo conforme a condição do sensor, assim que o estado é ativado. Um detector de borda espera uma mudança de estado antes de gerar um pulso. nota: exclusivo com `tap`; ligar este desliga `tap`.
+Quando ligado, só sensores que acabaram de ativar mandam um evento positivo; depois disso os controladores os veem como negativos. Assim, uma tecla segura age como se fosse tocada só por um instante. nota: exclusivo com `level`; ligar este desliga `level`.
+Flag que define se este sensor ativa com eventos positivos ou negativos.
+True se este sensor está em estado positivo (somente leitura).
+O número de ticks desde o último pulso positivo (somente leitura).
+O número de ticks desde o último pulso negativo (somente leitura).
+O status do sensor (somente leitura): pode ser uma `destas constantes`.
+Este atributo prático combina os valores dos atributos triggered e positive.
+Reinicia o estado interno do sensor; o efeito depende do tipo de sensor e das configurações.
+O sensor volta ao estado inicial, como se tivesse acabado de ser ativado.
+===== SCA_PythonController
+Um controlador Python usa um script Python para ativar seus atuadores, com base nos seus sensores.
+O objeto ao qual o controlador está ligado.
+O valor desta variável depende do modo de execução.
+No modo de execução 'Script', este valor contém o script Python inteiro numa única string (não o nome do script, como seria de esperar), que pode ser modificada para rodar outros scripts.
+No modo de execução 'Module', este valor contém uma string de uma linha: o nome do módulo e a função, "module.func" ou "package.modile.func", em que os nomes de módulo são textblocks Python ou scripts externos.
+Depois que isto é definido, o nome do script usado nos avisos não muda mais.
+o modo de execução deste controlador (somente leitura).
+Script: 0, executa o `script` como código Python.
+Module: 1, executa o `script` como módulo e função.
+Ativa um atuador ligado a este controlador.
+O atuador sobre o qual operar.
+Desativa um atuador ligado a este controlador.
+===== SCA_VibrationActuator
+Atuador Vibration.
+Índice do joystick.
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
+Força do motor de alta frequência do joystick (em geral fica à direita).
+Duração da vibração em milissegundos.
+Verifica o status da vibração do joystick
+Verifica se o joystick suporta vibração
+Começa a vibração.
+=
+Para a vibração.
+===== EXP_ListValue
+Este é um objeto parecido com lista, usado internamente pela game engine, que na maioria dos casos se comporta como uma lista Python.
+Além da busca normal por índice (`val= clist[i]`), EXP_ListValue aceita busca por string (`val= scene.objects["Cube"]`)
+Outras operações, como `len(clist)`, `list(clist)` e `clist[0:10]`, também são suportadas.
+Adiciona um item à lista (como o append do Python)
+Adicionar valores à lista pode travar o jogo quando a lista é usada internamente pela game engine.
+Conta quantas vezes um valor aparece na lista.
+número de ocorrências
+Devolve o índice de um valor na lista.
+O índice do valor na lista.
+Inverte a ordem da lista.
+Devolve uma lista dos itens cujo nome casa com a regex `name` e que têm uma propriedade que casa com a regex `prop`. Se `name` estiver vazio, todos os itens são verificados; se `prop` estiver vazio, as propriedades não são verificadas.
+A lista dos itens que casam.
+Esta é uma função feita para a game engine devolver um valor com um id específico.
+Como os nomes de objeto nem sempre são únicos, o id de um objeto pode ser usado para pegá-lo no EXP_ValueList.
+Exemplo:
+Em que `myObID` é um int ou long vindo da função id.
+A vantagem é que dá para guardar o id em lugares onde não dá para guardar um gameObject.
+O id vem de um endereço de memória e muda a cada vez que a game engine inicia.
+O id não pode ser guardado como inteiro em propriedades de game object, porque elas têm um intervalo limitado em que o id pode não caber. Em vez disso, guarde o id como propriedade de jogo string e converta de volta para inteiro para usar no from_id.

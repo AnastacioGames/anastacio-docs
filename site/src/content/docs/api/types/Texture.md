@@ -13,13 +13,13 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
-Close dynamic decklink and restore original
+Fecha o decklink dinâmico e restaura o original
 
 ### refresh()
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
-Refresh decklink from source
+Atualiza o decklink a partir da fonte
 
 ### bindId
 

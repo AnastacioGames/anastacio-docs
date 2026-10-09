@@ -7,12 +7,12 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Edit Object actuator in Track To mode.
+Atuador Edit Object no modo Track To.
 
 :::caution
-Track To Actuators will be ignored if at game start, the object to track to is invalid.
+Atuadores Track To são ignorados se, no início do jogo, o objeto a seguir for inválido.
 
-This will generate a warning in the console:
+Isto gera um aviso no console:
 
 ```none
 
@@ -22,25 +22,25 @@ GameObject 'Name' no object in EditObjectActuator 'ActuatorName'
 
 ### object
 
-the object this actuator tracks.
+o objeto que este atuador segue.
 
 **Tipo:** `KX_GameObject` or None
 
 ### time
 
-the time in frames with which to delay the tracking motion.
+o tempo, em frames, de atraso do movimento de seguir.
 
 **Tipo:** integer
 
 ### use3D
 
-the tracking motion to use 3D.
+o movimento de seguir usa 3D.
 
 **Tipo:** boolean
 
 ### upAxis
 
-The axis that points upward.
+O eixo que aponta para cima.
 
 **Tipo:** integer from 0 to 2
 
@@ -50,7 +50,7 @@ The axis that points upward.
 
 ### trackAxis
 
-The axis that points to the target object.
+O eixo que aponta para o objeto alvo.
 
 **Tipo:** integer from 0 to 5
 

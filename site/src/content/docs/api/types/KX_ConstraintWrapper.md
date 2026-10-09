@@ -11,135 +11,135 @@ KX_ConstraintWrapper
 
 ### getConstraintId(val)
 
-Returns the contraint ID
+Devolve o ID da constraint
 
-**Retorna:** the constraint ID
+**Retorna:** o ID da constraint
 
 **Tipo do retorno:** integer
 
 ### setParam(axis, value0, value1)
 
-Set the contraint limits
+Define os limites da constraint
 
 - **`axis`**:
   - tipo: integer
 
 :::note
-* Lowerlimit == Upperlimit -> axis is locked
-* Lowerlimit > Upperlimit -> axis is free
-* Lowerlimit < Upperlimit -> axis it limited in that range
+* Lowerlimit == Upperlimit -> o eixo fica travado
+* Lowerlimit > Upperlimit -> o eixo fica livre
+* Lowerlimit < Upperlimit -> o eixo fica limitado a esse intervalo
 :::
 
-For PHY_LINEHINGE_CONSTRAINT = 2 or PHY_ANGULAR_CONSTRAINT = 3:
+Para PHY_LINEHINGE_CONSTRAINT = 2 ou PHY_ANGULAR_CONSTRAINT = 3:
 
-axis = 3 is a constraint limit, with low/high limit value
-* 3: X axis angle
+axis = 3 é um limite da constraint, com valor de limite inferior/superior
+* 3: ângulo do eixo X
 
-- **`value0 (min)`**: Set the minimum limit of the axis
+- **`value0 (min)`**: Define o limite mínimo do eixo
   - tipo: float
-- **`value1 (max)`**: Set the maximum limit of the axis
+- **`value1 (max)`**: Define o limite máximo do eixo
   - tipo: float
-For PHY_CONE_TWIST_CONSTRAINT = 4:
+Para PHY_CONE_TWIST_CONSTRAINT = 4:
 
-axis = 3..5 are constraint limits, high limit values
-* 3: X axis angle
-* 4: Y axis angle
-* 5: Z axis angle
+axis = 3..5 são limites da constraint, valores de limite superior
+* 3: ângulo do eixo X
+* 4: ângulo do eixo Y
+* 5: ângulo do eixo Z
 
-- **`value0 (min)`**: Set the minimum limit of the axis
+- **`value0 (min)`**: Define o limite mínimo do eixo
   - tipo: float
-- **`value1 (max)`**: Set the maximum limit of the axis
+- **`value1 (max)`**: Define o limite máximo do eixo
   - tipo: float
-For PHY_GENERIC_6DOF_CONSTRAINT = 12:
+Para PHY_GENERIC_6DOF_CONSTRAINT = 12:
 
-axis = 0..2 are constraint limits, with low/high limit value
-* 0: X axis position
-* 1: Y axis position
-* 2: Z axis position
+axis = 0..2 são limites da constraint, com valor de limite inferior/superior
+* 0: posição no eixo X
+* 1: posição no eixo Y
+* 2: posição no eixo Z
 
-axis = 3..5 are relative constraint (Euler) angles in radians
-* 3: X axis angle
-* 4: Y axis angle
-* 5: Z axis angle
+axis = 3..5 são ângulos (Euler) relativos da constraint, em radianos
+* 3: ângulo do eixo X
+* 4: ângulo do eixo Y
+* 5: ângulo do eixo Z
 
-- **`value0 (min)`**: Set the minimum limit of the axis
+- **`value0 (min)`**: Define o limite mínimo do eixo
   - tipo: float
-- **`value1 (max)`**: Set the maximum limit of the axis
+- **`value1 (max)`**: Define o limite máximo do eixo
   - tipo: float
-axis = 6..8 are translational motors, with value0=target velocity, value1 = max motor force
-* 6: X axis position
-* 7: Y axis position
-* 8: Z axis position
+axis = 6..8 são motores de translação, com value0 = velocidade alvo, value1 = força máxima do motor
+* 6: posição no eixo X
+* 7: posição no eixo Y
+* 8: posição no eixo Z
 
-axis = 9..11 are rotational motors, with value0=target velocity, value1 = max motor force
-* 9: X axis angle
-* 10: Y axis angle
-* 11: Z axis angle
+axis = 9..11 são motores de rotação, com value0 = velocidade alvo, value1 = força máxima do motor
+* 9: ângulo do eixo X
+* 10: ângulo do eixo Y
+* 11: ângulo do eixo Z
 
-- **`value0 (speed)`**: Set the linear velocity of the axis
+- **`value0 (speed)`**: Define a velocidade linear do eixo
   - tipo: float Range: -10,000.00 to 10,000.00
-- **`value1 (force)`**: Set the maximum force limit of the axis
+- **`value1 (force)`**: Define o limite de força máxima do eixo
   - tipo: float Range: -10,000.00 to 10,000.00
-axis = 12..14 are for linear springs on each of the position of freedom
-* 12: X axis position
-* 13: Y axis position
-* 14: Z axis position
+axis = 12..14 são molas lineares em cada posição de liberdade
+* 12: posição no eixo X
+* 13: posição no eixo Y
+* 14: posição no eixo Z
 
-axis = 15..17 are for angular springs on each of the angle of freedom in radians
-* 15: X axis angle
-* 16: Y axis angle
-* 17: Z axis angle
+axis = 15..17 são molas angulares em cada ângulo de liberdade, em radianos
+* 15: ângulo do eixo X
+* 16: ângulo do eixo Y
+* 17: ângulo do eixo Z
 
-- **`value0 (stiffness)`**: Set the stiffness of the spring
+- **`value0 (stiffness)`**: Define a rigidez da mola
   - tipo: float
-- **`value1 (damping)`**: Tendency of the spring to return to it's original position
+- **`value1 (damping)`**: Tendência da mola de voltar à posição original
   - tipo: float 1.0 = springs back to original position (no damping) 0.0 = don't springs back
 
 ### getParam(axis)
 
-Get the contraint position or euler angle of a generic 6DOF constraint
+Pega a posição ou o ângulo de Euler de uma constraint 6DOF genérica
 
 - **`axis`**:
   - tipo: integer
-axis = 0..2 are linear constraint values
-* 0: X axis position
-* 1: Y axis position
-* 2: Z axis position
+axis = 0..2 são valores de constraint linear
+* 0: posição no eixo X
+* 1: posição no eixo Y
+* 2: posição no eixo Z
 
-**Retorna:** position
+**Retorna:** posição
 
 **Tipo do retorno:** float
 
-axis = 3..5 are relative constraint (Euler) angles in radians
-* 3: X axis angle
-* 4: Y axis angle
-* 5: Z axis angle
+axis = 3..5 são ângulos (Euler) relativos da constraint, em radianos
+* 3: ângulo do eixo X
+* 4: ângulo do eixo Y
+* 5: ângulo do eixo Z
 
-**Retorna:** angle
+**Retorna:** ângulo
 
 **Tipo do retorno:** float
 
 ### constraint_id
 
-Returns the contraint ID  (read only)
+Devolve o ID da constraint (somente leitura)
 
 **Tipo:** integer
 
 ### constraint_type
 
-Returns the contraint type (read only)
+Devolve o tipo da constraint (somente leitura)
 
 **Tipo:** integer - `POINTTOPOINT_CONSTRAINT` - `LINEHINGE_CONSTRAINT` - `ANGULAR_CONSTRAINT` - `CONETWIST_CONSTRAINT` - `VEHICLE_CONSTRAINT` - `GENERIC_6DOF_CONSTRAINT`
 
 ### breakingThreshold
 
-The impulse threshold breaking the constraint, if the constraint is broken `enabled` is set to `False`.
+O limite de impulso que quebra a constraint; se a constraint quebrar, `enabled` vira `False`.
 
 **Tipo:** float greater or equal to 0
 
 ### enabled
 
-The status of the constraint. Set to `True` to restore a constraint after breaking.
+O status da constraint. Use `True` para restaurar uma constraint depois de quebrada.
 
 **Tipo:** boolean
 

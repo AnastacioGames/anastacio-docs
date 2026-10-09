@@ -59,7 +59,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>função</small>
 
--- drawn above every window, for fades
+-- desenhado acima de todas as janelas, para fades
 
 ### end()
 
@@ -103,7 +103,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>função</small>
 
--- texture_id is a raw OpenGL bind code
+-- texture_id é um bind code OpenGL puro
 
 ### input_text(label, value, max_length=256)
 
@@ -163,19 +163,19 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
--- >0 pixels, <0 right-aligned to the window edge (-1 = full width)
+-- >0 pixels, <0 alinhado à direita da borda da janela (-1 = largura total)
 
 ### push_style_color(idx, r, g, b, a)
 
 <span class="ae-badge pendente">sem documentação</span> <small>função</small>
 
--- idx is one of the imgui.COL_* constants
+-- idx é uma das constantes imgui.COL_*
 
 ### push_style_var(idx, value)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-or push_style_var(idx, x, y) -- idx is one of imgui.STYLE_*
+ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
 
 ### radio_button(label, active)
 
@@ -195,19 +195,19 @@ or push_style_var(idx, x, y) -- idx is one of imgui.STYLE_*
 
 <span class="ae-badge pendente">sem documentação</span> <small>função</small>
 
--- position relative to the current window
+-- posição relativa à janela atual
 
 ### set_game_ui_open(open)
 
 <span class="ae-badge pendente">sem documentação</span> <small>função</small>
 
--- enable/disable input + free mouse for Python-drawn game UI
+-- liga/desliga a entrada + libera o mouse para a UI de jogo desenhada em Python
 
 ### set_next_item_width(width)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
--- same convention as push_item_width, next widget only
+-- mesma convenção de push_item_width, só para o próximo widget
 
 ### set_next_window_pos(x, y, cond=COND_ALWAYS)
 

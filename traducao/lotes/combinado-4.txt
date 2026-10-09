@@ -1,0 +1,302 @@
+===== constraints
+A Bullet Physics cuida da detecção de colisão e da dinâmica de corpos rígidos da game engine.
+Recursos:
+Simulação de veículos.
+Constraints de corpo rígido: hinge e ponto a ponto (ball socket).
+Acesso às configurações internas da física,
+como o tempo de desativação, e recursos de depuração
+Como esta API não é bem documentada, pode não ficar claro que valores usar nos parâmetros. Em geral, os amortecimentos devem ficar entre 0 e 1 e as rigidezes não devem passar muito de 10.
+Exemplos
+Para mais exemplos da física Bullet e de como usá-la, veja o [fórum do pybullet](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
+=
+Cria uma constraint.
+O physics id do primeiro objeto da constraint.
+O physics id do segundo objeto da constraint.
+O tipo da constraint; veja `Create Constraint Constants`_.
+Posição X do pivô (opcional).
+Posição Y do pivô (opcional).
+Posição Z do pivô (opcional).
+Ângulo do eixo X em graus (opcional).
+Ângulo do eixo Y em graus (opcional).
+Ângulo do eixo Z em graus (opcional).
+128 para desligar a colisão entre os corpos ligados (opcional).
+Um wrapper de constraint.
+Cria uma constraint de veículo.
+O physics id do objeto chassi da constraint.
+Um wrapper de constraint de veículo.
+Exporta um arquivo que representa o mundo da dinâmica (em geral com extensão `.bullet`).
+Veja [Bullet binary serialization](http://bulletphysics.org/mediawiki-1.5.8/index.php/Bullet_binary_serialization)_.
+Caminho do arquivo.
+O id da constraint.
+O último impulso aplicado.
+O id da constraint de veículo.
+Um objeto de constraint de veículo.
+O game object com a física de personagem.
+Wrapper de personagem.
+Remove uma constraint.
+O id da constraint a remover.
+Muito experimental, não recomendado
+Define o modo de CCD (detecção contínua de colisão) no ambiente de física.
+O novo modo de CCD.
+Um padrão razoável é 0.02 (se as unidades forem metros)
+Define limites ligados ao gerenciamento de pontos de contato.
+O novo limite de quebra de contato.
+Define o limite de velocidade angular.
+Novo limite angular de desativação.
+Define o limite de velocidade linear.
+Novo limite linear de desativação.
+Define o tempo depois do qual um corpo rígido parado é desativado.
+O tempo de desativação.
+Define o modo de depuração.
+O novo modo de depuração; veja `Debug Mode Constants`_.
+Define a força da gravidade.
+Força da gravidade em X.
+Força da gravidade em Y.
+Força da gravidade em Z.
+Não implementado
+Define o amortecimento linear do ar para corpos rígidos.
+Define o número de iterações de um solver de constraints iterativo.
+Novo número de iterações.
+Define a tolerância de penetração de contato da cena de física ativa. Um valor positivo deixa os objetos se sobreporem até `slop` unidades do Blender antes de o solver do Bullet aplicar a correção de posição. O padrão é `0.0`.
+É uma configuração do solver para a cena inteira: afeta todos os contatos físicos da cena ativa. Não muda a margem de colisão de um objeto nem o ponto em que as colisões são detectadas. Use valores pequenos, adequados à escala da cena.
+Tolerância de penetração em unidades do Blender. Use um valor finito e não negativo.
+Define o número de substeps de cada passo da física. Troca qualidade por desempenho.
+Novo número de substeps.
+Define a constante de amortecimento de um solver baseado em penalidade.
+Novo amortecimento do solver.
+Define a constante de mola de um solver baseado em penalidade.
+Novo tau do solver.
+Define o tipo do solver.
+O novo tipo do solver.
+Define a constante de sobre-relaxação sucessiva.
+Novo valor de sor.
+String constante simbólica que indica erro.
+Constantes de modo de depuração
+Modo de depuração a usar com `setDebugMode`.
+Sem depuração.
+Desenha wireframe na depuração.
+Desenha a Axis Aligned Bounding Box na depuração.
+Desenha o texto dos recursos na depuração.
+Desenha os pontos de contato na depuração.
+Depuração sem texto de ajuda.
+Desenha texto na depuração.
+Desenha os tempos de profile na depuração.
+Liga a comparação sat na depuração.
+Desliga o LCP do Bullet.
+Liga a detecção contínua de colisão na depuração.
+Desenha as constraints na depuração.
+Desenha os limites das constraints na depuração.
+Desenha um wireframe rápido na depuração.
+Constantes de criação de constraint
+Tipo de constraint a usar com `createConstraint`.
+===== BL_ArmatureChannel
+Proxy para um canal de pose da armature. Permite ler e definir a pose da armature. Os atributos são iguais aos do RNA, mas a maioria é somente leitura.
+nome do canal (= nome do bone), somente leitura.
+devolve o objeto bone correspondente a este canal de pose, somente leitura.
+devolve o canal pai, None se for o canal raiz, somente leitura.
+true se o bone faz parte de uma cadeia IK ativa, somente leitura. Esta flag não é ligada quando uma constraint IK existe mas não está ativa (por exemplo, sem informação de alvo).
+true se o bone gira livre no eixo X, somente leitura.
+true se o bone gira livre no eixo Y, somente leitura.
+true se o bone gira livre no eixo Z, somente leitura.
+true se há limite na rotação X, somente leitura.
+true se há limite na rotação Y, somente leitura.
+true se há limite na rotação Z, somente leitura.
+true se a rotação do canal deve ser aplicada como constraint IK, somente leitura.
+true se o tamanho do canal deve ser aplicado como constraint IK, somente leitura.
+deslocamento da cabeça do bone no espaço local da armature, leitura e escrita.
+Só dá para mover um bone se ele não estiver conectado ao pai. Uma action tocando na armature pode mudar o valor. Uma cadeia IK não atualiza este valor; veja joint_rotation.
+Mudar este campo não tem efeito imediato; a pose é atualizada quando a armature é atualizada durante o render (veja `BL_ArmatureObject.update`).
+escala do bone relativa ao pai, leitura e escrita.
+Uma action tocando na armature pode mudar o valor. Uma cadeia IK não atualiza este valor; veja joint_rotation.
+Mudar este campo não tem efeito imediato; a pose é atualizada quando a armature é atualizada durante o render (veja `BL_ArmatureObject.update`)
+rotação do bone relativa ao pai, como quaternion, leitura e escrita.
+Este campo só é usado se rotation_mode for 0. Uma action tocando na armature pode mudar o valor. Uma cadeia IK não atualiza este valor; veja joint_rotation.
+rotação do bone relativa ao pai, como ângulos de Euler, leitura e escrita.
+Este campo só é usado se rotation_mode for > 0. Passe os ângulos sempre na ordem [X, Y, Z]; a ordem em que são aplicados ao bone depende de rotation_mode. Uma action tocando na armature pode mudar este campo. Uma cadeia IK não atualiza este valor; veja joint_rotation.
+Método de atualização da rotação do bone, leitura e escrita.
+matriz da pose no espaço do bone (deformação do bone por action, constraint etc.), somente leitura. Este campo é atualizado depois do render e representa a pose atual.
+matriz da pose no espaço da armature, somente leitura. Este campo é atualizado depois do render e representa a pose atual.
+posição da cabeça do bone no espaço da armature, somente leitura.
+posição da cauda do bone no espaço da armature, somente leitura.
+valor mínimo da rotação X em graus (<= 0) quando a rotação X é limitada (veja ik_limit_x), somente leitura.
+valor máximo da rotação X em graus (>= 0) quando a rotação X é limitada (veja ik_limit_x), somente leitura.
+valor mínimo da rotação Y em graus (<= 0) quando a rotação Y é limitada (veja ik_limit_y), somente leitura.
+valor máximo da rotação Y em graus (>= 0) quando a rotação Y é limitada (veja ik_limit_y), somente leitura.
+valor mínimo da rotação Z em graus (<= 0) quando a rotação Z é limitada (veja ik_limit_z), somente leitura.
+valor máximo da rotação Z em graus (>= 0) quando a rotação Z é limitada (veja ik_limit_z), somente leitura.
+rigidez de rotação do bone no eixo X, somente leitura.
+rigidez de rotação do bone no eixo Y, somente leitura.
+rigidez de rotação do bone no eixo Z, somente leitura.
+proporção de mudança de escala permitida; 0 = o bone não muda de tamanho, somente leitura.
+peso da constraint de rotação quando ik_rot_control está ligado, leitura e escrita.
+peso da constraint de tamanho quando ik_lin_control está ligado, leitura e escrita.
+Controla a rotação do bone em termos de ângulo de junta (para aplicações de robótica), leitura e escrita.
+Ao escrever neste atributo, você passa um vetor [x, y, z] e um conjunto adequado de ângulos de Euler ou quaternion é calculado conforme rotation_mode.
+Ao ler este atributo, a matriz da pose atual é convertida num vetor [x, y, z] que representa os ângulos da junta.
+O valor e o significado de x, y e z dependem dos atributos ik_dof_x/ik_dof_y/ik_dof_z:
+Junta de 1 grau de liberdade X, Y ou Z: o valor x, y ou z correspondente é usado como ângulo da junta em radianos
+Junta de 2 graus de liberdade X+Y ou Z+Y: tratada como 2 juntas de 1 grau seguidas, primeiro X ou Z, depois Y. O valor x ou z é usado como ângulo da junta em radianos no eixo X ou Z, seguido de uma rotação de y radianos no novo eixo Y.
+Junta de 2 graus de liberdade X+Z: tratada como uma junta de 2 graus com eixo de rotação no plano X/Z. Os valores x e z são usados como coordenadas do vetor de rotação no plano X/Z.
+Junta de 3 graus de liberdade X+Y+Z: tratada como uma junta de revolução. O vetor [x, y, z] representa o vetor de rotação equivalente que leva a junta da rest pose à nova pose.
+O bone precisa fazer parte de uma cadeia IK para você definir os atributos ik_dof_x/ik_dof_y/ik_dof_z pela UI, mas isso atrapalha este atributo, porque o solver de IK sobrescreve a pose. Dá para manter o controle da armature criando uma constraint IK sem terminá-la (por exemplo, sem definir alvo): o solver de IK não roda, mas o painel IK aparece na UI para cada bone da cadeia.
+[0, 0, 0] sempre corresponde à rest pose.
+É preciso pedir a atualização da pose da armature e esperar o próximo frame gráfico para ver o efeito deste atributo (veja `BL_ArmatureObject.update`).
+Depois de definir este atributo, dá para ler o resultado do cálculo nos atributos rotation ou euler_rotation.
+===== KX_ConstraintWrapper
+=
+Devolve o ID da constraint
+o ID da constraint
+Define os limites da constraint
+=
+Lowerlimit == Upperlimit -> o eixo fica travado
+Lowerlimit > Upperlimit -> o eixo fica livre
+Lowerlimit < Upperlimit -> o eixo fica limitado a esse intervalo
+Para PHY_LINEHINGE_CONSTRAINT = 2 ou PHY_ANGULAR_CONSTRAINT = 3:
+axis = 3 é um limite da constraint, com valor de limite inferior/superior
+3: ângulo do eixo X
+Define o limite mínimo do eixo
+Define o limite máximo do eixo
+Para PHY_CONE_TWIST_CONSTRAINT = 4:
+axis = 3..5 são limites da constraint, valores de limite superior
+4: ângulo do eixo Y
+5: ângulo do eixo Z
+Para PHY_GENERIC_6DOF_CONSTRAINT = 12:
+axis = 0..2 são limites da constraint, com valor de limite inferior/superior
+0: posição no eixo X
+1: posição no eixo Y
+2: posição no eixo Z
+axis = 3..5 são ângulos (Euler) relativos da constraint, em radianos
+axis = 6..8 são motores de translação, com value0 = velocidade alvo, value1 = força máxima do motor
+6: posição no eixo X
+7: posição no eixo Y
+8: posição no eixo Z
+axis = 9..11 são motores de rotação, com value0 = velocidade alvo, value1 = força máxima do motor
+9: ângulo do eixo X
+10: ângulo do eixo Y
+11: ângulo do eixo Z
+Define a velocidade linear do eixo
+Define o limite de força máxima do eixo
+axis = 12..14 são molas lineares em cada posição de liberdade
+12: posição no eixo X
+13: posição no eixo Y
+14: posição no eixo Z
+axis = 15..17 são molas angulares em cada ângulo de liberdade, em radianos
+15: ângulo do eixo X
+16: ângulo do eixo Y
+17: ângulo do eixo Z
+Define a rigidez da mola
+Tendência da mola de voltar à posição original
+Pega a posição ou o ângulo de Euler de uma constraint 6DOF genérica
+axis = 0..2 são valores de constraint linear
+posição
+ângulo
+Devolve o ID da constraint (somente leitura)
+Devolve o tipo da constraint (somente leitura)
+O limite de impulso que quebra a constraint; se a constraint quebrar, `enabled` vira `False`.
+O status da constraint. Use `True` para restaurar uma constraint depois de quebrada.
+===== KX_VertexProxy
+Um vértice guarda informações de posição, UV, cor e normal.
+Nota: a simulação de física NÃO é atualizada por enquanto; a física não reage a mudanças na posição do vértice.
+A posição do vértice.
+As coordenadas de textura do vértice.
+A lista de coordenadas de textura do vértice.
+A normal do vértice.
+A tangente do vértice (somente leitura), calculada a partir do UV map usado pelo nó Normal Map ou Tangent do material (o UV map ativo por padrão). O componente w guarda o sinal da bitangente.
+A cor do vértice.
+Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0]
+A lista de cores do vértice.
+A coordenada x do vértice.
+A coordenada y do vértice.
+A coordenada z do vértice.
+A coordenada de textura u do vértice.
+A coordenada de textura v do vértice.
+A segunda coordenada de textura u do vértice.
+A segunda coordenada de textura v do vértice.
+O componente vermelho da cor do vértice. 0.0 <= r <= 1.0.
+O componente verde da cor do vértice. 0.0 <= g <= 1.0.
+O componente azul da cor do vértice. 0.0 <= b <= 1.0.
+O componente alpha da cor do vértice. 0.0 <= a <= 1.0.
+Pega a posição deste vértice.
+a posição deste vértice em coordenadas locais.
+Define a posição deste vértice.
+a nova posição deste vértice em coordenadas locais.
+Pega as coordenadas UV (de textura) deste vértice.
+as coordenadas UV (de textura) deste vértice.
+Define as coordenadas UV (de textura) deste vértice.
+Pega as 2ªs coordenadas UV (de textura) deste vértice.
+Define as 2ªs coordenadas UV (de textura) deste vértice.
+argumento opcional, FLAT==1, SECOND_UV==2; o padrão é SECOND_UV
+Pega a cor deste vértice.
+A cor é representada como quatro bytes empacotados num inteiro, no formato RGBA.
+Como o Python não tem como pegar cada byte sem deslocamento de bits, use o módulo struct para acessar a cor de um jeito independente da máquina.
+Por isso, é recomendado usar os atributos r, g, b e a ou o atributo color.
+=
+=
+=
+cor empacotada. Inteiro de 4 bytes com um byte por canal de cor, no formato RGBA.
+Define a cor deste vértice.
+Veja getRGBA() para o formato de col e os problemas dele. Use os atributos r, g, b e a ou o atributo color.
+setRGBA() também aceita uma lista de quatro componentes como argumento col. A lista representa a cor como [r, g, b, a], com preto = [0.0, 0.0, 0.0, 1.0] e branco = [1.0, 1.0, 1.0, 1.0]
+Vermelho
+Verde em little endian, roxo transparente em big endian
+Verde em todas as plataformas.
+a nova cor deste vértice, no formato RGBA empacotado.
+Pega o vetor normal deste vértice.
+vetor normal normalizado.
+Define o vetor normal deste vértice.
+a nova normal deste vértice.
+===== BL_Shader
+BL_Shader é uma classe usada para compilar e usar scripts de shader personalizados. Suporta vertex, fragment e geometry shaders. O shader é compilado com um cabeçalho gerado para os três scripts. Esse cabeçalho define a diretiva `#version`, então o usuário não deve definir a sua própria `#version`.
+Liga o shader para uso.
+A lista de callbacks Python executados quando o shader é usado para renderizar um objeto. Todas as funções recebem como argumento o objeto sendo renderizado.
+A lista de callbacks Python executados quando o shader começa a ser usado no render.
+Define um uniform com uma lista de valores float
+o nome do uniform
+uma lista (2, 3 ou 4 elementos) de valores float
+Limpa o shader. Use este método antes de mudar o código com `setSource`.
+Devolve o fragment program.
+O fragment program.
+Pega o vertex program.
+O vertex program.
+Verifica se o shader é válido.
+True se o shader é válido
+Define a location do atributo. (O parâmetro é ignorado por enquanto e o valor de "tangent" é sempre usado.)
+valor da location do atributo
+Define o índice de sampler de textura do uniform.
+Nome do uniform
+Índice do sampler de textura.
+Define os programas de vertex e fragment
+Vertex program
+Fragment program
+Liga o shader.
+Define os programas de vertex, fragment e geometry shader.
+Dicionário com todos os programas. As chaves `vertex`, `fragment` e `geometry` representam os programas de mesmo nome. `geometry` é opcional. Este dicionário pode ficar parecido com: .. code-block:: python sources = { "vertex" : vertexProgram, "fragment" : fragmentProgram, "geometry" : geometryProgram }
+Define um uniform com 1 valor float.
+Valor do uniform
+Define um uniform com um valor inteiro.
+o valor do uniform
+Define um uniform com 2 valores float
+primeiro valor float
+segundo valor float
+Define um uniform com 2 valores inteiros
+primeiro valor inteiro
+segundo valor inteiro
+Define um uniform com 3 valores float.
+terceiro valor float
+Define um uniform com 3 valores inteiros
+terceiro valor inteiro
+Define um uniform com 4 valores float.
+quarto valor float
+Define um uniform com 4 valores inteiros
+quarto valor inteiro
+Define um novo uniform
+tipo do uniform, uma `destas constantes`
+Define um uniform com uma matriz 3x3
+Uma matriz 3x3 [[f, f, f], [f, f, f], [f, f, f]]
+use True para transpor a matriz
+Define um uniform com uma matriz 4x4
+Uma matriz 4x4 [[f, f, f, f], [f, f, f, f], [f, f, f, f], [f, f, f, f]]
+Define um uniform com uma lista de valores inteiros
+uma lista (2, 3 ou 4 elementos) de valores inteiros
+Define um uniform com um valor float que indica o olho sendo renderizado no modo estéreo: 0.0 para o olho esquerdo, 0.5 para o direito. Fora do modo estéreo, o valor fica fixo em 0.0. O uso típico é no modo estéreo, para ler texturas estéreo com as imagens dos olhos esquerdo e direito em ordem de cima para baixo.
+Valida o objeto de shader.

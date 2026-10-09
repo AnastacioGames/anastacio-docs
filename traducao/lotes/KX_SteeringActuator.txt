@@ -1,0 +1,12 @@
+Atuador Steering para navegação.
+O comportamento de steering a usar.
+Módulo da velocidade
+Aceleração máxima
+Velocidade máxima de giro
+Distância de relaxamento
+Objeto alvo
+Navigation mesh
+Termina quando o alvo é alcançado
+Liga a visualização de depuração
+Período de atualização do caminho
+Lista de pontos do caminho.

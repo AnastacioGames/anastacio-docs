@@ -219,7 +219,13 @@ def selo_de(item):
     return None
 
 
-def secao_pendentes(itens, docs):
+# conteudo/descricoes.json: {"Classe": {"item": "descrição em português"}}, para itens
+# novos que não têm docstring no C++. Ganha da docstring quando os dois existem.
+DESCRICOES_ARQ = AQUI / "conteudo" / "descricoes.json"
+DESCRICOES = json.loads(DESCRICOES_ARQ.read_text(encoding="utf-8")) if DESCRICOES_ARQ.exists() else {}
+
+
+def secao_pendentes(itens, docs, classe=None):
     """Itens que existem no C++ mas não estão no rst."""
     novos = [(n, i) for n, i in itens.items() if i["status"] == "novo"]
     if not novos:
@@ -232,7 +238,7 @@ def secao_pendentes(itens, docs):
         if nome.startswith("_"):
             continue  # uso interno
         tipo = {"metodo": "método", "funcao": "função", "atributo": "atributo", "constante": "constante"}.get(i["tipo"], i["tipo"])
-        doc = docs.get(nome, "")
+        doc = DESCRICOES.get(classe, {}).get(nome) or docs.get(nome, "")
         m = re.match(rf"{nome}\([^)]*\)", doc)
         cab = m.group(0) if m else nome + ("()" if i["tipo"] in ("metodo", "funcao") else "")
         resto = doc[len(cab):].lstrip(" :") if m else doc
@@ -256,6 +262,8 @@ def secao_pendentes(itens, docs):
 TRADUCAO = AQUI / "traducao" / "pt.json"
 PENDENTE = AQUI / "traducao" / "pendente.json"
 _pt = json.loads(TRADUCAO.read_text(encoding="utf-8")) if TRADUCAO.exists() else {}
+# as descrições já são escritas em português
+_pt.update({t: t for d in DESCRICOES.values() for t in d.values()})
 _pendente = {}
 _pagina_atual = [""]
 
@@ -351,7 +359,7 @@ def pagina_classe(nome, info, rst_arq, docs):
         corpo, base = f"Classe `Range.types.{nome}`.", None
     corpo = re.sub(r"^base class --- .*$", "", corpo, flags=re.M)
     topo = f"Classe base: [`{base.group(1).split('.')[-1]}`](../{base.group(1).split('.')[-1].lower()}/)\n\n" if base else ""
-    pend = secao_pendentes(info["itens"], docs) if info else ""
+    pend = secao_pendentes(info["itens"], docs, nome) if info else ""
     texto = frontmatter(nome, f"Referência da classe Range.types.{nome}") + topo + corpo + "\n" + pend + "\n"
     escrever(DESTINO / "api" / "types" / f"{nome}.md", texto)
 

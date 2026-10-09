@@ -1,0 +1,8 @@
+Classe base de todos os logic bricks de controlador.
+A máscara de bits de estado do controlador. Pode ser usada com o estado do GameObject para testar se o controlador está ativo.
+Uma lista dos sensores ligados a este controlador.
+Os sensores não pertencem necessariamente ao mesmo objeto.
+Quando objetos são instanciados em dupligroups, as ligações com objetos de fora do dupligroup podem se perder.
+Uma lista dos atuadores ligados a este controlador.
+Quando ligado, o controlador sempre roda antes de todos os outros controladores que não têm isto ligado.
+A ordem de execução entre controladores de alta prioridade não é garantida.

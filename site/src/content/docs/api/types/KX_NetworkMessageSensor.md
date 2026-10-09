@@ -7,31 +7,31 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-The Message Sensor logic brick.
+O logic brick do sensor Message.
 
-Currently only loopback (local) networks are supported.
+Por enquanto só redes loopback (locais) são suportadas.
 
 ### subject
 
-The subject the sensor is looking for.
+O assunto que o sensor procura.
 
 **Tipo:** string
 
 ### frameMessageCount
 
-The number of messages received since the last frame. (read-only).
+O número de mensagens recebidas desde o último frame (somente leitura).
 
 **Tipo:** integer
 
 ### subjects
 
-The list of message subjects received. (read-only).
+A lista dos assuntos das mensagens recebidas (somente leitura).
 
 **Tipo:** list of strings
 
 ### bodies
 
-The list of message bodies received. (read-only).
+A lista dos corpos das mensagens recebidas (somente leitura).
 
 **Tipo:** list of strings
 

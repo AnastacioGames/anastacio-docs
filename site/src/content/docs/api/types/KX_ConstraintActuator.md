@@ -7,71 +7,71 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-A constraint actuator limits the position, rotation, distance or orientation of an object.
+Um atuador Constraint limita a posição, rotação, distância ou orientação de um objeto.
 
 ### damp
 
-Time constant of the constraint expressed in frame (not use by Force field constraint).
+Constante de tempo da constraint, em frames (não usada pela constraint Force field).
 
 **Tipo:** integer
 
 ### rotDamp
 
-Time constant for the rotation expressed in frame (only for the distance constraint), 0 = use damp for rotation as well.
+Constante de tempo da rotação, em frames (só para a constraint de distância); 0 = usa damp também na rotação.
 
 **Tipo:** integer
 
 ### direction
 
-The reference direction in world coordinate for the orientation constraint.
+A direção de referência, em coordenadas do mundo, da constraint de orientação.
 
 **Tipo:** `mathutils.Vector`
 
 ### option
 
-Binary combination of `these constants`
+Combinação binária `destas constantes`
 
 **Tipo:** integer
 
 ### time
 
-activation time of the actuator. The actuator disables itself after this many frame. If set to 0, the actuator is not limited in time.
+tempo de ativação do atuador. O atuador se desliga depois desse número de frames. Com 0, o atuador não tem limite de tempo.
 
 **Tipo:** integer
 
 ### propName
 
-the name of the property or material for the ray detection of the distance constraint.
+o nome da propriedade ou material para a detecção por raio da constraint de distância.
 
 **Tipo:** string
 
 ### min
 
-The lower bound of the constraint. For the rotation and orientation constraint, it represents radiant.
+O limite inferior da constraint. Nas constraints de rotação e orientação, é em radianos.
 
 **Tipo:** float
 
 ### distance
 
-the target distance of the distance constraint.
+a distância alvo da constraint de distância.
 
 **Tipo:** float
 
 ### max
 
-the upper bound of the constraint. For rotation and orientation constraints, it represents radiant.
+o limite superior da constraint. Nas constraints de rotação e orientação, é em radianos.
 
 **Tipo:** float
 
 ### rayLength
 
-the length of the ray of the distance constraint.
+o comprimento do raio da constraint de distância.
 
 **Tipo:** float
 
 ### limit
 
-type of constraint. Use one of the `these constants`
+tipo de constraint. Use uma `destas constantes`
 
 **Tipo:** integer.
 

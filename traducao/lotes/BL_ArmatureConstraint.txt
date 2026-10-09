@@ -1,0 +1,24 @@
+Proxy para uma constraint de armature. Permite mudar a constraint em tempo real. Obtido por `BL_ArmatureObject`.constraints.
+Nem todas as constraints de armature são suportadas na GE.
+Tipo da constraint (somente leitura).
+Use uma `destas constantes`.
+Nome da constraint, montado como <bone_name>:<constraint_name>, na lista constraints.
+Este nome também é a chave de índice em `BL_ArmatureObject`.
+fração do efeito da constraint que é aplicada. Entre 0 e 1.
+Posição do alvo entre a cabeça e a cauda do bone alvo: 0=cabeça, 1=cauda.
+Só é usado se o alvo for um bone (ou seja, se o objeto alvo for uma armature).
+erro linear da constraint em tempo de execução (em unidades do Blender) no frame atual.
+É um valor de tempo de execução, atualizado a cada frame pelo solver de IK. Só existe em constraints IK com o solver iTaSC.
+Erro de rotação da constraint em tempo de execução (em radianos) no frame atual.
+Só é definido se a constraint tiver parte de rotação, por exemplo, uma constraint IK CopyPose+Rotation.
+Objeto alvo principal da constraint. A posição deste objeto na GE é usada como alvo da constraint.
+Objeto alvo secundário da constraint. A posição deste objeto na GE é usada como alvo secundário da constraint.
+Por enquanto isto só é usado como pole target em constraints IK.
+True se a constraint está ativa.
+Uma constraint inativa não atualiza lin_error nem rot_error.
+Peso da constraint IK, entre 0 e 1.
+Só definido para constraints IK.
+Tipo de constraint IK (somente leitura).
+Combinação das flags de opção da constraint IK (somente leitura).
+Distância que a constraint tenta manter do alvo; só usada quando ik_type=CONSTRAINT_IK_DISTANCE.
+Modo adicional da constraint IK. Por enquanto só é usado na constraint Distance:

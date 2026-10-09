@@ -7,13 +7,13 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-Motion sensors of the device (phone or tablet), available as `Range.logic.motion`.
+Sensores de movimento do dispositivo (celular ou tablet), disponíveis como `Range.logic.motion`.
 
-Values come from the browser in the Web runtime (`DeviceMotionEvent` and `DeviceOrientationEvent`), including the Android app, which runs the Web runtime inside a WebView. On other platforms there is no sensor source yet: `available` is `False`, vectors are zero and `tilt` is `(0.0, 0.0)`, so the same script runs everywhere.
+Os valores vêm do navegador no runtime Web (`DeviceMotionEvent` e `DeviceOrientationEvent`), inclusive no app Android, que roda o runtime Web dentro de uma WebView. Nas outras plataformas ainda não há fonte de sensores: `available` é `False`, os vetores são zero e `tilt` é `(0.0, 0.0)`, para que o mesmo script rode em todo lugar.
 
-Vectors use the axes of the screen as it is currently shown, in portrait or landscape: x to the right, y to the top of the screen and z out of the screen, toward the player.
+Os vetores usam os eixos da tela como ela está sendo mostrada, em retrato ou paisagem: x para a direita, y para o topo da tela e z para fora da tela, na direção do jogador.
 
-A tilt-controlled object:
+Um objeto controlado pela inclinação:
 
 ```python
 
@@ -21,7 +21,7 @@ from Range import logic, events
 
 def main(cont):
     own = cont.owner
-    if logic.mouse.inputs[events.LEFTMOUSE].activated:  # a tap on the screen
+    if logic.mouse.inputs[events.LEFTMOUSE].activated:  # um toque na tela
         logic.motion.calibrate()
     x, y = logic.motion.tilt
     own.applyForce((x * 20.0, y * 20.0, 0.0))
@@ -29,45 +29,45 @@ def main(cont):
 
 ### available
 
-`True` while the sensors are sending data. It becomes `False` when no reading arrived in the last second (no sensor, desktop browser, page in background). (read-only).
+`True` enquanto os sensores estão mandando dados. Vira `False` quando nenhuma leitura chegou no último segundo (sem sensor, navegador de desktop, página em segundo plano) (somente leitura).
 
 **Tipo:** boolean
 
 ### gyroscope
 
-Rotation speed around each screen axis, in radians per second. (read-only).
+Velocidade de rotação em torno de cada eixo da tela, em radianos por segundo (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### accelerometer
 
-Acceleration including gravity, in m/s². With the device lying still, face up, it is close to `(0, 0, 9.8)`. (read-only).
+Aceleração incluindo a gravidade, em m/s². Com o dispositivo parado, deitado de face para cima, fica perto de `(0, 0, 9.8)` (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### gravity
 
-Gravity alone, in m/s², pointing up as in `accelerometer`. When the device does not report acceleration without gravity, it is estimated from `accelerometer` with a low-pass filter. (read-only).
+Só a gravidade, em m/s², apontando para cima como em `accelerometer`. Quando o dispositivo não informa a aceleração sem gravidade, ela é estimada a partir de `accelerometer` com um filtro passa-baixa (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### orientation
 
-Device orientation angles `(alpha, beta, gamma)` in degrees, exactly as given by the browser. They follow the device axes, not the screen axes. (read-only).
+Ângulos de orientação do dispositivo `(alpha, beta, gamma)` em graus, exatamente como o navegador entrega. Seguem os eixos do dispositivo, não os da tela (somente leitura).
 
 **Tipo:** `mathutils.Vector`
 
 ### tilt
 
-How far the device is tilted from its neutral position, from -1.0 to 1.0 on each axis: the screen direction a ball would roll to. `x` is positive when the right edge of the screen goes down, `y` when the top edge goes down. The neutral position is the device lying flat until `calibrate` is called. (read-only).
+Quanto o dispositivo está inclinado em relação à posição neutra, de -1.0 a 1.0 em cada eixo: a direção da tela para onde uma bola rolaria. `x` é positivo quando a borda direita da tela desce, `y` quando a borda de cima desce. A posição neutra é o dispositivo deitado, até `calibrate` ser chamado (somente leitura).
 
 **Tipo:** tuple (float, float)
 
 ### calibrate()
 
-Take the current position as neutral for `tilt`, so the player can hold the device the way they like.
+Usa a posição atual como neutra para `tilt`, para o jogador segurar o dispositivo do jeito que preferir.
 
-**Retorna:** `True` if there was a sensor reading to calibrate with, `False` otherwise.
+**Retorna:** `True` se havia uma leitura do sensor para calibrar, `False` se não.
 
 **Tipo do retorno:** boolean
 

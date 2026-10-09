@@ -1,0 +1,11 @@
+Os atuadores Armature mudam a condição das constraints em armatures.
+O tipo de ação que o atuador executa quando está ativo.
+Pode ser uma `destas constantes`
+O objeto de constraint que este atuador controla.
+O objeto que este atuador define como alvo principal da constraint que controla.
+O objeto que este atuador define como alvo secundário da constraint que controla.
+Por enquanto, o único alvo secundário é o pole target das constraints IK.
+O peso que este atuador define na constraint que controla.
+Por enquanto só a constraint IK tem peso. Deve ser um valor entre 0 e 1.
+Peso 0 desliga a constraint, mas continua atualizando os valores dela em tempo de execução (veja `BL_ArmatureConstraint`)
+A influência que este atuador define na constraint que controla.

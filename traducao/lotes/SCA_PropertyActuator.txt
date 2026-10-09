@@ -1,0 +1,4 @@
+Atuador Property
+a propriedade sobre a qual operar.
+o valor com que o atuador opera.
+TODO - adicionar as constantes ao dicionário de game logic!.

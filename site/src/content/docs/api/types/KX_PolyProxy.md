@@ -7,49 +7,49 @@ Classe base: [`SCA_IObject`](../sca_iobject/)
 
 
 
-A polygon holds the index of the vertex forming the poylgon.
+Um polígono guarda o índice dos vértices que o formam.
 
-Note: The polygon attributes are read-only, you need to retrieve the vertex proxy if you want to change the vertex settings.
+Nota: os atributos do polígono são somente leitura; para mudar as configurações de um vértice, pegue o vertex proxy.
 
 ### material_name
 
-The name of polygon material, empty if no material.
+O nome do material do polígono; vazio se não houver material.
 
 **Tipo:** string
 
 ### material
 
-The material of the polygon.
+O material do polígono.
 
 **Tipo:** `KX_BlenderMaterial`
 
 ### texture_name
 
-The texture name of the polygon.
+O nome da textura do polígono.
 
 **Tipo:** string
 
 ### material_id
 
-The material index of the polygon, use this to retrieve vertex proxy from mesh proxy.
+O índice do material do polígono; use para pegar o vertex proxy a partir do mesh proxy.
 
 **Tipo:** integer
 
 ### v1
 
-vertex index of the first vertex of the polygon, use this to retrieve vertex proxy from mesh proxy.
+índice do primeiro vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
 
 **Tipo:** integer
 
 ### v2
 
-vertex index of the second vertex of the polygon, use this to retrieve vertex proxy from mesh proxy.
+índice do segundo vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
 
 **Tipo:** integer
 
 ### v3
 
-vertex index of the third vertex of the polygon, use this to retrieve vertex proxy from mesh proxy.
+índice do terceiro vértice do polígono; use para pegar o vertex proxy a partir do mesh proxy.
 
 **Tipo:** integer
 
@@ -63,88 +63,88 @@ vertex index of the third vertex of the polygon, use this to retrieve vertex pro
 
 ### visible
 
-visible state of the polygon: 1=visible, 0=invisible.
+estado de visibilidade do polígono: 1=visível, 0=invisível.
 
 **Tipo:** integer
 
 ### collide
 
-collide state of the polygon: 1=receives collision, 0=collision free.
+estado de colisão do polígono: 1=recebe colisão, 0=sem colisão.
 
 **Tipo:** integer
 
 ### vertices
 
-Returns the list of vertices of this polygon.
+Devolve a lista de vértices deste polígono.
 
 **Tipo:** `KX_VertexProxy` list (read only)
 
 ### getMaterialName()
 
-Returns the polygon material name with MA prefix
+Devolve o nome do material do polígono com o prefixo MA
 
-**Retorna:** material name
+**Retorna:** nome do material
 
 **Tipo do retorno:** string
 
 ### getMaterial()
 
-**Retorna:** The polygon material
+**Retorna:** O material do polígono
 
 **Tipo do retorno:** `KX_BlenderMaterial`
 
 ### getTextureName()
 
-**Retorna:** The texture name
+**Retorna:** O nome da textura
 
 **Tipo do retorno:** string
 
 ### getMaterialIndex()
 
-Returns the material bucket index of the polygon. This index and the ones returned by getVertexIndex() are needed to retrieve the vertex proxy from `MeshProxy`.
+Devolve o índice do material bucket do polígono. Este índice e os devolvidos por getVertexIndex() são necessários para pegar o vertex proxy a partir de `MeshProxy`.
 
-**Retorna:** the material index in the mesh
+**Retorna:** o índice do material na malha
 
 **Tipo do retorno:** integer
 
 ### getNumVertex()
 
-Returns the number of vertex of the polygon.
+Devolve o número de vértices do polígono.
 
-**Retorna:** number of vertex.
+**Retorna:** número de vértices.
 
 **Tipo do retorno:** integer
 
 ### isVisible()
 
-Returns whether the polygon is visible or not
+Diz se o polígono está visível ou não
 
-**Retorna:** 0=invisible, 1=visible
+**Retorna:** 0=invisível, 1=visível
 
 **Tipo do retorno:** boolean
 
 ### isCollider()
 
-Returns whether the polygon is receives collision or not
+Diz se o polígono recebe colisão ou não
 
-**Retorna:** 0=collision free, 1=receives collision
+**Retorna:** 0=sem colisão, 1=recebe colisão
 
 **Tipo do retorno:** integer
 
 ### getVertexIndex(vertex)
 
-Returns the mesh vertex index of a polygon vertex This index and the one returned by getMaterialIndex() are needed to retrieve the vertex proxy from `MeshProxy`.
+Devolve o índice, na malha, de um vértice do polígono. Este índice e o devolvido por getMaterialIndex() são necessários para pegar o vertex proxy a partir de `MeshProxy`.
 
-- **`vertex`**: index of the vertex in the polygon: 0->2
-- **`vertex`**: integer
+- **`vertex`**: índice do vértice no polígono: 0->2
+- **`vertex`**: inteiro
 
-**Retorna:** mesh vertex index
+**Retorna:** índice do vértice na malha
 
 **Tipo do retorno:** integer
 
 ### getMesh()
 
-Returns a mesh proxy
+Devolve um mesh proxy
 
 **Retorna:** mesh proxy
 

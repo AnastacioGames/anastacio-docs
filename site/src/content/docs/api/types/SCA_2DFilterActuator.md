@@ -7,39 +7,39 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Create, enable and disable 2D filters.
+Cria, liga e desliga filtros 2D.
 
-The following properties don't have an immediate effect. You must active the actuator to get the result. The actuator is not persistent: it automatically stops itself after setting up the filter but the filter remains active. To stop a filter you must activate the actuator with 'type' set to `RAS_2DFILTER_DISABLED` or `RAS_2DFILTER_NOFILTER`.
+As propriedades a seguir não têm efeito imediato. É preciso ativar o atuador para ver o resultado. O atuador não é persistente: ele para sozinho depois de configurar o filtro, mas o filtro continua ativo. Para parar um filtro, ative o atuador com 'type' igual a `RAS_2DFILTER_DISABLED` ou `RAS_2DFILTER_NOFILTER`.
 
 ### shaderText
 
-shader source code for custom shader.
+código-fonte do shader personalizado.
 
 **Tipo:** string
 
 ### disableMotionBlur
 
-action on motion blur: 0=enable, 1=disable.
+ação no motion blur: 0=liga, 1=desliga.
 
 **Tipo:** integer
 
 ### mode
 
-Type of 2D filter, use one of `these constants`.
+Tipo de filtro 2D; use uma `destas constantes`.
 
 **Tipo:** integer
 
 ### passNumber
 
-order number of filter in the stack of 2D filters. Filters are executed in increasing order of passNb.
+número de ordem do filtro na pilha de filtros 2D. Os filtros rodam em ordem crescente de passNb.
 
-Only be one filter can be defined per passNb.
+Só pode haver um filtro por passNb.
 
 **Tipo:** integer (0-100)
 
 ### value
 
-argument for motion blur filter.
+argumento do filtro de motion blur.
 
 **Tipo:** float (0.0-100.0)
 

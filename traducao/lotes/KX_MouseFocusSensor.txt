@@ -1,0 +1,16 @@
+O sensor Mouse focus detecta quando o mouse está sobre o game object atual.
+O sensor Mouse focus transforma as coordenadas do mouse do espaço 2D do dispositivo para o espaço 3D e lança um raio a partir da câmera.
+A origem do raio no espaço do mundo (a posição da vista).
+O alvo do raio no espaço do mundo.
+`rayTarget` - `raySource`, normalizado.
+o último objeto sob o mouse.
+A posição, no espaço do mundo, da interseção do raio.
+a normal, no espaço do mundo, da face no ponto de interseção.
+as coordenadas UV no ponto de interseção.
+Se o objeto não tem mapeamento UV, devolve [0, 0].
+As coordenadas UV não são normalizadas; podem ser < 0 ou > 1 dependendo do mapeamento UV.
+Quando ligado, passar o mouse sobre outro objeto gera um pulso (só usado com a opção 'Mouse Over Any' do sensor).
+Se ligado, o sensor enxerga através de game objects que não têm a propriedade ou o material escolhido.
+A máscara de colisão (16 layers mapeadas num inteiro de 16 bits) combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só os objetos em que `collisionGroup & mask` é verdadeiro podem ser atingidos.
+A propriedade ou o material que o sensor procura.
+Define se o sensor procura uma propriedade ou um material. KX_True = procura material; KX_False = procura propriedade.

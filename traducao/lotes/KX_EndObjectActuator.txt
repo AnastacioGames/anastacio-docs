@@ -1,0 +1,2 @@
+Atuador Edit Object (no modo End Object)
+Este atuador não tem métodos Python.

@@ -7,41 +7,41 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Applies changes to a camera.
+Aplica mudanças a uma câmera.
 
 ### damping
 
-strength of of the camera following movement.
+força do movimento de seguir da câmera.
 
 **Tipo:** float
 
 ### axis
 
-The camera axis (0, 1, 2) for positive `XYZ`, (3, 4, 5) for negative `XYZ`.
+O eixo da câmera: (0, 1, 2) para `XYZ` positivo, (3, 4, 5) para `XYZ` negativo.
 
 **Tipo:** int
 
 ### min
 
-minimum distance to the target object maintained by the actuator.
+distância mínima até o objeto alvo mantida pelo atuador.
 
 **Tipo:** float
 
 ### max
 
-maximum distance to stay from the target object.
+distância máxima a manter do objeto alvo.
 
 **Tipo:** float
 
 ### height
 
-height to stay above the target object.
+altura a manter acima do objeto alvo.
 
 **Tipo:** float
 
 ### object
 
-the object this actuator tracks.
+o objeto que este atuador segue.
 
 **Tipo:** `KX_GameObject` or None
 

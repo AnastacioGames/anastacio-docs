@@ -1,0 +1,27 @@
+Esta é a interface para os materiais na game engine.
+Os materiais definem o estado de render aplicado aos objetos de malha.
+O exemplo abaixo mostra uma configuração simples de shader GLSL que mistura dinamicamente dois canais de textura num material. Todos os materiais do objeto que roda este script devem ter duas texturas usando UV maps separados nos dois primeiros canais de textura.
+O código funciona nos modos de render Multitexture e GLSL.
+pega o primeiro canal de textura do material
+pega o segundo canal de textura do material
+passa outro uniform para o shader
+O shader do material.
+Inteiros usados na mistura de pixels, (src, dst), iguais aos do método setBlending.
+Devolve o shader do material.
+o shader do material
+Devolve o bind code/id/número/nome OpenGL da textura do material.
+Define o número do slot de textura
+o bind code/id/número/nome OpenGL da textura do material
+A transparência alpha do material.
+Quão dura (nítida) é a reflexão especular do material.
+Quantidade de luz emitida.
+Quantidade de luz ambiente no material.
+Transparência alpha das áreas especulares.
+Quão intensa (brilhante) é a reflexão especular do material.
+A quantidade de reflexão difusa do material.
+A cor especular do material.
+A cor difusa do material.
+Lista de todas as texturas do material.
+Define as funções aritméticas de cor dos pixels.
+Define como os fatores de mistura de origem de vermelho, verde, azul e alpha são calculados; um destes... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
+Define como os fatores de mistura de destino de vermelho, verde, azul e alpha são calculados; um destes... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`

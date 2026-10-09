@@ -16,6 +16,8 @@ Padrão de binding: tabelas `PyMethodDef X::Methods[]` / `PyAttributeDef X::Attr
 
 ### Prioridade 1: mudam o jogo em tempo real
 
+> Feita na engine em 49be685b (2026-10-09): céu, destruição, FXAA/grão e `quantize` em `network.replicate`. `use_interpolate` ficou sem binding porque o runtime não lê esse valor.
+
 1. **Céu (`KX_WorldInfo`)**: o painel tem, mas o Python não acessa.
    `sky_type`, `star_style`, `use_sky_moon`, `moon_size`, `moon_brightness`, `use_sky_aurora`, `aurora_colors`, `atmosphere_altitude`, `atmosphere_intensity`, `atmosphere_mie_density`, `atmosphere_mie_direction`, `atmosphere_rayleigh_color`, `atmosphere_rayleigh_density`.
    Sugestão: entrar como novos nomes do `setWeather` (`sky.moon_size`…) ou como atributos (`world.moonSize`). Decidir e manter um só padrão.

@@ -7,119 +7,119 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-A texture object that contains attributes of a material texture.
+Um objeto de textura com os atributos de uma textura de material.
 
 ### diffuseIntensity
 
-Amount texture affects diffuse reflectivity.
+Quanto a textura afeta a refletividade difusa.
 
 **Tipo:** float
 
 ### diffuseFactor
 
-Amount texture affects diffuse color.
+Quanto a textura afeta a cor difusa.
 
 **Tipo:** float
 
 ### alpha
 
-Amount texture affects alpha.
+Quanto a textura afeta o alpha.
 
 **Tipo:** float
 
 ### specularIntensity
 
-Amount texture affects specular reflectivity.
+Quanto a textura afeta a refletividade especular.
 
 **Tipo:** float
 
 ### specularFactor
 
-Amount texture affects specular color.
+Quanto a textura afeta a cor especular.
 
 **Tipo:** float
 
 ### hardness
 
-Amount texture affects hardness.
+Quanto a textura afeta a hardness.
 
 **Tipo:** float
 
 ### emit
 
-Amount texture affects emission.
+Quanto a textura afeta a emissão.
 
 **Tipo:** float
 
 ### mirror
 
-Amount texture affects mirror color.
+Quanto a textura afeta a cor de espelho.
 
 **Tipo:** float
 
 ### normal
 
-Amount texture affects normal values.
+Quanto a textura afeta os valores de normal.
 
 **Tipo:** float
 
 ### parallaxBump
 
-Height of parallax occlusion mapping.
+Altura do parallax occlusion mapping.
 
 **Tipo:** float
 
 ### parallaxStep
 
-Number of steps to achieve parallax effect.
+Número de passos para fazer o efeito de parallax.
 
 **Tipo:** float
 
 ### lodBias
 
-Amount bias on mipmapping.
+Bias aplicado ao mipmapping.
 
 **Tipo:** float
 
 ### bindCode
 
-Texture bind code/Id/number.
+Bind code/Id/número da textura.
 
 **Tipo:** integer
 
 ### renderer
 
-Texture renderer of this texture.
+Texture renderer desta textura.
 
 **Tipo:** `KX_CubeMap`, `KX_PlanarMap` or None
 
 ### ior
 
-Index Of Refraction used to compute refraction.
+Índice de refração usado para calcular a refração.
 
 **Tipo:** float (1.0 to 50.0)
 
 ### refractionRatio
 
-Amount refraction mixed with reflection.
+Quanto da refração é misturada com a reflexão.
 
 **Tipo:** float (0.0 to 1.0)
 
 ### uvOffset
 
-Offset applied to texture UV coordinates (mainly translation on U and V axis).
+Deslocamento aplicado às coordenadas UV da textura (principalmente translação nos eixos U e V).
 
 **Tipo:** `mathutils.Vector`
 
 ### uvSize
 
-Scale applied to texture UV coordinates.
+Escala aplicada às coordenadas UV da textura.
 
 **Tipo:** `mathutils.Vector`
 
 ### uvRotation
 
-Rotation applied to texture UV coordinates.
+Rotação aplicada às coordenadas UV da textura.
 
 **Tipo:** float (radians)
 

@@ -13,7 +13,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-Calls a game RPC registered with @rpc; obj makes it an object call (target 'owner' and owner_only use its owner). False when refused here (no session, wrong target...).
+Chama um RPC do jogo registrado com @rpc; obj faz dela uma chamada de objeto (o alvo 'owner' e owner_only usam o dono dele). False quando recusada aqui (sem sessão, alvo errado...).
 
 **Retorna:** `bool`
 
@@ -37,7 +37,7 @@ Calls a game RPC registered with @rpc; obj makes it an object call (target 'owne
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-Opens a server. Zero or empty values use the Network panel of the scene.
+Abre um servidor. Valores zero ou vazios usam o painel Network da cena.
 
 **Retorna:** `bool`
 
@@ -57,7 +57,7 @@ Opens a server. Zero or empty values use the Network panel of the scene.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-Joins 'host', 'host:port' or '[v6]:port'.
+Entra em 'host', 'host:port' ou '[v6]:port'.
 
 **Retorna:** `bool`
 
@@ -117,13 +117,13 @@ Joins 'host', 'host:port' or '[v6]:port'.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
--> (obj, point, distance) or None Server: ray against the hitboxes as client saw them (lag compensation, 1 s of history); -1 = now.
+-> (obj, point, distance) ou None. Servidor: raio contra as hitboxes como o cliente as viu (compensação de lag, 1 s de histórico); -1 = agora.
 
 ### replicate(obj, props=()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-, transform=True, velocity=False, angular_velocity=False, always_relevant=False, priority=1.0, quantize=None) -> int Same as the Replicate checkbox; run it before host()/join(), in the same order on every peer. quantize={name: (min, max, bits)} sends Float properties in fewer bits.
+, transform=True, velocity=False, angular_velocity=False, always_relevant=False, priority=1.0, quantize=None) -> int. Igual à caixa Replicate; rode antes de host()/join(), na mesma ordem em todos os peers. quantize={name: (min, max, bits)} envia propriedades Float em menos bits.
 
 ### return_to_lobby()
 
@@ -137,7 +137,7 @@ Joins 'host', 'host:port' or '[v6]:port'.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-Server only: relevance center (object or position) and radius of a client; radius 0 sends everything. No center: first object the client owns. All None: back to the scene's Relevance Radius.
+Só no servidor: centro de relevância (objeto ou posição) e raio de um cliente; raio 0 envia tudo. Sem centro: o primeiro objeto que o cliente possui. Tudo None: volta ao Relevance Radius da cena.
 
 ### set_hitbox()
 
@@ -163,7 +163,7 @@ Server only: relevance center (object or position) and radius of a client; radiu
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-Server only: adds a copy of the inactive object 'prototype' and replicates it.
+Só no servidor: adiciona uma cópia do objeto inativo 'prototype' e a replica.
 
 **Retorna:** `object`
 

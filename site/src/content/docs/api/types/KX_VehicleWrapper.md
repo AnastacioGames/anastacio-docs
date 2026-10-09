@@ -9,159 +9,159 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 KX_VehicleWrapper
 
-TODO - description
+TODO - descrição
 
 ### addWheel(wheel, attachPos, downDir, axleDir, suspensionRestLength, wheelRadius, hasSteering)
 
-Add a wheel to the vehicle
+Adiciona uma roda ao veículo
 
-- **`wheel`**: The object to use as a wheel.
+- **`wheel`**: O objeto a usar como roda.
   - tipo: `KX_GameObject` or a `KX_GameObject` name
-- **`attachPos`**: The position to attach the wheel, relative to the chassis object center.
+- **`attachPos`**: A posição onde prender a roda, relativa ao centro do objeto chassi.
   - tipo: vector of 3 floats
-- **`downDir`**: The direction vector pointing down to where the vehicle should collide with the floor.
+- **`downDir`**: O vetor de direção apontando para baixo, até onde o veículo deve colidir com o chão.
   - tipo: vector of 3 floats
-- **`axleDir`**: The axis the wheel rotates around, relative to the chassis.
+- **`axleDir`**: O eixo em torno do qual a roda gira, relativo ao chassi.
   - tipo: vector of 3 floats
-- **`suspensionRestLength`**: The length of the suspension when no forces are being applied.
+- **`suspensionRestLength`**: O comprimento da suspensão quando nenhuma força está sendo aplicada.
   - tipo: float
-- **`wheelRadius`**: The radius of the wheel (half the diameter).
+- **`wheelRadius`**: O raio da roda (metade do diâmetro).
   - tipo: float
-- **`hasSteering`**: True if the wheel should turn with steering, typically used in front wheels.
+- **`hasSteering`**: True se a roda deve virar com o volante; em geral usado nas rodas da frente.
   - tipo: boolean
 
 ### applyBraking(force, wheelIndex)
 
-Apply a braking force to the specified wheel
+Aplica uma força de freio à roda indicada
 
-- **`force`**: the brake force
+- **`force`**: a força de freio
   - tipo: float
-- **`wheelIndex`**: index of the wheel where the force needs to be applied
+- **`wheelIndex`**: índice da roda em que a força deve ser aplicada
   - tipo: integer
 
 ### applyEngineForce(force, wheelIndex)
 
-Apply an engine force to the specified wheel
+Aplica uma força de motor à roda indicada
 
-- **`force`**: the engine force
+- **`force`**: a força do motor
   - tipo: float
-- **`wheelIndex`**: index of the wheel where the force needs to be applied
+- **`wheelIndex`**: índice da roda em que a força deve ser aplicada
   - tipo: integer
 
 ### getConstraintId()
 
-Get the constraint ID
+Pega o ID da constraint
 
-**Retorna:** the constraint id
+**Retorna:** o id da constraint
 
 **Tipo do retorno:** integer
 
 ### getConstraintType()
 
-Returns the constraint type.
+Devolve o tipo da constraint.
 
-**Retorna:** constraint type
+**Retorna:** tipo da constraint
 
 **Tipo do retorno:** integer
 
 ### getNumWheels()
 
-Returns the number of wheels.
+Devolve o número de rodas.
 
-**Retorna:** the number of wheels for this vehicle
+**Retorna:** o número de rodas deste veículo
 
 **Tipo do retorno:** integer
 
 ### getWheelOrientationQuaternion(wheelIndex)
 
-Returns the wheel orientation as a quaternion.
+Devolve a orientação da roda como quaternion.
 
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
-**Retorna:** TODO Description
+**Retorna:** TODO Descrição
 
 **Tipo do retorno:** TODO - type should be quat as per method name but from the code it looks like a matrix
 
 ### getWheelPosition(wheelIndex)
 
-Returns the position of the specified wheel
+Devolve a posição da roda indicada
 
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
-**Retorna:** position vector
+**Retorna:** vetor de posição
 
 **Tipo do retorno:** list[x, y, z]
 
 ### getWheelRotation(wheelIndex)
 
-Returns the rotation of the specified wheel
+Devolve a rotação da roda indicada
 
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
-**Retorna:** the wheel rotation
+**Retorna:** a rotação da roda
 
 **Tipo do retorno:** float
 
 ### setRollInfluence(rollInfluece, wheelIndex)
 
-Set the specified wheel's roll influence. The higher the roll influence the more the vehicle will tend to roll over in corners.
+Define a influência de rolagem da roda indicada. Quanto maior a influência, mais o veículo tende a capotar nas curvas.
 
-- **`rollInfluece`**: the wheel roll influence
+- **`rollInfluece`**: a influência de rolagem da roda
   - tipo: float
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
 ### setSteeringValue(steering, wheelIndex)
 
-Set the specified wheel's steering
+Define o esterço da roda indicada
 
-- **`steering`**: the wheel steering
+- **`steering`**: o esterço da roda
   - tipo: float
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
 ### setSuspensionCompression(compression, wheelIndex)
 
-Set the specified wheel's compression
+Define a compressão da roda indicada
 
-- **`compression`**: the wheel compression
+- **`compression`**: a compressão da roda
   - tipo: float
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
 ### setSuspensionDamping(damping, wheelIndex)
 
-Set the specified wheel's damping
+Define o amortecimento da roda indicada
 
-- **`damping`**: the wheel damping
+- **`damping`**: o amortecimento da roda
   - tipo: float
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
 ### setSuspensionStiffness(stiffness, wheelIndex)
 
-Set the specified wheel's stiffness
+Define a rigidez da roda indicada
 
-- **`stiffness`**: the wheel stiffness
+- **`stiffness`**: a rigidez da roda
   - tipo: float
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
 ### setTyreFriction(friction, wheelIndex)
 
-Set the specified wheel's tyre friction
+Define o atrito do pneu da roda indicada
 
-- **`friction`**: the tyre friction
+- **`friction`**: o atrito do pneu
   - tipo: float
-- **`wheelIndex`**: the wheel index
+- **`wheelIndex`**: o índice da roda
   - tipo: integer
 
 ### rayMask
 
-Set ray cast mask.
+Define a máscara do ray cast.
 
 **Tipo:** bitfield
 

@@ -7,13 +7,13 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Dynamic Actuator.
+Atuador Dynamic.
 
 ### mode
 
 **Tipo:** integer
 
-the type of operation of the actuator, 0-4
+o tipo de operação do atuador, 0-4
 
 * KX_DYN_RESTORE_DYNAMICS(0)
 * KX_DYN_DISABLE_DYNAMICS(1)
@@ -23,7 +23,7 @@ the type of operation of the actuator, 0-4
 
 ### mass
 
-the mass value for the KX_DYN_SET_MASS operation.
+o valor de massa para a operação KX_DYN_SET_MASS.
 
 **Tipo:** float
 

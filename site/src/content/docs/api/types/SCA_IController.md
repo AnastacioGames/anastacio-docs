@@ -7,49 +7,49 @@ Classe base: [`SCA_ILogicBrick`](../sca_ilogicbrick/)
 
 
 
-Base class for all controller logic bricks.
+Classe base de todos os logic bricks de controlador.
 
 ### state
 
-The controllers state bitmask. This can be used with the GameObject's state to test if the controller is active.
+A máscara de bits de estado do controlador. Pode ser usada com o estado do GameObject para testar se o controlador está ativo.
 
 **Tipo:** int bitmask
 
 ### sensors
 
-A list of sensors linked to this controller.
+Uma lista dos sensores ligados a este controlador.
 
 **Tipo:** sequence supporting index/string lookups and iteration.
 
 :::note
-The sensors are not necessarily owned by the same object.
+Os sensores não pertencem necessariamente ao mesmo objeto.
 :::
 
 :::note
-When objects are instanced in dupligroups links may be lost from objects outside the dupligroup.
+Quando objetos são instanciados em dupligroups, as ligações com objetos de fora do dupligroup podem se perder.
 :::
 
 ### actuators
 
-A list of actuators linked to this controller.
+Uma lista dos atuadores ligados a este controlador.
 
 **Tipo:** sequence supporting index/string lookups and iteration.
 
 :::note
-The sensors are not necessarily owned by the same object.
+Os sensores não pertencem necessariamente ao mesmo objeto.
 :::
 
 :::note
-When objects are instanced in dupligroups links may be lost from objects outside the dupligroup.
+Quando objetos são instanciados em dupligroups, as ligações com objetos de fora do dupligroup podem se perder.
 :::
 
 ### useHighPriority
 
-When set the controller executes always before all other controllers that dont have this set.
+Quando ligado, o controlador sempre roda antes de todos os outros controladores que não têm isto ligado.
 
 **Tipo:** boolen
 
 :::note
-Order of execution between high priority controllers is not guaranteed.
+A ordem de execução entre controladores de alta prioridade não é garantida.
 :::
 

@@ -7,7 +7,7 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Edit Object Actuator (in End Object mode)
+Atuador Edit Object (no modo End Object)
 
-This actuator has no python methods.
+Este atuador não tem métodos Python.
 

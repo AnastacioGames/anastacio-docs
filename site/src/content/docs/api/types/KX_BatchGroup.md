@@ -7,7 +7,7 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-The batch group is class containing a mesh resulting of the merging of meshes used by objects. The meshes are merged with the transformation of the objects using it. An instance of this class is not owned by one object but shared between objects. In consideration an instance of `KX_BatchGroup` have to instanced with as argument a list of at least one object containing the meshes to merge. This can be done in a way similar to:
+O batch group é uma classe que contém uma malha resultante da junção das malhas usadas por objetos. As malhas são juntadas com a transformação dos objetos que as usam. Uma instância desta classe não pertence a um objeto, mas é compartilhada entre objetos. Por isso, uma instância de `KX_BatchGroup` precisa ser criada passando como argumento uma lista de pelo menos um objeto com as malhas a juntar. Dá para fazer isso de um jeito parecido com:
 
 ```python
 
@@ -19,34 +19,34 @@ batchGroup = types.KX_BatchGroup([scene.objects["Cube"], scene.objects["Plane"]]
 ```
 
 :::caution
-Rendering settings unique to objects such as `KX_GameObject.layer` and `KX_GameObject.color` are shared when using batch groups. These settings are taken from object `referenceObject`.
+Configurações de render próprias de cada objeto, como `KX_GameObject.layer` e `KX_GameObject.color`, são compartilhadas ao usar batch groups. Elas vêm do objeto `referenceObject`.
 :::
 
 ### objects
 
-The list of the objects merged. (read only)
+A lista dos objetos juntados (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject`
 
 ### referenceObject
 
-The object used for object rendering settings (layer, color...).
+O objeto usado para as configurações de render (layer, cor...).
 
 ### merge(objects)
 
-Merge meshes using the transformation of the objects using them.
+Junta as malhas usando a transformação dos objetos que as usam.
 
-- **`objects`**: The objects to merge.
+- **`objects`**: Os objetos a juntar.
   - tipo: `EXP_ListValue` of `KX_GameObject`
 
 ### split(objects)
 
-Split the meshes of the objects using them and restore their original meshes.
+Separa as malhas dos objetos e restaura as malhas originais.
 
-- **`objects`**: The objects to unmerge.
+- **`objects`**: Os objetos a separar.
   - tipo: `EXP_ListValue` of `KX_GameObject`
 
 ### destruct()
 
-Destruct the batch group and restore all the objects to their original meshes.
+Destrói o batch group e restaura todos os objetos para as malhas originais.
 

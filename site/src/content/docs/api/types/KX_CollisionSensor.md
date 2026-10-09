@@ -7,41 +7,41 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-Collision sensor detects collisions between objects.
+O sensor de colisão detecta colisões entre objetos.
 
 ### propName
 
-The property or material to collide with.
+A propriedade ou o material com que colidir.
 
 **Tipo:** string
 
 ### useMaterial
 
-Determines if the sensor is looking for a property or material. KX_True = Find material; KX_False = Find property.
+Define se o sensor procura uma propriedade ou um material. KX_True = procura material; KX_False = procura propriedade.
 
 **Tipo:** boolean
 
 ### usePulseCollision
 
-When enabled, changes to the set of colliding objects generate a pulse.
+Quando ligado, mudanças no conjunto de objetos em colisão geram um pulso.
 
 **Tipo:** boolean
 
 ### hitObject
 
-The last collided object. (read-only).
+O último objeto que colidiu (somente leitura).
 
 **Tipo:** `KX_GameObject` or None
 
 ### hitObjectList
 
-A list of colliding objects. (read-only).
+Uma lista dos objetos em colisão (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject`
 
 ### hitMaterial
 
-The material of the object in the face hit by the ray. (read-only).
+O material do objeto na face atingida pelo raio (somente leitura).
 
 **Tipo:** string
 

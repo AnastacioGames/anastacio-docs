@@ -1,0 +1,30 @@
+Uma interface Python para um joystick.
+O nome dado ao joystick pelo sistema operacional (somente leitura)
+Uma lista dos valores dos botões ativos (somente leitura)
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
+Cada um dá o valor de um eixo entre -1.0 e 1.0, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
+esquerda:[-1.0, 0.0, ...]
+direita:[1.0, 0.0, ...]
+baixo:[0.0, 1.0, ...]
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
+As direções do hat são estas...
+0:Nenhuma
+2:Direita
+4:Baixo
+8:Esquerda
+3:Cima - Direita
+6:Baixo - Direita
+12:Baixo - Esquerda
+9:Cima - Esquerda
+O número de eixos do joystick neste índice (somente leitura).
+O número de botões do joystick neste índice (somente leitura).
+O número de hats do joystick neste índice (somente leitura).
+Começa a vibração.
+None
+Para a vibração.
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
+Força do motor de alta frequência do joystick (em geral fica à direita).
+Duração da vibração em milissegundos.
+Verifica o status da vibração do joystick
+Verifica se o joystick suporta vibração

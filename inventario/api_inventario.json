@@ -813,43 +813,57 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "fxaaEdgeThreshold": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "fxaaEdgeThresholdMin": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "fxaaSubpix": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "fxaaSearchSteps": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "grainEnabled": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "grainStrength": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     }
    }
   },
@@ -2665,6 +2679,150 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "documentado"
+    },
+    "isDeformable": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "fragments": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "burstSpeed": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "debrisLifetime": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "useBreakOnCollision": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "useInheritVelocity": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "impactImpulse": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "useExplodeOnImpact": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "useChainReaction": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "dentImpulse": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "useDentOnCollision": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "bendAxis": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "bendAngle": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "bendMaxAngle": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "decal": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "decalSize": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "decalLife": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
+    },
+    "maxDecals": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "linVelocityMin": {
      "tipo": "atributo",
@@ -5833,85 +5991,113 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "useSkyStars": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "starStyle": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "useSkyMoon": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "moonSize": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "moonBrightness": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "useSkyAurora": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "auroraColors": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "atmosphereIntensity": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "atmosphereRayleighColor": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "atmosphereRayleighDensity": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "atmosphereMieDensity": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "atmosphereMieDirection": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     },
     "atmosphereAltitude": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "49be685b",
+     "data": "2026-10-09"
     }
    }
   },

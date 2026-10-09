@@ -1,0 +1,12 @@
+Um atuador Constraint limita a posição, rotação, distância ou orientação de um objeto.
+Constante de tempo da constraint, em frames (não usada pela constraint Force field).
+Constante de tempo da rotação, em frames (só para a constraint de distância); 0 = usa damp também na rotação.
+A direção de referência, em coordenadas do mundo, da constraint de orientação.
+Combinação binária `destas constantes`
+tempo de ativação do atuador. O atuador se desliga depois desse número de frames. Com 0, o atuador não tem limite de tempo.
+o nome da propriedade ou material para a detecção por raio da constraint de distância.
+O limite inferior da constraint. Nas constraints de rotação e orientação, é em radianos.
+a distância alvo da constraint de distância.
+o limite superior da constraint. Nas constraints de rotação e orientação, é em radianos.
+o comprimento do raio da constraint de distância.
+tipo de constraint. Use uma `destas constantes`

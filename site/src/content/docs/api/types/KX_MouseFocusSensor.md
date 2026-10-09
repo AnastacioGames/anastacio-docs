@@ -7,83 +7,83 @@ Classe base: [`SCA_MouseSensor`](../sca_mousesensor/)
 
 
 
-The mouse focus sensor detects when the mouse is over the current game object.
+O sensor Mouse focus detecta quando o mouse está sobre o game object atual.
 
-The mouse focus sensor works by transforming the mouse coordinates from 2d device space to 3d space then raycasting away from the camera.
+O sensor Mouse focus transforma as coordenadas do mouse do espaço 2D do dispositivo para o espaço 3D e lança um raio a partir da câmera.
 
 ### raySource
 
-The worldspace source of the ray (the view position).
+A origem do raio no espaço do mundo (a posição da vista).
 
 **Tipo:** list (vector of 3 floats)
 
 ### rayTarget
 
-The worldspace target of the ray.
+O alvo do raio no espaço do mundo.
 
 **Tipo:** list (vector of 3 floats)
 
 ### rayDirection
 
-The `rayTarget` - `raySource` normalized.
+`rayTarget` - `raySource`, normalizado.
 
 **Tipo:** list (normalized vector of 3 floats)
 
 ### hitObject
 
-the last object the mouse was over.
+o último objeto sob o mouse.
 
 **Tipo:** `KX_GameObject` or None
 
 ### hitPosition
 
-The worldspace position of the ray intersecton.
+A posição, no espaço do mundo, da interseção do raio.
 
 **Tipo:** list (vector of 3 floats)
 
 ### hitNormal
 
-the worldspace normal from the face at point of intersection.
+a normal, no espaço do mundo, da face no ponto de interseção.
 
 **Tipo:** list (normalized vector of 3 floats)
 
 ### hitUV
 
-the UV coordinates at the point of intersection.
+as coordenadas UV no ponto de interseção.
 
 **Tipo:** list (vector of 2 floats)
 
-If the object has no UV mapping, it returns [0, 0].
+Se o objeto não tem mapeamento UV, devolve [0, 0].
 
-The UV coordinates are not normalized, they can be < 0 or > 1 depending on the UV mapping.
+As coordenadas UV não são normalizadas; podem ser < 0 ou > 1 dependendo do mapeamento UV.
 
 ### usePulseFocus
 
-When enabled, moving the mouse over a different object generates a pulse. (only used when the 'Mouse Over Any' sensor option is set).
+Quando ligado, passar o mouse sobre outro objeto gera um pulso (só usado com a opção 'Mouse Over Any' do sensor).
 
 **Tipo:** boolean
 
 ### useXRay
 
-If enabled it allows the sensor to see through game objects that don't have the selected property or material.
+Se ligado, o sensor enxerga através de game objects que não têm a propriedade ou o material escolhido.
 
 **Tipo:** boolean
 
 ### mask
 
-The collision mask (16 layers mapped to a 16-bit integer) combined with each object's collision group, to hit only a subset of the objects in the scene. Only those objects for which `collisionGroup & mask` is true can be hit.
+A máscara de colisão (16 layers mapeadas num inteiro de 16 bits) combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só os objetos em que `collisionGroup & mask` é verdadeiro podem ser atingidos.
 
 **Tipo:** bitfield
 
 ### propName
 
-The property or material the sensor is looking for.
+A propriedade ou o material que o sensor procura.
 
 **Tipo:** string
 
 ### useMaterial
 
-Determines if the sensor is looking for a property or material. KX_True = Find material; KX_False = Find property.
+Define se o sensor procura uma propriedade ou um material. KX_True = procura material; KX_False = procura propriedade.
 
 **Tipo:** boolean
 

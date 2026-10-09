@@ -1,0 +1,21 @@
+O atuador de objeto ("Motion Actuator") aplica força, torque, deslocamento, deslocamento angular, velocidade ou velocidade angular a um objeto. O controle servo permite regular a força para atingir uma velocidade alvo.
+A força aplicada pelo atuador.
+Flag que diz se a força é local.
+O torque aplicado pelo atuador.
+Flag que diz se o torque é local.
+O vetor de deslocamento aplicado pelo atuador.
+Flag que diz se o dLoc é local.
+O vetor de deslocamento angular aplicado pelo atuador
+Como o deslocamento é aplicado a cada frame, é preciso ajustá-lo pelo frame rate, ou a experiência de jogo vai depender da velocidade do computador do jogador.
+Flag que diz se o dRot é local.
+A velocidade linear aplicada pelo atuador.
+Flag que diz se a velocidade linear é local.
+Esta é a velocidade alvo dos controladores servo.
+A velocidade angular aplicada pelo atuador.
+Flag que diz se a velocidade angular é local.
+O parâmetro de amortecimento do controlador servo.
+O limite mín./máx. de força no eixo X, e liga ou desliga os limites no controlador servo.
+O limite mín./máx. de força no eixo Y, e liga ou desliga os limites no controlador servo.
+O limite mín./máx. de força no eixo Z, e liga ou desliga os limites no controlador servo.
+Os coeficientes PID do controlador servo.
+O objeto usado como referência para calcular a velocidade no controlador servo.

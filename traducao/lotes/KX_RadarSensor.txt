@@ -1,0 +1,7 @@
+O sensor radar é um sensor near com um objeto sensor em forma de cone.
+A origem do cone usado no teste. A origem fica no meio do cone (somente leitura).
+O centro da face de baixo do cone usado no teste (somente leitura).
+A altura do cone usado no teste.
+O ângulo do cone (em graus) usado no teste.
+O eixo em que o cone do radar é lançado.
+KX_RADAR_AXIS_POS_X, KX_RADAR_AXIS_POS_Y, KX_RADAR_AXIS_POS_Z, KX_RADAR_AXIS_NEG_X, KX_RADAR_AXIS_NEG_Y, KX_RADAR_AXIS_NEG_Z

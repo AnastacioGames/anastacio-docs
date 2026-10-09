@@ -1,0 +1,1 @@
+Esta classe não tem funções Python

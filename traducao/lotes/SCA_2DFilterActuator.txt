@@ -1,0 +1,8 @@
+Cria, liga e desliga filtros 2D.
+As propriedades a seguir não têm efeito imediato. É preciso ativar o atuador para ver o resultado. O atuador não é persistente: ele para sozinho depois de configurar o filtro, mas o filtro continua ativo. Para parar um filtro, ative o atuador com 'type' igual a `RAS_2DFILTER_DISABLED` ou `RAS_2DFILTER_NOFILTER`.
+código-fonte do shader personalizado.
+ação no motion blur: 0=liga, 1=desliga.
+Tipo de filtro 2D; use uma `destas constantes`.
+número de ordem do filtro na pilha de filtros 2D. Os filtros rodam em ordem crescente de passNb.
+Só pode haver um filtro por passNb.
+argumento do filtro de motion blur.

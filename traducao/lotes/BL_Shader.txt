@@ -1,0 +1,54 @@
+BL_Shader é uma classe usada para compilar e usar scripts de shader personalizados. Suporta vertex, fragment e geometry shaders. O shader é compilado com um cabeçalho gerado para os três scripts. Esse cabeçalho define a diretiva `#version`, então o usuário não deve definir a sua própria `#version`.
+Liga o shader para uso.
+A lista de callbacks Python executados quando o shader é usado para renderizar um objeto. Todas as funções recebem como argumento o objeto sendo renderizado.
+A lista de callbacks Python executados quando o shader começa a ser usado no render.
+Define um uniform com uma lista de valores float
+o nome do uniform
+uma lista (2, 3 ou 4 elementos) de valores float
+Limpa o shader. Use este método antes de mudar o código com `setSource`.
+Devolve o fragment program.
+O fragment program.
+Pega o vertex program.
+O vertex program.
+Verifica se o shader é válido.
+True se o shader é válido
+Define a location do atributo. (O parâmetro é ignorado por enquanto e o valor de "tangent" é sempre usado.)
+valor da location do atributo
+Define o índice de sampler de textura do uniform.
+Nome do uniform
+Índice do sampler de textura.
+Define os programas de vertex e fragment
+Vertex program
+Fragment program
+Liga o shader.
+Define os programas de vertex, fragment e geometry shader.
+Dicionário com todos os programas. As chaves `vertex`, `fragment` e `geometry` representam os programas de mesmo nome. `geometry` é opcional. Este dicionário pode ficar parecido com: .. code-block:: python sources = { "vertex" : vertexProgram, "fragment" : fragmentProgram, "geometry" : geometryProgram }
+Define um uniform com 1 valor float.
+Valor do uniform
+Define um uniform com um valor inteiro.
+o valor do uniform
+Define um uniform com 2 valores float
+primeiro valor float
+segundo valor float
+Define um uniform com 2 valores inteiros
+primeiro valor inteiro
+segundo valor inteiro
+Define um uniform com 3 valores float.
+terceiro valor float
+Define um uniform com 3 valores inteiros
+terceiro valor inteiro
+Define um uniform com 4 valores float.
+quarto valor float
+Define um uniform com 4 valores inteiros
+quarto valor inteiro
+Define um novo uniform
+tipo do uniform, uma `destas constantes`
+Define um uniform com uma matriz 3x3
+Uma matriz 3x3 [[f, f, f], [f, f, f], [f, f, f]]
+use True para transpor a matriz
+Define um uniform com uma matriz 4x4
+Uma matriz 4x4 [[f, f, f, f], [f, f, f, f], [f, f, f, f], [f, f, f, f]]
+Define um uniform com uma lista de valores inteiros
+uma lista (2, 3 ou 4 elementos) de valores inteiros
+Define um uniform com um valor float que indica o olho sendo renderizado no modo estéreo: 0.0 para o olho esquerdo, 0.5 para o direito. Fora do modo estéreo, o valor fica fixo em 0.0. O uso típico é no modo estéreo, para ler texturas estéreo com as imagens dos olhos esquerdo e direito em ordem de cima para baixo.
+Valida o objeto de shader.

@@ -1,0 +1,16 @@
+Proxy para a estrutura de bone do Blender. Todos os campos são somente leitura e seguem os nomes do RNA. Todos os atributos de espaço correspondem à rest pose.
+nome do bone.
+true quando a cabeça do bone está presa à cauda do pai.
+true quando o bone não herda rotação nem escala do bone pai.
+true quando o bone herda a escala do bone pai.
+número de segmentos de B-bone.
+rotação do bone em torno do eixo cabeça-cauda.
+posição da cabeça do bone no espaço do bone pai.
+comprimento do bone.
+posição da cabeça do bone no espaço da armature.
+posição da cauda do bone no espaço da armature.
+matriz da cabeça do bone no espaço da armature.
+Esta matriz não tem parte de escala.
+matriz de rotação do bone no espaço do bone pai.
+bone pai, ou None para o bone raiz.
+lista dos filhos do bone.

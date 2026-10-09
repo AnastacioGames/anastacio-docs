@@ -3,23 +3,23 @@ title: "Range.constraints"
 description: "Referência do módulo Range.constraints"
 ---
 
-Bullet Physics provides collision detection and rigid body dynamics for the Blender Game Engine.
+A Bullet Physics cuida da detecção de colisão e da dinâmica de corpos rígidos da game engine.
 
-Features:
+Recursos:
 
-- Vehicle simulation.
-- Rigid body constraints: hinge and point to point (ball socket).
-- Access to internal physics settings,
-like deactivation time, and debugging features
+- Simulação de veículos.
+- Constraints de corpo rígido: hinge e ponto a ponto (ball socket).
+- Acesso às configurações internas da física,
+como o tempo de desativação, e recursos de depuração
 
 :::note
-Since this API is not well documented, it can be unclear what kind of values to use for setting parameters. In general, damping settings should be in the range of 0 to 1 and stiffness settings should not be much higher than about 10.
+Como esta API não é bem documentada, pode não ficar claro que valores usar nos parâmetros. Em geral, os amortecimentos devem ficar entre 0 e 1 e as rigidezes não devem passar muito de 10.
 :::
 
-## Examples
+## Exemplos
 
 :::tip
-For more examples of Bullet physics and how to use them see the [pybullet forum](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
+Para mais exemplos da física Bullet e de como usá-la, veja o [fórum do pybullet](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
 :::
 
 ## Funções
@@ -28,300 +28,300 @@ For more examples of Bullet physics and how to use them see the [pybullet forum]
 
 physicsid_1, physicsid_2, constraint_type, \ pivot_x=0.0, pivot_y=0.0, pivot_z=0.0, \ axis_x=0.0, axis_y=0.0, axis_z=0.0, flag=0)
 
-Creates a constraint.
+Cria uma constraint.
 
-- **`physicsid_1`**: The physics id of the first object in constraint.
+- **`physicsid_1`**: O physics id do primeiro objeto da constraint.
   - tipo: int
-- **`physicsid_2`**: The physics id of the second object in constraint.
+- **`physicsid_2`**: O physics id do segundo objeto da constraint.
   - tipo: int
-- **`constraint_type`**: The type of the constraint, see `Create Constraint Constants`_.
+- **`constraint_type`**: O tipo da constraint; veja `Create Constraint Constants`_.
   - tipo: int
-- **`pivot_x`**: Pivot X position. (optional)
+- **`pivot_x`**: Posição X do pivô (opcional).
   - tipo: float
-- **`pivot_y`**: Pivot Y position. (optional)
+- **`pivot_y`**: Posição Y do pivô (opcional).
   - tipo: float
-- **`pivot_z`**: Pivot Z position. (optional)
+- **`pivot_z`**: Posição Z do pivô (opcional).
   - tipo: float
-- **`axis_x`**: X axis angle in degrees. (optional)
+- **`axis_x`**: Ângulo do eixo X em graus (opcional).
   - tipo: float
-- **`axis_y`**: Y axis angle in degrees. (optional)
+- **`axis_y`**: Ângulo do eixo Y em graus (opcional).
   - tipo: float
-- **`axis_z`**: Z axis angle in degrees. (optional)
+- **`axis_z`**: Ângulo do eixo Z em graus (opcional).
   - tipo: float
-- **`flag`**: 128 to disable collision between linked bodies. (optional)
+- **`flag`**: 128 para desligar a colisão entre os corpos ligados (opcional).
   - tipo: int
 
-**Retorna:** A constraint wrapper.
+**Retorna:** Um wrapper de constraint.
 
 **Tipo do retorno:** `KX_ConstraintWrapper`
 
 ### createVehicle(physicsid)
 
-Creates a vehicle constraint.
+Cria uma constraint de veículo.
 
-- **`physicsid`**: The physics id of the chassis object in constraint.
+- **`physicsid`**: O physics id do objeto chassi da constraint.
   - tipo: int
 
-**Retorna:** A vehicle constraint wrapper.
+**Retorna:** Um wrapper de constraint de veículo.
 
 **Tipo do retorno:** `KX_VehicleWrapper`
 
 ### exportBulletFile(filename)
 
-Exports a file representing the dynamics world (usually using `.bullet` extension).
+Exporta um arquivo que representa o mundo da dinâmica (em geral com extensão `.bullet`).
 
-See [Bullet binary serialization](http://bulletphysics.org/mediawiki-1.5.8/index.php/Bullet_binary_serialization)_.
+Veja [Bullet binary serialization](http://bulletphysics.org/mediawiki-1.5.8/index.php/Bullet_binary_serialization)_.
 
-- **`filename`**: File path.
+- **`filename`**: Caminho do arquivo.
   - tipo: str
 
 ### getAppliedImpulse(constraintId)
 
-- **`constraintId`**: The id of the constraint.
+- **`constraintId`**: O id da constraint.
   - tipo: int
 
-**Retorna:** The most recent applied impulse.
+**Retorna:** O último impulso aplicado.
 
 **Tipo do retorno:** float
 
 ### getVehicleConstraint(constraintId)
 
-- **`constraintId`**: The id of the vehicle constraint.
+- **`constraintId`**: O id da constraint de veículo.
   - tipo: int
 
-**Retorna:** A vehicle constraint object.
+**Retorna:** Um objeto de constraint de veículo.
 
 **Tipo do retorno:** `KX_VehicleWrapper`
 
 ### getCharacter(gameobj)
 
-- **`gameobj`**: The game object with the character physics.
+- **`gameobj`**: O game object com a física de personagem.
   - tipo: `KX_GameObject`
 
-**Retorna:** Character wrapper.
+**Retorna:** Wrapper de personagem.
 
 **Tipo do retorno:** `KX_CharacterWrapper`
 
 ### removeConstraint(constraintId)
 
-Removes a constraint.
+Remove uma constraint.
 
-- **`constraintId`**: The id of the constraint to be removed.
+- **`constraintId`**: O id da constraint a remover.
   - tipo: int
 
 ### setCcdMode(ccdMode)
 
 :::note
-Very experimental, not recommended
+Muito experimental, não recomendado
 :::
 
-Sets the CCD (Continous Colision Detection) mode in the Physics Environment.
+Define o modo de CCD (detecção contínua de colisão) no ambiente de física.
 
-- **`ccdMode`**: The new CCD mode.
+- **`ccdMode`**: O novo modo de CCD.
   - tipo: int
 
 ### setContactBreakingTreshold(breakingTreshold)
 
 :::note
-Reasonable default is 0.02 (if units are meters)
+Um padrão razoável é 0.02 (se as unidades forem metros)
 :::
 
-Sets tresholds to do with contact point management.
+Define limites ligados ao gerenciamento de pontos de contato.
 
-- **`breakingTreshold`**: The new contact breaking treshold.
+- **`breakingTreshold`**: O novo limite de quebra de contato.
   - tipo: float
 
 ### setDeactivationAngularTreshold(angularTreshold)
 
-Sets the angular velocity treshold.
+Define o limite de velocidade angular.
 
-- **`angularTreshold`**: New deactivation angular treshold.
+- **`angularTreshold`**: Novo limite angular de desativação.
   - tipo: float
 
 ### setDeactivationLinearTreshold(linearTreshold)
 
-Sets the linear velocity treshold.
+Define o limite de velocidade linear.
 
-- **`linearTreshold`**: New deactivation linear treshold.
+- **`linearTreshold`**: Novo limite linear de desativação.
   - tipo: float
 
 ### setDeactivationTime(time)
 
-Sets the time after which a resting rigidbody gets deactived.
+Define o tempo depois do qual um corpo rígido parado é desativado.
 
-- **`time`**: The deactivation time.
+- **`time`**: O tempo de desativação.
   - tipo: float
 
 ### setDebugMode(mode)
 
-Sets the debug mode.
+Define o modo de depuração.
 
-- **`mode`**: The new debug mode, see `Debug Mode Constants`_.
+- **`mode`**: O novo modo de depuração; veja `Debug Mode Constants`_.
   - tipo: int
 
 ### setGravity(x, y, z)
 
-Sets the gravity force.
+Define a força da gravidade.
 
-- **`x`**: Gravity X force.
+- **`x`**: Força da gravidade em X.
   - tipo: float
-- **`y`**: Gravity Y force.
+- **`y`**: Força da gravidade em Y.
   - tipo: float
-- **`z`**: Gravity Z force.
+- **`z`**: Força da gravidade em Z.
   - tipo: float
 
 ### setLinearAirDamping(damping)
 
 :::note
-Not implemented
+Não implementado
 :::
 
-Sets the linear air damping for rigidbodies.
+Define o amortecimento linear do ar para corpos rígidos.
 
 ### setNumIterations(numiter)
 
-Sets the number of iterations for an iterative constraint solver.
+Define o número de iterações de um solver de constraints iterativo.
 
-- **`numiter`**: New number of iterations.
+- **`numiter`**: Novo número de iterações.
   - tipo: int
 
 ### setLinearSlop(slop)
 
-Sets the contact penetration tolerance for the active physics scene. A positive value allows objects to overlap by up to `slop` Blender units before the Bullet solver applies positional correction. The default is `0.0`.
+Define a tolerância de penetração de contato da cena de física ativa. Um valor positivo deixa os objetos se sobreporem até `slop` unidades do Blender antes de o solver do Bullet aplicar a correção de posição. O padrão é `0.0`.
 
-This is a scene-wide solver setting: it affects every physical contact in the active scene. It does not change an object's collision margin or the point at which collisions are detected. Use small values appropriate to the scene scale.
+É uma configuração do solver para a cena inteira: afeta todos os contatos físicos da cena ativa. Não muda a margem de colisão de um objeto nem o ponto em que as colisões são detectadas. Use valores pequenos, adequados à escala da cena.
 
-- **`slop`**: Penetration tolerance in Blender units. Use a finite, non-negative value.
+- **`slop`**: Tolerância de penetração em unidades do Blender. Use um valor finito e não negativo.
   - tipo: float
 
 ### setNumTimeSubSteps(numsubstep)
 
-Sets the number of substeps for each physics proceed. Tradeoff quality for performance.
+Define o número de substeps de cada passo da física. Troca qualidade por desempenho.
 
-- **`numsubstep`**: New number of substeps.
+- **`numsubstep`**: Novo número de substeps.
   - tipo: int
 
 ### setSolverDamping(damping)
 
 :::note
-Very experimental, not recommended
+Muito experimental, não recomendado
 :::
 
-Sets the damper constant of a penalty based solver.
+Define a constante de amortecimento de um solver baseado em penalidade.
 
-- **`damping`**: New damping for the solver.
+- **`damping`**: Novo amortecimento do solver.
   - tipo: float
 
 ### setSolverTau(tau)
 
 :::note
-Very experimental, not recommended
+Muito experimental, não recomendado
 :::
 
-Sets the spring constant of a penalty based solver.
+Define a constante de mola de um solver baseado em penalidade.
 
-- **`tau`**: New tau for the solver.
+- **`tau`**: Novo tau do solver.
   - tipo: float
 
 ### setSolverType(solverType)
 
 :::note
-Very experimental, not recommended
+Muito experimental, não recomendado
 :::
 
-Sets the solver type.
+Define o tipo do solver.
 
-- **`solverType`**: The new type of the solver.
+- **`solverType`**: O novo tipo do solver.
   - tipo: int
 
 ### setSorConstant(sor)
 
 :::note
-Very experimental, not recommended
+Muito experimental, não recomendado
 :::
 
-Sets the successive overrelaxation constant.
+Define a constante de sobre-relaxação sucessiva.
 
-- **`sor`**: New sor value.
+- **`sor`**: Novo valor de sor.
   - tipo: float
 
 ### setUseEpa(epa)
 
 :::note
-Not implemented
+Não implementado
 :::
 
 ## Constantes
 
 ### error
 
-Symbolic constant string that indicates error.
+String constante simbólica que indica erro.
 
 **Tipo:** str
 
-## Debug Mode Constants
+## Constantes de modo de depuração
 
-Debug mode to be used with `setDebugMode`.
+Modo de depuração a usar com `setDebugMode`.
 
 ### DBG_NODEBUG
 
-No debug.
+Sem depuração.
 
 ### DBG_DRAWWIREFRAME
 
-Draw wireframe in debug.
+Desenha wireframe na depuração.
 
 ### DBG_DRAWAABB
 
-Draw Axis Aligned Bounding Box in debug.
+Desenha a Axis Aligned Bounding Box na depuração.
 
 ### DBG_DRAWFREATURESTEXT
 
-Draw features text in debug.
+Desenha o texto dos recursos na depuração.
 
 ### DBG_DRAWCONTACTPOINTS
 
-Draw contact points in debug.
+Desenha os pontos de contato na depuração.
 
 ### DBG_NOHELPTEXT
 
-Debug without help text.
+Depuração sem texto de ajuda.
 
 ### DBG_DRAWTEXT
 
-Draw text in debug.
+Desenha texto na depuração.
 
 ### DBG_PROFILETIMINGS
 
-Draw profile timings in debug.
+Desenha os tempos de profile na depuração.
 
 ### DBG_ENABLESATCOMPARISION
 
-Enable sat comparision in debug.
+Liga a comparação sat na depuração.
 
 ### DBG_DISABLEBULLETLCP
 
-Disable Bullet LCP.
+Desliga o LCP do Bullet.
 
 ### DBG_ENABLECCD
 
-Enable Continous Collision Detection in debug.
+Liga a detecção contínua de colisão na depuração.
 
 ### DBG_DRAWCONSTRAINTS
 
-Draw constraints in debug.
+Desenha as constraints na depuração.
 
 ### DBG_DRAWCONSTRAINTLIMITS
 
-Draw constraint limits in debug.
+Desenha os limites das constraints na depuração.
 
 ### DBG_FASTWIREFRAME
 
-Draw a fast wireframe in debug.
+Desenha um wireframe rápido na depuração.
 
-## Create Constraint Constants
+## Constantes de criação de constraint
 
-Constraint type to be used with `createConstraint`.
+Tipo de constraint a usar com `createConstraint`.
 
 ### POINTTOPOINT_CONSTRAINT
 

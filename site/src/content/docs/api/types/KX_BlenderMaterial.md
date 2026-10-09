@@ -7,13 +7,13 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-This is the interface to materials in the game engine.
+Esta é a interface para os materiais na game engine.
 
-Materials define the render state to be applied to mesh objects.
+Os materiais definem o estado de render aplicado aos objetos de malha.
 
-The example below shows a simple GLSL shader setup allowing to dynamically mix two texture channels in a material. All materials of the object executing this script should have two textures using separate UV maps in the two first texture channels.
+O exemplo abaixo mostra uma configuração simples de shader GLSL que mistura dinamicamente dois canais de textura num material. Todos os materiais do objeto que roda este script devem ter duas texturas usando UV maps separados nos dois primeiros canais de textura.
 
-The code works for both Multitexture and GLSL rendering modes.
+O código funciona nos modos de render Multitexture e GLSL.
 
 ```python
 
@@ -55,116 +55,116 @@ for mesh in object.meshes:
             if not shader.isValid():
                 shader.setSource(vertex_shader, fragment_shader, True)
 
-            # get the first texture channel of the material
+            # pega o primeiro canal de textura do material
             shader.setSampler('texture_0', 0)
-            # get the second texture channel of the material
+            # pega o segundo canal de textura do material
             shader.setSampler('texture_1', 1)
-            # pass another uniform to the shader
+            # passa outro uniform para o shader
             shader.setUniform1f('factor', 0.3)
 ```
 
 ### shader
 
-The material's shader.
+O shader do material.
 
 **Tipo:** `BL_Shader`
 
 ### blending
 
-Ints used for pixel blending, (src, dst), matching the setBlending method.
+Inteiros usados na mistura de pixels, (src, dst), iguais aos do método setBlending.
 
 **Tipo:** (integer, integer)
 
 ### getShader()
 
-Returns the material's shader.
+Devolve o shader do material.
 
-**Retorna:** the material's shader
+**Retorna:** o shader do material
 
 **Tipo do retorno:** `BL_Shader`
 
 ### getTextureBindcode(textureslot)
 
-Returns the material's texture OpenGL bind code/id/number/name.
+Devolve o bind code/id/número/nome OpenGL da textura do material.
 
 :::danger[Obsoleto use :py:meth:`bge.types.BL_Texture.bindCode`]
 
 :::
 
-- **`textureslot`**: Specifies the texture slot number
+- **`textureslot`**: Define o número do slot de textura
   - tipo: integer
 
-**Retorna:** the material's texture OpenGL bind code/id/number/name
+**Retorna:** o bind code/id/número/nome OpenGL da textura do material
 
 **Tipo do retorno:** integer
 
 ### alpha
 
-The material's alpha transparency.
+A transparência alpha do material.
 
 **Tipo:** float between 0.0 and 1.0 inclusive
 
 ### hardness
 
-How hard (sharp) the material's specular reflection is.
+Quão dura (nítida) é a reflexão especular do material.
 
 **Tipo:** integer between 1 and 511 inclusive
 
 ### emit
 
-Amount of light to emit.
+Quantidade de luz emitida.
 
 **Tipo:** float between 0.0 and 2.0 inclusive
 
 ### ambient
 
-Amount of ambient light on the material.
+Quantidade de luz ambiente no material.
 
 **Tipo:** float between 0.0 and 1.0 inclusive
 
 ### specularAlpha
 
-Alpha transparency for specular areas.
+Transparência alpha das áreas especulares.
 
 **Tipo:** float between 0.0 and 1.0 inclusive (alpha must be < 1.0)
 
 ### specularIntensity
 
-How intense (bright) the material's specular reflection is.
+Quão intensa (brilhante) é a reflexão especular do material.
 
 **Tipo:** float between 0.0 and 1.0 inclusive
 
 ### diffuseIntensity
 
-The material's amount of diffuse reflection.
+A quantidade de reflexão difusa do material.
 
 **Tipo:** float between 0.0 and 1.0 inclusive
 
 ### specularColor
 
-The material's specular color.
+A cor especular do material.
 
 **Tipo:** `mathutils.Color`
 
 ### diffuseColor
 
-The material's diffuse color.
+A cor difusa do material.
 
 **Tipo:** `mathutils.Color`
 
 ### textures
 
-List of all material's textures.
+Lista de todas as texturas do material.
 
 **Tipo:** List of `BL_Texture` (read only)
 
 ### setBlending(src, dest)
 
-Set the pixel color arithmetic functions.
+Define as funções aritméticas de cor dos pixels.
 
-- **`src`**: Specifies how the red, green, blue, and alpha source blending factors are computed, one of... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
+- **`src`**: Define como os fatores de mistura de origem de vermelho, verde, azul e alpha são calculados; um destes... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
   - tipo: int
-- **`dest`**: Specifies how the red, green, blue, and alpha destination blending factors are computed, one of... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
+- **`dest`**: Define como os fatores de mistura de destino de vermelho, verde, azul e alpha são calculados; um destes... * `GL_ZERO` * `GL_ONE` * `GL_SRC_COLOR` * `GL_ONE_MINUS_SRC_COLOR` * `GL_DST_COLOR` * `GL_ONE_MINUS_DST_COLOR` * `GL_SRC_ALPHA` * `GL_ONE_MINUS_SRC_ALPHA` * `GL_DST_ALPHA` * `GL_ONE_MINUS_DST_ALPHA` * `GL_SRC_ALPHA_SATURATE`
   - tipo: int
 
 ## Sem documentação da Range

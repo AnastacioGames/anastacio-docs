@@ -7,23 +7,23 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-Property Actuator
+Atuador Property
 
 ### propName
 
-the property on which to operate.
+a propriedade sobre a qual operar.
 
 **Tipo:** string
 
 ### value
 
-the value with which the actuator operates.
+o valor com que o atuador opera.
 
 **Tipo:** string
 
 ### mode
 
-TODO - add constants to game logic dict!.
+TODO - adicionar as constantes ao dicionário de game logic!.
 
 **Tipo:** integer
 

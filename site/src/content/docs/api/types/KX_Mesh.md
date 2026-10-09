@@ -7,11 +7,11 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-A mesh object.
+Um objeto de malha.
 
-You can only change the vertex properties of a mesh object, not the mesh topology.
+Só dá para mudar as propriedades dos vértices de uma malha, não a topologia dela.
 
-To use mesh objects effectively, you should know a bit about how the game engine handles them.
+Para usar malhas bem, é bom saber um pouco de como a game engine lida com elas.
 
 #. Mesh Objects are converted from Blender at scene load.
 #. The Converter groups polygons by Material.  This means they can be sent to the renderer efficiently.  A material holds:
@@ -32,7 +32,7 @@ To use mesh objects effectively, you should know a bit about how the game engine
 #. Their normals are the same (both polygons are "Set Smooth")
 #. They are the same color, for example: a cube has 24 vertices: 6 faces with 4 vertices per face.
 
-The correct method of iterating over every `KX_VertexProxy` in a game object
+O jeito certo de percorrer todos os `KX_VertexProxy` de um game object
 
 ```python
 
@@ -45,8 +45,8 @@ for mesh in object.meshes:
    for m_index in range(len(mesh.materials)):
       for v_index in range(mesh.getVertexArrayLength(m_index)):
          vertex = mesh.getVertex(m_index, v_index)
-         # Do something with vertex here...
-         # ... eg: color the vertex red.
+         # Faça algo com o vértice aqui...
+         # ... ex.: pinta o vértice de vermelho.
          vertex.color = [1.0, 0.0, 0.0, 1.0]
 ```
 
@@ -64,122 +64,122 @@ for mesh in object.meshes:
 
 ### polygons
 
-Returns the list of polygons of this mesh.
+Devolve a lista de polígonos desta malha.
 
 **Tipo:** `KX_PolyProxy` list (read only)
 
 ### getMaterialName(matid)
 
-Gets the name of the specified material.
+Pega o nome do material indicado.
 
-- **`matid`**: the specified material.
+- **`matid`**: o material indicado.
   - tipo: integer
 
-**Retorna:** the attached material name.
+**Retorna:** o nome do material ligado.
 
 **Tipo do retorno:** string
 
 ### getTextureName(matid)
 
-Gets the name of the specified material's texture.
+Pega o nome da textura do material indicado.
 
-- **`matid`**: the specified material
+- **`matid`**: o material indicado
   - tipo: integer
 
-**Retorna:** the attached material's texture name.
+**Retorna:** o nome da textura do material ligado.
 
 **Tipo do retorno:** string
 
 ### getVertexArrayLength(matid)
 
-Gets the length of the vertex array associated with the specified material.
+Pega o tamanho do array de vértices ligado ao material indicado.
 
-There is one vertex array for each material.
+Há um array de vértices para cada material.
 
-- **`matid`**: the specified material
+- **`matid`**: o material indicado
   - tipo: integer
 
-**Retorna:** the number of verticies in the vertex array.
+**Retorna:** o número de vértices no array de vértices.
 
 **Tipo do retorno:** integer
 
 ### getVertex(matid, index)
 
-Gets the specified vertex from the mesh object.
+Pega o vértice indicado da malha.
 
-- **`matid`**: the specified material
+- **`matid`**: o material indicado
   - tipo: integer
-- **`index`**: the index into the vertex array.
+- **`index`**: o índice no array de vértices.
   - tipo: integer
 
-**Retorna:** a vertex object.
+**Retorna:** um objeto de vértice.
 
 **Tipo do retorno:** `KX_VertexProxy`
 
 ### getPolygon(index)
 
-Gets the specified polygon from the mesh.
+Pega o polígono indicado da malha.
 
-- **`index`**: polygon number
+- **`index`**: número do polígono
   - tipo: integer
 
-**Retorna:** a polygon object.
+**Retorna:** um objeto de polígono.
 
 **Tipo do retorno:** `KX_PolyProxy`
 
 ### transform(matid, matrix)
 
-Transforms the vertices of a mesh.
+Transforma os vértices de uma malha.
 
-- **`matid`**: material index, -1 transforms all.
+- **`matid`**: índice do material; -1 transforma todos.
   - tipo: integer
-- **`matrix`**: transformation matrix.
+- **`matrix`**: matriz de transformação.
   - tipo: 4x4 matrix [[float]]
 
 ### transformUV(matid, matrix, uv_index=-1, uv_index_from=-1)
 
-Transforms the vertices UV's of a mesh.
+Transforma as UVs dos vértices de uma malha.
 
-- **`matid`**: material index, -1 transforms all.
+- **`matid`**: índice do material; -1 transforma todos.
   - tipo: integer
-- **`matrix`**: transformation matrix.
+- **`matrix`**: matriz de transformação.
   - tipo: 4x4 matrix [[float]]
-- **`uv_index`**: optional uv index, -1 for all, otherwise 0 or 1.
+- **`uv_index`**: índice de UV opcional; -1 para todos, senão 0 ou 1.
   - tipo: integer
-- **`uv_index_from`**: optional uv index to copy from, -1 to transform the current uv.
+- **`uv_index_from`**: índice de UV opcional de onde copiar; -1 para transformar a UV atual.
   - tipo: integer
 
 ### replaceMaterial(matid, material)
 
-Replace the material in slot `matid` by the material `material`.
+Troca o material do slot `matid` pelo material `material`.
 
-- **`matid`**: The material index.
+- **`matid`**: O índice do material.
   - tipo: integer
-- **`material`**: The material replacement.
+- **`material`**: O material substituto.
   - tipo: `KX_BlenderMaterial`
 
 :::caution
-Changing the material of a mesh used by many objects can be slow. This function should be not called every frames
+Trocar o material de uma malha usada por muitos objetos pode ser lento. Não chame esta função a cada frame
 :::
 
 ### copy()
 
-Return a duplicated mesh.
+Devolve uma cópia da malha.
 
-**Retorna:** a duplicated mesh of the current used.
+**Retorna:** uma cópia da malha em uso.
 
 **Tipo do retorno:** `KX_Mesh`.
 
 ### constructBvh(transform=mathutils.Matrix.Identity(4), epsilon=0)
 
-Return a BVH tree based on mesh geometry. Indices of tree elements match polygons indices.
+Devolve uma árvore BVH baseada na geometria da malha. Os índices dos elementos da árvore são iguais aos índices dos polígonos.
 
-- **`transform`**: The transform 4x4 matrix applied to vertices.
+- **`transform`**: A matriz de transformação 4x4 aplicada aos vértices.
   - tipo: `mathutils.Matrix`
-- **`epsilon`**: The tree distance epsilon.
+- **`epsilon`**: O epsilon de distância da árvore.
   - tipo: float
 
-**Retorna:** A BVH tree based on mesh geometry.
+**Retorna:** Uma árvore BVH baseada na geometria da malha.
 
 **Tipo do retorno:** `mathutils.bvhtree.BVHTree`
 

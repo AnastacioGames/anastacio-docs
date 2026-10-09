@@ -1,0 +1,9 @@
+Um ponto de contato de colisão passado aos callbacks de colisão.
+O ponto de contato no espaço do objeto dono.
+O ponto de contato no espaço do objeto colisor.
+O ponto de contato no espaço do mundo.
+A normal do contato no espaço do objeto dono.
+O atrito combinado do objeto dono e do colisor.
+O atrito de rolagem combinado do objeto dono e do colisor.
+A restituição combinada do objeto dono e do colisor.
+O impulso aplicado ao objeto dono.

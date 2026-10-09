@@ -7,36 +7,36 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-2D filter custom off screen.
+Off screen personalizado de filtro 2D.
 
 ### width
 
-The off screen width, -1 if the off screen can be resized dynamically (read-only).
+A largura do off screen; -1 se o off screen pode ser redimensionado dinamicamente (somente leitura).
 
 **Tipo:** integer
 
 ### height
 
-The off screen height, -1 if the off screen can be resized dynamically (read-only).
+A altura do off screen; -1 se o off screen pode ser redimensionado dinamicamente (somente leitura).
 
 **Tipo:** integer
 
 ### colorBindCodes
 
-The bind code of the color textures attached to the off screen (read-only).
+O bind code das texturas de cor ligadas ao off screen (somente leitura).
 
 :::caution
-If the off screen can be resized dynamically (:data:`width` of :data:`height` equal to -1), the bind codes may change.
+Se o off screen pode ser redimensionado dinamicamente (`width` ou `height` igual a -1), os bind codes podem mudar.
 :::
 
 **Tipo:** list of 8 integers
 
 ### depthBindCode
 
-The bind code of the depth texture attached to the off screen (read-only).
+O bind code da textura de profundidade ligada ao off screen (somente leitura).
 
 :::caution
-If the off screen can be resized dynamically (:data:`width` of :data:`height` equal to -1), the bind code may change.
+Se o off screen pode ser redimensionado dinamicamente (`width` ou `height` igual a -1), o bind code pode mudar.
 :::
 
 **Tipo:** integer

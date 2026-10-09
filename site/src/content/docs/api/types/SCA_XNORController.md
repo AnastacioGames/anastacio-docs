@@ -7,7 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-An XNOR controller activates when all linked sensors are the same (activated or inative).
+Um controlador XNOR ativa quando todos os sensores ligados estão iguais (ativos ou inativos).
 
-There are no special python methods for this controller.
+Não há métodos Python especiais para este controlador.
 

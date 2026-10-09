@@ -1,0 +1,41 @@
+KX_VehicleWrapper
+TODO - descrição
+Adiciona uma roda ao veículo
+O objeto a usar como roda.
+A posição onde prender a roda, relativa ao centro do objeto chassi.
+O vetor de direção apontando para baixo, até onde o veículo deve colidir com o chão.
+O eixo em torno do qual a roda gira, relativo ao chassi.
+O comprimento da suspensão quando nenhuma força está sendo aplicada.
+O raio da roda (metade do diâmetro).
+True se a roda deve virar com o volante; em geral usado nas rodas da frente.
+Aplica uma força de freio à roda indicada
+a força de freio
+índice da roda em que a força deve ser aplicada
+Aplica uma força de motor à roda indicada
+a força do motor
+Pega o ID da constraint
+o id da constraint
+Devolve o tipo da constraint.
+tipo da constraint
+Devolve o número de rodas.
+o número de rodas deste veículo
+Devolve a orientação da roda como quaternion.
+o índice da roda
+TODO Descrição
+Devolve a posição da roda indicada
+vetor de posição
+Devolve a rotação da roda indicada
+a rotação da roda
+Define a influência de rolagem da roda indicada. Quanto maior a influência, mais o veículo tende a capotar nas curvas.
+a influência de rolagem da roda
+Define o esterço da roda indicada
+o esterço da roda
+Define a compressão da roda indicada
+a compressão da roda
+Define o amortecimento da roda indicada
+o amortecimento da roda
+Define a rigidez da roda indicada
+a rigidez da roda
+Define o atrito do pneu da roda indicada
+o atrito do pneu
+Define a máscara do ray cast.

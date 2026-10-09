@@ -1,0 +1,2 @@
+Um controlador NAND ativa quando nem todos os sensores ligados estão ativos.
+Não há métodos Python especiais para este controlador.

@@ -7,40 +7,40 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-2D filter manager used to add, remove and find filters in a scene.
+Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.
 
 ### addFilter(index, type, fragmentProgram)
 
-Add a filter to the pass index `index`, type `type` and fragment program if custom filter.
+Adiciona um filtro no passe `index`, do tipo `type`, com o fragment program se for filtro personalizado.
 
-- **`index`**: The filter pass index.
+- **`index`**: O índice do passe do filtro.
   - tipo: integer
-- **`type`**: The filter type, one of: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
+- **`type`**: O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
   - tipo: integer
-- **`fragmentProgram`**: The filter shader fragment program. Used only if `type` is `Range.logic.RAS_2DFILTER_CUSTOMFILTER`, if empty or not specified the filter is created without shader, waiting call to `BL_Shader.setSourceList`. (optional)
+- **`fragmentProgram`**: O fragment program do shader do filtro. Só é usado se `type` for `Range.logic.RAS_2DFILTER_CUSTOMFILTER`; se vazio ou omitido, o filtro é criado sem shader, esperando uma chamada a `BL_Shader.setSourceList` (opcional).
   - tipo: string
 
-**Retorna:** The 2D Filter.
+**Retorna:** O filtro 2D.
 
 **Tipo do retorno:** `KX_2DFilter`
 
 ### removeFilter(index)
 
-Remove filter to the pass index `index`.
+Remove o filtro do passe `index`.
 
-- **`index`**: The filter pass index.
+- **`index`**: O índice do passe do filtro.
   - tipo: integer
 
 ### getFilter(index)
 
-Return filter to the pass index `index`.
+Devolve o filtro do passe `index`.
 
-**warning:** If the 2D Filter is added with a `SCA_2DFilterActuator`, the filter will be available only after the 2D Filter program is linked. The python script to get the filter has to be executed one frame later. A delay sensor can be used.
+**aviso:** Se o filtro 2D for adicionado por um `SCA_2DFilterActuator`, ele só fica disponível depois que o programa do filtro 2D for linkado. O script Python que pega o filtro precisa rodar um frame depois. Dá para usar um sensor Delay.
 
-- **`index`**: The filter pass index.
+- **`index`**: O índice do passe do filtro.
   - tipo: integer
 
-**Retorna:** The filter in the specified pass index or None.
+**Retorna:** O filtro no passe indicado, ou None.
 
 **Tipo do retorno:** `KX_2DFilter` or None
 
@@ -78,29 +78,43 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### fxaaEdgeThreshold
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Contraste mínimo, relativo, para uma borda receber FXAA, de 0.0 a 1.0. Valores menores suavizam mais bordas.
 
 ### fxaaEdgeThresholdMin
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Contraste mínimo absoluto para o FXAA agir, de 0.0 a 1.0. Evita processar áreas escuras.
 
 ### fxaaEnabled
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga ou desliga o FXAA da cena (Scene > Post-process). `True` ou `False`.
 
 ### fxaaSearchSteps
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Número de passos da busca de bordas do FXAA (inteiro, a partir de 2). Mais passos pegam bordas mais longas e custam mais.
 
 ### fxaaSubpix
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Quanto o FXAA suaviza detalhes menores que um pixel, de 0.0 a 1.0.
 
 ### grainEnabled
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga ou desliga o grão de filme da cena.
 
 ### grainStrength
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Força do grão de filme, de 0.0 a 1.0.
 

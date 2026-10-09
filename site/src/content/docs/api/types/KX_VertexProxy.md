@@ -7,176 +7,176 @@ Classe base: [`SCA_IObject`](../sca_iobject/)
 
 
 
-A vertex holds position, UV, color and normal information.
+Um vértice guarda informações de posição, UV, cor e normal.
 
-Note: The physics simulation is NOT currently updated - physics will not respond to changes in the vertex position.
+Nota: a simulação de física NÃO é atualizada por enquanto; a física não reage a mudanças na posição do vértice.
 
 ### XYZ
 
-The position of the vertex.
+A posição do vértice.
 
 **Tipo:** Vector((x, y, z))
 
 ### UV
 
-The texture coordinates of the vertex.
+As coordenadas de textura do vértice.
 
 **Tipo:** Vector((u, v))
 
 ### uvs
 
-The texture coordinates list of the vertex.
+A lista de coordenadas de textura do vértice.
 
 **Tipo:** list of Vector((u, v))
 
 ### normal
 
-The normal of the vertex.
+A normal do vértice.
 
 **Tipo:** Vector((nx, ny, nz))
 
 ### tangent
 
-The tangent of the vertex (read-only), computed from the UV map used by the material's Normal Map or Tangent node (the active UV map by default). The w component holds the bitangent sign.
+A tangente do vértice (somente leitura), calculada a partir do UV map usado pelo nó Normal Map ou Tangent do material (o UV map ativo por padrão). O componente w guarda o sinal da bitangente.
 
 **Tipo:** Vector((tx, ty, tz, w))
 
 ### color
 
-The color of the vertex.
+A cor do vértice.
 
 **Tipo:** Vector((r, g, b, a))
 
-Black = [0.0, 0.0, 0.0, 1.0], White = [1.0, 1.0, 1.0, 1.0]
+Preto = [0.0, 0.0, 0.0, 1.0], branco = [1.0, 1.0, 1.0, 1.0]
 
 ### colors
 
-The color list of the vertex.
+A lista de cores do vértice.
 
 **Tipo:** list of Vector((r, g, b, a))
 
 ### x
 
-The x coordinate of the vertex.
+A coordenada x do vértice.
 
 **Tipo:** float
 
 ### y
 
-The y coordinate of the vertex.
+A coordenada y do vértice.
 
 **Tipo:** float
 
 ### z
 
-The z coordinate of the vertex.
+A coordenada z do vértice.
 
 **Tipo:** float
 
 ### u
 
-The u texture coordinate of the vertex.
+A coordenada de textura u do vértice.
 
 **Tipo:** float
 
 ### v
 
-The v texture coordinate of the vertex.
+A coordenada de textura v do vértice.
 
 **Tipo:** float
 
 ### u2
 
-The second u texture coordinate of the vertex.
+A segunda coordenada de textura u do vértice.
 
 **Tipo:** float
 
 ### v2
 
-The second v texture coordinate of the vertex.
+A segunda coordenada de textura v do vértice.
 
 **Tipo:** float
 
 ### r
 
-The red component of the vertex color. 0.0 <= r <= 1.0.
+O componente vermelho da cor do vértice. 0.0 <= r <= 1.0.
 
 **Tipo:** float
 
 ### g
 
-The green component of the vertex color. 0.0 <= g <= 1.0.
+O componente verde da cor do vértice. 0.0 <= g <= 1.0.
 
 **Tipo:** float
 
 ### b
 
-The blue component of the vertex color. 0.0 <= b <= 1.0.
+O componente azul da cor do vértice. 0.0 <= b <= 1.0.
 
 **Tipo:** float
 
 ### a
 
-The alpha component of the vertex color. 0.0 <= a <= 1.0.
+O componente alpha da cor do vértice. 0.0 <= a <= 1.0.
 
 **Tipo:** float
 
 ### getXYZ()
 
-Gets the position of this vertex.
+Pega a posição deste vértice.
 
-**Retorna:** this vertexes position in local coordinates.
+**Retorna:** a posição deste vértice em coordenadas locais.
 
 **Tipo do retorno:** Vector((x, y, z))
 
 ### setXYZ(pos)
 
-Sets the position of this vertex.
+Define a posição deste vértice.
 
 **Tipo:** Vector((x, y, z))
 
-- **`pos`**: the new position for this vertex in local coordinates.
+- **`pos`**: a nova posição deste vértice em coordenadas locais.
 
 ### getUV()
 
-Gets the UV (texture) coordinates of this vertex.
+Pega as coordenadas UV (de textura) deste vértice.
 
-**Retorna:** this vertexes UV (texture) coordinates.
+**Retorna:** as coordenadas UV (de textura) deste vértice.
 
 **Tipo do retorno:** Vector((u, v))
 
 ### setUV(uv)
 
-Sets the UV (texture) coordinates of this vertex.
+Define as coordenadas UV (de textura) deste vértice.
 
 **Tipo:** Vector((u, v))
 
 ### getUV2()
 
-Gets the 2nd UV (texture) coordinates of this vertex.
+Pega as 2ªs coordenadas UV (de textura) deste vértice.
 
-**Retorna:** this vertexes UV (texture) coordinates.
+**Retorna:** as coordenadas UV (de textura) deste vértice.
 
 **Tipo do retorno:** Vector((u, v))
 
 ### setUV2(uv, unit)
 
-Sets the 2nd UV (texture) coordinates of this vertex.
+Define as 2ªs coordenadas UV (de textura) deste vértice.
 
 **Tipo:** Vector((u, v))
 
-- **`unit`**: optional argument, FLAT==1, SECOND_UV==2, defaults to SECOND_UV
-- **`unit`**: integer
+- **`unit`**: argumento opcional, FLAT==1, SECOND_UV==2; o padrão é SECOND_UV
+- **`unit`**: inteiro
 
 ### getRGBA()
 
-Gets the color of this vertex.
+Pega a cor deste vértice.
 
-The color is represented as four bytes packed into an integer value.  The color is packed as RGBA.
+A cor é representada como quatro bytes empacotados num inteiro, no formato RGBA.
 
-Since Python offers no way to get each byte without shifting, you must use the struct module to access color in an machine independent way.
+Como o Python não tem como pegar cada byte sem deslocamento de bits, use o módulo struct para acessar a cor de um jeito independente da máquina.
 
-Because of this, it is suggested you use the r, g, b and a attributes or the color attribute instead.
+Por isso, é recomendado usar os atributos r, g, b e a ou o atributo color.
 
 ```python
 
@@ -187,42 +187,42 @@ col = struct.unpack('4B', struct.pack('I', v.getRGBA()))
 # white = (255, 255, 255, 255)
 ```
 
-**Retorna:** packed color. 4 byte integer with one byte per color channel in RGBA format.
+**Retorna:** cor empacotada. Inteiro de 4 bytes com um byte por canal de cor, no formato RGBA.
 
 **Tipo do retorno:** integer
 
 ### setRGBA(col)
 
-Sets the color of this vertex.
+Define a cor deste vértice.
 
-See getRGBA() for the format of col, and its relevant problems.  Use the r, g, b and a attributes or the color attribute instead.
+Veja getRGBA() para o formato de col e os problemas dele. Use os atributos r, g, b e a ou o atributo color.
 
-setRGBA() also accepts a four component list as argument col.  The list represents the color as [r, g, b, a] with black = [0.0, 0.0, 0.0, 1.0] and white = [1.0, 1.0, 1.0, 1.0]
+setRGBA() também aceita uma lista de quatro componentes como argumento col. A lista representa a cor como [r, g, b, a], com preto = [0.0, 0.0, 0.0, 1.0] e branco = [1.0, 1.0, 1.0, 1.0]
 
 ```python
 
-v.setRGBA(0xff0000ff) # Red
-v.setRGBA(0xff00ff00) # Green on little endian, transparent purple on big endian
-v.setRGBA([1.0, 0.0, 0.0, 1.0]) # Red
-v.setRGBA([0.0, 1.0, 0.0, 1.0]) # Green on all platforms.
+v.setRGBA(0xff0000ff) # Vermelho
+v.setRGBA(0xff00ff00) # Verde em little endian, roxo transparente em big endian
+v.setRGBA([1.0, 0.0, 0.0, 1.0]) # Vermelho
+v.setRGBA([0.0, 1.0, 0.0, 1.0]) # Verde em todas as plataformas.
 ```
 
-- **`col`**: the new color of this vertex in packed RGBA format.
+- **`col`**: a nova cor deste vértice, no formato RGBA empacotado.
   - tipo: integer or list [r, g, b, a]
 
 ### getNormal()
 
-Gets the normal vector of this vertex.
+Pega o vetor normal deste vértice.
 
-**Retorna:** normalized normal vector.
+**Retorna:** vetor normal normalizado.
 
 **Tipo do retorno:** Vector((nx, ny, nz))
 
 ### setNormal(normal)
 
-Sets the normal vector of this vertex.
+Define o vetor normal deste vértice.
 
 **Tipo:** sequence of floats [r, g, b]
 
-- **`normal`**: the new normal of this vertex.
+- **`normal`**: a nova normal deste vértice.
 

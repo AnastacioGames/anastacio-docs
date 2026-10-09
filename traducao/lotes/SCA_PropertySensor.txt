@@ -1,0 +1,6 @@
+Ativa quando a propriedade do game object corresponde.
+Tipo de verificação da propriedade. Pode ser uma `destas constantes`
+a propriedade com que o sensor opera.
+o valor que o sensor compara com o valor da propriedade.
+o valor mínimo do intervalo usado para avaliar a propriedade no modo interval.
+o valor máximo do intervalo usado para avaliar a propriedade no modo interval.

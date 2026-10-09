@@ -1,0 +1,11 @@
+Os atuadores Action aplicam uma action a um ator.
+O nome da action a usar como action atual.
+Define o frame inicial da animação.
+Define o frame final da animação.
+Define o número de frames de animação gerados nas transições entre actions.
+Define a prioridade deste atuador. Atuadores com número de prioridade menor sobrepõem os de número maior.
+Define o frame atual da animação.
+Define a propriedade usada no modo de reprodução FromProp.
+O modo de operação do atuador. Pode ser uma `destas constantes`.
+A opção continue das actions, True ou False. Com True, a action sempre toca de onde parou; senão, eventos negativos neste atuador voltam ela ao frame inicial.
+O nome da propriedade que recebe o número do frame atual.

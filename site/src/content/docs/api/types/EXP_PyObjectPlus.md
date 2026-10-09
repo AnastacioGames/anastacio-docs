@@ -3,15 +3,15 @@ title: "EXP_PyObjectPlus"
 description: "Referência da classe Range.types.EXP_PyObjectPlus"
 ---
 
-EXP_PyObjectPlus base class of most other types in the Game Engine.
+EXP_PyObjectPlus é a classe base da maioria dos outros tipos da Game Engine.
 
 ### invalid
 
-Test if the object has been freed by the game engine and is no longer valid.
+Testa se o objeto foi liberado pela game engine e não é mais válido.
 
-Normally this is not a problem but when storing game engine data in the GameLogic module, KX_Scenes or other KX_GameObjects its possible to hold a reference to invalid data. Calling an attribute or method on an invalid object will raise a SystemError.
+Normalmente isso não é problema, mas ao guardar dados da game engine no módulo GameLogic, em KX_Scenes ou em outros KX_GameObjects, é possível manter uma referência a dados inválidos. Chamar um atributo ou método de um objeto inválido levanta um SystemError.
 
-The invalid attribute allows testing for this case without exception handling.
+O atributo invalid permite testar esse caso sem tratar exceções.
 
 **Tipo:** boolean
 

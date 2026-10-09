@@ -35,7 +35,9 @@ Sempre que a engine ganhar funções novas:
    ```
    Apaga e recria `site/src/content/docs/api/`. Junta o texto da Range (`.rst`), o inventário e as docstrings do C++. **Não edite à mão os arquivos de `api/`**: o texto de itens novos deve ir para a docstring no C++ (4º campo do `PyMethodDef`) ou para o `.rst` da engine, e aparece na próxima geração.
 
-   **Tradução:** o texto da Range sai em português quando o trecho está em `traducao/pt.json` (inglês → português). O que falta traduzir fica em `traducao/pendente.json`, separado por página. Para traduzir uma página: escreva um `.txt` em `traducao/lotes/` com uma tradução por linha, na ordem do `pendente.json`, e rode `python tools/aplicar_lote.py <pagina> traducao/lotes/<pagina>.txt`. Código, nomes de funções, parâmetros e tipos continuam em inglês; comentários dos exemplos são traduzidos.
+   **Tradução:** o texto da Range sai em português quando o trecho está em `traducao/pt.json` (inglês → português). O que falta traduzir fica em `traducao/pendente.json`, separado por página. Para traduzir uma página: escreva um `.txt` em `traducao/lotes/` com uma tradução por linha, na ordem do `pendente.json`, e rode `python tools/aplicar_lote.py <pagina> traducao/lotes/<pagina>.txt`. Código, nomes de funções, parâmetros e tipos continuam em inglês; comentários dos exemplos são traduzidos. Para várias páginas de uma vez, use um arquivo com seções `===== <pagina>` e rode `python tools/aplicar_varios.py <arquivo>` (uma linha `=` mantém o texto original).
+
+   **Itens novos sem docstring:** escreva a descrição em português em `conteudo/descricoes.json` (`{"Classe": {"item": "texto"}}`). Ela aparece na página e ganha da docstring do C++.
 
 4. **Ver o site no PC**
    ```

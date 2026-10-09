@@ -7,121 +7,121 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-The object actuator ("Motion Actuator") applies force, torque, displacement, angular displacement, velocity, or angular velocity to an object. Servo control allows to regulate force to achieve a certain speed target.
+O atuador de objeto ("Motion Actuator") aplica força, torque, deslocamento, deslocamento angular, velocidade ou velocidade angular a um objeto. O controle servo permite regular a força para atingir uma velocidade alvo.
 
 ### force
 
-The force applied by the actuator.
+A força aplicada pelo atuador.
 
 **Tipo:** Vector((x, y, z))
 
 ### useLocalForce
 
-A flag specifying if the force is local.
+Flag que diz se a força é local.
 
 **Tipo:** boolean
 
 ### torque
 
-The torque applied by the actuator.
+O torque aplicado pelo atuador.
 
 **Tipo:** Vector((x, y, z))
 
 ### useLocalTorque
 
-A flag specifying if the torque is local.
+Flag que diz se o torque é local.
 
 **Tipo:** boolean
 
 ### dLoc
 
-The displacement vector applied by the actuator.
+O vetor de deslocamento aplicado pelo atuador.
 
 **Tipo:** Vector((x, y, z))
 
 ### useLocalDLoc
 
-A flag specifying if the dLoc is local.
+Flag que diz se o dLoc é local.
 
 **Tipo:** boolean
 
 ### dRot
 
-The angular displacement vector applied by the actuator
+O vetor de deslocamento angular aplicado pelo atuador
 
 **Tipo:** Vector((x, y, z))
 
 :::note
-Since the displacement is applied every frame, you must adjust the displacement based on the frame rate, or you game experience will depend on the player's computer speed.
+Como o deslocamento é aplicado a cada frame, é preciso ajustá-lo pelo frame rate, ou a experiência de jogo vai depender da velocidade do computador do jogador.
 :::
 
 ### useLocalDRot
 
-A flag specifying if the dRot is local.
+Flag que diz se o dRot é local.
 
 **Tipo:** boolean
 
 ### linV
 
-The linear velocity applied by the actuator.
+A velocidade linear aplicada pelo atuador.
 
 **Tipo:** Vector((x, y, z))
 
 ### useLocalLinV
 
-A flag specifying if the linear velocity is local.
+Flag que diz se a velocidade linear é local.
 
 **Tipo:** boolean
 
 :::note
-This is the target speed for servo controllers.
+Esta é a velocidade alvo dos controladores servo.
 :::
 
 ### angV
 
-The angular velocity applied by the actuator.
+A velocidade angular aplicada pelo atuador.
 
 **Tipo:** Vector((x, y, z))
 
 ### useLocalAngV
 
-A flag specifying if the angular velocity is local.
+Flag que diz se a velocidade angular é local.
 
 **Tipo:** boolean
 
 ### damping
 
-The damping parameter of the servo controller.
+O parâmetro de amortecimento do controlador servo.
 
 **Tipo:** short
 
 ### forceLimitX
 
-The min/max force limit along the X axis and activates or deactivates the limits in the servo controller.
+O limite mín./máx. de força no eixo X, e liga ou desliga os limites no controlador servo.
 
 **Tipo:** list [min(float), max(float), bool]
 
 ### forceLimitY
 
-The min/max force limit along the Y axis and activates or deactivates the limits in the servo controller.
+O limite mín./máx. de força no eixo Y, e liga ou desliga os limites no controlador servo.
 
 **Tipo:** list [min(float), max(float), bool]
 
 ### forceLimitZ
 
-The min/max force limit along the Z axis and activates or deactivates the limits in the servo controller.
+O limite mín./máx. de força no eixo Z, e liga ou desliga os limites no controlador servo.
 
 **Tipo:** list [min(float), max(float), bool]
 
 ### pid
 
-The PID coefficients of the servo controller.
+Os coeficientes PID do controlador servo.
 
 **Tipo:** list of floats [proportional, integral, derivate]
 
 ### reference
 
-The object that is used as reference to compute the velocity for the servo controller.
+O objeto usado como referência para calcular a velocidade no controlador servo.
 
 **Tipo:** `KX_GameObject` or None
 

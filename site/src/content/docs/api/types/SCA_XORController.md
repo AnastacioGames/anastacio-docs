@@ -7,7 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-An XOR controller activates when there is the input is mixed, but not when all are on or off.
+Um controlador XOR ativa quando as entradas estão misturadas, mas não quando todas estão ligadas ou desligadas.
 
-There are no special python methods for this controller.
+Não há métodos Python especiais para este controlador.
 

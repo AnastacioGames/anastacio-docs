@@ -1,0 +1,14 @@
+Um componente Python pode ser comparado a logic bricks Python com parâmetros. O componente Python é um script carregado pela UI; esse script define uma classe de componente herdando de `KX_PythonComponent`. Essa classe precisa ter um dicionário de propriedades, `args`, e duas funções padrão: `start` e `update`.
+O script precisa ter extensão .py.
+As propriedades do componente são carregadas do atributo `args` pela UI no carregamento. Quando o jogo começa, a função `start` é chamada recebendo um dicionário com o nome e o valor das propriedades. A função `update` é chamada a cada frame na etapa de lógica, antes dos logic bricks; o papel dela é tratar e processar tudo.
+O exemplo de componente a seguir move e gira o objeto ao apertar as teclas W, A, S e D.
+Como os componentes são carregados pela primeira vez fora do bge, `bge` é um módulo falso que só contém a classe `KX_PythonComponent`, para não importar todos os módulos do bge. Isso é mais seguro, mas dá problema no carregamento quando o usuário quer usar funções ou atributos dos módulos do bge além da classe `KX_PythonComponent`. A saída é não chamar essas funções no carregamento fora da Range. Para detectar isso, o módulo bge tem o atributo `__component__` quando é importado fora da Range.
+O exemplo de componente a seguir adiciona um objeto "Cube" na inicialização e o move no eixo x a cada update. Ele mostra que dá para usar funções da cena e carregar o componente fora do bge definindo atributos globais numa condição no começo do script.
+Os tipos de propriedade suportados são float, integer, boolean, string, set (para enumeração) e Vector 2D, 3D e 4D. O exemplo a seguir mostra todos esses tipos.
+O objeto dono do componente.
+Dicionário das propriedades do componente; as chaves são strings e o valor pode ser: float, integer, Vector(2D/3D/4D), set, string.
+Inicializa o componente.
+O dicionário com o nome e o valor das propriedades.
+Esta função precisa ser herdada na classe do componente Python.
+Processa a lógica do componente.
+Função chamada quando o componente é destruído.

@@ -1,0 +1,8 @@
+API Python para texturas de cube map em tempo real.
+O objeto que usa um cube map em tempo real no material.
+Pega o cube map em tempo real a partir da textura do material.
+Põe a posição de render na posição do objeto "Cube".
+Muda o clip start e o clip end do culling.
+Desliga o render na terceira layer.
+Desliga a atualização por frame.
+Pede atualização só neste frame.

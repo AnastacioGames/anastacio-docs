@@ -7,7 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-An NOR controller activates only when all linked sensors are de-activated.
+Um controlador NOR só ativa quando todos os sensores ligados estão desativados.
 
-There are no special python methods for this controller.
+Não há métodos Python especiais para este controlador.
 

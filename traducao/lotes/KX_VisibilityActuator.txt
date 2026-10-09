@@ -1,0 +1,4 @@
+Atuador Visibility.
+se o atuador deixa o objeto pai visível ou invisível.
+se o atuador torna o objeto pai um occluder ou não.
+se a visibilidade/oclusão deve ser propagada a todos os filhos do objeto.

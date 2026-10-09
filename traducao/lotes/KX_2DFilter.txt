@@ -1,0 +1,19 @@
+Objeto de shader de filtro 2D. Pode ser alterado com as funções de `BL_Shader`.
+O vertex shader não deve aplicar as transformações de modelview e projeção. Ele deve ficar parecido com:
+Pede a geração de mipmaps da textura de render `bgl_RenderedTexture`. Acessar um nível de mipmap fica parecido com:
+O off screen personalizado em que o filtro renderiza (somente leitura).
+Coloca o bind code de textura `bindCode` no slot `index`. Toda chamada a `setTexture` deve vir seguida de uma chamada a `BL_Shader.setSampler` com o mesmo `index` se `sampleName` não for passado.
+O slot da textura.
+O bind code/Id da textura.
+O nome do sampler do shader ligado a `index`, se `samplerName` for passado à função (opcional).
+Coloca o bind code de textura cube map `bindCode` no slot `index`. Toda chamada a `setCubeMap` deve vir seguida de uma chamada a `BL_Shader.setSampler` com o mesmo `index` se `sampleName` não for passado.
+O bind code/Id da textura cube map.
+Registra um off screen personalizado para o filtro renderizar.
+O número de texturas de cor ligadas ao off screen, de 0 a 8 (8 excluído).
+True se o off screen usa uma textura de profundidade (opcional).
+A largura do off screen; -1 se ele pode ser redimensionado dinamicamente quando as dimensões da viewport mudam (opcional).
+A altura do off screen; -1 se ele pode ser redimensionado dinamicamente quando as dimensões da viewport mudam (opcional).
+A qualidade de imagem HDR das texturas de cor (opcional).
+True se a textura de cor gera mipmaps no fim do render do filtro (opcional).
+Se o off screen é criado com tamanho dinâmico (`width` e `height` iguais a -1), os bind codes ficam indisponíveis até o próximo render do filtro e podem mudar quando a viewport é redimensionada.
+Remove o registro do off screen personalizado em que o filtro renderiza.

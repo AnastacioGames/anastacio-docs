@@ -7,13 +7,13 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 
 
-Python component can be compared to python logic bricks with parameters. The python component is a script loaded in the UI, this script defined a component class by inheriting from `KX_PythonComponent`. This class must contain a dictionary of properties: `args` and two default functions: `start` and `update`.
+Um componente Python pode ser comparado a logic bricks Python com parâmetros. O componente Python é um script carregado pela UI; esse script define uma classe de componente herdando de `KX_PythonComponent`. Essa classe precisa ter um dicionário de propriedades, `args`, e duas funções padrão: `start` e `update`.
 
-The script must have .py extension.
+O script precisa ter extensão .py.
 
-The component properties are loaded from the `args` attribute from the UI at loading time. When the game start the function `start` is called with as arguments a dictionary of the properties' name and value. The `update` function is called every frames during the logic stage before running logics bricks, the goal of this function is to handle and process everything.
+As propriedades do componente são carregadas do atributo `args` pela UI no carregamento. Quando o jogo começa, a função `start` é chamada recebendo um dicionário com o nome e o valor das propriedades. A função `update` é chamada a cada frame na etapa de lógica, antes dos logic bricks; o papel dela é tratar e processar tudo.
 
-The following component example moves and rotates the object when pressing the keys W, A, S and D.
+O exemplo de componente a seguir move e gira o objeto ao apertar as teclas W, A, S e D.
 
 ```python
 
@@ -61,9 +61,9 @@ class ThirdPerson(Range.types.KX_PythonComponent):
         self.object.applyRotation((0, 0, rotate), True)
 ```
 
-Since the components are loaded for the first time outside the bge, then `bge` is a fake module that contains only the class `KX_PythonComponent` to avoid importing all the bge modules. This behavior is safer but creates some issues at loading when the user want to use functions or attributes from the bge modules other than the `KX_PythonComponent` class. The way is to not call these functions at loading outside the Range. To detect it, the bge module contains the attribute `__component__` when it's imported outside the Range.
+Como os componentes são carregados pela primeira vez fora do bge, `bge` é um módulo falso que só contém a classe `KX_PythonComponent`, para não importar todos os módulos do bge. Isso é mais seguro, mas dá problema no carregamento quando o usuário quer usar funções ou atributos dos módulos do bge além da classe `KX_PythonComponent`. A saída é não chamar essas funções no carregamento fora da Range. Para detectar isso, o módulo bge tem o atributo `__component__` quando é importado fora da Range.
 
-The following component example add a "Cube" object at initialization and move it along x for each update. It shows that the user can use functions from scene and load the component outside the bge by setting global attributes in a condition at the beginning of the script.
+O exemplo de componente a seguir adiciona um objeto "Cube" na inicialização e o move no eixo x a cada update. Ele mostra que dá para usar funções da cena e carregar o componente fora do bge definindo atributos globais numa condição no começo do script.
 
 ```python
 
@@ -83,7 +83,7 @@ class Component(Range.types.KX_PythonComponent):
         scene.objects["Cube"].worldPosition.x += 0.1
 ```
 
-The property types supported are float, integer, boolean, string, set (for enumeration) and Vector 2D, 3D and 4D. The following example show all of these property types.
+Os tipos de propriedade suportados são float, integer, boolean, string, set (para enumeração) e Vector 2D, 3D e 4D. O exemplo a seguir mostra todos esses tipos.
 
 ```python
 
@@ -112,40 +112,40 @@ class Component(types.KX_PythonComponent):
 
 ### object
 
-The object owner of the component.
+O objeto dono do componente.
 
 **Tipo:** `KX_GameObject`
 
 ### args
 
-Dictionary of the component properties, the keys are string and the value can be: float, integer, Vector(2D/3D/4D), set, string.
+Dicionário das propriedades do componente; as chaves são strings e o valor pode ser: float, integer, Vector(2D/3D/4D), set, string.
 
 **Tipo:** dict
 
 ### start(args)
 
-Initialize the component.
+Inicializa o componente.
 
-- **`args`**: The dictionary of the properties' name and value.
+- **`args`**: O dicionário com o nome e o valor das propriedades.
   - tipo: dict
 
 :::caution
-This function must be inherited in the python component class.
+Esta função precisa ser herdada na classe do componente Python.
 :::
 
 ### update()
 
-Process the logic of the component.
+Processa a lógica do componente.
 
 :::caution
-This function must be inherited in the python component class.
+Esta função precisa ser herdada na classe do componente Python.
 :::
 
 ### dispose()
 
-Function called when the component is destroyed.
+Função chamada quando o componente é destruído.
 
 :::caution
-This function must be inherited in the python component class.
+Esta função precisa ser herdada na classe do componente Python.
 :::
 

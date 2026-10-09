@@ -7,79 +7,79 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 
 
-Python interface for using and controlling navigation meshes.
+Interface Python para usar e controlar navigation meshes.
 
-A navigation mesh with a Boolean game property `dynamic_navmesh` set to True is built in tiles when the game starts, so obstacles can carve it at runtime. Objects with "Create Obstacle" carve it automatically; `addObstacle` adds any other object. Paths may differ slightly from the static navigation mesh.
+Uma navigation mesh com a propriedade de jogo Boolean `dynamic_navmesh` igual a True é construída em tiles quando o jogo começa, para que obstáculos possam recortá-la em tempo de execução. Objetos com "Create Obstacle" recortam automaticamente; `addObstacle` adiciona qualquer outro objeto. Os caminhos podem ser um pouco diferentes dos da navigation mesh estática.
 
 ### dynamic
 
-True when the navigation mesh was built in tiles and obstacles can carve it (read-only).
+True quando a navigation mesh foi construída em tiles e obstáculos podem recortá-la (somente leitura).
 
 **Tipo:** boolean
 
 ### version
 
-Incremented when the navigation mesh is rebuilt or finishes changing because of obstacles (read-only). Paths found with an older version may cross new obstacles.
+Aumenta quando a navigation mesh é reconstruída ou termina de mudar por causa de obstáculos (somente leitura). Caminhos achados com uma versão mais antiga podem atravessar obstáculos novos.
 
 **Tipo:** integer
 
 ### findPath(start, goal)
 
-Finds the path from start to goal points.
+Acha o caminho do ponto de início até o ponto de destino.
 
-- **`start`**: the start point
-- **`start`**: 3D Vector
-- **`goal`**: the goal point
-- **`start`**: 3D Vector
+- **`start`**: o ponto de início
+- **`start`**: Vetor 3D
+- **`goal`**: o ponto de destino
+- **`start`**: Vetor 3D
 
-**Retorna:** a path as a list of points
+**Retorna:** um caminho como lista de pontos
 
 **Tipo do retorno:** list of points
 
 ### raycast(start, goal)
 
-Raycast from start to goal points.
+Lança um raio do ponto de início até o ponto de destino.
 
-- **`start`**: the start point
-- **`start`**: 3D Vector
-- **`goal`**: the goal point
-- **`start`**: 3D Vector
+- **`start`**: o ponto de início
+- **`start`**: Vetor 3D
+- **`goal`**: o ponto de destino
+- **`start`**: Vetor 3D
 
-**Retorna:** the hit factor
+**Retorna:** o fator de acerto
 
 **Tipo do retorno:** float
 
 ### draw(mode)
 
-Draws a debug mesh for the navigation mesh. On a dynamic navigation mesh, the obstacle cylinders are drawn in yellow.
+Desenha uma malha de depuração da navigation mesh. Numa navigation mesh dinâmica, os cilindros de obstáculo são desenhados em amarelo.
 
-- **`mode`**: the drawing mode (one of `these constants`)
-- **`mode`**: integer
+- **`mode`**: o modo de desenho (uma `destas constantes`)
+- **`mode`**: inteiro
 
 **Retorna:** None
 
 ### rebuild()
 
-Rebuild the navigation mesh.
+Reconstrói a navigation mesh.
 
 **Retorna:** None
 
 ### addObstacle(object, radius=0.0)
 
-Makes the object carve every dynamic navigation mesh of its scene, following it when it moves. Calling it again changes the radius. It has no effect on static navigation meshes.
+Faz o objeto recortar todas as navigation meshes dinâmicas da cena, acompanhando-o quando ele se move. Chamar de novo muda o raio. Não tem efeito em navigation meshes estáticas.
 
-- **`object`**: the obstacle, in the same scene as the navigation mesh
+- **`object`**: o obstáculo, na mesma cena da navigation mesh
   - tipo: `KX_GameObject` or string
-- **`radius`**: the world radius of the obstacle cylinder, 0.0 uses the object "Create Obstacle" radius or half its bounding box size
+- **`radius`**: o raio, no mundo, do cilindro do obstáculo; 0.0 usa o raio do "Create Obstacle" do objeto ou metade do tamanho da bounding box
   - tipo: float
 
 **Retorna:** None
 
 ### removeObstacle(object)
 
-Stops the object carving the dynamic navigation meshes, including objects with "Create Obstacle".
+Faz o objeto parar de recortar as navigation meshes dinâmicas, inclusive objetos com "Create Obstacle".
 
-- **`object`**: the obstacle
+- **`object`**: o obstáculo
   - tipo: `KX_GameObject` or string
 
 **Retorna:** None

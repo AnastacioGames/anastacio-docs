@@ -1,0 +1,38 @@
+Um objeto de malha.
+Só dá para mudar as propriedades dos vértices de uma malha, não a topologia dela.
+Para usar malhas bem, é bom saber um pouco de como a game engine lida com elas.
+O jeito certo de percorrer todos os `KX_VertexProxy` de um game object
+Faça algo com o vértice aqui...
+... ex.: pinta o vértice de vermelho.
+Devolve a lista de polígonos desta malha.
+Pega o nome do material indicado.
+o material indicado.
+o nome do material ligado.
+Pega o nome da textura do material indicado.
+o material indicado
+o nome da textura do material ligado.
+Pega o tamanho do array de vértices ligado ao material indicado.
+Há um array de vértices para cada material.
+o número de vértices no array de vértices.
+Pega o vértice indicado da malha.
+o índice no array de vértices.
+um objeto de vértice.
+Pega o polígono indicado da malha.
+número do polígono
+um objeto de polígono.
+Transforma os vértices de uma malha.
+índice do material; -1 transforma todos.
+matriz de transformação.
+Transforma as UVs dos vértices de uma malha.
+índice de UV opcional; -1 para todos, senão 0 ou 1.
+índice de UV opcional de onde copiar; -1 para transformar a UV atual.
+Troca o material do slot `matid` pelo material `material`.
+O índice do material.
+O material substituto.
+Trocar o material de uma malha usada por muitos objetos pode ser lento. Não chame esta função a cada frame
+Devolve uma cópia da malha.
+uma cópia da malha em uso.
+Devolve uma árvore BVH baseada na geometria da malha. Os índices dos elementos da árvore são iguais aos índices dos polígonos.
+A matriz de transformação 4x4 aplicada aos vértices.
+O epsilon de distância da árvore.
+Uma árvore BVH baseada na geometria da malha.

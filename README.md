@@ -11,7 +11,7 @@ O código da engine fica em outro repositório (`D:\AnastacioEngine`). Este repo
 | `tools/` | Scripts. `api_inventario.py` levanta toda a API a partir do C++ da engine. |
 | `inventario/` | Saída do inventário: `api_inventario.md` (relatório para revisar) e `api_inventario.json` (dados). |
 | `prototipo/` | Protótipo visual aprovado do site (`site-prototipo.html`, abre direto no navegador). |
-| `site/` | (a criar) Projeto Astro Starlight do site. |
+| `site/` | Projeto Astro Starlight do site. Páginas escritas à mão em `site/src/content/docs/` (início, sobre, guias); `api/` é gerada. |
 
 ## Como atualizar a documentação
 
@@ -29,9 +29,21 @@ Sempre que a engine ganhar funções novas:
    - **só no rst**: documentado mas não achado no C++ (removido, herdado de classe base ou registrado de outro jeito).
    - Comparar com a versão anterior pelo `git diff inventario/` mostra só o que mudou.
 
-3. **Escrever o conteúdo** dos itens novos (descrição, tipos, exemplo) nos arquivos de conteúdo do site.
+3. **Gerar as páginas da API**
+   ```
+   python tools/gerar_paginas.py --engine D:/AnastacioEngine
+   ```
+   Apaga e recria `site/src/content/docs/api/`. Junta o texto da Range (`.rst`), o inventário e as docstrings do C++. **Não edite à mão os arquivos de `api/`**: o texto de itens novos deve ir para a docstring no C++ (4º campo do `PyMethodDef`) ou para o `.rst` da engine, e aparece na próxima geração.
 
-4. **Publicar**: commit + push; a GitHub Action gera o site.
+4. **Ver o site no PC**
+   ```
+   cd site
+   npm install      (só na primeira vez)
+   npm run dev      (abre em http://localhost:4321/anastacio-docs/)
+   ```
+
+5. **Publicar**: commit + push na `main`. A Action `.github/workflows/deploy.yml` compila e publica no GitHub Pages.
+   Na primeira vez: no GitHub, Settings > Pages > Source = **GitHub Actions**. Se o repositório ou o usuário não forem `AnastacioGames/anastacio-docs`, ajuste `SITE` e `BASE` em `site/astro.config.mjs`.
 
 ## Regras do conteúdo
 

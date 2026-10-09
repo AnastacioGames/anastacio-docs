@@ -1,0 +1,71 @@
+/* Visual da Anastacio: escuro com dourado puxado para o laranja.
+   Starlight usa --sl-color-*; aqui só trocamos os tokens. */
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+	--sl-font: 'IBM Plex Sans', system-ui, sans-serif;
+	--sl-font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+	--ae-display: 'Saira', 'Arial Narrow', sans-serif;
+	--ae-gold: #f2b23a;
+	--ae-gold-2: #ffd77a;
+	--ae-ember: #e0781f;
+	--ae-new: #4fd1a5;
+}
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #3a2608;
+	--sl-color-accent: #f2b23a;
+	--sl-color-accent-high: #ffd77a;
+	--sl-color-white: #ece6da;
+	--sl-color-gray-1: #ddd5c4;
+	--sl-color-gray-2: #b8ae99;
+	--sl-color-gray-3: #9d9481;
+	--sl-color-gray-4: #5c5444;
+	--sl-color-gray-5: #3a3122;
+	--sl-color-gray-6: #1d1810;
+	--sl-color-black: #0f0c08;
+	--sl-color-bg-nav: #16120c;
+	--sl-color-bg-sidebar: #16120c;
+	--sl-color-hairline: #2a251c;
+}
+:root[data-theme='light'] {
+	--sl-color-accent-low: #f8e6c0;
+	--sl-color-accent: #a8660a;
+	--sl-color-accent-high: #5a3604;
+}
+
+h1, h2, .site-title { font-family: var(--ae-display); letter-spacing: .02em; }
+.site-title { text-transform: uppercase; color: var(--ae-gold-2) !important; }
+
+/* Início */
+[data-has-hero] .page { background: linear-gradient(0deg, #3a2608 0, #1c1306 22rem, var(--sl-color-black) 44rem) no-repeat; }
+[data-has-hero] header.header { background: transparent; }
+.hero h1 {
+	font-weight: 800; text-transform: uppercase; line-height: 1;
+	background: linear-gradient(180deg, var(--ae-gold-2), var(--ae-gold) 55%, var(--ae-ember));
+	-webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero img { animation: ae-float 6s ease-in-out infinite; }
+@keyframes ae-float { 50% { transform: translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) { .hero img { animation: none; } }
+
+.ae-feat { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1px; background: var(--sl-color-hairline); border: 1px solid var(--sl-color-hairline); border-radius: 12px; overflow: hidden; margin-top: 1.5rem; }
+.ae-feat > div { background: var(--sl-color-black); padding: 1.5rem; margin: 0 !important; }
+.ae-feat h3 { font-family: var(--ae-display); color: var(--ae-gold-2); margin: 0 0 .4rem; font-size: 1.1rem; }
+.ae-feat p { margin: 0; color: var(--sl-color-gray-3); font-size: .9rem; }
+.ae-feat svg { width: 38px; height: 38px; padding: 8px; margin-bottom: .9rem; border-radius: 10px; fill: none; stroke: var(--ae-gold); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; background: linear-gradient(180deg, rgba(242,178,58,.16), rgba(242,178,58,.04)); border: 1px solid rgba(242,178,58,.28); }
+
+/* Selos */
+.ae-badge { display: inline-block; font: 600 .7rem var(--sl-font-mono); letter-spacing: .05em; padding: .1rem .55rem; border-radius: 999px; border: 1px solid; vertical-align: middle; }
+.ae-badge.novo { color: var(--ae-new); border-color: color-mix(in srgb, var(--ae-new) 45%, transparent); }
+.ae-badge.range { color: var(--sl-color-gray-3); border-color: var(--sl-color-gray-5); }
+.ae-badge.pendente { color: var(--ae-ember); border-color: color-mix(in srgb, var(--ae-ember) 45%, transparent); }
+
+/* Página de API: cada item vira um cartão */
+.sl-markdown-content h3[id] { font-family: var(--sl-font-mono); font-size: 1rem; color: var(--ae-gold-2); padding: .7rem 1rem; margin-top: 2rem; border: 1px solid var(--sl-color-gray-5); border-radius: 10px 10px 0 0; background: linear-gradient(90deg, #2e2312, #221b11); }
+:root[data-theme='light'] .sl-markdown-content h3[id] { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
+
+.ae-studio { display: block; width: 100%; max-width: 420px; margin: 0 auto 2rem; border-radius: 14px; border: 1px solid rgba(242,178,58,.25); }
+.ae-tl { list-style: none; padding-left: 1.75rem !important; border-left: 1px solid rgba(242,178,58,.35); }
+.ae-tl li { position: relative; margin-bottom: 2rem; }
+.ae-tl li::before { content: ''; position: absolute; left: -2.2rem; top: .35rem; width: 13px; height: 13px; border-radius: 50%; background: var(--ae-gold); box-shadow: 0 0 12px rgba(242,178,58,.5); }
+.ae-tl strong { display: block; font-family: var(--ae-display); color: var(--ae-gold-2); font-size: 1.15rem; }

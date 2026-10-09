@@ -1,0 +1,82 @@
+---
+title: "EXP_ListValue"
+description: "Referência da classe Range.types.EXP_ListValue"
+---
+
+Classe base: [`EXP_PropValue`](../exp_propvalue/)
+
+
+
+This is a list like object used in the game engine internally that behaves similar to a python list in most ways.
+
+As well as the normal index lookup (`val= clist[i]`), EXP_ListValue supports string lookups (`val= scene.objects["Cube"]`)
+
+Other operations such as `len(clist)`, `list(clist)`, `clist[0:10]` are also supported.
+
+### append(val)
+
+Add an item to the list (like pythons append)
+
+:::caution
+Appending values to the list can cause crashes when the list is used internally by the game engine.
+:::
+
+### count(val)
+
+Count the number of instances of a value in the list.
+
+**Retorna:** number of instances
+
+**Tipo do retorno:** integer
+
+### index(val)
+
+Return the index of a value in the list.
+
+**Retorna:** The index of the value in the list.
+
+**Tipo do retorno:** integer
+
+### reverse()
+
+Reverse the order of the list.
+
+### get(key, default=None)
+
+Return the value matching key, or the default value if its not found.
+
+**Retorna:** The key value or a default.
+
+### filter(name, prop)
+
+Return a list of items with name matching `name` regex and with a property matching `prop` regex.
+If `name` is empty every items are checked, if `prop` is empty no property check is proceeded.
+
+**Retorna:** The list of matching items.
+
+### from_id(id)
+
+This is a funtion especially for the game engine to return a value with a spesific id.
+
+Since object names are not always unique, the id of an object can be used to get an object from the EXP_ValueList.
+
+Example:
+
+``python
+
+myObID=id(gameObject)
+ob= scene.objects.from_id(myObID)
+``
+
+Where `myObID` is an int or long from the id function.
+
+This has the advantage that you can store the id in places you could not store a gameObject.
+
+:::caution
+The id is derived from a memory location and will be different each time the game engine starts.
+:::
+
+:::caution
+The id can't be stored as an integer in game object properties, as those only have a limited range that the id may not be contained in. Instead an id can be stored as a string game property and converted back to an integer for use in from_id lookups.
+:::
+

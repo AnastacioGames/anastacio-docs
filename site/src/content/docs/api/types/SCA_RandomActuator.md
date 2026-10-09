@@ -76,8 +76,7 @@ Sets this generator to always produce the given value.
 
 ### setIntUniform(lower_bound, upper_bound)
 
-Sets this generator to produce a random value between the given lower and
-upper bounds (inclusive).
+Sets this generator to produce a random value between the given lower and upper bounds (inclusive).
 
   - tipo: integer
   - tipo: integer
@@ -86,8 +85,7 @@ upper bounds (inclusive).
 
 Generate a Poisson-distributed number.
 
-This performs a series of Bernouilli tests with parameter value.
-It returns the number of tries needed to achieve succes.
+This performs a series of Bernouilli tests with parameter value. It returns the number of tries needed to achieve succes.
 
   - tipo: float
 
@@ -99,8 +97,7 @@ Always generate the given value.
 
 ### setFloatUniform(lower_bound, upper_bound)
 
-Generates a random float between lower_bound and upper_bound with a
-uniform distribution.
+Generates a random float between lower_bound and upper_bound with a uniform distribution.
 
   - tipo: float
   - tipo: float

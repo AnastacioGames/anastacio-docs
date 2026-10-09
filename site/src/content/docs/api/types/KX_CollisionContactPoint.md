@@ -9,7 +9,7 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 A collision contact point passed to the collision callbacks.
 
-``python
+```python
 
 import Range
 
@@ -27,7 +27,7 @@ def oncollision(object, point, normal, points):
 cont = Range.logic.getCurrentController()
 own = cont.owner
 own.collisionCallbacks = [oncollision]
-``
+```
 
 ### localPointA
 

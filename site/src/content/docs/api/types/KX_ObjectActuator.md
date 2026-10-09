@@ -7,9 +7,7 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 
 
-The object actuator ("Motion Actuator") applies force, torque, displacement, angular displacement,
-velocity, or angular velocity to an object.
-Servo control allows to regulate force to achieve a certain speed target.
+The object actuator ("Motion Actuator") applies force, torque, displacement, angular displacement, velocity, or angular velocity to an object. Servo control allows to regulate force to achieve a certain speed target.
 
 ### force
 

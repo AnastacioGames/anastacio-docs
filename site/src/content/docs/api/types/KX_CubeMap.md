@@ -9,7 +9,7 @@ Classe base: [`KX_TextureRenderer`](../kx_texturerenderer/)
 
 Python API for realtime cube map textures.
 
-``python
+```python
 
 import Range
 
@@ -35,5 +35,5 @@ cubemap.ignoreLayers = (1 << 2)
 cubemap.autoUpdate = False
 # Ask to update for this frame only.
 cubemap.update()
-``
+```
 

@@ -84,8 +84,6 @@ Return the string name of a key event. Returns an empty string if the event cant
 
 ## Keys (Constants)
 
-.. _mouse-keys:
-
 ## Mouse Keys
 
 ### LEFTMOUSE
@@ -129,8 +127,6 @@ Return the string name of a key event. Returns an empty string if the event cant
 <span class="ae-badge pendente">sem descrição</span>
 
 ### MOUSEY
-
-.. _keyboard-keys:
 
 ## Keyboard Keys
 

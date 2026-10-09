@@ -7,9 +7,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-BL_Shader is a class used to compile and use custom shaders scripts. It supports vertex, fragment and geometry shader scripts.
-The shader is compiled with a generated header for the three shaders scripts.
-This header set the `#version` directive, so the user must not define his own `#version`.
+BL_Shader is a class used to compile and use custom shaders scripts. It supports vertex, fragment and geometry shader scripts. The shader is compiled with a generated header for the three shaders scripts. This header set the `#version` directive, so the user must not define his own `#version`.
 
 ### enabled
 
@@ -19,14 +17,13 @@ Set shader enabled to use.
 
 ### objectCallbacks
 
-The list of python callbacks executed when the shader is used to render an object.
-All the functions can expect as argument the object currently rendered.
+The list of python callbacks executed when the shader is used to render an object. All the functions can expect as argument the object currently rendered.
 
-``python
+```python
 
 def callback(object):
     print("render object %r" % object.name)
-``
+```
 
 **Tipo:** list of functions and/or methods
 
@@ -247,10 +244,7 @@ Set a uniform with a list of integer values
 
 ### setUniformEyef(name)
 
-Set a uniform with a float value that reflects the eye being render in stereo mode:
-0.0 for the left eye, 0.5 for the right eye. In non stereo mode, the value of the uniform
-is fixed to 0.0. The typical use of this uniform is in stereo mode to sample stereo textures
-containing the left and right eye images in a top-bottom order.
+Set a uniform with a float value that reflects the eye being render in stereo mode: 0.0 for the left eye, 0.5 for the right eye. In non stereo mode, the value of the uniform is fixed to 0.0. The typical use of this uniform is in stereo mode to sample stereo textures containing the left and right eye images in a top-bottom order.
 
 - **`name`**: the uniform name
   - tipo: string

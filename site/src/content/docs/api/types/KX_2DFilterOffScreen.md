@@ -26,7 +26,7 @@ The off screen height, -1 if the off screen can be resized dynamically (read-onl
 The bind code of the color textures attached to the off screen (read-only).
 
 :::caution
-If the off screen can be resized dynamically (`width` of `height` equal to -1), the bind codes may change.
+If the off screen can be resized dynamically (:data:`width` of :data:`height` equal to -1), the bind codes may change.
 :::
 
 **Tipo:** list of 8 integers
@@ -36,7 +36,7 @@ If the off screen can be resized dynamically (`width` of `height` equal to -1), 
 The bind code of the depth texture attached to the off screen (read-only).
 
 :::caution
-If the off screen can be resized dynamically (`width` of `height` equal to -1), the bind code may change.
+If the off screen can be resized dynamically (:data:`width` of :data:`height` equal to -1), the bind code may change.
 :::
 
 **Tipo:** integer

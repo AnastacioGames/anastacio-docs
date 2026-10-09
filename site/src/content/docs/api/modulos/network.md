@@ -13,8 +13,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-Calls a game RPC registered with @rpc; obj makes it an object call  
-(target 'owner' and owner_only use its owner). False when refused here (no session, wrong target...).
+Calls a game RPC registered with @rpc; obj makes it an object call (target 'owner' and owner_only use its owner). False when refused here (no session, wrong target...).
 
 **Retorna:** `bool`
 
@@ -118,15 +117,13 @@ Joins 'host', 'host:port' or '[v6]:port'.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
--> (obj, point, distance) or None  
-Server: ray against the hitboxes as client saw them (lag compensation, 1 s of history); -1 = now.
+-> (obj, point, distance) or None Server: ray against the hitboxes as client saw them (lag compensation, 1 s of history); -1 = now.
 
 ### replicate(obj, props=()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-, transform=True, velocity=False, angular_velocity=False, always_relevant=False, priority=1.0) -> int  
-Same as the Replicate checkbox; run it before host()/join(), in the same order on every peer.
+, transform=True, velocity=False, angular_velocity=False, always_relevant=False, priority=1.0, quantize=None) -> int Same as the Replicate checkbox; run it before host()/join(), in the same order on every peer. quantize={name: (min, max, bits)} sends Float properties in fewer bits.
 
 ### return_to_lobby()
 

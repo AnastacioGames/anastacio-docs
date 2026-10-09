@@ -14,7 +14,7 @@ Mouse normalization is using the maximum coordinate in width and height, whether
 
 A script setting the mouse at center is similar to the following example:
 
-``python
+```python
 
 import Range
 
@@ -22,7 +22,7 @@ w, h = Range.render.getWindowWidth() - 1, Range.render.getWindowHeight() - 1
 center_x, center_y = (w // 2) / w, (h // 2) / h
 
 Range.logic.mouse.position = center_x, center_y
-``
+```
 
 Note the usage of floor division to round an existing coordinate.
 :::
@@ -37,7 +37,7 @@ A dictionary containing the input of each mouse event. (read-only).
 
 a dictionary containing the status of each mouse event. (read-only).
 
-:::danger[Obsoleto use `inputs`]
+:::danger[Obsoleto use :data:`inputs`]
 
 :::
 
@@ -53,7 +53,7 @@ A dictionary containing the input of only the active mouse events. (read-only).
 
 a dictionary containing the status of only the active mouse events. (read-only).
 
-:::danger[Obsoleto use `activeInputs`]
+:::danger[Obsoleto use :data:`activeInputs`]
 
 :::
 

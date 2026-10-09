@@ -7,8 +7,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-Proxy to armature pose channel. Allows to read and set armature pose.
-The attributes are identical to RNA attributes, but mostly in read-only mode.
+Proxy to armature pose channel. Allows to read and set armature pose. The attributes are identical to RNA attributes, but mostly in read-only mode.
 
 ### name
 
@@ -30,8 +29,7 @@ return the parent channel object, None if root channel, read-only.
 
 ### has_ik
 
-true if the bone is part of an active IK chain, read-only.
-This flag is not set when an IK constraint is defined but not enabled (miss target information for example).
+true if the bone is part of an active IK chain, read-only. This flag is not set when an IK constraint is defined but not enabled (miss target information for example).
 
 **Tipo:** boolean
 
@@ -147,15 +145,13 @@ Method of updating the bone rotation, read-write.
 
 ### channel_matrix
 
-pose matrix in bone space (deformation of the bone due to action, constraint, etc), Read-only.
-This field is updated after the graphic render, it represents the current pose.
+pose matrix in bone space (deformation of the bone due to action, constraint, etc), Read-only. This field is updated after the graphic render, it represents the current pose.
 
 **Tipo:** matrix [4][4]
 
 ### pose_matrix
 
-pose matrix in armature space, read-only,
-This field is updated after the graphic render, it represents the current pose.
+pose matrix in armature space, read-only, This field is updated after the graphic render, it represents the current pose.
 
 **Tipo:** matrix [4][4]
 

@@ -9,7 +9,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 A bounding volume box of a game object. Used to get and alterate the volume box or AABB.
 
-``python
+```python
 
 from Range import logic
 from mathutils import Vector
@@ -25,7 +25,7 @@ print(box)
 box.max = box.max + Vector((0, 0, 1))
 
 print(box)
-``
+```
 
 ### min
 

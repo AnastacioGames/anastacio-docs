@@ -14,10 +14,10 @@ Scene actuators that use a scene name will be ignored if at game start, the name
 
 This will generate a warning in the console:
 
-``none
+```none
 
 Error: GameObject 'Name' has a SceneActuator 'ActuatorName' (SetScene) without scene
-``
+```
 :::
 
 ### scene

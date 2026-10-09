@@ -7,8 +7,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-Proxy to Armature Constraint. Allows to change constraint on the fly.
-Obtained through `BL_ArmatureObject`.constraints.
+Proxy to Armature Constraint. Allows to change constraint on the fly. Obtained through `BL_ArmatureObject`.constraints.
 
 :::note
 Not all armature constraints are supported in the GE.

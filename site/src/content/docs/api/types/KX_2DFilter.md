@@ -12,20 +12,20 @@ Classe base: [`BL_Shader`](../bl_shader/)
 :::caution
 The vertex shader must not apply modelview and projection transformation. It should be similar to:
 
-``glsl
+```glsl
 
 void main()
 {
     gl_Position = gl_Vertex;
 }
-``
+```
 :::
 
 ### mipmap
 
 Request mipmap generation of the render `bgl_RenderedTexture` texture. Accessing mipmapping level is similar to:
 
-``glsl
+```glsl
 
 uniform sampler2D bgl_RenderedTexture;
 
@@ -34,7 +34,7 @@ void main()
     float level = 2.0; // mipmap level
     gl_FragColor = textureLod(bgl_RenderedTexture, gl_TexCoord[0].st, level);
 }
-``
+```
 
 **Tipo:** boolean
 
@@ -46,8 +46,7 @@ The custom off screen the filter render to (read-only).
 
 ### setTexture(index, bindCode, samplerName="")
 
-Set specified texture bind code `bindCode` in specified slot `index`. Any call to `setTexture`
-should be followed by a call to `BL_Shader.setSampler` with the same `index` if `sampleName` is not specified.
+Set specified texture bind code `bindCode` in specified slot `index`. Any call to `setTexture` should be followed by a call to `BL_Shader.setSampler` with the same `index` if `sampleName` is not specified.
 
 - **`index`**: The texture slot.
   - tipo: integer
@@ -58,8 +57,7 @@ should be followed by a call to `BL_Shader.setSampler` with the same `index` if 
 
 ### setCubeMap(index, bindCode, samplerName="")
 
-Set specified cube map texture bind code `bindCode` in specified slot `index`. Any call to `setCubeMap`
-should be followed by a call to `BL_Shader.setSampler` with the same `index` if `sampleName` is not specified.
+Set specified cube map texture bind code `bindCode` in specified slot `index`. Any call to `setCubeMap` should be followed by a call to `BL_Shader.setSampler` with the same `index` if `sampleName` is not specified.
 
 - **`index`**: The texture slot.
   - tipo: integer
@@ -68,7 +66,7 @@ should be followed by a call to `BL_Shader.setSampler` with the same `index` if 
 - **`samplerName`**: The shader sampler name set to `index` if `samplerName` is passed in the function. (optional)
   - tipo: string
 
-### addOffScreen(slots, depth=False, width=-1, height=-1, hdr=Range.render.HDR_NONE, mipmap=False)
+### addOffScreen(slots, depth=False, width=-1, height=-1, hdr=bge.render.HDR_NONE, mipmap=False)
 
 Register a custom off screen to render the filter to.
 
@@ -86,8 +84,7 @@ Register a custom off screen to render the filter to.
   - tipo: boolean
 
 :::note
-If the off screen is created using a dynamic size (`width` and `height` to -1) its bind codes will be unavailable before
-the next render of the filter and the it can change when the viewport is resized.
+If the off screen is created using a dynamic size (`width` and `height` to -1) its bind codes will be unavailable before the next render of the filter and the it can change when the viewport is resized.
 :::
 
 ### removeOffScreen()

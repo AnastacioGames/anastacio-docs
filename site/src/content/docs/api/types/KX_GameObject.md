@@ -7,18 +7,17 @@ Classe base: [`SCA_IObject`](../sca_iobject/)
 
 
 
-All game objects are derived from this class.
+Todos os objetos do jogo derivam desta classe.
 
-Properties assigned to game objects are accessible as attributes of this class.
+As propriedades de jogo do objeto podem ser acessadas como atributos desta classe.
 
 :::note
-Calling ANY method or attribute on an object that has been removed from a scene will raise a SystemError,
-if an object may have been removed since last accessing it use the `invalid` attribute to check.
+Chamar QUALQUER método ou atributo de um objeto que já foi removido da cena gera SystemError. Se o objeto pode ter sido removido desde o último acesso, confira antes com o atributo `invalid`.
 :::
 
-KX_GameObject can be subclassed to extend functionality. For example:
+KX_GameObject pode ser herdado para estender o que ele faz. Por exemplo:
 
-``python
+```python
 
 import Range
 
@@ -26,199 +25,192 @@ class CustomGameObject(Range.types.KX_GameObject):
     RATE = 0.05
 
     def __init__(self, old_owner):
-        # "old_owner" can just be ignored. At this point, "self" is
-        # already the object in the scene, and "old_owner" has been
-        # destroyed.
+        # "old_owner" pode ser ignorado. Neste ponto, "self" já é
+        # o objeto na cena, e "old_owner" já foi
+        # destruído.
 
-        # New attributes can be defined - but we could also use a game
-        # property, like "self['rate']".
+        # Dá para criar atributos novos, mas também poderíamos usar uma
+        # propriedade de jogo, como "self['rate']".
         self.rate = CustomGameObject.RATE
 
     def update(self):
         self.worldPosition.z += self.rate
 
-        # switch direction
+        # inverte a direção
         if self.worldPosition.z > 1.0:
             self.rate = -CustomGameObject.RATE
         elif self.worldPosition.z < 0.0:
             self.rate = CustomGameObject.RATE
 
-# Called first
+# Chamado primeiro
 def mutate(cont):
     old_object = cont.owner
     mutated_object = CustomGameObject(cont.owner)
 
-    # After calling the constructor above, references to the old object
-    # should not be used.
+    # Depois de chamar o construtor acima, as referências ao objeto antigo
+    # não devem mais ser usadas.
     assert(old_object is not mutated_object)
     assert(old_object.invalid)
     assert(mutated_object is cont.owner)
 
-# Called later - note we are now working with the mutated object.
+# Chamado depois. Repare que agora estamos usando o objeto transformado.
 def update(cont):
     cont.owner.update()
-``
+```
 
-When subclassing objects other than empties and meshes, the specific type
-should be used - e.g. inherit from `BL_ArmatureObject` when the object
-to mutate is an armature.
+Ao herdar de objetos que não são vazios nem malhas, use o tipo específico. Por exemplo, herde de `BL_ArmatureObject` quando o objeto a transformar for uma armature.
 
 ### name
 
-The object's name.
+O nome do objeto.
 
 **Tipo:** string
 
 ### mass
 
-The object's mass
+A massa do objeto.
 
 **Tipo:** float
 
 :::note
-The object must have a physics controller for the mass to be applied, otherwise the mass value will be returned as 0.0.
+O objeto precisa de um controlador de física para a massa valer; sem ele, a massa é lida como 0.0.
 :::
 
 ### friction
 
-The object's friction
+O atrito do objeto.
 
 **Tipo:** float
 
 ### isSuspendDynamics
 
-The object's dynamic state (read-only).
+O estado dinâmico do objeto (somente leitura).
 
 **Tipo:** boolean
 
 :::tip
-:py`suspendDynamics` and :py`restoreDynamics` allow you to change the state.
+`suspendDynamics` e `restoreDynamics` permitem mudar esse estado.
 :::
 
 ### linearDamping
 
-The object's linear damping, also known as translational damping. Can be set simultaneously with angular damping using the :py`setDamping` method.
+O amortecimento linear do objeto, também chamado de amortecimento de translação. Pode ser definido junto com o amortecimento angular pelo método `setDamping`.
 
 **Tipo:** float between 0 and 1 inclusive.
 
 :::note
-The object must have a physics controller for the linear damping to be applied, otherwise the value will be returned as 0.0.
+O objeto precisa de um controlador de física para o amortecimento linear valer; sem ele, o valor é lido como 0.0.
 :::
 
 ### angularDamping
 
-The object's angular damping, also known as rotationation damping. Can be set simultaneously with linear damping using the :py`setDamping` method.
+O amortecimento angular do objeto, também chamado de amortecimento de rotação. Pode ser definido junto com o amortecimento linear pelo método `setDamping`.
 
 **Tipo:** float between 0 and 1 inclusive.
 
 :::note
-The object must have a physics controller for the angular damping to be applied, otherwise the value will be returned as 0.0.
+O objeto precisa de um controlador de física para o amortecimento angular valer; sem ele, o valor é lido como 0.0.
 :::
 
 ### linVelocityMin
 
-Enforces the object keeps moving at a minimum velocity.
+Obriga o objeto a continuar se movendo com uma velocidade mínima.
 
 **Tipo:** float
 
 :::note
-Applies to dynamic and rigid body objects only.
+Vale só para objetos dinâmicos e rígidos.
 :::
 
 :::note
-A value of 0.0 disables this option.
+O valor 0.0 desliga esta opção.
 :::
 
 :::note
-While objects are stationary the minimum velocity will not be applied.
+Enquanto o objeto está parado, a velocidade mínima não é aplicada.
 :::
 
 ### linVelocityMax
 
-Clamp the maximum linear velocity to prevent objects moving beyond a set speed.
+Limita a velocidade linear máxima, para o objeto não passar de uma certa velocidade.
 
 **Tipo:** float
 
 :::note
-Applies to dynamic and rigid body objects only.
+Vale só para objetos dinâmicos e rígidos.
 :::
 
 :::note
-A value of 0.0 disables this option (rather than setting it stationary).
+O valor 0.0 desliga esta opção (não deixa o objeto parado).
 :::
 
 ### angularVelocityMin
 
-Enforces the object keeps rotating at a minimum velocity. A value of 0.0 disables this.
+Obriga o objeto a continuar girando com uma velocidade mínima. O valor 0.0 desliga.
 
 **Tipo:** non-negative float
 
 :::note
-Applies to dynamic and rigid body objects only.
-While objects are stationary the minimum velocity will not be applied.
+Vale só para objetos dinâmicos e rígidos. Enquanto o objeto está parado, a velocidade mínima não é aplicada.
 :::
 
 ### angularVelocityMax
 
-Clamp the maximum angular velocity to prevent objects rotating beyond a set speed.
-A value of 0.0 disables clamping; it does not stop rotation.
+Limita a velocidade angular máxima, para o objeto não girar além de uma certa velocidade. O valor 0.0 desliga o limite; não para a rotação.
 
 **Tipo:** non-negative float
 
 :::note
-Applies to dynamic and rigid body objects only.
+Vale só para objetos dinâmicos e rígidos.
 :::
 
 ### localInertia
 
-the object's inertia vector in local coordinates. Read only.
+O vetor de inércia do objeto em coordenadas locais. Somente leitura.
 
 **Tipo:** Vector((ix, iy, iz))
 
 ### parent
 
-The object's parent object. (read-only).
+O objeto pai deste objeto (somente leitura).
 
 **Tipo:** `KX_GameObject` or None
 
 ### groupMembers
 
-Returns the list of group members if the object is a group object (dupli group instance), otherwise None is returned.
+Devolve a lista de membros do grupo se o objeto for um objeto de grupo (instância de dupli group); caso contrário, devolve None.
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject` or None
 
 ### groupObject
 
-Returns the group object (dupli group instance) that the object belongs to or None if the object is not part of a group.
+Devolve o objeto de grupo (instância de dupli group) a que o objeto pertence, ou None se ele não faz parte de um grupo.
 
 **Tipo:** `KX_GameObject` or None
 
 ### collisionGroup
 
-The object's collision group.
+O grupo de colisão do objeto.
 
 **Tipo:** bitfield
 
 ### collisionMask
 
-The object's collision mask.
+A máscara de colisão do objeto.
 
 **Tipo:** bitfield
 
 ### collisionCallbacks
 
-A list of functions to be called when a collision occurs.
+Lista de funções chamadas quando acontece uma colisão.
 
 **Tipo:** list of functions and/or methods
 
-Callbacks should either accept one argument `(object)`, or four
-arguments `(object, point, normal, points)`. For simplicity, per
-colliding object the first collision point is reported in second
-and third argument.
+As funções devem aceitar um argumento `(object)` ou quatro argumentos `(object, point, normal, points)`. Para simplificar, o primeiro ponto de colisão de cada objeto colidido vem no segundo e no terceiro argumento.
 
-``python
+```python
 
-# Function form
+# Como função
 def callback_four(object, point, normal, points):
     print('Hit by %r with %i contacts points' % (object.name, len(points)))
 
@@ -233,7 +225,7 @@ def register_callback(controller):
     controller.owner.collisionCallbacks.append(callback_three)
     controller.owner.collisionCallbacks.append(callback_one)
 
-# Method form
+# Como método
 class YourGameEntity(Range.types.KX_GameObject):
     def __init__(self, old_owner):
         self.collisionCallbacks.append(self.on_collision_four)
@@ -248,109 +240,103 @@ class YourGameEntity(Range.types.KX_GameObject):
 
     def on_collision_one(self, object):
         print('Hit by %r' % object.name)
-``
+```
 
 :::note
-For backward compatibility, a callback with variable number of
-arguments (using `*args`) will be passed only the `object`
-argument. Only when there is more than one fixed argument (not
-counting `self` for methods) will the four-argument form be
-used.
+Por compatibilidade, uma função com número variável de argumentos (usando `*args`) recebe só o argumento `object`. A forma com quatro argumentos só é usada quando há mais de um argumento fixo (sem contar o `self` dos métodos).
 :::
 
 ### scene
 
-The object's scene. (read-only).
+A cena do objeto (somente leitura).
 
 **Tipo:** `KX_Scene` or None
 
 ### visible
 
-visibility flag.
+Indica se o objeto está visível.
 
 **Tipo:** boolean
 
 :::note
-Game logic will still run for invisible objects.
+A lógica do jogo continua rodando para objetos invisíveis.
 :::
 
 ### layer
 
-The layer mask used for shadow and real-time cube map render.
+A máscara de camadas usada no render de sombras e de cube maps em tempo real.
 
 **Tipo:** bitfield
 
 ### cullingBox
 
-The object's bounding volume box used for culling.
+A caixa de volume do objeto, usada no culling.
 
 **Tipo:** `KX_BoundingBox`
 
 ### culled
 
-Returns True if the object is culled, else False.
+Devolve True se o objeto foi descartado pelo culling; caso contrário, False.
 
 :::caution
-This variable returns an invalid value if it is called outside the scene's callbacks `KX_Scene.pre_draw` and `KX_Scene.post_draw`.
+Esta variável devolve um valor inválido se for lida fora dos callbacks da cena `KX_Scene.pre_draw` e `KX_Scene.post_draw`.
 :::
 
 **Tipo:** boolean (read only)
 
 ### color
 
-The object color of the object. [r, g, b, a]
+A cor do objeto. [r, g, b, a]
 
 **Tipo:** `mathutils.Vector`
 
 ### occlusion
 
-occlusion capability flag.
+Indica se o objeto participa do occlusion culling.
 
 **Tipo:** boolean
 
 ### physicsCulling
 
-True if the object suspends its physics depending on its nearest distance to any camera.
+True se o objeto suspende a física conforme a distância até a câmera mais próxima.
 
 **Tipo:** boolean
 
 ### physicsCullingVelocity
 
-Stop physics after the object stops.
+Para a física depois que o objeto para.
 
 **Tipo:** boolean
 
 ### logicCulling
 
-True if the object suspends its logic and animation depending on its nearest distance to any camera.
+True se o objeto suspende a lógica e a animação conforme a distância até a câmera mais próxima.
 
 **Tipo:** boolean
 
 ### logicCullingComponents
 
-No Suspend execution of object components.
+Não suspende a execução dos componentes do objeto.
 
 **Tipo:** boolean
 
 ### physicsCullingRadius
 
-Suspend object's physics if this radius is smaller than its nearest distance to any camera
-and `physicsCulling` set to `True`.
+Suspende a física do objeto se este raio for menor que a distância até a câmera mais próxima e `physicsCulling` estiver `True`.
 
 **Tipo:** float
 
 ### logicCullingRadius
 
-Suspend object's logic and animation if this radius is smaller than its nearest distance to any camera
-and `logicCulling` set to `True`.
+Suspende a lógica e a animação do objeto se este raio for menor que a distância até a câmera mais próxima e `logicCulling` estiver `True`.
 
 **Tipo:** float
 
 ### position
 
-The object's position. [x, y, z] On write: local position, on read: world position
+A posição do objeto. [x, y, z] Na escrita: posição local; na leitura: posição no mundo.
 
-:::danger[Obsoleto use `localPosition` and `worldPosition`.]
+:::danger[Obsoleto use :data:`localPosition` and :data:`worldPosition`.]
 
 :::
 
@@ -358,9 +344,9 @@ The object's position. [x, y, z] On write: local position, on read: world positi
 
 ### orientation
 
-The object's orientation. 3x3 Matrix. You can also write a Quaternion or Euler vector. On write: local orientation, on read: world orientation
+A orientação do objeto. Matriz 3x3. Também aceita um Quaternion ou um vetor Euler. Na escrita: orientação local; na leitura: orientação no mundo.
 
-:::danger[Obsoleto use `localOrientation` and `worldOrientation`.]
+:::danger[Obsoleto use :data:`localOrientation` and :data:`worldOrientation`.]
 
 :::
 
@@ -368,9 +354,9 @@ The object's orientation. 3x3 Matrix. You can also write a Quaternion or Euler v
 
 ### scaling
 
-The object's scaling factor. [sx, sy, sz] On write: local scaling, on read: world scaling
+O fator de escala do objeto. [sx, sy, sz] Na escrita: escala local; na leitura: escala no mundo.
 
-:::danger[Obsoleto use `localScale` and `worldScale`.]
+:::danger[Obsoleto use :data:`localScale` and :data:`worldScale`.]
 
 :::
 
@@ -378,878 +364,842 @@ The object's scaling factor. [sx, sy, sz] On write: local scaling, on read: worl
 
 ### localOrientation
 
-The object's local orientation. 3x3 Matrix. You can also write a Quaternion or Euler vector.
+A orientação local do objeto. Matriz 3x3. Também aceita um Quaternion ou um vetor Euler.
 
 **Tipo:** `mathutils.Matrix`
 
 ### worldOrientation
 
-The object's world orientation. 3x3 Matrix.
+A orientação do objeto no mundo. Matriz 3x3.
 
 **Tipo:** `mathutils.Matrix`
 
 ### localScale
 
-The object's local scaling factor. [sx, sy, sz]
+O fator de escala local do objeto. [sx, sy, sz]
 
 **Tipo:** `mathutils.Vector`
 
 ### worldScale
 
-The object's world scaling factor. [sx, sy, sz]
+O fator de escala do objeto no mundo. [sx, sy, sz]
 
 **Tipo:** `mathutils.Vector`
 
 ### localPosition
 
-The object's local position. [x, y, z]
+A posição local do objeto. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### worldPosition
 
-The object's world position. [x, y, z]
+A posição do objeto no mundo. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### localTransform
 
-The object's local space transform matrix. 4x4 Matrix.
+A matriz de transformação local do objeto. Matriz 4x4.
 
 **Tipo:** `mathutils.Matrix`
 
 ### worldTransform
 
-The object's world space transform matrix. 4x4 Matrix.
+A matriz de transformação do objeto no mundo. Matriz 4x4.
 
 **Tipo:** `mathutils.Matrix`
 
 ### localLinearVelocity
 
-The object's local linear velocity. [x, y, z]
+A velocidade linear local do objeto. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### worldLinearVelocity
 
-The object's world linear velocity. [x, y, z]
+A velocidade linear do objeto no mundo. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### localAngularVelocity
 
-The object's local angular velocity. [x, y, z]
+A velocidade angular local do objeto. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### worldAngularVelocity
 
-The object's world angular velocity. [x, y, z]
+A velocidade angular do objeto no mundo. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### gravity
 
-The object's gravity. [x, y, z]
+A gravidade do objeto. [x, y, z]
 
 **Tipo:** `mathutils.Vector`
 
 ### timeOffset
 
-adjust the slowparent delay at runtime.
+Ajusta o atraso do slow parent durante o jogo.
 
 **Tipo:** float
 
 ### state
 
-the game object's state bitmask, using the first 30 bits, one bit must always be set.
+A máscara de estados do objeto, usando os 30 primeiros bits; pelo menos um bit precisa estar ligado.
 
 **Tipo:** int
 
 ### meshes
 
-a list meshes for this object.
+Lista das malhas deste objeto.
 
 **Tipo:** list of `KX_Mesh`
 
 :::note
-Most objects use only 1 mesh.
+A maioria dos objetos usa só 1 malha.
 :::
 
 :::note
-Changes to this list will not update the KX_GameObject.
+Mudar esta lista não atualiza o KX_GameObject.
 :::
 
 ### batchGroup
 
-The object batch group containing the batched mesh.
+O grupo de batch que contém a malha agrupada do objeto.
 
 **Tipo:** `KX_BatchGroup`
 
 ### sensors
 
-a sequence of `SCA_ISensor` objects with string/index lookups and iterator support.
+Uma sequência de objetos `SCA_ISensor`, com busca por nome/índice e suporte a iteração.
 
 **Tipo:** list
 
 :::note
-This attribute is experimental and may be removed (but probably wont be).
+Este atributo é experimental e pode ser removido (mas provavelmente não será).
 :::
 
 :::note
-Changes to this list will not update the KX_GameObject.
+Mudar esta lista não atualiza o KX_GameObject.
 :::
 
 ### controllers
 
-a sequence of `SCA_IController` objects with string/index lookups and iterator support.
+Uma sequência de objetos `SCA_IController`, com busca por nome/índice e suporte a iteração.
 
 **Tipo:** list of `SCA_ISensor`
 
 :::note
-This attribute is experimental and may be removed (but probably wont be).
+Este atributo é experimental e pode ser removido (mas provavelmente não será).
 :::
 
 :::note
-Changes to this list will not update the KX_GameObject.
+Mudar esta lista não atualiza o KX_GameObject.
 :::
 
 ### actuators
 
-a list of `SCA_IActuator` with string/index lookups and iterator support.
+Uma lista de `SCA_IActuator`, com busca por nome/índice e suporte a iteração.
 
 **Tipo:** list
 
 :::note
-This attribute is experemental and may be removed (but probably wont be).
+Este atributo é experimental e pode ser removido (mas provavelmente não será).
 :::
 
 :::note
-Changes to this list will not update the KX_GameObject.
+Mudar esta lista não atualiza o KX_GameObject.
 :::
 
 ### attrDict
 
-get the objects internal python attribute dictionary for direct (faster) access.
+Dá o dicionário interno de atributos Python do objeto, para acesso direto (mais rápido).
 
 **Tipo:** dict
 
 ### components
 
-All python components.
+Todos os componentes Python.
 
 **Tipo:** `EXP_ListValue` of `KX_PythonComponent`'s
 
 ### children
 
-direct children of this object, (read-only).
+Os filhos diretos deste objeto (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject`'s
 
 ### childrenRecursive
 
-all children of this object including children's children, (read-only).
+Todos os filhos deste objeto, incluindo os filhos dos filhos (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject`'s
 
 ### life
 
-The number of frames until the object ends, assumes one frame is 1/50 second (read-only).
+Quantos frames faltam para o objeto acabar, considerando um frame como 1/50 de segundo (somente leitura).
 
 **Tipo:** float
 
 ### debug
 
-If true, the object's debug properties will be displayed on screen.
+Se for True, as propriedades de depuração do objeto aparecem na tela.
 
 **Tipo:** boolean
 
 ### debugRecursive
 
-If true, the object's and children's debug properties will be displayed on screen.
+Se for True, as propriedades de depuração do objeto e dos filhos aparecem na tela.
 
 **Tipo:** boolean
 
 ### currentLodLevel
 
-The index of the level of detail (LOD) currently used by this object (read-only).
+O índice do nível de detalhe (LOD) que o objeto está usando agora (somente leitura).
 
 **Tipo:** int
 
 ### lodManager
 
-Return the lod manager of this object.
-Needed to access to lod manager to set attributes of levels of detail of this object.
-The lod manager is shared between instance objects and can be changed to use the lod levels of an other object.
-If the lod manager is set to `None` the object's mesh backs to the mesh of the previous first lod level.
+Devolve o gerenciador de LOD do objeto, necessário para configurar os níveis de detalhe dele. O gerenciador é compartilhado entre as instâncias e pode ser trocado para usar os níveis de LOD de outro objeto. Se for definido como `None`, a malha do objeto volta a ser a do primeiro nível de LOD anterior.
 
 **Tipo:** `KX_LodManager`
 
 ### isDestructible
 
-True if Physics > Destruction is enabled on this object, also for objects on an inactive layer (read-only).
+True se Physics > Destruction estiver ligado neste objeto, inclusive em objetos de camadas inativas (somente leitura).
 
 **Tipo:** boolean
 
 ### isExplosive
 
-True if Physics > Explosive is enabled on this object, also for objects on an inactive layer (read-only).
+True se Physics > Explosive estiver ligado neste objeto, inclusive em objetos de camadas inativas (somente leitura).
 
 **Tipo:** boolean
 
 ### breakImpulse
 
-The impulse that breaks this destructible object, from a collision or from `KX_Scene.explode`.
-Starts with the panel's Break Impulse; changing it affects only this instance.
-Reads 0.0 on objects that are not destructible, and setting it on them raises AttributeError.
+O impulso que quebra este objeto destrutível, vindo de uma colisão ou de `KX_Scene.explode`. Começa com o Break Impulse do painel; mudar o valor afeta só esta instância. Em objetos que não são destrutíveis, lê 0.0, e escrever gera AttributeError.
 
 **Tipo:** float
 
 ### fuse
 
-Seconds left before this explosive object detonates. The fuse counts from the moment the object enters
-the game (scene start or `KX_Scene.addObject`). 0.0 means no fuse; setting a value lights it.
-Setting it on an object that is not explosive raises AttributeError.
+Segundos que faltam para este objeto explosivo detonar. O pavio conta a partir do momento em que o objeto entra no jogo (início da cena ou `KX_Scene.addObject`). 0.0 significa sem pavio; definir um valor acende o pavio. Em objetos que não são explosivos, escrever gera AttributeError.
 
 **Tipo:** float
 
 ### onBreak
 
-A list of functions called when this object breaks, with the arguments `(object, fragments)`.
-They run right after the fragments enter the scene, before any explosion pushes them.
-Callbacks set on an object of an inactive layer are copied to every object added from it.
+Lista de funções chamadas quando este objeto quebra, com os argumentos `(object, fragments)`. Elas rodam logo depois de os fragmentos entrarem na cena, antes de qualquer explosão empurrá-los. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.
 
 **Tipo:** list of functions and/or methods
 
-``python
+```python
 
 def on_break(obj, fragments):
     print('%s broke into %d pieces' % (obj.name, len(fragments)))
 
 controller.owner.onBreak.append(on_break)
-``
+```
 
 ### onExplode
 
-A list of functions called when this object explodes, with the arguments `(object, position)`.
-On an object that is both destructible and explosive, they run after `onBreak`.
-Callbacks set on an object of an inactive layer are copied to every object added from it.
+Lista de funções chamadas quando este objeto explode, com os argumentos `(object, position)`. Num objeto que é destrutível e explosivo ao mesmo tempo, elas rodam depois de `onBreak`. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.
 
 **Tipo:** list of functions and/or methods
 
 ### onDent
 
-A list of functions called when this deformable object dents (collision, explosion or
-
-**meth:** `dent`), with the arguments `(object, point, impulse)`: world hit point (the blast center
-
-for an explosion) and hit strength, e.g. to play a metal sound or spawn sparks there.
-Callbacks set on an object of an inactive layer are copied to every object added from it.
+Lista de funções chamadas quando este objeto deformável amassa (colisão, explosão ou `dent`), com os argumentos `(object, point, impulse)`: o ponto atingido no mundo (o centro da explosão, no caso de explosão) e a força do impacto, por exemplo para tocar um som de metal ou soltar faíscas ali. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.
 
 **Tipo:** list of functions and/or methods
 
 ### endObject()
 
-Delete this object, can be used in place of the EndObject Actuator.
+Apaga este objeto. Pode substituir o atuador End Object.
 
-The actual removal of the object from the scene is delayed.
+A remoção de fato do objeto da cena acontece um pouco depois.
 
 ### shatter(origin=None, burst=None)
 
-Break this destructible object now, replacing it by the pieces of its Fragments group.
-On an object that is also explosive, it detonates as well.
+Quebra este objeto destrutível agora, trocando-o pelos pedaços do grupo Fragments. Se o objeto também for explosivo, ele detona junto.
 
-- **`origin`**: The point the pieces fly away from, the object's position by default.
+- **`origin`**: O ponto de onde os pedaços se afastam; por padrão, a posição do objeto.
   - tipo: 3D Vector
-- **`burst`**: The speed given to the pieces away from origin, the panel's Burst Speed by default.
+- **`burst`**: A velocidade dada aos pedaços para longe de origin; por padrão, o Burst Speed do painel.
   - tipo: float
 
-**Retorna:** The new pieces, an empty list if the object is not destructible or has already broken.
+**Retorna:** Os pedaços novos, ou uma lista vazia se o objeto não é destrutível ou já quebrou.
 
 **Tipo do retorno:** list of `KX_GameObject`
 
 ### detonate()
 
-Make this explosive object explode now: a blast like `KX_Scene.explode` with the panel's settings,
-the Effect object, and the removal of the object. A destructible explosive breaks as well.
+Faz este objeto explosivo explodir agora: uma explosão como `KX_Scene.explode` com os ajustes do painel, o objeto Effect e a remoção do objeto. Um explosivo destrutível também quebra.
 
-**Retorna:** False if the object is not explosive or has already exploded.
+**Retorna:** False se o objeto não é explosivo ou já explodiu.
 
 **Tipo do retorno:** boolean
 
 ### dent(point, direction, impulse)
 
-Dent this deformable object (Deformation panel) as a hit of the given strength: the vertices within
-the panel's Radius of point move along direction (into the object) by
-(impulse - Dent Impulse) * Depth, limited by Max Depth. Only this instance changes, other objects
-sharing the mesh keep their shape.
+Amassa este objeto deformável (painel Deformation) como um impacto da força dada: os vértices dentro do Radius do painel em volta de point andam na direção direction (para dentro do objeto) (impulse - Dent Impulse) * Depth, limitado por Max Depth. Só esta instância muda; outros objetos que usam a mesma malha mantêm a forma.
 
-- **`point`**: hit point in world space.
+- **`point`**: Ponto atingido, no espaço do mundo.
   - tipo: 3D vector
-- **`direction`**: hit direction in world space, flipped to point into the object.
+- **`direction`**: Direção do impacto no espaço do mundo, invertida para apontar para dentro do objeto.
   - tipo: 3D vector
-- **`impulse`**: hit strength (N*s), compared with Dent Impulse.
+- **`impulse`**: Força do impacto (N*s), comparada com o Dent Impulse.
   - tipo: float
 
-**Retorna:** False if the object is not deformable, the impulse is too weak or no vertex moved.
+**Retorna:** False se o objeto não é deformável, se o impulso é fraco demais ou se nenhum vértice se moveu.
 
 **Tipo do retorno:** boolean
 
 ### resetDent()
 
-Restore the shape of a dented object.
+Restaura a forma de um objeto amassado.
 
-**Retorna:** False if the object was never dented.
+**Retorna:** False se o objeto nunca foi amassado.
 
 **Tipo do retorno:** boolean
 
 ### replaceMesh(mesh, useDisplayMesh=True, usePhysicsMesh=False)
 
-Replace the mesh of this object with a new mesh. This works the same was as the actuator.
+Troca a malha deste objeto por outra. Funciona do mesmo jeito que o atuador.
 
-- **`mesh`**: mesh to replace or the meshes name.
+- **`mesh`**: A malha nova, ou o nome dela.
   - tipo: `MeshProxy` or string
-- **`useDisplayMesh`**: when enabled the display mesh will be replaced (optional argument).
+- **`useDisplayMesh`**: Se ligado, troca a malha visível (argumento opcional).
   - tipo: boolean
-- **`usePhysicsMesh`**: when enabled the physics mesh will be replaced (optional argument).
+- **`usePhysicsMesh`**: Se ligado, troca a malha da física (argumento opcional).
   - tipo: boolean
 
 ### setVisible(visible[, recursive])
 
-Sets the game object's visible flag.
+Define se o objeto está visível.
 
-- **`visible`**: the visible state to set.
+- **`visible`**: O estado de visibilidade a definir.
   - tipo: boolean
-- **`recursive`**: optional argument to set all childrens visibility flag too, defaults to False if no value passed.
+- **`recursive`**: Argumento opcional para aplicar a visibilidade também a todos os filhos. Se não for passado, vale False.
   - tipo: boolean
 
 ### setOcclusion(occlusion[, recursive])
 
-Sets the game object's occlusion capability.
+Define se o objeto participa do occlusion culling.
 
-- **`occlusion`**: the state to set the occlusion to.
+- **`occlusion`**: O estado de oclusão a definir.
   - tipo: boolean
-- **`recursive`**: optional argument to set all childrens occlusion flag too, defaults to False if no value passed.
+- **`recursive`**: Argumento opcional para aplicar a oclusão também a todos os filhos. Se não for passado, vale False.
   - tipo: boolean
 
 ### alignAxisToVect(vect, axis=2, factor=1.0)
 
-Aligns any of the game object's axis along the given vector.
+Alinha um dos eixos do objeto com o vetor dado.
 
-- **`vect`**: a vector to align the axis.
+- **`vect`**: O vetor com o qual alinhar o eixo.
   - tipo: 3D vector
-- **`axis`**: The axis you want to align * 0: X axis * 1: Y axis * 2: Z axis
+- **`axis`**: O eixo a alinhar * 0: eixo X * 1: eixo Y * 2: eixo Z
   - tipo: integer
-- **`factor`**: Only rotate a feaction of the distance to the target vector (0.0 - 1.0)
+- **`factor`**: Gira só uma fração do caminho até o vetor alvo (0.0 a 1.0).
   - tipo: float
 
 ### getAxisVect(vect)
 
-Returns the axis vector rotates by the object's worldspace orientation.
-This is the equivalent of multiplying the vector by the orientation matrix.
+Devolve o vetor do eixo girado pela orientação do objeto no mundo. Equivale a multiplicar o vetor pela matriz de orientação.
 
-- **`vect`**: a vector to align the axis.
+- **`vect`**: O vetor com o qual alinhar o eixo.
   - tipo: 3D Vector
 
-**Retorna:** The vector in relation to the objects rotation.
+**Retorna:** O vetor em relação à rotação do objeto.
 
 **Tipo do retorno:** 3d vector.
 
 ### applyMovement(movement[, local])
 
-Sets the game object's movement.
+Move o objeto.
 
-- **`movement`**: movement vector.
+- **`movement`**: O vetor de movimento.
   - tipo: 3D Vector
-- **`local`**:  * False: get the "global" movement ie: relative to world orientation. * True: get the "local" movement ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: movimento "global", relativo à orientação do mundo. * True: movimento "local", relativo à orientação do objeto. Se não for passado, vale False.
 - **`local`**: boolean
 
 ### applyRotation(rotation[, local])
 
-Sets the game object's rotation.
+Gira o objeto.
 
-- **`rotation`**: rotation vector.
+- **`rotation`**: O vetor de rotação.
   - tipo: 3D Vector
-- **`local`**:  * False: get the "global" rotation ie: relative to world orientation. * True: get the "local" rotation ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: rotação "global", relativa à orientação do mundo. * True: rotação "local", relativa à orientação do objeto. Se não for passado, vale False.
 - **`local`**: boolean
 
 ### applyForce(force[, local])
 
-Sets the game object's force.
+Aplica uma força ao objeto.
 
-This requires a dynamic object.
+Exige um objeto dinâmico.
 
-- **`force`**: force vector.
+- **`force`**: O vetor de força.
   - tipo: 3D Vector
-- **`local`**:  * False: get the "global" force ie: relative to world orientation. * True: get the "local" force ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: força "global", relativa à orientação do mundo. * True: força "local", relativa à orientação do objeto. Se não for passado, vale False.
   - tipo: boolean
 
 ### applyTorque(torque[, local])
 
-Sets the game object's torque.
+Aplica um torque ao objeto.
 
-This requires a dynamic object.
+Exige um objeto dinâmico.
 
-- **`torque`**: torque vector.
+- **`torque`**: O vetor de torque.
   - tipo: 3D Vector
-- **`local`**:  * False: get the "global" torque ie: relative to world orientation. * True: get the "local" torque ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: torque "global", relativo à orientação do mundo. * True: torque "local", relativo à orientação do objeto. Se não for passado, vale False.
   - tipo: boolean
 
 ### getLinearVelocity([local])
 
-Gets the game object's linear velocity.
+Lê a velocidade linear do objeto.
 
-This method returns the game object's velocity through it's center of mass, ie no angular velocity component.
+Este método devolve a velocidade do objeto no centro de massa, sem a parte angular.
 
-- **`local`**:  * False: get the "global" velocity ie: relative to world orientation. * True: get the "local" velocity ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: velocidade "global", relativa à orientação do mundo. * True: velocidade "local", relativa à orientação do objeto. Se não for passado, vale False.
   - tipo: boolean
 
-**Retorna:** the object's linear velocity.
+**Retorna:** A velocidade linear do objeto.
 
 **Tipo do retorno:** Vector((vx, vy, vz))
 
 ### setLinearVelocity(velocity[, local])
 
-Sets the game object's linear velocity.
+Define a velocidade linear do objeto.
 
-This method sets game object's velocity through it's center of mass,
-ie no angular velocity component.
+Este método define a velocidade do objeto no centro de massa, sem a parte angular.
 
-This requires a dynamic object.
+Exige um objeto dinâmico.
 
-- **`velocity`**: linear velocity vector.
+- **`velocity`**: O vetor de velocidade linear.
   - tipo: 3D Vector
-- **`local`**:  * False: get the "global" velocity ie: relative to world orientation. * True: get the "local" velocity ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: velocidade "global", relativa à orientação do mundo. * True: velocidade "local", relativa à orientação do objeto. Se não for passado, vale False.
   - tipo: boolean
 
 ### getAngularVelocity([local])
 
-Gets the game object's angular velocity.
+Lê a velocidade angular do objeto.
 
-- **`local`**:  * False: get the "global" velocity ie: relative to world orientation. * True: get the "local" velocity ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: velocidade "global", relativa à orientação do mundo. * True: velocidade "local", relativa à orientação do objeto. Se não for passado, vale False.
   - tipo: boolean
 
-**Retorna:** the object's angular velocity.
+**Retorna:** A velocidade angular do objeto.
 
 **Tipo do retorno:** Vector((vx, vy, vz))
 
 ### setAngularVelocity(velocity[, local])
 
-Sets the game object's angular velocity.
+Define a velocidade angular do objeto.
 
-This requires a dynamic object.
+Exige um objeto dinâmico.
 
-- **`velocity`**: angular velocity vector.
+- **`velocity`**: O vetor de velocidade angular.
   - tipo: boolean
-- **`local`**:  * False: get the "global" velocity ie: relative to world orientation. * True: get the "local" velocity ie: relative to object orientation. Default to False if not passed.
+- **`local`**: * False: velocidade "global", relativa à orientação do mundo. * True: velocidade "local", relativa à orientação do objeto. Se não for passado, vale False.
 
 ### getVelocity([point])
 
-Gets the game object's velocity at the specified point.
+Lê a velocidade do objeto no ponto indicado.
 
-Gets the game object's velocity at the specified point, including angular
-components.
+Lê a velocidade do objeto no ponto indicado, incluindo a parte angular.
 
-- **`point`**: optional point to return the velocity for, in local coordinates, defaults to (0, 0, 0) if no value passed.
+- **`point`**: Ponto opcional onde medir a velocidade, em coordenadas locais. Se não for passado, vale (0, 0, 0).
   - tipo: 3D Vector
 
-**Retorna:** the velocity at the specified point.
+**Retorna:** A velocidade no ponto indicado.
 
 **Tipo do retorno:** Vector((vx, vy, vz))
 
 ### getReactionForce()
 
-Gets the game object's reaction force.
+Lê a força de reação do objeto.
 
-The reaction force is the force applied to this object over the last simulation timestep.
-This also includes impulses, eg from collisions.
+A força de reação é a força aplicada a este objeto no último passo da simulação. Inclui também impulsos, como os de colisões.
 
-**Retorna:** the reaction force of this object.
+**Retorna:** A força de reação deste objeto.
 
 **Tipo do retorno:** Vector((fx, fy, fz))
 
 :::note
-This is not implimented at the moment.
+Isto ainda não está implementado.
 :::
 
 ### applyImpulse(point, impulse[, local])
 
-Applies an impulse to the game object.
+Aplica um impulso ao objeto.
 
-This will apply the specified impulse to the game object at the specified point.
-If point != position, applyImpulse will also change the object's angular momentum.
-Otherwise, only linear momentum will change.
+Aplica o impulso dado ao objeto no ponto indicado. Se point for diferente da posição, applyImpulse também muda o momento angular do objeto; caso contrário, só o momento linear muda.
 
-- **`point`**: the point to apply the impulse to (in world or local coordinates)
+- **`point`**: O ponto onde aplicar o impulso (em coordenadas do mundo ou locais).
   - tipo: point [ix, iy, iz] the point to apply the impulse to (in world or local coordinates)
-- **`impulse`**: impulse vector.
+- **`impulse`**: O vetor de impulso.
   - tipo: 3D Vector
-- **`local`**:  * False: get the "global" impulse ie: relative to world coordinates with world orientation. * True: get the "local" impulse ie: relative to local coordinates with object orientation. Default to False if not passed.
+- **`local`**: * False: impulso "global", relativo às coordenadas e à orientação do mundo. * True: impulso "local", relativo às coordenadas e à orientação do objeto. Se não for passado, vale False.
   - tipo: boolean
 
 ### setDamping(linear_damping, angular_damping)
 
-Sets both the :py`linearDamping` and :py`angularDamping` simultaneously. This is more efficient than setting both properties individually.
+Define `linearDamping` e `angularDamping` de uma vez. É mais eficiente do que definir cada um separadamente.
 
-- **`linear_damping`**: Linear ("translational") damping factor.
+- **`linear_damping`**: Fator de amortecimento linear (de translação).
   - tipo: float ∈ [0, 1]
-- **`angular_damping`**: Angular ("rotational") damping factor.
+- **`angular_damping`**: Fator de amortecimento angular (de rotação).
   - tipo: float ∈ [0, 1]
 
 ### suspendPhysics([freeConstraints])
 
-Suspends physics for this object.
+Suspende a física deste objeto.
 
-- **`freeConstraints`**: When set to `True` physics constraints used by the object are deleted. Else when `False` (the default) constraints are restored when restoring physics.
+- **`freeConstraints`**: Se for `True`, as constraints de física usadas pelo objeto são apagadas. Se for `False` (o padrão), as constraints voltam quando a física é restaurada.
   - tipo: bool
 
 ### restorePhysics()
 
-Resumes physics for this object. Also reinstates collisions.
+Retoma a física deste objeto e volta a ligar as colisões.
 
 ### suspendDynamics([ghost])
 
-Suspends dynamics physics for this object.
+Suspende a física dinâmica deste objeto.
 
-- **`ghost`**: When set to `True`, collisions with the object will be ignored, similar to the "ghost" checkbox in Blender. When `False` (the default), the object becomes static but still collide with other objects.
+- **`ghost`**: Se for `True`, as colisões com o objeto são ignoradas, como a opção "ghost" do Blender. Se for `False` (o padrão), o objeto fica estático mas continua colidindo com os outros.
   - tipo: bool
 
 :::tip
-:py`isSuspendDynamics` allows you to inspect whether the object is in a suspended state.
+`isSuspendDynamics` mostra se o objeto está suspenso.
 :::
 
 ### restoreDynamics()
 
-Resumes dynamics physics for this object. Also reinstates collisions; the object will no longer be a ghost.
+Retoma a física dinâmica deste objeto e volta a ligar as colisões; o objeto deixa de ser ghost.
 
 :::note
-The objects linear velocity will be applied from when the dynamics were suspended.
+O objeto volta com a velocidade linear que tinha quando a dinâmica foi suspensa.
 :::
 
 ### enableRigidBody()
 
-Enables rigid body physics for this object.
+Liga a física de corpo rígido deste objeto.
 
-Rigid body physics allows the object to roll on collisions.
+Com a física de corpo rígido, o objeto rola ao colidir.
 
 ### disableRigidBody()
 
-Disables rigid body physics for this object.
+Desliga a física de corpo rígido deste objeto.
 
 ### setParent(parent, compound=True, ghost=True)
 
-Sets this object's parent.
-Control the shape status with the optional compound and ghost parameters:
+Define o pai deste objeto. Os parâmetros opcionais compound e ghost controlam a forma de colisão:
 
-In that case you can control if it should be ghost or not:
+Nesse caso, dá para escolher se ele fica ghost ou não:
 
-- **`parent`**: new parent object.
+- **`parent`**: O novo objeto pai.
   - tipo: `KX_GameObject`
-- **`compound`**: whether the shape should be added to the parent compound shape. * True: the object shape should be added to the parent compound shape. * False: the object should keep its individual shape.
+- **`compound`**: Se a forma deve ser somada à forma composta do pai. * True: a forma do objeto entra na forma composta do pai. * False: o objeto mantém a própria forma.
   - tipo: boolean
-- **`ghost`**: whether the object should be ghost while parented. * True: if the object should be made ghost while parented. * False: if the object should be solid while parented.
+- **`ghost`**: Se o objeto deve ficar ghost enquanto tiver pai. * True: fica ghost enquanto tiver pai. * False: continua sólido enquanto tiver pai.
   - tipo: boolean
 
 :::note
-If the object type is sensor, it stays ghost regardless of ghost parameter
+Se o objeto for do tipo sensor, ele continua ghost, seja qual for o parâmetro ghost.
 :::
 
 ### removeParent()
 
-Removes this objects parent.
+Remove o pai deste objeto.
 
 ### getPhysicsId()
 
-Returns the user data object associated with this game object's physics controller.
+Devolve o objeto de dados do usuário ligado ao controlador de física deste objeto.
 
 ### getPropertyNames()
 
-Gets a list of all property names.
+Lê a lista com os nomes de todas as propriedades.
 
-**Retorna:** All property names for this object.
+**Retorna:** Os nomes de todas as propriedades deste objeto.
 
 **Tipo do retorno:** list
 
 ### getDistanceTo(other)
 
-- **`other`**: a point or another `KX_GameObject` to measure the distance to.
+- **`other`**: Um ponto ou outro `KX_GameObject` até onde medir a distância.
   - tipo: `KX_GameObject` or list [x, y, z]
 
-**Retorna:** distance to another object or point.
+**Retorna:** A distância até o outro objeto ou ponto.
 
 **Tipo do retorno:** float
 
 ### getVectTo(other)
 
-Returns the vector and the distance to another object or point.
-The vector is normalized unless the distance is 0, in which a zero length vector is returned.
+Devolve o vetor e a distância até outro objeto ou ponto. O vetor vem normalizado, a não ser que a distância seja 0; nesse caso, vem um vetor de tamanho zero.
 
-- **`other`**: a point or another `KX_GameObject` to get the vector and distance to.
+- **`other`**: Um ponto ou outro `KX_GameObject` até onde calcular o vetor e a distância.
   - tipo: `KX_GameObject` or list [x, y, z]
 
-**Retorna:** (distance, globalVector(3), localVector(3))
+**Retorna:** (distância, vetorGlobal(3), vetorLocal(3))
 
 **Tipo do retorno:** 3-tuple (float, 3-tuple (x, y, z), 3-tuple (x, y, z))
 
 ### rayCastTo(other, dist=0, prop="")
 
-Look towards another point/object and find first object hit within dist that matches prop.
+Olha na direção de outro ponto ou objeto e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop.
 
-The ray is always casted from the center of the object, ignoring the object itself.
-The ray is casted towards the center of another object or an explicit [x, y, z] point.
-Use rayCast() if you need to retrieve the hit point
+O raio sempre sai do centro do objeto, ignorando o próprio objeto. Ele vai até o centro de outro objeto ou até um ponto [x, y, z]. Use rayCast() se precisar do ponto atingido.
 
-- **`other`**: [x, y, z] or object towards which the ray is casted
+- **`other`**: [x, y, z] ou objeto na direção do qual o raio é lançado
   - tipo: `KX_GameObject` or 3-tuple
-- **`dist`**: max distance to look (can be negative => look behind); 0 or omitted => detect up to other
+- **`dist`**: Distância máxima (pode ser negativa, para olhar para trás); 0 ou omitido detecta até o alvo
   - tipo: float
-- **`prop`**: property name that object must have; can be omitted => detect any object
+- **`prop`**: Nome da propriedade que o objeto precisa ter; se omitido, detecta qualquer objeto
   - tipo: string
 
-**Retorna:** the first object hit or None if no object or object does not match prop
+**Retorna:** O primeiro objeto atingido, ou None se não atingir nada ou se o objeto não tiver a propriedade
 
 **Tipo do retorno:** `KX_GameObject`
 
 ### rayCast(objto, objfrom=None, dist=0, prop="", face=False, xray=False, poly=0, mask=0xFFFF)
 
-Look from a point/object to another point/object and find first object hit within dist that matches prop.
-if poly is 0, returns a 3-tuple with object reference, hit point and hit normal or (None, None, None) if no hit.
-if poly is 1, returns a 4-tuple with in addition a `KX_PolyProxy` as 4th element.
-if poly is 2, returns a 5-tuple with in addition a 2D vector with the UV mapping of the hit point as 5th element.
+Olha de um ponto ou objeto até outro e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop. Se poly for 0, devolve uma tupla de 3 com o objeto, o ponto e a normal atingidos, ou (None, None, None) se não atingir nada. Se poly for 1, devolve uma tupla de 4 com um `KX_PolyProxy` como 4º elemento. Se poly for 2, devolve uma tupla de 5 com um vetor 2D com a coordenada UV do ponto atingido como 5º elemento.
 
-``python
+```python
 
-# shoot along the axis gun-gunAim (gunAim should be collision-free)
+# atira ao longo do eixo gun-gunAim (gunAim não deve ter colisão)
 obj, point, normal = gun.rayCast(gunAim, None, 50)
 if obj:
-   # do something
+   # faz alguma coisa
    pass
-``
+```
 
-The face parameter determines the orientation of the normal.
+O parâmetro face define a orientação da normal.
 
-* 0 => hit normal is always oriented towards the ray origin (as if you casted the ray from outside)
-* 1 => hit normal is the real face normal (only for mesh object, otherwise face has no effect)
+* 0 => a normal sempre aponta para a origem do raio (como se o raio viesse de fora)
+* 1 => a normal é a normal real da face (só para malhas; nos outros casos face não tem efeito)
 
-The ray has X-Ray capability if xray parameter is 1, otherwise the first object hit (other than self object) stops the ray.
-The prop and xray parameters interact as follow.
+Se xray for 1, o raio atravessa objetos (raio X); caso contrário, o primeiro objeto atingido (fora o próprio) para o raio. Os parâmetros prop e xray funcionam juntos assim:
 
-* prop off, xray off: return closest hit or no hit if there is no object on the full extend of the ray.
-* prop off, xray on : idem.
-* prop on, xray off: return closest hit if it matches prop, no hit otherwise.
-* prop on, xray on : return closest hit matching prop or no hit if there is no object matching prop on the full extend of the ray.
+* prop desligado, xray desligado: devolve o acerto mais próximo, ou nada se não houver objeto em todo o comprimento do raio.
+* prop desligado, xray ligado: o mesmo.
+* prop ligado, xray desligado: devolve o acerto mais próximo se ele tiver prop; caso contrário, nada.
+* prop ligado, xray ligado: devolve o acerto mais próximo que tenha prop, ou nada se nenhum objeto com prop estiver em todo o comprimento do raio.
 
-The `KX_PolyProxy` 4th element of the return tuple when poly=1 allows to retrieve information on the polygon hit by the ray.
-If there is no hit or the hit object is not a static mesh, None is returned as 4th element.
+O `KX_PolyProxy` que vem como 4º elemento quando poly=1 dá informações sobre o polígono atingido. Se não atingir nada, ou se o objeto atingido não for uma malha estática, o 4º elemento é None.
 
-The ray ignores collision-free objects and faces that dont have the collision flag enabled, you can however use ghost objects.
+O raio ignora objetos sem colisão e faces sem a opção de colisão, mas pode atingir objetos ghost.
 
-- **`objto`**: [x, y, z] or object to which the ray is casted
+- **`objto`**: [x, y, z] ou objeto até onde o raio é lançado
   - tipo: `KX_GameObject` or 3-tuple
-- **`objfrom`**: [x, y, z] or object from which the ray is casted; None or omitted => use self object center
+- **`objfrom`**: [x, y, z] ou objeto de onde o raio sai; None ou omitido usa o centro do próprio objeto
   - tipo: `KX_GameObject` or 3-tuple or None
-- **`dist`**: max distance to look (can be negative => look behind); 0 or omitted => detect up to to
+- **`dist`**: Distância máxima (pode ser negativa, para olhar para trás); 0 ou omitido detecta até o alvo
   - tipo: float
-- **`prop`**: property name that object must have; can be omitted or "" => detect any object
+- **`prop`**: Nome da propriedade que o objeto precisa ter; omitido ou "" detecta qualquer objeto
   - tipo: string
-- **`face`**: normal option: 1=>return face normal; 0 or omitted => normal is oriented towards origin
+- **`face`**: Opção de normal: 1 devolve a normal da face; 0 ou omitido aponta a normal para a origem
   - tipo: integer
-- **`xray`**: X-ray option: 1=>skip objects that don't match prop; 0 or omitted => stop on first object
+- **`xray`**: Opção de raio X: 1 pula os objetos que não têm prop; 0 ou omitido para no primeiro objeto
   - tipo: integer
-- **`poly`**: polygon option: 0, 1 or 2 to return a 3-, 4- or 5-tuple with information on the face hit. * 0 or omitted: return value is a 3-tuple (object, hitpoint, hitnormal) or (None, None, None) if no hit * 1: return value is a 4-tuple and the 4th element is a `KX_PolyProxy` or None if no hit or the object doesn't use a mesh collision shape. * 2: return value is a 5-tuple and the 5th element is a 2-tuple (u, v) with the UV mapping of the hit point or None if no hit, or the object doesn't use a mesh collision shape, or doesn't have a UV mapping.
+- **`poly`**: Opção de polígono: 0, 1 ou 2 para devolver uma tupla de 3, 4 ou 5 com dados da face atingida. * 0 ou omitido: tupla de 3 (object, hitpoint, hitnormal), ou (None, None, None) se não atingir nada. * 1: tupla de 4, com um `KX_PolyProxy` como 4º elemento, ou None se não atingir nada ou se o objeto não usar forma de colisão de malha. * 2: tupla de 5, com uma tupla (u, v) da coordenada UV do ponto atingido como 5º elemento, ou None se não atingir nada, se o objeto não usar forma de colisão de malha ou não tiver mapeamento UV.
   - tipo: integer
-- **`mask`**: collision mask: The collision mask (16 layers mapped to a 16-bit integer) is combined with each object's collision group, to hit only a subset of the objects in the scene. Only those objects for which `collisionGroup & mask` is true can be hit.
+- **`mask`**: Máscara de colisão: a máscara (16 camadas num inteiro de 16 bits) é combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só podem ser atingidos os objetos em que `collisionGroup & mask` for verdadeiro.
   - tipo: bitfield
 
-**Retorna:** (object, hitpoint, hitnormal) or (object, hitpoint, hitnormal, polygon) or (object, hitpoint, hitnormal, polygon, hituv). * object, hitpoint and hitnormal are None if no hit. * polygon is valid only if the object is valid and is a static object, a dynamic object using mesh collision shape or a soft body object, otherwise it is None * hituv is valid only if polygon is valid and the object has a UV mapping, otherwise it is None
+**Retorna:** (object, hitpoint, hitnormal), ou (object, hitpoint, hitnormal, polygon), ou (object, hitpoint, hitnormal, polygon, hituv). * object, hitpoint e hitnormal são None se não atingir nada. * polygon só é válido se o objeto for válido e for estático, dinâmico com forma de colisão de malha ou soft body; senão é None. * hituv só é válido se polygon for válido e o objeto tiver mapeamento UV; senão é None.
 
 **Tipo do retorno:**  * 3-tuple (`KX_GameObject`, 3-tuple (x, y, z), 3-tuple (nx, ny, nz)) * or 4-tuple (`KX_GameObject`, 3-tuple (x, y, z), 3-tuple (nx, ny, nz), `KX_PolyProxy`) * or 5-tuple (`KX_GameObject`, 3-tuple (x, y, z), 3-tuple (nx, ny, nz), `KX_PolyProxy`, 2-tuple (u, v))
 
 :::note
-The ray ignores the object on which the method is called. It is casted from/to object center or explicit [x, y, z] points.
+O raio ignora o objeto que chamou o método. Ele sai do centro do objeto, ou vai até ele, ou usa pontos [x, y, z].
 :::
 
 ### collide(obj)
 
-Test if this object collides object `obj`.
+Testa se este objeto colide com o objeto `obj`.
 
-- **`obj`**: the object to test collision with
+- **`obj`**: O objeto com o qual testar a colisão
   - tipo: string or `KX_GameObject`
 
-**Retorna:** (collide, points) * collide, True if this object collides object `obj` * points, contact point data of the collision or None
+**Retorna:** (collide, points) * collide: True se este objeto colide com `obj` * points: os pontos de contato da colisão, ou None
 
 **Tipo do retorno:** 2-tuple (boolean, list of `KX_CollisionContactPoint` or None)
 
 ### setCollisionMargin(margin)
 
-Set the objects collision margin.
+Define a margem de colisão do objeto.
 
-- **`margin`**: the collision margin distance in blender units.
+- **`margin`**: A distância da margem de colisão, em unidades do Blender.
   - tipo: float
 
 :::note
-If this object has no physics controller (a physics ID of zero), this function will raise RuntimeError.
+Se este objeto não tiver controlador de física (ID de física zero), esta função gera RuntimeError.
 :::
 
 ### sendMessage(subject, body="", to="")
 
-Sends a message.
+Envia uma mensagem.
 
-- **`subject`**: The subject of the message
+- **`subject`**: O assunto da mensagem
   - tipo: string
-- **`body`**: The body of the message (optional)
+- **`body`**: O corpo da mensagem (opcional)
   - tipo: string
-- **`to`**: The name of the object to send the message to (optional)
+- **`to`**: O nome do objeto que vai receber a mensagem (opcional)
   - tipo: string
 
 ### reinstancePhysicsMesh(gameObject, meshObject, dupli)
 
-Updates the physics system with the changed mesh.
+Atualiza a física com a malha alterada.
 
-If no arguments are given the physics mesh will be re-created from the first mesh assigned to the game object.
+Sem argumentos, a malha da física é recriada a partir da primeira malha do objeto.
 
-- **`gameObject`**: optional argument, set the physics shape from this gameObjets mesh.
+- **`gameObject`**: Argumento opcional: cria a forma de física a partir da malha deste objeto.
   - tipo: string, `KX_GameObject` or None
-- **`meshObject`**: optional argument, set the physics shape from this mesh.
+- **`meshObject`**: Argumento opcional: cria a forma de física a partir desta malha.
   - tipo: string, `MeshProxy` or None
-- **`dupli`**: optional argument, duplicate the physics shape.
+- **`dupli`**: Argumento opcional: duplica a forma de física.
   - tipo: boolean
 
-**Retorna:** True if reinstance succeeded, False if it failed.
+**Retorna:** True se a recriação deu certo, False se falhou.
 
 **Tipo do retorno:** boolean
 
 :::note
-If this object has instances the other instances will be updated too.
+Se este objeto tiver instâncias, elas também são atualizadas.
 :::
 
 :::note
-The gameObject argument has an advantage that it can convert from a mesh with modifiers applied (such as the Subdivision Surface modifier).
+O argumento gameObject tem a vantagem de converter a malha com os modificadores aplicados (como o Subdivision Surface).
 :::
 
 :::caution
-Only triangle mesh and convex hull type objects are supported currently.
+Por enquanto, só objetos com malha de triângulos ou convex hull são suportados.
 :::
 
 :::caution
-If the object is a part of a compound object it will fail (parent or child)
+Falha se o objeto fizer parte de um objeto composto (pai ou filho).
 :::
 
 :::caution
-Rebuilding the physics mesh can be slow, running many times per second will give a performance hit.
+Recriar a malha da física pode ser lento; rodar isso muitas vezes por segundo pesa no desempenho.
 :::
 
 :::caution
-Duplicate the physics mesh can use much more memory, use this option only for duplicated meshes else use :py`replacePhysicsShape`.
+Duplicar a malha da física pode gastar bem mais memória; use esta opção só em malhas duplicadas, senão use `replacePhysicsShape`.
 :::
 
 ### replacePhysicsShape(gameObject)
 
-Replace the current physics shape.
+Troca a forma de física atual.
 
-- **`gameObject`**: set the physics shape from this gameObjets.
+- **`gameObject`**: Cria a forma de física a partir deste objeto.
   - tipo: string, `KX_GameObject`
 
-**Retorna:** True if replace succeeded, False if it failed.
+**Retorna:** True se a troca deu certo, False se falhou.
 
 **Tipo do retorno:** boolean
 
 :::caution
-Triangle mesh shapes are not supported.
+Formas de malha de triângulos não são suportadas.
 :::
 
 ### get(key[, default])
 
-Return the value matching key, or the default value if its not found.
-- **`key`**: the matching key
+Devolve o valor da chave, ou o valor padrão se a chave não existir.
+- **`key`**: A chave procurada
   - tipo: string
-- **`default`**: optional default value is the key isn't matching, defaults to None if no value passed.
+- **`default`**: Valor padrão opcional se a chave não existir; se não for passado, vale None.
 
-**Retorna:** The key value or a default.
+**Retorna:** O valor da chave ou o padrão.
 
 ### playAction(name, start_frame, end_frame, layer=0, priority=0, blendin=0, play_mode=KX_ACTION_MODE_PLAY, layer_weight=0.0, ipo_flags=0, speed=1.0, blend_mode=KX_ACTION_BLEND_BLEND)
 
-Plays an action.
+Toca uma ação.
 
-- **`name`**: the name of the action
+- **`name`**: O nome da ação
   - tipo: string
-- **`start`**: the start frame of the action
+- **`start`**: O frame inicial da ação
   - tipo: float
-- **`end`**: the end frame of the action
+- **`end`**: O frame final da ação
   - tipo: float
-- **`layer`**: the layer the action will play in (actions in different layers are added/blended together)
+- **`layer`**: A camada onde a ação vai tocar (ações em camadas diferentes são somadas/misturadas)
   - tipo: integer
-- **`priority`**: only play this action if there isn't an action currently playing in this layer with a higher (lower number) priority
+- **`priority`**: Só toca esta ação se não houver outra tocando nesta camada com prioridade maior (número menor)
   - tipo: integer
-- **`blendin`**: the amount of blending between this animation and the previous one on this layer
+- **`blendin`**: Quanto misturar esta animação com a anterior nesta camada
   - tipo: float
-- **`play_mode`**: the play mode
+- **`play_mode`**: O modo de reprodução
   - tipo: one of `these constants`
-- **`layer_weight`**: how much of the previous layer to use for blending
+- **`layer_weight`**: Quanto da camada anterior usar na mistura
   - tipo: float
-- **`ipo_flags`**: flags for the old IPO behaviors (force, etc)
+- **`ipo_flags`**: Flags dos comportamentos antigos de IPO (force etc.)
   - tipo: int bitfield
-- **`speed`**: the playback speed of the action as a factor (1.0 = normal speed, 2.0 = 2x speed, etc)
+- **`speed`**: A velocidade da ação como fator (1.0 = normal, 2.0 = o dobro etc.)
   - tipo: float
-- **`blend_mode`**: how to blend this layer with previous layers
+- **`blend_mode`**: Como misturar esta camada com as anteriores
   - tipo: one of `these constants`
 
 ### stopAction([layer])
 
-Stop playing the action on the given layer.
+Para a ação que está tocando na camada indicada.
 
-- **`layer`**: The layer to stop playing, defaults to 0 if no value passed.
+- **`layer`**: A camada a parar; se não for passada, vale 0.
   - tipo: integer
 
 ### getActionFrame([layer])
 
-Gets the current frame of the action playing in the supplied layer.
+Lê o frame atual da ação que está tocando na camada indicada.
 
-- **`layer`**: The layer that you want to get the frame from, defaults to 0 if no value passed.
+- **`layer`**: A camada de onde ler o frame; se não for passada, vale 0.
   - tipo: integer
 
-**Retorna:** The current frame of the action
+**Retorna:** O frame atual da ação
 
 **Tipo do retorno:** float
 
 ### getActionName([layer])
 
-Gets the name of the current action playing in the supplied layer.
+Lê o nome da ação que está tocando na camada indicada.
 
-- **`layer`**: The layer that you want to get the action name from, defaults to 0 if no value passed.
+- **`layer`**: A camada de onde ler o nome da ação; se não for passada, vale 0.
   - tipo: integer
 
-**Retorna:** The name of the current action
+**Retorna:** O nome da ação atual
 
 **Tipo do retorno:** string
 
 ### setActionFrame(frame[, layer])
 
-Set the current frame of the action playing in the supplied layer.
+Define o frame atual da ação que está tocando na camada indicada.
 
-- **`layer`**: The layer where you want to set the frame, default to 0 if no value passed.
+- **`layer`**: A camada onde definir o frame; se não for passada, vale 0.
   - tipo: integer
-- **`frame`**: The frame to set the action to
+- **`frame`**: O frame para onde levar a ação
   - tipo: float
 
 ### isPlayingAction([layer])
 
-Checks to see if there is an action playing in the given layer.
+Verifica se há uma ação tocando na camada indicada.
 
-- **`layer`**: The layer to check for a playing action, defaults to 0 if no value passed.
+- **`layer`**: A camada a verificar; se não for passada, vale 0.
   - tipo: integer
 
-**Retorna:** Whether or not the action is playing
+**Retorna:** Se a ação está tocando ou não
 
 **Tipo do retorno:** boolean
 
 ### addDebugProperty (name[, debug])
 
-Adds a single debug property to the debug list.
+Adiciona uma propriedade à lista de depuração.
 
-- **`name`**: name of the property that added to the debug list.
+- **`name`**: O nome da propriedade a adicionar à lista de depuração.
   - tipo: string
-- **`debug`**: the debug state, default to True is no value passed.
+- **`debug`**: O estado de depuração; se não for passado, vale True.
   - tipo: boolean
 
 ## Sem documentação da Range
@@ -1420,7 +1370,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
-a lightning strike now (rain must be on)
+um raio cai agora (a chuva precisa estar ligada)
 
 ### suspendAnimations()
 

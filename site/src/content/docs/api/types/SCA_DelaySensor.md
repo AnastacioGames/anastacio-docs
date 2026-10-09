@@ -7,11 +7,9 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 
 
-The Delay sensor generates positive and negative triggers at precise time,
-expressed in number of frames. The delay parameter defines the length of the initial OFF period. A positive trigger is generated at the end of this period.
+The Delay sensor generates positive and negative triggers at precise time, expressed in number of frames. The delay parameter defines the length of the initial OFF period. A positive trigger is generated at the end of this period.
 
-The duration parameter defines the length of the ON period following the OFF period.
-There is a negative trigger at the end of the ON period. If duration is 0, the sensor stays ON and there is no negative trigger.
+The duration parameter defines the length of the ON period following the OFF period. There is a negative trigger at the end of the ON period. If duration is 0, the sensor stays ON and there is no negative trigger.
 
 The sensor runs the OFF-ON cycle once unless the repeat option is set: the OFF-ON cycle repeats indefinately (or the OFF cycle if duration is 0).
 

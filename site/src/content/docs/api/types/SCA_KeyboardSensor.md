@@ -57,7 +57,7 @@ A list of pressed input keys that have either been pressed, or just released, or
 
 a list of pressed keys that have either been pressed, or just released, or are active this frame. (read-only).
 
-:::danger[Obsoleto use `inputs`]
+:::danger[Obsoleto use :data:`inputs`]
 
 :::
 

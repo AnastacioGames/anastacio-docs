@@ -141,7 +141,7 @@ def rst_para_md(texto, selos=None):
             elif nome in ("method", "function", "attribute", "data", "class"):
                 nm = arg.split("(")[0].split(".")[-1]
                 if nome == "class":
-                    out += ["", inline(rst_para_md("\n".join(dedent(corpo)), selos)), ""]
+                    out += ["", rst_para_md("\n".join(dedent(corpo)), selos), ""]
                 else:
                     sinal = arg if "(" in arg else nm
                     out += ["", f"### {sinal}", ""]
@@ -161,14 +161,22 @@ def rst_para_md(texto, selos=None):
                 out += [rst_para_md("\n".join(dedent(corpo)))]
             continue
         # campos :arg x: / :type: / :return:
-        f = re.match(r"^\s*:(\w+)\s*([^:]*):\s*(.*)$", l)
+        # alvos (.. _nome:) e comentários do rst (.. texto: sem ::)
+        if re.match(r"^\s*\.\. (_[\w-]+:|\w+:\s)", l) or re.match(r"^\s*\.\. _[\w-]+:\s*$", l):
+            i += 1
+            continue
+        f = re.match(r"^\s*:(\w+)\s*([^:`]*):(?!`)\s*(.*)$", l)
         if f:
             campo, alvo, valor = f.group(1), f.group(2).strip(), f.group(3)
             extra, i = bloco(linhas, i + 1, indent(l))
             valor = inline(" ".join([valor] + [e.strip() for e in extra if e.strip()]))
             rotulo = {"arg": "", "param": "", "type": "Tipo", "return": "Retorna",
                       "returns": "Retorna", "rtype": "Tipo do retorno", "raises": "Erro"}.get(campo, campo)
-            if campo in ("arg", "param") and alvo:
+            if campo == "columns":
+                pass
+            elif campo == "value":
+                out += ["", f"**Valor:** `{valor}`", ""]
+            elif campo in ("arg", "param") and alvo:
                 out.append(f"- **`{alvo}`**: {valor}")
             elif campo == "type" and alvo:
                 out.append(f"  - tipo: {valor}")
@@ -239,6 +247,88 @@ def secao_pendentes(itens, docs):
     return "\n".join(out)
 
 
+# ---------------------------------------------------------------- tradução
+
+# traducao/pt.json: {"texto em inglês": "texto em português"}. A chave é o
+# trecho como sai do .rst (parágrafo numa linha só, item de lista ou
+# comentário de código). Trecho sem tradução continua em inglês e vai para
+# traducao/pendente.json, que serve de lista do que falta traduzir.
+TRADUCAO = AQUI / "traducao" / "pt.json"
+PENDENTE = AQUI / "traducao" / "pendente.json"
+_pt = json.loads(TRADUCAO.read_text(encoding="utf-8")) if TRADUCAO.exists() else {}
+_pendente = {}
+_pagina_atual = [""]
+
+
+def _tr(chave):
+    chave = chave.strip()
+    if (not chave or not re.search(r"[A-Za-z]{3}", chave) or "+--" in chave
+            or re.fullmatch(r"[\s,]*(`[^`]+`[\s,]*)+", chave)):
+        return chave
+    if chave in _pt:
+        return _pt[chave]
+    if chave in GERADO_PT:
+        return chave
+    _pendente.setdefault(_pagina_atual[0], {})[chave] = ""
+    return chave
+
+
+# textos que o próprio gerador escreve em português
+GERADO_PT = {
+    "Sem documentação da Range",
+    "Estes itens existem na engine mas não estavam na documentação da Range. "
+    "Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.",
+}
+RE_LISTA_ARG = re.compile(r"^(- \*\*`[^`]+`\*\*: )(.*)$")
+RE_CAMPO = re.compile(r"^(\*\*(?:Retorna|Erro):\*\* )(.*)$")
+RE_COMENT = re.compile(r"^(\s*(?:[^#'\"]*?)#\s?)(.+)$")
+
+
+def traduzir_md(md):
+    out, paragrafo, em_codigo = [], [], False
+
+    def fechar():
+        if paragrafo:
+            out.append(_tr(" ".join(paragrafo)))
+            paragrafo.clear()
+
+    for l in md.split("\n"):
+        if l.startswith("```"):
+            fechar()
+            em_codigo = not em_codigo
+            out.append(l)
+            continue
+        if em_codigo:
+            m = RE_COMENT.match(l)
+            out.append(m.group(1) + _tr(m.group(2)) if m else l)
+            continue
+        s = l.strip()
+        if (not s or s.startswith(("#", "|", ":::", "<", "**Tipo", "**Valor", "- tipo", "Classe base"))
+                or re.match(r"^[-*] ", s) and not RE_LISTA_ARG.match(s)):
+            fechar()
+            if s.startswith("## "):
+                out.append("## " + _tr(s[3:]))
+            elif re.match(r"^[-*] ", s) and not s.startswith("- tipo"):
+                out.append(l[:len(l) - len(l.lstrip())] + s[:2] + _tr(s[2:]))
+            else:
+                out.append(l)
+            continue
+        m = RE_LISTA_ARG.match(s) or RE_CAMPO.match(s)
+        if m:
+            fechar()
+            out.append(m.group(1) + _tr(m.group(2)))
+            continue
+        paragrafo.append(s)
+    fechar()
+    return "\n".join(out)
+
+
+def escrever(caminho, texto):
+    _pagina_atual[0] = caminho.stem
+    fm, _, corpo = texto.partition("\n---\n")
+    caminho.write_text(fm + "\n---\n" + traduzir_md(corpo), encoding="utf-8")
+
+
 def pagina_modulo(chave, info, docs):
     rst_nome, publico = MODULOS[chave]
     selos = {n: s for n, i in info["itens"].items() if (s := selo_de(i))}
@@ -249,7 +339,7 @@ def pagina_modulo(chave, info, docs):
         corpo = f"Módulo `{publico}` da Anastacio Engine. Também acessível como `{publico.replace('Range.', 'bge.')}`."
     nome_arq = publico.replace("Range.", "")
     texto = frontmatter(publico, f"Referência do módulo {publico}") + corpo + "\n" + secao_pendentes(info["itens"], docs) + "\n"
-    (DESTINO / "api" / "modulos" / f"{nome_arq}.md").write_text(texto, encoding="utf-8")
+    escrever(DESTINO / "api" / "modulos" / f"{nome_arq}.md", texto)
 
 
 def pagina_classe(nome, info, rst_arq, docs):
@@ -263,7 +353,7 @@ def pagina_classe(nome, info, rst_arq, docs):
     topo = f"Classe base: [`{base.group(1).split('.')[-1]}`](../{base.group(1).split('.')[-1].lower()}/)\n\n" if base else ""
     pend = secao_pendentes(info["itens"], docs) if info else ""
     texto = frontmatter(nome, f"Referência da classe Range.types.{nome}") + topo + corpo + "\n" + pend + "\n"
-    (DESTINO / "api" / "types" / f"{nome}.md").write_text(texto, encoding="utf-8")
+    escrever(DESTINO / "api" / "types" / f"{nome}.md", texto)
 
 
 def pagina_situacao(inv):
@@ -309,6 +399,10 @@ def main():
             pagina_classe(rst_nome, None, arq, docs)
 
     pagina_situacao(inv)
+    PENDENTE.parent.mkdir(exist_ok=True)
+    PENDENTE.write_text(json.dumps(_pendente, indent=1, ensure_ascii=False), encoding="utf-8")
+    falta = sum(len(v) for v in _pendente.values())
+    print(f"tradução: {len(_pt)} trechos traduzidos, {falta} pendentes (traducao/pendente.json)")
     total = len(list((DESTINO / "api").rglob("*.md")))
     print(f"{total} páginas de API geradas em {DESTINO / 'api'}")
 

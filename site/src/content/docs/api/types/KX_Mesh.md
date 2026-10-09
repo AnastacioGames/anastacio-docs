@@ -34,7 +34,7 @@ To use mesh objects effectively, you should know a bit about how the game engine
 
 The correct method of iterating over every `KX_VertexProxy` in a game object
 
-``python
+```python
 
 from Range import logic
 
@@ -48,7 +48,7 @@ for mesh in object.meshes:
          # Do something with vertex here...
          # ... eg: color the vertex red.
          vertex.color = [1.0, 0.0, 0.0, 1.0]
-``
+```
 
 ### materials
 

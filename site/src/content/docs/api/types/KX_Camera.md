@@ -29,9 +29,7 @@ The camera's lens value.
 
 ### lodDistanceFactor
 
-The factor to multiply distance to camera to adjust levels of detail.
-A float < 1.0f will make the distance to camera used to compute
-levels of detail decrease.
+The factor to multiply distance to camera to adjust levels of detail. A float < 1.0f will make the distance to camera used to compute levels of detail decrease.
 
 **Tipo:** float
 
@@ -176,7 +174,7 @@ Tests the given sphere against the view frustum.
 When the camera is first initialized the result will be invalid because the projection matrix has not been set.
 :::
 
-``python
+```python
 
 from Range import logic
 cont = logic.getCurrentController()
@@ -188,7 +186,7 @@ if (cam.sphereInsideFrustum([1.0, 1.0, 1.0], 4) != cam.OUTSIDE):
     # Do something useful !
 else:
     # Sphere is outside frustum
-``
+```
 
 ### boxInsideFrustum(box)
 
@@ -203,7 +201,7 @@ Tests the given box against the view frustum.
 When the camera is first initialized the result will be invalid because the projection matrix has not been set.
 :::
 
-``python
+```python
 
 from Range import logic
 cont = logic.getCurrentController()
@@ -225,7 +223,7 @@ if (cam.boxInsideFrustum(box) != cam.OUTSIDE):
   # Do something useful !
 else:
   # Box is outside the frustum !
-``
+```
 
 ### pointInsideFrustum(point)
 
@@ -242,7 +240,7 @@ Tests the given point against the view frustum.
 When the camera is first initialized the result will be invalid because the projection matrix has not been set.
 :::
 
-``python
+```python
 
 from Range import logic
 cont = logic.getCurrentController()
@@ -254,7 +252,7 @@ if (cam.pointInsideFrustum([0.0, 0.0, 0.0])):
   # Do something useful !
 else:
   # Box is outside the frustum !
-``
+```
 
 ### getCameraToWorld()
 
@@ -297,11 +295,11 @@ Use `Range.render.getWindowHeight` and `Range.render.getWindowWidth` to calculat
 
 Gets the position of an object projected on screen space.
 
-``python
+```python
 
 # For an object in the middle of the screen, coord = [0.5, 0.5]
 coord = camera.getScreenPosition(object)
-``
+```
 
 - **`object`**: object name or list [x, y, z]
   - tipo: `KX_GameObject` or 3D Vector
@@ -323,35 +321,34 @@ Gets the vector from the camera position in the screen coordinate direction.
 
 **Retorna:** The vector from screen coordinate.
 
-``python
+```python
 
 # Gets the vector of the camera front direction:
 m_vect = camera.getScreenVect(0.5, 0.5)
-``
+```
 
 ### getScreenRay(x, y, dist=inf, property=None)
 
-Look towards a screen coordinate (x, y) and find first object hit within dist that matches prop.
-The ray is similar to KX_GameObject->rayCastTo.
+Look towards a screen coordinate (x, y) and find first object hit within dist that matches prop. The ray is similar to KX_GameObject->rayCastTo.
 
 - **`x`**: X Axis
   - tipo: float
 - **`y`**: Y Axis
   - tipo: float
-- **`dist`**: max distance to look (can be negative => look behind); 0 or omitted => detect up to other
+- **`dist`**: Distância máxima (pode ser negativa, para olhar para trás); 0 ou omitido detecta até o alvo
   - tipo: float
-- **`property`**: property name that object must have; can be omitted => detect any object
+- **`property`**: Nome da propriedade que o objeto precisa ter; se omitido, detecta qualquer objeto
   - tipo: string
 
 **Tipo do retorno:** `KX_GameObject`
 
-**Retorna:** the first object hit or None if no object or object does not match prop
+**Retorna:** O primeiro objeto atingido, ou None se não atingir nada ou se o objeto não tiver a propriedade
 
-``python
+```python
 
 # Gets an object with a property "wall" in front of the camera within a distance of 100:
 target = camera.getScreenRay(0.5, 0.5, 100, "wall")
-``
+```
 
 ## Sem documentação da Range
 

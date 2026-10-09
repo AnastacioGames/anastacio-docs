@@ -7,248 +7,241 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-An active scene that gives access to objects, cameras, lights and scene attributes.
+Uma cena ativa, que dá acesso a objetos, câmeras, luzes e atributos da cena.
 
-The activity culling stuff is supposed to disable logic bricks when their owner gets too far
-from the active camera.  It was taken from some code lurking at the back of KX_Scene - who knows
-what it does!
+O culling de atividade deveria desligar os logic bricks quando o dono deles fica longe demais da câmera ativa. Ele veio de um código antigo escondido no KX_Scene, e ninguém sabe ao certo o que faz.
 
-``python
+```python
 
 from Range import logic
 
-# get the scene
+# pega a cena
 scene = logic.getCurrentScene()
 
-# print all the objects in the scene
+# mostra todos os objetos da cena
 for object in scene.objects:
    print(object.name)
 
-# get an object named 'Cube'
+# pega o objeto chamado 'Cube'
 object = scene.objects["Cube"]
 
-# get the first object in the scene.
+# pega o primeiro objeto da cena.
 object = scene.objects[0]
-``
+```
 
-``python
+```python
 
-# Get the depth of an object in the camera view.
+# Pega a profundidade de um objeto na visão da câmera.
 from Range import logic
 
 object = logic.getCurrentController().owner
 cam = logic.getCurrentScene().active_camera
 
-# Depth is negative and decreasing further from the camera
+# A profundidade é negativa e diminui conforme se afasta da câmera
 depth = object.position[0]*cam.world_to_camera[2][0] + object.position[1]*cam.world_to_camera[2][1] + object.position[2]*cam.world_to_camera[2][2] + cam.world_to_camera[2][3]
-``
+```
 
-@bug: All attributes are read only at the moment.
+@bug: Por enquanto todos os atributos são somente leitura.
 
 ### name
 
-The scene's name, (read-only).
+O nome da cena (somente leitura).
 
 **Tipo:** string
 
 ### objects
 
-A list of objects in the scene, (read-only).
+Lista dos objetos da cena (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject`
 
 ### objectsInactive
 
-A list of objects on background layers (used for the addObject actuator), (read-only).
+Lista dos objetos nas camadas de fundo, usados pelo atuador Add Object (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_GameObject`
 
 ### lights
 
-A list of lights in the scene, (read-only).
+Lista das luzes da cena (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_LightObject`
 
 ### cameras
 
-A list of cameras in the scene, (read-only).
+Lista das câmeras da cena (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_Camera`
 
 ### texts
 
-A list of texts in the scene, (read-only).
+Lista dos textos da cena (somente leitura).
 
 **Tipo:** `EXP_ListValue` of `KX_FontObject`
 
 ### active_camera
 
-The current active camera.
+A câmera ativa atual.
 
 **Tipo:** `KX_Camera`
 
 :::note
-This can be set directly from python to avoid using the `KX_SceneActuator`.
+Pode ser definida direto pelo Python, sem precisar do `KX_SceneActuator`.
 :::
 
 ### overrideCullingCamera
 
-The override camera used for scene culling, if set to None the culling is proceeded with the camera used to render.
+Câmera usada no lugar da padrão para o culling da cena. Se for None, o culling usa a câmera que está renderizando.
 
 **Tipo:** `KX_Camera` or None
 
 ### world
 
-The current active world, (read-only).
+O mundo ativo atual (somente leitura).
 
 **Tipo:** `KX_WorldInfo`
 
 ### filterManager
 
-The scene's 2D filter manager, (read-only).
+O gerenciador de filtros 2D da cena (somente leitura).
 
 **Tipo:** `KX_2DFilterManager`
 
 ### suspended
 
-True if the scene is suspended, (read-only).
+True se a cena estiver suspensa (somente leitura).
 
 **Tipo:** boolean
 
 ### activityCulling
 
-True if the scene allow object activity culling.
+True se a cena permite o culling de atividade dos objetos.
 
 **Tipo:** boolean
 
 ### dbvt_culling
 
-True when Dynamic Bounding box Volume Tree is set (read-only).
+True quando a árvore de volumes dinâmica (DBVT) está ligada (somente leitura).
 
 **Tipo:** boolean
 
 ### pre_draw
 
-A list of callables to be run before the render step. The callbacks can take as argument the rendered camera.
+Lista de funções chamadas antes da etapa de render. Elas podem receber como argumento a câmera que está renderizando.
 
 **Tipo:** list
 
 ### post_draw
 
-A list of callables to be run after the render step.
+Lista de funções chamadas depois da etapa de render.
 
 **Tipo:** list
 
 ### pre_draw_setup
 
-A list of callables to be run before the drawing setup (i.e., before the model view and projection matrices are computed).
-The callbacks can take as argument the rendered camera, the camera could be temporary in case of stereo rendering.
+Lista de funções chamadas antes da preparação do desenho, ou seja, antes de calcular as matrizes de visão e projeção. Elas podem receber como argumento a câmera que está renderizando; essa câmera pode ser temporária no render estéreo.
 
 **Tipo:** list
 
 ### onRemove
 
-A list of callables to run when the scene is destroyed.
+Lista de funções chamadas quando a cena é destruída.
 
-``python
+```python
 
 @scene.onRemove.append
 def callback(scene):
       print('exiting %s...' % scene.name)
-``
+```
 
 **Tipo:** list
 
 ### gravity
 
-The scene gravity using the world x, y and z axis.
+A gravidade da cena nos eixos x, y e z do mundo.
 
 **Tipo:** Vector((gx, gy, gz))
 
 ### maxDebris
 
-The number of fragments of broken objects kept alive in the scene; past it the oldest are removed.
-Starts with Scene > Game Physics > Max Debris. 0 means no limit. Lowering it removes the extra pieces at once.
+Quantos fragmentos de objetos quebrados ficam vivos na cena; acima disso, os mais antigos são removidos. Começa com o valor de Scene > Game Physics > Max Debris. 0 significa sem limite. Diminuir o valor remove os pedaços excedentes na hora.
 
 **Tipo:** integer in [0, 100000]
 
 ### explode(position, radius=5.0, force=20.0, upBias=0.3, occlusion=True, mask=0xFFFF, ignore=None)
 
-Radial impulse on the dynamic objects around position, falling to zero at radius
-(`force * (1 - distance / radius)`). Destructible objects hit above their `KX_GameObject.breakImpulse`
-break and their pieces are pushed, sharing the impulse by mass. Explosive objects hit above their Impact
-Impulse (with Chain Reaction on) detonate on the next frame.
+Impulso radial nos objetos dinâmicos em volta de position, que cai a zero em radius (`force * (1 - distance / radius)`). Objetos destrutíveis atingidos acima do seu `KX_GameObject.breakImpulse` quebram e os pedaços são empurrados, dividindo o impulso pela massa. Objetos explosivos atingidos acima do seu Impact Impulse (com Chain Reaction ligado) detonam no frame seguinte.
 
-- **`position`**: The center of the blast.
+- **`position`**: O centro da explosão.
   - tipo: 3D Vector
-- **`radius`**: The distance the blast reaches.
+- **`radius`**: A distância que a explosão alcança.
   - tipo: float
-- **`force`**: The impulse at the center.
+- **`force`**: O impulso no centro.
   - tipo: float
-- **`upBias`**: How much the push is tilted upwards, 0.0 is straight away from the center.
+- **`upBias`**: Quanto o empurrão é inclinado para cima; 0.0 empurra reto para longe do centro.
   - tipo: float
-- **`occlusion`**: If True, static geometry between the center and an object shields it.
+- **`occlusion`**: Se True, a geometria estática entre o centro e um objeto o protege.
   - tipo: boolean
-- **`mask`**: The collision groups reached.
+- **`mask`**: Os grupos de colisão atingidos.
   - tipo: bitfield
-- **`ignore`**: An object or a list of objects left out.
+- **`ignore`**: Um objeto ou uma lista de objetos que ficam de fora.
   - tipo: `KX_GameObject` or list
 
-**Retorna:** The objects reached (not the new pieces).
+**Retorna:** Os objetos atingidos (sem contar os pedaços novos).
 
 **Tipo do retorno:** list of `KX_GameObject`
 
 ### addObject(object, reference, time=0.0)
 
-Adds an object to the scene like the Add Object Actuator would.
+Adiciona um objeto à cena, como o atuador Add Object faria.
 
-- **`object`**: The (name of the) object to add.
+- **`object`**: O objeto a adicionar (ou o nome dele).
   - tipo: `KX_GameObject` or string
-- **`reference`**: The (name of the) object which position, orientation, and scale to copy (optional), if the object to add is a light and there is not reference the light's layer will be the same that the active layer in the blender scene.
+- **`reference`**: O objeto (ou o nome dele) de onde copiar posição, orientação e escala (opcional). Se o objeto adicionado for uma luz e não houver referência, a camada da luz será a camada ativa da cena do Blender.
   - tipo: `KX_GameObject` or string
-- **`time`**: The lifetime of the added object, in frames (assumes one frame is 1/50 second). A time of 0.0 means the object will last forever (optional).
+- **`time`**: O tempo de vida do objeto adicionado, em frames (considera um frame como 1/50 de segundo). 0.0 significa que o objeto dura para sempre (opcional).
   - tipo: float
 
-**Retorna:** The newly added object.
+**Retorna:** O objeto recém-adicionado.
 
 **Tipo do retorno:** `KX_GameObject`
 
 ### end()
 
-Removes the scene from the game.
+Remove a cena do jogo.
 
 ### restart()
 
-Restarts the scene.
+Reinicia a cena.
 
 ### replace(scene)
 
-Replaces this scene with another one.
+Troca esta cena por outra.
 
-- **`scene`**: The name of the scene to replace this scene with.
+- **`scene`**: O nome da cena que vai substituir esta.
   - tipo: string
 
-**Retorna:** True if the scene exists and was scheduled for addition, False otherwise.
+**Retorna:** True se a cena existe e foi agendada para entrar, False caso contrário.
 
 **Tipo do retorno:** boolean
 
 ### suspend()
 
-Suspends this scene.
+Suspende esta cena.
 
 ### resume()
 
-Resume this scene.
+Retoma esta cena.
 
 ### get(key, default=None)
 
-Return the value matching key, or the default value if its not found.
+Devolve o valor da chave, ou o valor padrão se a chave não existir.
 
-**Retorna:** The key value or a default.
+**Retorna:** O valor da chave ou o padrão.
 
 ### drawObstacleSimulation()
 
-Draw debug visualization of obstacle simulation.
+Desenha a visualização de depuração da simulação de obstáculos.
 
 ## Sem documentação da Range
 

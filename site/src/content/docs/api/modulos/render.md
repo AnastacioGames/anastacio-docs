@@ -5,8 +5,7 @@ description: "Referência do módulo Range.render"
 
 ## Intro
 
-Example of using a `Range.types.SCA_MouseSensor`,
-and two `Range.types.KX_ObjectActuator` to implement MouseLook:
+Example of using a `Range.types.SCA_MouseSensor`, and two `Range.types.KX_ObjectActuator` to implement MouseLook:
 
 :::note
 This can also be achieved with the `Range.types.KX_MouseActuator`.
@@ -51,7 +50,7 @@ co.activate(wmotion)
 Range.render.setMousePosition(int(Range.render.getWindowWidth() / 2), int(Range.render.getWindowHeight() / 2))
 ```
 
-## Constants
+## Constantes
 
 ### KX_TEXFACE_MATERIAL
 
@@ -71,11 +70,7 @@ Deprecated.
 
 Materials approximating blender materials with GLSL.
 
-Disables vsync
-Enables vsync
-Enables adaptive vsync if supported.
-Adaptive vsync enables vsync if the framerate is above the monitors refresh rate.
-Otherwise, vsync is diabled if the framerate is too low.
+Disables vsync Enables vsync Enables adaptive vsync if supported. Adaptive vsync enables vsync if the framerate is above the monitors refresh rate. Otherwise, vsync is diabled if the framerate is too low.
 
 ### LEFT_EYE
 
@@ -84,8 +79,6 @@ Left eye being used during stereoscopic rendering.
 ### RIGHT_EYE
 
 Right eye being used during stereoscopic rendering.
-
-.. _render-hdr:
 
 ## HDR
 
@@ -151,10 +144,7 @@ Only works in the standalone player, not the Blender-embedded player; there it a
 
 ### getDisplayDimensions()
 
-Get the display dimensions, in pixels, of the display (e.g., the
-monitor). Can return the size of the entire view, so the
-combination of all monitors; for example, `(3840, 1080)` for two
-side-by-side 1080p monitors.
+Get the display dimensions, in pixels, of the display (e.g., the monitor). Can return the size of the entire view, so the combination of all monitors; for example, `(3840, 1080)` for two side-by-side 1080p monitors.
 
 **Tipo do retorno:** tuple (width, height)
 
@@ -162,18 +152,9 @@ side-by-side 1080p monitors.
 
 Writes an image file with the displayed image at the frame end.
 
-The image is written to *'filename'*.
-The path may be absolute (eg. `/home/foo/image`) or relative when started with
-`//` (eg. `//image`). Note that absolute paths are not portable between platforms.
-If the filename contains a `#`,
-it will be replaced by an incremental index so that screenshots can be taken multiple
-times without overwriting the previous ones (eg. `image-#`).
+The image is written to *'filename'*. The path may be absolute (eg. `/home/foo/image`) or relative when started with `//` (eg. `//image`). Note that absolute paths are not portable between platforms. If the filename contains a `#`, it will be replaced by an incremental index so that screenshots can be taken multiple times without overwriting the previous ones (eg. `image-#`).
 
-Settings for the image are taken from the render settings (file format and respective settings,
-gamma and colospace conversion, etc).
-The image resolution matches the framebuffer, meaning, the window size and aspect ratio.
-When running from the standalone player, instead of the embedded player, only PNG files are supported.
-Additional color conversions are also not supported.
+Settings for the image are taken from the render settings (file format and respective settings, gamma and colospace conversion, etc). The image resolution matches the framebuffer, meaning, the window size and aspect ratio. When running from the standalone player, instead of the embedded player, only PNG files are supported. Additional color conversions are also not supported.
 
 - **`filename`**: path and name of the file to write
   - tipo: string
@@ -186,7 +167,7 @@ Deprecated; doesn't do anything.
 
 Enables or disables the operating system mouse cursor.
 
-- **`visible`**: 
+- **`visible`**:
   - tipo: boolean
 
 ### setMousePosition(x, y)
@@ -230,10 +211,7 @@ Gets the current focal length for stereo mode.
 
 ### getStereoEye()
 
-Gets the current stereoscopy eye being rendered.
-This function is mainly used in a `Range.types.KX_Scene.pre_draw` callback
-function to customize the camera projection matrices for each
-stereoscopic eye.
+Gets the current stereoscopy eye being rendered. This function is mainly used in a `Range.types.KX_Scene.pre_draw` callback function to customize the camera projection matrices for each stereoscopic eye.
 
 **Tipo do retorno:** LEFT_EYE, RIGHT_EYE
 
@@ -262,16 +240,16 @@ Get the material mode to use for OpenGL rendering.
 
 Enables or disables a GLSL material setting.
 
-- **`setting`**: 
+- **`setting`**:
   - tipo: string (lights, shaders, shadows, ramps, nodes, extra_textures)
-- **`enable`**: 
+- **`enable`**:
   - tipo: boolean
 
 ### getGLSLMaterialSetting(setting)
 
 Get the state of a GLSL material setting.
 
-- **`setting`**: 
+- **`setting`**:
   - tipo: string (lights, shaders, shadows, ramps, nodes, extra_textures)
 
 **Tipo do retorno:** boolean
@@ -352,28 +330,28 @@ Disable the motion blur effect.
 
 Show or hide the framerate.
 
-- **`enable`**: 
+- **`enable`**:
   - tipo: boolean
 
 ### showProfile(enable)
 
 Show or hide the profile.
 
-- **`enable`**: 
+- **`enable`**:
   - tipo: boolean
 
 ### showProperties(enable)
 
 Show or hide the debug properties.
 
-- **`enable`**: 
+- **`enable`**:
   - tipo: boolean
 
 ### autoDebugList(enable)
 
 Enable or disable auto adding debug properties to the debug list.
 
-- **`enable`**: 
+- **`enable`**:
   - tipo: boolean
 
 ### clearDebugList()
@@ -395,11 +373,7 @@ Get the current vsync value
 
 ### setDynamicResolution(enabled, targetFPS=60, minScale=50, maxScale=100, step=5)
 
-Runtime version of the scene's Dynamic Resolution settings. The 3D scene is rendered at a
-scale of the window size and stretched to the screen; the window itself does not change.
-With dynamic resolution the scale goes down by `step` when the GPU time of a frame is above
-the target and back up when there is time left. `minScale == maxScale` gives a fixed render
-scale. Paused while "Show Render Queries" is on (both use a GPU timer query).
+Runtime version of the scene's Dynamic Resolution settings. The 3D scene is rendered at a scale of the window size and stretched to the screen; the window itself does not change. With dynamic resolution the scale goes down by `step` when the GPU time of a frame is above the target and back up when there is time left. `minScale == maxScale` gives a fixed render scale. Paused while "Show Render Queries" is on (both use a GPU timer query).
 
 - **`enabled`**: False renders at 100%.
   - tipo: boolean

@@ -1,0 +1,53 @@
+Uma cena ativa, que dá acesso a objetos, câmeras, luzes e atributos da cena.
+O culling de atividade deveria desligar os logic bricks quando o dono deles fica longe demais da câmera ativa. Ele veio de um código antigo escondido no KX_Scene, e ninguém sabe ao certo o que faz.
+pega a cena
+mostra todos os objetos da cena
+pega o objeto chamado 'Cube'
+pega o primeiro objeto da cena.
+Pega a profundidade de um objeto na visão da câmera.
+A profundidade é negativa e diminui conforme se afasta da câmera
+@bug: Por enquanto todos os atributos são somente leitura.
+O nome da cena (somente leitura).
+Lista dos objetos da cena (somente leitura).
+Lista dos objetos nas camadas de fundo, usados pelo atuador Add Object (somente leitura).
+Lista das luzes da cena (somente leitura).
+Lista das câmeras da cena (somente leitura).
+Lista dos textos da cena (somente leitura).
+A câmera ativa atual.
+Pode ser definida direto pelo Python, sem precisar do `KX_SceneActuator`.
+Câmera usada no lugar da padrão para o culling da cena. Se for None, o culling usa a câmera que está renderizando.
+O mundo ativo atual (somente leitura).
+O gerenciador de filtros 2D da cena (somente leitura).
+True se a cena estiver suspensa (somente leitura).
+True se a cena permite o culling de atividade dos objetos.
+True quando a árvore de volumes dinâmica (DBVT) está ligada (somente leitura).
+Lista de funções chamadas antes da etapa de render. Elas podem receber como argumento a câmera que está renderizando.
+Lista de funções chamadas depois da etapa de render.
+Lista de funções chamadas antes da preparação do desenho, ou seja, antes de calcular as matrizes de visão e projeção. Elas podem receber como argumento a câmera que está renderizando; essa câmera pode ser temporária no render estéreo.
+Lista de funções chamadas quando a cena é destruída.
+A gravidade da cena nos eixos x, y e z do mundo.
+Quantos fragmentos de objetos quebrados ficam vivos na cena; acima disso, os mais antigos são removidos. Começa com o valor de Scene > Game Physics > Max Debris. 0 significa sem limite. Diminuir o valor remove os pedaços excedentes na hora.
+Impulso radial nos objetos dinâmicos em volta de position, que cai a zero em radius (`force * (1 - distance / radius)`). Objetos destrutíveis atingidos acima do seu `KX_GameObject.breakImpulse` quebram e os pedaços são empurrados, dividindo o impulso pela massa. Objetos explosivos atingidos acima do seu Impact Impulse (com Chain Reaction ligado) detonam no frame seguinte.
+O centro da explosão.
+A distância que a explosão alcança.
+O impulso no centro.
+Quanto o empurrão é inclinado para cima; 0.0 empurra reto para longe do centro.
+Se True, a geometria estática entre o centro e um objeto o protege.
+Os grupos de colisão atingidos.
+Um objeto ou uma lista de objetos que ficam de fora.
+Os objetos atingidos (sem contar os pedaços novos).
+Adiciona um objeto à cena, como o atuador Add Object faria.
+O objeto a adicionar (ou o nome dele).
+O objeto (ou o nome dele) de onde copiar posição, orientação e escala (opcional). Se o objeto adicionado for uma luz e não houver referência, a camada da luz será a camada ativa da cena do Blender.
+O tempo de vida do objeto adicionado, em frames (considera um frame como 1/50 de segundo). 0.0 significa que o objeto dura para sempre (opcional).
+O objeto recém-adicionado.
+Remove a cena do jogo.
+Reinicia a cena.
+Troca esta cena por outra.
+O nome da cena que vai substituir esta.
+True se a cena existe e foi agendada para entrar, False caso contrário.
+Suspende esta cena.
+Retoma esta cena.
+Devolve o valor da chave, ou o valor padrão se a chave não existir.
+O valor da chave ou o padrão.
+Desenha a visualização de depuração da simulação de obstáculos.

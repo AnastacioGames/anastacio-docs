@@ -107,8 +107,7 @@ Returns the rotation of the specified wheel
 
 ### setRollInfluence(rollInfluece, wheelIndex)
 
-Set the specified wheel's roll influence.
-The higher the roll influence the more the vehicle will tend to roll over in corners.
+Set the specified wheel's roll influence. The higher the roll influence the more the vehicle will tend to roll over in corners.
 
 - **`rollInfluece`**: the wheel roll influence
   - tipo: float

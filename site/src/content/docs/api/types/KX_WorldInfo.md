@@ -9,7 +9,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 A world object.
 
-``python
+```python
 
 # Set the mist color to red.
 import Range
@@ -17,7 +17,7 @@ import Range
 sce = Range.logic.getCurrentScene()
 
 sce.world.mistColor = [1.0, 0.0, 0.0]
-``
+```
 
 ### KX_MIST_QUADRATIC
 
@@ -61,15 +61,13 @@ The type of mist - must be KX_MIST_QUADRATIC, KX_MIST_LINEAR or KX_MIST_INV_QUAD
 
 ### mistColor
 
-The color of the mist. Black = [0.0, 0.0, 0.0], White = [1.0, 1.0, 1.0].
-Mist and background color sould always set to the same color.
+The color of the mist. Black = [0.0, 0.0, 0.0], White = [1.0, 1.0, 1.0]. Mist and background color sould always set to the same color.
 
 **Tipo:** `mathutils.Color`
 
 ### horizonColor
 
-The horizon color. Black = [0.0, 0.0, 0.0, 1.0], White = [1.0, 1.0, 1.0, 1.0].
-Mist and horizon color should always be set to the same color.
+The horizon color. Black = [0.0, 0.0, 0.0, 1.0], White = [1.0, 1.0, 1.0, 1.0]. Mist and horizon color should always be set to the same color.
 
 **Tipo:** `mathutils.Vector`
 
@@ -111,28 +109,19 @@ Returns True if Environment Lighting is enabled. Else returns False
 
 ### envLightColor
 
-White:       returns 0
-SkyColor:    returns 1
-SkyTexture:  returns 2
+White:       returns 0 SkyColor:    returns 1 SkyTexture:  returns 2
 
 **Tipo:** int (read only)
 
 ### setWeather(name, value)
 
-Changes a World weather setting at runtime (the "weather." prefix is optional).
-Booleans: `rain`, `ripples`, `splash`, `puddles`, `puddle_ssr`, `ripple_puddle_only`, `splash_puddle_only` (both also turn `puddles` on), `aura`, `lightning`, `lightning_side`, `clouds`, `lens_flare`, `mist`.
-Floats: `rain_intensity`, `rain_density`, `rain_speed`, `rain_wind`, `rain_darken`,
-`rain_streak_width`, `ripple_intensity`, `ripple_normal`, `ripple_size`, `ripple_rate`, `splash_normal`, `splash_min_up`, `splash_size`, `splash_rate`, `splash_intensity`,
-`splash_distance`, `puddle_amount`, `puddle_size`, `puddle_darkness`, `puddle_reflection`,
-`puddle_distance`, `puddle_min_up`, `aura_size`, `aura_rate`, `aura_intensity`, `aura_distance`,
-`lightning_rate`, `lightning_intensity`, `lightning_distance`, `lightning_width`,
-`cloud_coverage`, `cloud_scale`, `cloud_speed`, `flare_scale`, `flare_intensity`, `mist_*`.
+Changes a World weather setting at runtime (the "weather." prefix is optional). Booleans: `rain`, `ripples`, `splash`, `puddles`, `puddle_ssr`, `ripple_puddle_only`, `splash_puddle_only` (both also turn `puddles` on), `aura`, `lightning`, `lightning_side`, `clouds`, `lens_flare`, `mist`. Floats: `rain_intensity`, `rain_density`, `rain_speed`, `rain_wind`, `rain_darken`, `rain_streak_width`, `ripple_intensity`, `ripple_normal`, `ripple_size`, `ripple_rate`, `splash_normal`, `splash_min_up`, `splash_size`, `splash_rate`, `splash_intensity`, `splash_distance`, `puddle_amount`, `puddle_size`, `puddle_darkness`, `puddle_reflection`, `puddle_distance`, `puddle_min_up`, `aura_size`, `aura_rate`, `aura_intensity`, `aura_distance`, `lightning_rate`, `lightning_intensity`, `lightning_distance`, `lightning_width`, `cloud_coverage`, `cloud_scale`, `cloud_speed`, `flare_scale`, `flare_intensity`, `mist_*`.
 
-``python
+```python
 
 scene.world.setWeather("aura", True)
 scene.world.setWeather("splash_size", 1.5)
-``
+```
 
 - **`name`**: setting name
   - tipo: string

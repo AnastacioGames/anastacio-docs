@@ -7,8 +7,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 
 
-Proxy to Blender bone structure. All fields are read-only and comply to RNA names.
-All space attribute correspond to the rest pose.
+Proxy to Blender bone structure. All fields are read-only and comply to RNA names. All space attribute correspond to the rest pose.
 
 ### name
 

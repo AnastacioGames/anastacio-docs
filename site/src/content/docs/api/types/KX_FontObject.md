@@ -9,7 +9,7 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 A Font object.
 
-``python
+```python
 
 # Display a message about the exit key using a Font object.
 import Range
@@ -23,7 +23,7 @@ if exit_key.endswith("KEY"):
     exit_key = exit_key[:-3]
 
 font.text = "Press key '%s' to quit the game." % exit_key
-``
+```
 
 ### text
 

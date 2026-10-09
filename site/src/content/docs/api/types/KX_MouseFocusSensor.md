@@ -9,8 +9,7 @@ Classe base: [`SCA_MouseSensor`](../sca_mousesensor/)
 
 The mouse focus sensor detects when the mouse is over the current game object.
 
-The mouse focus sensor works by transforming the mouse coordinates from 2d device
-space to 3d space then raycasting away from the camera.
+The mouse focus sensor works by transforming the mouse coordinates from 2d device space to 3d space then raycasting away from the camera.
 
 ### raySource
 
@@ -72,8 +71,7 @@ If enabled it allows the sensor to see through game objects that don't have the 
 
 ### mask
 
-The collision mask (16 layers mapped to a 16-bit integer) combined with each object's collision group, to hit only a subset of the
-objects in the scene. Only those objects for which `collisionGroup & mask` is true can be hit.
+The collision mask (16 layers mapped to a 16-bit integer) combined with each object's collision group, to hit only a subset of the objects in the scene. Only those objects for which `collisionGroup & mask` is true can be hit.
 
 **Tipo:** bitfield
 

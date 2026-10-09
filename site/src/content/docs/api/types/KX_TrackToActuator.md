@@ -14,10 +14,10 @@ Track To Actuators will be ignored if at game start, the object to track to is i
 
 This will generate a warning in the console:
 
-``none
+```none
 
 GameObject 'Name' no object in EditObjectActuator 'ActuatorName'
-``
+```
 :::
 
 ### object

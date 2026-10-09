@@ -27,17 +27,14 @@ The state of the joysticks axis as a list of values `numAxis` long. (read-only).
 
 **Tipo:** list of ints.
 
-Each specifying the value of an axis between -1.0 and 1.0
-depending on how far the axis is pushed, 0 for nothing.
-The first 2 values are used by most joysticks and gamepads for directional control.
-3rd and 4th values are only on some joysticks and can be used for arbitary controls.
+Each specifying the value of an axis between -1.0 and 1.0 depending on how far the axis is pushed, 0 for nothing. The first 2 values are used by most joysticks and gamepads for directional control. 3rd and 4th values are only on some joysticks and can be used for arbitary controls.
 
 * left:[-1.0, 0.0, ...]
 * right:[1.0, 0.0, ...]
 * up:[0.0, -1.0, ...]
 * down:[0.0, 1.0, ...]
 
-### hatValues (Deprecated. Use `activeButtons` instead)
+### hatValues (Deprecated. Use :data:`activeButtons` instead)
 
 The state of the joysticks hats as a list of values `numHats` long. (read-only).
 
@@ -69,7 +66,7 @@ The number of buttons for the joystick at this index. (read-only).
 
 **Tipo:** integer
 
-### numHats (Deprecated. Use `numButtons` instead)
+### numHats (Deprecated. Use :data:`numButtons` instead)
 
 The number of hats for the joystick at this index. (read-only).
 

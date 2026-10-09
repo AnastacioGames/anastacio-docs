@@ -21,7 +21,7 @@ Returns the contraint ID
 
 Set the contraint limits
 
-- **`axis`**: 
+- **`axis`**:
   - tipo: integer
 
 :::note
@@ -99,7 +99,7 @@ axis = 15..17 are for angular springs on each of the angle of freedom in radians
 
 Get the contraint position or euler angle of a generic 6DOF constraint
 
-- **`axis`**: 
+- **`axis`**:
   - tipo: integer
 axis = 0..2 are linear constraint values
 * 0: X axis position

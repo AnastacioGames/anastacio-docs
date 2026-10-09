@@ -83,15 +83,13 @@ Negative values invert the rotation.
 
 ### limit_x
 
-The minimum and maximum angle of rotation caused by mouse movement along the x axis in degrees.
-limit_x[0] is minimum, limit_x[1] is maximum.
+The minimum and maximum angle of rotation caused by mouse movement along the x axis in degrees. limit_x[0] is minimum, limit_x[1] is maximum.
 
 **Tipo:** `mathutils.Vector`
 
 ### limit_y
 
-The minimum and maximum angle of rotation caused by mouse movement along the y axis in degrees.
-limit_y[0] is minimum, limit_y[1] is maximum.
+The minimum and maximum angle of rotation caused by mouse movement along the y axis in degrees. limit_y[0] is minimum, limit_y[1] is maximum.
 
 **Tipo:** `mathutils.Vector`
 

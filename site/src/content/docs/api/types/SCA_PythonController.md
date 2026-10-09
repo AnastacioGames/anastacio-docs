@@ -7,8 +7,7 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 
 
-A Python controller uses a Python script to activate it's actuators,
-based on it's sensors.
+A Python controller uses a Python script to activate it's actuators, based on it's sensors.
 
 ### owner
 

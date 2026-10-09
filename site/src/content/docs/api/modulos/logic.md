@@ -3,37 +3,35 @@ title: "Range.logic"
 description: "Referência do módulo Range.logic"
 ---
 
-## Introduction
+## Introdução
 
-Module to access logic functions, imported automatically into the python controllers namespace.
+Módulo com as funções de lógica do jogo, importado automaticamente no namespace dos controladores Python.
 
 ```python
 
-# To get the controller thats running this python script:
-cont = Range.logic.getCurrentController() # Range.logic is automatically imported
+# Para pegar o controlador que está rodando este script Python:
+cont = Range.logic.getCurrentController() # Range.logic é importado automaticamente
 
-# To get the game object this controller is on:
+# Para pegar o objeto do jogo onde está este controlador:
 obj = cont.owner
 ```
 
-**class:** `~Range.types.KX_GameObject` and `KX_Camera` or `KX_LightObject` methods are available depending on the type of object
+Os métodos de `KX_GameObject`, `KX_Camera` ou `KX_LightObject` ficam disponíveis conforme o tipo do objeto
 
 ```python
 
-# To get a sensor linked to this controller.
-# "sensorname" is the name of the sensor as defined in the Blender interface.
+# Para pegar um sensor ligado a este controlador.
+# "sensorname" é o nome do sensor como foi definido na interface do Blender.
 # +---------------------+  +--------+
 # | Sensor "sensorname" +--+ Python +
 # +---------------------+  +--------+
 sens = cont.sensors["sensorname"]
 
-# To get a sequence of all sensors:
+# Para pegar a lista de todos os sensores:
 sensors = co.sensors
 ```
 
-See the sensor's reference for available methods:
-
-**columns:** 3
+Veja a referência de cada sensor para os métodos disponíveis:
 
 * `KX_MouseFocusSensor`
 * `KX_NearSensor`
@@ -47,23 +45,21 @@ See the sensor's reference for available methods:
 * `SCA_MouseSensor`
 * `SCA_PropertySensor`
 * `SCA_RandomSensor`
-You can also access actuators linked to the controller
+Você também pode acessar os atuadores ligados ao controlador
 
 ```python
 
-# To get an actuator attached to the controller:
-#                          +--------+  +-------------------------+
-#                          + Python +--+ Actuator "actuatorname" |
-#                          +--------+  +-------------------------+
+# Para pegar um atuador ligado ao controlador:
+# +--------+  +-------------------------+
+# + Python +--+ Actuator "actuatorname" |
+# +--------+  +-------------------------+
 actuator = co.actuators["actuatorname"]
 
-# Activate an actuator
+# Ativa um atuador
 controller.activate(actuator)
 ```
 
-See the actuator's reference for available methods
-
-**columns:** 3
+Veja a referência de cada atuador para os métodos disponíveis
 
 * `BL_ActionActuator`
 * `KX_CameraActuator`
@@ -85,492 +81,444 @@ See the actuator's reference for available methods
 * `SCA_2DFilterActuator`
 * `SCA_PropertyActuator`
 * `SCA_RandomActuator`
-Most logic brick's methods are accessors for the properties available in the logic buttons.
-Consult the logic bricks documentation for more information on how each logic brick works.
+A maioria dos métodos dos logic bricks dá acesso às propriedades que aparecem nos botões de lógica. Consulte a documentação dos logic bricks para saber como cada um funciona.
 
-There are also methods to access the current `Range.types.KX_Scene`
+Também há métodos para acessar a `Range.types.KX_Scene` atual
 
 ```python
 
-# Get the current scene
+# Pega a cena atual
 scene = Range.logic.getCurrentScene()
 
-# Get the current camera
+# Pega a câmera atual
 cam = scene.active_camera
 ```
 
-Matricies as used by the game engine are **row major**
-`matrix[row][col] = float`
+As matrizes usadas pela engine são **por linha** (row major): `matrix[row][col] = float`
 
-**class:** `Range.types.KX_Camera` has some examples using matrices.
+`Range.types.KX_Camera` tem alguns exemplos usando matrizes.
 
-## Variables
+## Variáveis
 
 ### globalDict
 
-A dictionary that is saved between loading blend files so you can use it to store inventory and other variables you want to store between scenes and blend files.
-It can also be written to a file and loaded later on with the game load/save actuators.
+Um dicionário que é mantido quando outro arquivo blend é carregado; serve para guardar inventário e outras variáveis entre cenas e arquivos blend. Ele também pode ser gravado num arquivo e carregado depois com os atuadores de carregar/salvar jogo.
 
 :::note
-only python built in types such as int/string/bool/float/tuples/lists can be saved, GameObjects, Actuators etc will not work as expected.
+só tipos nativos do Python, como int/string/bool/float/tuplas/listas, podem ser salvos; GameObjects, atuadores etc. não funcionam como esperado.
 :::
 
 ### keyboard
 
-The current keyboard wrapped in an `SCA_PythonKeyboard` object.
+O teclado atual, dentro de um objeto `SCA_PythonKeyboard`.
 
 ### mouse
 
-The current mouse wrapped in an `SCA_PythonMouse` object.
+O mouse atual, dentro de um objeto `SCA_PythonMouse`.
 
 ### motion
 
-Device motion sensors (gyroscope, accelerometer, tilt) wrapped in a `KX_PythonMotion` object.
+Os sensores de movimento do aparelho (giroscópio, acelerômetro, inclinação), dentro de um objeto `KX_PythonMotion`.
 
 ### joysticks
 
-A list of attached `SCA_PythonJoystick`.
-The list size is the maximum number of supported joysticks.
-If no joystick is available for a given slot, the slot is set to None.
+Lista dos `SCA_PythonJoystick` conectados. O tamanho da lista é o número máximo de joysticks suportados. Se não houver joystick numa posição, ela vale None.
 
-## General functions
+## Funções gerais
 
 ### getCurrentController()
 
-Gets the Python controller associated with this Python script.
+Pega o controlador Python ligado a este script.
 
 **Tipo do retorno:** `Range.types.SCA_PythonController`
 
 ### getCurrentScene()
 
-Gets the current Scene.
+Pega a cena atual.
 
 **Tipo do retorno:** `Range.types.KX_Scene`
 
 ### getSceneList()
 
-Gets a list of the current scenes loaded in the game engine.
+Pega a lista das cenas carregadas na engine agora.
 
 **Tipo do retorno:** list of `Range.types.KX_Scene`
 
 :::note
-Scenes in your blend file that have not been converted wont be in this list. This list will only contain scenes such as overlays scenes.
+As cenas do arquivo blend que não foram convertidas não aparecem nesta lista. Ela só traz cenas como as de overlay.
 :::
 
 ### getInactiveSceneNames()
 
-Gets a list of the scene's names not loaded in the game engine.
+Pega a lista dos nomes das cenas que não estão carregadas na engine.
 
 **Tipo do retorno:** list of string
 
 ### loadGlobalDict()
 
-Loads Range.logic.globalDict from a file.
+Carrega Range.logic.globalDict de um arquivo.
 
 ### saveGlobalDict()
 
-Saves Range.logic.globalDict to a file.
+Salva Range.logic.globalDict num arquivo.
 
 ### startGame(blend)
 
-Loads the blend file.
+Carrega o arquivo blend.
 
-- **`blend`**: The name of the blend file
+- **`blend`**: O nome do arquivo blend
   - tipo: string
 
 ### endGame()
 
-Ends the current game.
+Encerra o jogo atual.
 
 ### restartGame()
 
-Restarts the current game by reloading the .blend file (the last saved version, not what is currently running).
+Reinicia o jogo atual recarregando o arquivo .blend (a última versão salva, não o que está rodando agora).
 
 ### LibLoad(blend, type, data, load_actions=False, verbose=False, load_scripts=True, asynchronous=False, scene=None)
 
-Converts the all of the datablocks of the given type from the given blend.
+Converte todos os datablocks do tipo indicado do arquivo blend indicado.
 
-- **`blend`**: The path to the blend file (or the name to use for the library if data is supplied)
+- **`blend`**: O caminho do arquivo blend (ou o nome a usar para a biblioteca, se data for passado)
   - tipo: string
-- **`type`**: The datablock type (currently only "Action", "Mesh" and "Scene" are supported)
+- **`type`**: O tipo de datablock (por enquanto só "Action", "Mesh" e "Scene" são suportados)
   - tipo: string
-- **`data`**: Binary data from a blend file (optional)
+- **`data`**: Dados binários de um arquivo blend (opcional)
   - tipo: bytes
-- **`load_actions`**: Search for and load all actions in a given Scene and not just the "active" actions (Scene type only)
+- **`load_actions`**: Procura e carrega todas as ações da cena, não só as ações "ativas" (só para o tipo Scene)
   - tipo: bool
-- **`verbose`**: Whether or not to print debugging information (e.g., "SceneName: Scene")
+- **`verbose`**: Se mostra ou não informações de depuração (ex.: "SceneName: Scene")
   - tipo: bool
-- **`load_scripts`**: Whether or not to load text datablocks as well (can be disabled for some extra security)
+- **`load_scripts`**: Se carrega ou não também os datablocks de texto (pode ser desligado para mais segurança)
   - tipo: bool   
-- **`asynchronous`**: Whether or not to do the loading asynchronously (in another thread). Only the "Scene" type is currently supported for this feature.
+- **`asynchronous`**: Se carrega ou não de forma assíncrona (em outra thread). Por enquanto só o tipo "Scene" suporta isso.
   - tipo: bool
-- **`scene`**: Scene to merge loaded data to, if `None` use the current scene.
+- **`scene`**: Cena onde juntar os dados carregados; se for `None`, usa a cena atual.
   - tipo: `Range.types.KX_Scene` or string
 
 **Tipo do retorno:** `Range.types.KX_LibLoadStatus`
 
 :::note
-Asynchronously loaded libraries will not be available immediately after LibLoad() returns. Use the returned KX_LibLoadStatus to figure out when the libraries are ready.
+Bibliotecas carregadas de forma assíncrona não ficam disponíveis logo que LibLoad() retorna. Use o KX_LibLoadStatus devolvido para saber quando elas estão prontas.
 :::
 
 ### LibNew(name, type, data)
 
-Uses existing datablock data and loads in as a new library.
+Usa dados de um datablock que já existe e carrega como uma biblioteca nova.
 
-- **`name`**: A unique library name used for removal later
+- **`name`**: Um nome único para a biblioteca, usado depois para removê-la
   - tipo: string
-- **`type`**: The datablock type (currently only "Mesh" is supported)
+- **`type`**: O tipo de datablock (por enquanto só "Mesh" é suportado)
   - tipo: string
-- **`data`**: A list of names of the datablocks to load
+- **`data`**: Lista com os nomes dos datablocks a carregar
   - tipo: list of strings
 
 ### LibFree(name)
 
-Frees a library, removing all objects and meshes from the currently active scenes.
+Libera uma biblioteca, removendo todos os objetos e malhas dela das cenas ativas.
 
-- **`name`**: The name of the library to free (the name used in LibNew)
+- **`name`**: O nome da biblioteca a liberar (o nome usado em LibNew)
   - tipo: string
 
 ### LibList()
 
-Returns a list of currently loaded libraries.
+Devolve a lista das bibliotecas carregadas agora.
 
 **Tipo do retorno:** list [str]
 
 ### setLibLoadFrameBudget([ms])
 
-Time per frame, in milliseconds, that asynchronous LibLoad may spend merging loaded libraries into the
-scene (textures, shaders, objects). The default of 8 keeps the game frame rate; a loading screen can raise
-it (e.g. 30) to finish sooner at a lower frame rate, then set it back.
+Tempo por frame, em milissegundos, que o LibLoad assíncrono pode gastar juntando as bibliotecas carregadas à cena (texturas, shaders, objetos). O padrão de 8 mantém o frame rate do jogo; uma tela de carregamento pode aumentar (ex.: 30) para terminar antes com frame rate menor, e depois voltar o valor.
 
-- **`ms`**: New budget; omitted, only returns the current one.
+- **`ms`**: Novo limite; se omitido, só devolve o atual.
   - tipo: float
 
-**Retorna:** The current budget in milliseconds.
+**Retorna:** O limite atual em milissegundos.
 
 **Tipo do retorno:** float
 
 ### addScene(name, overlay=1, asynchronous=False)
 
-Loads a scene into the game engine.
+Carrega uma cena na engine.
 
 :::note
-This function is not effective immediately, the scene is queued
-and added on the next logic cycle where it will be available
-from `getSceneList`
+Esta função não tem efeito na hora: a cena entra na fila e é adicionada no próximo ciclo de lógica, quando aparece em `getSceneList`
 :::
 
-- **`name`**: The name of the scene
+- **`name`**: O nome da cena
   - tipo: string
-- **`overlay`**: Overlay or underlay (optional)
+- **`overlay`**: Overlay ou underlay (opcional)
   - tipo: integer
-- **`asynchronous`**: Compile the scene shaders a few per frame (budget of `setLibLoadFrameBudget`) before the scene joins `getSceneList`, so a loading screen keeps drawing; its logic starts only then.
+- **`asynchronous`**: Compila os shaders da cena aos poucos a cada frame (limite de `setLibLoadFrameBudget`) antes de a cena entrar em `getSceneList`, para a tela de carregamento continuar desenhando; a lógica da cena só começa depois disso.
   - tipo: boolean
 
 ### sendMessage(subject, body="", to="", message_from="")
 
-Sends a message to sensors in any active scene.
+Envia uma mensagem para os sensores de qualquer cena ativa.
 
-- **`subject`**: The subject of the message
+- **`subject`**: O assunto da mensagem
   - tipo: string
-- **`body`**: The body of the message (optional)
+- **`body`**: O corpo da mensagem (opcional)
   - tipo: string
-- **`to`**: The name of the object to send the message to (optional)
+- **`to`**: O nome do objeto que vai receber a mensagem (opcional)
   - tipo: string
-- **`message_from`**: The name of the object that the message is coming from (optional)
+- **`message_from`**: O nome do objeto de onde a mensagem vem (opcional)
   - tipo: string
 
 ### setGravity(gravity)
 
-Sets the world gravity.
+Define a gravidade do mundo.
 
-- **`gravity`**: gravity vector
+- **`gravity`**: O vetor de gravidade
   - tipo: Vector((fx, fy, fz))
 
 ### getSpectrum() (Deprecated)
 
-Returns a 512 point list from the sound card.
-This only works if the fmod sound driver is being used.
+Devolve uma lista de 512 pontos da placa de som. Só funciona com o driver de som fmod.
 
 **Tipo do retorno:** list [float], len(getSpectrum()) == 512
 
 ### getMaxLogicFrame()
 
-Gets the maximum number of logic frames per render frame.
+Pega o número máximo de frames de lógica por frame de render.
 
-**Retorna:** The maximum number of logic frames per render frame
+**Retorna:** O número máximo de frames de lógica por frame de render
 
 **Tipo do retorno:** integer
 
 ### setMaxLogicFrame(maxlogic)
 
-Sets the maximum number of logic frames that are executed per render frame.
-This does not affect the physic system that still runs at full frame rate.
+Define o número máximo de frames de lógica executados por frame de render. Não afeta a física, que continua rodando no frame rate completo.
 
-- **`maxlogic`**: The new maximum number of logic frames per render frame. Valid values: 1..5
+- **`maxlogic`**: O novo número máximo de frames de lógica por frame de render. Valores válidos: 1..5
   - tipo: integer
 
 ### getMaxPhysicsFrame()
 
 :::danger[Obsoleto ]
-No scheduler in the engine consumes this limit; the value set here has no effect.
-Kept only for compatibility with existing scripts. It also no longer controls shadow
-culling, which used to alias this same underlying setting.
+Nenhuma parte da engine usa este limite; o valor definido aqui não tem efeito. Fica só por compatibilidade com scripts antigos. Ele também não controla mais o culling de sombras, que antes usava esta mesma configuração.
 :::
 
-Gets the value last passed to `setMaxPhysicsFrame`.
+Pega o último valor passado para `setMaxPhysicsFrame`.
 
-**Retorna:** The value last set (default: 5)
+**Retorna:** O último valor definido (padrão: 5)
 
 **Tipo do retorno:** integer
 
 ### setMaxPhysicsFrame(maxphysics)
 
 :::danger[Obsoleto ]
-No scheduler in the engine consumes this limit; calling this has no effect on physics
-or on shadows. Kept only for compatibility with existing scripts.
+Nenhuma parte da engine usa este limite; chamar isto não tem efeito na física nem nas sombras. Fica só por compatibilidade com scripts antigos.
 :::
 
-Stores the value for later retrieval via `getMaxPhysicsFrame`. Historically documented
-as the maximum number of physics timesteps executed per render frame, but no code path in
-the engine reads it for that purpose.
+Guarda o valor para ler depois com `getMaxPhysicsFrame`. Era documentado como o número máximo de passos de física por frame de render, mas nenhum código da engine lê o valor para isso.
 
-- **`maxphysics`**: The new maximum number of physics timestep per render frame. Valid values: 1..5.
+- **`maxphysics`**: O novo número máximo de passos de física por frame de render. Valores válidos: 1..5.
   - tipo: integer
 
 ### getLogicTicRate()
 
-Gets the logic update frequency.
+Pega a frequência de atualização da lógica.
 
-**Retorna:** The logic frequency in Hz
+**Retorna:** A frequência da lógica em Hz
 
 **Tipo do retorno:** float
 
 ### setLogicTicRate(ticrate)
 
-Sets the logic update frequency.
+Define a frequência de atualização da lógica.
 
-The logic update frequency is the number of times logic bricks are executed every second.
-The default is 60 Hz.
+A frequência da lógica é quantas vezes por segundo os logic bricks são executados. O padrão é 60 Hz.
 
-- **`ticrate`**: The new logic update frequency (in Hz).
+- **`ticrate`**: A nova frequência da lógica (em Hz).
   - tipo: float
 
 ### getPhysicsTicRate()
 
-Gets the physics update frequency
+Pega a frequência de atualização da física
 
-**Retorna:** The physics update frequency in Hz
+**Retorna:** A frequência da física em Hz
 
 **Tipo do retorno:** float
 
-.. warning: Not implimented yet
-
 ### setPhysicsTicRate(ticrate)
 
-Sets the physics update frequency
+Define a frequência de atualização da física
 
-The physics update frequency is the number of times the physics system is executed every second.
-The default is 60 Hz.
+A frequência da física é quantas vezes por segundo a física é executada. O padrão é 60 Hz.
 
-- **`ticrate`**: The new update frequency (in Hz).
+- **`ticrate`**: A nova frequência (em Hz).
   - tipo: float
-.. warning: Not implimented yet
 
 ### getExitKey()
 
-Gets the key used to exit the game engine
+Pega a tecla usada para sair da engine
 
-**Retorna:** The key (defaults to `Range.events.ESCKEY`)
+**Retorna:** A tecla (padrão: `Range.events.ESCKEY`)
 
 **Tipo do retorno:** int
 
 ### setExitKey(key)
 
-Sets the key used to exit the game engine
+Define a tecla usada para sair da engine
 
-- **`key`**: A key constant from `Range.events`
+- **`key`**: Uma constante de tecla de `Range.events`
   - tipo: int
 
 ### NextFrame()
 
-Render next frame (if Python has control)
+Renderiza o próximo frame (se o Python estiver no controle)
 
 ### setRender(render)
 
-Sets the global flag that controls the render of the scene.
-If True, the render is done after the logic frame.
-If False, the render is skipped and another logic frame starts immediately.
+Define a opção global que controla o render da cena. Se for True, o render acontece depois do frame de lógica. Se for False, o render é pulado e outro frame de lógica começa na hora.
 
 :::note
-GPU VSync no longer limits the number of frame per second when render is off,
-but the *Use Frame Rate* option still regulates the fps. To run as many frames
-as possible, untick this option (Render Properties, System panel).
+Com o render desligado, o VSync da GPU não limita mais os frames por segundo, mas a opção *Use Frame Rate* continua regulando o fps. Para rodar o máximo de frames possível, desmarque essa opção (Render Properties, painel System).
 :::
 
-- **`render`**: the render flag
+- **`render`**: A opção de render
   - tipo: bool
 
 ### getRender()
 
-Get the current value of the global render flag
+Pega o valor atual da opção global de render
 
-**Retorna:** The flag value
+**Retorna:** O valor da opção
 
 **Tipo do retorno:** bool
 
-## Time related functions
+## Funções de tempo
 
 ### getClockTime()
 
-Get the current BGE render time, in seconds. The BGE render time is the
-simulation time corresponding to the next scene that will be rendered.
+Pega o tempo de render atual da engine, em segundos. É o tempo de simulação correspondente à próxima cena que será renderizada.
 
 **Tipo do retorno:** double
 
 ### getFrameTime()
 
-Get the current BGE frame time, in seconds. The BGE frame time is the
-simulation time corresponding to the current call of the logic system.
-Generally speaking, it is what the user is interested in.
+Pega o tempo de frame atual da engine, em segundos. É o tempo de simulação correspondente à chamada atual da lógica. Em geral, é este o tempo que interessa.
 
 **Tipo do retorno:** double
 
 ### getRealTime()
 
-Get the number of real (system-clock) seconds elapsed since the beginning
-of the simulation.
+Pega quantos segundos reais (do relógio do sistema) passaram desde o começo da simulação.
 
 **Tipo do retorno:** double
 
 ### getTimeScale()
 
-Get the time multiplier between real-time and simulation time. The default
-value is 1.0. A value greater than 1.0 means that the simulation is going
-faster than real-time, a value lower than 1.0 means that the simulation is
-going slower than real-time.
+Pega o multiplicador entre o tempo real e o tempo da simulação. O padrão é 1.0. Valores maiores que 1.0 deixam a simulação mais rápida que o tempo real; valores menores, mais lenta.
 
 **Tipo do retorno:** double
 
 ### setTimeScale(time_scale)
 
-Set the time multiplier between real-time and simulation time. A value
-greater than 1.0 means that the simulation is going faster than real-time,
-a value lower than 1.0 means that the simulation is going slower than
-real-time. Note that a too large value may lead to some physics
-instabilities.
+Define o multiplicador entre o tempo real e o tempo da simulação. Valores maiores que 1.0 deixam a simulação mais rápida que o tempo real; valores menores, mais lenta. Valores muito altos podem deixar a física instável.
 
-- **`time_scale`**: The new time multiplier.
+- **`time_scale`**: O novo multiplicador de tempo.
 
 ### getUseExternalClock()
 
-Get if the BGE use the inner BGE clock, or rely or on an external
-clock. The default is to use the inner BGE clock.
+Diz se a engine usa o relógio interno ou um relógio externo. O padrão é o relógio interno.
 
 **Tipo do retorno:** bool
 
 ### setUseExternalClock(use_external_clock)
 
-Set if the BGE use the inner BGE clock, or rely or on an external
-clock. If the user selects the use of an external clock, he should call
-regularly the setClockTime method.
+Define se a engine usa o relógio interno ou um relógio externo. Com o relógio externo, é preciso chamar setClockTime regularmente.
 
-- **`use_external_clock`**: the new setting
+- **`use_external_clock`**: A nova configuração
 
 ### setClockTime(new_time)
 
-Set the next value of the simulation clock. It is preferable to use this
-method from a custom main function in python, as calling it in the logic
-block can easily lead to a blocked system (if the time does not advance
-enough to run at least the next logic step).
+Define o próximo valor do relógio da simulação. É melhor usar este método numa função main própria em Python: chamá-lo num logic brick pode travar o sistema facilmente (se o tempo não avançar o bastante para rodar pelo menos o próximo passo de lógica).
 
-- **`new_time`**: the next value of the BGE clock (in second).
+- **`new_time`**: O próximo valor do relógio da engine (em segundos).
 
-## Utility functions
+## Funções utilitárias
 
 ### expandPath(path)
 
-Converts a blender internal path into a proper file system path.
+Converte um caminho interno do Blender num caminho de verdade do sistema de arquivos.
 
-Use / as directory separator in path
-You can use '//' at the start of the string to define a relative path;
-Blender replaces that string by the directory of the current .blend or runtime file
-to make a full path name. The function also converts the directory separator to
-the local file system format.
+Use / como separador de pastas no caminho. Use '//' no começo para um caminho relativo; o Blender troca isso pela pasta do .blend ou do executável atual para formar o caminho completo. A função também converte o separador para o formato do sistema.
 
-- **`path`**: The path string to be converted/expanded.
+- **`path`**: O caminho a converter/expandir.
   - tipo: string
 
-**Retorna:** The converted string
+**Retorna:** O caminho convertido
 
 **Tipo do retorno:** string
 
 ### getAverageFrameRate()
 
-Gets the estimated/average framerate for all the active scenes, not only the current scene.
+Pega o frame rate médio estimado de todas as cenas ativas, não só da atual.
 
-**Retorna:** The estimated average framerate in frames per second
+**Retorna:** O frame rate médio estimado, em frames por segundo
 
 **Tipo do retorno:** float
 
 ### getBlendFileList(path = "//")
 
-Returns a list of blend files in the same directory as the open blend file, or from using the option argument.
+Devolve a lista dos arquivos blend na mesma pasta do arquivo blend aberto, ou na pasta passada como argumento.
 
-- **`path`**: Optional directory argument, will be expanded (like expandPath) into the full path.
+- **`path`**: Pasta opcional, que é expandida (como em expandPath) para o caminho completo.
   - tipo: string
 
-**Retorna:** A list of filenames, with no directory prefix
+**Retorna:** Lista de nomes de arquivo, sem a pasta na frente
 
 **Tipo do retorno:** list
 
 ### getRandomFloat()
 
-Returns a random floating point value in the range [0 - 1)
+Devolve um número decimal aleatório no intervalo [0 - 1)
 
 ### PrintGLInfo()
 
-Prints GL Extension Info into the console
+Mostra no console as informações das extensões GL
 
 ### PrintMemInfo()
 
-Prints engine statistics into the console
+Mostra no console as estatísticas da engine
 
 ### getProfileInfo()
 
-Returns a Python dictionary that contains the same information as the on screen profiler. The keys are the profiler categories and the values are tuples with the first element being time taken (in ms) and the second element being the percentage of total time.
+Devolve um dicionário Python com as mesmas informações do profiler na tela. As chaves são as categorias do profiler, e os valores são tuplas com o tempo gasto (em ms) no primeiro elemento e a porcentagem do tempo total no segundo.
 
 ### getRenderStats()
 
-Returns a Python dictionary of integer counters from the last completed frame, the same numbers the Debug Mode render queries show. Unlike the frame times from `getProfileInfo`, these do not depend on the hardware or the clock, so they are what A/B tests should compare.
+Devolve um dicionário Python com contadores inteiros do último frame completo, os mesmos números que as consultas de render do Debug Mode mostram. Diferente dos tempos de `getProfileInfo`, eles não dependem do hardware nem do relógio, por isso são o que testes A/B devem comparar.
 
-Rasterizer counters, covering every pass of the frame (main camera, shadows, 2D filters):
+Contadores do rasterizador, cobrindo todas as passadas do frame (câmera principal, sombras, filtros 2D):
 
-* `drawCalls` -- draw calls issued.
-* `materialBinds` -- material (shader program) binds.
-* `lightBinds` -- uploads of the scene light and shadow lamp uniforms. The light set is constant per light layer, so this counts how often the same values were re-uploaded.
+* `drawCalls`: draw calls feitas.
+* `materialBinds`: binds de material (programa de shader).
+* `lightBinds`: envios dos uniforms das luzes da cena e das lâmpadas com sombra. O conjunto de luzes é constante por camada de luz, então isto conta quantas vezes os mesmos valores foram reenviados.
 
-Counters of the active scene:
+Contadores da cena ativa:
 
-* `cullingTotal`, `cullingTested`, `cullingVisible` -- objects in the render list, tested against the frustum/DBVT, and found visible, from the last main-camera culling pass.
-* `lightsTotal`, `lightsShadowUpdated`, `shadowPasses` -- lights in the scene, lights whose shadow buffer was refreshed, and shadow passes rendered (each cascade split counts as one).
-* `sensors`, `controllersTriggered`, `actuatorsUpdated` -- registered sensors, and controllers/actuators run on the logic frame. Beware that these two are counted as the frame runs, and a Python controller calling this function is itself part of that frame: it sees only what ran before it, so from a controller the value is usually 0. The Debug Mode overlay reads them after the frame and shows the complete count. The rasterizer and culling counters above have no such caveat -- they are always from the last completed frame.
+* `cullingTotal`, `cullingTested`, `cullingVisible`: objetos na lista de render, testados contra o frustum/DBVT e achados visíveis, na última passada de culling da câmera principal.
+* `lightsTotal`, `lightsShadowUpdated`, `shadowPasses`: luzes da cena, luzes cujo buffer de sombra foi atualizado e passadas de sombra renderizadas (cada divisão de cascata conta como uma).
+* `sensors`, `controllersTriggered`, `actuatorsUpdated`: sensores registrados e controladores/atuadores executados no frame de lógica. Atenção: estes dois são contados enquanto o frame roda, e um controlador Python que chama esta função faz parte desse frame; ele só vê o que rodou antes dele, então num controlador o valor costuma ser 0. A sobreposição do Debug Mode lê os valores depois do frame e mostra a contagem completa. Os contadores do rasterizador e do culling não têm esse problema: sempre vêm do último frame completo.
 
-## Constants
+## Constantes
 
 ### KX_TRUE
 
-True value used by some modules.
+Valor verdadeiro usado por alguns módulos.
 
 ### KX_FALSE
 
-False value used by some modules.
+Valor falso usado por alguns módulos.
 
-## Sensors
+## Sensores
 
-.. _sensor-status:
-
-## Sensor Status
+## Estado do sensor
 
 ### KX_SENSOR_INACTIVE
 
@@ -586,91 +534,87 @@ False value used by some modules.
 
 ### KX_SENSOR_JUST_DEACTIVATED
 
-## Armature Sensor
+## Sensor de armature
 
-.. _armaturesensor-type:
-
-See `Range.types.KX_ArmatureSensor.type`
+Veja `Range.types.KX_ArmatureSensor.type`
 
 ### KX_ARMSENSOR_STATE_CHANGED
 
-Detect that the constraint is changing state (active/inactive)
+Detecta que a constraint mudou de estado (ativa/inativa)
 
-**value:** 0
+**Valor:** `0`
 
 ### KX_ARMSENSOR_LIN_ERROR_BELOW
 
-Detect that the constraint linear error is above a threshold
+Detecta que o erro linear da constraint passou de um limite
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_ARMSENSOR_LIN_ERROR_ABOVE
 
-Detect that the constraint linear error is below a threshold
+Detecta que o erro linear da constraint ficou abaixo de um limite
 
-**value:** 2
+**Valor:** `2`
 
 ### KX_ARMSENSOR_ROT_ERROR_BELOW
 
-Detect that the constraint rotation error is above a threshold
+Detecta que o erro de rotação da constraint passou de um limite
 
-**value:** 3
+**Valor:** `3`
 
 ### KX_ARMSENSOR_ROT_ERROR_ABOVE
 
-Detect that the constraint rotation error is below a threshold
+Detecta que o erro de rotação da constraint ficou abaixo de um limite
 
-**value:** 4
+**Valor:** `4`
 
-.. _logic-property-sensor:
-
-## Property Sensor
+## Sensor de propriedade
 
 ### KX_PROPSENSOR_EQUAL
 
-Activate when the property is equal to the sensor value.
+Ativa quando a propriedade é igual ao valor do sensor.
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_PROPSENSOR_NOTEQUAL
 
-Activate when the property is not equal to the sensor value.
+Ativa quando a propriedade é diferente do valor do sensor.
 
-**value:** 2
+**Valor:** `2`
 
 ### KX_PROPSENSOR_INTERVAL
 
-Activate when the property is between the specified limits.
+Ativa quando a propriedade está entre os limites indicados.
 
-**value:** 3
+**Valor:** `3`
 
 ### KX_PROPSENSOR_CHANGED
 
-Activate when the property changes
+Ativa quando a propriedade muda
 
-**value:** 4
+**Valor:** `4`
 
 ### KX_PROPSENSOR_EXPRESSION
 
-Activate when the expression matches
+Ativa quando a expressão confere
 
-**value:** 5
+**Valor:** `5`
 
 ### KX_PROPSENSOR_LESSTHAN
 
-Activate when the property is less than the sensor value
+Ativa quando a propriedade é menor que o valor do sensor
 
-**value:** 6
+**Valor:** `6`
 
 ### KX_PROPSENSOR_GREATERTHAN
 
-Activate when the property is greater than the sensor value
+Ativa quando a propriedade é maior que o valor do sensor
 
-**value:** 7
+**Valor:** `7`
 
-## Radar Sensor
+## Sensor de radar
 
-See `Range.types.KX_RadarSensor`
+Veja `Range.types.KX_RadarSensor`
 
 ### KX_RADAR_AXIS_POS_X
 
@@ -694,9 +638,9 @@ See `Range.types.KX_RadarSensor`
 
 ### KX_RADAR_AXIS_NEG_Z
 
-## Ray Sensor
+## Sensor de raio
 
-See `Range.types.KX_RaySensor`
+Veja `Range.types.KX_RaySensor`
 
 ### KX_RAY_AXIS_POS_X
 
@@ -720,13 +664,11 @@ See `Range.types.KX_RaySensor`
 
 ### KX_RAY_AXIS_NEG_Z
 
-## Actuators
+## Atuadores
 
-.. _action-actuator:
+## Atuador de ação
 
-## Action Actuator
-
-See `Range.types.BL_ActionActuator`
+Veja `Range.types.BL_ActionActuator`
 
 ### KX_ACTIONACT_PLAY
 
@@ -750,177 +692,169 @@ See `Range.types.BL_ActionActuator`
 
 ### KX_ACTIONACT_PROPERTY
 
-## Armature Actuator
+## Atuador de armature
 
-.. _armatureactuator-constants-type:
-
-See `Range.types.BL_ArmatureActuator.type`
+Veja `Range.types.BL_ArmatureActuator.type`
 
 ### KX_ACT_ARMATURE_RUN
 
-Just make sure the armature will be updated on the next graphic frame.
-This is the only persistent mode of the actuator:
-it executes automatically once per frame until stopped by a controller
+Só garante que a armature será atualizada no próximo frame gráfico. É o único modo contínuo do atuador: roda sozinho uma vez por frame até um controlador pará-lo
 
-**value:** 0
+**Valor:** `0`
 
 ### KX_ACT_ARMATURE_ENABLE
 
-Enable the constraint.
+Liga a constraint.
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_ACT_ARMATURE_DISABLE
 
-Disable the constraint (runtime constraint values are not updated).
+Desliga a constraint (os valores da constraint em tempo de jogo não são atualizados).
 
-**value:** 2
+**Valor:** `2`
 
 ### KX_ACT_ARMATURE_SETTARGET
 
-Change target and subtarget of constraint.
+Troca o alvo e o subalvo da constraint.
 
-**value:** 3
+**Valor:** `3`
 
 ### KX_ACT_ARMATURE_SETWEIGHT
 
-Change weight of constraint (IK only).
+Muda o peso da constraint (só IK).
 
-**value:** 4
+**Valor:** `4`
 
 ### KX_ACT_ARMATURE_SETINFLUENCE
 
-Change influence of constraint.
+Muda a influência da constraint.
 
-**value:** 5
+**Valor:** `5`
 
-## Constraint Actuator
+## Atuador de constraint
 
-.. _constraint-actuator-option:
+Veja `Range.types.KX_ConstraintActuator.option`
 
-See `Range.types.KX_ConstraintActuator.option`
-
-* Applicable to Distance constraint:
+* Vale para a constraint de distância:
 
 ### KX_CONSTRAINTACT_NORMAL
 
-Activate alignment to surface
+Ativa o alinhamento à superfície
 
 ### KX_CONSTRAINTACT_DISTANCE
 
-Activate distance control
+Ativa o controle de distância
 
 ### KX_CONSTRAINTACT_LOCAL
 
-Direction of the ray is along the local axis
+A direção do raio segue o eixo local
 
-* Applicable to Force field constraint:
+* Vale para a constraint de campo de força:
 
 ### KX_CONSTRAINTACT_DOROTFH
 
-Force field act on rotation as well
+O campo de força também age na rotação
 
-* Applicable to both:
+* Vale para as duas:
 
 ### KX_CONSTRAINTACT_MATERIAL
 
-Detect material rather than property
+Detecta material em vez de propriedade
 
 ### KX_CONSTRAINTACT_PERMANENT
 
-No deactivation if ray does not hit target
+Não desativa se o raio não atingir o alvo
 
-.. _constraint-actuator-limit:
-
-See `Range.types.KX_ConstraintActuator.limit`
+Veja `Range.types.KX_ConstraintActuator.limit`
 
 ### KX_CONSTRAINTACT_LOCX
 
-Limit X coord.
+Limita a coordenada X.
 
 ### KX_CONSTRAINTACT_LOCY
 
-Limit Y coord
+Limita a coordenada Y
 
 ### KX_CONSTRAINTACT_LOCZ
 
-Limit Z coord
+Limita a coordenada Z
 
 ### KX_CONSTRAINTACT_ROTX
 
-Limit X rotation
+Limita a rotação X
 
 ### KX_CONSTRAINTACT_ROTY
 
-Limit Y rotation
+Limita a rotação Y
 
 ### KX_CONSTRAINTACT_ROTZ
 
-Limit Z rotation
+Limita a rotação Z
 
 ### KX_CONSTRAINTACT_DIRNX
 
-Set distance along negative X axis
+Define a distância ao longo do eixo X negativo
 
 ### KX_CONSTRAINTACT_DIRNY
 
-Set distance along negative Y axis
+Define a distância ao longo do eixo Y negativo
 
 ### KX_CONSTRAINTACT_DIRNZ
 
-Set distance along negative Z axis
+Define a distância ao longo do eixo Z negativo
 
 ### KX_CONSTRAINTACT_DIRPX
 
-Set distance along positive X axis
+Define a distância ao longo do eixo X positivo
 
 ### KX_CONSTRAINTACT_DIRPY
 
-Set distance along positive Y axis
+Define a distância ao longo do eixo Y positivo
 
 ### KX_CONSTRAINTACT_DIRPZ
 
-Set distance along positive Z axis
+Define a distância ao longo do eixo Z positivo
 
 ### KX_CONSTRAINTACT_ORIX
 
-Set orientation of X axis
+Define a orientação do eixo X
 
 ### KX_CONSTRAINTACT_ORIY
 
-Set orientation of Y axis
+Define a orientação do eixo Y
 
 ### KX_CONSTRAINTACT_ORIZ
 
-Set orientation of Z axis
+Define a orientação do eixo Z
 
 ### KX_CONSTRAINTACT_FHNX
 
-Set force field along negative X axis
+Define o campo de força ao longo do eixo X negativo
 
 ### KX_CONSTRAINTACT_FHNY
 
-Set force field along negative Y axis
+Define o campo de força ao longo do eixo Y negativo
 
 ### KX_CONSTRAINTACT_FHNZ
 
-Set force field along negative Z axis
+Define o campo de força ao longo do eixo Z negativo
 
 ### KX_CONSTRAINTACT_FHPX
 
-Set force field along positive X axis
+Define o campo de força ao longo do eixo X positivo
 
 ### KX_CONSTRAINTACT_FHPY
 
-Set force field along positive Y axis
+Define o campo de força ao longo do eixo Y positivo
 
 ### KX_CONSTRAINTACT_FHPZ
 
-Set force field along positive Z axis
+Define o campo de força ao longo do eixo Z positivo
 
-## Dynamic Actuator
+## Atuador dinâmico
 
-See `Range.types.KX_SCA_DynamicActuator`
+Veja `Range.types.KX_SCA_DynamicActuator`
 
 ### KX_DYN_RESTORE_DYNAMICS
 
@@ -940,11 +874,9 @@ See `Range.types.KX_SCA_DynamicActuator`
 
 ### KX_DYN_SET_MASS
 
-.. _game-actuator:
+## Atuador de jogo
 
-## Game Actuator
-
-See `Range.types.KX_GameActuator`
+Veja `Range.types.KX_GameActuator`
 
 ### KX_GAME_LOAD
 
@@ -968,9 +900,7 @@ See `Range.types.KX_GameActuator`
 
 ### KX_GAME_LOADCFG
 
-.. _mouse-actuator:
-
-## Mouse Actuator
+## Atuador de mouse
 
 ### KX_ACT_MOUSE_OBJECT_AXIS_X
 
@@ -982,7 +912,7 @@ See `Range.types.KX_GameActuator`
 
 ### KX_ACT_MOUSE_OBJECT_AXIS_Z
 
-## Parent Actuator
+## Atuador de parentesco
 
 ### KX_PARENT_REMOVE
 
@@ -990,11 +920,9 @@ See `Range.types.KX_GameActuator`
 
 ### KX_PARENT_SET
 
-.. _logic-random-distributions:
+## Distribuições aleatórias
 
-## Random Distributions
-
-See `Range.types.SCA_RandomActuator`
+Veja `Range.types.SCA_RandomActuator`
 
 ### KX_RANDOMACT_BOOL_CONST
 
@@ -1034,9 +962,9 @@ See `Range.types.SCA_RandomActuator`
 
 ### KX_RANDOMACT_FLOAT_NEGATIVE_EXPONENTIAL
 
-## Scene Actuator
+## Atuador de cena
 
-See `Range.types.KX_SceneActuator`
+Veja `Range.types.KX_SceneActuator`
 
 ### KX_SCENE_RESTART
 
@@ -1068,73 +996,67 @@ See `Range.types.KX_SceneActuator`
 
 ### KX_SCENE_RESUME
 
-.. _logic-sound-actuator:
+## Atuador de som
 
-## Sound Actuator
-
-See `Range.types.KX_SoundActuator`
+Veja `Range.types.KX_SoundActuator`
 
 ### KX_SOUNDACT_PLAYSTOP
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_SOUNDACT_PLAYEND
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 2
+**Valor:** `2`
 
 ### KX_SOUNDACT_LOOPSTOP
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 3
+**Valor:** `3`
 
 ### KX_SOUNDACT_LOOPEND
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 4
+**Valor:** `4`
 
 ### KX_SOUNDACT_LOOPBIDIRECTIONAL
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 5
+**Valor:** `5`
 
 ### KX_SOUNDACT_LOOPBIDIRECTIONAL_STOP
 
-**value:** 6
+**Valor:** `6`
 
-## Steering Actuator
+## Atuador de steering
 
-.. _logic-steering-actuator:
-
-See `Range.types.KX_SteeringActuator.behavior`
+Veja `Range.types.KX_SteeringActuator.behavior`
 
 ### KX_STEERING_SEEK
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_STEERING_FLEE
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 2
+**Valor:** `2`
 
 ### KX_STEERING_PATHFOLLOWING
 
-**value:** 3
+**Valor:** `3`
 
-.. _logic-trackto-actuator:
+## Atuador TrackTo
 
-## TrackTo Actuator
-
-See `Range.types.KX_TrackToActuator`
+Veja `Range.types.KX_TrackToActuator`
 
 ### KX_TRACK_UPAXIS_POS_X
 
@@ -1170,160 +1092,153 @@ See `Range.types.KX_TrackToActuator`
 
 ### KX_TRACK_TRAXIS_NEG_Z
 
-## Various
+## Diversos
 
-## 2D Filter
-
-.. _Two-D-FilterActuator-mode:
+## Filtro 2D
 
 ### RAS_2DFILTER_BLUR
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 2
+**Valor:** `2`
 
 ### RAS_2DFILTER_CUSTOMFILTER
 
-Customer filter, the code code is set via shaderText property.
+Filtro personalizado; o código é definido pela propriedade shaderText.
 
-**value:** 12
+**Valor:** `12`
 
 ### RAS_2DFILTER_DILATION
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 4
+**Valor:** `4`
 
 ### RAS_2DFILTER_DISABLED
 
-Disable the filter that is currently active
+Desliga o filtro que está ativo agora
 
-**value:** -1
+**Valor:** `-1`
 
 ### RAS_2DFILTER_ENABLED
 
-Enable the filter that was previously disabled
+Liga o filtro que foi desligado antes
 
-**value:** -2
+**Valor:** `-2`
 
 ### RAS_2DFILTER_EROSION
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 5
+**Valor:** `5`
 
 ### RAS_2DFILTER_GRAYSCALE
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 9
+**Valor:** `9`
 
 ### RAS_2DFILTER_INVERT
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 11
+**Valor:** `11`
 
 ### RAS_2DFILTER_LAPLACIAN
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 6
+**Valor:** `6`
 
 ### RAS_2DFILTER_MOTIONBLUR
 
-Create and enable preset filters
+Cria e liga filtros prontos
 
-**value:** 1
+**Valor:** `1`
 
 ### RAS_2DFILTER_NOFILTER
 
-Disable and destroy the filter that is currently active
+Desliga e destrói o filtro que está ativo agora
 
-**value:** 0
+**Valor:** `0`
 
 ### RAS_2DFILTER_PREWITT
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 8
+**Valor:** `8`
 
 ### RAS_2DFILTER_SEPIA
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 10
+**Valor:** `10`
 
 ### RAS_2DFILTER_SHARPEN
 
 <span class="ae-badge pendente">sem descrição</span>
 
-**value:** 3
+**Valor:** `3`
 
 ### RAS_2DFILTER_SOBEL
 
-**value:** 7
+**Valor:** `7`
 
 ### RAS_2DFILTER_SOBEL
 
-**value:** 14
+**Valor:** `14`
 
-## Armature Channel
+## Canal de armature
 
-.. _armaturechannel-constants-rotation-mode:
+Veja `Range.types.BL_ArmatureChannel.rotation_mode`
 
-See `Range.types.BL_ArmatureChannel.rotation_mode`
-
-.. note:
-euler mode are named as in Blender UI but the actual axis order is reversed
+Observação: os modos euler têm os nomes da interface do Blender, mas a ordem real dos eixos é invertida
 
 ### ROT_MODE_QUAT
 
-Use quaternion in rotation attribute to update bone rotation.
+Usa o quaternion do atributo rotation para atualizar a rotação do osso.
 
-**value:** 0
+**Valor:** `0`
 
 ### ROT_MODE_XYZ
 
-Use euler_rotation and apply angles on bone's Z, Y, X axis successively.
+Usa euler_rotation e aplica os ângulos nos eixos Z, Y, X do osso, nessa ordem.
 
-**value:** 1
+**Valor:** `1`
 
 ### ROT_MODE_XZY
 
-Use euler_rotation and apply angles on bone's Y, Z, X axis successively.
+Usa euler_rotation e aplica os ângulos nos eixos Y, Z, X do osso, nessa ordem.
 
-**value:** 2
+**Valor:** `2`
 
 ### ROT_MODE_YXZ
 
-Use euler_rotation and apply angles on bone's Z, X, Y axis successively.
+Usa euler_rotation e aplica os ângulos nos eixos Z, X, Y do osso, nessa ordem.
 
-**value:** 3
+**Valor:** `3`
 
 ### ROT_MODE_YZX
 
-Use euler_rotation and apply angles on bone's X, Z, Y axis successively.
+Usa euler_rotation e aplica os ângulos nos eixos X, Z, Y do osso, nessa ordem.
 
-**value:** 4
+**Valor:** `4`
 
 ### ROT_MODE_ZXY
 
-Use euler_rotation and apply angles on bone's Y, X, Z axis successively.
+Usa euler_rotation e aplica os ângulos nos eixos Y, X, Z do osso, nessa ordem.
 
-**value:** 5
+**Valor:** `5`
 
 ### ROT_MODE_ZYX
 
-Use euler_rotation and apply angles on bone's X, Y, Z axis successively.
+Usa euler_rotation e aplica os ângulos nos eixos X, Y, Z do osso, nessa ordem.
 
-**value:** 6
+**Valor:** `6`
 
-## Armature Constraint
+## Constraint de armature
 
-.. _armatureconstraint-constants-type:
-
-See `Range.types.BL_ArmatureConstraint.type`
+Veja `Range.types.BL_ArmatureConstraint.type`
 
 ### CONSTRAINT_TYPE_TRACKTO
 
@@ -1367,75 +1282,67 @@ See `Range.types.BL_ArmatureConstraint.type`
 
 ### CONSTRAINT_TYPE_DISTLIMIT
 
-.. _armatureconstraint-constants-ik-type:
-
-See `Range.types.BL_ArmatureConstraint.ik_type`
+Veja `Range.types.BL_ArmatureConstraint.ik_type`
 
 ### CONSTRAINT_IK_COPYPOSE
 
-constraint is trying to match the position and eventually the rotation of the target.
+A constraint tenta igualar a posição e, se for o caso, a rotação do alvo.
 
-**value:** 0
+**Valor:** `0`
 
 ### CONSTRAINT_IK_DISTANCE
 
-Constraint is maintaining a certain distance to target subject to ik_mode
+A constraint mantém uma certa distância do alvo, conforme ik_mode
 
-**value:** 1
+**Valor:** `1`
 
-.. _armatureconstraint-constants-ik-flag:
-
-See `Range.types.BL_ArmatureConstraint.ik_flag`
+Veja `Range.types.BL_ArmatureConstraint.ik_flag`
 
 ### CONSTRAINT_IK_FLAG_TIP
 
-Set when the constraint operates on the head of the bone and not the tail
+Ligado quando a constraint age na cabeça do osso e não na ponta
 
-**value:** 1
+**Valor:** `1`
 
 ### CONSTRAINT_IK_FLAG_ROT
 
-Set when the constraint tries to match the orientation of the target
+Ligado quando a constraint tenta igualar a orientação do alvo
 
-**value:** 2
+**Valor:** `2`
 
 ### CONSTRAINT_IK_FLAG_STRETCH
 
-Set when the armature is allowed to stretch (only the bones with stretch factor > 0.0)
+Ligado quando a armature pode esticar (só os ossos com fator de estiramento > 0.0)
 
-**value:** 16
+**Valor:** `16`
 
 ### CONSTRAINT_IK_FLAG_POS
 
-Set when the constraint tries to match the position of the target.
+Ligado quando a constraint tenta igualar a posição do alvo.
 
-**value:** 32
+**Valor:** `32`
 
-.. _armatureconstraint-constants-ik-mode:
-
-See `Range.types.BL_ArmatureConstraint.ik_mode`
+Veja `Range.types.BL_ArmatureConstraint.ik_mode`
 
 ### CONSTRAINT_IK_MODE_INSIDE
 
-The constraint tries to keep the bone within ik_dist of target
+A constraint tenta manter o osso a no máximo ik_dist do alvo
 
-**value:** 0
+**Valor:** `0`
 
 ### CONSTRAINT_IK_MODE_OUTSIDE
 
-The constraint tries to keep the bone outside ik_dist of the target
+A constraint tenta manter o osso a mais de ik_dist do alvo
 
-**value:** 1
+**Valor:** `1`
 
 ### CONSTRAINT_IK_MODE_ONSURFACE
 
-The constraint tries to keep the bone exactly at ik_dist of the target.
+A constraint tenta manter o osso exatamente a ik_dist do alvo.
 
-**value:** 2
+**Valor:** `2`
 
-.. _input-status:
-
-## Blender Material
+## Material do Blender
 
 ### BL_DST_ALPHA
 
@@ -1479,9 +1386,9 @@ The constraint tries to keep the bone exactly at ik_dist of the target.
 
 ### BL_ZERO
 
-## Input Status
+## Estado da entrada
 
-See `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.types.SCA_MouseSensor`, `Range.types.SCA_KeyboardSensor`
+Veja `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.types.SCA_MouseSensor`, `Range.types.SCA_KeyboardSensor`
 
 ### KX_INPUT_NONE
 
@@ -1499,45 +1406,41 @@ See `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.type
 
 ## KX_GameObject
 
-.. _gameobject-playaction-mode:
-
-See `Range.types.KX_GameObject.playAction`
+Veja `Range.types.KX_GameObject.playAction`
 
 ### KX_ACTION_MODE_PLAY
 
-Play the action once.
+Toca a ação uma vez.
 
-**value:** 0
+**Valor:** `0`
 
 ### KX_ACTION_MODE_LOOP
 
-Loop the action (repeat it).
+Repete a ação em loop.
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_ACTION_MODE_PING_PONG
 
-Play the action one direct then back the other way when it has completed.
+Toca a ação para a frente e, quando termina, volta para trás.
 
-**value:** 2
-
-.. _gameobject-playaction-blend:
+**Valor:** `2`
 
 ### KX_ACTION_BLEND_BLEND
 
-Blend layers using linear interpolation
+Mistura as camadas por interpolação linear
 
-**value:** 0
+**Valor:** `0`
 
 ### KX_ACTION_BLEND_ADD
 
-Adds the layers together
+Soma as camadas
 
-**value:** 1
+**Valor:** `1`
 
-## Mouse Buttons
+## Botões do mouse
 
-See `Range.types.SCA_MouseSensor`
+Veja `Range.types.SCA_MouseSensor`
 
 ### KX_MOUSE_BUT_LEFT
 
@@ -1549,25 +1452,21 @@ See `Range.types.SCA_MouseSensor`
 
 ### KX_MOUSE_BUT_RIGHT
 
-## Navigation Mesh Draw Modes
-
-.. _navmesh-draw-mode:
+## Modos de desenho da malha de navegação
 
 ### RM_WALLS
 
-Draw only the walls.
+Desenha só as paredes.
 
 ### RM_POLYS
 
-Draw only polygons.
+Desenha só os polígonos.
 
 ### RM_TRIS
 
-Draw triangle mesh.
+Desenha a malha de triângulos.
 
 ## Shader
-
-.. _shader-defined-uniform:
 
 ### VIEWMATRIX
 
@@ -1619,7 +1518,7 @@ Draw triangle mesh.
 
 ### CAM_POS
 
-Current camera position
+Posição da câmera atual
 
 ### CONSTANT_TIMER
 
@@ -1627,13 +1526,13 @@ Current camera position
 
 ### EYE
 
-User a timer for the uniform value.
+Usa um timer como valor do uniform.
 
 ### SHD_TANGENT
 
-## States
+## Estados
 
-See `Range.types.KX_StateActuator`
+Veja `Range.types.KX_StateActuator`
 
 ### KX_STATE1
 
@@ -1753,33 +1652,31 @@ See `Range.types.KX_StateActuator`
 
 ### KX_STATE30
 
-.. _state-actuator-operation:
-
-See `Range.types.KX_StateActuator.operation`
+Veja `Range.types.KX_StateActuator.operation`
 
 ### KX_STATE_OP_CLR
 
-Substract bits to state mask
+Subtrai bits da máscara de estados
 
-**value:** 0
+**Valor:** `0`
 
 ### KX_STATE_OP_CPY
 
-Copy state mask
+Copia a máscara de estados
 
-**value:** 1
+**Valor:** `1`
 
 ### KX_STATE_OP_NEG
 
-Invert bits to state mask
+Inverte bits da máscara de estados
 
-**value:** 2
+**Valor:** `2`
 
 ### KX_STATE_OP_SET
 
-Add bits to state mask
+Soma bits à máscara de estados
 
-**value:** 3
+**Valor:** `3`
 
 ## Sem documentação da Range
 

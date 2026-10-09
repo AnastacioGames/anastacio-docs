@@ -9,17 +9,13 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Motion sensors of the device (phone or tablet), available as `Range.logic.motion`.
 
-Values come from the browser in the Web runtime (`DeviceMotionEvent` and `DeviceOrientationEvent`),
-including the Android app, which runs the Web runtime inside a WebView. On other platforms there is no
-sensor source yet: `available` is `False`, vectors are zero and `tilt` is `(0.0, 0.0)`, so the
-same script runs everywhere.
+Values come from the browser in the Web runtime (`DeviceMotionEvent` and `DeviceOrientationEvent`), including the Android app, which runs the Web runtime inside a WebView. On other platforms there is no sensor source yet: `available` is `False`, vectors are zero and `tilt` is `(0.0, 0.0)`, so the same script runs everywhere.
 
-Vectors use the axes of the screen as it is currently shown, in portrait or landscape: x to the right, y to
-the top of the screen and z out of the screen, toward the player.
+Vectors use the axes of the screen as it is currently shown, in portrait or landscape: x to the right, y to the top of the screen and z out of the screen, toward the player.
 
 A tilt-controlled object:
 
-``python
+```python
 
 from Range import logic, events
 
@@ -29,12 +25,11 @@ def main(cont):
         logic.motion.calibrate()
     x, y = logic.motion.tilt
     own.applyForce((x * 20.0, y * 20.0, 0.0))
-``
+```
 
 ### available
 
-`True` while the sensors are sending data. It becomes `False` when no reading arrived in the last
-second (no sensor, desktop browser, page in background). (read-only).
+`True` while the sensors are sending data. It becomes `False` when no reading arrived in the last second (no sensor, desktop browser, page in background). (read-only).
 
 **Tipo:** boolean
 
@@ -46,30 +41,25 @@ Rotation speed around each screen axis, in radians per second. (read-only).
 
 ### accelerometer
 
-Acceleration including gravity, in m/s². With the device lying still, face up, it is close to
-`(0, 0, 9.8)`. (read-only).
+Acceleration including gravity, in m/s². With the device lying still, face up, it is close to `(0, 0, 9.8)`. (read-only).
 
 **Tipo:** `mathutils.Vector`
 
 ### gravity
 
-Gravity alone, in m/s², pointing up as in `accelerometer`. When the device does not report
-acceleration without gravity, it is estimated from `accelerometer` with a low-pass filter. (read-only).
+Gravity alone, in m/s², pointing up as in `accelerometer`. When the device does not report acceleration without gravity, it is estimated from `accelerometer` with a low-pass filter. (read-only).
 
 **Tipo:** `mathutils.Vector`
 
 ### orientation
 
-Device orientation angles `(alpha, beta, gamma)` in degrees, exactly as given by the browser. They follow
-the device axes, not the screen axes. (read-only).
+Device orientation angles `(alpha, beta, gamma)` in degrees, exactly as given by the browser. They follow the device axes, not the screen axes. (read-only).
 
 **Tipo:** `mathutils.Vector`
 
 ### tilt
 
-How far the device is tilted from its neutral position, from -1.0 to 1.0 on each axis: the screen direction
-a ball would roll to. `x` is positive when the right edge of the screen goes down, `y` when the top edge
-goes down. The neutral position is the device lying flat until `calibrate` is called. (read-only).
+How far the device is tilted from its neutral position, from -1.0 to 1.0 on each axis: the screen direction a ball would roll to. `x` is positive when the right edge of the screen goes down, `y` when the top edge goes down. The neutral position is the device lying flat until `calibrate` is called. (read-only).
 
 **Tipo:** tuple (float, float)
 

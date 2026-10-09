@@ -9,11 +9,7 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Create, enable and disable 2D filters.
 
-The following properties don't have an immediate effect.
-You must active the actuator to get the result.
-The actuator is not persistent: it automatically stops itself after setting up the filter
-but the filter remains active. To stop a filter you must activate the actuator with 'type'
-set to `RAS_2DFILTER_DISABLED` or `RAS_2DFILTER_NOFILTER`.
+The following properties don't have an immediate effect. You must active the actuator to get the result. The actuator is not persistent: it automatically stops itself after setting up the filter but the filter remains active. To stop a filter you must activate the actuator with 'type' set to `RAS_2DFILTER_DISABLED` or `RAS_2DFILTER_NOFILTER`.
 
 ### shaderText
 

@@ -11,13 +11,11 @@ This is the interface to materials in the game engine.
 
 Materials define the render state to be applied to mesh objects.
 
-The example below shows a simple GLSL shader setup allowing to dynamically mix two texture channels
-in a material. All materials of the object executing this script should have two textures using
-separate UV maps in the two first texture channels.
+The example below shows a simple GLSL shader setup allowing to dynamically mix two texture channels in a material. All materials of the object executing this script should have two textures using separate UV maps in the two first texture channels.
 
 The code works for both Multitexture and GLSL rendering modes.
 
-``python
+```python
 
 from Range import logic
 
@@ -63,7 +61,7 @@ for mesh in object.meshes:
             shader.setSampler('texture_1', 1)
             # pass another uniform to the shader
             shader.setUniform1f('factor', 0.3)
-``
+```
 
 ### shader
 
@@ -89,7 +87,7 @@ Returns the material's shader.
 
 Returns the material's texture OpenGL bind code/id/number/name.
 
-:::danger[Obsoleto use :py`Range.types.BL_Texture.bindCode`]
+:::danger[Obsoleto use :py:meth:`bge.types.BL_Texture.bindCode`]
 
 :::
 

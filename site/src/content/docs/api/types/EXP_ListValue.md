@@ -43,14 +43,13 @@ Reverse the order of the list.
 
 ### get(key, default=None)
 
-Return the value matching key, or the default value if its not found.
+Devolve o valor da chave, ou o valor padrão se a chave não existir.
 
-**Retorna:** The key value or a default.
+**Retorna:** O valor da chave ou o padrão.
 
 ### filter(name, prop)
 
-Return a list of items with name matching `name` regex and with a property matching `prop` regex.
-If `name` is empty every items are checked, if `prop` is empty no property check is proceeded.
+Return a list of items with name matching `name` regex and with a property matching `prop` regex. If `name` is empty every items are checked, if `prop` is empty no property check is proceeded.
 
 **Retorna:** The list of matching items.
 
@@ -62,11 +61,11 @@ Since object names are not always unique, the id of an object can be used to get
 
 Example:
 
-``python
+```python
 
 myObID=id(gameObject)
 ob= scene.objects.from_id(myObID)
-``
+```
 
 Where `myObID` is an int or long from the id function.
 

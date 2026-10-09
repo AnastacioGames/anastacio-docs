@@ -59,8 +59,7 @@ The operation mode of the actuator. Can be one of `these constants`.
 
 ### useContinue
 
-The actions continue option, True or False. When True, the action will always play from where last left off,
-otherwise negative events to this actuator will reset it to its start frame.
+The actions continue option, True or False. When True, the action will always play from where last left off, otherwise negative events to this actuator will reset it to its start frame.
 
 **Tipo:** boolean
 

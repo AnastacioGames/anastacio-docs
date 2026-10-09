@@ -9,7 +9,7 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 A Light object.
 
-``python
+```python
 
 # Turn on a red alert light.
 import Range
@@ -19,7 +19,7 @@ light = co.owner
 
 light.energy = 1.0
 light.color = [1.0, 0.0, 0.0]
-``
+```
 
 ### SPOT
 
@@ -105,15 +105,11 @@ The color of this light shadows. Black = (0.0, 0.0, 0.0), White = (1.0, 1.0, 1.0
 
 Matrix that converts a vector in camera space to shadow buffer depth space.
 
-Computed as:
-mat4_perspective_to_depth * mat4_lamp_to_perspective * mat4_world_to_lamp * mat4_cam_to_world.
+Computed as: mat4_perspective_to_depth * mat4_lamp_to_perspective * mat4_world_to_lamp * mat4_cam_to_world.
 
 mat4_perspective_to_depth is a fixed matrix defined as follow:
 
-0.5 0.0 0.0 0.5
-0.0 0.5 0.0 0.5
-0.0 0.0 0.5 0.5
-0.0 0.0 0.0 1.0
+0.5 0.0 0.0 0.5 0.0 0.5 0.0 0.5 0.0 0.0 0.5 0.5 0.0 0.0 0.0 1.0
 
 .. note:
 

@@ -3,8 +3,7 @@ title: "Range.constraints"
 description: "Referência do módulo Range.constraints"
 ---
 
-Bullet Physics provides collision detection
-and rigid body dynamics for the Blender Game Engine.
+Bullet Physics provides collision detection and rigid body dynamics for the Blender Game Engine.
 
 Features:
 
@@ -14,25 +13,20 @@ Features:
 like deactivation time, and debugging features
 
 :::note
-Since this API is not well documented, it can be unclear what kind of values to use for setting parameters.
-In general, damping settings should be in the range of 0 to 1 and
-stiffness settings should not be much higher than about 10.
+Since this API is not well documented, it can be unclear what kind of values to use for setting parameters. In general, damping settings should be in the range of 0 to 1 and stiffness settings should not be much higher than about 10.
 :::
 
 ## Examples
 
 :::tip
-For more examples of Bullet physics and how to use them
-see the [pybullet forum](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
+For more examples of Bullet physics and how to use them see the [pybullet forum](https://pybullet.org/Bullet/phpBB3/viewforum.php?f=17)_.
 :::
 
 ## Functions
 
 ### createConstraint( \
 
-physicsid_1, physicsid_2, constraint_type, \
-pivot_x=0.0, pivot_y=0.0, pivot_z=0.0, \
-axis_x=0.0, axis_y=0.0, axis_z=0.0, flag=0)
+physicsid_1, physicsid_2, constraint_type, \ pivot_x=0.0, pivot_y=0.0, pivot_z=0.0, \ axis_x=0.0, axis_y=0.0, axis_z=0.0, flag=0)
 
 Creates a constraint.
 
@@ -193,14 +187,9 @@ Sets the number of iterations for an iterative constraint solver.
 
 ### setLinearSlop(slop)
 
-Sets the contact penetration tolerance for the active physics scene.
-A positive value allows objects to overlap by up to `slop` Blender units
-before the Bullet solver applies positional correction. The default is `0.0`.
+Sets the contact penetration tolerance for the active physics scene. A positive value allows objects to overlap by up to `slop` Blender units before the Bullet solver applies positional correction. The default is `0.0`.
 
-This is a scene-wide solver setting: it affects every physical contact in
-the active scene. It does not change an object's collision margin or the
-point at which collisions are detected. Use small values appropriate to the
-scene scale.
+This is a scene-wide solver setting: it affects every physical contact in the active scene. It does not change an object's collision margin or the point at which collisions are detected. Use small values appropriate to the scene scale.
 
 - **`slop`**: Penetration tolerance in Blender units. Use a finite, non-negative value.
   - tipo: float
@@ -262,7 +251,7 @@ Sets the successive overrelaxation constant.
 Not implemented
 :::
 
-## Constants
+## Constantes
 
 ### error
 

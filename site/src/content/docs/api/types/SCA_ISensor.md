@@ -35,21 +35,13 @@ Number of logic ticks skipped between 2 active pulses
 
 ### level
 
-level Option whether to detect level or edge transition when entering a state.
-It makes a difference only in case of logic state transition (state actuator).
-A level detector will immediately generate a pulse, negative or positive
-depending on the sensor condition, as soon as the state is activated.
-A edge detector will wait for a state change before generating a pulse.
-note: mutually exclusive with `tap`, enabling will disable `tap`.
+level Option whether to detect level or edge transition when entering a state. It makes a difference only in case of logic state transition (state actuator). A level detector will immediately generate a pulse, negative or positive depending on the sensor condition, as soon as the state is activated. A edge detector will wait for a state change before generating a pulse. note: mutually exclusive with `tap`, enabling will disable `tap`.
 
 **Tipo:** boolean
 
 ### tap
 
-When enabled only sensors that are just activated will send a positive event,
-after this they will be detected as negative by the controllers.
-This will make a key thats held act as if its only tapped for an instant.
-note: mutually exclusive with `level`, enabling will disable `level`.
+When enabled only sensors that are just activated will send a positive event, after this they will be detected as negative by the controllers. This will make a key thats held act as if its only tapped for an instant. note: mutually exclusive with `level`, enabling will disable `level`.
 
 **Tipo:** boolean
 

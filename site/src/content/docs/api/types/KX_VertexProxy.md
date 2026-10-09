@@ -9,9 +9,7 @@ Classe base: [`SCA_IObject`](../sca_iobject/)
 
 A vertex holds position, UV, color and normal information.
 
-Note:
-The physics simulation is NOT currently updated - physics will not respond
-to changes in the vertex position.
+Note: The physics simulation is NOT currently updated - physics will not respond to changes in the vertex position.
 
 ### XYZ
 
@@ -174,22 +172,20 @@ Sets the 2nd UV (texture) coordinates of this vertex.
 
 Gets the color of this vertex.
 
-The color is represented as four bytes packed into an integer value.  The color is
-packed as RGBA.
+The color is represented as four bytes packed into an integer value.  The color is packed as RGBA.
 
-Since Python offers no way to get each byte without shifting, you must use the struct module to
-access color in an machine independent way.
+Since Python offers no way to get each byte without shifting, you must use the struct module to access color in an machine independent way.
 
 Because of this, it is suggested you use the r, g, b and a attributes or the color attribute instead.
 
-``python
+```python
 
 import struct;
 col = struct.unpack('4B', struct.pack('I', v.getRGBA()))
 # col = (r, g, b, a)
 # black = (  0, 0, 0, 255)
 # white = (255, 255, 255, 255)
-``
+```
 
 **Retorna:** packed color. 4 byte integer with one byte per color channel in RGBA format.
 
@@ -199,19 +195,17 @@ col = struct.unpack('4B', struct.pack('I', v.getRGBA()))
 
 Sets the color of this vertex.
 
-See getRGBA() for the format of col, and its relevant problems.  Use the r, g, b and a attributes
-or the color attribute instead.
+See getRGBA() for the format of col, and its relevant problems.  Use the r, g, b and a attributes or the color attribute instead.
 
-setRGBA() also accepts a four component list as argument col.  The list represents the color as [r, g, b, a]
-with black = [0.0, 0.0, 0.0, 1.0] and white = [1.0, 1.0, 1.0, 1.0]
+setRGBA() also accepts a four component list as argument col.  The list represents the color as [r, g, b, a] with black = [0.0, 0.0, 0.0, 1.0] and white = [1.0, 1.0, 1.0, 1.0]
 
-``python
+```python
 
 v.setRGBA(0xff0000ff) # Red
 v.setRGBA(0xff00ff00) # Green on little endian, transparent purple on big endian
 v.setRGBA([1.0, 0.0, 0.0, 1.0]) # Red
 v.setRGBA([0.0, 1.0, 0.0, 1.0]) # Green on all platforms.
-``
+```
 
 - **`col`**: the new color of this vertex in packed RGBA format.
   - tipo: integer or list [r, g, b, a]

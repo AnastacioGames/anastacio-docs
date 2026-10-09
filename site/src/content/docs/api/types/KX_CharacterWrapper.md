@@ -77,7 +77,7 @@ This method sets character's velocity through it's center of mass during a perio
   - tipo: 3D Vector
 - **`time`**: Period while applying linear velocity.
   - tipo: float
-- **`local`**:  * False: you get the "global" velocity ie: relative to world orientation. * True: you get the "local" velocity ie: relative to object orientation.
+- **`local`**: * False: you get the "global" velocity ie: relative to world orientation. * True: you get the "local" velocity ie: relative to object orientation.
   - tipo: boolean
 
 ### smoothMovement

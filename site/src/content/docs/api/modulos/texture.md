@@ -3,17 +3,9 @@ title: "Range.texture"
 description: "Referência do módulo Range.texture"
 ---
 
-## Introduction
+## Introdução
 
-The `Range.texture` module allows you to manipulate textures during the game.
-Several sources for texture are possible: video files, image files, video capture,
-memory buffer, camera render or a mix of that.
-The video and image files can be loaded from the Internet using a URL instead of a file name.
-In addition, you can apply filters on the images before sending them to the GPU,
-allowing video effect: blue screen, color band, gray, normal map.
-`Range.texture` uses FFmpeg to load images and videos.
-All the formats and codecs that FFmpeg supports are supported by `Range.texture`,
-including but not limited to:
+The `Range.texture` module allows you to manipulate textures during the game. Several sources for texture are possible: video files, image files, video capture, memory buffer, camera render or a mix of that. The video and image files can be loaded from the Internet using a URL instead of a file name. In addition, you can apply filters on the images before sending them to the GPU, allowing video effect: blue screen, color band, gray, normal map. `Range.texture` uses FFmpeg to load images and videos. All the formats and codecs that FFmpeg supports are supported by `Range.texture`, including but not limited to:
 
 * AVI
 * Ogg
@@ -26,36 +18,24 @@ including but not limited to:
 
 ## How it works
 
-The principle is simple: first you identify a texture on an existing object using the
+The principle is simple: first you identify a texture on an existing object using the `materialID` function, then you create a new texture with dynamic content and swap the two textures in the GPU.
 
-**class:** `~Range.texture.materialID` function, then you create a new texture with dynamic content
-
-and swap the two textures in the GPU.
-
-The game engine is not aware of the substitution and continues to display the object as always,
-except that you are now in control of the texture.
+The game engine is not aware of the substitution and continues to display the object as always, except that you are now in control of the texture.
 
 When the texture object is deleted, the new texture is deleted and the old texture restored.
 
 ## Game Preparation
 
-Before you can use the `Range.texture` module,
-you must have objects with textures applied appropriately.
+Before you can use the `Range.texture` module, you must have objects with textures applied appropriately.
 
-Imagine you want to have a television showing live broadcast programs in the game.
-You will create a television object and UV-apply a different texture at the place of the screen,
-for example `tv.png`. What this texture looks like is not important;
-probably you want to make it dark gray to simulate power-off state.
-When the television must be turned on, you create a dynamic texture from a video capture card
-and use it instead of `tv.png`: the TV screen will come to life.
+Imagine you want to have a television showing live broadcast programs in the game. You will create a television object and UV-apply a different texture at the place of the screen, for example `tv.png`. What this texture looks like is not important; probably you want to make it dark gray to simulate power-off state. When the television must be turned on, you create a dynamic texture from a video capture card and use it instead of `tv.png`: the TV screen will come to life.
 
 You have two ways to define textures that `Range.texture` can grab:
 
 - Simple UV texture.
 - Blender material with image texture channel.
 
-Because `Range.texture` works at texture level, it is compatible with all
-the Blender Game Engine's fancy texturing features: GLSL, multi-texture, custom shaders, etc.
+Because `Range.texture` works at texture level, it is compatible with all the Blender Game Engine's fancy texturing features: GLSL, multi-texture, custom shaders, etc.
 
 ## Examples
 
@@ -80,12 +60,11 @@ Video status. (readonly)
 
 **Tipo:** int
 
-**value:** see `FFmpeg Video and Image Status`_.
+**Valor:** `see `FFmpeg Video and Image Status`_.`
 
 ### range
 
-The start and stop time of the video playback, expressed in seconds from beginning.
-By default the entire video.
+The start and stop time of the video playback, expressed in seconds from beginning. By default the entire video.
 
 **Tipo:** sequence of two floats
 
@@ -121,18 +100,13 @@ Image size. (readonly)
 
 ### scale
 
-Set to True to activate fast nearest neighbor scaling algorithm.
-Texture width and height must be a power of 2.
-If the video picture size is not a power of 2, rescaling is required.
-By default `Range.texture` uses the precise but slow `gluScaleImage()` function.
-Best is to rescale the video offline so that no scaling is necessary at runtime!
+Set to True to activate fast nearest neighbor scaling algorithm. Texture width and height must be a power of 2. If the video picture size is not a power of 2, rescaling is required. By default `Range.texture` uses the precise but slow `gluScaleImage()` function. Best is to rescale the video offline so that no scaling is necessary at runtime!
 
 **Tipo:** bool
 
 ### flip
 
-If True the imaged will be flipped vertically.
-FFmpeg always delivers the image upside down, so this attribute is set to True by default.
+If True the imaged will be flipped vertically. FFmpeg always delivers the image upside down, so this attribute is set to True by default.
 
 **Tipo:** bool
 
@@ -206,7 +180,7 @@ Image status. (readonly)
 
 **Tipo:** int
 
-**value:** see `FFmpeg Video and Image Status`_.
+**Valor:** `see `FFmpeg Video and Image Status`_.`
 
 ### valid
 
@@ -264,8 +238,7 @@ Reload image, i.e. reopen it.
 - **`newname`**: Path to a new image. (optional)
   - tipo: str
 
-Image from application memory.
-For computer generated images, drawing applications.
+Image from application memory. For computer generated images, drawing applications.
 
 - **`width`**: Width of the image.
   - tipo: int
@@ -427,8 +400,7 @@ Image data. (readonly)
 
 ### refresh(buffer=None, format="RGBA")
 
-Refresh image - render and copy the image to an external buffer (optional)
-then invalidate its current content.
+Refresh image - render and copy the image to an external buffer (optional) then invalidate its current content.
 
 - **`buffer`**: An optional object that implements the buffer protocol. If specified, the image is rendered and copied to the buffer, which must be big enough or an exception is thrown.
   - tipo: any buffer type
@@ -503,8 +475,7 @@ Image data. (readonly)
 
 ### refresh(buffer=None, format="RGBA")
 
-Refresh image - calculate and copy the image to an external buffer (optional)
-then invalidate its current content.
+Refresh image - calculate and copy the image to an external buffer (optional) then invalidate its current content.
 
 - **`buffer`**: An optional object that implements the buffer protocol. If specified, the image is calculated and copied to the buffer, which must be big enough or an exception is thrown.
   - tipo: any buffer type
@@ -546,9 +517,7 @@ Tells if an image is available. (readonly)
 
 **Tipo:** bool
 
-Image source from a render of a non active camera.
-The render is done on a custom framebuffer object if fbo is specified,
-otherwise on the default framebuffer.
+Image source from a render of a non active camera. The render is done on a custom framebuffer object if fbo is specified, otherwise on the default framebuffer.
 
 - **`scene`**: Scene in which the image has to be taken.
   - tipo: `KX_Scene`
@@ -651,8 +620,7 @@ Use whole viewport to render.
 
 ### depth
 
-Use depth component of render as array of float - not suitable for texture source,
-should only be used with Range.texture.imageToArray(mode='F').
+Use depth component of render as array of float - not suitable for texture source, should only be used with Range.texture.imageToArray(mode='F').
 
 **Tipo:** bool
 
@@ -664,14 +632,7 @@ Use depth component of render as grayscale color - suitable for texture source.
 
 ### render()
 
-Render the scene but do not extract the pixels yet.
-The function returns as soon as the render commands have been send to the GPU.
-The render will proceed asynchronously in the GPU while the host can perform other tasks.
-To complete the render, you can either call `refresh`
-directly of refresh the texture of which this object is the source.
-This method is useful to implement asynchronous render for optimal performance: call render()
-on frame n and refresh() on frame n+1 to give as much as time as possible to the GPU
-to render the frame while the game engine can perform other tasks.
+Render the scene but do not extract the pixels yet. The function returns as soon as the render commands have been send to the GPU. The render will proceed asynchronously in the GPU while the host can perform other tasks. To complete the render, you can either call `refresh` directly of refresh the texture of which this object is the source. This method is useful to implement asynchronous render for optimal performance: call render() on frame n and refresh() on frame n+1 to give as much as time as possible to the GPU to render the frame while the game engine can perform other tasks.
 
 **Retorna:** True if the render was initiated, False if the render cannot be performed (e.g. the camera is active)
 
@@ -681,12 +642,7 @@ to render the frame while the game engine can perform other tasks.
 
 ### refresh(buffer, format="RGBA")
 
-Refresh video - render and optionally copy the image to an external buffer then invalidate its current content.
-The render may have been started earlier with the `render` method,
-in which case this function simply waits for the render operations to complete.
-When called without argument, the pixels are not extracted but the render is guaranteed
-to be completed when the function returns.
-This only makes sense with offscreen render on texture target (see `offScreenCreate`).
+Refresh video - render and optionally copy the image to an external buffer then invalidate its current content. The render may have been started earlier with the `render` method, in which case this function simply waits for the render operations to complete. When called without argument, the pixels are not extracted but the render is guaranteed to be completed when the function returns. This only makes sense with offscreen render on texture target (see `offScreenCreate`).
 
 - **`buffer`**: An object that implements the buffer protocol. If specified, the image is copied to the buffer, which must be big enough or an exception is thrown. The transfer to the buffer is optimal if no processing of the image is needed. This is the case if `flip=False, alpha=True, scale=False, whole=True, depth=False, zbuff=False` and no filter is set.
   - tipo: any buffer type of sufficient size
@@ -697,8 +653,7 @@ This only makes sense with offscreen render on texture target (see `offScreenCre
 
 **Tipo do retorno:** bool
 
-Image source from viewport rendered by the active camera.
-To render from a non active camera see `ImageRender`.
+Image source from viewport rendered by the active camera. To render from a non active camera see `ImageRender`.
 
 ### alpha
 
@@ -771,8 +726,7 @@ Use whole viewport to capture.
 
 ### depth
 
-Use depth component of viewport as array of float - not suitable for texture source,
-should only be used with `Range.texture.imageToArray(mode='F')`.
+Use depth component of viewport as array of float - not suitable for texture source, should only be used with `Range.texture.imageToArray(mode='F')`.
 
 **Tipo:** bool
 
@@ -782,36 +736,15 @@ Use depth component of viewport as grayscale color - suitable for texture source
 
 **Tipo:** bool
 
-Image source from an external video stream captured with a DeckLink video card from
-Black Magic Design.
-Before this source can be used, a DeckLink hardware device must be installed, it can be a PCIe card
-or a USB device, and the 'Desktop Video' software package (version 10.4 or above must be installed)
-on the host as described in the DeckLink documentation.
-If in addition you have a recent nVideo Quadro card, you can benefit from the 'GPUDirect' technology
-to push the captured video frame very efficiently to the GPU. For this you need to install the
-'DeckLink SDK' version 10.4 or above and copy the 'dvp.dll' runtime library to Blender's
-installation directory or to any other place where Blender can load a DLL from.
+Image source from an external video stream captured with a DeckLink video card from Black Magic Design. Before this source can be used, a DeckLink hardware device must be installed, it can be a PCIe card or a USB device, and the 'Desktop Video' software package (version 10.4 or above must be installed) on the host as described in the DeckLink documentation. If in addition you have a recent nVideo Quadro card, you can benefit from the 'GPUDirect' technology to push the captured video frame very efficiently to the GPU. For this you need to install the 'DeckLink SDK' version 10.4 or above and copy the 'dvp.dll' runtime library to Blender's installation directory or to any other place where Blender can load a DLL from.
 
 - **`format`**: string describing the video format to be captured.
   - tipo: str
 - **`capture`**: Card number from which the input video must be captured.
   - tipo: int
-The format argument must be written as `<displayMode>/<pixelFormat>[/3D][:<cacheSize>]`
-where `<displayMode>` describes the frame size and rate and <pixelFormat> the encoding of the pixels.
-The optional `/3D` suffix is to be used if the video stream is stereo with a left and right eye feed.
-The optional `:<cacheSize>` suffix determines the number of the video frames kept in cache, by default 8.
-Some DeckLink cards won't work below a certain cache size. The default value 8 should be sufficient for all cards.
-You may try to reduce the cache size to reduce the memory footprint. For example the The 4K Extreme is known
-to work with 3 frames only, the Extreme 2 needs 4 frames and the Intensity Shuttle needs 6 frames, etc.
-Reducing the cache size may be useful when Decklink is used in conjunction with GPUDirect:
-all frames must be locked in memory in that case and that puts a lot of pressure on memory.
-If you reduce the cache size too much, you'll get no error but no video feed either.
+The format argument must be written as `<displayMode>/<pixelFormat>[/3D][:<cacheSize>]` where `<displayMode>` describes the frame size and rate and <pixelFormat> the encoding of the pixels. The optional `/3D` suffix is to be used if the video stream is stereo with a left and right eye feed. The optional `:<cacheSize>` suffix determines the number of the video frames kept in cache, by default 8. Some DeckLink cards won't work below a certain cache size. The default value 8 should be sufficient for all cards. You may try to reduce the cache size to reduce the memory footprint. For example the The 4K Extreme is known to work with 3 frames only, the Extreme 2 needs 4 frames and the Intensity Shuttle needs 6 frames, etc. Reducing the cache size may be useful when Decklink is used in conjunction with GPUDirect: all frames must be locked in memory in that case and that puts a lot of pressure on memory. If you reduce the cache size too much, you'll get no error but no video feed either.
 
-The valid `<displayMode>` values are copied from the `BMDDisplayMode` enum in the DeckLink API
-without the 'bmdMode' prefix. In case a mode that is not in this list is added in a later version
-of the SDK, it is also possible to specify the 4 letters of the internal code for that mode.
-You will find the internal code in the `DeckLinkAPIModes.h` file that is part of the SDK.
-Here is for reference the full list of supported display modes with their equivalent internal code:
+The valid `<displayMode>` values are copied from the `BMDDisplayMode` enum in the DeckLink API without the 'bmdMode' prefix. In case a mode that is not in this list is added in a later version of the SDK, it is also possible to specify the 4 letters of the internal code for that mode. You will find the internal code in the `DeckLinkAPIModes.h` file that is part of the SDK. Here is for reference the full list of supported display modes with their equivalent internal code:
 
 Internal Codes
 - NTSC 'ntsc'
@@ -866,24 +799,11 @@ Pixel Formats
 - 10BitRGBXLE	'R10l'
 - 10BitRGBX	'R10b'
 
-Refer to the DeckLink SDK documentation for a full description of these pixel format.
-It is important to understand them as the decoding of the pixels is NOT done in VideoTexture
-for performance reason. Instead a specific shader must be used to decode the pixel in the GPU.
-Only the '8BitARGB', '8BitBGRA' and '10BitRGBXLE' pixel formats are mapped directly to OpenGL RGB float textures.
-The '8BitYUV' and '10BitYUV' pixel formats are mapped to openGL RGB float texture but require a shader to decode.
-The other pixel formats are sent as a `GL_RED_INTEGER` texture (i.e. a texture with only the
-red channel coded as an unsigned 32 bit integer) and are not recommended for use.
+Refer to the DeckLink SDK documentation for a full description of these pixel format. It is important to understand them as the decoding of the pixels is NOT done in VideoTexture for performance reason. Instead a specific shader must be used to decode the pixel in the GPU. Only the '8BitARGB', '8BitBGRA' and '10BitRGBXLE' pixel formats are mapped directly to OpenGL RGB float textures. The '8BitYUV' and '10BitYUV' pixel formats are mapped to openGL RGB float texture but require a shader to decode. The other pixel formats are sent as a `GL_RED_INTEGER` texture (i.e. a texture with only the red channel coded as an unsigned 32 bit integer) and are not recommended for use.
 
-Example: `HD1080p24/10BitYUV/3D:4` is equivalent to `24ps/v210/3D:4`
-and represents a full HD stereo feed at 24 frame per second and 4 frames cache size.
+Example: `HD1080p24/10BitYUV/3D:4` is equivalent to `24ps/v210/3D:4` and represents a full HD stereo feed at 24 frame per second and 4 frames cache size.
 
-Although video format auto detection is possible with certain DeckLink devices, the corresponding
-API is NOT implemented in the BGE. Therefore it is important to specify the format string that
-matches exactly the video feed. If the format is wrong, no frame will be captured.
-It should be noted that the pixel format that you need to specify is not necessarily the actual
-format in the video feed. For example, the 4K Extreme card delivers 8bit RGBs pixels in the
-'10BitRGBXLE' format. Use the 'Media Express' application included in 'Desktop Video' to discover
-which pixel format works for a particular video stream.
+Although video format auto detection is possible with certain DeckLink devices, the corresponding API is NOT implemented in the BGE. Therefore it is important to specify the format string that matches exactly the video feed. If the format is wrong, no frame will be captured. It should be noted that the pixel format that you need to specify is not necessarily the actual format in the video feed. For example, the 4K Extreme card delivers 8bit RGBs pixels in the '10BitRGBXLE' format. Use the 'Media Express' application included in 'Desktop Video' to discover which pixel format works for a particular video stream.
 
 ### status
 
@@ -899,8 +819,7 @@ Capture frame rate as computed from the video format.
 
 ### valid
 
-Tells if the image attribute can be used to retrieve the image.
-Always False in this implementation (the image is not available at python level)
+Tells if the image attribute can be used to retrieve the image. Always False in this implementation (the image is not available at python level)
 
 **Tipo:** bool
 
@@ -912,9 +831,7 @@ The image data. Always None in this implementation.
 
 ### size
 
-The size of the frame in pixel.
-Stereo frames have double the height of the video frame, i.e. 3D is delivered to the GPU
-as a single image in top-bottom order, left eye on top.
+The size of the frame in pixel. Stereo frames have double the height of the video frame, i.e. 3D is delivered to the GPU as a single image in top-bottom order, left eye on top.
 
 **Tipo:** (int,int)
 
@@ -1002,70 +919,41 @@ Source of texture.
 
 **Tipo:** one of... * `VideoFFmpeg` * `VideoDeckLink` * `ImageFFmpeg` * `ImageBuff` * `ImageMirror` * `ImageMix` * `ImageRender` * `ImageViewport`
 
-Certain DeckLink devices can be used to playback video: the host sends video frames regularly
-for immediate or scheduled playback. The video feed is outputted on HDMI or SDI interfaces.
-This class supports the immediate playback mode: it has a source attribute that is assigned
-one of the source object in the Range.texture module. Refreshing the DeckLink object causes
-the image source to be computed and sent to the DeckLink device for immediate transmission
-on the output interfaces.  Keying is supported: it allows to composite the frame with an
-input video feed that transits through the DeckLink card.
+Certain DeckLink devices can be used to playback video: the host sends video frames regularly for immediate or scheduled playback. The video feed is outputted on HDMI or SDI interfaces. This class supports the immediate playback mode: it has a source attribute that is assigned one of the source object in the Range.texture module. Refreshing the DeckLink object causes the image source to be computed and sent to the DeckLink device for immediate transmission on the output interfaces.  Keying is supported: it allows to composite the frame with an input video feed that transits through the DeckLink card.
 
 - **`cardIdx`**: Number of the card to be used for output (0=first card). It should be noted that DeckLink devices are usually half duplex: they can either be used for capture or playback but not both at the same time.
   - tipo: int
 - **`format`**: String representing the display mode of the output feed.
   - tipo: str
-The default value of the format argument is reserved for auto detection but it is currently
-not supported (it will generate a runtime error) and thus the video format must be explicitly
-specified. If keying is the goal (see keying attributes), the format must match exactly the
-input video feed, otherwise it can be any format supported by the device (there will be a
-runtime error if not).
-The format of the string is `<displayMode>[/3D]`.
+The default value of the format argument is reserved for auto detection but it is currently not supported (it will generate a runtime error) and thus the video format must be explicitly specified. If keying is the goal (see keying attributes), the format must match exactly the input video feed, otherwise it can be any format supported by the device (there will be a runtime error if not). The format of the string is `<displayMode>[/3D]`.
 
-Refer to `VideoDeckLink` to get the list of acceptable `<displayMode>`.
-The optional `/3D` suffix is used to create a stereo 3D feed.
-In that case the 'right' attribute must also be set to specify the image source for the right eye.
+Refer to `VideoDeckLink` to get the list of acceptable `<displayMode>`. The optional `/3D` suffix is used to create a stereo 3D feed. In that case the 'right' attribute must also be set to specify the image source for the right eye.
 
-Note: The pixel format is not specified here because it is always BGRA. The alpha channel is
-used in keying to mix the source with the input video feed, otherwise it is not used.
-If a conversion is needed to match the native video format, it is done inside the DeckLink driver
-or device.
+Note: The pixel format is not specified here because it is always BGRA. The alpha channel is used in keying to mix the source with the input video feed, otherwise it is not used. If a conversion is needed to match the native video format, it is done inside the DeckLink driver or device.
 
 ### source
 
-This attribute must be set to one of the image sources. If the image size does not fit exactly
-the frame size, the extend attribute determines what to do.
+This attribute must be set to one of the image sources. If the image size does not fit exactly the frame size, the extend attribute determines what to do.
 
-For best performance, the source image should match exactly the size of the output frame.
-A further optimization is achieved if the image source object is ImageViewport or ImageRender
-set for whole viewport, flip disabled and no filter: the GL frame buffer is copied directly
-to the image buffer and directly from there to the DeckLink card (hence no buffer to buffer
-copy inside VideoTexture).
+For best performance, the source image should match exactly the size of the output frame. A further optimization is achieved if the image source object is ImageViewport or ImageRender set for whole viewport, flip disabled and no filter: the GL frame buffer is copied directly to the image buffer and directly from there to the DeckLink card (hence no buffer to buffer copy inside VideoTexture).
 
 **Tipo:** one of... - `VideoFFmpeg` - `VideoDeckLink` - `ImageFFmpeg` - `ImageBuff` - `ImageMirror` - `ImageMix` - `ImageRender` - `ImageViewport`
 
 ### right
 
-If the video format is stereo 3D, this attribute should be set to an image source object
-that will produce the right eye images.  If the goal is to render the BGE scene in 3D,
-it can be achieved with 2 cameras, one for each eye, used by 2 ImageRender with an offscreen
-render buffer that is just the size of the video frame.
+If the video format is stereo 3D, this attribute should be set to an image source object that will produce the right eye images.  If the goal is to render the BGE scene in 3D, it can be achieved with 2 cameras, one for each eye, used by 2 ImageRender with an offscreen render buffer that is just the size of the video frame.
 
 **Tipo:** one of... - `VideoFFmpeg` - `VideoDeckLink` - `ImageFFmpeg` - `ImageBuff` - `ImageMirror` - `ImageMix` - `ImageRender` - `ImageViewport`
 
 ### keying
 
-Specify if keying is enabled. False (default): the output frame is sent unmodified on
-the output interface (in that case no input video is required). True: the output frame
-is mixed with the input video, using the alpha channel to blend the two images and the
-combination is sent on the output interface.
+Specify if keying is enabled. False (default): the output frame is sent unmodified on the output interface (in that case no input video is required). True: the output frame is mixed with the input video, using the alpha channel to blend the two images and the combination is sent on the output interface.
 
 **Tipo:** bool
 
 ### level
 
-If keying is enabled, sets the keying level from 0 to 255. This value is a global alpha value
-that multiplies the alpha channel of the image source. Use 255 (the default) to keep the alpha
-channel unmodified, 0 to make the output frame totally transparent.
+If keying is enabled, sets the keying level from 0 to 255. This value is a global alpha value that multiplies the alpha channel of the image source. Use 255 (the default) to keep the alpha channel unmodified, 0 to make the output frame totally transparent.
 
 **Tipo:** int
 
@@ -1073,19 +961,15 @@ channel unmodified, 0 to make the output frame totally transparent.
 
 Determines how the image source should be mapped if the size does not fit the video frame size.
 * False (the default): map the image pixel by pixel.
-If the image size is smaller than the frame size, extra space around the image is filled with
-0-alpha black. If it is larger, the image is cropped to fit the frame size.
+If the image size is smaller than the frame size, extra space around the image is filled with 0-alpha black. If it is larger, the image is cropped to fit the frame size.
 * True: the image is scaled by the nearest neighbor algorithm to fit the frame size.
-The scaling is fast but poor quality. For best results, always adjust the image source to
-match the size of the output video.
+The scaling is fast but poor quality. For best results, always adjust the image source to match the size of the output video.
 
 **Tipo:** bool
 
 ### close()
 
-Close the DeckLink device and release all resources. After calling this method,
-the object cannot be reactivated, it must be destroyed and a new DeckLink object
-created from fresh to restart the output.
+Close the DeckLink device and release all resources. After calling this method, the object cannot be reactivated, it must be destroyed and a new DeckLink object created from fresh to restart the output.
 
 ### refresh(refresh_source,ts)
 
@@ -1100,12 +984,10 @@ This method must be called frequently to update the output frame in the DeckLink
 
 Source filter BGR24.
 
-Filter for Blue Screen.
-The RGB channels of the color are left unchanged, while the output alpha is obtained as follows:
+Filter for Blue Screen. The RGB channels of the color are left unchanged, while the output alpha is obtained as follows:
 
 - if the square of the euclidian distance between the RGB color
-and the filter's reference color is smaller than the filter's lower limit,
-the output alpha is set to 0;
+and the filter's reference color is smaller than the filter's lower limit, the output alpha is set to 0;
 - if that square is bigger than the filter's upper limit, the output alpha is set to 255;
 - otherwise the output alpha is linarly extrapoled between 0 and 255 in the interval of the limits.
 
@@ -1131,9 +1013,7 @@ Previous pixel filter.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
-Filter for color calculations.
-The output color is obtained by multiplying the reduced 4x4 matrix with the input color
-and adding the remaining column to the result.
+Filter for color calculations. The output color is obtained by multiplying the reduced 4x4 matrix with the input color and adding the remaining column to the result.
 
 ### matrix
 
@@ -1149,8 +1029,7 @@ Previous pixel filter.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
-Filter for grayscale effect.
-Proportions of R, G and B contributions in the output grayscale are 28:151:77.
+Filter for grayscale effect. Proportions of R, G and B contributions in the output grayscale are 28:151:77.
 
 ### previous
 
@@ -1204,8 +1083,7 @@ Previous pixel filter.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
-Returns a new input filter object to be used with `ImageBuff` object when the image passed
-to the `ImageBuff.load` function has the 3-bytes pixel format BGR.
+Returns a new input filter object to be used with `ImageBuff` object when the image passed to the `ImageBuff.load` function has the 3-bytes pixel format BGR.
 
 Source filter RGBA32.
 
@@ -1235,16 +1113,9 @@ Returns a `Buffer` corresponding to the current image stored in a texture source
 
 Returns a numeric value that can be used in `Texture` to create a dynamic texture.
 
-The value corresponds to an internal material number that uses the texture identified
-by name. name is a string representing a texture name with `IM` prefix if you want to
-identify the texture directly. This method works for basic tex face and for material,
-provided the material has a texture channel using that particular texture in first
-position of the texture stack. name can also have `MA` prefix if you want to identify
-the texture by material. In that case the material must have a texture channel in first
-position.
+The value corresponds to an internal material number that uses the texture identified by name. name is a string representing a texture name with `IM` prefix if you want to identify the texture directly. This method works for basic tex face and for material, provided the material has a texture channel using that particular texture in first position of the texture stack. name can also have `MA` prefix if you want to identify the texture by material. In that case the material must have a texture channel in first position.
 
-If the object has no material that matches name, it generates a runtime error.
-Use try/except to catch the exception.
+If the object has no material that matches name, it generates a runtime error. Use try/except to catch the exception.
 
 Ex: `Range.texture.materialID(obj, 'IMvideo.png')`
 
@@ -1259,10 +1130,7 @@ Ex: `Range.texture.materialID(obj, 'IMvideo.png')`
 
 ### setLogFile(filename)
 
-Sets the name of a text file in which runtime error messages will be written,
-in addition to the printing of the messages on the Python console.
-Only the runtime errors specific to the VideoTexture module are written in that file,
-ordinary runtime time errors are not written.
+Sets the name of a text file in which runtime error messages will be written, in addition to the printing of the messages on the Python console. Only the runtime errors specific to the VideoTexture module are written in that file, ordinary runtime time errors are not written.
 
 - **`filename`**: Name of the error log file.
   - tipo: str
@@ -1271,7 +1139,7 @@ ordinary runtime time errors are not written.
 
 **Tipo do retorno:** int
 
-## Constants
+## Constantes
 
 ## FFmpeg Video and Image Status
 

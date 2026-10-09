@@ -1,0 +1,292 @@
+Todos os objetos do jogo derivam desta classe.
+As propriedades de jogo do objeto podem ser acessadas como atributos desta classe.
+Chamar QUALQUER método ou atributo de um objeto que já foi removido da cena gera SystemError. Se o objeto pode ter sido removido desde o último acesso, confira antes com o atributo `invalid`.
+KX_GameObject pode ser herdado para estender o que ele faz. Por exemplo:
+"old_owner" pode ser ignorado. Neste ponto, "self" já é
+o objeto na cena, e "old_owner" já foi
+destruído.
+Dá para criar atributos novos, mas também poderíamos usar uma
+propriedade de jogo, como "self['rate']".
+inverte a direção
+Chamado primeiro
+Depois de chamar o construtor acima, as referências ao objeto antigo
+não devem mais ser usadas.
+Chamado depois. Repare que agora estamos usando o objeto transformado.
+Ao herdar de objetos que não são vazios nem malhas, use o tipo específico. Por exemplo, herde de `BL_ArmatureObject` quando o objeto a transformar for uma armature.
+O nome do objeto.
+A massa do objeto.
+O objeto precisa de um controlador de física para a massa valer; sem ele, a massa é lida como 0.0.
+O atrito do objeto.
+O estado dinâmico do objeto (somente leitura).
+`suspendDynamics` e `restoreDynamics` permitem mudar esse estado.
+O amortecimento linear do objeto, também chamado de amortecimento de translação. Pode ser definido junto com o amortecimento angular pelo método `setDamping`.
+O objeto precisa de um controlador de física para o amortecimento linear valer; sem ele, o valor é lido como 0.0.
+O amortecimento angular do objeto, também chamado de amortecimento de rotação. Pode ser definido junto com o amortecimento linear pelo método `setDamping`.
+O objeto precisa de um controlador de física para o amortecimento angular valer; sem ele, o valor é lido como 0.0.
+Obriga o objeto a continuar se movendo com uma velocidade mínima.
+Vale só para objetos dinâmicos e rígidos.
+O valor 0.0 desliga esta opção.
+Enquanto o objeto está parado, a velocidade mínima não é aplicada.
+Limita a velocidade linear máxima, para o objeto não passar de uma certa velocidade.
+O valor 0.0 desliga esta opção (não deixa o objeto parado).
+Obriga o objeto a continuar girando com uma velocidade mínima. O valor 0.0 desliga.
+Vale só para objetos dinâmicos e rígidos. Enquanto o objeto está parado, a velocidade mínima não é aplicada.
+Limita a velocidade angular máxima, para o objeto não girar além de uma certa velocidade. O valor 0.0 desliga o limite; não para a rotação.
+O vetor de inércia do objeto em coordenadas locais. Somente leitura.
+O objeto pai deste objeto (somente leitura).
+Devolve a lista de membros do grupo se o objeto for um objeto de grupo (instância de dupli group); caso contrário, devolve None.
+Devolve o objeto de grupo (instância de dupli group) a que o objeto pertence, ou None se ele não faz parte de um grupo.
+O grupo de colisão do objeto.
+A máscara de colisão do objeto.
+Lista de funções chamadas quando acontece uma colisão.
+As funções devem aceitar um argumento `(object)` ou quatro argumentos `(object, point, normal, points)`. Para simplificar, o primeiro ponto de colisão de cada objeto colidido vem no segundo e no terceiro argumento.
+Como função
+Como método
+Por compatibilidade, uma função com número variável de argumentos (usando `*args`) recebe só o argumento `object`. A forma com quatro argumentos só é usada quando há mais de um argumento fixo (sem contar o `self` dos métodos).
+A cena do objeto (somente leitura).
+Indica se o objeto está visível.
+A lógica do jogo continua rodando para objetos invisíveis.
+A máscara de camadas usada no render de sombras e de cube maps em tempo real.
+A caixa de volume do objeto, usada no culling.
+Devolve True se o objeto foi descartado pelo culling; caso contrário, False.
+Esta variável devolve um valor inválido se for lida fora dos callbacks da cena `KX_Scene.pre_draw` e `KX_Scene.post_draw`.
+A cor do objeto. [r, g, b, a]
+Indica se o objeto participa do occlusion culling.
+True se o objeto suspende a física conforme a distância até a câmera mais próxima.
+Para a física depois que o objeto para.
+True se o objeto suspende a lógica e a animação conforme a distância até a câmera mais próxima.
+Não suspende a execução dos componentes do objeto.
+Suspende a física do objeto se este raio for menor que a distância até a câmera mais próxima e `physicsCulling` estiver `True`.
+Suspende a lógica e a animação do objeto se este raio for menor que a distância até a câmera mais próxima e `logicCulling` estiver `True`.
+A posição do objeto. [x, y, z] Na escrita: posição local; na leitura: posição no mundo.
+A orientação do objeto. Matriz 3x3. Também aceita um Quaternion ou um vetor Euler. Na escrita: orientação local; na leitura: orientação no mundo.
+O fator de escala do objeto. [sx, sy, sz] Na escrita: escala local; na leitura: escala no mundo.
+A orientação local do objeto. Matriz 3x3. Também aceita um Quaternion ou um vetor Euler.
+A orientação do objeto no mundo. Matriz 3x3.
+O fator de escala local do objeto. [sx, sy, sz]
+O fator de escala do objeto no mundo. [sx, sy, sz]
+A posição local do objeto. [x, y, z]
+A posição do objeto no mundo. [x, y, z]
+A matriz de transformação local do objeto. Matriz 4x4.
+A matriz de transformação do objeto no mundo. Matriz 4x4.
+A velocidade linear local do objeto. [x, y, z]
+A velocidade linear do objeto no mundo. [x, y, z]
+A velocidade angular local do objeto. [x, y, z]
+A velocidade angular do objeto no mundo. [x, y, z]
+A gravidade do objeto. [x, y, z]
+Ajusta o atraso do slow parent durante o jogo.
+A máscara de estados do objeto, usando os 30 primeiros bits; pelo menos um bit precisa estar ligado.
+Lista das malhas deste objeto.
+A maioria dos objetos usa só 1 malha.
+Mudar esta lista não atualiza o KX_GameObject.
+O grupo de batch que contém a malha agrupada do objeto.
+Uma sequência de objetos `SCA_ISensor`, com busca por nome/índice e suporte a iteração.
+Este atributo é experimental e pode ser removido (mas provavelmente não será).
+Uma sequência de objetos `SCA_IController`, com busca por nome/índice e suporte a iteração.
+Uma lista de `SCA_IActuator`, com busca por nome/índice e suporte a iteração.
+Este atributo é experimental e pode ser removido (mas provavelmente não será).
+Dá o dicionário interno de atributos Python do objeto, para acesso direto (mais rápido).
+Todos os componentes Python.
+Os filhos diretos deste objeto (somente leitura).
+Todos os filhos deste objeto, incluindo os filhos dos filhos (somente leitura).
+Quantos frames faltam para o objeto acabar, considerando um frame como 1/50 de segundo (somente leitura).
+Se for True, as propriedades de depuração do objeto aparecem na tela.
+Se for True, as propriedades de depuração do objeto e dos filhos aparecem na tela.
+O índice do nível de detalhe (LOD) que o objeto está usando agora (somente leitura).
+Devolve o gerenciador de LOD do objeto, necessário para configurar os níveis de detalhe dele. O gerenciador é compartilhado entre as instâncias e pode ser trocado para usar os níveis de LOD de outro objeto. Se for definido como `None`, a malha do objeto volta a ser a do primeiro nível de LOD anterior.
+True se Physics > Destruction estiver ligado neste objeto, inclusive em objetos de camadas inativas (somente leitura).
+True se Physics > Explosive estiver ligado neste objeto, inclusive em objetos de camadas inativas (somente leitura).
+O impulso que quebra este objeto destrutível, vindo de uma colisão ou de `KX_Scene.explode`. Começa com o Break Impulse do painel; mudar o valor afeta só esta instância. Em objetos que não são destrutíveis, lê 0.0, e escrever gera AttributeError.
+Segundos que faltam para este objeto explosivo detonar. O pavio conta a partir do momento em que o objeto entra no jogo (início da cena ou `KX_Scene.addObject`). 0.0 significa sem pavio; definir um valor acende o pavio. Em objetos que não são explosivos, escrever gera AttributeError.
+Lista de funções chamadas quando este objeto quebra, com os argumentos `(object, fragments)`. Elas rodam logo depois de os fragmentos entrarem na cena, antes de qualquer explosão empurrá-los. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.
+Lista de funções chamadas quando este objeto explode, com os argumentos `(object, position)`. Num objeto que é destrutível e explosivo ao mesmo tempo, elas rodam depois de `onBreak`. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.
+Lista de funções chamadas quando este objeto deformável amassa (colisão, explosão ou
+**método:** `dent`), com os argumentos `(object, point, impulse)`: o ponto atingido no mundo (o centro da explosão,
+no caso de explosão) e a força do impacto, por exemplo para tocar um som de metal ou soltar faíscas ali. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.
+Apaga este objeto. Pode substituir o atuador End Object.
+A remoção de fato do objeto da cena acontece um pouco depois.
+Quebra este objeto destrutível agora, trocando-o pelos pedaços do grupo Fragments. Se o objeto também for explosivo, ele detona junto.
+O ponto de onde os pedaços se afastam; por padrão, a posição do objeto.
+A velocidade dada aos pedaços para longe de origin; por padrão, o Burst Speed do painel.
+Os pedaços novos, ou uma lista vazia se o objeto não é destrutível ou já quebrou.
+Faz este objeto explosivo explodir agora: uma explosão como `KX_Scene.explode` com os ajustes do painel, o objeto Effect e a remoção do objeto. Um explosivo destrutível também quebra.
+False se o objeto não é explosivo ou já explodiu.
+Amassa este objeto deformável (painel Deformation) como um impacto da força dada: os vértices dentro do Radius do painel em volta de point andam na direção direction (para dentro do objeto) (impulse - Dent Impulse) * Depth, limitado por Max Depth. Só esta instância muda; outros objetos que usam a mesma malha mantêm a forma.
+Ponto atingido, no espaço do mundo.
+Direção do impacto no espaço do mundo, invertida para apontar para dentro do objeto.
+Força do impacto (N*s), comparada com o Dent Impulse.
+False se o objeto não é deformável, se o impulso é fraco demais ou se nenhum vértice se moveu.
+Restaura a forma de um objeto amassado.
+False se o objeto nunca foi amassado.
+Troca a malha deste objeto por outra. Funciona do mesmo jeito que o atuador.
+A malha nova, ou o nome dela.
+Se ligado, troca a malha visível (argumento opcional).
+Se ligado, troca a malha da física (argumento opcional).
+Define se o objeto está visível.
+O estado de visibilidade a definir.
+Argumento opcional para aplicar a visibilidade também a todos os filhos. Se não for passado, vale False.
+Define se o objeto participa do occlusion culling.
+O estado de oclusão a definir.
+Argumento opcional para aplicar a oclusão também a todos os filhos. Se não for passado, vale False.
+Alinha um dos eixos do objeto com o vetor dado.
+O vetor com o qual alinhar o eixo.
+O eixo a alinhar * 0: eixo X * 1: eixo Y * 2: eixo Z
+Gira só uma fração do caminho até o vetor alvo (0.0 a 1.0).
+Devolve o vetor do eixo girado pela orientação do objeto no mundo. Equivale a multiplicar o vetor pela matriz de orientação.
+O vetor em relação à rotação do objeto.
+Move o objeto.
+O vetor de movimento.
+* False: movimento "global", relativo à orientação do mundo. * True: movimento "local", relativo à orientação do objeto. Se não for passado, vale False.
+boolean
+Gira o objeto.
+O vetor de rotação.
+* False: rotação "global", relativa à orientação do mundo. * True: rotação "local", relativa à orientação do objeto. Se não for passado, vale False.
+Aplica uma força ao objeto.
+Exige um objeto dinâmico.
+O vetor de força.
+* False: força "global", relativa à orientação do mundo. * True: força "local", relativa à orientação do objeto. Se não for passado, vale False.
+Aplica um torque ao objeto.
+O vetor de torque.
+* False: torque "global", relativo à orientação do mundo. * True: torque "local", relativo à orientação do objeto. Se não for passado, vale False.
+Lê a velocidade linear do objeto.
+Este método devolve a velocidade do objeto no centro de massa, sem a parte angular.
+* False: velocidade "global", relativa à orientação do mundo. * True: velocidade "local", relativa à orientação do objeto. Se não for passado, vale False.
+A velocidade linear do objeto.
+Define a velocidade linear do objeto.
+Este método define a velocidade do objeto no centro de massa, sem a parte angular.
+O vetor de velocidade linear.
+Lê a velocidade angular do objeto.
+A velocidade angular do objeto.
+Define a velocidade angular do objeto.
+O vetor de velocidade angular.
+Lê a velocidade do objeto no ponto indicado.
+Lê a velocidade do objeto no ponto indicado, incluindo a parte angular.
+Ponto opcional onde medir a velocidade, em coordenadas locais. Se não for passado, vale (0, 0, 0).
+A velocidade no ponto indicado.
+Lê a força de reação do objeto.
+A força de reação é a força aplicada a este objeto no último passo da simulação. Inclui também impulsos, como os de colisões.
+A força de reação deste objeto.
+Isto ainda não está implementado.
+Aplica um impulso ao objeto.
+Aplica o impulso dado ao objeto no ponto indicado. Se point for diferente da posição, applyImpulse também muda o momento angular do objeto; caso contrário, só o momento linear muda.
+O ponto onde aplicar o impulso (em coordenadas do mundo ou locais).
+O vetor de impulso.
+* False: impulso "global", relativo às coordenadas e à orientação do mundo. * True: impulso "local", relativo às coordenadas e à orientação do objeto. Se não for passado, vale False.
+Define `linearDamping` e `angularDamping` de uma vez. É mais eficiente do que definir cada um separadamente.
+Fator de amortecimento linear (de translação).
+Fator de amortecimento angular (de rotação).
+Suspende a física deste objeto.
+Se for `True`, as constraints de física usadas pelo objeto são apagadas. Se for `False` (o padrão), as constraints voltam quando a física é restaurada.
+Retoma a física deste objeto e volta a ligar as colisões.
+Suspende a física dinâmica deste objeto.
+Se for `True`, as colisões com o objeto são ignoradas, como a opção "ghost" do Blender. Se for `False` (o padrão), o objeto fica estático mas continua colidindo com os outros.
+`isSuspendDynamics` mostra se o objeto está suspenso.
+Retoma a física dinâmica deste objeto e volta a ligar as colisões; o objeto deixa de ser ghost.
+O objeto volta com a velocidade linear que tinha quando a dinâmica foi suspensa.
+Liga a física de corpo rígido deste objeto.
+Com a física de corpo rígido, o objeto rola ao colidir.
+Desliga a física de corpo rígido deste objeto.
+Define o pai deste objeto. Os parâmetros opcionais compound e ghost controlam a forma de colisão:
+Nesse caso, dá para escolher se ele fica ghost ou não:
+O novo objeto pai.
+Se a forma deve ser somada à forma composta do pai. * True: a forma do objeto entra na forma composta do pai. * False: o objeto mantém a própria forma.
+Se o objeto deve ficar ghost enquanto tiver pai. * True: fica ghost enquanto tiver pai. * False: continua sólido enquanto tiver pai.
+Se o objeto for do tipo sensor, ele continua ghost, seja qual for o parâmetro ghost.
+Remove o pai deste objeto.
+Devolve o objeto de dados do usuário ligado ao controlador de física deste objeto.
+Lê a lista com os nomes de todas as propriedades.
+Os nomes de todas as propriedades deste objeto.
+Um ponto ou outro `KX_GameObject` até onde medir a distância.
+A distância até o outro objeto ou ponto.
+Devolve o vetor e a distância até outro objeto ou ponto. O vetor vem normalizado, a não ser que a distância seja 0; nesse caso, vem um vetor de tamanho zero.
+Um ponto ou outro `KX_GameObject` até onde calcular o vetor e a distância.
+(distância, vetorGlobal(3), vetorLocal(3))
+Olha na direção de outro ponto ou objeto e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop.
+O raio sempre sai do centro do objeto, ignorando o próprio objeto. Ele vai até o centro de outro objeto ou até um ponto [x, y, z]. Use rayCast() se precisar do ponto atingido.
+[x, y, z] ou objeto na direção do qual o raio é lançado
+Distância máxima (pode ser negativa, para olhar para trás); 0 ou omitido detecta até o alvo
+Nome da propriedade que o objeto precisa ter; se omitido, detecta qualquer objeto
+O primeiro objeto atingido, ou None se não atingir nada ou se o objeto não tiver a propriedade
+Olha de um ponto ou objeto até outro e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop. Se poly for 0, devolve uma tupla de 3 com o objeto, o ponto e a normal atingidos, ou (None, None, None) se não atingir nada. Se poly for 1, devolve uma tupla de 4 com um `KX_PolyProxy` como 4º elemento. Se poly for 2, devolve uma tupla de 5 com um vetor 2D com a coordenada UV do ponto atingido como 5º elemento.
+atira ao longo do eixo gun-gunAim (gunAim não deve ter colisão)
+faz alguma coisa
+O parâmetro face define a orientação da normal.
+0 => a normal sempre aponta para a origem do raio (como se o raio viesse de fora)
+1 => a normal é a normal real da face (só para malhas; nos outros casos face não tem efeito)
+Se xray for 1, o raio atravessa objetos (raio X); caso contrário, o primeiro objeto atingido (fora o próprio) para o raio. Os parâmetros prop e xray funcionam juntos assim:
+prop desligado, xray desligado: devolve o acerto mais próximo, ou nada se não houver objeto em todo o comprimento do raio.
+prop desligado, xray ligado: o mesmo.
+prop ligado, xray desligado: devolve o acerto mais próximo se ele tiver prop; caso contrário, nada.
+prop ligado, xray ligado: devolve o acerto mais próximo que tenha prop, ou nada se nenhum objeto com prop estiver em todo o comprimento do raio.
+O `KX_PolyProxy` que vem como 4º elemento quando poly=1 dá informações sobre o polígono atingido. Se não atingir nada, ou se o objeto atingido não for uma malha estática, o 4º elemento é None.
+O raio ignora objetos sem colisão e faces sem a opção de colisão, mas pode atingir objetos ghost.
+[x, y, z] ou objeto até onde o raio é lançado
+[x, y, z] ou objeto de onde o raio sai; None ou omitido usa o centro do próprio objeto
+Distância máxima (pode ser negativa, para olhar para trás); 0 ou omitido detecta até o alvo
+Nome da propriedade que o objeto precisa ter; omitido ou "" detecta qualquer objeto
+Opção de normal: 1 devolve a normal da face; 0 ou omitido aponta a normal para a origem
+Opção de raio X: 1 pula os objetos que não têm prop; 0 ou omitido para no primeiro objeto
+Opção de polígono: 0, 1 ou 2 para devolver uma tupla de 3, 4 ou 5 com dados da face atingida. * 0 ou omitido: tupla de 3 (object, hitpoint, hitnormal), ou (None, None, None) se não atingir nada. * 1: tupla de 4, com um `KX_PolyProxy` como 4º elemento, ou None se não atingir nada ou se o objeto não usar forma de colisão de malha. * 2: tupla de 5, com uma tupla (u, v) da coordenada UV do ponto atingido como 5º elemento, ou None se não atingir nada, se o objeto não usar forma de colisão de malha ou não tiver mapeamento UV.
+Máscara de colisão: a máscara (16 camadas num inteiro de 16 bits) é combinada com o grupo de colisão de cada objeto, para atingir só parte dos objetos da cena. Só podem ser atingidos os objetos em que `collisionGroup & mask` for verdadeiro.
+(object, hitpoint, hitnormal), ou (object, hitpoint, hitnormal, polygon), ou (object, hitpoint, hitnormal, polygon, hituv). * object, hitpoint e hitnormal são None se não atingir nada. * polygon só é válido se o objeto for válido e for estático, dinâmico com forma de colisão de malha ou soft body; senão é None. * hituv só é válido se polygon for válido e o objeto tiver mapeamento UV; senão é None.
+O raio ignora o objeto que chamou o método. Ele sai do centro do objeto, ou vai até ele, ou usa pontos [x, y, z].
+Testa se este objeto colide com o objeto `obj`.
+O objeto com o qual testar a colisão
+(collide, points) * collide: True se este objeto colide com `obj` * points: os pontos de contato da colisão, ou None
+Define a margem de colisão do objeto.
+A distância da margem de colisão, em unidades do Blender.
+Se este objeto não tiver controlador de física (ID de física zero), esta função gera RuntimeError.
+Envia uma mensagem.
+O assunto da mensagem
+O corpo da mensagem (opcional)
+O nome do objeto que vai receber a mensagem (opcional)
+Atualiza a física com a malha alterada.
+Sem argumentos, a malha da física é recriada a partir da primeira malha do objeto.
+Argumento opcional: cria a forma de física a partir da malha deste objeto.
+Argumento opcional: cria a forma de física a partir desta malha.
+Argumento opcional: duplica a forma de física.
+True se a recriação deu certo, False se falhou.
+Se este objeto tiver instâncias, elas também são atualizadas.
+O argumento gameObject tem a vantagem de converter a malha com os modificadores aplicados (como o Subdivision Surface).
+Por enquanto, só objetos com malha de triângulos ou convex hull são suportados.
+Falha se o objeto fizer parte de um objeto composto (pai ou filho).
+Recriar a malha da física pode ser lento; rodar isso muitas vezes por segundo pesa no desempenho.
+Duplicar a malha da física pode gastar bem mais memória; use esta opção só em malhas duplicadas, senão use `replacePhysicsShape`.
+Troca a forma de física atual.
+Cria a forma de física a partir deste objeto.
+True se a troca deu certo, False se falhou.
+Formas de malha de triângulos não são suportadas.
+Devolve o valor da chave, ou o valor padrão se a chave não existir.
+A chave procurada
+Valor padrão opcional se a chave não existir; se não for passado, vale None.
+O valor da chave ou o padrão.
+Toca uma ação.
+O nome da ação
+O frame inicial da ação
+O frame final da ação
+A camada onde a ação vai tocar (ações em camadas diferentes são somadas/misturadas)
+Só toca esta ação se não houver outra tocando nesta camada com prioridade maior (número menor)
+Quanto misturar esta animação com a anterior nesta camada
+O modo de reprodução
+Quanto da camada anterior usar na mistura
+Flags dos comportamentos antigos de IPO (force etc.)
+A velocidade da ação como fator (1.0 = normal, 2.0 = o dobro etc.)
+Como misturar esta camada com as anteriores
+Para a ação que está tocando na camada indicada.
+A camada a parar; se não for passada, vale 0.
+Lê o frame atual da ação que está tocando na camada indicada.
+A camada de onde ler o frame; se não for passada, vale 0.
+O frame atual da ação
+Lê o nome da ação que está tocando na camada indicada.
+A camada de onde ler o nome da ação; se não for passada, vale 0.
+O nome da ação atual
+Define o frame atual da ação que está tocando na camada indicada.
+A camada onde definir o frame; se não for passada, vale 0.
+O frame para onde levar a ação
+Verifica se há uma ação tocando na camada indicada.
+A camada a verificar; se não for passada, vale 0.
+Se a ação está tocando ou não
+Adiciona uma propriedade à lista de depuração.
+O nome da propriedade a adicionar à lista de depuração.
+O estado de depuração; se não for passado, vale True.
+um raio cai agora (a chuva precisa estar ligada)

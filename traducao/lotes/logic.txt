@@ -1,0 +1,275 @@
+Introdução
+Módulo com as funções de lógica do jogo, importado automaticamente no namespace dos controladores Python.
+Para pegar o controlador que está rodando este script Python:
+Range.logic é importado automaticamente
+Para pegar o objeto do jogo onde está este controlador:
+Os métodos de `KX_GameObject`, `KX_Camera` ou `KX_LightObject` ficam disponíveis conforme o tipo do objeto
+Para pegar um sensor ligado a este controlador.
+"sensorname" é o nome do sensor como foi definido na interface do Blender.
+Para pegar a lista de todos os sensores:
+Veja a referência de cada sensor para os métodos disponíveis:
+Você também pode acessar os atuadores ligados ao controlador
+Para pegar um atuador ligado ao controlador:
+Ativa um atuador
+Veja a referência de cada atuador para os métodos disponíveis
+A maioria dos métodos dos logic bricks dá acesso às propriedades que aparecem nos botões de lógica. Consulte a documentação dos logic bricks para saber como cada um funciona.
+Também há métodos para acessar a `Range.types.KX_Scene` atual
+Pega a cena atual
+Pega a câmera atual
+As matrizes usadas pela engine são **por linha** (row major): `matrix[row][col] = float`
+`Range.types.KX_Camera` tem alguns exemplos usando matrizes.
+Variáveis
+Um dicionário que é mantido quando outro arquivo blend é carregado; serve para guardar inventário e outras variáveis entre cenas e arquivos blend. Ele também pode ser gravado num arquivo e carregado depois com os atuadores de carregar/salvar jogo.
+só tipos nativos do Python, como int/string/bool/float/tuplas/listas, podem ser salvos; GameObjects, atuadores etc. não funcionam como esperado.
+O teclado atual, dentro de um objeto `SCA_PythonKeyboard`.
+O mouse atual, dentro de um objeto `SCA_PythonMouse`.
+Os sensores de movimento do aparelho (giroscópio, acelerômetro, inclinação), dentro de um objeto `KX_PythonMotion`.
+Lista dos `SCA_PythonJoystick` conectados. O tamanho da lista é o número máximo de joysticks suportados. Se não houver joystick numa posição, ela vale None.
+Funções gerais
+Pega o controlador Python ligado a este script.
+Pega a cena atual.
+Pega a lista das cenas carregadas na engine agora.
+As cenas do arquivo blend que não foram convertidas não aparecem nesta lista. Ela só traz cenas como as de overlay.
+Pega a lista dos nomes das cenas que não estão carregadas na engine.
+Carrega Range.logic.globalDict de um arquivo.
+Salva Range.logic.globalDict num arquivo.
+Carrega o arquivo blend.
+O nome do arquivo blend
+Encerra o jogo atual.
+Reinicia o jogo atual recarregando o arquivo .blend (a última versão salva, não o que está rodando agora).
+Converte todos os datablocks do tipo indicado do arquivo blend indicado.
+O caminho do arquivo blend (ou o nome a usar para a biblioteca, se data for passado)
+O tipo de datablock (por enquanto só "Action", "Mesh" e "Scene" são suportados)
+Dados binários de um arquivo blend (opcional)
+Procura e carrega todas as ações da cena, não só as ações "ativas" (só para o tipo Scene)
+Se mostra ou não informações de depuração (ex.: "SceneName: Scene")
+Se carrega ou não também os datablocks de texto (pode ser desligado para mais segurança)
+Se carrega ou não de forma assíncrona (em outra thread). Por enquanto só o tipo "Scene" suporta isso.
+Cena onde juntar os dados carregados; se for `None`, usa a cena atual.
+Bibliotecas carregadas de forma assíncrona não ficam disponíveis logo que LibLoad() retorna. Use o KX_LibLoadStatus devolvido para saber quando elas estão prontas.
+Usa dados de um datablock que já existe e carrega como uma biblioteca nova.
+Um nome único para a biblioteca, usado depois para removê-la
+O tipo de datablock (por enquanto só "Mesh" é suportado)
+Lista com os nomes dos datablocks a carregar
+Libera uma biblioteca, removendo todos os objetos e malhas dela das cenas ativas.
+O nome da biblioteca a liberar (o nome usado em LibNew)
+Devolve a lista das bibliotecas carregadas agora.
+Tempo por frame, em milissegundos, que o LibLoad assíncrono pode gastar juntando as bibliotecas carregadas à cena (texturas, shaders, objetos). O padrão de 8 mantém o frame rate do jogo; uma tela de carregamento pode aumentar (ex.: 30) para terminar antes com frame rate menor, e depois voltar o valor.
+Novo limite; se omitido, só devolve o atual.
+O limite atual em milissegundos.
+Carrega uma cena na engine.
+Esta função não tem efeito na hora: a cena entra na fila e é adicionada no próximo ciclo de lógica, quando aparece em `getSceneList`
+O nome da cena
+Overlay ou underlay (opcional)
+Compila os shaders da cena aos poucos a cada frame (limite de `setLibLoadFrameBudget`) antes de a cena entrar em `getSceneList`, para a tela de carregamento continuar desenhando; a lógica da cena só começa depois disso.
+Envia uma mensagem para os sensores de qualquer cena ativa.
+O nome do objeto de onde a mensagem vem (opcional)
+Define a gravidade do mundo.
+O vetor de gravidade
+Devolve uma lista de 512 pontos da placa de som. Só funciona com o driver de som fmod.
+Pega o número máximo de frames de lógica por frame de render.
+O número máximo de frames de lógica por frame de render
+Define o número máximo de frames de lógica executados por frame de render. Não afeta a física, que continua rodando no frame rate completo.
+O novo número máximo de frames de lógica por frame de render. Valores válidos: 1..5
+Nenhuma parte da engine usa este limite; o valor definido aqui não tem efeito. Fica só por compatibilidade com scripts antigos. Ele também não controla mais o culling de sombras, que antes usava esta mesma configuração.
+Pega o último valor passado para `setMaxPhysicsFrame`.
+O último valor definido (padrão: 5)
+Nenhuma parte da engine usa este limite; chamar isto não tem efeito na física nem nas sombras. Fica só por compatibilidade com scripts antigos.
+Guarda o valor para ler depois com `getMaxPhysicsFrame`. Era documentado como o número máximo de passos de física por frame de render, mas nenhum código da engine lê o valor para isso.
+O novo número máximo de passos de física por frame de render. Valores válidos: 1..5.
+Pega a frequência de atualização da lógica.
+A frequência da lógica em Hz
+Define a frequência de atualização da lógica.
+A frequência da lógica é quantas vezes por segundo os logic bricks são executados. O padrão é 60 Hz.
+A nova frequência da lógica (em Hz).
+Pega a frequência de atualização da física
+A frequência da física em Hz
+Define a frequência de atualização da física
+A frequência da física é quantas vezes por segundo a física é executada. O padrão é 60 Hz.
+A nova frequência (em Hz).
+Pega a tecla usada para sair da engine
+A tecla (padrão: `Range.events.ESCKEY`)
+Define a tecla usada para sair da engine
+Uma constante de tecla de `Range.events`
+Renderiza o próximo frame (se o Python estiver no controle)
+Define a opção global que controla o render da cena. Se for True, o render acontece depois do frame de lógica. Se for False, o render é pulado e outro frame de lógica começa na hora.
+Com o render desligado, o VSync da GPU não limita mais os frames por segundo, mas a opção *Use Frame Rate* continua regulando o fps. Para rodar o máximo de frames possível, desmarque essa opção (Render Properties, painel System).
+A opção de render
+Pega o valor atual da opção global de render
+O valor da opção
+Funções de tempo
+Pega o tempo de render atual da engine, em segundos. É o tempo de simulação correspondente à próxima cena que será renderizada.
+Pega o tempo de frame atual da engine, em segundos. É o tempo de simulação correspondente à chamada atual da lógica. Em geral, é este o tempo que interessa.
+Pega quantos segundos reais (do relógio do sistema) passaram desde o começo da simulação.
+Pega o multiplicador entre o tempo real e o tempo da simulação. O padrão é 1.0. Valores maiores que 1.0 deixam a simulação mais rápida que o tempo real; valores menores, mais lenta.
+Define o multiplicador entre o tempo real e o tempo da simulação. Valores maiores que 1.0 deixam a simulação mais rápida que o tempo real; valores menores, mais lenta. Valores muito altos podem deixar a física instável.
+O novo multiplicador de tempo.
+Diz se a engine usa o relógio interno ou um relógio externo. O padrão é o relógio interno.
+Define se a engine usa o relógio interno ou um relógio externo. Com o relógio externo, é preciso chamar setClockTime regularmente.
+A nova configuração
+Define o próximo valor do relógio da simulação. É melhor usar este método numa função main própria em Python: chamá-lo num logic brick pode travar o sistema facilmente (se o tempo não avançar o bastante para rodar pelo menos o próximo passo de lógica).
+O próximo valor do relógio da engine (em segundos).
+Funções utilitárias
+Converte um caminho interno do Blender num caminho de verdade do sistema de arquivos.
+Use / como separador de pastas no caminho. Use '//' no começo para um caminho relativo; o Blender troca isso pela pasta do .blend ou do executável atual para formar o caminho completo. A função também converte o separador para o formato do sistema.
+O caminho a converter/expandir.
+O caminho convertido
+Pega o frame rate médio estimado de todas as cenas ativas, não só da atual.
+O frame rate médio estimado, em frames por segundo
+Devolve a lista dos arquivos blend na mesma pasta do arquivo blend aberto, ou na pasta passada como argumento.
+Pasta opcional, que é expandida (como em expandPath) para o caminho completo.
+Lista de nomes de arquivo, sem a pasta na frente
+Devolve um número decimal aleatório no intervalo [0 - 1)
+Mostra no console as informações das extensões GL
+Mostra no console as estatísticas da engine
+Devolve um dicionário Python com as mesmas informações do profiler na tela. As chaves são as categorias do profiler, e os valores são tuplas com o tempo gasto (em ms) no primeiro elemento e a porcentagem do tempo total no segundo.
+Devolve um dicionário Python com contadores inteiros do último frame completo, os mesmos números que as consultas de render do Debug Mode mostram. Diferente dos tempos de `getProfileInfo`, eles não dependem do hardware nem do relógio, por isso são o que testes A/B devem comparar.
+Contadores do rasterizador, cobrindo todas as passadas do frame (câmera principal, sombras, filtros 2D):
+`drawCalls`: draw calls feitas.
+`materialBinds`: binds de material (programa de shader).
+`lightBinds`: envios dos uniforms das luzes da cena e das lâmpadas com sombra. O conjunto de luzes é constante por camada de luz, então isto conta quantas vezes os mesmos valores foram reenviados.
+Contadores da cena ativa:
+`cullingTotal`, `cullingTested`, `cullingVisible`: objetos na lista de render, testados contra o frustum/DBVT e achados visíveis, na última passada de culling da câmera principal.
+`lightsTotal`, `lightsShadowUpdated`, `shadowPasses`: luzes da cena, luzes cujo buffer de sombra foi atualizado e passadas de sombra renderizadas (cada divisão de cascata conta como uma).
+`sensors`, `controllersTriggered`, `actuatorsUpdated`: sensores registrados e controladores/atuadores executados no frame de lógica. Atenção: estes dois são contados enquanto o frame roda, e um controlador Python que chama esta função faz parte desse frame; ele só vê o que rodou antes dele, então num controlador o valor costuma ser 0. A sobreposição do Debug Mode lê os valores depois do frame e mostra a contagem completa. Os contadores do rasterizador e do culling não têm esse problema: sempre vêm do último frame completo.
+Constantes
+Valor verdadeiro usado por alguns módulos.
+Valor falso usado por alguns módulos.
+Sensores
+Estado do sensor
+Sensor de armature
+Veja `Range.types.KX_ArmatureSensor.type`
+Detecta que a constraint mudou de estado (ativa/inativa)
+Detecta que o erro linear da constraint passou de um limite
+Detecta que o erro linear da constraint ficou abaixo de um limite
+Detecta que o erro de rotação da constraint passou de um limite
+Detecta que o erro de rotação da constraint ficou abaixo de um limite
+Sensor de propriedade
+Ativa quando a propriedade é igual ao valor do sensor.
+Ativa quando a propriedade é diferente do valor do sensor.
+Ativa quando a propriedade está entre os limites indicados.
+Ativa quando a propriedade muda
+Ativa quando a expressão confere
+Ativa quando a propriedade é menor que o valor do sensor
+Ativa quando a propriedade é maior que o valor do sensor
+Sensor de radar
+Veja `Range.types.KX_RadarSensor`
+Sensor de raio
+Veja `Range.types.KX_RaySensor`
+Atuadores
+Atuador de ação
+Veja `Range.types.BL_ActionActuator`
+Atuador de armature
+Veja `Range.types.BL_ArmatureActuator.type`
+Só garante que a armature será atualizada no próximo frame gráfico. É o único modo contínuo do atuador: roda sozinho uma vez por frame até um controlador pará-lo
+Liga a constraint.
+Desliga a constraint (os valores da constraint em tempo de jogo não são atualizados).
+Troca o alvo e o subalvo da constraint.
+Muda o peso da constraint (só IK).
+Muda a influência da constraint.
+Atuador de constraint
+Veja `Range.types.KX_ConstraintActuator.option`
+Vale para a constraint de distância:
+Ativa o alinhamento à superfície
+Ativa o controle de distância
+A direção do raio segue o eixo local
+Vale para a constraint de campo de força:
+O campo de força também age na rotação
+Vale para as duas:
+Detecta material em vez de propriedade
+Não desativa se o raio não atingir o alvo
+Veja `Range.types.KX_ConstraintActuator.limit`
+Limita a coordenada X.
+Limita a coordenada Y
+Limita a coordenada Z
+Limita a rotação X
+Limita a rotação Y
+Limita a rotação Z
+Define a distância ao longo do eixo X negativo
+Define a distância ao longo do eixo Y negativo
+Define a distância ao longo do eixo Z negativo
+Define a distância ao longo do eixo X positivo
+Define a distância ao longo do eixo Y positivo
+Define a distância ao longo do eixo Z positivo
+Define a orientação do eixo X
+Define a orientação do eixo Y
+Define a orientação do eixo Z
+Define o campo de força ao longo do eixo X negativo
+Define o campo de força ao longo do eixo Y negativo
+Define o campo de força ao longo do eixo Z negativo
+Define o campo de força ao longo do eixo X positivo
+Define o campo de força ao longo do eixo Y positivo
+Define o campo de força ao longo do eixo Z positivo
+Atuador dinâmico
+Veja `Range.types.KX_SCA_DynamicActuator`
+Atuador de jogo
+Veja `Range.types.KX_GameActuator`
+Atuador de mouse
+Atuador de parentesco
+Distribuições aleatórias
+Veja `Range.types.SCA_RandomActuator`
+Atuador de cena
+Veja `Range.types.KX_SceneActuator`
+Atuador de som
+Veja `Range.types.KX_SoundActuator`
+Atuador de steering
+Veja `Range.types.KX_SteeringActuator.behavior`
+Atuador TrackTo
+Veja `Range.types.KX_TrackToActuator`
+Diversos
+Filtro 2D
+Filtro personalizado; o código é definido pela propriedade shaderText.
+Desliga o filtro que está ativo agora
+Liga o filtro que foi desligado antes
+Cria e liga filtros prontos
+Desliga e destrói o filtro que está ativo agora
+Canal de armature
+Veja `Range.types.BL_ArmatureChannel.rotation_mode`
+Observação: os modos euler têm os nomes da interface do Blender, mas a ordem real dos eixos é invertida
+Usa o quaternion do atributo rotation para atualizar a rotação do osso.
+Usa euler_rotation e aplica os ângulos nos eixos Z, Y, X do osso, nessa ordem.
+Usa euler_rotation e aplica os ângulos nos eixos Y, Z, X do osso, nessa ordem.
+Usa euler_rotation e aplica os ângulos nos eixos Z, X, Y do osso, nessa ordem.
+Usa euler_rotation e aplica os ângulos nos eixos X, Z, Y do osso, nessa ordem.
+Usa euler_rotation e aplica os ângulos nos eixos Y, X, Z do osso, nessa ordem.
+Usa euler_rotation e aplica os ângulos nos eixos X, Y, Z do osso, nessa ordem.
+Constraint de armature
+Veja `Range.types.BL_ArmatureConstraint.type`
+Veja `Range.types.BL_ArmatureConstraint.ik_type`
+A constraint tenta igualar a posição e, se for o caso, a rotação do alvo.
+A constraint mantém uma certa distância do alvo, conforme ik_mode
+Veja `Range.types.BL_ArmatureConstraint.ik_flag`
+Ligado quando a constraint age na cabeça do osso e não na ponta
+Ligado quando a constraint tenta igualar a orientação do alvo
+Ligado quando a armature pode esticar (só os ossos com fator de estiramento > 0.0)
+Ligado quando a constraint tenta igualar a posição do alvo.
+Veja `Range.types.BL_ArmatureConstraint.ik_mode`
+A constraint tenta manter o osso a no máximo ik_dist do alvo
+A constraint tenta manter o osso a mais de ik_dist do alvo
+A constraint tenta manter o osso exatamente a ik_dist do alvo.
+Material do Blender
+Estado da entrada
+Veja `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.types.SCA_MouseSensor`, `Range.types.SCA_KeyboardSensor`
+KX_GameObject
+Veja `Range.types.KX_GameObject.playAction`
+Toca a ação uma vez.
+Repete a ação em loop.
+Toca a ação para a frente e, quando termina, volta para trás.
+Mistura as camadas por interpolação linear
+Soma as camadas
+Botões do mouse
+Veja `Range.types.SCA_MouseSensor`
+Modos de desenho da malha de navegação
+Desenha só as paredes.
+Desenha só os polígonos.
+Desenha a malha de triângulos.
+Shader
+Posição da câmera atual
+Usa um timer como valor do uniform.
+Estados
+Veja `Range.types.KX_StateActuator`
+Veja `Range.types.KX_StateActuator.operation`
+Subtrai bits da máscara de estados
+Copia a máscara de estados
+Inverte bits da máscara de estados
+Soma bits à máscara de estados

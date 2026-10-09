@@ -31,8 +31,7 @@ Effective only if the parent is already a compound shape.
 
 ### ghost
 
-Whether the object should be made ghost when parenting
-Effective only if the shape is not added to the parent compound shape.
+Whether the object should be made ghost when parenting Effective only if the shape is not added to the parent compound shape.
 
 **Tipo:** boolean
 

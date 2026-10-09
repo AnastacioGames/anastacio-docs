@@ -9,7 +9,7 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 An object providing information about a LibLoad() operation.
 
-``python
+```python
 
 # Print a message when an async LibLoad is done
 import Range
@@ -18,7 +18,7 @@ def finished_cb(status):
     print("Library (%s) loaded in %.2fms." % (status.libraryName, status.timeTaken))
 
 Range.logic.LibLoad('myblend.blend', 'Scene', asynchronous=True).onFinish = finished_cb
-``
+```
 
 ### onFinish
 

@@ -9,9 +9,7 @@ Classe base: [`SCA_IObject`](../sca_iobject/)
 
 A polygon holds the index of the vertex forming the poylgon.
 
-Note:
-The polygon attributes are read-only, you need to retrieve the vertex proxy if you want
-to change the vertex settings.
+Note: The polygon attributes are read-only, you need to retrieve the vertex proxy if you want to change the vertex settings.
 
 ### material_name
 
@@ -103,8 +101,7 @@ Returns the polygon material name with MA prefix
 
 ### getMaterialIndex()
 
-Returns the material bucket index of the polygon.
-This index and the ones returned by getVertexIndex() are needed to retrieve the vertex proxy from `MeshProxy`.
+Returns the material bucket index of the polygon. This index and the ones returned by getVertexIndex() are needed to retrieve the vertex proxy from `MeshProxy`.
 
 **Retorna:** the material index in the mesh
 
@@ -136,8 +133,7 @@ Returns whether the polygon is receives collision or not
 
 ### getVertexIndex(vertex)
 
-Returns the mesh vertex index of a polygon vertex
-This index and the one returned by getMaterialIndex() are needed to retrieve the vertex proxy from `MeshProxy`.
+Returns the mesh vertex index of a polygon vertex This index and the one returned by getMaterialIndex() are needed to retrieve the vertex proxy from `MeshProxy`.
 
 - **`vertex`**: index of the vertex in the polygon: 0->2
 - **`vertex`**: integer

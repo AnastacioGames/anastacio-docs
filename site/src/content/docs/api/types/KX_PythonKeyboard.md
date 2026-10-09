@@ -19,7 +19,7 @@ A dictionary containing the input of each keyboard key. (read-only).
 
 A dictionary containing the status of each keyboard event or key. (read-only).
 
-:::danger[Obsoleto use `inputs`]
+:::danger[Obsoleto use :data:`inputs`]
 
 :::
 
@@ -35,7 +35,7 @@ A dictionary containing the input of only the active keyboard keys. (read-only).
 
 A dictionary containing the status of only the active keyboard events or keys. (read-only).
 
-:::danger[Obsoleto use `activeInputs`]
+:::danger[Obsoleto use :data:`activeInputs`]
 
 :::
 

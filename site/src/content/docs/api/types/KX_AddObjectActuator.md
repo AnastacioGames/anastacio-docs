@@ -12,10 +12,10 @@ Edit Object Actuator (in Add Object Mode)
 :::caution
 An Add Object actuator will be ignored if at game start, the linked object doesn't exist (or is empty) or the linked object is in an active layer.
 
-``none
+```none
 
 Error: GameObject 'Name' has a AddObjectActuator 'ActuatorName' without object (in 'nonactive' layer)
-``
+```
 :::
 
 ### object

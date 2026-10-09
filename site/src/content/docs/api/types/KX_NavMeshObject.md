@@ -9,10 +9,7 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 
 Python interface for using and controlling navigation meshes.
 
-A navigation mesh with a Boolean game property `dynamic_navmesh` set to True is built in tiles when the
-game starts, so obstacles can carve it at runtime. Objects with "Create Obstacle" carve it automatically;
-
-**meth:** `addObstacle` adds any other object. Paths may differ slightly from the static navigation mesh.
+A navigation mesh with a Boolean game property `dynamic_navmesh` set to True is built in tiles when the game starts, so obstacles can carve it at runtime. Objects with "Create Obstacle" carve it automatically; `addObstacle` adds any other object. Paths may differ slightly from the static navigation mesh.
 
 ### dynamic
 
@@ -22,8 +19,7 @@ True when the navigation mesh was built in tiles and obstacles can carve it (rea
 
 ### version
 
-Incremented when the navigation mesh is rebuilt or finishes changing because of obstacles
-(read-only). Paths found with an older version may cross new obstacles.
+Incremented when the navigation mesh is rebuilt or finishes changing because of obstacles (read-only). Paths found with an older version may cross new obstacles.
 
 **Tipo:** integer
 
@@ -55,8 +51,7 @@ Raycast from start to goal points.
 
 ### draw(mode)
 
-Draws a debug mesh for the navigation mesh.
-On a dynamic navigation mesh, the obstacle cylinders are drawn in yellow.
+Draws a debug mesh for the navigation mesh. On a dynamic navigation mesh, the obstacle cylinders are drawn in yellow.
 
 - **`mode`**: the drawing mode (one of `these constants`)
 - **`mode`**: integer
@@ -71,8 +66,7 @@ Rebuild the navigation mesh.
 
 ### addObstacle(object, radius=0.0)
 
-Makes the object carve every dynamic navigation mesh of its scene, following it when it moves.
-Calling it again changes the radius. It has no effect on static navigation meshes.
+Makes the object carve every dynamic navigation mesh of its scene, following it when it moves. Calling it again changes the radius. It has no effect on static navigation meshes.
 
 - **`object`**: the obstacle, in the same scene as the navigation mesh
   - tipo: `KX_GameObject` or string

@@ -11,7 +11,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `Range.constraints` | 52 | 43 | 8 |  |
 | `Range.events` | 135 | 9 | 126 |  |
 | `Range.imgui` | 42 | 0 | 42 | 6 |
-| `Range.logic` | 340 | 149 | 186 | 5 |
+| `Range.logic` | 341 | 149 | 187 | 5 |
 | `Range.network` | 41 | 0 | 41 | 41 |
 | `Range.network.steam` | 9 | 0 | 9 | 9 |
 | `Range.render` | 67 | 45 | 21 | 6 |

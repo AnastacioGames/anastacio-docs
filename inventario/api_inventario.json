@@ -8013,6 +8013,11 @@
      "tipo": "funcao",
      "status": "documentado"
     },
+    "preloadScene": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
     "getRandomFloat": {
      "tipo": "funcao",
      "status": "documentado"

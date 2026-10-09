@@ -346,7 +346,7 @@ def pagina_modulo(chave, info, docs):
     else:
         corpo = f"Módulo `{publico}` da Anastacio Engine. Também acessível como `{publico.replace('Range.', 'bge.')}`."
     nome_arq = publico.replace("Range.", "")
-    texto = frontmatter(publico, f"Referência do módulo {publico}") + corpo + "\n" + secao_pendentes(info["itens"], docs) + "\n"
+    texto = frontmatter(publico, f"Referência do módulo {publico}") + corpo + "\n" + secao_pendentes(info["itens"], docs, publico) + "\n"
     escrever(DESTINO / "api" / "modulos" / f"{nome_arq}.md", texto)
 
 

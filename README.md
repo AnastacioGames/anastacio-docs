@@ -1,5 +1,9 @@
 # Anastacio Docs
+## 🚀 Acesse o site aqui!
 
+| 📘 Versão ao Vivo | 🎨 Protótipo | 💻 Rodar Localmente |
+|------------------|-------------|-------------------|
+| [Site publicado](https://anastacioGames.github.io/anastacio-docs/) | [Visualizar HTML](https://github.com/AnastacioGames/anastacio-docs/blob/main/prototipo/site-prototipo.html) | `cd site && npm install && npm run dev` |
 Site da documentação da API Python da Anastacio Engine (hospedado no GitHub Pages) e as ferramentas que geram o conteúdo dele.
 
 O código da engine fica em outro repositório (`D:\AnastacioEngine`). Este repositório só lê de lá.

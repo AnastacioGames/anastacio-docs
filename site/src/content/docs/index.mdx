@@ -16,12 +16,6 @@ hero:
       variant: minimal
 ---
 
-import { Image } from 'astro:assets';
-import lava from '../../assets/galeria/lava.webp';
-import grama from '../../assets/galeria/grama_trilha.webp';
-import agua from '../../assets/galeria/agua.webp';
-import pelos from '../../assets/galeria/pelos.webp';
-
 ## O que a Anastacio acrescenta
 
 Cada recurso tem um guia e uma página de API com exemplos.
@@ -33,15 +27,4 @@ Cada recurso tem um guia e uma página de API com exemplos.
 <a href="/anastacio-docs/api/modulos/logic/"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg><h3>Load Mode</h3><p>Objetos carregam com a cena ou sob demanda. <code>setObjectConvert</code>, <code>convertObject</code></p><span class="ae-ver">Ver na API →</span></a>
 <a href="/anastacio-docs/api/types/kx_worldinfo/"><svg viewBox="0 0 24 24"><path d="M7 16a4 4 0 0 1 .5-8A5.5 5.5 0 0 1 18 9a3.5 3.5 0 0 1-1 7z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/></svg><h3>Clima</h3><p>Chuva, poças, raios, neblina e terremoto controlados por <code>world.setWeather()</code>.</p><span class="ae-ver">Ver na API →</span></a>
 <a href="/anastacio-docs/api/types/kx_pythonmotion/"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><h3>Web e Android</h3><p>Exportação WebAssembly e APK, com controle na tela e sensores de movimento.</p><span class="ae-ver">Ver na API →</span></a>
-</div>
-
-## Feito na Anastacio
-
-Capturas tiradas no AnastacioRuntime, das cenas de demonstração que vêm com a engine.
-
-<div class="ae-galeria">
-<figure><Image src={lava} alt="Rio de lava com rachaduras brilhantes entre rochas escuras" /><figcaption>Lava</figcaption></figure>
-<figure><Image src={grama} alt="Campo de grama que se abre em volta de uma esfera" /><figcaption>Grama com trilha</figcaption></figure>
-<figure><Image src={agua} alt="Mar com ondas e espuma em volta de pedras, praia ao fundo" /><figcaption>Água</figcaption></figure>
-<figure><Image src={pelos} alt="Duas cabeças de macaco cobertas de pelos, malhado preto e branco e tricolor" /><figcaption>Pelos</figcaption></figure>
 </div>

@@ -74,8 +74,3 @@ h1, h2, .site-title { font-family: var(--ae-display); letter-spacing: .02em; }
 .ae-feat > a:hover { background: var(--sl-color-gray-6); }
 .ae-feat .ae-ver { display: inline-block; margin-top: .8rem; font-size: .8rem; color: var(--ae-gold); opacity: .7; }
 .ae-feat > a:hover .ae-ver { opacity: 1; }
-
-.ae-galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; margin-top: 1rem; }
-.ae-galeria figure { margin: 0 !important; border: 1px solid var(--sl-color-hairline); border-radius: 12px; overflow: hidden; background: var(--sl-color-black); }
-.ae-galeria img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
-.ae-galeria figcaption { padding: .55rem .9rem; font-size: .85rem; color: var(--ae-gold-2); font-family: var(--ae-display); }

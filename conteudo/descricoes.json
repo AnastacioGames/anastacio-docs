@@ -46,5 +46,16 @@
  },
  "Range.logic": {
   "preloadScene": "preloadScene(name) -> bool\nConverte uma cena com antecedência, no fim deste frame (shaders e texturas incluídos), sem adicioná-la. Depois, um `addScene` ou `replaceScene` dela só insere a cena pronta, sem travar. Chame enquanto uma tela de carregamento estiver aparecendo. Devolve `False` se a cena não existir."
+ },
+ "KX_ParticleSystem": {
+  "blendMode": "Como as partículas se misturam com a cena: `'ALPHA'` ou `'ADDITIVE'`. Valor desconhecido levanta `ValueError`.",
+  "billboardMode": "Como as partículas ficam viradas para a câmera: `'FULL'` ou `'VERTICAL'` (gira só no eixo vertical).",
+  "emissionMode": "Modo de emissão: `'CONTINUOUS'` ou `'BURST'` (todas de uma vez). `burstMode` acompanha este valor.",
+  "useBackfaceCulling": "Se as partículas deixam de ser desenhadas quando vistas por trás.",
+  "useDebugUi": "Mostra o painel de depuração do emissor durante o jogo.",
+  "useVortex": "Liga o redemoinho: as partículas sobem girando em volta do emissor.",
+  "vortexHeight": "Altura do redemoinho.",
+  "vortexRadiusTop": "Raio do redemoinho no topo.",
+  "vortexRotationSpeed": "Velocidade de rotação do redemoinho."
  }
 }

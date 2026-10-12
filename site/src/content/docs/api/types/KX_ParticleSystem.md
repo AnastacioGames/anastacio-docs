@@ -13,6 +13,18 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
+### billboardMode
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Como as partículas ficam viradas para a câmera: `'FULL'` ou `'VERTICAL'` (gira só no eixo vertical).
+
+### blendMode
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Como as partículas se misturam com a cena: `'ALPHA'` ou `'ADDITIVE'`. Valor desconhecido levanta `ValueError`.
+
 ### burstInterval
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
@@ -56,6 +68,12 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 ### emissionDirection
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### emissionMode
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Modo de emissão: `'CONTINUOUS'` ou `'BURST'` (todas de uma vez). `burstMode` acompanha este valor.
 
 ### emitterPosition
 
@@ -101,6 +119,24 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
 
+### useBackfaceCulling
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Se as partículas deixam de ser desenhadas quando vistas por trás.
+
+### useDebugUi
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Mostra o painel de depuração do emissor durante o jogo.
+
+### useVortex
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Liga o redemoinho: as partículas sobem girando em volta do emissor.
+
 ### velocity
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
@@ -108,4 +144,22 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 ### velocityRandomness
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+### vortexHeight
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Altura do redemoinho.
+
+### vortexRadiusTop
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Raio do redemoinho no topo.
+
+### vortexRotationSpeed
+
+<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+
+Velocidade de rotação do redemoinho.
 

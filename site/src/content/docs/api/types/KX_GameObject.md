@@ -592,6 +592,138 @@ Segundos que faltam para este objeto explosivo detonar. O pavio conta a partir d
 
 **Tipo:** float
 
+### explosionRadius
+
+Raio da explosão deste objeto explosivo, em metros. Como todos os atributos do painel Explosive abaixo, levanta `AttributeError` se o objeto não for explosivo.
+
+**Tipo:** float
+
+### explosionForce
+
+Impulso da explosão no centro; cai até 0 em `explosionRadius`.
+
+**Tipo:** float
+
+### upBias
+
+Empurrão extra para cima (0 a 5), para os objetos voarem em vez de deslizarem no chão.
+
+**Tipo:** float
+
+### useOcclusion
+
+Se a geometria estática entre a explosão e um objeto protege esse objeto.
+
+**Tipo:** bool
+
+### explosionEffect
+
+Objeto de uma camada inativa adicionado no ponto da explosão (fogo, fumaça, som), ou `None`. Precisa ser um objeto do arquivo da cena.
+
+**Tipo:** `KX_GameObject` or None
+
+### effectLife
+
+Segundos de vida do `explosionEffect` (0 = até a lógica dele o remover).
+
+**Tipo:** float
+
+### useParticleExplosion
+
+Liga a explosão de partículas GPU embutida (núcleo, fumaça e detritos).
+
+**Tipo:** bool
+
+### particleSize
+
+Tamanho da explosão de partículas: `'TINY'`, `'SMALL'`, `'MEDIUM'`, `'LARGE'` ou `'HUGE'`. Também escala a marca no chão.
+
+**Tipo:** str
+
+### particleStyle
+
+Do que a explosão é feita: `'FIRE'`, `'ELECTRIC'`, `'CONCRETE'` ou `'WATER'`. Mudar o estilo volta `fireColor`, `smokeColor` e `sparkColor` para as cores do estilo.
+
+**Tipo:** str
+
+### fireColor
+
+Tinta do núcleo da explosão de partículas (branco = cores naturais do estilo).
+
+**Tipo:** Vector((r, g, b))
+
+### smokeColor
+
+Cor da fumaça (nuvem de poeira, névoa) quando nasce.
+
+**Tipo:** Vector((r, g, b))
+
+### sparkColor
+
+Cor das faíscas (detritos, gotas).
+
+**Tipo:** Vector((r, g, b))
+
+### fireAmount
+
+Quantidade de partículas do núcleo, relativa ao tamanho (0 a 4, 0 = nenhuma).
+
+**Tipo:** float
+
+### smokeAmount
+
+Quantidade de fumaça, relativa ao tamanho (0 a 4, 0 = nenhuma).
+
+**Tipo:** float
+
+### sparkAmount
+
+Quantidade de faíscas, relativa ao tamanho (0 a 4, 0 = nenhuma).
+
+**Tipo:** float
+
+### smokeDuration
+
+Quanto tempo a fumaça dura, relativo ao estilo (0.2 a 4).
+
+**Tipo:** float
+
+### blastSpeed
+
+Força com que as partículas são lançadas, relativa ao tamanho (0.2 a 4).
+
+**Tipo:** float
+
+### useGroundMark
+
+Pinta o material de `groundMark` na superfície estática embaixo da explosão.
+
+**Tipo:** bool
+
+### useMarkNearby
+
+Com `useGroundMark`: pinta também uma marca menor nos objetos em volta da explosão (os 12 mais próximos).
+
+**Tipo:** bool
+
+### groundMark
+
+Objeto de malha de uma camada inativa cujo material é a marca no chão, ou `None`. Precisa ser um objeto do arquivo da cena.
+
+**Tipo:** `KX_GameObject` or None
+
+### markSize
+
+Tamanho da marca no chão, relativo a `particleSize` (0.1 a 4).
+
+**Tipo:** float
+
+### markLife
+
+Segundos que a marca fica no chão (0 = para sempre).
+
+**Tipo:** float
+
 ### onBreak
 
 Lista de funções chamadas quando este objeto quebra, com os argumentos `(object, fragments)`. Elas rodam logo depois de os fragmentos entrarem na cena, antes de qualquer explosão empurrá-los. Funções definidas num objeto de camada inativa são copiadas para todo objeto adicionado a partir dele.

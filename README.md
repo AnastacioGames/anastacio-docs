@@ -12,8 +12,8 @@ O código da engine fica em outro repositório (`D:\AnastacioEngine`). Este repo
 
 | Pasta | O que tem |
 |---|---|
-| `tools/` | Scripts. `api_inventario.py` levanta toda a API a partir do C++ da engine. |
-| `inventario/` | Saída do inventário: `api_inventario.md` (relatório para revisar) e `api_inventario.json` (dados). |
+| `tools/` | Scripts. `api_inventario.py` levanta a API e audita a cobertura Python dos controles de jogo. |
+| `inventario/` | Saída do inventário (`api_inventario.*`) e da cobertura (`cobertura_python.*`). |
 | `prototipo/` | Protótipo visual aprovado do site (`site-prototipo.html`, abre direto no navegador). |
 | `site/` | Projeto Astro Starlight do site. Páginas escritas à mão em `site/src/content/docs/` (início, sobre, guias); `api/` é gerada. |
 
@@ -32,6 +32,9 @@ Sempre que a engine ganhar funções novas:
    - **sem doc**: está no `.rst` mas sem descrição.
    - **só no rst**: documentado mas não achado no C++ (removido, herdado de classe base ou registrado de outro jeito).
    - Comparar com a versão anterior pelo `git diff inventario/` mostra só o que mudou.
+   - Revisar também `inventario/cobertura_python.md`: ele cruza os controles RNA de partículas,
+     explosões e clima com os bindings Python e aponta os que ainda não têm acesso em runtime.
+     “Sem binding” é uma fila de decisão técnica, não uma ordem para expor todo controle de editor.
 
 3. **Gerar as páginas da API**
    ```

@@ -51,7 +51,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
 | `KX_FontObject` | 7 | 4 | 3 |  |
 | `KX_GameActuator` | 4 | 2 | 2 |  |
-| `KX_GameObject` | 189 | 118 | 71 | 24 |
+| `KX_GameObject` | 211 | 140 | 71 | 24 |
 | `KX_InputSystem` | 5 | 0 | 5 |  |
 | `KX_InputTable` | 4 | 0 | 4 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
@@ -71,7 +71,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 25 | 0 | 25 | 3 |
+| `KX_ParticleSystem` | 34 | 0 | 34 | 3 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |

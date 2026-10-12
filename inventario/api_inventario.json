@@ -2863,6 +2863,116 @@
      "commit": "49be685b",
      "data": "2026-10-09"
     },
+    "explosionRadius": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "explosionForce": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "upBias": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "useOcclusion": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "explosionEffect": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "effectLife": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "useParticleExplosion": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "particleSize": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "particleStyle": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "fireColor": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "smokeColor": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "sparkColor": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "fireAmount": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "smokeAmount": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "sparkAmount": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "smokeDuration": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "blastSpeed": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "useGroundMark": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "useMarkNearby": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "groundMark": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "markSize": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "markLife": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
     "decalLife": {
      "tipo": "atributo",
      "so_leitura": false,
@@ -4298,6 +4408,60 @@
      "origem": "anastacio",
      "commit": "f51619e1",
      "data": "2026-10-12"
+    },
+    "blendMode": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "billboardMode": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "emissionMode": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "useBackfaceCulling": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "useDebugUi": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "useVortex": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "vortexHeight": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "vortexRadiusTop": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "vortexRotationSpeed": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "desconhecida"
     }
    }
   },

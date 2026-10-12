@@ -1,9 +1,10 @@
-"""Inventário da API Python da Anastacio Engine.
+"""Inventário e auditoria da API Python da Anastacio Engine.
 
 Lê, no repositório da engine, as tabelas de bindings no C++ (Methods/Attributes das classes e os
 métodos/constantes dos módulos) e cruza com a documentação herdada em
 source/doc/python_api/rst. Gera inventario/api_inventario.json e
-inventario/api_inventario.md neste repositório.
+inventario/api_inventario.md neste repositório. Também cruza os controles RNA
+de recursos de jogo com os bindings e gera inventario/cobertura_python.*.
 
 Uso: python tools/api_inventario.py [--engine D:/AnastacioEngine] [--sem-origem]
 """
@@ -99,6 +100,150 @@ def ler_cpp():
                     m = modulos.setdefault(atual, {"arquivo": rel, "funcoes": {}, "constantes": {}})
                     m["constantes"][nome] = {}
     return classes, modulos
+
+
+# ---------------------------------------------------------------- cobertura RNA -> API Python
+
+def _bloco_funcao(texto, nome):
+    """Corpo de uma função C/C++, sem depender de uma quantidade fixa de linhas."""
+    inicio = texto.find(nome)
+    if inicio < 0:
+        return ""
+    abre = texto.find("{", inicio)
+    if abre < 0:
+        return ""
+    nivel = 0
+    for i in range(abre, len(texto)):
+        if texto[i] == "{":
+            nivel += 1
+        elif texto[i] == "}":
+            nivel -= 1
+            if nivel == 0:
+                return texto[abre + 1:i]
+    return ""
+
+
+def _rna_props(arquivo, funcao):
+    texto = arquivo.read_text(encoding="utf-8", errors="replace")
+    bloco = _bloco_funcao(texto, funcao)
+    return sorted(set(re.findall(r'RNA_def_property\(srna,\s*"([^"]+)"', bloco)))
+
+
+def _camel(nome):
+    partes = nome.split("_")
+    return partes[0] + "".join(p.capitalize() for p in partes[1:])
+
+
+def auditoria_cobertura(classes):
+    """Compara controles de runtime visíveis no editor com bindings Python.
+
+    Isto não decide que todo controle RNA *deve* virar API: mostra a lacuna
+    para revisão humana. A lista é deliberadamente restrita a estruturas de
+    jogo, evitando a enorme quantidade de RNA genérico do editor Blender.
+    """
+    rna_obj = RAIZ / "source" / "source" / "blender" / "makesrna" / "intern" / "rna_object.c"
+    rna_world = RAIZ / "source" / "source" / "blender" / "makesrna" / "intern" / "rna_world.c"
+    world_cpp = CPP / "Ketsji" / "KX_WorldInfo.cpp"
+
+    def itens(classe):
+        return set(classes.get(classe, {}).get("metodos", {})) | set(classes.get(classe, {}).get("atributos", {}))
+
+    # Nomes que intencionalmente diferem entre RNA (snake_case) e a API atual.
+    aliases_particulas = {
+        "particle_count": "particleCount", "emitter_position": "emitterPosition",
+        "emitter_radius": "emitterRadius", "velocity_randomness": "velocityRandomness",
+        "end_color": "endColor", "end_size": "endSize", "emission_direction": "emissionDirection",
+        "emission_angle": "emissionAngle", "collision_mode": "collisionMode",
+        "collision_height": "collisionHeight", "collision_bounce": "collisionBounce",
+        "collision_friction": "collisionFriction", "fragment_shader_path": "fragmentShaderPath",
+        "burst_interval": "burstInterval",
+    }
+    aliases_explosao = {
+        "burst_speed": "burstSpeed", "debris_lifetime": "debrisLifetime",
+        "use_break_on_collision": "useBreakOnCollision", "use_inherit_velocity": "useInheritVelocity",
+        "impact_impulse": "impactImpulse", "use_explode_on_impact": "useExplodeOnImpact",
+        "use_chain_reaction": "useChainReaction", "dent_impulse": "dentImpulse",
+        "use_dent_on_collision": "useDentOnCollision", "bend_axis": "bendAxis",
+        "bend_angle": "bendAngle", "bend_max_angle": "bendMaxAngle",
+        "decal_size": "decalSize", "decal_life": "decalLife", "max_decals": "maxDecals",
+        # Prefixados na API: radius/force/effect/mark sozinhos seriam ambíguos em KX_GameObject.
+        "radius": "explosionRadius", "force": "explosionForce",
+        "effect": "explosionEffect", "mark": "groundMark",
+    }
+
+    def grupo(nome, props, disponiveis, aliases=None, editor=()):
+        aliases = aliases or {}
+        linhas = []
+        for prop in props:
+            if prop in editor or prop.startswith("show_"):
+                estado, api = "editor", ""
+            else:
+                api = aliases.get(prop, _camel(prop))
+                estado = "exposto" if api in disponiveis else "sem_binding"
+            linhas.append({"controle_rna": prop, "api": api, "estado": estado})
+        return {"nome": nome, "itens": linhas}
+
+    particulas = _rna_props(rna_obj, "rna_def_object_gpu_particles")
+    explosao = _rna_props(rna_obj, "rna_def_object_explosive")
+
+    # setWeather/getWeather aceitam um vocabulário próprio; extrai-o do C++ em
+    # vez de confundir uma propriedade RNA presente no painel com acesso runtime.
+    texto_world = world_cpp.read_text(encoding="utf-8", errors="replace")
+    bloco_weather = _bloco_funcao(texto_world, "SetWeatherRuntimeProperty") + _bloco_funcao(texto_world, "GetWeatherRuntimeProperty")
+    weather_api = set(re.findall(r'"(?:weather\\.)?([a-z][a-z0-9_]*)"', bloco_weather))
+    weather_props = [p for p in _rna_props(rna_world, "rna_def_world_weather")
+                     if not p.startswith("show_") and (p.startswith(("vfog_", "vcloud_", "cloud_")) or p.startswith("use_"))]
+    weather_aliases = {
+        "use_vfog": "vfog", "use_volumetric_fog": "vfog", "use_clouds": "clouds",
+        "use_rain": "rain", "use_rain_ripple": "ripples", "use_rain_droplets": "droplets",
+        "use_rain_splash": "splash", "use_rain_puddles": "puddles",
+        "use_rain_puddle_ssr": "puddle_ssr", "use_rain_ripple_puddle_only": "ripple_puddle_only",
+        "use_rain_splash_puddle_only": "splash_puddle_only", "use_rain_aura": "aura",
+        "use_rain_lightning": "lightning", "use_rain_lightning_side": "lightning_side",
+        "use_lens_flare": "lens_flare", "use_earthquake": "earthquake",
+        "vfog_color": ("vfog_color_r", "vfog_color_g", "vfog_color_b"),
+        "cloud_color": ("cloud_color_r", "cloud_color_g", "cloud_color_b"),
+        "vcloud_color": ("vcloud_color_r", "vcloud_color_g", "vcloud_color_b"),
+    }
+    weather_linhas = []
+    for prop in weather_props:
+        chave = weather_aliases.get(prop, prop)
+        # O nome público omite o prefixo weather., mas mantém vfog_/vcloud_.
+        chaves = (chave,) if isinstance(chave, str) else chave
+        exposto = all(nome in weather_api for nome in chaves)
+        api = "setWeather/getWeather(" + ", ".join(chaves) + ")" if exposto else ""
+        weather_linhas.append({"controle_rna": prop, "api": api,
+                               "estado": "exposto" if exposto else "sem_binding"})
+
+    return {
+        "grupos": [
+            grupo("Partículas GPU", particulas, itens("KX_ParticleSystem"), aliases_particulas,
+                  editor=("show_expanded",)),
+            grupo("Explosão", explosao, itens("KX_GameObject"), aliases_explosao,
+                  editor=("show_expanded",)),
+            {"nome": "Clima do World", "itens": weather_linhas},
+        ]
+    }
+
+
+def relatorio_cobertura(auditoria):
+    totais = {"exposto": 0, "sem_binding": 0, "editor": 0}
+    for grupo in auditoria["grupos"]:
+        for item in grupo["itens"]:
+            totais[item["estado"]] += 1
+    out = ["# Cobertura Python dos controles de jogo", "",
+           "Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos de jogo "
+           "com bindings Python; não afirma que todo controle do editor deve virar API.", "",
+           f"**Total:** {totais['exposto']} expostos · {totais['sem_binding']} sem binding · "
+           f"{totais['editor']} só de editor.", ""]
+    for grupo in auditoria["grupos"]:
+        out += [f"## {grupo['nome']}", "", "| Controle RNA/editor | API Python encontrada | Estado |",
+                "|---|---|---|"]
+        for item in grupo["itens"]:
+            estado = {"exposto": "exposto", "sem_binding": "**sem binding**", "editor": "editor"}[item["estado"]]
+            out.append(f"| `{item['controle_rna']}` | `{item['api']}` | {estado} |")
+        out.append("")
+    return "\n".join(out)
 
 
 RE_DIRETIVA = re.compile(r"^(\s*)\.\. (class|method|attribute|function|data)::\s*([\w.]+)")
@@ -213,7 +358,12 @@ def main():
     SAIDA.mkdir(exist_ok=True)
     (SAIDA / "api_inventario.json").write_text(json.dumps(resultado, indent=1, ensure_ascii=False), encoding="utf-8")
     (SAIDA / "api_inventario.md").write_text(relatorio(resultado), encoding="utf-8")
-    print(resumo_total(resultado))
+    cobertura = auditoria_cobertura(cpp_cls)
+    (SAIDA / "cobertura_python.json").write_text(json.dumps(cobertura, indent=1, ensure_ascii=False), encoding="utf-8")
+    (SAIDA / "cobertura_python.md").write_text(relatorio_cobertura(cobertura), encoding="utf-8")
+    sem_binding = sum(1 for grupo in cobertura["grupos"] for item in grupo["itens"]
+                      if item["estado"] == "sem_binding")
+    print(f"{resumo_total(resultado)} | cobertura: {sem_binding} controles sem binding")
 
 
 def contar(itens):

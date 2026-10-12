@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 105 classes, 8 módulos | documentados 1023 · sem doc 248 · novos 523 · só no rst 111
+**Total:** 105 classes, 8 módulos | documentados 1045 · sem doc 248 · novos 532 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -23,10 +23,10 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 | Nome | Itens | Documentados | Sem doc | Novos | Só no rst | rst? |
 |---|---:|---:|---:|---:|---:|:---:|
-| `KX_GameObject` | 189 | 118 | 0 | 71 | 0 | sim |
+| `KX_GameObject` | 211 | 140 | 0 | 71 | 0 | sim |
 | `KX_Camera` | 80 | 31 | 0 | 49 | 0 | sim |
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
-| `KX_ParticleSystem` | 25 | 0 | 0 | 25 | 0 | **não** |
+| `KX_ParticleSystem` | 34 | 0 | 0 | 34 | 0 | **não** |
 | `KX_WorldInfo` | 36 | 19 | 0 | 17 | 0 | sim |
 | `KX_2DFilterManager` | 18 | 3 | 0 | 15 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
@@ -163,7 +163,7 @@ Origem pelo git: **186** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_MeshBuilder** (source/source/gameengine/Ketsji/KX_MeshBuilder.cpp): `FromMesh`, `addSlot`, `finish`, `slots` (só leitura)
 - **KX_MeshBuilderSlot** (source/source/gameengine/Ketsji/KX_MeshBuilder.cpp): `addVertex`, `addIndex`, `removeVertex`, `addPrimitiveIndex`, `removePrimitiveIndex`, `addTriangleIndex`, `removeTriangleIndex`, `recalculateNormals`, `vertices` (só leitura), `indices` (só leitura), `triangleIndices` (só leitura), `material`, `uvCount` (só leitura), `colorCount` (só leitura), `primitive` (só leitura)
 - **KX_MovementSensor** (source/source/gameengine/Ketsji/KX_MovementSensor.cpp): `threshold`, `axis`
-- **KX_ParticleSystem** (source/source/gameengine/Ketsji/KX_ParticleSystem.cpp): `burst`, `gravity`, `lifetime`, `emitterPosition`, `emitterRadius`, `velocity`, `velocityRandomness`, `size`, `color`, `particleCount`, `texture`, `endColor`, `endSize`, `emissionDirection`, `emissionAngle`, `debugUI` (só leitura), `enabled`, `collisionMode`, `collisionHeight`, `collisionBounce`, `collisionFriction`, `fragmentShaderPath`, `burstMode` ✦2026-10-12, `burstInterval` ✦2026-10-12, `drag` ✦2026-10-12
+- **KX_ParticleSystem** (source/source/gameengine/Ketsji/KX_ParticleSystem.cpp): `burst`, `gravity`, `lifetime`, `emitterPosition`, `emitterRadius`, `velocity`, `velocityRandomness`, `size`, `color`, `particleCount`, `texture`, `endColor`, `endSize`, `emissionDirection`, `emissionAngle`, `debugUI` (só leitura), `enabled`, `collisionMode`, `collisionHeight`, `collisionBounce`, `collisionFriction`, `fragmentShaderPath`, `burstMode` ✦2026-10-12, `burstInterval` ✦2026-10-12, `drag` ✦2026-10-12, `blendMode`, `billboardMode`, `emissionMode`, `useBackfaceCulling`, `useDebugUi`, `useVortex`, `vortexHeight`, `vortexRadiusTop`, `vortexRotationSpeed`
 - **KX_PythonJoystick** (source/source/gameengine/Ketsji/KX_PythonJoystick.cpp): `stopVibration`, `inputs` (só leitura), `duration`, `strengthLeft`, `strengthRight`, `isVibrating` (só leitura), `hasVibration` (só leitura)
 - **KX_PythonMotion** (source/source/gameengine/Ketsji/KX_PythonMotion.cpp): `recenter` ✦2026-10-01, `headOrientation` (só leitura) ✦2026-10-01, `smoothing` ✦2026-10-01, `recenterTime` ✦2026-10-01
 - **KX_PythonMouse** (source/source/gameengine/Ketsji/KX_PythonMouse.cpp): `reCenter`, `deltaPosition` (só leitura)

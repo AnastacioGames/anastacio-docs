@@ -1,0 +1,654 @@
+{
+ "grupos": [
+  {
+   "nome": "Partículas GPU",
+   "itens": [
+    {
+     "controle_rna": "billboard_mode",
+     "api": "billboardMode",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "blend_mode",
+     "api": "blendMode",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "burst_interval",
+     "api": "burstInterval",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "collision_bounce",
+     "api": "collisionBounce",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "collision_friction",
+     "api": "collisionFriction",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "collision_ground_object",
+     "api": "collisionGroundObject",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "collision_height",
+     "api": "collisionHeight",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "collision_mode",
+     "api": "collisionMode",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "color",
+     "api": "color",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "color_curve",
+     "api": "colorCurve",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "drag",
+     "api": "drag",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "emission_angle",
+     "api": "emissionAngle",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "emission_direction",
+     "api": "emissionDirection",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "emission_mode",
+     "api": "emissionMode",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "emit_from",
+     "api": "emitFrom",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "emitter_position",
+     "api": "emitterPosition",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "emitter_radius",
+     "api": "emitterRadius",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "enabled",
+     "api": "enabled",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "end_color",
+     "api": "endColor",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "end_size",
+     "api": "endSize",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "fragment_shader_path",
+     "api": "fragmentShaderPath",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "gravity",
+     "api": "gravity",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "lifetime",
+     "api": "lifetime",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "particle_count",
+     "api": "particleCount",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "particle_look",
+     "api": "particleLook",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "size",
+     "api": "size",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "size_curve",
+     "api": "sizeCurve",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "texture",
+     "api": "texture",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_backface_culling",
+     "api": "useBackfaceCulling",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_burst_on_start",
+     "api": "useBurstOnStart",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "use_color_curve",
+     "api": "useColorCurve",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "use_debug_ui",
+     "api": "useDebugUi",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_fragment_shader",
+     "api": "useFragmentShader",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "use_size_curve",
+     "api": "useSizeCurve",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "use_vortex",
+     "api": "useVortex",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "velocity",
+     "api": "velocity",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "velocity_randomness",
+     "api": "velocityRandomness",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vortex_height",
+     "api": "vortexHeight",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vortex_radius_top",
+     "api": "vortexRadiusTop",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vortex_rotation_speed",
+     "api": "vortexRotationSpeed",
+     "estado": "exposto"
+    }
+   ]
+  },
+  {
+   "nome": "Explosão",
+   "itens": [
+    {
+     "controle_rna": "blast_speed",
+     "api": "blastSpeed",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "effect",
+     "api": "explosionEffect",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "effect_life",
+     "api": "effectLife",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "fire_amount",
+     "api": "fireAmount",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "fire_color",
+     "api": "fireColor",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "force",
+     "api": "explosionForce",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "fuse",
+     "api": "fuse",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "impact_impulse",
+     "api": "impactImpulse",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "mark",
+     "api": "groundMark",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "mark_life",
+     "api": "markLife",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "mark_size",
+     "api": "markSize",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "particle_size",
+     "api": "particleSize",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "particle_style",
+     "api": "particleStyle",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "radius",
+     "api": "explosionRadius",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "smoke_amount",
+     "api": "smokeAmount",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "smoke_color",
+     "api": "smokeColor",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "smoke_duration",
+     "api": "smokeDuration",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "spark_amount",
+     "api": "sparkAmount",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "spark_color",
+     "api": "sparkColor",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "up_bias",
+     "api": "upBias",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_chain_reaction",
+     "api": "useChainReaction",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_explode_on_impact",
+     "api": "useExplodeOnImpact",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_ground_mark",
+     "api": "useGroundMark",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_mark_nearby",
+     "api": "useMarkNearby",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_occlusion",
+     "api": "useOcclusion",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_particle_explosion",
+     "api": "useParticleExplosion",
+     "estado": "exposto"
+    }
+   ]
+  },
+  {
+   "nome": "Clima do World",
+   "itens": [
+    {
+     "controle_rna": "cloud_color",
+     "api": "setWeather/getWeather(cloud_color_r, cloud_color_g, cloud_color_b)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "cloud_coverage",
+     "api": "setWeather/getWeather(cloud_coverage)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "cloud_detail",
+     "api": "setWeather/getWeather(cloud_detail)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "cloud_scale",
+     "api": "setWeather/getWeather(cloud_scale)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "cloud_speed",
+     "api": "setWeather/getWeather(cloud_speed)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_clouds",
+     "api": "setWeather/getWeather(clouds)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_earthquake",
+     "api": "setWeather/getWeather(earthquake)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_lens_flare",
+     "api": "setWeather/getWeather(lens_flare)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain",
+     "api": "setWeather/getWeather(rain)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_aura",
+     "api": "setWeather/getWeather(aura)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_droplets",
+     "api": "setWeather/getWeather(droplets)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_lightning",
+     "api": "setWeather/getWeather(lightning)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_lightning_side",
+     "api": "setWeather/getWeather(lightning_side)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_puddle_ssr",
+     "api": "setWeather/getWeather(puddle_ssr)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_puddles",
+     "api": "setWeather/getWeather(puddles)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_ripple",
+     "api": "setWeather/getWeather(ripples)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_ripple_puddle_only",
+     "api": "setWeather/getWeather(ripple_puddle_only)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_splash",
+     "api": "setWeather/getWeather(splash)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_splash_puddle_only",
+     "api": "setWeather/getWeather(splash_puddle_only)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_sky_layers",
+     "api": "setWeather/getWeather(use_sky_layers)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_volumetric_clouds",
+     "api": "setWeather/getWeather(use_volumetric_clouds)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_volumetric_fog",
+     "api": "setWeather/getWeather(vfog)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_altitude",
+     "api": "setWeather/getWeather(vcloud_altitude)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_color",
+     "api": "setWeather/getWeather(vcloud_color_r, vcloud_color_g, vcloud_color_b)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_coverage",
+     "api": "setWeather/getWeather(vcloud_coverage)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_density",
+     "api": "setWeather/getWeather(vcloud_density)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_detail_scale",
+     "api": "setWeather/getWeather(vcloud_detail_scale)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_quality",
+     "api": "setWeather/getWeather(vcloud_quality)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_scale",
+     "api": "setWeather/getWeather(vcloud_scale)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_shadow_enable",
+     "api": "setWeather/getWeather(vcloud_shadow_enable)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_shadow_strength",
+     "api": "setWeather/getWeather(vcloud_shadow_strength)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_silver_intensity",
+     "api": "setWeather/getWeather(vcloud_silver_intensity)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_speed",
+     "api": "setWeather/getWeather(vcloud_speed)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vcloud_thickness",
+     "api": "setWeather/getWeather(vcloud_thickness)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_ambient",
+     "api": "setWeather/getWeather(vfog_ambient)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_anisotropy",
+     "api": "setWeather/getWeather(vfog_anisotropy)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_base",
+     "api": "setWeather/getWeather(vfog_base)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_color",
+     "api": "setWeather/getWeather(vfog_color_r, vfog_color_g, vfog_color_b)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_density",
+     "api": "setWeather/getWeather(vfog_density)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_distance",
+     "api": "setWeather/getWeather(vfog_distance)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_edge",
+     "api": "setWeather/getWeather(vfog_edge)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_falloff",
+     "api": "setWeather/getWeather(vfog_falloff)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_light_intensity",
+     "api": "setWeather/getWeather(vfog_light_intensity)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_max_lights",
+     "api": "setWeather/getWeather(vfog_max_lights)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_morning_boost",
+     "api": "setWeather/getWeather(vfog_morning_boost)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_noise_amount",
+     "api": "setWeather/getWeather(vfog_noise_amount)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_noise_scale",
+     "api": "setWeather/getWeather(vfog_noise_scale)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_quality",
+     "api": "setWeather/getWeather(vfog_quality)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_resolution",
+     "api": "",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "vfog_shaft_intensity",
+     "api": "setWeather/getWeather(vfog_shaft_intensity)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_speed",
+     "api": "setWeather/getWeather(vfog_speed)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_sun_intensity",
+     "api": "setWeather/getWeather(vfog_sun_intensity)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_lamps",
+     "api": "setWeather/getWeather(vfog_use_lamps)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_layer",
+     "api": "setWeather/getWeather(vfog_use_layer)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_reach_clouds",
+     "api": "setWeather/getWeather(vfog_use_reach_clouds)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_shafts",
+     "api": "setWeather/getWeather(vfog_use_shafts)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_sun_shafts",
+     "api": "setWeather/getWeather(vfog_use_sun_shafts)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_time_of_day",
+     "api": "setWeather/getWeather(vfog_use_time_of_day)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_use_wind",
+     "api": "setWeather/getWeather(vfog_use_wind)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_volumes_only",
+     "api": "setWeather/getWeather(vfog_volumes_only)",
+     "estado": "exposto"
+    },
+    {
+     "controle_rna": "vfog_wind_direction",
+     "api": "setWeather/getWeather(vfog_wind_direction)",
+     "estado": "exposto"
+    }
+   ]
+  }
+ ]
+}

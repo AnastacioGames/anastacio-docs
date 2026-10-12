@@ -9,20 +9,37 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.
 
-### addFilter(index, type, fragmentProgram)
+### addFilter(index, type, fragmentProgram="", owner=None, mipmap=False)
 
 Adiciona um filtro no passe `index`, do tipo `type`, com o fragment program se for filtro personalizado.
 
 - **`index`**: O índice do passe do filtro.
   - tipo: integer
-- **`type`**: O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
+- **`type`**: O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_OUTLINE` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
   - tipo: integer
 - **`fragmentProgram`**: O fragment program do shader do filtro. Só é usado se `type` for `Range.logic.RAS_2DFILTER_CUSTOMFILTER`; se vazio ou omitido, o filtro é criado sem shader, esperando uma chamada a `BL_Shader.setSourceList` (opcional).
   - tipo: string
+- **`owner`**: Objeto cujas propriedades de jogo alimentam os uniforms de mesmo nome, como no atuador Filter 2D (opcional).
+  - tipo: `KX_GameObject`
+- **`mipmap`**: Gera mipmaps da imagem de entrada do filtro (opcional).
+  - tipo: boolean
 
 **Retorna:** O filtro 2D.
 
 **Tipo do retorno:** `KX_2DFilter`
+
+### setBuiltinFilterEnabled(type, enabled=True)
+
+Liga ou desliga um filtro embutido, mantendo os valores atuais dele, como faz o atuador Filter 2D.
+
+- **`type`**: `Range.logic.RAS_2DFILTER_FXAA`, `RAS_2DFILTER_BLOOM`, `RAS_2DFILTER_TONEMAP`, `RAS_2DFILTER_SSAO`, `RAS_2DFILTER_LIGHTSCATTER` ou `RAS_2DFILTER_SSR`.
+  - tipo: integer
+- **`enabled`**: O novo estado.
+  - tipo: boolean
+
+**Retorna:** False quando o filtro não está disponível.
+
+**Tipo do retorno:** boolean
 
 ### removeFilter(index)
 

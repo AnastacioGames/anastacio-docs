@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 105 classes, 8 módulos | documentados 1045 · sem doc 248 · novos 532 · só no rst 111
+**Total:** 105 classes, 8 módulos | documentados 1046 · sem doc 248 · novos 532 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -28,7 +28,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `KX_ParticleSystem` | 34 | 0 | 0 | 34 | 0 | **não** |
 | `KX_WorldInfo` | 36 | 19 | 0 | 17 | 0 | sim |
-| `KX_2DFilterManager` | 18 | 3 | 0 | 15 | 0 | sim |
+| `KX_2DFilterManager` | 19 | 4 | 0 | 15 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
 | `KX_VehicleWrapper` | 30 | 16 | 0 | 14 | 0 | sim |
 | `KX_Scene` | 37 | 28 | 0 | 9 | 0 | sim |
@@ -131,7 +131,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **186** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **195** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
 - **Range.events** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `OSKEY`, `JOYSTICKA`, `JOYSTICKB`, `JOYSTICKX`, `JOYSTICKY`, `JOYSTICKBACK`, `JOYSTICKGUIDE`, `JOYSTICKLEFTSTICK`, `JOYSTICKRIGHTSTICK`, `JOYSTICKRIGHTSHOUDER`, `JOYSTICKLEFTSHOUDER`, `JOYSTICKPADUP`, `JOYSTICKPADDOWN`, `JOYSTICKPADLEFT`, `JOYSTICKPADRIGHT`
@@ -163,7 +163,7 @@ Origem pelo git: **186** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_MeshBuilder** (source/source/gameengine/Ketsji/KX_MeshBuilder.cpp): `FromMesh`, `addSlot`, `finish`, `slots` (só leitura)
 - **KX_MeshBuilderSlot** (source/source/gameengine/Ketsji/KX_MeshBuilder.cpp): `addVertex`, `addIndex`, `removeVertex`, `addPrimitiveIndex`, `removePrimitiveIndex`, `addTriangleIndex`, `removeTriangleIndex`, `recalculateNormals`, `vertices` (só leitura), `indices` (só leitura), `triangleIndices` (só leitura), `material`, `uvCount` (só leitura), `colorCount` (só leitura), `primitive` (só leitura)
 - **KX_MovementSensor** (source/source/gameengine/Ketsji/KX_MovementSensor.cpp): `threshold`, `axis`
-- **KX_ParticleSystem** (source/source/gameengine/Ketsji/KX_ParticleSystem.cpp): `burst`, `gravity`, `lifetime`, `emitterPosition`, `emitterRadius`, `velocity`, `velocityRandomness`, `size`, `color`, `particleCount`, `texture`, `endColor`, `endSize`, `emissionDirection`, `emissionAngle`, `debugUI` (só leitura), `enabled`, `collisionMode`, `collisionHeight`, `collisionBounce`, `collisionFriction`, `fragmentShaderPath`, `burstMode` ✦2026-10-12, `burstInterval` ✦2026-10-12, `drag` ✦2026-10-12, `blendMode`, `billboardMode`, `emissionMode`, `useBackfaceCulling`, `useDebugUi`, `useVortex`, `vortexHeight`, `vortexRadiusTop`, `vortexRotationSpeed`
+- **KX_ParticleSystem** (source/source/gameengine/Ketsji/KX_ParticleSystem.cpp): `burst`, `gravity`, `lifetime`, `emitterPosition`, `emitterRadius`, `velocity`, `velocityRandomness`, `size`, `color`, `particleCount`, `texture`, `endColor`, `endSize`, `emissionDirection`, `emissionAngle`, `debugUI` (só leitura), `enabled`, `collisionMode`, `collisionHeight`, `collisionBounce`, `collisionFriction`, `fragmentShaderPath`, `burstMode` ✦2026-10-12, `burstInterval` ✦2026-10-12, `drag` ✦2026-10-12, `blendMode` ✦2026-10-12, `billboardMode` ✦2026-10-12, `emissionMode` ✦2026-10-12, `useBackfaceCulling` ✦2026-10-12, `useDebugUi` ✦2026-10-12, `useVortex` ✦2026-10-12, `vortexHeight` ✦2026-10-12, `vortexRadiusTop` ✦2026-10-12, `vortexRotationSpeed` ✦2026-10-12
 - **KX_PythonJoystick** (source/source/gameengine/Ketsji/KX_PythonJoystick.cpp): `stopVibration`, `inputs` (só leitura), `duration`, `strengthLeft`, `strengthRight`, `isVibrating` (só leitura), `hasVibration` (só leitura)
 - **KX_PythonMotion** (source/source/gameengine/Ketsji/KX_PythonMotion.cpp): `recenter` ✦2026-10-01, `headOrientation` (só leitura) ✦2026-10-01, `smoothing` ✦2026-10-01, `recenterTime` ✦2026-10-01
 - **KX_PythonMouse** (source/source/gameengine/Ketsji/KX_PythonMouse.cpp): `reCenter`, `deltaPosition` (só leitura)

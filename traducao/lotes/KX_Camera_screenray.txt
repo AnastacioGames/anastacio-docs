@@ -1,0 +1,2 @@
+O raio atravessa os objetos que não têm a propriedade, como a opção X-Ray do sensor Mouse
+Máscara de colisão; o raio só atinge objetos destes grupos de colisão

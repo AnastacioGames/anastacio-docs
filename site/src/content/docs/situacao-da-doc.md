@@ -29,7 +29,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
 | `KX_2DFilter` | 12 | 6 | 6 | 4 |
-| `KX_2DFilterManager` | 18 | 3 | 15 | 7 |
+| `KX_2DFilterManager` | 19 | 4 | 15 | 7 |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 0 | 2 |  |
@@ -71,7 +71,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 34 | 0 | 34 | 3 |
+| `KX_ParticleSystem` | 34 | 0 | 34 | 12 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |

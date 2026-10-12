@@ -816,6 +816,10 @@
      "tipo": "metodo",
      "status": "documentado"
     },
+    "setBuiltinFilterEnabled": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
     "changeFxaaValues": {
      "tipo": "metodo",
      "status": "novo",
@@ -4413,55 +4417,73 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "billboardMode": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "emissionMode": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "useBackfaceCulling": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "useDebugUi": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "useVortex": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "vortexHeight": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "vortexRadiusTop": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     },
     "vortexRotationSpeed": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "c03248d3",
+     "data": "2026-10-12"
     }
    }
   },

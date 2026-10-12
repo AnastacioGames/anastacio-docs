@@ -1,0 +1,7 @@
+O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_OUTLINE` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
+Objeto cujas propriedades de jogo alimentam os uniforms de mesmo nome, como no atuador Filter 2D (opcional).
+Gera mipmaps da imagem de entrada do filtro (opcional).
+Liga ou desliga um filtro embutido, mantendo os valores atuais dele, como faz o atuador Filter 2D.
+`Range.logic.RAS_2DFILTER_FXAA`, `RAS_2DFILTER_BLOOM`, `RAS_2DFILTER_TONEMAP`, `RAS_2DFILTER_SSAO`, `RAS_2DFILTER_LIGHTSCATTER` ou `RAS_2DFILTER_SSR`.
+O novo estado.
+False quando o filtro não está disponível.

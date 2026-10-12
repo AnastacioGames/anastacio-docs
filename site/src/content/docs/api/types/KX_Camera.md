@@ -327,7 +327,7 @@ Pega o vetor que sai da posição da câmera na direção da coordenada de tela.
 m_vect = camera.getScreenVect(0.5, 0.5)
 ```
 
-### getScreenRay(x, y, dist=inf, property=None)
+### getScreenRay(x, y, dist, property="", xray=False, mask=0xFFFF)
 
 Olha na direção de uma coordenada de tela (x, y) e acha o primeiro objeto atingido dentro de dist que tenha a propriedade prop. O raio funciona como KX_GameObject->rayCastTo.
 
@@ -339,6 +339,10 @@ Olha na direção de uma coordenada de tela (x, y) e acha o primeiro objeto atin
   - tipo: float
 - **`property`**: Nome da propriedade que o objeto precisa ter; se omitido, detecta qualquer objeto
   - tipo: string
+- **`xray`**: O raio atravessa os objetos que não têm a propriedade, como a opção X-Ray do sensor Mouse
+  - tipo: boolean
+- **`mask`**: Máscara de colisão; o raio só atinge objetos destes grupos de colisão
+  - tipo: bitfield
 
 **Tipo do retorno:** `KX_GameObject`
 

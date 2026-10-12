@@ -68,6 +68,10 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
+### changeSSGIValues()
+
+<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+
 ### changeSSRValues()
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>

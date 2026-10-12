@@ -745,6 +745,16 @@
      "tipo": "metodo",
      "status": "documentado"
     },
+    "recompile": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "setUniform": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
     "mipmap": {
      "tipo": "atributo",
      "so_leitura": false,
@@ -754,6 +764,38 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "documentado"
+    },
+    "compileLog": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "b235b652",
+     "data": "2026-10-10"
+    },
+    "sourceName": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "b235b652",
+     "data": "2026-10-10"
+    },
+    "sourcePath": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "b235b652",
+     "data": "2026-10-10"
+    },
+    "activeUniforms": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "b235b652",
+     "data": "2026-10-10"
     }
    }
   },
@@ -805,6 +847,11 @@
      "origem": "desconhecida"
     },
     "changeSSAOValues": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "changeSSGIValues": {
      "tipo": "metodo",
      "status": "novo",
      "origem": "desconhecida"
@@ -1028,6 +1075,14 @@
      "status": "documentado"
     },
     "setBlending": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "setScriptUniform": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "getScriptUniform": {
      "tipo": "metodo",
      "status": "documentado"
     },
@@ -2861,6 +2916,14 @@
      "so_leitura": false,
      "status": "documentado"
     },
+    "hiddenFromCamera": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "96f089eb",
+     "data": "2026-10-10"
+    },
     "culled": {
      "tipo": "atributo",
      "so_leitura": true,
@@ -3113,6 +3176,14 @@
      "status": "novo",
      "origem": "snapshot",
      "commit": "28775369"
+    },
+    "particlesMix": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "f51619e1",
+     "data": "2026-10-12"
     }
    }
   },
@@ -3305,6 +3376,11 @@
     "useShadow": {
      "tipo": "atributo",
      "so_leitura": true,
+     "status": "documentado"
+    },
+    "shadowMapSize": {
+     "tipo": "atributo",
+     "so_leitura": false,
      "status": "documentado"
     },
     "shadowMatrix": {
@@ -4047,6 +4123,11 @@
    "rst": null,
    "tem_rst": false,
    "itens": {
+    "burst": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
     "gravity": {
      "tipo": "atributo",
      "so_leitura": false,
@@ -4193,6 +4274,30 @@
      "status": "novo",
      "origem": "snapshot",
      "commit": "28775369"
+    },
+    "burstMode": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "f51619e1",
+     "data": "2026-10-12"
+    },
+    "burstInterval": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "f51619e1",
+     "data": "2026-10-12"
+    },
+    "drag": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "f51619e1",
+     "data": "2026-10-12"
     }
    }
   },
@@ -8016,7 +8121,9 @@
     "preloadScene": {
      "tipo": "funcao",
      "status": "novo",
-     "origem": "desconhecida"
+     "origem": "anastacio",
+     "commit": "19c20548",
+     "data": "2026-10-09"
     },
     "getRandomFloat": {
      "tipo": "funcao",
@@ -9922,6 +10029,14 @@
      "status": "documentado"
     },
     "getMipmapping": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "setTextureQuality": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "getTextureQuality": {
      "tipo": "funcao",
      "status": "documentado"
     },

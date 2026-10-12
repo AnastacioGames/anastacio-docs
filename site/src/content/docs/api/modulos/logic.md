@@ -1732,7 +1732,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### preloadScene(name)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
 Converte uma cena com antecedência, no fim deste frame (shaders e texturas incluídos), sem adicioná-la. Depois, um `addScene` ou `replaceScene` dela só insere a cena pronta, sem travar. Chame enquanto uma tela de carregamento estiver aparecendo. Devolve `False` se a cena não existir.
 

@@ -262,7 +262,7 @@ Define o nível de filtragem anisotrópica das texturas.
   - tipo: integer (must be one of 1, 2, 4, 8, 16)
 
 :::note
-Mudar este valor pode recriar todas as texturas, o que pode ser lento.
+Limitado ao máximo suportado pela placa de vídeo. O jogo exportado começa com 8.
 :::
 
 ### getAnisotropicFiltering()
@@ -295,7 +295,7 @@ Muda como o mipmapping é usado.
   - tipo: RAS_MIPMAP_NONE, RAS_MIPMAP_NEAREST, RAS_MIPMAP_LINEAR
 
 :::note
-Mudar este valor pode recriar todas as texturas, o que pode ser lento.
+Alternar entre NEAREST e LINEAR, ou desligá-los, muda apenas os filtros. Com os mipmaps desligados, as texturas são exibidas sem filtragem (nearest), útil para pixel art.
 :::
 
 ### getMipmapping()
@@ -303,6 +303,29 @@ Mudar este valor pode recriar todas as texturas, o que pode ser lento.
 Pega a configuração atual de mipmapping.
 
 **Tipo do retorno:** RAS_MIPMAP_NONE, RAS_MIPMAP_NEAREST, RAS_MIPMAP_LINEAR
+
+### setTextureQuality(level)
+
+Qualidade de textura para um menu gráfico: mantenha apenas a textura de alta resolução no projeto e descarte seus maiores níveis de mipmap ao enviá-la para a placa de vídeo.
+
+* `0`: tamanho completo
+* `1`: metade do tamanho (1/4 da memória de vídeo)
+* `2`: um quarto do tamanho (1/16 da memória de vídeo)
+
+As texturas nunca ficam menores que 256 pixels em seu maior lado, e texturas sem mipmaps (ou com mipmapping desligado) mantêm seu tamanho. Arquivos DDS pulam os níveis armazenados no arquivo.
+
+- **`level`**: 0, 1 or 2
+  - tipo: integer
+
+:::note
+Configure no menu, não a cada frame. No editor, o valor é restaurado quando o jogo termina.
+:::
+
+### getTextureQuality()
+
+**Retorna:** a qualidade de textura atual (0 completa, 1 metade, 2 um quarto).
+
+**Tipo do retorno:** integer
 
 ### drawLine(fromVec,toVec,color)
 

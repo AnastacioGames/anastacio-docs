@@ -91,3 +91,31 @@ Se o off screen é criado com tamanho dinâmico (`width` e `height` iguais a -1)
 
 Remove o registro do off screen personalizado em que o filtro renderiza.
 
+## Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### recompile()
+
+<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+
+### setUniform()
+
+<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+
+### activeUniforms
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+### compileLog
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+### sourceName
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+### sourcePath
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+

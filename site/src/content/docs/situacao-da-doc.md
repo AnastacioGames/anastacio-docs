@@ -11,10 +11,10 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `Range.constraints` | 52 | 43 | 8 |  |
 | `Range.events` | 135 | 9 | 126 |  |
 | `Range.imgui` | 42 | 0 | 42 | 6 |
-| `Range.logic` | 341 | 149 | 187 | 5 |
+| `Range.logic` | 341 | 149 | 187 | 6 |
 | `Range.network` | 41 | 0 | 41 | 41 |
 | `Range.network.steam` | 9 | 0 | 9 | 9 |
-| `Range.render` | 67 | 45 | 21 | 6 |
+| `Range.render` | 69 | 47 | 21 | 6 |
 | `Range.texture` | 36 | 4 | 0 |  |
 | `BL_ActionActuator` | 12 | 10 | 2 |  |
 | `BL_ArmatureActuator` | 6 | 6 | 0 |  |
@@ -28,15 +28,15 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `EXP_BaseListWrapper` | 1 | 0 | 1 |  |
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
-| `KX_2DFilter` | 6 | 6 | 0 |  |
-| `KX_2DFilterManager` | 17 | 3 | 14 | 7 |
+| `KX_2DFilter` | 12 | 6 | 6 | 4 |
+| `KX_2DFilterManager` | 18 | 3 | 15 | 7 |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 0 | 2 |  |
 | `KX_AnimationEventManager` | 1 | 0 | 1 |  |
 | `KX_ArmatureSensor` | 3 | 3 | 0 |  |
 | `KX_BatchGroup` | 5 | 5 | 0 |  |
-| `KX_BlenderMaterial` | 16 | 15 | 1 |  |
+| `KX_BlenderMaterial` | 18 | 17 | 1 |  |
 | `KX_BoundingBox` | 6 | 5 | 1 |  |
 | `KX_Camera` | 80 | 31 | 49 | 48 |
 | `KX_CameraActuator` | 6 | 6 | 0 |  |
@@ -51,11 +51,11 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
 | `KX_FontObject` | 7 | 4 | 3 |  |
 | `KX_GameActuator` | 4 | 2 | 2 |  |
-| `KX_GameObject` | 187 | 118 | 69 | 22 |
+| `KX_GameObject` | 189 | 118 | 71 | 24 |
 | `KX_InputSystem` | 5 | 0 | 5 |  |
 | `KX_InputTable` | 4 | 0 | 4 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
-| `KX_LightObject` | 25 | 24 | 1 | 1 |
+| `KX_LightObject` | 26 | 25 | 1 | 1 |
 | `KX_LightningActuator` | 1 | 0 | 1 | 1 |
 | `KX_LodLevel` | 7 | 7 | 0 |  |
 | `KX_LodManager` | 3 | 2 | 1 |  |
@@ -71,7 +71,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 21 | 0 | 21 |  |
+| `KX_ParticleSystem` | 25 | 0 | 25 | 3 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |

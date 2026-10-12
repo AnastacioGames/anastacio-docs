@@ -1456,6 +1456,10 @@ Impulso mínimo de colisão para amassar o objeto.
 
 Nome do grupo com os fragmentos usados quando o objeto quebra, ou `None`. Só em objetos destrutíveis; senão levanta `AttributeError`.
 
+### hiddenFromCamera
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
 ### impactImpulse
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
@@ -1485,6 +1489,10 @@ Número máximo de decalques ao mesmo tempo neste objeto.
 ### particles
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+
+### particlesMix
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
 ### passIndex
 

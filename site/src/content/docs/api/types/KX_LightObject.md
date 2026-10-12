@@ -157,6 +157,12 @@ A distribuição da intensidade da luz spot (só luzes SPOT).
 Valores mais altos deixam a luz mais concentrada.
 :::
 
+### shadowMapSize
+
+Resolução do mapa de sombras em pixels (o Size da lâmpada). Ao definir este valor, o buffer de sombras é redimensionado em tempo real sem recompilar shaders, permitindo uma opção de qualidade de sombras (por exemplo, 512 / 1024 / 2048). Mapas de sombra em cascata mantêm sua proporção em relação a ele. Retorna 0 quando a lâmpada não possui buffer de sombras. Lâmpadas Point mantêm seu próprio tamanho.
+
+**Tipo:** integer from 64 to 16384 (clamped to the graphics card maximum).
+
 ### staticShadow
 
 Liga as sombras estáticas. Por padrão (staticShadow=False), a sombra da lâmpada é recalculada a cada frame. Quando isso não for preciso, defina staticShadow=True e chame `updateShadow` para pedir uma atualização da sombra.

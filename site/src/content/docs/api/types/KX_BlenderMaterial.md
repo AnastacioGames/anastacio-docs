@@ -158,6 +158,28 @@ Lista de todas as texturas do material.
 
 **Tipo:** List of `BL_Texture` (read only)
 
+### setScriptUniform(name, value)
+
+Define um uniform `u_` declarado no Texto dos nós GLSL Script deste material (`uniform float u_speed;`). O valor é enviado à GPU no próximo desenho, sem recompilar o shader. Um uniform cujo socket está ligado a outro nó não é afetado.
+
+- **`name`**: Nome do uniform, como foi escrito no Texto (`"u_speed"`).
+  - tipo: string
+- **`value`**: Um número ou uma sequência de até 4 números para vec2/vec3/vec4.
+  - tipo: float or sequence of floats
+
+**Retorna:** True quando o material possui esse uniform.
+
+**Tipo do retorno:** boolean
+
+### getScriptUniform(name)
+
+Valor atual de um uniform `u_` dos nós GLSL Script deste material.
+
+- **`name`**: Nome do uniform.
+  - tipo: string
+
+**Retorna:** Um float, uma tupla (2 valores para vec2, 3 para vec3 e 4 para vec4) ou None quando não existe esse uniform.
+
 ### setBlending(src, dest)
 
 Define as funções aritméticas de cor dos pixels.

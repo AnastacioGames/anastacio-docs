@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 105 classes, 8 módulos | documentados 1018 · sem doc 248 · novos 510 · só no rst 111
+**Total:** 105 classes, 8 módulos | documentados 1023 · sem doc 248 · novos 523 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -13,7 +13,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `Range.logic` | 341 | 149 | 137 | 50 | 5 | sim |
 | `Range.imgui` | 42 | 0 | 0 | 42 | 0 | **não** |
 | `Range.network` | 41 | 0 | 0 | 41 | 0 | **não** |
-| `Range.render` | 67 | 45 | 0 | 21 | 1 | sim |
+| `Range.render` | 69 | 47 | 0 | 21 | 1 | sim |
 | `Range.events` | 135 | 9 | 111 | 15 | 0 | sim |
 | `Range.network.steam` | 9 | 0 | 0 | 9 | 0 | **não** |
 | `Range.constraints` | 52 | 43 | 0 | 8 | 1 | sim |
@@ -23,17 +23,18 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 | Nome | Itens | Documentados | Sem doc | Novos | Só no rst | rst? |
 |---|---:|---:|---:|---:|---:|:---:|
-| `KX_GameObject` | 187 | 118 | 0 | 69 | 0 | sim |
+| `KX_GameObject` | 189 | 118 | 0 | 71 | 0 | sim |
 | `KX_Camera` | 80 | 31 | 0 | 49 | 0 | sim |
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
-| `KX_ParticleSystem` | 21 | 0 | 0 | 21 | 0 | **não** |
+| `KX_ParticleSystem` | 25 | 0 | 0 | 25 | 0 | **não** |
 | `KX_WorldInfo` | 36 | 19 | 0 | 17 | 0 | sim |
+| `KX_2DFilterManager` | 18 | 3 | 0 | 15 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
-| `KX_2DFilterManager` | 17 | 3 | 0 | 14 | 0 | sim |
 | `KX_VehicleWrapper` | 30 | 16 | 0 | 14 | 0 | sim |
 | `KX_Scene` | 37 | 28 | 0 | 9 | 0 | sim |
 | `EXP_BaseListValue` | 7 | 0 | 0 | 7 | 0 | **não** |
 | `KX_PythonJoystick` | 15 | 8 | 0 | 7 | 0 | sim |
+| `KX_2DFilter` | 12 | 6 | 0 | 6 | 0 | sim |
 | `KX_VRHeadSensor` | 6 | 0 | 0 | 6 | 0 | **não** |
 | `KX_InputSystem` | 5 | 0 | 0 | 5 | 0 | **não** |
 | `Texture` | 24 | 0 | 0 | 5 | 19 | sim |
@@ -51,9 +52,9 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_PythonMouse` | 8 | 6 | 0 | 2 | 0 | sim |
 | `EXP_BaseListWrapper` | 1 | 0 | 0 | 1 | 0 | **não** |
 | `KX_AnimationEventManager` | 1 | 0 | 0 | 1 | 0 | **não** |
-| `KX_BlenderMaterial` | 16 | 15 | 0 | 1 | 0 | sim |
+| `KX_BlenderMaterial` | 18 | 17 | 0 | 1 | 0 | sim |
 | `KX_BoundingBox` | 6 | 5 | 0 | 1 | 0 | sim |
-| `KX_LightObject` | 25 | 24 | 0 | 1 | 0 | sim |
+| `KX_LightObject` | 26 | 25 | 0 | 1 | 0 | sim |
 | `KX_LightningActuator` | 1 | 0 | 0 | 1 | 0 | **não** |
 | `KX_LodManager` | 3 | 2 | 0 | 1 | 0 | sim |
 | `KX_Mesh` | 15 | 14 | 0 | 1 | 0 | sim |
@@ -69,7 +70,6 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `BL_Texture` | 19 | 19 | 0 | 0 | 0 | sim |
 | `EXP_PyObjectPlus` | 1 | 1 | 0 | 0 | 0 | sim |
 | `EXP_Value` | 1 | 1 | 0 | 0 | 0 | sim |
-| `KX_2DFilter` | 6 | 6 | 0 | 0 | 0 | sim |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 | 0 | 0 | sim |
 | `KX_AddObjectActuator` | 6 | 6 | 0 | 0 | 0 | sim |
 | `KX_ArmatureSensor` | 3 | 3 | 0 | 0 | 0 | sim |
@@ -131,19 +131,20 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **176** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **186** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
 - **Range.events** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `OSKEY`, `JOYSTICKA`, `JOYSTICKB`, `JOYSTICKX`, `JOYSTICKY`, `JOYSTICKBACK`, `JOYSTICKGUIDE`, `JOYSTICKLEFTSTICK`, `JOYSTICKRIGHTSTICK`, `JOYSTICKRIGHTSHOUDER`, `JOYSTICKLEFTSHOUDER`, `JOYSTICKPADUP`, `JOYSTICKPADDOWN`, `JOYSTICKPADLEFT`, `JOYSTICKPADRIGHT`
 - **Range.imgui** (source/source/gameengine/Ketsji/KXImgui/KX_PythonImgui.cpp): `begin`, `end`, `text`, `button`, `checkbox`, `slider_float`, `slider_int`, `input_text`, `combo`, `listbox`, `radio_button`, `color_edit3`, `color_edit4`, `open_popup`, `begin_popup_modal`, `end_popup`, `close_current_popup`, `push_style_color`, `pop_style_color`, `load_font`, `load_default_font` ✦2026-10-08, `push_style_var` ✦2026-10-08, `pop_style_var` ✦2026-10-08, `push_item_width` ✦2026-10-08, `pop_item_width` ✦2026-10-08, `set_next_item_width` ✦2026-10-08, `push_font`, `pop_font`, `get_display_size`, `draw_rect_filled`, `separator`, `same_line`, `set_next_window_pos`, `set_next_window_size`, `image`, `invisible_button`, `set_cursor_pos`, `get_cursor_pos`, `get_cursor_screen_pos`, `get_io_want_capture_mouse`, `get_io_want_capture_keyboard`, `set_game_ui_open`
-- **Range.logic** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `getMessages` ✦2026-09-30, `preloadScene`, `setNeedsParents`, `getRenderRate`, `setRenderRate`, `getAnimationRate`, `setAnimationRate`, `deltaTime`, `getRangeFileList`, `getRasecFileList`, `getGraphicsCardVendor`, `getGraphicsCardRenderer`, `getProcessorName`, `setObjectConvert` ✦2026-10-07, `freeUnconvertedData` ✦2026-10-07, `getLoadLog` ✦2026-10-07, `getObjectConvert` ✦2026-10-07, `KX_MOVEMENT_AXIS_POS_X`, `KX_MOVEMENT_AXIS_POS_Y`, `KX_MOVEMENT_AXIS_POS_Z`, `KX_MOVEMENT_AXIS_NEG_X`, `KX_MOVEMENT_AXIS_NEG_Y`, `KX_MOVEMENT_AXIS_NEG_Z`, `KX_MOVEMENT_ALL_AXIS`, `KX_MOUSE_BUT_LEFTTHUMBMOUSE`, `KX_MOUSE_BUT_RIGHTTHUMBMOUSE`, `KX_MOUSE_BUT_BUTTON6`, `KX_MOUSE_BUT_BUTTON7`, `KX_JOYSTICK_BUT_A`, `KX_JOYSTICK_BUT_B`, `KX_JOYSTICK_BUT_X`, `KX_JOYSTICK_BUT_Y`, `KX_JOYSTICK_BUT_BACK`, `KX_JOYSTICK_BUT_GUIDE`, `KX_JOYSTICK_BUT_LEFTSTICK`, `KX_JOYSTICK_BUT_RIGHTSTICK`, `KX_JOYSTICK_BUT_RIGHTSHOUDER`, `KX_JOYSTICK_BUT_LEFTSHOUDER`, `KX_JOYSTICK_BUT_PADUP`, `KX_JOYSTICK_BUT_PADDOWN`, `KX_JOYSTICK_BUT_PADLEFT`, `KX_JOYSTICK_BUT_PADRIGHT`, `RAS_2DFILTER_OUTLINE`, `RAS_2DFILTER_SSAO`, `RAS_2DFILTER_BLOOM`, `RAS_2DFILTER_TONEMAP`, `RAS_2DFILTER_LIGHTSCATTER`, `RAS_2DFILTER_SSR`, `RAS_2DFILTER_FXAA`, `KX_GAME_SCREENSHOT`
+- **Range.logic** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `getMessages` ✦2026-09-30, `preloadScene` ✦2026-10-09, `setNeedsParents`, `getRenderRate`, `setRenderRate`, `getAnimationRate`, `setAnimationRate`, `deltaTime`, `getRangeFileList`, `getRasecFileList`, `getGraphicsCardVendor`, `getGraphicsCardRenderer`, `getProcessorName`, `setObjectConvert` ✦2026-10-07, `freeUnconvertedData` ✦2026-10-07, `getLoadLog` ✦2026-10-07, `getObjectConvert` ✦2026-10-07, `KX_MOVEMENT_AXIS_POS_X`, `KX_MOVEMENT_AXIS_POS_Y`, `KX_MOVEMENT_AXIS_POS_Z`, `KX_MOVEMENT_AXIS_NEG_X`, `KX_MOVEMENT_AXIS_NEG_Y`, `KX_MOVEMENT_AXIS_NEG_Z`, `KX_MOVEMENT_ALL_AXIS`, `KX_MOUSE_BUT_LEFTTHUMBMOUSE`, `KX_MOUSE_BUT_RIGHTTHUMBMOUSE`, `KX_MOUSE_BUT_BUTTON6`, `KX_MOUSE_BUT_BUTTON7`, `KX_JOYSTICK_BUT_A`, `KX_JOYSTICK_BUT_B`, `KX_JOYSTICK_BUT_X`, `KX_JOYSTICK_BUT_Y`, `KX_JOYSTICK_BUT_BACK`, `KX_JOYSTICK_BUT_GUIDE`, `KX_JOYSTICK_BUT_LEFTSTICK`, `KX_JOYSTICK_BUT_RIGHTSTICK`, `KX_JOYSTICK_BUT_RIGHTSHOUDER`, `KX_JOYSTICK_BUT_LEFTSHOUDER`, `KX_JOYSTICK_BUT_PADUP`, `KX_JOYSTICK_BUT_PADDOWN`, `KX_JOYSTICK_BUT_PADLEFT`, `KX_JOYSTICK_BUT_PADRIGHT`, `RAS_2DFILTER_OUTLINE`, `RAS_2DFILTER_SSAO`, `RAS_2DFILTER_BLOOM`, `RAS_2DFILTER_TONEMAP`, `RAS_2DFILTER_LIGHTSCATTER`, `RAS_2DFILTER_SSR`, `RAS_2DFILTER_FXAA`, `KX_GAME_SCREENSHOT`
 - **Range.network** (source/source/gameengine/Ketsji/KX_PyNetwork.cpp): `host` ✦2026-10-04, `join` ✦2026-10-04, `disconnect` ✦2026-10-04, `set_ready` ✦2026-10-04, `send_chat` ✦2026-10-04, `return_to_lobby` ✦2026-10-08, `start_game` ✦2026-10-04, `discover_lan` ✦2026-10-04, `set_simulation` ✦2026-10-04, `replicate` ✦2026-10-04, `spawn` ✦2026-10-04, `despawn` ✦2026-10-04, `set_owner` ✦2026-10-04, `owner` ✦2026-10-04, `is_owner` ✦2026-10-04, `net_id` ✦2026-10-04, `on_connect` ✦2026-10-04, `on_disconnect` ✦2026-10-04, `on_reject` ✦2026-10-04, `on_chat` ✦2026-10-04, `on_start` ✦2026-10-04, `on_lobby` ✦2026-10-08, `on_player_join` ✦2026-10-04, `on_player_leave` ✦2026-10-04, `on_scene` ✦2026-10-04, `change_scene` ✦2026-10-04, `predict` ✦2026-10-04, `set_input` ✦2026-10-04, `input` ✦2026-10-04, `view_time` ✦2026-10-04, `prediction_stats` ✦2026-10-04, `input_stats` ✦2026-10-04, `set_client_view` ✦2026-10-04, `set_hitbox` ✦2026-10-04, `raycast_past` ✦2026-10-04, `call` ✦2026-10-04, `_register_rpc` ✦2026-10-04, `_state` ✦2026-10-04, `_set_player_name` ✦2026-10-04, `_clients` ✦2026-10-04, `_headless` ✦2026-10-04
 - **Range.network.steam** (source/source/gameengine/Ketsji/KX_PyNetwork.cpp): `connection_routes` ✦2026-10-08, `_lobby_request` ✦2026-10-08, `poll_events` ✦2026-10-08, `language` ✦2026-10-08, `achievement` ✦2026-10-08, `force_relay` ✦2026-10-08, `initialize` ✦2026-10-08, `status` ✦2026-10-08, `shutdown` ✦2026-10-08
 - **Range.render** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `setCustomMouse`, `setStereoMode` ✦2026-10-01, `setVRLensStrength` ✦2026-10-01, `getVRLensStrength` ✦2026-10-01, `setVRChromaticAberration` ✦2026-10-01, `getVRChromaticAberration` ✦2026-10-01, `getStereoMode` ✦2026-10-01, `setMasterVolume`, `getMasterVolume`, `showDebugPhysics`, `RAS_MIPMAP_NONE`, `RAS_MIPMAP_NEAREST`, `RAS_MIPMAP_LINEAR`, `VSYNC_OFF`, `VSYNC_ON`, `VSYNC_ADAPTIVE`, `STEREO_NOSTEREO`, `STEREO_SIDEBYSIDE`, `STEREO_ABOVEBELOW`, `STEREO_ANAGLYPH`, `STEREO_INTERLACED`
 - **BL_ActionActuator** (source/source/gameengine/Converter/BL_ActionActuator.cpp): `layer`, `layerWeight`
 - **EXP_BaseListValue** (source/source/gameengine/Expressions/intern/BaseListValue.cpp): `append`, `reverse`, `index`, `count`, `get`, `filter`, `from_id`
 - **EXP_BaseListWrapper** (source/source/gameengine/Expressions/intern/BaseListWrapper.cpp): `get`
-- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09
+- **KX_2DFilter** (source/source/gameengine/Ketsji/KX_2DFilter.cpp): `recompile`, `setUniform`, `compileLog` (só leitura) ✦2026-10-10, `sourceName` (só leitura) ✦2026-10-10, `sourcePath` (só leitura) ✦2026-10-10, `activeUniforms` (só leitura) ✦2026-10-10
+- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `changeSSGIValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09
 - **KX_AnimationEvent** (source/source/gameengine/Ketsji/KX_AnimationEvent.cpp): `getFireCount`, `triggers` (só leitura)
 - **KX_AnimationEventManager** (source/source/gameengine/Ketsji/KX_AnimationEventManager.cpp): `events` (só leitura)
 - **KX_BlenderMaterial** (source/source/gameengine/Ketsji/KX_BlenderMaterial.cpp): `passIndex`
@@ -152,7 +153,7 @@ Origem pelo git: **176** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_ChangeColorActuator** (source/source/gameengine/Ketsji/KX_ChangeColorActuator.cpp): `useLerp`, `lerp`, `color`
 - **KX_FontObject** (source/source/gameengine/Ketsji/KX_FontObject.cpp): `useShadows`, `shadowOffset`, `shadowColor`
 - **KX_GameActuator** (source/source/gameengine/Ketsji/KX_GameActuator.cpp): `saveLocation`, `extensionName`
-- **KX_GameObject** (source/source/gameengine/Ketsji/KX_GameObject.cpp): `setCcdMotionThreshold`, `setCcdSweptSphereRadius`, `setSoftLinearStiffness`, `setSoftAngularStiffness`, `setSoftVolume`, `setSoftVsRigidHardness`, `setSoftVsKineticHardness`, `setSoftVsSoftHardness`, `setSoftVsRigidImpulseSplitCluster`, `setSoftVsKineticImpulseSplitCluster`, `setSoftVsSoftImpulseSplitCluster`, `setSoftVelocitiesCorrectionFactor`, `setSoftDampingCoefficient`, `setSoftDragCoefficient`, `setSoftLiftCoefficient`, `setSoftPressureCoefficient`, `setSoftVolumeConversationCoefficient`, `setSoftDynamicFrictionCoefficient`, `setSoftPoseMatchingCoefficient`, `setSoftRigidContactsHardness`, `setSoftKineticContactsHardness`, `setSoftContactsHardness`, `setSoftAnchorsHardness`, `setSoftVelocitySolverIterations`, `setSoftPositionSolverIterations`, `setSoftDriftSolverIterations`, `setSoftClusterSolverIterations`, `setSoftPoseMatching`, `lookAt`, `setHalfAnimations`, `suspendAnimations` ✦2026-09-16, `resumeAnimations` ✦2026-09-16, `getVehicle`, `getVehicleSteeringWheel`, `getVehicleMaxTorque`, `getVehicleMaxRPM`, `getVehicleGearRatios`, `getVehicleGearboxType`, `getTurnTo`, `strikeLightning`, `setActionLayerWeight`, `setActionLayerSpeed`, `animationEventManager` (só leitura), `parentRecursive` (só leitura), `anisotropicFriction` ✦2026-10-04, `anisotropicFrictionCoefficients` ✦2026-10-04, `isDeformable` (só leitura) ✦2026-10-09, `fragments` ✦2026-10-09, `burstSpeed` ✦2026-10-09, `debrisLifetime` ✦2026-10-09, `useBreakOnCollision` ✦2026-10-09, `useInheritVelocity` ✦2026-10-09, `impactImpulse` ✦2026-10-09, `useExplodeOnImpact` ✦2026-10-09, `useChainReaction` ✦2026-10-09, `dentImpulse` ✦2026-10-09, `useDentOnCollision` ✦2026-10-09, `bendAxis` ✦2026-10-09, `bendAngle` ✦2026-10-09, `bendMaxAngle` ✦2026-10-09, `decal` ✦2026-10-09, `decalSize` ✦2026-10-09, `decalLife` ✦2026-10-09, `maxDecals` ✦2026-10-09, `passIndex`, `linearVelocity`, `angularVelocity`, `activitycullingdistance` (só leitura), `particles` (só leitura)
+- **KX_GameObject** (source/source/gameengine/Ketsji/KX_GameObject.cpp): `setCcdMotionThreshold`, `setCcdSweptSphereRadius`, `setSoftLinearStiffness`, `setSoftAngularStiffness`, `setSoftVolume`, `setSoftVsRigidHardness`, `setSoftVsKineticHardness`, `setSoftVsSoftHardness`, `setSoftVsRigidImpulseSplitCluster`, `setSoftVsKineticImpulseSplitCluster`, `setSoftVsSoftImpulseSplitCluster`, `setSoftVelocitiesCorrectionFactor`, `setSoftDampingCoefficient`, `setSoftDragCoefficient`, `setSoftLiftCoefficient`, `setSoftPressureCoefficient`, `setSoftVolumeConversationCoefficient`, `setSoftDynamicFrictionCoefficient`, `setSoftPoseMatchingCoefficient`, `setSoftRigidContactsHardness`, `setSoftKineticContactsHardness`, `setSoftContactsHardness`, `setSoftAnchorsHardness`, `setSoftVelocitySolverIterations`, `setSoftPositionSolverIterations`, `setSoftDriftSolverIterations`, `setSoftClusterSolverIterations`, `setSoftPoseMatching`, `lookAt`, `setHalfAnimations`, `suspendAnimations` ✦2026-09-16, `resumeAnimations` ✦2026-09-16, `getVehicle`, `getVehicleSteeringWheel`, `getVehicleMaxTorque`, `getVehicleMaxRPM`, `getVehicleGearRatios`, `getVehicleGearboxType`, `getTurnTo`, `strikeLightning`, `setActionLayerWeight`, `setActionLayerSpeed`, `animationEventManager` (só leitura), `parentRecursive` (só leitura), `anisotropicFriction` ✦2026-10-04, `anisotropicFrictionCoefficients` ✦2026-10-04, `isDeformable` (só leitura) ✦2026-10-09, `fragments` ✦2026-10-09, `burstSpeed` ✦2026-10-09, `debrisLifetime` ✦2026-10-09, `useBreakOnCollision` ✦2026-10-09, `useInheritVelocity` ✦2026-10-09, `impactImpulse` ✦2026-10-09, `useExplodeOnImpact` ✦2026-10-09, `useChainReaction` ✦2026-10-09, `dentImpulse` ✦2026-10-09, `useDentOnCollision` ✦2026-10-09, `bendAxis` ✦2026-10-09, `bendAngle` ✦2026-10-09, `bendMaxAngle` ✦2026-10-09, `decal` ✦2026-10-09, `decalSize` ✦2026-10-09, `decalLife` ✦2026-10-09, `maxDecals` ✦2026-10-09, `passIndex`, `hiddenFromCamera` ✦2026-10-10, `linearVelocity`, `angularVelocity`, `activitycullingdistance` (só leitura), `particles` (só leitura), `particlesMix` (só leitura) ✦2026-10-12
 - **KX_InputSystem** (source/source/gameengine/Ketsji/KX_InputSystem.cpp): `reloadInputMaps`, `changeKeyMap`, `changeSensitivity`, `changeJoystickIndex`, `inputMaps` (só leitura)
 - **KX_InputTable** (source/source/gameengine/Ketsji/KX_InputTable.cpp): `released` (só leitura), `active` (só leitura), `activated` (só leitura), `values` (só leitura)
 - **KX_LightObject** (source/source/gameengine/Ketsji/KX_LightObject.cpp): `autoShadowUpdate` ✦2026-10-07
@@ -162,7 +163,7 @@ Origem pelo git: **176** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_MeshBuilder** (source/source/gameengine/Ketsji/KX_MeshBuilder.cpp): `FromMesh`, `addSlot`, `finish`, `slots` (só leitura)
 - **KX_MeshBuilderSlot** (source/source/gameengine/Ketsji/KX_MeshBuilder.cpp): `addVertex`, `addIndex`, `removeVertex`, `addPrimitiveIndex`, `removePrimitiveIndex`, `addTriangleIndex`, `removeTriangleIndex`, `recalculateNormals`, `vertices` (só leitura), `indices` (só leitura), `triangleIndices` (só leitura), `material`, `uvCount` (só leitura), `colorCount` (só leitura), `primitive` (só leitura)
 - **KX_MovementSensor** (source/source/gameengine/Ketsji/KX_MovementSensor.cpp): `threshold`, `axis`
-- **KX_ParticleSystem** (source/source/gameengine/Ketsji/KX_ParticleSystem.cpp): `gravity`, `lifetime`, `emitterPosition`, `emitterRadius`, `velocity`, `velocityRandomness`, `size`, `color`, `particleCount`, `texture`, `endColor`, `endSize`, `emissionDirection`, `emissionAngle`, `debugUI` (só leitura), `enabled`, `collisionMode`, `collisionHeight`, `collisionBounce`, `collisionFriction`, `fragmentShaderPath`
+- **KX_ParticleSystem** (source/source/gameengine/Ketsji/KX_ParticleSystem.cpp): `burst`, `gravity`, `lifetime`, `emitterPosition`, `emitterRadius`, `velocity`, `velocityRandomness`, `size`, `color`, `particleCount`, `texture`, `endColor`, `endSize`, `emissionDirection`, `emissionAngle`, `debugUI` (só leitura), `enabled`, `collisionMode`, `collisionHeight`, `collisionBounce`, `collisionFriction`, `fragmentShaderPath`, `burstMode` ✦2026-10-12, `burstInterval` ✦2026-10-12, `drag` ✦2026-10-12
 - **KX_PythonJoystick** (source/source/gameengine/Ketsji/KX_PythonJoystick.cpp): `stopVibration`, `inputs` (só leitura), `duration`, `strengthLeft`, `strengthRight`, `isVibrating` (só leitura), `hasVibration` (só leitura)
 - **KX_PythonMotion** (source/source/gameengine/Ketsji/KX_PythonMotion.cpp): `recenter` ✦2026-10-01, `headOrientation` (só leitura) ✦2026-10-01, `smoothing` ✦2026-10-01, `recenterTime` ✦2026-10-01
 - **KX_PythonMouse** (source/source/gameengine/Ketsji/KX_PythonMouse.cpp): `reCenter`, `deltaPosition` (só leitura)

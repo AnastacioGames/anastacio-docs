@@ -9,6 +9,18 @@ Classe `Range.types.KX_ParticleSystem`.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
+### burst()
+
+<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+
+### burstInterval
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+### burstMode
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
 ### collisionBounce
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
@@ -32,6 +44,10 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 ### debugUI
 
 <span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+
+### drag
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
 ### emissionAngle
 

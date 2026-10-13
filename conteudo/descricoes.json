@@ -370,7 +370,7 @@
   "destruct": "destruct()\nApaga a malha da memória. Use só em malhas criadas por script que nenhum objeto usa mais."
  },
  "KX_MeshBuilder": {
-  "addSlot": "addSlot(material, primitive) -> KX_MeshBuilderSlot\nCria uma parte da malha com o material dado. `primitive`: 0 triângulos, 1 pontos, 2 linhas. Sempre informe `primitive`.",
+  "addSlot": "addSlot(material, primitive=0) -> KX_MeshBuilderSlot\nCria uma parte da malha com o material dado. `primitive`: 0 triângulos (padrão), 1 pontos, 2 linhas.",
   "finish": "finish() -> KX_Mesh\nMonta a malha com os slots e a registra na cena. Depois use `obj.replaceMesh()` para colocá-la num objeto.",
   "FromMesh": "FromMesh(name, mesh) -> KX_MeshBuilder\nCria um construtor a partir de uma malha existente, para copiá-la e editá-la.",
   "slots": "Lista dos slots (`KX_MeshBuilderSlot`) da malha."

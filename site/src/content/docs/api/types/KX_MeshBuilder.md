@@ -9,11 +9,11 @@ Classe `Range.types.KX_MeshBuilder`.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### addSlot(material, primitive)
+### addSlot(material, primitive=0)
 
  <small>método</small>
 
-Cria uma parte da malha com o material dado. `primitive`: 0 triângulos, 1 pontos, 2 linhas. Sempre informe `primitive`.
+Cria uma parte da malha com o material dado. `primitive`: 0 triângulos (padrão), 1 pontos, 2 linhas.
 
 **Retorna:** `KX_MeshBuilderSlot`
 

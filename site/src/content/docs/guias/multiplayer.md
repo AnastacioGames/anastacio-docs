@@ -1,7 +1,6 @@
 ---
 title: Multiplayer
 description: Criar e entrar numa sala com o menu pronto, sincronizar objetos e criar um jogador para cada pessoa.
-draft: true
 ---
 
 O multiplayer da Anastacio é servidor e clientes: quem cria a sala (o **host**) roda a simulação e os outros jogadores recebem o estado dela. Funciona em rede local, por IP e, com o complemento Steam, pela Steam.

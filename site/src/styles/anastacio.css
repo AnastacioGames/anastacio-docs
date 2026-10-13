@@ -109,3 +109,8 @@ html {
 .ae-feat > * > svg { margin-bottom: .9rem; }
 .ae-feat > * > h3 { align-self: center; margin: 0 0 .9rem !important; }
 .ae-feat > * > :not(svg):not(h3) { grid-column: 1 / -1; justify-self: start; }
+
+/* Hero da página inicial com menos espaço em cima e embaixo */
+@media (min-width: 50rem) {
+	.hero { padding-block: clamp(1.5rem, calc(.5rem + 4vmin), 4rem) !important; }
+}

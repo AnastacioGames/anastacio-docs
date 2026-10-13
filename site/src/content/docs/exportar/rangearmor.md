@@ -31,6 +31,10 @@ A engine procura exatamente `rangearmor/RangeArmor Panel.exe` nesse lugar. Se a 
 
 A RangeArmor trabalha com uma pasta de projeto em formato fixo. O jeito mais fácil de criar é pela engine:
 
+![Menu File](../../../assets/exportar/menu_file.png)
+
+No menu **File** ficam **Create Project**, **Export Game With RANGEARMOR** e **Save .Range Protected File**.
+
 1. **File > Create Project**.
 2. Escolha onde criar e dê um nome (sem `< > : " / \ | ? *`).
 3. A engine cria esta estrutura e já abre o `.range` novo:

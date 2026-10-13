@@ -115,6 +115,10 @@ Tela inicial do RangeArmor Panel: **Open Project**, **New Project** e a lista **
    - **Run game**: roda o jogo como o jogador vai ver, para testar antes.
    - **Set Icons**: escolhe os ícones `.ico` do launcher e do executável.
    - **Export to**: exporta uma plataforma ou **All Platforms**. **Compress targets after export** gera o zip.
+   ![Aba Tasks do RangeArmor Panel](../../../assets/exportar/rangearmor_tasks.png)
+
+   Botões de plataforma cinza e o aviso *0/2 platform(s) ready* no rodapé indicam que falta o runtime. Clique em **Copy Available Range Engine Files** (passo 5) e confira **Main File** e **Data Source**; os botões acendem quando a plataforma fica pronta.
+
 8. O resultado vai para a pasta `release/` do projeto. **Explore** abre a pasta e **Copy Log** copia o log se algo der errado.
 
 :::note

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { modulos, types } from './sidebar-api.mjs';
 
 // GitHub Pages: https://<usuario>.github.io/<repositorio>/
 // Troque SITE/BASE se o repositório ou o usuário tiverem outro nome.
@@ -30,8 +31,8 @@ export default defineConfig({
 					translations: { en: 'Exporting the game' },
 					items: ['exportar/visao-geral', 'exportar/rangearmor', 'exportar/web', 'exportar/android'],
 				},
-				{ label: 'Módulos', translations: { en: 'Modules' }, items: [{ autogenerate: { directory: 'api/modulos' } }] },
-				{ label: 'Range.types', collapsed: true, items: [{ autogenerate: { directory: 'api/types' } }] },
+				{ label: 'Módulos', translations: { en: 'Modules' }, items: modulos },
+				{ label: 'Range.types', collapsed: true, items: types },
 				{ label: 'Projeto', translations: { en: 'Project' }, items: ['sobre', 'situacao-da-doc'] },
 			],
 		}),

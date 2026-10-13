@@ -544,6 +544,11 @@
      "estado": "exposto"
     },
     {
+     "controle_rna": "vfog_dust",
+     "api": "setWeather/getWeather(vfog_dust)",
+     "estado": "exposto"
+    },
+    {
      "controle_rna": "vfog_edge",
      "api": "setWeather/getWeather(vfog_edge)",
      "estado": "exposto"

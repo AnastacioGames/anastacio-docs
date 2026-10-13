@@ -2,7 +2,7 @@
 
 Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos de jogo com bindings Python; não afirma que todo controle do editor deve virar API.
 
-**Total:** 117 expostos · 10 sem binding · 0 só de editor.
+**Total:** 118 expostos · 10 sem binding · 0 só de editor.
 
 ## Partículas GPU
 
@@ -124,6 +124,7 @@ Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos 
 | `vfog_color` | `setWeather/getWeather(vfog_color_r, vfog_color_g, vfog_color_b)` | exposto |
 | `vfog_density` | `setWeather/getWeather(vfog_density)` | exposto |
 | `vfog_distance` | `setWeather/getWeather(vfog_distance)` | exposto |
+| `vfog_dust` | `setWeather/getWeather(vfog_dust)` | exposto |
 | `vfog_edge` | `setWeather/getWeather(vfog_edge)` | exposto |
 | `vfog_falloff` | `setWeather/getWeather(vfog_falloff)` | exposto |
 | `vfog_light_intensity` | `setWeather/getWeather(vfog_light_intensity)` | exposto |

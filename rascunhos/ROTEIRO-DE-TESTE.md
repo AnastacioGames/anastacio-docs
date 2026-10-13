@@ -28,3 +28,8 @@ Páginas com `draft: true` não saem no site publicado. Depois do teste OK: tira
 - `Partida`: on_player_join é chamado também para o host (cliente 0)? Se não, criar o boneco do host em on_connect(0).
 - `network.input()` no cliente: retorna None ou dá erro? (Partida.update roda em todos.)
 - Bonecos se movem nos dois lados.
+
+## receitas.md
+- Cena: Cubo com componente de teste, objeto "Jogador", "Tiro" em camada inativa, cena "Fase2".
+- Colar cada trecho no update() de um componente e conferir que não dá erro e faz o que o texto diz.
+- Depois de OK: copiar cada bloco para o topo da página da API correspondente (gerador).

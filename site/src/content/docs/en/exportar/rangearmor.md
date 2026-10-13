@@ -108,6 +108,10 @@ RangeArmor Panel start screen: **Open Project**, **New Project** and the **Recen
 | **Compile Python scripts** | Ships compiled scripts instead of the source code. |
 
 5. On the **Paths** tab, check **Engine executables** (the runtime for each platform) and **Python for authoring tools**. If they're empty, use **Copy Available Range Engine Files** on the **Tasks** tab, which copies the engine runtime into the project's `engine/` folder.
+   ![RangeArmor Panel Paths tab](../../../../assets/exportar/rangearmor_paths.png)
+
+   Paths in **red** with an empty box are files that don't exist yet in the project's `engine/` folder. After **Copy Available Range Engine Files**, they get checked (✓) and the platform counts as ready at the bottom.
+
 6. Click **Save** to store the settings.
 7. On the **Tasks** tab:
    - **Run game**: runs the game the way the player will see it, to test first.

@@ -84,6 +84,35 @@ O mesmo painel também abre por **File > Export Game With RANGEARMOR**.
 Se aparecer *"Could not find a Python interpreter for the export"*, abra o RangeArmor Panel uma vez, clique em **Get RanGE** e tente o 1 Click de novo.
 :::
 
+## Outra forma: usar o RangeArmor Panel sozinho
+
+Você também pode exportar sem passar pelos botões da engine, abrindo a ferramenta externa direto. É útil para exportar um projeto antigo ou mexer em opções que o painel da engine não mostra.
+
+1. Abra **`rangearmor/RangeArmor Panel.exe`**, na pasta da engine. Também abre pelo botão **Open RangeArmor Panel** ou por **File > Export Game With RANGEARMOR**.
+2. Na tela inicial, clique em **New Project** para criar uma pasta de projeto nova ou em **Open Project** para abrir uma existente (por exemplo, a criada pelo **File > Create Project**). Os projetos abertos antes aparecem em **Recent projects**.
+3. Na engine, abra o seu `.range` e salve a cópia protegida com **File > Save .Range Protected File** dentro da pasta `data/` do projeto. Ela tem a extensão `.rasec`.
+4. De volta ao painel, na aba **Project**:
+
+| Campo | O que faz |
+|---|---|
+| **Game Name** | Nome do jogo. |
+| **Version** | Versão do jogo. |
+| **Main File** | O arquivo `.rasec` do passo 3. Enquanto ele for o arquivo de exemplo, o export fica bloqueado. |
+| **Data Source** | Pasta com os arquivos do jogo (normalmente `data`). |
+| **Compile Python scripts** | Entrega os scripts compilados em vez do código-fonte. |
+
+5. Na aba **Paths**, confira **Engine executables** (o runtime de cada plataforma) e **Python for authoring tools**. Se estiverem vazios, use na aba **Tasks** o botão **Copy Available Range Engine Files**, que copia o runtime da engine para a pasta `engine/` do projeto.
+6. Clique em **Save** para gravar as configurações.
+7. Na aba **Tasks**:
+   - **Run game**: roda o jogo como o jogador vai ver, para testar antes.
+   - **Set Icons**: escolhe os ícones `.ico` do launcher e do executável.
+   - **Export to**: exporta uma plataforma ou **All Platforms**. **Compress targets after export** gera o zip.
+8. O resultado vai para a pasta `release/` do projeto. **Explore** abre a pasta e **Copy Log** copia o log se algo der errado.
+
+:::note
+O botão **Export Game (1 Click)** da engine faz os passos 3 a 7 sozinho, e ainda cozinha o cache. Use o painel externo quando precisar de controle manual.
+:::
+
 ## 5. Testar e distribuir
 
 1. Abra `release/` e **extraia o zip gerado numa pasta qualquer fora do projeto**.

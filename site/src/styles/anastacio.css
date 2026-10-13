@@ -87,3 +87,19 @@ h1, h2, .site-title { font-family: var(--ae-display); letter-spacing: .02em; }
 	opacity: 0.65;
 	line-height: 1.2;
 }
+
+/* Escala geral menor (equivale a ~70% de zoom) e conteúdo central mais largo */
+html {
+	font-size: 70%;
+}
+:root {
+	--sl-content-width: 90rem;
+}
+@media (min-width: 72rem) {
+	.right-sidebar-container {
+		width: 22rem !important;
+	}
+	[data-has-sidebar][data-has-toc] .main-pane {
+		--sl-content-margin-inline: auto;
+	}
+}

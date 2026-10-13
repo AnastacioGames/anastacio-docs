@@ -90,11 +90,17 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Tolerância do olhar (0 a 1): quanto o alvo pode estar fora do centro do raio.
+
 ### gazeProgress
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Progresso do olhar fixo, de 0 a 1. Chega a 1 depois de `gazeTime` segundos olhando o alvo.
+
 ### gazeTime
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tempo, em segundos, olhando o alvo para o sensor disparar (0 a 30).
 

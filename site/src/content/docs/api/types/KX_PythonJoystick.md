@@ -132,29 +132,43 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### stopVibration()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Para a vibração do controle.
 
 ### duration
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Duração da vibração, em milissegundos.
 
 ### hasVibration
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` se o controle suporta vibração.
 
 ### inputs
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Dicionário `{botão: SCA_InputEvent}` com o estado de cada botão do controle.
 
 ### isVibrating
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` enquanto o controle está vibrando.
 
 ### strengthLeft
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Força do motor de vibração esquerdo (0 a 1).
 
 ### strengthRight
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Força do motor de vibração direito (0 a 1).
 

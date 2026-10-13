@@ -65,37 +65,53 @@ Devolve o filtro do passe `index`.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### changeBloomValues()
+### changeBloomValues(enabled, intensity, threshold)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### changeFxaaValues()
+Liga/desliga o Bloom da cena e muda intensidade e limiar de brilho.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### changeFxaaValues(enabled)
 
-### changeGrainValues()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Liga ou desliga o FXAA (anti-serrilhado) da cena.
 
-### changeLightScatterValues()
+### changeGrainValues(enabled, strength)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### changeSSAOValues()
+Liga/desliga o grão de filme e muda a força.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### changeLightScatterValues(enabled, step_max, step_size, threshold, intensity)
 
-### changeSSGIValues()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Liga/desliga os raios de luz (light scattering) e muda passos, tamanho do passo, limiar e intensidade.
 
-### changeSSRValues()
+### changeSSAOValues(enabled, samples, strength, distance, attenuation)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### changeTonemapValues()
+Liga/desliga a oclusão de ambiente (SSAO) e muda amostras, força, distância e atenuação.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### changeSSGIValues(enabled, radius=3.0, strength=1.0, rays=4, steps=8, thickness=0.1, divisor=0)
+
+ <small>método</small>
+
+Liga/desliga a iluminação global em tela (SSGI) e muda seus parâmetros. `divisor` 1, 2 ou 4 muda a resolução do traçado; 0 mantém. O SSGI precisa estar ligado na cena antes do Play.
+
+### changeSSRValues(enabled, step_max, bias, max_distance)
+
+ <small>método</small>
+
+Liga/desliga os reflexos em tela (SSR) e muda passos, bias e distância máxima.
+
+### changeTonemapValues(enabled, exposure, gamma)
+
+ <small>método</small>
+
+Liga/desliga o tonemap e muda exposição e gamma.
 
 ### fxaaEdgeThreshold
 

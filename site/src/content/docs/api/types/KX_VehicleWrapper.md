@@ -171,57 +171,97 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### getCoordinateSystem()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Eixos `(direita, cima, frente)` do veículo (0=X, 1=Y, 2=Z).
+
+**Retorna:** `tuple`
 
 ### getCurrentSpeedKmh()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Velocidade atual em km/h.
+
+**Retorna:** `float`
 
 ### getCurrentSpeedMps()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Velocidade atual em metros por segundo.
+
+**Retorna:** `float`
 
 ### getForwardVector()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### getWheelConfig()
+Direção da frente do veículo, no mundo.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+**Retorna:** `Vector`
 
-### getWheelState()
+### getWheelConfig(wheelIndex)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### loadPreset()
+Configuração da roda: `connectionPoint`, `downDirection`, `axleDirection`, `suspensionRestLength`, `wheelRadius`, `hasSteering` e `isDriveWheel`.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+**Retorna:** `dict`
 
-### rebuildPreset()
+### getWheelState(wheelIndex)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Estado da roda neste tick: posição e orientação no mundo, `rotation`, `isInContact`, ponto e normal do contato, `suspensionForce` e mais.
+
+**Retorna:** `dict`
+
+### loadPreset(path)
+
+ <small>método</small>
+
+Carrega um preset de veículo (arquivo) e aplica neste veículo.
+
+### rebuildPreset(path, wheelObjects)
+
+ <small>método</small>
+
+Recria as rodas a partir do preset, usando os objetos dados (um por roda). Use Empties com física **No Collision** como rodas.
 
 ### resetSuspension()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### savePreset()
+Volta a suspensão ao estado de repouso (útil depois de teleportar o carro).
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### savePreset(path)
 
-### setCoordinateSystem()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Salva a configuração atual do veículo num arquivo de preset.
 
-### setWheelIsDriveWheel()
+### setCoordinateSystem(right, up, forward)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Define quais eixos (0=X, 1=Y, 2=Z) são direita, cima e frente. Precisa usar os três eixos sem repetir.
+
+### setWheelIsDriveWheel(wheelIndex, isDriveWheel)
+
+ <small>método</small>
+
+Define se a roda recebe tração do motor.
 
 ### constraint_id
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Id da restrição (constraint) física do veículo.
 
 ### constraint_type
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Tipo da restrição física do veículo.
 

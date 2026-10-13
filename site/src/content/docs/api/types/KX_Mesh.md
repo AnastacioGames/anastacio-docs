@@ -189,5 +189,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### destruct()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Apaga a malha da memória. Use só em malhas criadas por script que nenhum objeto usa mais.
 

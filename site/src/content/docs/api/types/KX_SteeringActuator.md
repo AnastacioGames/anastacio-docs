@@ -81,13 +81,19 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### facingMode
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Para onde o objeto vira ao andar: 0 não vira, 1 a 3 = eixo +X, +Y, +Z, 4 a 6 = -X, -Y, -Z.
 
 ### lockZVelocity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Não mexe na velocidade vertical (Z) do objeto.
 
 ### steeringVec
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Vetor de direção calculado pelo atuador neste frame.
 

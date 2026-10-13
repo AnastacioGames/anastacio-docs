@@ -358,199 +358,297 @@ target = camera.getScreenRay(0.5, 0.5, 100, "wall")
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### shake()
+### shake(trauma, duration=0.0)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Treme a câmera. `trauma` vai de 0 a 1 e soma com o terremoto do World. Com `duration`, o tremor some nesse tempo; sem, diminui no ritmo de `shakeDecay` por segundo.
 
 ### cameraSpeed
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Velocidade atual da câmera (unidades por segundo), usada pelos efeitos ligados à velocidade.
+
 ### catEyeStrength
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Força do bokeh "olho de gato" do desfoque (DOF), de 0.0 a 1.0: os círculos ficam achatados perto das bordas.
 
 ### chromaticStrength
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Força da aberração cromática, de 0.0 a 5.0.
+
 ### directionalBlurMax
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Limite do desfoque direcional (rastro ao girar a câmera), de 0.0 a 0.2.
 
 ### directionalBlurStrength
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Força do desfoque direcional, de 0.0 a 2.0.
+
 ### dofBlur
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Tamanho máximo do desfoque de profundidade (DOF), de 0 a 32.
 
 ### dofQuality
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Qualidade do DOF: 0 baixa, 1 média, 2 alta.
+
 ### droneAmplitude
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Amplitude do balanço do modo de rastreio Drone (0 a 20).
 
 ### droneFrequency
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Frequência do balanço do modo Drone (0 a 20).
+
 ### fisheyeStrength
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Distorção olho de peixe, de -1.0 (almofada) a 1.0 (barril).
 
 ### focusDistance
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Distância de foco usada neste frame, depois de suavizada.
+
 ### focusManualDistance
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Distância de foco quando `focusMode` é 0 (manual).
 
 ### focusMode
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Como o foco é escolhido: 0 manual (`focusManualDistance`), 1 objeto (`focusObject`), 2 propriedade (`focusProperty`), 3 automático (raio no ponto da tela).
+
 ### focusObject
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Objeto em foco quando `focusMode` é 1. `None` para nenhum.
 
 ### focusPosition
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Posição no mundo do ponto em foco, ou `None`.
+
 ### focusProperty
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Nome da propriedade de jogo usada quando `focusMode` é 2: foca o objeto mais próximo que a tiver verdadeira.
 
 ### focusRange
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Faixa de distância, em volta do foco, que continua nítida.
+
 ### focusScreenPosition
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Posição na tela (0 a 1) do ponto em foco.
 
 ### focusSmooth
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Suavização da troca de foco, de 0 (instantânea) a 10.
+
 ### focusTarget
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Objeto que está em foco agora, ou `None`.
 
 ### focusValid
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+`True` quando o foco achou um alvo neste frame.
+
 ### gazeDirection
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Direção para onde a câmera está olhando, no mundo.
 
 ### shakeAmplitude
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Amplitude máxima do tremor (0 a 0.5).
+
 ### shakeDecay
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Quanto o tremor diminui por segundo (0 a 20).
 
 ### shakeFrequency
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Frequência do tremor (0 a 60).
+
 ### shakeTrauma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Trauma atual do tremor (0 a 1).
 
 ### speedBlurMaxSpeed
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Velocidade em que o desfoque de velocidade chega ao máximo.
+
 ### speedBlurStrength
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Força do desfoque de velocidade, de 0.0 a 2.0.
 
 ### speedOverride
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Velocidade usada pelos efeitos no lugar da velocidade real. -1 desliga e volta a usar a real.
+
 ### trackBank
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Inclinação lateral da câmera nas curvas do rastreio (0 a 5).
 
 ### trackDeadzone
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Zona morta do rastreio: o alvo pode se mover nessa margem da tela sem a câmera virar (0 a 0.5).
+
 ### trackLimit
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Ângulo máximo, em radianos, que o rastreio pode girar a câmera.
 
 ### trackMode
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Modo de rastreio: 0 desligado, 1 olhar para o alvo, 2 drone.
+
 ### trackOrientation
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Orientação calculada pelo rastreio neste frame.
 
 ### trackScreenOffset
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Deslocamento `[x, y]` do alvo na tela, de -0.5 a 0.5.
+
 ### trackSpeed
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Velocidade com que a câmera vira para o alvo (0 a 10).
 
 ### useBlurProtect
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Protege o centro da tela dos desfoques.
+
 ### useCatEye
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga o bokeh olho de gato no DOF.
 
 ### useChromatic
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Liga a aberração cromática.
+
 ### useChromaticSpeed
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Faz a aberração cromática aumentar com a velocidade.
 
 ### useDirectionalBlur
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Liga o desfoque direcional.
+
 ### useDof
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga a profundidade de campo (DOF).
 
 ### useShakeRoll
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+O tremor também gira a câmera em volta do eixo de visão.
+
 ### useSpeedBlur
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga o desfoque de velocidade.
 
 ### useTrackUpLock
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Mantém o "para cima" da câmera fixo durante o rastreio.
+
 ### useVignette
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga a vinheta (bordas escuras).
 
 ### vignetteRadius
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Raio da vinheta (0 a 2).
+
 ### vignetteStrength
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Força da vinheta (0 a 1).
 

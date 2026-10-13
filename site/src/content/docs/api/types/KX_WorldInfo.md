@@ -195,7 +195,9 @@ Paleta de cores da aurora: `'GREEN'`, `'CLASSIC'` ou `'SHIFTING'`.
 
 ### backgroundColor
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Cor de fundo `[r, g, b]` do World.
 
 ### moonBrightness
 
@@ -223,7 +225,9 @@ Estilo das estrelas: `'SIMPLE'`, `'REALISTIC'` ou `'CONSTELLATIONS'`.
 
 ### sunSize
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Tamanho do sol no céu (0 a 1).
 
 ### useSkyAurora
 

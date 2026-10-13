@@ -9,63 +9,95 @@ Classe `Range.types.KX_MeshBuilderSlot`.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### addIndex()
+### addIndex(indices)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### addPrimitiveIndex()
+Acrescenta índices de vértices (lista de inteiros) aos primitivos e, se for malha de triângulos, aos triângulos.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### addPrimitiveIndex(indices)
 
-### addTriangleIndex()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Acrescenta índices só à lista de primitivos (desenho).
 
-### addVertex()
+### addTriangleIndex(indices)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Acrescenta índices só à lista de triângulos (física e raios).
+
+### addVertex(position, normal=None, tangent=None, uvs=None, colors=None)
+
+ <small>método</small>
+
+Acrescenta um vértice. `uvs` e `colors` são listas, uma entrada por camada.
+
+**Retorna:** `int`
 
 ### recalculateNormals()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### removePrimitiveIndex()
+Recalcula as normais dos vértices a partir dos triângulos.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### removePrimitiveIndex(start, end=-1)
 
-### removeTriangleIndex()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Remove índices de primitivos de `start` até `end`.
 
-### removeVertex()
+### removeTriangleIndex(start, end=-1)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Remove índices de triângulos de `start` até `end`.
+
+### removeVertex(start, end=-1)
+
+ <small>método</small>
+
+Remove vértices de `start` até `end`.
 
 ### colorCount
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Quantas camadas de cor de vértice o slot tem.
 
 ### indices
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Lista dos índices de primitivos.
 
 ### material
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Material do slot.
 
 ### primitive
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Tipo de primitivo do slot (pontos, linhas ou triângulos).
 
 ### triangleIndices
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Lista dos índices de triângulos.
 
 ### uvCount
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Quantas camadas de UV o slot tem.
 
 ### vertices
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Lista dos vértices do slot.
 

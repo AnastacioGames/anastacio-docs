@@ -443,13 +443,15 @@ pega a correção de aberração cromática da lente VR
 
 pega a intensidade da distorção da lente VR
 
-### setCustomMouse(string path)
+### setCustomMouse(path)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Usa a imagem em `path` como cursor do mouse.
 
 ### setMasterVolume(volume)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
 -- volume em [0, 1], aplicado ao dispositivo de áudio real da engine
 
@@ -471,51 +473,75 @@ define a correção de aberração cromática da lente VR (0..0.1, padrão 0.01)
 
 define a intensidade da distorção da lente VR (0..1, padrão 0.3)
 
-### showDebugPhysics(bool debug)
+### showDebugPhysics(enabled)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Mostra ou esconde as formas de colisão da física.
 
 ### RAS_MIPMAP_LINEAR
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Mipmap linear (mais suave).
 
 ### RAS_MIPMAP_NEAREST
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Mipmap pelo mais próximo.
 
 ### RAS_MIPMAP_NONE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sem mipmap.
 
 ### STEREO_ABOVEBELOW
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Estéreo: uma imagem em cima da outra.
 
 ### STEREO_ANAGLYPH
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Estéreo: anaglifo (óculos vermelho/ciano).
 
 ### STEREO_INTERLACED
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Estéreo: linhas intercaladas.
 
 ### STEREO_NOSTEREO
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sem estéreo.
 
 ### STEREO_SIDEBYSIDE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Estéreo: lado a lado.
 
 ### VSYNC_ADAPTIVE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+VSync adaptativo: sincroniza, mas não trava quando o FPS cai.
 
 ### VSYNC_OFF
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+VSync desligado.
 
 ### VSYNC_ON
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+VSync ligado.
 

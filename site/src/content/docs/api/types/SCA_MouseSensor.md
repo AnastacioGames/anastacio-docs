@@ -40,3 +40,5 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Tempo, em segundos, segurando o botão para o sensor disparar (0 a 30).
+

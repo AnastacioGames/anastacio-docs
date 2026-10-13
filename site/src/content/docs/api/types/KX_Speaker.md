@@ -11,165 +11,251 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### GetActiveEffect()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Efeito de som ativo: 0 nenhum, 1 reverb.
+
+**Retorna:** `int`
 
 ### GetActiveEffectFilter()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Filtro ativo: 0 nenhum, 1 passa-baixa, 2 passa-alta, 3 passa-banda.
+
+**Retorna:** `int`
 
 ### Pause()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Pausa o som.
 
 ### Play()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Toca o som.
 
 ### RemoveEffect()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Remove o efeito de som.
 
 ### Restart()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### SetEffect()
+Toca o som desde o começo.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### SetEffect(effectType, filterType=0)
 
-### SetSound()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Aplica um efeito: `effectType` 1 = reverb; `filterType` 0 nenhum, 1 passa-baixa, 2 passa-alta, 3 passa-banda. Depois disso as áreas de reverb deixam este Speaker em paz.
+
+### SetSound(sound, cache=False)
+
+ <small>método</small>
+
+Troca o som (um `aud.Sound`). Com `cache=True`, guarda o som decodificado na memória.
 
 ### Stop()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Para o som.
 
 ### attenuation
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Quanto o volume cai com a distância (som 3D).
 
 ### catkey
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Chave da categoria de som no gerenciador de reprodução, ou `None`.
 
 ### cone_angle_inner
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Ângulo, em graus, do cone em que o som toca no volume cheio.
 
 ### cone_angle_outer
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Ângulo, em graus, do cone fora do qual o volume é `cone_volume_outer`.
 
 ### cone_volume_outer
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Volume fora do cone externo.
 
 ### distance_maximum
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Distância a partir da qual o volume para de cair.
 
 ### distance_reference
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Distância em que o som toca no volume normal.
 
 ### filter_gain
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Ganho geral do filtro.
 
 ### filter_gainhf
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Ganho das frequências altas no filtro.
 
 ### filter_gainlf
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Ganho das frequências baixas no filtro.
 
 ### is3D
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` se o som é posicional (3D).
 
 ### mode
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Modo de reprodução: 1 toca até o fim, 2 repete, 3 repete indo e voltando.
 
 ### pitch
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Tom (velocidade) do som. 1.0 é normal.
 
 ### playbackManager
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Gerenciador de reprodução (`aud.PlaybackManager`) usado pelo Speaker, ou `None`.
 
 ### reverb_air_absorption_gain_hf
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: absorção das altas frequências pelo ar.
 
 ### reverb_decay_hf_ratio
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: quanto as altas frequências somem mais rápido que as baixas.
 
 ### reverb_decay_limit_hf
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: limita o decaimento das altas frequências.
 
 ### reverb_decay_time
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: tempo, em segundos, que o eco leva para sumir.
 
 ### reverb_density
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: densidade dos ecos.
 
 ### reverb_diffusion
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: espalhamento dos ecos.
 
 ### reverb_gain
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: volume geral do efeito.
 
 ### reverb_gain_hf
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: volume das altas frequências.
 
 ### reverb_late_reverb_delay
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: atraso da cauda do eco.
 
 ### reverb_late_reverb_gain
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: volume da cauda do eco.
 
 ### reverb_reflections_delay
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: atraso das primeiras reflexões.
 
 ### reverb_reflections_gain
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: volume das primeiras reflexões.
 
 ### reverb_room_rolloff_factor
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Reverb: quanto o efeito cai com a distância.
 
 ### sound
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Som atual (`aud.Sound`), ou `None`.
 
 ### time
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Posição atual do som, em segundos. Pode ser mudada para pular.
 
 ### volume
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Volume do som.
 
 ### volume_maximum
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Volume máximo, mesmo de perto.
 
 ### volume_minimum
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Volume mínimo, mesmo de longe.
 

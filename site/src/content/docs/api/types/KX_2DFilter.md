@@ -95,27 +95,41 @@ Remove o registro do off screen personalizado em que o filtro renderiza.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### recompile()
+### recompile(fragmentProgram=None)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setUniform()
+Compila um novo código GLSL. Sem argumento, relê o arquivo de texto externo (se o filtro veio de um) ou recompila o código atual. Retorna `True` se deu certo; senão veja `compileLog`.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+**Retorna:** `bool`
+
+### setUniform(name, value)
+
+ <small>método</small>
+
+Define um uniform do shader pelo nome. O tipo vem do shader (float, vec2-4, int, ivec2-4, bool, mat3, mat4 ou arrays deles). O valor continua valendo depois de um `recompile()`.
 
 ### activeUniforms
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Lista dos uniforms usados pelo shader, como tuplas `(nome, tipo, tamanho)`.
+
 ### compileLog
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Mensagens da última compilação do shader (erros e avisos). Vazio quando compilou sem problemas.
 
 ### sourceName
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Nome do texto ou arquivo de onde veio o código do filtro.
+
 ### sourcePath
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Caminho do arquivo externo `.glsl` do filtro; vazio quando o código está dentro do `.range`.
 

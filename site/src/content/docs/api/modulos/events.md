@@ -564,61 +564,91 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### JOYSTICKA
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão A do controle.
 
 ### JOYSTICKB
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão B do controle.
 
 ### JOYSTICKBACK
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão Back/Select do controle.
 
 ### JOYSTICKGUIDE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão Guide (botão central) do controle.
 
 ### JOYSTICKLEFTSHOUDER
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão ombro esquerdo (LB) do controle.
 
 ### JOYSTICKLEFTSTICK
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão clique do analógico esquerdo do controle.
 
 ### JOYSTICKPADDOWN
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para baixo do controle.
 
 ### JOYSTICKPADLEFT
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para a esquerda do controle.
 
 ### JOYSTICKPADRIGHT
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para a direita do controle.
 
 ### JOYSTICKPADUP
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para cima do controle.
 
 ### JOYSTICKRIGHTSHOUDER
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão ombro direito (RB) do controle.
 
 ### JOYSTICKRIGHTSTICK
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão clique do analógico direito do controle.
 
 ### JOYSTICKX
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão X do controle.
 
 ### JOYSTICKY
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão Y do controle.
 
 ### OSKEY
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Tecla do sistema (Windows/Command).
 

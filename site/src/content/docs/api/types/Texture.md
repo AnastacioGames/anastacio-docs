@@ -11,25 +11,31 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### close()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
 Fecha o decklink dinâmico e restaura o original
 
 ### refresh()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
 Atualiza o decklink a partir da fonte
 
 ### bindId
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Id OpenGL da textura.
 
 ### mipmap
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Usa mipmap na textura (`True`/`False`).
 
 ### source
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Fonte da imagem (vídeo, câmera, imagem...) desenhada na textura.
 

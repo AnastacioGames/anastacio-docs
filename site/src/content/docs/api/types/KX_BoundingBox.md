@@ -63,5 +63,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### volume
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Volume da caixa delimitadora (largura × altura × profundidade).
 

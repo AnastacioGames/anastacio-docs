@@ -79,15 +79,25 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
+Usa a direção atual da cabeça (VR) como "frente". `False` se o sensor não está pronto.
+
+**Retorna:** `bool`
+
 ### headOrientation
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Orientação da cabeça (matriz 3×3), já recentralizada.
 
 ### recenterTime
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Tempo, em segundos, para recentralizar sozinho quando a cabeça fica parada (0 desliga).
+
 ### smoothing
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Suavização do movimento da cabeça (0 a 5).
 

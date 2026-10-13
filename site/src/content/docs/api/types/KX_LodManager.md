@@ -27,5 +27,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### updatePhysics
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Também troca a malha de física quando o nível de detalhe (LOD) muda.
 

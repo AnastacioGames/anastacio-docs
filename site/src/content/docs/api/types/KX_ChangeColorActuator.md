@@ -11,13 +11,19 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### color
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Cor `[r, g, b, a]` aplicada pelo atuador.
 
 ### lerp
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Velocidade da transição de cor quando `useLerp` está ligado (0.1 a 1.0).
 
 ### useLerp
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Faz a cor mudar aos poucos em vez de trocar de uma vez.
 

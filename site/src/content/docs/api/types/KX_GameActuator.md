@@ -27,9 +27,13 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### extensionName
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Extensão do arquivo usado pelos modos de salvar/carregar o jogo.
 
 ### saveLocation
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Pasta onde o atuador salva e carrega o jogo.
 

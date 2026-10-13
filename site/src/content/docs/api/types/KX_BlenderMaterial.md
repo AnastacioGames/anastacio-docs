@@ -195,5 +195,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### passIndex
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Pass Index do material, usado para separar materiais em filtros e efeitos.
 

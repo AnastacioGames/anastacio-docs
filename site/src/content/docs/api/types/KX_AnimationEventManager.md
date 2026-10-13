@@ -11,5 +11,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### events
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Lista dos eventos de animação (`KX_AnimationEvent`) do objeto.
 

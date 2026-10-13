@@ -11,9 +11,13 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### axis
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Eixo vigiado: 0 a 2 = +X, +Y, +Z; 3 a 5 = -X, -Y, -Z; 6 = todos.
 
 ### threshold
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Quanto o objeto precisa se mover para o sensor disparar.
 

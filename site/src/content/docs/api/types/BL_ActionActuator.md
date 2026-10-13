@@ -75,9 +75,13 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### layer
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Camada de animação (0 a 7) em que o atuador toca a ação. Camadas diferentes tocam ao mesmo tempo.
 
 ### layerWeight
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Peso da camada, de 0.0 a 1.0: quanto esta ação se mistura com as camadas de baixo.
 

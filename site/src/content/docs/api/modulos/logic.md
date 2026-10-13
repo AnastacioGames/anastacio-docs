@@ -1684,51 +1684,99 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### deltaTime()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### freeUnconvertedData()
+Tempo, em segundos, desde o frame anterior. Multiplique movimentos por ele para não depender do FPS.
+
+**Retorna:** `float`
+
+### freeUnconvertedData(scene)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
+
+Só no jogo exportado: libera a geometria usada só por objetos da cena deixados de fora pela opção **Convert**. Eles não poderão mais ser convertidos. Retorna os bytes liberados.
+
+**Retorna:** `int`
 
 ### getAnimationRate()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Taxa de atualização das animações (vezes por segundo).
+
+**Retorna:** `float`
 
 ### getGraphicsCardRenderer()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Nome da placa de vídeo.
+
+**Retorna:** `str`
 
 ### getGraphicsCardVendor()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### getLoadLog()
+Fabricante da placa de vídeo.
+
+**Retorna:** `str`
+
+### getLoadLog(clear=False)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
+
+Relatório dos últimos carregamentos de cena: dicts com `scene`, `stage`, `ms`, `detail` e `total`. Com `clear=True`, limpa depois de ler.
+
+**Retorna:** `list`
+
+### getMessages(to, subject='')
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-### getMessages()
+Mensagens `(assunto, corpo)` que um sensor Message do objeto `to` recebe neste frame.
+
+**Retorna:** `list`
+
+### getObjectConvert(scene, object)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-### getObjectConvert()
+Valor da opção **Convert** do objeto na cena.
 
-<span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
+**Retorna:** `bool`
 
 ### getProcessorName()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### getRangeFileList()
+Nome do processador.
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+**Retorna:** `str`
 
-### getRasecFileList()
+### getRangeFileList(path='')
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Arquivos `.range` na pasta do jogo atual (ou em `path`).
+
+**Retorna:** `list`
+
+### getRasecFileList(path='')
+
+ <small>função</small>
+
+Arquivos `.rasec` na pasta do jogo atual (ou em `path`).
+
+**Retorna:** `list`
 
 ### getRenderRate()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Taxa de desenho (vezes por segundo).
+
+**Retorna:** `float`
 
 ### preloadScene(name)
 
@@ -1738,151 +1786,227 @@ Converte uma cena com antecedência, no fim deste frame (shaders e texturas incl
 
 **Retorna:** `bool`
 
-### setAnimationRate()
+### setAnimationRate(rate)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### setNeedsParents()
+Muda a taxa de atualização das animações.
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+### setNeedsParents(count)
 
-### setObjectConvert()
+ <small>função</small>
+
+Quantas vezes por frame a hierarquia de pais é atualizada (de 3 para 1 economiza CPU).
+
+### setObjectConvert(scene, object, convert, children=True)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-### setRenderRate()
+Muda a opção **Convert** de um objeto numa cena que ainda não foi carregada. Retorna quantos objetos mudaram.
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+**Retorna:** `int`
+
+### setRenderRate(rate)
+
+ <small>função</small>
+
+Muda a taxa de desenho.
 
 ### KX_GAME_SCREENSHOT
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Modo do atuador Game: tira um print da tela.
 
 ### KX_JOYSTICK_BUT_A
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão A do controle.
 
 ### KX_JOYSTICK_BUT_B
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão B do controle.
 
 ### KX_JOYSTICK_BUT_BACK
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão Back/Select do controle.
 
 ### KX_JOYSTICK_BUT_GUIDE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão Guide (botão central) do controle.
 
 ### KX_JOYSTICK_BUT_LEFTSHOUDER
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão ombro esquerdo (LB) do controle.
 
 ### KX_JOYSTICK_BUT_LEFTSTICK
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão clique do analógico esquerdo do controle.
 
 ### KX_JOYSTICK_BUT_PADDOWN
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para baixo do controle.
 
 ### KX_JOYSTICK_BUT_PADLEFT
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para a esquerda do controle.
 
 ### KX_JOYSTICK_BUT_PADRIGHT
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para a direita do controle.
 
 ### KX_JOYSTICK_BUT_PADUP
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão direcional para cima do controle.
 
 ### KX_JOYSTICK_BUT_RIGHTSHOUDER
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão ombro direito (RB) do controle.
 
 ### KX_JOYSTICK_BUT_RIGHTSTICK
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão clique do analógico direito do controle.
 
 ### KX_JOYSTICK_BUT_X
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão X do controle.
 
 ### KX_JOYSTICK_BUT_Y
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão Y do controle.
 
 ### KX_MOUSE_BUT_BUTTON6
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão 6 do mouse.
 
 ### KX_MOUSE_BUT_BUTTON7
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão 7 do mouse.
 
 ### KX_MOUSE_BUT_LEFTTHUMBMOUSE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão lateral esquerdo do mouse (polegar).
 
 ### KX_MOUSE_BUT_RIGHTTHUMBMOUSE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Botão lateral direito do mouse (polegar).
 
 ### KX_MOVEMENT_ALL_AXIS
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: vigia todos os eixos.
 
 ### KX_MOVEMENT_AXIS_NEG_X
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: eixo -X.
 
 ### KX_MOVEMENT_AXIS_NEG_Y
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: eixo -Y.
 
 ### KX_MOVEMENT_AXIS_NEG_Z
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: eixo -Z.
 
 ### KX_MOVEMENT_AXIS_POS_X
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: eixo +X.
 
 ### KX_MOVEMENT_AXIS_POS_Y
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: eixo +Y.
 
 ### KX_MOVEMENT_AXIS_POS_Z
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Sensor Movement: eixo +Z.
 
 ### RAS_2DFILTER_BLOOM
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: Bloom.
 
 ### RAS_2DFILTER_FXAA
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: FXAA.
 
 ### RAS_2DFILTER_LIGHTSCATTER
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: raios de luz (light scattering).
 
 ### RAS_2DFILTER_OUTLINE
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: contorno (outline).
 
 ### RAS_2DFILTER_SSAO
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: oclusão de ambiente (SSAO).
 
 ### RAS_2DFILTER_SSR
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: reflexos em tela (SSR).
 
 ### RAS_2DFILTER_TONEMAP
 
-<span class="ae-badge pendente">sem documentação</span> <small>constante</small>
+ <small>constante</small>
+
+Filtro 2D: tonemap.
 

@@ -35,7 +35,9 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### close_current_popup()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Fecha o popup aberto.
 
 ### color_edit3(label, r, g, b)
 
@@ -57,17 +59,21 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### draw_rect_filled(x1, y1, x2, y2, r, g, b, a)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
 -- desenhado acima de todas as janelas, para fades
 
 ### end()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Fecha a janela começada com `begin()`.
 
 ### end_popup()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Fecha o bloco de um popup.
 
 ### get_cursor_pos()
 
@@ -101,7 +107,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### image(texture_id, w, h)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
 -- texture_id é um bind code OpenGL puro
 
@@ -137,27 +143,39 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### open_popup(name)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Abre o popup com esse nome.
 
 ### pop_font()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Volta à fonte anterior a `push_font()`.
 
 ### pop_item_width()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
+Volta à largura anterior a `push_item_width()`.
+
 ### pop_style_color(count=1)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Desfaz as últimas `count` cores de `push_style_color()`.
 
 ### pop_style_var(count=1)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
+Desfaz os últimos `count` estilos de `push_style_var()`.
+
 ### push_font(font_id)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Usa outra fonte até `pop_font()`.
 
 ### push_item_width(width)
 
@@ -167,7 +185,7 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### push_style_color(idx, r, g, b, a)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
 -- idx é uma das constantes imgui.COL_*
 
@@ -185,21 +203,25 @@ ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
 
 ### same_line()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Coloca o próximo item na mesma linha do anterior.
 
 ### separator()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Desenha uma linha separadora.
 
 ### set_cursor_pos(x, y)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
 -- posição relativa à janela atual
 
 ### set_game_ui_open(open)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
 -- liga/desliga a entrada + libera o mouse para a UI de jogo desenhada em Python
 
@@ -211,11 +233,15 @@ ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
 
 ### set_next_window_pos(x, y, cond=COND_ALWAYS)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Posição da próxima janela, em pixels.
 
 ### set_next_window_size(w, h, cond=COND_ALWAYS)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Tamanho da próxima janela, em pixels.
 
 ### slider_float(label, value, min, max)
 
@@ -231,5 +257,7 @@ ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
 
 ### text(text)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Mostra um texto.
 

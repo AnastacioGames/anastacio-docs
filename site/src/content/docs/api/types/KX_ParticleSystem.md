@@ -11,7 +11,9 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### burst()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Solta todas as partículas de uma vez no próximo frame. Só em emissores com `burstMode` ligado.
 
 ### billboardMode
 
@@ -29,45 +31,67 @@ Como as partículas se misturam com a cena: `'ALPHA'` ou `'ADDITIVE'`. Valor des
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Intervalo, em segundos, entre as rajadas automáticas do modo burst.
+
 ### burstMode
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+`True` emite em rajadas (explosões); `False` emite sem parar.
+
 ### collisionBounce
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Quanto a partícula quica ao bater (0 = não quica).
 
 ### collisionFriction
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Atrito da partícula ao deslizar depois de bater.
 
 ### collisionHeight
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Altura do plano do chão quando `collisionMode` é 1.
 
 ### collisionMode
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Colisão das partículas: 0 nenhuma, 1 plano do chão, 2 com o que aparece na tela (screen-space).
 
 ### color
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Cor inicial `[r, g, b, a]` das partículas.
 
 ### debugUI
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` quando o painel de depuração do sistema de partículas está aberto.
 
 ### drag
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Resistência do ar: quanto as partículas perdem velocidade com o tempo.
+
 ### emissionAngle
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Abertura do cone de emissão, em graus.
 
 ### emissionDirection
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Direção `[x, y, z]` em que as partículas saem.
 
 ### emissionMode
 
@@ -77,47 +101,69 @@ Modo de emissão: `'CONTINUOUS'` ou `'BURST'` (todas de uma vez). `burstMode` ac
 
 ### emitterPosition
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Posição `[x, y, z]` do emissor em relação ao objeto.
 
 ### emitterRadius
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Raio da área de onde as partículas nascem.
 
 ### enabled
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Liga ou desliga a emissão.
 
 ### endColor
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Cor `[r, g, b, a]` da partícula no fim da vida (a cor vai mudando de `color` até ela).
 
 ### endSize
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Tamanho da partícula no fim da vida.
 
 ### fragmentShaderPath
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Caminho de um `.glsl` próprio para desenhar as partículas. Vazio volta ao visual padrão.
 
 ### gravity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Gravidade aplicada às partículas.
 
 ### lifetime
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Tempo de vida de cada partícula, em segundos.
 
 ### particleCount
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Quantidade máxima de partículas vivas.
 
 ### size
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Tamanho inicial das partículas.
 
 ### texture
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Caminho da imagem usada nas partículas. Vazio remove a textura.
 
 ### useBackfaceCulling
 
@@ -139,11 +185,15 @@ Liga o redemoinho: as partículas sobem girando em volta do emissor.
 
 ### velocity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Velocidade inicial das partículas.
 
 ### velocityRandomness
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Variação aleatória da velocidade inicial (0 = todas iguais).
 
 ### vortexHeight
 

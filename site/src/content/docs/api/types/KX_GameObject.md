@@ -1338,169 +1338,263 @@ Adiciona uma propriedade à lista de depuração.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### getTurnTo()
+### getTurnTo(other)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Vetor local deste objeto até outro objeto ou ponto. Útil para saber para que lado virar.
+
+**Retorna:** `Vector`
 
 ### getVehicle()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+O veículo criado pelo painel Vehicle deste objeto, ou `None`.
+
+**Retorna:** `KX_VehicleWrapper`
 
 ### getVehicleGearboxType()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Tipo de câmbio configurado no painel Vehicle.
+
+**Retorna:** `int`
 
 ### getVehicleGearRatios()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Relações das marchas configuradas no painel Vehicle.
+
+**Retorna:** `tuple`
 
 ### getVehicleMaxRPM()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Rotação máxima do motor configurada no painel Vehicle.
+
+**Retorna:** `float`
 
 ### getVehicleMaxTorque()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Torque máximo do motor configurado no painel Vehicle.
+
+**Retorna:** `float`
 
 ### getVehicleSteeringWheel()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### lookAt()
+Objeto do volante configurado no painel Vehicle, ou `None`.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+**Retorna:** `KX_GameObject`
+
+### lookAt(vect, axis=2, factor=1.0)
+
+ <small>método</small>
+
+Vira o objeto para que o eixo `axis` (0=X, 1=Y, 2=Z) aponte na direção `vect`. `factor` abaixo de 1 vira só uma parte (suaviza).
 
 ### resumeAnimations()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
-### setActionLayerSpeed()
+Retoma as animações pausadas por `suspendAnimations()`.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setActionLayerSpeed(layer, speed)
 
-### setActionLayerWeight()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Muda a velocidade da ação que toca na camada `layer`.
 
-### setCcdMotionThreshold()
+### setActionLayerWeight(layer, layerWeight)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setCcdSweptSphereRadius()
+Muda o peso (0 a 1) da camada de animação `layer`.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setCcdMotionThreshold(threshold)
 
-### setHalfAnimations()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Velocidade a partir da qual a detecção contínua de colisão (CCD) entra, evitando que objetos rápidos atravessem paredes.
 
-### setSoftAnchorsHardness()
+### setCcdSweptSphereRadius(radius)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftAngularStiffness()
+Raio da esfera usada pela detecção contínua de colisão (CCD).
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setHalfAnimations(enabled)
 
-### setSoftClusterSolverIterations()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Com `True`, atualiza as animações do objeto em frames alternados, para economizar CPU.
 
-### setSoftContactsHardness()
+### setSoftAnchorsHardness(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftDampingCoefficient()
+Física de corpo mole (soft body): rigidez das âncoras.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftAngularStiffness(value)
 
-### setSoftDragCoefficient()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): rigidez angular.
 
-### setSoftDriftSolverIterations()
+### setSoftClusterSolverIterations(iterations)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftDynamicFrictionCoefficient()
+Física de corpo mole (soft body): iterações do solver de clusters.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftContactsHardness(value)
 
-### setSoftKineticContactsHardness()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): rigidez dos contatos.
 
-### setSoftLiftCoefficient()
+### setSoftDampingCoefficient(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftLinearStiffness()
+Física de corpo mole (soft body): amortecimento.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftDragCoefficient(value)
 
-### setSoftPoseMatching()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): arrasto do ar.
 
-### setSoftPoseMatchingCoefficient()
+### setSoftDriftSolverIterations(iterations)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftPositionSolverIterations()
+Física de corpo mole (soft body): iterações do solver de deriva.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftDynamicFrictionCoefficient(value)
 
-### setSoftPressureCoefficient()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): atrito dinâmico.
 
-### setSoftRigidContactsHardness()
+### setSoftKineticContactsHardness(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftVelocitiesCorrectionFactor()
+Física de corpo mole (soft body): rigidez do contato com objetos cinemáticos.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftLiftCoefficient(value)
 
-### setSoftVelocitySolverIterations()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): sustentação (lift).
 
-### setSoftVolume()
+### setSoftLinearStiffness(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftVolumeConversationCoefficient()
+Física de corpo mole (soft body): rigidez linear.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftPoseMatching(enabled)
 
-### setSoftVsKineticHardness()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): liga a tentativa de voltar à forma original.
 
-### setSoftVsKineticImpulseSplitCluster()
+### setSoftPoseMatchingCoefficient(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftVsRigidHardness()
+Física de corpo mole (soft body): força com que volta à forma original.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftPositionSolverIterations(iterations)
 
-### setSoftVsRigidImpulseSplitCluster()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Física de corpo mole (soft body): iterações do solver de posição.
 
-### setSoftVsSoftHardness()
+### setSoftPressureCoefficient(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### setSoftVsSoftImpulseSplitCluster()
+Física de corpo mole (soft body): pressão interna (efeito balão).
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### setSoftRigidContactsHardness(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): rigidez do contato com corpos rígidos.
+
+### setSoftVelocitiesCorrectionFactor(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): fator de correção das velocidades.
+
+### setSoftVelocitySolverIterations(iterations)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): iterações do solver de velocidade.
+
+### setSoftVolume(volume)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): volume que o corpo tenta manter.
+
+### setSoftVolumeConversationCoefficient(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): conservação de volume.
+
+### setSoftVsKineticHardness(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): rigidez contra corpos cinemáticos (clusters).
+
+### setSoftVsKineticImpulseSplitCluster(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): divisão de impulso contra corpos cinemáticos (clusters).
+
+### setSoftVsRigidHardness(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): rigidez contra corpos rígidos (clusters).
+
+### setSoftVsRigidImpulseSplitCluster(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): divisão de impulso contra corpos rígidos (clusters).
+
+### setSoftVsSoftHardness(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): rigidez contra outros corpos moles (clusters).
+
+### setSoftVsSoftImpulseSplitCluster(value)
+
+ <small>método</small>
+
+Física de corpo mole (soft body): divisão de impulso contra outros corpos moles (clusters).
 
 ### strikeLightning(bolt=True)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
 um raio cai agora (a chuva precisa estar ligada)
 
@@ -1508,25 +1602,37 @@ um raio cai agora (a chuva precisa estar ligada)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
+Pausa todas as animações do objeto até `resumeAnimations()`.
+
 ### activitycullingdistance
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Distância deste objeto até a câmera calculada pelo Activity Culling.
 
 ### angularVelocity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Velocidade angular. Lê em coordenadas locais e escreve em coordenadas do mundo.
 
 ### animationEventManager
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Gerenciador dos eventos de animação do objeto (`KX_AnimationEventManager`).
 
 ### anisotropicFriction
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Liga o atrito diferente por eixo (anisotrópico).
+
 ### anisotropicFrictionCoefficients
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Atrito `[x, y, z]` em cada eixo quando `anisotropicFriction` está ligado.
 
 ### bendAngle
 
@@ -1592,6 +1698,8 @@ Nome do grupo com os fragmentos usados quando o objeto quebra, ou `None`. Só em
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Câmera que não deve mostrar este objeto (ex.: o próprio carro no split screen), ou `None`.
+
 ### impactImpulse
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
@@ -1606,7 +1714,9 @@ Impulso mínimo de colisão para um objeto explosivo detonar.
 
 ### linearVelocity
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Velocidade linear. Lê em coordenadas locais e escreve em coordenadas do mundo.
 
 ### maxDecals
 
@@ -1616,19 +1726,27 @@ Número máximo de decalques ao mesmo tempo neste objeto.
 
 ### parentRecursive
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Lista de todos os pais acima do objeto, do mais próximo ao mais distante.
 
 ### particles
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Sistema de partículas do objeto (`KX_ParticleSystem`), ou `None`.
 
 ### particlesMix
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Segundo sistema de partículas (mistura) do objeto, ou `None`.
+
 ### passIndex
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Pass Index do objeto, usado para separar objetos em filtros e efeitos.
 
 ### useBreakOnCollision
 

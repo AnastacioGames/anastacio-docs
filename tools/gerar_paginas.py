@@ -245,7 +245,10 @@ def secao_pendentes(itens, docs, classe=None):
         retorno = re.match(r"->\s*([^\n]+)\n?", resto)
         if retorno:
             resto = resto[retorno.end():]
-        out += [f"### {cab}", "", f"{selo_de(i)} <small>{tipo}{' · só leitura' if i.get('so_leitura') else ''}</small>", ""]
+        selo = selo_de(i)
+        if resto.strip() and selo in (SELO["novo"], SELO["sem_doc"]):
+            selo = ""  # já tem descrição
+        out += [f"### {cab}", "", f"{selo} <small>{tipo}{' · só leitura' if i.get('so_leitura') else ''}</small>", ""]
         if resto.strip():
             out += [inline(resto.strip()).replace("\n", "  \n"), ""]
         if retorno:
@@ -264,6 +267,9 @@ PENDENTE = AQUI / "traducao" / "pendente.json"
 _pt = json.loads(TRADUCAO.read_text(encoding="utf-8")) if TRADUCAO.exists() else {}
 # as descrições já são escritas em português
 _pt.update({t: t for d in DESCRICOES.values() for t in d.values()})
+# a página mostra só o texto depois de "nome(args) -> retorno"; ele também é português
+_pt.update({c: c for d in DESCRICOES.values() for t in d.values()
+            for c in [re.sub(r"^\w+\([^)]*\)\s*(->[^\n]*)?\n", "", t).replace("\n", " ").strip()]})
 _pendente = {}
 _pagina_atual = [""]
 

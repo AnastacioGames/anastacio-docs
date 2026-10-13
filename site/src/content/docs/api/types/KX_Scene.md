@@ -247,39 +247,63 @@ Desenha a visualização de depuração da simulação de obstáculos.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### convertObject()
+### convertObject(name, children=True)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### play_cutscene()
+Cria agora um objeto que ficou de fora no carregamento pela opção **Convert** (e os filhos não convertidos). Vai para `objects` se estiver numa camada ativa, senão para `objectsInactive` (pronto para `addObject`). Um objeto já convertido é retornado como está.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+**Retorna:** `KX_GameObject`
 
-### release_cutscene_trigger()
+### play_cutscene(sequence=0)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Começa a Cutscene nativa da cena. Retorna `True` se deu certo.
+
+**Retorna:** `bool`
+
+### release_cutscene_trigger(name)
+
+ <small>método</small>
+
+Libera um evento **Wait Trigger** da Cutscene esperando por `name`. `True` se ela estava esperando agora; senão o gatilho fica guardado para o próximo Wait Trigger com esse nome. Uma mensagem com assunto `name` faz o mesmo.
+
+**Retorna:** `bool`
 
 ### restart_cutscene()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Reinicia a Cutscene ativa e remove os objetos que ela criou.
 
 ### stop_cutscene()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Para a Cutscene e remove os objetos que ela criou.
 
 ### speakers
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Lista dos objetos de som (`KX_Speaker`) da cena.
 
 ### thread_logic_1
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo</small>
+ <small>atributo</small>
+
+Lista de funções chamadas na thread de lógica paralela, a cada frame. Mesmo uso de `pre_draw`.
 
 ### unconvertedObjects
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Nomes dos objetos que ainda podem ser criados com `convertObject()`.
+
 ### worldSun
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Luz Sun ligada ao World (posição do sol do céu), ou `None`.
 

@@ -181,3 +181,5 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
+Quando `False`, a sombra desta luz para de ser recalculada a cada frame (economiza GPU em cenas paradas).
+

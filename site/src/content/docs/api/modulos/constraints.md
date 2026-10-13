@@ -351,35 +351,51 @@ Tipo de constraint a usar com `createConstraint`.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### setErp()
+### setErp(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### setErp2()
+ERP do solver de física: quanto da penetração entre objetos é corrigida por passo (padrão 0.2).
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+### setErp2(value)
 
-### setGlobalCfm()
+ <small>função</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ERP usado com o split impulse (padrão 0.8).
 
-### setMaxGyroscopicForce()
+### setGlobalCfm(value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### setSplitImpulse()
+CFM global: deixa contatos e juntas mais "macios" (padrão 0.0).
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+### setMaxGyroscopicForce(value)
 
-### setSplitImpulsePenetrationThreshold()
+ <small>função</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+Limite da força giroscópica (só no modo explícito).
 
-### setSplitImpulseTurnErp()
+### setSplitImpulse(enabled)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-### setWarmstartingFactor()
+Resolve posição e velocidade dos contatos separadamente. Evita objetos "pulando" ao se separar.
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+### setSplitImpulsePenetrationThreshold(value)
+
+ <small>função</small>
+
+Penetração a partir da qual o split impulse é usado (padrão -0.04).
+
+### setSplitImpulseTurnErp(value)
+
+ <small>função</small>
+
+Correção de rotação do split impulse (padrão 0.1).
+
+### setWarmstartingFactor(value)
+
+ <small>função</small>
+
+Quanto o solver reaproveita o resultado do frame anterior (0.0 a 1.0).
 

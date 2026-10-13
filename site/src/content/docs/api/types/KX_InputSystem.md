@@ -9,23 +9,33 @@ Classe `Range.types.KX_InputSystem`.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
-### changeJoystickIndex()
+### changeJoystickIndex(inputMap, inputTable, name, value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
 
-### changeKeyMap()
+Troca qual controle (índice do joystick) uma ação usa.
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+### changeKeyMap(inputMap, inputTable, name, keyType, value)
 
-### changeSensitivity()
+ <small>método</small>
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+Troca a tecla ou botão ligado a uma ação. Use para menus de "redefinir controles".
+
+### changeSensitivity(inputMap, inputTable, name, value)
+
+ <small>método</small>
+
+Troca a sensibilidade de uma ação (ex.: do mouse ou do analógico).
 
 ### reloadInputMaps()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Recarrega os mapas de entrada do arquivo. É lento; evite chamar várias vezes.
 
 ### inputMaps
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Dicionário `{mapa: {tabela: KX_InputTable}}` com todos os mapas de entrada carregados.
 

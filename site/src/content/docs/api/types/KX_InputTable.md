@@ -11,17 +11,25 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### activated
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` no frame em que a ação acabou de ser acionada.
 
 ### active
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` enquanto a ação está acionada.
 
 ### released
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+`True` no frame em que a ação acabou de ser solta.
 
 ### values
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Valores atuais da ação: tupla com 1, 2 ou 3 números, conforme o tipo (botão, eixo 2D ou 3D).
 

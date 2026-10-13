@@ -77,9 +77,13 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### reCenter()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Volta o cursor para o centro da janela (útil em câmera em primeira pessoa).
 
 ### deltaPosition
 
-<span class="ae-badge pendente">sem documentação</span> <small>atributo · só leitura</small>
+ <small>atributo · só leitura</small>
+
+Quanto o mouse se moveu desde o último frame, `(x, y)`.
 

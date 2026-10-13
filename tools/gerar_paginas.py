@@ -370,18 +370,21 @@ def pagina_classe(nome, info, rst_arq, docs):
     escrever(DESTINO / "api" / "types" / f"{nome}.md", texto)
 
 
-def pagina_situacao(inv):
+def pagina_situacao(inv, docs):
     linhas = [frontmatter("Situação da documentação", "Quanto da API já está documentado."),
               "Gerado a partir do inventário da engine. **Pendentes** existem no código e ainda não têm texto.", "",
               "| Página | Itens | Documentados | Pendentes | Novos na Anastacio |", "|---|---:|---:|---:|---:|"]
     for grupo, prefixo in (("modulos", "Range."), ("classes", "")):
         for nome, v in sorted(inv[grupo].items()):
-            it = v["itens"].values()
-            doc = sum(1 for i in it if i["status"] == "documentado")
-            pend = sum(1 for i in it if i["status"] in ("novo", "sem_doc"))
-            ana = sum(1 for i in it if i.get("origem") == "anastacio")
             titulo = MODULOS[nome][1] if grupo == "modulos" else nome
-            linhas.append(f"| `{titulo}` | {len(v['itens'])} | {doc} | {pend} | {ana or ''} |")
+            extra = DESCRICOES.get(titulo, {})
+            it = [(n, i) for n, i in v["itens"].items() if not n.startswith("_")]
+            # sem texto no rst, mas com descrição nossa, docstring do C++ ou constante listada na página: conta como documentado
+            tem_texto = lambda n, i: i["status"] in ("novo", "sem_doc") and (extra.get(n) or docs.get(n) or i["tipo"] == "constante")
+            doc = sum(1 for n, i in it if i["status"] == "documentado" or tem_texto(n, i))
+            pend = sum(1 for n, i in it if i["status"] in ("novo", "sem_doc") and not tem_texto(n, i))
+            ana = sum(1 for n, i in it if i.get("origem") == "anastacio")
+            linhas.append(f"| `{titulo}` | {len(it)} | {doc} | {pend} | {ana or ''} |")
     (DESTINO / "situacao-da-doc.md").write_text("\n".join(linhas) + "\n", encoding="utf-8")
 
 
@@ -412,7 +415,7 @@ def main():
         if rst_nome not in usados and not (DESTINO / "api" / "types" / f"{rst_nome}.md").exists():
             pagina_classe(rst_nome, None, arq, docs)
 
-    pagina_situacao(inv)
+    pagina_situacao(inv, docs)
     PENDENTE.parent.mkdir(exist_ok=True)
     PENDENTE.write_text(json.dumps(_pendente, indent=1, ensure_ascii=False), encoding="utf-8")
     falta = sum(len(v) for v in _pendente.values())

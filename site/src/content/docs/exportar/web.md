@@ -10,7 +10,7 @@ O runtime Web já vem no zip da engine, na pasta `web/` ao lado do `AnastacioEng
 :::
 
 :::caution[Linux, versão 0.5.0]
-O pacote Linux da **0.5.0** veio sem a pasta `web/` (runtime Web), então o **Export Web** não funciona nele. A correção sai na próxima versão. No Windows funciona normalmente.
+O pacote Linux da **0.5.0** veio sem a pasta `web/` (runtime Web), então o **Export Web** não funciona nele. A correção já está na engine e sai no pacote Linux da **0.5.1**, publicado em seguida. No Windows funciona normalmente desde a 0.5.0.
 :::
 
 ## 1. Abrir o painel

@@ -10,7 +10,7 @@ The Web runtime already ships in the engine zip, in the `web/` folder next to `A
 :::
 
 :::caution[Linux, version 0.5.0]
-The **0.5.0** Linux package shipped without the `web/` folder (Web runtime), so **Export Web** doesn't work there. The fix comes in the next version. On Windows it works normally.
+The **0.5.0** Linux package shipped without the `web/` folder (Web runtime), so **Export Web** doesn't work there. The fix is already in the engine and ships in the **0.5.1** Linux package, coming shortly. On Windows it has worked normally since 0.5.0.
 :::
 
 ## 1. Open the panel

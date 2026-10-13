@@ -15,10 +15,6 @@ The engine does **not** ship the Android tools. Install them once:
 
 The engine finds Android Studio by itself (it also checks `JAVA_HOME` and `ANDROID_HOME`). If it's somewhere else, point to the folders in **Tools > JDK** and **Android SDK** in the panel.
 
-:::caution[Version 0.5.0]
-In the **0.5.0** package, **Build APK** fails with *"Android template not found"*: the app template was left out of the zip. On Linux, 0.5.0 also shipped without the Web runtime. The fix comes in the next engine version.
-:::
-
 ## 2. Open the panel
 
 **Properties > Export Game > Android (Web)**.
@@ -110,4 +106,3 @@ You can also copy the `.apk` to the phone and open it from the file manager (And
 | *The phone already has ... signed with another key* | The phone has a version signed with another key (for example, the Debug one). Uninstall it and install again. |
 | *The phone has a newer version* | Increase the **Version code**. |
 | Password or alias error when building | The password or alias doesn't match the `.jks`. |
-| *Android template not found* | Bug in version **0.5.0**: the package shipped without the Android template. Fixed in the next engine version. |

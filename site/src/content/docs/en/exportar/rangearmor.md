@@ -90,6 +90,10 @@ If you see *"Could not find a Python interpreter for the export"*, open RangeArm
 
 You can also export without the engine buttons, by opening the external tool directly. It's useful to export an older project or change options the engine panel doesn't show.
 
+![RangeArmor Panel start screen](../../../../assets/exportar/rangearmor_inicio.png)
+
+RangeArmor Panel start screen: **Open Project**, **New Project** and the **Recent projects** list.
+
 1. Open **`rangearmor/RangeArmor Panel.exe`** in the engine folder. It also opens from the **Open RangeArmor Panel** button or **File > Export Game With RANGEARMOR**.
 2. On the start screen, click **New Project** to create a new project folder, or **Open Project** to open an existing one (for example, the one made with **File > Create Project**). Projects opened before show up under **Recent projects**.
 3. In the engine, open your `.range` and save the protected copy with **File > Save .Range Protected File** inside the project's `data/` folder. It has the `.rasec` extension.

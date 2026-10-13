@@ -92,6 +92,10 @@ Se aparecer *"Could not find a Python interpreter for the export"*, abra o Range
 
 Você também pode exportar sem passar pelos botões da engine, abrindo a ferramenta externa direto. É útil para exportar um projeto antigo ou mexer em opções que o painel da engine não mostra.
 
+![Tela inicial do RangeArmor Panel](../../../assets/exportar/rangearmor_inicio.png)
+
+Tela inicial do RangeArmor Panel: **Open Project**, **New Project** e a lista **Recent projects**.
+
 1. Abra **`rangearmor/RangeArmor Panel.exe`**, na pasta da engine. Também abre pelo botão **Open RangeArmor Panel** ou por **File > Export Game With RANGEARMOR**.
 2. Na tela inicial, clique em **New Project** para criar uma pasta de projeto nova ou em **Open Project** para abrir uma existente (por exemplo, a criada pelo **File > Create Project**). Os projetos abertos antes aparecem em **Recent projects**.
 3. Na engine, abra o seu `.range` e salve a cópia protegida com **File > Save .Range Protected File** dentro da pasta `data/` do projeto. Ela tem a extensão `.rasec`.

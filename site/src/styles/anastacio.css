@@ -103,3 +103,9 @@ html {
 		--sl-content-margin-inline: auto;
 	}
 }
+
+/* Cartões: título ao lado do ícone */
+.ae-feat > div, .ae-feat > a { display: grid !important; grid-template-columns: auto 1fr; column-gap: .8rem; align-content: start; }
+.ae-feat > * > svg { margin-bottom: .9rem; }
+.ae-feat > * > h3 { align-self: center; margin: 0 0 .9rem !important; }
+.ae-feat > * > :not(svg):not(h3) { grid-column: 1 / -1; justify-self: start; }

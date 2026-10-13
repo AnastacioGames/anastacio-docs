@@ -11,25 +11,33 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### begin(name, closable=False)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Abre uma janela com o título `name`. Tudo que você desenhar até `end()` fica dentro dela. Com `closable=True` a janela ganha o botão X, e `want_close` vira True quando ele é clicado. Sempre chame `end()` depois, mesmo se `is_open` for False.
 
 **Retorna:** `(is_open, want_close)`
 
 ### begin_popup_modal(name, closable=False)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-**Retorna:** `(is_open, want_close) -- only call end_popup() if is_open is True`
+Desenha o popup modal aberto antes com `open_popup(name)`. Só chame `end_popup()` quando `is_open` for True.
+
+**Retorna:** `(is_open, want_close)`
 
 ### button(label, width=0, height=0)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Botão com o texto `label`. Devolve True no quadro em que é clicado. Largura e altura 0 ajustam ao texto.
 
 **Retorna:** `bool`
 
 ### checkbox(label, value)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Caixa de marcar. Passe o valor atual em `value` e guarde `new_value`; `changed` é True quando o jogador clicou.
 
 **Retorna:** `(changed, new_value)`
 
@@ -41,19 +49,25 @@ Fecha o popup aberto.
 
 ### color_edit3(label, r, g, b)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Seletor de cor RGB (valores de 0 a 1). Devolve a cor nova.
 
 **Retorna:** `(changed, r, g, b)`
 
 ### color_edit4(label, r, g, b, a)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Seletor de cor RGBA com transparência (valores de 0 a 1).
 
 **Retorna:** `(changed, r, g, b, a)`
 
 ### combo(label, current_item, items)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Lista suspensa. `items` é uma lista de textos e `current_item` o índice escolhido.
 
 **Retorna:** `(changed, new_item)`
 
@@ -77,31 +91,41 @@ Fecha o bloco de um popup.
 
 ### get_cursor_pos()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-**Retorna:** `(x, y) -- position relative to the current window`
+Posição onde o próximo item será desenhado, relativa à janela atual.
+
+**Retorna:** `(x, y)`
 
 ### get_cursor_screen_pos()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Posição onde o próximo item será desenhado, em pixels da tela.
 
 **Retorna:** `(x, y)`
 
 ### get_display_size()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Tamanho da área de desenho em pixels. Útil para posicionar janelas e HUD.
 
 **Retorna:** `(width, height)`
 
 ### get_io_want_capture_keyboard()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+True quando a interface está usando o teclado (por exemplo, digitando num campo). Use para não mover o personagem nessa hora.
 
 **Retorna:** `bool`
 
 ### get_io_want_capture_mouse()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+True quando o mouse está sobre a interface. Use para ignorar cliques do jogo nessa hora.
 
 **Retorna:** `bool`
 
@@ -113,19 +137,25 @@ Fecha o bloco de um popup.
 
 ### input_text(label, value, max_length=256)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Campo de texto editável. `max_length` limita o número de caracteres.
 
 **Retorna:** `(changed, new_value)`
 
 ### invisible_button(label, width, height)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Área clicável sem desenho. Bom para colocar sobre uma imagem. Devolve True quando clicada.
 
 **Retorna:** `bool`
 
 ### listbox(label, current_item, items, height_items=-1)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Lista com rolagem. `height_items` é quantas linhas aparecem (-1 = automático).
 
 **Retorna:** `(changed, new_item)`
 
@@ -137,9 +167,11 @@ Fecha o bloco de um popup.
 
 ### load_font(path, size)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-**Retorna:** `font_id -- call once; the font is built before the next frame`
+Carrega uma fonte .ttf/.otf no tamanho dado. Chame uma vez só; a fonte fica pronta no quadro seguinte. Use o id em `push_font()`.
+
+**Retorna:** `font_id`
 
 ### open_popup(name)
 
@@ -197,9 +229,11 @@ ou push_style_var(idx, x, y) -- idx é uma das imgui.STYLE_*
 
 ### radio_button(label, active)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
 
-**Retorna:** `pressed -- caller owns the group's selected index`
+Botão de opção. `active` diz se ele é o escolhido; quando `pressed` for True, guarde essa opção como a escolhida do grupo.
+
+**Retorna:** `pressed`
 
 ### same_line()
 
@@ -245,13 +279,17 @@ Tamanho da próxima janela, em pixels.
 
 ### slider_float(label, value, min, max)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Barra deslizante para número decimal entre `min` e `max`.
 
 **Retorna:** `(changed, new_value)`
 
 ### slider_int(label, value, min, max)
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Barra deslizante para número inteiro entre `min` e `max`.
 
 **Retorna:** `(changed, new_value)`
 

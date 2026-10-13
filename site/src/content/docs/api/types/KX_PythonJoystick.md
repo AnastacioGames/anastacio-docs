@@ -80,15 +80,11 @@ Começa a vibração.
 
 ### stopVibration()
 
-<span class="ae-badge pendente">sem documentação</span>
-
 Para a vibração.
 
 **Retorna:** None
 
 ### strengthLeft
-
-<span class="ae-badge pendente">sem documentação</span>
 
 Força do motor de baixa frequência do joystick (em geral fica à esquerda).
 
@@ -96,15 +92,11 @@ Força do motor de baixa frequência do joystick (em geral fica à esquerda).
 
 ### strengthRight
 
-<span class="ae-badge pendente">sem documentação</span>
-
 Força do motor de alta frequência do joystick (em geral fica à direita).
 
 **Tipo:** float (0.0 to 1.0)
 
 ### duration
-
-<span class="ae-badge pendente">sem documentação</span>
 
 Duração da vibração em milissegundos.
 
@@ -112,15 +104,11 @@ Duração da vibração em milissegundos.
 
 ### isVibrating
 
-<span class="ae-badge pendente">sem documentação</span>
-
 Verifica o status da vibração do joystick
 
 **Tipo:** bool (true vibrating and false stopped)
 
 ### hasVibration
-
-<span class="ae-badge pendente">sem documentação</span>
 
 Verifica se o joystick suporta vibração
 

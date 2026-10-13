@@ -145,8 +145,10 @@ def rst_para_md(texto, selos=None):
                 else:
                     sinal = arg if "(" in arg else nm
                     out += ["", f"### {sinal}", ""]
-                    if nm in selos:
-                        out += [selos[nm], ""]
+                    selo = selos.get(nm)
+                    # o rst já explica o item: selo de pendente não faz sentido
+                    if selo and not (any(l.strip() for l in corpo) and selo in (SELO["novo"], SELO["sem_doc"])):
+                        out += [selo, ""]
                     out += [rst_para_md("\n".join(dedent(corpo)), selos), ""]
             elif nome in ASIDE:
                 rot = {"deprecated": "Obsoleto", "versionadded": "Adicionado", "versionchanged": "Alterado"}.get(nome)
@@ -345,7 +347,10 @@ def escrever(caminho, texto):
 
 def pagina_modulo(chave, info, docs):
     rst_nome, publico = MODULOS[chave]
-    selos = {n: s for n, i in info["itens"].items() if (s := selo_de(i))}
+    extra = DESCRICOES.get(publico, {})
+    # item listado no rst sem texto: mostra a nossa descrição no lugar do selo
+    selos = {n: extra.get(n) if i["status"] == "sem_doc" and extra.get(n) else s
+             for n, i in info["itens"].items() if (s := selo_de(i))}
     corpo = ""
     if rst_nome and (RST / f"{rst_nome}.rst").exists():
         corpo = rst_para_md((RST / f"{rst_nome}.rst").read_text(encoding="utf-8", errors="replace"), selos)

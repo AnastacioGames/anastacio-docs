@@ -522,15 +522,15 @@ Valor falso usado por alguns módulos.
 
 ### KX_SENSOR_INACTIVE
 
-<span class="ae-badge pendente">sem descrição</span>
+Estado do sensor: desligado.
 
 ### KX_SENSOR_JUST_ACTIVATED
 
-<span class="ae-badge pendente">sem descrição</span>
+Estado do sensor: acabou de ligar neste quadro.
 
 ### KX_SENSOR_ACTIVE
 
-<span class="ae-badge pendente">sem descrição</span>
+Estado do sensor: continua ligado.
 
 ### KX_SENSOR_JUST_DEACTIVATED
 
@@ -618,23 +618,23 @@ Veja `Range.types.KX_RadarSensor`
 
 ### KX_RADAR_AXIS_POS_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Radar: cone apontando para o eixo +X do objeto.
 
 ### KX_RADAR_AXIS_POS_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Radar: cone apontando para o eixo +Y do objeto.
 
 ### KX_RADAR_AXIS_POS_Z
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Radar: cone apontando para o eixo +Z do objeto.
 
 ### KX_RADAR_AXIS_NEG_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Radar: cone apontando para o eixo -X do objeto.
 
 ### KX_RADAR_AXIS_NEG_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Radar: cone apontando para o eixo -Y do objeto.
 
 ### KX_RADAR_AXIS_NEG_Z
 
@@ -644,23 +644,23 @@ Veja `Range.types.KX_RaySensor`
 
 ### KX_RAY_AXIS_POS_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Ray: raio lançado no eixo +X do objeto.
 
 ### KX_RAY_AXIS_POS_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Ray: raio lançado no eixo +Y do objeto.
 
 ### KX_RAY_AXIS_POS_Z
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Ray: raio lançado no eixo +Z do objeto.
 
 ### KX_RAY_AXIS_NEG_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Ray: raio lançado no eixo -X do objeto.
 
 ### KX_RAY_AXIS_NEG_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Sensor Ray: raio lançado no eixo -Y do objeto.
 
 ### KX_RAY_AXIS_NEG_Z
 
@@ -672,23 +672,23 @@ Veja `Range.types.BL_ActionActuator`
 
 ### KX_ACTIONACT_PLAY
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Action: toca a animação uma vez.
 
 ### KX_ACTIONACT_PINGPONG
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Action: toca para frente e, na próxima ativação, para trás.
 
 ### KX_ACTIONACT_FLIPPER
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Action: toca enquanto ativo e volta ao início quando desliga.
 
 ### KX_ACTIONACT_LOOPSTOP
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Action: repete enquanto o sensor estiver ativo.
 
 ### KX_ACTIONACT_LOOPEND
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Action: repete e, ao desligar, termina a volta atual.
 
 ### KX_ACTIONACT_PROPERTY
 
@@ -858,19 +858,19 @@ Veja `Range.types.KX_SCA_DynamicActuator`
 
 ### KX_DYN_RESTORE_DYNAMICS
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Dynamic: volta a ter física.
 
 ### KX_DYN_DISABLE_DYNAMICS
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Dynamic: desliga a física do objeto.
 
 ### KX_DYN_ENABLE_RIGID_BODY
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Dynamic: liga o modo corpo rígido (rotação pela física).
 
 ### KX_DYN_DISABLE_RIGID_BODY
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Dynamic: desliga o modo corpo rígido.
 
 ### KX_DYN_SET_MASS
 
@@ -880,23 +880,23 @@ Veja `Range.types.KX_GameActuator`
 
 ### KX_GAME_LOAD
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Game: carrega outro arquivo de jogo.
 
 ### KX_GAME_START
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Game: inicia outro arquivo de jogo.
 
 ### KX_GAME_RESTART
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Game: reinicia o jogo.
 
 ### KX_GAME_QUIT
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Game: fecha o jogo.
 
 ### KX_GAME_SAVECFG
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Game: salva as propriedades globais em arquivo.
 
 ### KX_GAME_LOADCFG
 
@@ -904,11 +904,11 @@ Veja `Range.types.KX_GameActuator`
 
 ### KX_ACT_MOUSE_OBJECT_AXIS_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Mouse (look): gira em torno do eixo X do objeto.
 
 ### KX_ACT_MOUSE_OBJECT_AXIS_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Mouse (look): gira em torno do eixo Y do objeto.
 
 ### KX_ACT_MOUSE_OBJECT_AXIS_Z
 
@@ -916,7 +916,7 @@ Veja `Range.types.KX_GameActuator`
 
 ### KX_PARENT_REMOVE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Parent: tira o objeto do pai.
 
 ### KX_PARENT_SET
 
@@ -926,39 +926,39 @@ Veja `Range.types.SCA_RandomActuator`
 
 ### KX_RANDOMACT_BOOL_CONST
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: verdadeiro/falso fixo.
 
 ### KX_RANDOMACT_BOOL_UNIFORM
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: verdadeiro ou falso com 50% de chance cada.
 
 ### KX_RANDOMACT_BOOL_BERNOUILLI
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: verdadeiro com a chance que você definir.
 
 ### KX_RANDOMACT_INT_CONST
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: número inteiro fixo.
 
 ### KX_RANDOMACT_INT_UNIFORM
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: inteiro sorteado entre um mínimo e um máximo.
 
 ### KX_RANDOMACT_INT_POISSON
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: inteiro com distribuição de Poisson (média definida).
 
 ### KX_RANDOMACT_FLOAT_CONST
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: número decimal fixo.
 
 ### KX_RANDOMACT_FLOAT_UNIFORM
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: decimal sorteado entre um mínimo e um máximo.
 
 ### KX_RANDOMACT_FLOAT_NORMAL
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Random: decimal com distribuição normal (média e desvio).
 
 ### KX_RANDOMACT_FLOAT_NEGATIVE_EXPONENTIAL
 
@@ -968,31 +968,31 @@ Veja `Range.types.KX_SceneActuator`
 
 ### KX_SCENE_RESTART
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: reinicia a cena.
 
 ### KX_SCENE_SET_SCENE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: troca para outra cena.
 
 ### KX_SCENE_SET_CAMERA
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: troca a câmera ativa.
 
 ### KX_SCENE_ADD_FRONT_SCENE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: adiciona uma cena por cima (overlay, como HUD).
 
 ### KX_SCENE_ADD_BACK_SCENE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: adiciona uma cena por baixo (fundo).
 
 ### KX_SCENE_REMOVE_SCENE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: remove uma cena.
 
 ### KX_SCENE_SUSPEND
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Scene: pausa uma cena.
 
 ### KX_SCENE_RESUME
 
@@ -1002,31 +1002,31 @@ Veja `Range.types.KX_SoundActuator`
 
 ### KX_SOUNDACT_PLAYSTOP
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Sound: toca enquanto o sensor estiver ativo e para quando desligar.
 
 **Valor:** `1`
 
 ### KX_SOUNDACT_PLAYEND
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Sound: toca o som inteiro uma vez.
 
 **Valor:** `2`
 
 ### KX_SOUNDACT_LOOPSTOP
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Sound: repete enquanto o sensor estiver ativo.
 
 **Valor:** `3`
 
 ### KX_SOUNDACT_LOOPEND
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Sound: repete e, ao desligar, termina a volta atual.
 
 **Valor:** `4`
 
 ### KX_SOUNDACT_LOOPBIDIRECTIONAL
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Sound: toca para frente e para trás em repetição.
 
 **Valor:** `5`
 
@@ -1040,13 +1040,13 @@ Veja `Range.types.KX_SteeringActuator.behavior`
 
 ### KX_STEERING_SEEK
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Steering: vai até o alvo.
 
 **Valor:** `1`
 
 ### KX_STEERING_FLEE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Steering: foge do alvo.
 
 **Valor:** `2`
 
@@ -1060,35 +1060,35 @@ Veja `Range.types.KX_TrackToActuator`
 
 ### KX_TRACK_UPAXIS_POS_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo +X do objeto fica para cima.
 
 ### KX_TRACK_UPAXIS_POS_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo +Y do objeto fica para cima.
 
 ### KX_TRACK_UPAXIS_POS_Z
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo +Z do objeto fica para cima.
 
 ### KX_TRACK_TRAXIS_POS_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo +X do objeto aponta para o alvo.
 
 ### KX_TRACK_TRAXIS_POS_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo +Y do objeto aponta para o alvo.
 
 ### KX_TRACK_TRAXIS_POS_Z
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo +Z do objeto aponta para o alvo.
 
 ### KX_TRACK_TRAXIS_NEG_X
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo -X do objeto aponta para o alvo.
 
 ### KX_TRACK_TRAXIS_NEG_Y
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador Track To: eixo -Y do objeto aponta para o alvo.
 
 ### KX_TRACK_TRAXIS_NEG_Z
 
@@ -1098,7 +1098,7 @@ Veja `Range.types.KX_TrackToActuator`
 
 ### RAS_2DFILTER_BLUR
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: desfoque.
 
 **Valor:** `2`
 
@@ -1110,7 +1110,7 @@ Filtro personalizado; o código é definido pela propriedade shaderText.
 
 ### RAS_2DFILTER_DILATION
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: dilatação (clareia bordas).
 
 **Valor:** `4`
 
@@ -1128,25 +1128,25 @@ Liga o filtro que foi desligado antes
 
 ### RAS_2DFILTER_EROSION
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: erosão (escurece bordas).
 
 **Valor:** `5`
 
 ### RAS_2DFILTER_GRAYSCALE
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: tons de cinza.
 
 **Valor:** `9`
 
 ### RAS_2DFILTER_INVERT
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: cores invertidas.
 
 **Valor:** `11`
 
 ### RAS_2DFILTER_LAPLACIAN
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: detecção de bordas (Laplace).
 
 **Valor:** `6`
 
@@ -1164,19 +1164,19 @@ Desliga e destrói o filtro que está ativo agora
 
 ### RAS_2DFILTER_PREWITT
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: detecção de bordas (Prewitt).
 
 **Valor:** `8`
 
 ### RAS_2DFILTER_SEPIA
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: sépia.
 
 **Valor:** `10`
 
 ### RAS_2DFILTER_SHARPEN
 
-<span class="ae-badge pendente">sem descrição</span>
+Atuador 2D Filter: nitidez.
 
 **Valor:** `3`
 
@@ -1242,43 +1242,43 @@ Veja `Range.types.BL_ArmatureConstraint.type`
 
 ### CONSTRAINT_TYPE_TRACKTO
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Track To (aponta para um alvo).
 
 ### CONSTRAINT_TYPE_KINEMATIC
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: IK (cinemática inversa).
 
 ### CONSTRAINT_TYPE_ROTLIKE
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Copy Rotation.
 
 ### CONSTRAINT_TYPE_LOCLIKE
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Copy Location.
 
 ### CONSTRAINT_TYPE_MINMAX
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Floor (limite mín./máx.).
 
 ### CONSTRAINT_TYPE_SIZELIKE
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Copy Scale.
 
 ### CONSTRAINT_TYPE_LOCKTRACK
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Locked Track.
 
 ### CONSTRAINT_TYPE_STRETCHTO
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Stretch To.
 
 ### CONSTRAINT_TYPE_CLAMPTO
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Clamp To (prende a uma curva).
 
 ### CONSTRAINT_TYPE_TRANSFORM
 
-<span class="ae-badge pendente">sem descrição</span>
+Tipo de restrição de bone: Transformation.
 
 ### CONSTRAINT_TYPE_DISTLIMIT
 
@@ -1346,43 +1346,43 @@ A constraint tenta manter o osso exatamente a ik_dist do alvo.
 
 ### BL_DST_ALPHA
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: alfa de destino. Usado em setBlending().
 
 ### BL_DST_COLOR
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: cor de destino. Usado em setBlending().
 
 ### BL_ONE
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: um (cor inteira). Usado em setBlending().
 
 ### BL_ONE_MINUS_DST_ALPHA
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: 1 menos o alfa de destino. Usado em setBlending().
 
 ### BL_ONE_MINUS_DST_COLOR
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: 1 menos a cor de destino. Usado em setBlending().
 
 ### BL_ONE_MINUS_SRC_ALPHA
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: 1 menos o alfa de origem. Usado em setBlending().
 
 ### BL_ONE_MINUS_SRC_COLOR
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: 1 menos a cor de origem. Usado em setBlending().
 
 ### BL_SRC_ALPHA
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: alfa de origem. Usado em setBlending().
 
 ### BL_SRC_ALPHA_SATURATE
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: alfa de origem saturado. Usado em setBlending().
 
 ### BL_SRC_COLOR
 
-<span class="ae-badge pendente">sem descrição</span>
+Fator de mistura (blend) do material: cor de origem. Usado em setBlending().
 
 ### BL_ZERO
 
@@ -1392,15 +1392,15 @@ Veja `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.typ
 
 ### KX_INPUT_NONE
 
-<span class="ae-badge pendente">sem descrição</span>
+Estado de tecla/botão: solto.
 
 ### KX_INPUT_JUST_ACTIVATED
 
-<span class="ae-badge pendente">sem descrição</span>
+Estado de tecla/botão: acabou de ser apertado.
 
 ### KX_INPUT_ACTIVE
 
-<span class="ae-badge pendente">sem descrição</span>
+Estado de tecla/botão: continua apertado.
 
 ### KX_INPUT_JUST_RELEASED
 
@@ -1444,11 +1444,11 @@ Veja `Range.types.SCA_MouseSensor`
 
 ### KX_MOUSE_BUT_LEFT
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão esquerdo do mouse (para o sensor de mouse).
 
 ### KX_MOUSE_BUT_MIDDLE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão do meio do mouse (para o sensor de mouse).
 
 ### KX_MOUSE_BUT_RIGHT
 
@@ -1470,51 +1470,51 @@ Desenha a malha de triângulos.
 
 ### VIEWMATRIX
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz visão (mundo → câmera). Usado em setUniformDef().
 
 ### VIEWMATRIX_INVERSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz visão (mundo → câmera), inversa. Usado em setUniformDef().
 
 ### VIEWMATRIX_INVERSETRANSPOSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz visão (mundo → câmera), inversa transposta. Usado em setUniformDef().
 
 ### VIEWMATRIX_TRANSPOSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz visão (mundo → câmera), transposta. Usado em setUniformDef().
 
 ### MODELMATRIX
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo (objeto → mundo). Usado em setUniformDef().
 
 ### MODELMATRIX_INVERSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo (objeto → mundo), inversa. Usado em setUniformDef().
 
 ### MODELMATRIX_INVERSETRANSPOSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo (objeto → mundo), inversa transposta. Usado em setUniformDef().
 
 ### MODELMATRIX_TRANSPOSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo (objeto → mundo), transposta. Usado em setUniformDef().
 
 ### MODELVIEWMATRIX
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo × visão. Usado em setUniformDef().
 
 ### MODELVIEWMATRIX_INVERSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo × visão, inversa. Usado em setUniformDef().
 
 ### MODELVIEWMATRIX_INVERSETRANSPOSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo × visão, inversa transposta. Usado em setUniformDef().
 
 ### MODELVIEWMATRIX_TRANSPOSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com a matriz modelo × visão, transposta. Usado em setUniformDef().
 
 ### CAM_POS
 
@@ -1522,7 +1522,7 @@ Posição da câmera atual
 
 ### CONSTANT_TIMER
 
-<span class="ae-badge pendente">sem descrição</span>
+Uniforme de shader com o tempo do jogo, para animar efeitos.
 
 ### EYE
 
@@ -1536,119 +1536,119 @@ Veja `Range.types.KX_StateActuator`
 
 ### KX_STATE1
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 1 dos logic bricks.
 
 ### KX_STATE2
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 2 dos logic bricks.
 
 ### KX_STATE3
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 3 dos logic bricks.
 
 ### KX_STATE4
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 4 dos logic bricks.
 
 ### KX_STATE5
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 5 dos logic bricks.
 
 ### KX_STATE6
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 6 dos logic bricks.
 
 ### KX_STATE7
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 7 dos logic bricks.
 
 ### KX_STATE8
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 8 dos logic bricks.
 
 ### KX_STATE9
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 9 dos logic bricks.
 
 ### KX_STATE10
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 10 dos logic bricks.
 
 ### KX_STATE11
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 11 dos logic bricks.
 
 ### KX_STATE12
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 12 dos logic bricks.
 
 ### KX_STATE13
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 13 dos logic bricks.
 
 ### KX_STATE14
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 14 dos logic bricks.
 
 ### KX_STATE15
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 15 dos logic bricks.
 
 ### KX_STATE16
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 16 dos logic bricks.
 
 ### KX_STATE17
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 17 dos logic bricks.
 
 ### KX_STATE18
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 18 dos logic bricks.
 
 ### KX_STATE19
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 19 dos logic bricks.
 
 ### KX_STATE20
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 20 dos logic bricks.
 
 ### KX_STATE21
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 21 dos logic bricks.
 
 ### KX_STATE22
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 22 dos logic bricks.
 
 ### KX_STATE23
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 23 dos logic bricks.
 
 ### KX_STATE24
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 24 dos logic bricks.
 
 ### KX_STATE25
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 25 dos logic bricks.
 
 ### KX_STATE26
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 26 dos logic bricks.
 
 ### KX_STATE27
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 27 dos logic bricks.
 
 ### KX_STATE28
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 28 dos logic bricks.
 
 ### KX_STATE29
 
-<span class="ae-badge pendente">sem descrição</span>
+Máscara do estado 29 dos logic bricks.
 
 ### KX_STATE30
 

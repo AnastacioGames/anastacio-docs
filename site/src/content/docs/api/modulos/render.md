@@ -421,7 +421,9 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 ### getMasterVolume()
 
-<span class="ae-badge pendente">sem documentação</span> <small>função</small>
+ <small>função</small>
+
+Volume geral do som do jogo, de 0 a 1. Veja `setMasterVolume()`.
 
 **Retorna:** `volume`
 

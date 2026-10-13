@@ -88,43 +88,43 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### LEFTMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão esquerdo do mouse.
 
 ### MIDDLEMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão do meio do mouse (clique na rodinha).
 
 ### RIGHTMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão direito do mouse.
 
 ### WHEELUPMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Rodinha do mouse girando para cima.
 
 ### WHEELDOWNMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Rodinha do mouse girando para baixo.
 
 ### LEFTTHUMBMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão lateral de trás do mouse (voltar).
 
 ### RIGHTTHUMBMOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão lateral da frente do mouse (avançar).
 
 ### BUTTON6MOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão extra 6 do mouse.
 
 ### BUTTON7MOUSE
 
-<span class="ae-badge pendente">sem descrição</span>
+Botão extra 7 do mouse.
 
 ### MOUSEX
 
-<span class="ae-badge pendente">sem descrição</span>
+Movimento horizontal do mouse.
 
 ### MOUSEY
 
@@ -134,103 +134,103 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### AKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla A.
 
 ### BKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla B.
 
 ### CKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla C.
 
 ### DKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla D.
 
 ### EKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla E.
 
 ### FKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F.
 
 ### GKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla G.
 
 ### HKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla H.
 
 ### IKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla I.
 
 ### JKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla J.
 
 ### KKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla K.
 
 ### LKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla L.
 
 ### MKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla M.
 
 ### NKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla N.
 
 ### OKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla O.
 
 ### PKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla P.
 
 ### QKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Q.
 
 ### RKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla R.
 
 ### SKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla S.
 
 ### TKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla T.
 
 ### UKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla U.
 
 ### VKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla V.
 
 ### WKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla W.
 
 ### XKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla X.
 
 ### YKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Y.
 
 ### ZKEY
 
@@ -238,39 +238,39 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### ZEROKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 0 da fileira de números (não a do teclado numérico).
 
 ### ONEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 1 da fileira de números (não a do teclado numérico).
 
 ### TWOKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 2 da fileira de números (não a do teclado numérico).
 
 ### THREEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 3 da fileira de números (não a do teclado numérico).
 
 ### FOURKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 4 da fileira de números (não a do teclado numérico).
 
 ### FIVEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 5 da fileira de números (não a do teclado numérico).
 
 ### SIXKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 6 da fileira de números (não a do teclado numérico).
 
 ### SEVENKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 7 da fileira de números (não a do teclado numérico).
 
 ### EIGHTKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 8 da fileira de números (não a do teclado numérico).
 
 ### NINEKEY
 
@@ -278,27 +278,27 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### CAPSLOCKKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Caps Lock.
 
 ### LEFTCTRLKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Ctrl da esquerda.
 
 ### LEFTALTKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Alt da esquerda.
 
 ### RIGHTALTKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Alt da direita (AltGr).
 
 ### RIGHTCTRLKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Ctrl da direita.
 
 ### RIGHTSHIFTKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Shift da direita.
 
 ### LEFTSHIFTKEY
 
@@ -306,15 +306,15 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### LEFTARROWKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Seta para a esquerda.
 
 ### DOWNARROWKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Seta para baixo.
 
 ### RIGHTARROWKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Seta para a direita.
 
 ### UPARROWKEY
 
@@ -322,63 +322,63 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### PAD0
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 0 do teclado numérico.
 
 ### PAD1
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 1 do teclado numérico.
 
 ### PAD2
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 2 do teclado numérico.
 
 ### PAD3
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 3 do teclado numérico.
 
 ### PAD4
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 4 do teclado numérico.
 
 ### PAD5
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 5 do teclado numérico.
 
 ### PAD6
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 6 do teclado numérico.
 
 ### PAD7
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 7 do teclado numérico.
 
 ### PAD8
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 8 do teclado numérico.
 
 ### PAD9
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla 9 do teclado numérico.
 
 ### PADPERIOD
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla ponto do teclado numérico.
 
 ### PADSLASHKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla / do teclado numérico.
 
 ### PADASTERKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla * do teclado numérico.
 
 ### PADMINUS
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla - do teclado numérico.
 
 ### PADENTER
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Enter do teclado numérico.
 
 ### PADPLUSKEY
 
@@ -386,75 +386,75 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### F1KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F1.
 
 ### F2KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F2.
 
 ### F3KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F3.
 
 ### F4KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F4.
 
 ### F5KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F5.
 
 ### F6KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F6.
 
 ### F7KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F7.
 
 ### F8KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F8.
 
 ### F9KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F9.
 
 ### F10KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F10.
 
 ### F11KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F11.
 
 ### F12KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F12.
 
 ### F13KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F13.
 
 ### F14KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F14.
 
 ### F15KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F15.
 
 ### F16KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F16.
 
 ### F17KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F17.
 
 ### F18KEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla F18.
 
 ### F19KEY
 
@@ -462,101 +462,101 @@ Devolve o nome em texto de um evento de tecla. Devolve um texto vazio se o event
 
 ### ACCENTGRAVEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla acento grave (`).
 
 ### BACKSLASHKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla barra invertida (\).
 
 ### BACKSPACEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Backspace.
 
 ### COMMAKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla vírgula (,).
 
 ### DELKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Delete.
 
 ### ENDKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla End.
 
 ### EQUALKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla igual (=).
 
 ### ESCKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Esc.
 
 ### HOMEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Home.
 
 ### INSERTKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Insert.
 
 ### LEFTBRACKETKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla colchete esquerdo ([).
 
 ### LINEFEEDKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Line Feed (rara em teclados atuais).
 
 ### MINUSKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla menos (-).
 
 ### PAGEDOWNKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Page Down.
 
 ### PAGEUPKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Page Up.
 
 ### PAUSEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Pause.
 
 ### PERIODKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla ponto (.).
 
 ### QUOTEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla aspas (').
 
 ### RIGHTBRACKETKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla colchete direito (]).
 
 ### RETKEY (Deprecated: use bge.events.ENTERKEY)
 
 ### ENTERKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Enter.
 
 ### SEMICOLONKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla ponto e vírgula (;).
 
 ### SLASHKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla barra (/).
 
 ### SPACEKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Barra de espaço.
 
 ### TABKEY
 
-<span class="ae-badge pendente">sem descrição</span>
+Tecla Tab.
 
 ## Sem documentação da Range
 

@@ -9,6 +9,10 @@ O export Web gera uma pasta que roda o jogo **dentro do navegador** (Chrome, Edg
 O runtime Web já vem no zip da engine, na pasta `web/` ao lado do `AnastacioEngine.exe`. Não precisa baixar mais nada.
 :::
 
+:::caution[Linux, versão 0.5.0]
+O pacote Linux da **0.5.0** veio sem a pasta `web/` (runtime Web), então o **Export Web** não funciona nele. A correção sai na próxima versão. No Windows funciona normalmente.
+:::
+
 ## 1. Abrir o painel
 
 **Propriedades > Export Game > Web**. O painel vem fechado; clique no título para abrir.

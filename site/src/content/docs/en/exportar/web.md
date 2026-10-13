@@ -9,6 +9,10 @@ Web export creates a folder that runs the game **inside the browser** (Chrome, E
 The Web runtime already ships in the engine zip, in the `web/` folder next to `AnastacioEngine.exe`. Nothing else to download.
 :::
 
+:::caution[Linux, version 0.5.0]
+The **0.5.0** Linux package shipped without the `web/` folder (Web runtime), so **Export Web** doesn't work there. The fix comes in the next version. On Windows it works normally.
+:::
+
 ## 1. Open the panel
 
 **Properties > Export Game > Web**. The panel starts collapsed; click its title to open it.

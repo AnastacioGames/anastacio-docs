@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_NavMeshObject"
 
 Classe base: [`KX_GameObject`](../kx_gameobject/)
 
+:::tip[Veja também]
+[`KX_SteeringActuator`](../../types/kx_steeringactuator/)
+:::
+
 
 
 Interface Python para usar e controlar navigation meshes.

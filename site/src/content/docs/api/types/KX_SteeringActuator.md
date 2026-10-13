@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_SteeringActuator"
 
 Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
+:::tip[Veja também]
+[`KX_NavMeshObject`](../../types/kx_navmeshobject/)
+:::
+
 
 
 Atuador Steering para navegação.

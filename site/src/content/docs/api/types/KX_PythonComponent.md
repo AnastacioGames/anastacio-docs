@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_PythonComponent"
 
 Classe base: [`EXP_Value`](../exp_value/)
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`SCA_PythonController`](../../types/sca_pythoncontroller/)
+:::
+
 
 
 Um componente Python pode ser comparado a logic bricks Python com parâmetros. O componente Python é um script carregado pela UI; esse script define uma classe de componente herdando de `KX_PythonComponent`. Essa classe precisa ter um dicionário de propriedades, `args`, e duas funções padrão: `start` e `update`.

@@ -3,6 +3,10 @@ title: "Range.constraints"
 description: "Referência do módulo Range.constraints"
 ---
 
+:::tip[Veja também]
+[`KX_VehicleWrapper`](../../types/kx_vehiclewrapper/), [`KX_CharacterWrapper`](../../types/kx_characterwrapper/), [`KX_ConstraintWrapper`](../../types/kx_constraintwrapper/)
+:::
+
 A Bullet Physics cuida da detecção de colisão e da dinâmica de corpos rígidos da game engine.
 
 Recursos:

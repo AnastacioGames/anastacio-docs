@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_Mesh"
 
 Classe base: [`EXP_Value`](../exp_value/)
 
+:::tip[Veja também]
+[`KX_MeshBuilder`](../../types/kx_meshbuilder/), [`KX_PolyProxy`](../../types/kx_polyproxy/), [`KX_VertexProxy`](../../types/kx_vertexproxy/), [`KX_BlenderMaterial`](../../types/kx_blendermaterial/)
+:::
+
 
 
 Um objeto de malha.

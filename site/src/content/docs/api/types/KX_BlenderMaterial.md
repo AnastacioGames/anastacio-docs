@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_BlenderMaterial"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`BL_Shader`](../../types/bl_shader/), [`BL_Texture`](../../types/bl_texture/), [`KX_Mesh`](../../types/kx_mesh/)
+:::
+
 
 
 Esta é a interface para os materiais na game engine.
@@ -83,7 +87,7 @@ Devolve o shader do material.
 
 **Tipo do retorno:** `BL_Shader`
 
-### getTextureBindcode(textureslot)
+### ~~getTextureBindcode(textureslot)~~
 
 Devolve o bind code/id/número/nome OpenGL da textura do material.
 

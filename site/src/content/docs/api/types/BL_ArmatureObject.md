@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.BL_ArmatureObject"
 
 Classe base: [`KX_GameObject`](../kx_gameobject/)
 
+:::tip[Veja também]
+[`BL_ArmatureChannel`](../../types/bl_armaturechannel/), [`BL_ArmatureBone`](../../types/bl_armaturebone/), [`BL_ArmatureConstraint`](../../types/bl_armatureconstraint/), [`BL_ActionActuator`](../../types/bl_actionactuator/)
+:::
+
 
 
 Um objeto armature.

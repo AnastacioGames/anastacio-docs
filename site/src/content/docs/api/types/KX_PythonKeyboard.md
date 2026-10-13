@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_PythonKeyboard"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`Range.events`](../../modulos/events/), [`SCA_InputEvent`](../../types/sca_inputevent/), [`KX_PythonMouse`](../../types/kx_pythonmouse/)
+:::
+
 
 
 O teclado atual.
@@ -15,7 +19,7 @@ Dicionário com a entrada de cada tecla do teclado (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
-### events
+### ~~events~~
 
 Dicionário com o estado de cada evento ou tecla do teclado (somente leitura).
 
@@ -31,7 +35,7 @@ Dicionário com a entrada só das teclas ativas (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
-### active_events
+### ~~active_events~~
 
 Dicionário com o estado só dos eventos ou teclas ativas (somente leitura).
 

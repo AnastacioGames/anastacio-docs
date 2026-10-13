@@ -3,6 +3,10 @@ title: "KX_Speaker"
 description: "Referência da classe Range.types.KX_Speaker"
 ---
 
+:::tip[Veja também]
+[`KX_SoundActuator`](../../types/kx_soundactuator/), [`KX_Scene`](../../types/kx_scene/)
+:::
+
 Classe `Range.types.KX_Speaker`.
 
 ## Sem documentação da Range

@@ -3,6 +3,10 @@ title: "Range.logic"
 description: "Referência do módulo Range.logic"
 ---
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`KX_Scene`](../../types/kx_scene/), [`Range.events`](../../modulos/events/), [`SCA_PythonController`](../../types/sca_pythoncontroller/)
+:::
+
 ## Introdução
 
 Módulo com as funções de lógica do jogo, importado automaticamente no namespace dos controladores Python.
@@ -295,7 +299,7 @@ Define o número máximo de frames de lógica executados por frame de render. N�
 - **`maxlogic`**: O novo número máximo de frames de lógica por frame de render. Valores válidos: 1..5
   - tipo: integer
 
-### getMaxPhysicsFrame()
+### ~~getMaxPhysicsFrame()~~
 
 :::danger[Obsoleto ]
 Nenhuma parte da engine usa este limite; o valor definido aqui não tem efeito. Fica só por compatibilidade com scripts antigos. Ele também não controla mais o culling de sombras, que antes usava esta mesma configuração.
@@ -307,7 +311,7 @@ Pega o último valor passado para `setMaxPhysicsFrame`.
 
 **Tipo do retorno:** integer
 
-### setMaxPhysicsFrame(maxphysics)
+### ~~setMaxPhysicsFrame(maxphysics)~~
 
 :::danger[Obsoleto ]
 Nenhuma parte da engine usa este limite; chamar isto não tem efeito na física nem nas sombras. Fica só por compatibilidade com scripts antigos.

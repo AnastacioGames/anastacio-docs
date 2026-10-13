@@ -3,6 +3,10 @@ title: "KX_ParticleSystem"
 description: "Referência da classe Range.types.KX_ParticleSystem"
 ---
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`KX_Scene`](../../types/kx_scene/)
+:::
+
 Classe `Range.types.KX_ParticleSystem`.
 
 ## Sem documentação da Range

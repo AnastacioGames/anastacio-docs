@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_LightObject"
 
 Classe base: [`KX_GameObject`](../kx_gameobject/)
 
+:::tip[Veja também]
+[`KX_WorldInfo`](../../types/kx_worldinfo/), [`KX_Scene`](../../types/kx_scene/)
+:::
+
 
 
 Um objeto de luz.

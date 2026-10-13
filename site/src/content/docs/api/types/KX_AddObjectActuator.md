@@ -12,7 +12,7 @@ Atuador Edit Object (no modo Add Object)
 :::caution
 Um atuador Add Object é ignorado se, no início do jogo, o objeto ligado não existir (ou estiver vazio) ou estiver numa layer ativa.
 
-```none
+```text
 
 Error: GameObject 'Name' has a AddObjectActuator 'ActuatorName' without object (in 'nonactive' layer)
 ```

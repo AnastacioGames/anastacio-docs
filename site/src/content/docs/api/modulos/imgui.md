@@ -3,6 +3,10 @@ title: "Range.imgui"
 description: "Referência do módulo Range.imgui"
 ---
 
+:::tip[Veja também]
+[`Range.render`](../../modulos/render/), [`Range.logic`](../../modulos/logic/)
+:::
+
 Módulo `Range.imgui` da Anastacio Engine. Também acessível como `bge.imgui`.
 
 ## Sem documentação da Range

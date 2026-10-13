@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_Camera"
 
 Classe base: [`KX_GameObject`](../kx_gameobject/)
 
+:::tip[Veja também]
+[`KX_Scene`](../../types/kx_scene/), [`KX_2DFilterManager`](../../types/kx_2dfiltermanager/), [`KX_GameObject`](../../types/kx_gameobject/), [`Range.render`](../../modulos/render/)
+:::
+
 
 
 Um objeto de câmera.

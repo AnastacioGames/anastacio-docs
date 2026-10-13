@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_Scene"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`KX_Camera`](../../types/kx_camera/), [`KX_WorldInfo`](../../types/kx_worldinfo/), [`KX_2DFilterManager`](../../types/kx_2dfiltermanager/), [`Range.logic`](../../modulos/logic/)
+:::
+
 
 
 Uma cena ativa, que dá acesso a objetos, câmeras, luzes e atributos da cena.

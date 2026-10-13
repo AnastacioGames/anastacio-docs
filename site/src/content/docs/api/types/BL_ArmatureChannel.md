@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.BL_ArmatureChannel"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`BL_ArmatureObject`](../../types/bl_armatureobject/), [`BL_ArmatureBone`](../../types/bl_armaturebone/)
+:::
+
 
 
 Proxy para um canal de pose da armature. Permite ler e definir a pose da armature. Os atributos são iguais aos do RNA, mas a maioria é somente leitura.

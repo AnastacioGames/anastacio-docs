@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_CharacterWrapper"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`Range.constraints`](../../modulos/constraints/)
+:::
+
 
 
 Um wrapper que expõe as opções de física de personagem.

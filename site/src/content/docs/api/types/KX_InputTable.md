@@ -3,6 +3,10 @@ title: "KX_InputTable"
 description: "Referência da classe Range.types.KX_InputTable"
 ---
 
+:::tip[Veja também]
+[`KX_InputSystem`](../../types/kx_inputsystem/)
+:::
+
 Classe `Range.types.KX_InputTable`.
 
 ## Sem documentação da Range

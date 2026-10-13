@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_VehicleWrapper"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`Range.constraints`](../../modulos/constraints/), [`KX_CharacterWrapper`](../../types/kx_characterwrapper/)
+:::
+
 
 
 KX_VehicleWrapper

@@ -6,7 +6,8 @@
     "gerar": "python ../tools/gerar_paginas.py",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "checar-links": "node checar-links.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.6",

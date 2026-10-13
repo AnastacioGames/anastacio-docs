@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_SoundActuator"
 
 Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
+:::tip[Veja também]
+[`KX_Speaker`](../../types/kx_speaker/)
+:::
+
 
 
 Atuador Sound.

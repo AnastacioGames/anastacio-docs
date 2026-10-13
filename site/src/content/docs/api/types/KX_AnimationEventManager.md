@@ -3,6 +3,10 @@ title: "KX_AnimationEventManager"
 description: "Referência da classe Range.types.KX_AnimationEventManager"
 ---
 
+:::tip[Veja também]
+[`KX_AnimationEvent`](../../types/kx_animationevent/), [`SCA_AnimationEventSensor`](../../types/sca_animationeventsensor/)
+:::
+
 Classe `Range.types.KX_AnimationEventManager`.
 
 ## Sem documentação da Range

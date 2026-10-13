@@ -3,6 +3,10 @@ title: "Range.events"
 description: "Referência do módulo Range.events"
 ---
 
+:::tip[Veja também]
+[`KX_PythonKeyboard`](../../types/kx_pythonkeyboard/), [`KX_PythonMouse`](../../types/kx_pythonmouse/), [`SCA_InputEvent`](../../types/sca_inputevent/), [`SCA_KeyboardSensor`](../../types/sca_keyboardsensor/)
+:::
+
 ## Introdução
 
 Este módulo guarda as constantes de teclas usadas pelo SCA_KeyboardSensor.

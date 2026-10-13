@@ -114,3 +114,7 @@ html {
 @media (min-width: 50rem) {
 	.hero { padding-block: clamp(1.5rem, calc(.5rem + 4vmin), 4rem) !important; }
 }
+
+html[lang='en'] .sidebar-content a[data-desc-en]::after {
+	content: attr(data-desc-en);
+}

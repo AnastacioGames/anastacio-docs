@@ -53,7 +53,7 @@ Lista das teclas de entrada que foram apertadas, acabaram de ser soltas ou estã
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
-### events
+### ~~events~~
 
 Lista das teclas que foram apertadas, acabaram de ser soltas ou estão ativas neste frame (somente leitura).
 

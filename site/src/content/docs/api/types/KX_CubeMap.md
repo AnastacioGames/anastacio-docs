@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_CubeMap"
 
 Classe base: [`KX_TextureRenderer`](../kx_texturerenderer/)
 
+:::tip[Veja também]
+[`KX_PlanarMap`](../../types/kx_planarmap/), [`KX_TextureRenderer`](../../types/kx_texturerenderer/)
+:::
+
 
 
 API Python para texturas de cube map em tempo real.

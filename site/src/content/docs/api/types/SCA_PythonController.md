@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.SCA_PythonController"
 
 Classe base: [`SCA_IController`](../sca_icontroller/)
 
+:::tip[Veja também]
+[`KX_PythonComponent`](../../types/kx_pythoncomponent/), [`SCA_ISensor`](../../types/sca_isensor/), [`SCA_IActuator`](../../types/sca_iactuator/), [`Range.logic`](../../modulos/logic/)
+:::
+
 
 
 Um controlador Python usa um script Python para ativar seus atuadores, com base nos seus sensores.

@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_PythonJoystick"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`SCA_JoystickSensor`](../../types/sca_joysticksensor/), [`Range.events`](../../modulos/events/), [`KX_InputSystem`](../../types/kx_inputsystem/)
+:::
+
 
 
 Uma interface Python para um joystick.

@@ -4,20 +4,21 @@ import { readdirSync } from 'node:fs';
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9_-]/g, '');
 
 const MODULOS = [
-	['logic', 'Cena, objetos, tempo e teclado'],
-	['render', 'Janela, tela e gráficos'],
-	['events', 'Teclas e botões (constantes)'],
-	['constraints', 'Juntas e restrições físicas'],
-	['texture', 'Texturas de vídeo e imagem'],
-	['imgui', 'Interface de depuração'],
-	['network', 'Multiplayer'],
-	['network.steam', 'Multiplayer via Steam (opcional)'],
+	['logic', 'Cena, objetos, tempo e teclado', 'Scene, objects, time and keyboard'],
+	['render', 'Janela, tela e gráficos', 'Window, screen and graphics'],
+	['events', 'Teclas e botões (constantes)', 'Keys and buttons (constants)'],
+	['constraints', 'Juntas e restrições físicas', 'Physics joints and constraints'],
+	['texture', 'Texturas de vídeo e imagem', 'Video and image textures'],
+	['imgui', 'Interface de depuração', 'Debug interface'],
+	['network', 'Multiplayer', 'Multiplayer'],
+	['network.steam', 'Multiplayer via Steam (opcional)', 'Multiplayer over Steam (optional)'],
 ];
 
-export const modulos = MODULOS.map(([nome, desc]) => ({
+// O texto do resumo vem do CSS (anastacio.css), que escolhe data-desc ou data-desc-en pelo idioma.
+export const modulos = MODULOS.map(([nome, desc, descEn]) => ({
 	label: `Range.${nome}`,
 	slug: `api/modulos/${slug(nome)}`,
-	attrs: { 'data-desc': desc, title: desc },
+	attrs: { 'data-desc': desc, 'data-desc-en': descEn },
 }));
 
 // A primeira regra que casar define a categoria.
@@ -35,6 +36,8 @@ const CATEGORIAS = [
 	['Base e valores', /^(EXP_\w+|SCA_ILogicBrick)$/],
 ];
 
+const CATEGORIAS_EN = {"Objetos e cena": "Objects and scene", "Malha e material": "Mesh and material", "Render e efeitos": "Rendering and effects", "Animação e armadura": "Animation and armature", "Física": "Physics", "Entrada": "Input", "Som": "Sound", "Sensores": "Sensors", "Controladores": "Controllers", "Atuadores": "Actuators", "Base e valores": "Base and values", "Outros": "Other"};
+
 const nomes = readdirSync(new URL('./src/content/docs/api/types', import.meta.url))
 	.filter((f) => f.endsWith('.md'))
 	.map((f) => f.slice(0, -3))
@@ -49,4 +52,4 @@ for (const n of nomes) {
 
 export const types = [...grupos]
 	.filter(([, items]) => items.length)
-	.map(([label, items]) => ({ label, collapsed: true, items }));
+	.map(([label, items]) => ({ label, translations: { en: CATEGORIAS_EN[label] }, collapsed: true, items }));

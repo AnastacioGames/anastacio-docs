@@ -14,7 +14,7 @@ Atuadores Replace Mesh são ignorados se, no início do jogo, a malha com o nome
 
 Isto gera um aviso no console
 
-```none
+```text
 
 Error: GameObject 'Name' ReplaceMeshActuator 'ActuatorName' without object
 ```

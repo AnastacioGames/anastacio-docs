@@ -3,6 +3,10 @@ title: "KX_MeshBuilder"
 description: "Referência da classe Range.types.KX_MeshBuilder"
 ---
 
+:::tip[Veja também]
+[`KX_MeshBuilderSlot`](../../types/kx_meshbuilderslot/), [`KX_Mesh`](../../types/kx_mesh/), [`KX_GameObject`](../../types/kx_gameobject/)
+:::
+
 Classe `Range.types.KX_MeshBuilder`.
 
 ## Sem documentação da Range

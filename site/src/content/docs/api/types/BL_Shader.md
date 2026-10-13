@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.BL_Shader"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`KX_BlenderMaterial`](../../types/kx_blendermaterial/), [`KX_2DFilter`](../../types/kx_2dfilter/)
+:::
+
 
 
 BL_Shader é uma classe usada para compilar e usar scripts de shader personalizados. Suporta vertex, fragment e geometry shaders. O shader é compilado com um cabeçalho gerado para os três scripts. Esse cabeçalho define a diretiva `#version`, então o usuário não deve definir a sua própria `#version`.

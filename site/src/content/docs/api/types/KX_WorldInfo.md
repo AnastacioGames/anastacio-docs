@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_WorldInfo"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`KX_Scene`](../../types/kx_scene/), [`KX_LightObject`](../../types/kx_lightobject/), [`KX_Camera`](../../types/kx_camera/)
+:::
+
 
 
 Um objeto de mundo.

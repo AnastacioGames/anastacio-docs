@@ -3,6 +3,10 @@ title: "Range.network"
 description: "Referência do módulo Range.network"
 ---
 
+:::tip[Veja também]
+[`Range.network.steam`](../../modulos/networksteam/), [`KX_GameObject`](../../types/kx_gameobject/), [`KX_Scene`](../../types/kx_scene/)
+:::
+
 Módulo `Range.network` da Anastacio Engine. Também acessível como `bge.network`.
 
 ## Sem documentação da Range

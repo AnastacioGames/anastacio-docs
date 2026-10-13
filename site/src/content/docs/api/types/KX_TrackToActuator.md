@@ -14,7 +14,7 @@ Atuadores Track To são ignorados se, no início do jogo, o objeto a seguir for 
 
 Isto gera um aviso no console:
 
-```none
+```text
 
 GameObject 'Name' no object in EditObjectActuator 'ActuatorName'
 ```

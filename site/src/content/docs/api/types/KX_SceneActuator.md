@@ -14,7 +14,7 @@ Atuadores de cena que usam um nome de cena são ignorados se, no início do jogo
 
 Isto gera um aviso no console:
 
-```none
+```text
 
 Error: GameObject 'Name' has a SceneActuator 'ActuatorName' (SetScene) without scene
 ```

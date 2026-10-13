@@ -53,7 +53,7 @@ O índice do material do polígono; use para pegar o vertex proxy a partir do me
 
 **Tipo:** integer
 
-### v4
+### ~~v4~~
 
 :::danger[Obsoleto polygons are triangles.]
 

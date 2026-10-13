@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_PythonMouse"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`Range.events`](../../modulos/events/), [`SCA_InputEvent`](../../types/sca_inputevent/), [`KX_PythonKeyboard`](../../types/kx_pythonkeyboard/)
+:::
+
 
 
 O mouse atual.
@@ -33,7 +37,7 @@ Dicionário com a entrada de cada evento do mouse (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
-### events
+### ~~events~~
 
 Dicionário com o estado de cada evento do mouse (somente leitura).
 
@@ -49,7 +53,7 @@ Dicionário com a entrada só dos eventos ativos do mouse (somente leitura).
 
 **Tipo:** dictionary {`keycode`:`SCA_InputEvent`, ...}
 
-### active_events
+### ~~active_events~~
 
 Dicionário com o estado só dos eventos ativos do mouse (somente leitura).
 

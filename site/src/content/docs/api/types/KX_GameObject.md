@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_GameObject"
 
 Classe base: [`SCA_IObject`](../sca_iobject/)
 
+:::tip[Veja também]
+[`KX_Scene`](../../types/kx_scene/), [`KX_Mesh`](../../types/kx_mesh/), [`KX_PythonComponent`](../../types/kx_pythoncomponent/), [`KX_VehicleWrapper`](../../types/kx_vehiclewrapper/), [`KX_ParticleSystem`](../../types/kx_particlesystem/)
+:::
+
 
 
 Todos os objetos do jogo derivam desta classe.
@@ -332,7 +336,7 @@ Suspende a lógica e a animação do objeto se este raio for menor que a distân
 
 **Tipo:** float
 
-### position
+### ~~position~~
 
 A posição do objeto. [x, y, z] Na escrita: posição local; na leitura: posição no mundo.
 
@@ -342,7 +346,7 @@ A posição do objeto. [x, y, z] Na escrita: posição local; na leitura: posiç
 
 **Tipo:** `mathutils.Vector`
 
-### orientation
+### ~~orientation~~
 
 A orientação do objeto. Matriz 3x3. Também aceita um Quaternion ou um vetor Euler. Na escrita: orientação local; na leitura: orientação no mundo.
 
@@ -352,7 +356,7 @@ A orientação do objeto. Matriz 3x3. Também aceita um Quaternion ou um vetor E
 
 **Tipo:** `mathutils.Matrix`
 
-### scaling
+### ~~scaling~~
 
 O fator de escala do objeto. [sx, sy, sz] Na escrita: escala local; na leitura: escala no mundo.
 

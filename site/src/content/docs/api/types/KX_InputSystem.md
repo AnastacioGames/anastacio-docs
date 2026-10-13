@@ -3,6 +3,10 @@ title: "KX_InputSystem"
 description: "Referência da classe Range.types.KX_InputSystem"
 ---
 
+:::tip[Veja também]
+[`KX_InputTable`](../../types/kx_inputtable/), [`KX_PythonKeyboard`](../../types/kx_pythonkeyboard/), [`KX_PythonJoystick`](../../types/kx_pythonjoystick/)
+:::
+
 Classe `Range.types.KX_InputSystem`.
 
 ## Sem documentação da Range

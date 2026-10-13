@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_2DFilter"
 
 Classe base: [`BL_Shader`](../bl_shader/)
 
+:::tip[Veja também]
+[`KX_2DFilterManager`](../../types/kx_2dfiltermanager/), [`KX_2DFilterOffScreen`](../../types/kx_2dfilteroffscreen/), [`BL_Shader`](../../types/bl_shader/)
+:::
+
 
 
 Objeto de shader de filtro 2D. Pode ser alterado com as funções de `BL_Shader`.

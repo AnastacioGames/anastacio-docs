@@ -41,11 +41,23 @@ MODULOS = {
     "network.steam": (None, "Range.network.steam"),
 }
 
-SELO = {
-    "novo_anastacio": '<span class="ae-badge novo">novo na Anastacio</span>',
-    "novo": '<span class="ae-badge pendente">sem documentação</span>',
-    "sem_doc": '<span class="ae-badge pendente">sem descrição</span>',
+# idioma da página sendo gerada: "pt" (raiz do site) ou "en" (site/.../docs/en)
+LANG = ["pt"]
+
+
+def L(pt, en):
+    return en if LANG[0] == "en" else pt
+
+
+SELOS = {
+    "pt": {"novo_anastacio": '<span class="ae-badge novo">novo na Anastacio</span>',
+           "novo": '<span class="ae-badge pendente">sem documentação</span>',
+           "sem_doc": '<span class="ae-badge pendente">sem descrição</span>'},
+    "en": {"novo_anastacio": '<span class="ae-badge novo">new in Anastacio</span>',
+           "novo": '<span class="ae-badge pendente">undocumented</span>',
+           "sem_doc": '<span class="ae-badge pendente">no description</span>'},
 }
+SELO = dict(SELOS["pt"])
 
 
 # ---------------------------------------------------------------- docstrings do C++
@@ -137,13 +149,16 @@ def rst_para_md(texto, selos=None):
             while corpo and re.match(r"^\s*:\w[\w-]*:", corpo[0]) and nome in ("code-block", "literalinclude", "toctree", "image", "figure"):
                 corpo.pop(0)
             if nome in ("code-block", "code", "sourcecode"):
-                out += ["", f"```{arg or 'python'}", *map(trocar_bge, dedent(corpo)), "```", ""]
+                out += ["", f"```{'text' if arg == 'none' else arg or 'python'}", *map(trocar_bge, dedent(corpo)), "```", ""]
             elif nome in ("method", "function", "attribute", "data", "class"):
                 nm = arg.split("(")[0].split(".")[-1]
                 if nome == "class":
                     out += ["", rst_para_md("\n".join(dedent(corpo)), selos), ""]
                 else:
                     sinal = arg if "(" in arg else nm
+                    # item obsoleto: título riscado, para ninguém usar por engano
+                    if any(re.match(r"\s*\.\. deprecated::", l) for l in corpo):
+                        sinal = f"~~{sinal}~~"
                     out += ["", f"### {sinal}", ""]
                     selo = selos.get(nm)
                     # o rst já explica o item: selo de pendente não faz sentido
@@ -151,7 +166,8 @@ def rst_para_md(texto, selos=None):
                         out += [selo, ""]
                     out += [rst_para_md("\n".join(dedent(corpo)), selos), ""]
             elif nome in ASIDE:
-                rot = {"deprecated": "Obsoleto", "versionadded": "Adicionado", "versionchanged": "Alterado"}.get(nome)
+                rot = {"deprecated": L("Obsoleto", "Deprecated"), "versionadded": L("Adicionado", "Added"),
+                       "versionchanged": L("Alterado", "Changed")}.get(nome)
                 titulo = f"[{rot} {arg}]" if rot else ""
                 conteudo = rst_para_md("\n".join(dedent(corpo))) if corpo else (arg if not rot else "")
                 out += ["", f":::{ASIDE[nome]}{titulo}", conteudo, ":::", ""]
@@ -172,16 +188,17 @@ def rst_para_md(texto, selos=None):
             campo, alvo, valor = f.group(1), f.group(2).strip(), f.group(3)
             extra, i = bloco(linhas, i + 1, indent(l))
             valor = inline(" ".join([valor] + [e.strip() for e in extra if e.strip()]))
-            rotulo = {"arg": "", "param": "", "type": "Tipo", "return": "Retorna",
-                      "returns": "Retorna", "rtype": "Tipo do retorno", "raises": "Erro"}.get(campo, campo)
+            rotulo = {"arg": "", "param": "", "type": L("Tipo", "Type"), "return": L("Retorna", "Returns"),
+                      "returns": L("Retorna", "Returns"), "rtype": L("Tipo do retorno", "Return type"),
+                      "raises": L("Erro", "Raises")}.get(campo, campo)
             if campo == "columns":
                 pass
             elif campo == "value":
-                out += ["", f"**Valor:** `{valor}`", ""]
+                out += ["", f"**{L('Valor', 'Value')}:** `{valor}`", ""]
             elif campo in ("arg", "param") and alvo:
                 out.append(f"- **`{alvo}`**: {valor}")
             elif campo == "type" and alvo:
-                out.append(f"  - tipo: {valor}")
+                out.append(f"  - {L('tipo', 'type')}: {valor}")
             else:
                 out += ["", f"**{rotulo}:** {valor}", ""]
             continue
@@ -225,6 +242,40 @@ def selo_de(item):
 # novos que não têm docstring no C++. Ganha da docstring quando os dois existem.
 DESCRICOES_ARQ = AQUI / "conteudo" / "descricoes.json"
 DESCRICOES = json.loads(DESCRICOES_ARQ.read_text(encoding="utf-8")) if DESCRICOES_ARQ.exists() else {}
+DESCRICOES_PT = DESCRICOES
+# conteudo/descricoes_en.json: as mesmas descrições em inglês, para o site em /en/
+DESCRICOES_EN_ARQ = AQUI / "conteudo" / "descricoes_en.json"
+DESCRICOES_EN = json.loads(DESCRICOES_EN_ARQ.read_text(encoding="utf-8")) if DESCRICOES_EN_ARQ.exists() else {}
+# conteudo/relacionados.json: {"Página": ["OutraPágina", ...]} para o bloco "Veja também"
+RELACIONADOS_ARQ = AQUI / "conteudo" / "relacionados.json"
+RELACIONADOS = json.loads(RELACIONADOS_ARQ.read_text(encoding="utf-8")) if RELACIONADOS_ARQ.exists() else {}
+
+
+def usar_idioma(lang):
+    global DESCRICOES
+    LANG[0] = lang
+    SELO.clear()
+    SELO.update(SELOS[lang])
+    if lang == "en":
+        # descrição em inglês; sem ela, a portuguesa (melhor que nada)
+        DESCRICOES = {c: {**DESCRICOES_PT.get(c, {}), **DESCRICOES_EN.get(c, {})}
+                      for c in set(DESCRICOES_PT) | set(DESCRICOES_EN)}
+    else:
+        DESCRICOES = DESCRICOES_PT
+
+
+def link_pagina(nome):
+    """Link relativo (a partir de api/modulos/x/ ou api/types/x/) para outra página da API."""
+    if nome.startswith("Range."):
+        return f"[`{nome}`](../../modulos/{nome[6:].replace('.', '').lower()}/)"
+    return f"[`{nome}`](../../types/{nome.lower()}/)"
+
+
+def veja_tambem(nome):
+    rel = RELACIONADOS.get(nome)
+    if not rel:
+        return ""
+    return f":::tip[{L('Veja também', 'See also')}]\n" + ", ".join(link_pagina(r) for r in rel) + "\n:::\n\n"
 
 
 def secao_pendentes(itens, docs, classe=None):
@@ -232,14 +283,17 @@ def secao_pendentes(itens, docs, classe=None):
     novos = [(n, i) for n, i in itens.items() if i["status"] == "novo"]
     if not novos:
         return ""
-    out = ["", "## Sem documentação da Range", "",
-           "Estes itens existem na engine mas não estavam na documentação da Range. "
-           "Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.", ""]
+    out = ["", L("## Sem documentação da Range", "## Not in the Range documentation"), "",
+           L("Estes itens existem na engine mas não estavam na documentação da Range. "
+             "Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.",
+             "These items exist in the engine but were not in the Range documentation. "
+             "The ones marked **new in Anastacio** were added by Anastacio Engine."), ""]
     ordem = {"metodo": 0, "funcao": 0, "atributo": 1, "constante": 2}
     for nome, i in sorted(novos, key=lambda x: (ordem.get(x[1]["tipo"], 3), x[0].lower())):
         if nome.startswith("_"):
             continue  # uso interno
-        tipo = {"metodo": "método", "funcao": "função", "atributo": "atributo", "constante": "constante"}.get(i["tipo"], i["tipo"])
+        tipo = {"metodo": L("método", "method"), "funcao": L("função", "function"), "atributo": L("atributo", "attribute"),
+                "constante": L("constante", "constant")}.get(i["tipo"], i["tipo"])
         doc = DESCRICOES.get(classe, {}).get(nome) or docs.get(nome, "")
         m = re.match(rf"{nome}\([^)]*\)", doc)
         cab = m.group(0) if m else nome + ("()" if i["tipo"] in ("metodo", "funcao") else "")
@@ -250,11 +304,11 @@ def secao_pendentes(itens, docs, classe=None):
         selo = selo_de(i)
         if resto.strip() and selo in (SELO["novo"], SELO["sem_doc"]):
             selo = ""  # já tem descrição
-        out += [f"### {cab}", "", f"{selo} <small>{tipo}{' · só leitura' if i.get('so_leitura') else ''}</small>", ""]
+        out += [f"### {cab}", "", f"{selo} <small>{tipo}{L(' · só leitura', ' · read-only') if i.get('so_leitura') else ''}</small>", ""]
         if resto.strip():
             out += [inline(resto.strip()).replace("\n", "  \n"), ""]
         if retorno:
-            out += [f"**Retorna:** `{retorno.group(1).strip()}`", ""]
+            out += [f"**{L('Retorna', 'Returns')}:** `{retorno.group(1).strip()}`", ""]
     return "\n".join(out)
 
 
@@ -279,7 +333,8 @@ _pagina_atual = [""]
 def _tr(chave):
     chave = chave.strip()
     if (not chave or not re.search(r"[A-Za-z]{3}", chave) or "+--" in chave
-            or re.fullmatch(r"[\s,]*(`[^`]+`[\s,]*)+", chave)):
+            or re.fullmatch(r"[\s,]*(`[^`]+`[\s,]*)+", chave)
+            or re.fullmatch(r"[\s,]*(\[`[^`]+`\]\([^)]+\)[\s,]*)+", chave)):
         return chave
     if chave in _pt:
         return _pt[chave]
@@ -342,7 +397,13 @@ def traduzir_md(md):
 def escrever(caminho, texto):
     _pagina_atual[0] = caminho.stem
     fm, _, corpo = texto.partition("\n---\n")
-    caminho.write_text(fm + "\n---\n" + traduzir_md(corpo), encoding="utf-8")
+    # o .rst já é inglês: só a versão em português passa pela tradução
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(fm + "\n---\n" + (traduzir_md(corpo) if LANG[0] == "pt" else corpo), encoding="utf-8")
+
+
+def pasta_api():
+    return DESTINO / "api" if LANG[0] == "pt" else DESTINO / "en" / "api"
 
 
 def pagina_modulo(chave, info, docs):
@@ -355,10 +416,11 @@ def pagina_modulo(chave, info, docs):
     if rst_nome and (RST / f"{rst_nome}.rst").exists():
         corpo = rst_para_md((RST / f"{rst_nome}.rst").read_text(encoding="utf-8", errors="replace"), selos)
     else:
-        corpo = f"Módulo `{publico}` da Anastacio Engine. Também acessível como `{publico.replace('Range.', 'bge.')}`."
+        corpo = L(f"Módulo `{publico}` da Anastacio Engine. Também acessível como `{publico.replace('Range.', 'bge.')}`.",
+                  f"Anastacio Engine module `{publico}`. Also available as `{publico.replace('Range.', 'bge.')}`.")
     nome_arq = publico.replace("Range.", "")
-    texto = frontmatter(publico, f"Referência do módulo {publico}") + corpo + "\n" + secao_pendentes(info["itens"], docs, publico) + "\n"
-    escrever(DESTINO / "api" / "modulos" / f"{nome_arq}.md", texto)
+    texto = frontmatter(publico, L(f"Referência do módulo {publico}", f"{publico} module reference")) + veja_tambem(publico) + corpo + "\n" + secao_pendentes(info["itens"], docs, publico) + "\n"
+    escrever(pasta_api() / "modulos" / f"{nome_arq}.md", texto)
 
 
 def pagina_classe(nome, info, rst_arq, docs):
@@ -367,18 +429,21 @@ def pagina_classe(nome, info, rst_arq, docs):
         corpo = rst_para_md(rst_arq.read_text(encoding="utf-8", errors="replace"), selos)
         base = re.search(r"base class --- :class:`~?([\w.]+)`", rst_arq.read_text(encoding="utf-8", errors="replace"))
     else:
-        corpo, base = f"Classe `Range.types.{nome}`.", None
+        corpo, base = L(f"Classe `Range.types.{nome}`.", f"Class `Range.types.{nome}`."), None
     corpo = re.sub(r"^base class --- .*$", "", corpo, flags=re.M)
-    topo = f"Classe base: [`{base.group(1).split('.')[-1]}`](../{base.group(1).split('.')[-1].lower()}/)\n\n" if base else ""
+    topo = f"{L('Classe base', 'Base class')}: [`{base.group(1).split('.')[-1]}`](../{base.group(1).split('.')[-1].lower()}/)\n\n" if base else ""
     pend = secao_pendentes(info["itens"], docs, nome) if info else ""
-    texto = frontmatter(nome, f"Referência da classe Range.types.{nome}") + topo + corpo + "\n" + pend + "\n"
-    escrever(DESTINO / "api" / "types" / f"{nome}.md", texto)
+    texto = frontmatter(nome, L(f"Referência da classe Range.types.{nome}", f"Range.types.{nome} class reference")) + topo + veja_tambem(nome) + corpo + "\n" + pend + "\n"
+    escrever(pasta_api() / "types" / f"{nome}.md", texto)
 
 
 def pagina_situacao(inv, docs):
-    linhas = [frontmatter("Situação da documentação", "Quanto da API já está documentado."),
-              "Gerado a partir do inventário da engine. **Pendentes** existem no código e ainda não têm texto.", "",
-              "| Página | Itens | Documentados | Pendentes | Novos na Anastacio |", "|---|---:|---:|---:|---:|"]
+    linhas = [frontmatter(L("Situação da documentação", "Documentation status"),
+                          L("Quanto da API já está documentado.", "How much of the API is documented.")),
+              L("Gerado a partir do inventário da engine. **Pendentes** existem no código e ainda não têm texto.",
+                "Generated from the engine inventory. **Pending** items exist in the code but have no text yet."), "",
+              L("| Página | Itens | Documentados | Pendentes | Novos na Anastacio |",
+                "| Page | Items | Documented | Pending | New in Anastacio |"), "|---|---:|---:|---:|---:|"]
     for grupo, prefixo in (("modulos", "Range."), ("classes", "")):
         for nome, v in sorted(inv[grupo].items()):
             titulo = MODULOS[nome][1] if grupo == "modulos" else nome
@@ -390,14 +455,12 @@ def pagina_situacao(inv, docs):
             pend = sum(1 for n, i in it if i["status"] in ("novo", "sem_doc") and not tem_texto(n, i))
             ana = sum(1 for n, i in it if i.get("origem") == "anastacio")
             linhas.append(f"| `{titulo}` | {len(it)} | {doc} | {pend} | {ana or ''} |")
-    (DESTINO / "situacao-da-doc.md").write_text("\n".join(linhas) + "\n", encoding="utf-8")
+    (DESTINO / L("", "en") / "situacao-da-doc.md").write_text("\n".join(linhas) + "\n", encoding="utf-8")
 
 
-def main():
-    inv = json.loads(INVENTARIO.read_text(encoding="utf-8"))
-    docs = docstrings_cpp()
-    for sub in ("api/modulos", "api/types"):
-        pasta = DESTINO / sub
+def gerar(inv, docs):
+    for sub in ("modulos", "types"):
+        pasta = pasta_api() / sub
         pasta.mkdir(parents=True, exist_ok=True)
         for velho in pasta.glob("*.md"):
             velho.unlink()
@@ -417,16 +480,28 @@ def main():
             usados.add(rst_nome)
         pagina_classe(nome, info, rst_por_nome.get(rst_nome), docs)
     for rst_nome, arq in rst_por_nome.items():
-        if rst_nome not in usados and not (DESTINO / "api" / "types" / f"{rst_nome}.md").exists():
+        if rst_nome not in usados and not (pasta_api() / "types" / f"{rst_nome}.md").exists():
             pagina_classe(rst_nome, None, arq, docs)
 
     pagina_situacao(inv, docs)
+
+
+def main():
+    inv = json.loads(INVENTARIO.read_text(encoding="utf-8"))
+    docs = docstrings_cpp()
+    for lang in ("pt", "en"):
+        usar_idioma(lang)
+        gerar(inv, docs)
+    usar_idioma("pt")
+
     PENDENTE.parent.mkdir(exist_ok=True)
     PENDENTE.write_text(json.dumps(_pendente, indent=1, ensure_ascii=False), encoding="utf-8")
     falta = sum(len(v) for v in _pendente.values())
     print(f"tradução: {len(_pt)} trechos traduzidos, {falta} pendentes (traducao/pendente.json)")
-    total = len(list((DESTINO / "api").rglob("*.md")))
-    print(f"{total} páginas de API geradas em {DESTINO / 'api'}")
+    for pasta in (DESTINO / "api", DESTINO / "en" / "api"):
+        print(f"{len(list(pasta.rglob('*.md')))} páginas de API geradas em {pasta}")
+    sem_en = sum(1 for c, d in DESCRICOES_PT.items() for n in d if n not in DESCRICOES_EN.get(c, {}))
+    print(f"descrições sem inglês: {sem_en} (conteudo/descricoes_en.json)")
 
 
 if __name__ == "__main__":

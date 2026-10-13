@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.KX_2DFilterManager"
 
 Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
+:::tip[Veja também]
+[`KX_2DFilter`](../../types/kx_2dfilter/), [`KX_2DFilterOffScreen`](../../types/kx_2dfilteroffscreen/), [`KX_Camera`](../../types/kx_camera/)
+:::
+
 
 
 Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.

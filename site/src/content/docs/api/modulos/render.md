@@ -3,6 +3,10 @@ title: "Range.render"
 description: "Referência do módulo Range.render"
 ---
 
+:::tip[Veja também]
+[`KX_Camera`](../../types/kx_camera/), [`KX_2DFilterManager`](../../types/kx_2dfiltermanager/), [`Range.logic`](../../modulos/logic/)
+:::
+
 ## Introdução
 
 Exemplo usando um `Range.types.SCA_MouseSensor` e dois `Range.types.KX_ObjectActuator` para fazer o mouse look:

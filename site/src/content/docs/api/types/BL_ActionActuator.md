@@ -5,6 +5,10 @@ description: "Referência da classe Range.types.BL_ActionActuator"
 
 Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
+:::tip[Veja também]
+[`KX_GameObject`](../../types/kx_gameobject/), [`BL_ArmatureObject`](../../types/bl_armatureobject/), [`KX_AnimationEventManager`](../../types/kx_animationeventmanager/)
+:::
+
 
 
 Os atuadores Action aplicam uma action a um ator.

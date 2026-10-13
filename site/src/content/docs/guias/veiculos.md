@@ -1,7 +1,6 @@
 ---
 title: Veículos
 description: Montar um carro com o painel Vehicle e dirigir com o componente pronto ou pelo Python.
-draft: true
 ---
 
 A Anastacio cria o veículo sozinha a partir do painel **Physics > Vehicle**. Você só configura as rodas e anexa um controle.
@@ -29,6 +28,10 @@ Anexe o componente `VehiclePlayerComponent` (arquivo `vehicle_player_component.p
 - com marchas cadastradas no painel Vehicle, o câmbio troca sozinho (ou com E/Q no manual).
 
 O componente publica as propriedades `vehicle_speed_kmh`, `vehicle_rpm` e `vehicle_gear` no chassi, úteis para um velocímetro.
+
+:::tip
+Pela convenção do projeto, a frente do chassi aponta para **+Y**. Se o carro andar de ré ao apertar W, ligue **Invert Direction** nas propriedades do `VehiclePlayerComponent`.
+:::
 
 ## 3. Ou controle pelo Python
 
@@ -76,3 +79,7 @@ O sinal da força depende de para onde o chassi aponta. Se o carro andar de ré 
 ## Salvar o acerto do carro
 
 `vehicle.savePreset("//acerto.json")` grava massa, suspensão, atrito e rodas num arquivo. `vehicle.loadPreset(...)` reaplica o acerto no mesmo carro, por exemplo para trocar entre "asfalto" e "terra".
+
+:::caution
+`savePreset()` falha se o campo **Ray Cast Mask** do veículo estiver no valor padrão (0): a engine grava internamente -1 e a própria validação recusa esse valor. Defina o Ray Cast Mask manualmente no painel Vehicle antes de salvar o acerto.
+:::

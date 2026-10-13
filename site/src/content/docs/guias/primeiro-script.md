@@ -7,6 +7,8 @@ description: Um script Python que move um objeto quando você aperta uma tecla.
 2. Crie um texto chamado `mover.py` no editor de texto e escolha-o no controlador.
 3. Cole o código e aperte **P** para jogar.
 
+![Sensor Always ligado ao controlador Python com o script mover.py, e o código no editor de texto](../../../assets/guias/logic-bricks-mover.png)
+
 ```python
 import Range
 from Range import logic, events
@@ -29,9 +31,11 @@ if teclado.inputs[events.SKEY].active:
 
 Um componente faz o mesmo trabalho sem precisar de logic bricks. Ele é uma classe Python ligada ao objeto, e você pode mudar os parâmetros dela no painel, sem mexer no código.
 
-1. Crie um texto chamado `mover.py` no editor de texto (o nome precisa terminar em `.py`) e cole o código abaixo.
-2. Selecione o objeto. Na aba **Game** das propriedades, no painel **Components**, clique em **Register Component** e digite `mover.Mover` (nome do arquivo + nome da classe).
-3. O campo **Velocidade** aparece no painel. Ajuste se quiser e aperte **P** para jogar.
+1. Crie um texto chamado `mover_componente.py` no editor de texto (o nome precisa terminar em `.py`) e cole o código abaixo.
+2. Selecione o objeto e abra a aba de componentes (ícone do Python) nas propriedades. Em **Existing Components**, escolha **In .Range File** em *Modules*, depois a classe **Mover** em *Classes*, e clique em **Register**. Se a classe não aparecer, clique no botão de atualizar no canto do painel.
+3. O componente aparece em **Object's Components**, com o campo **Velocidade**. Ajuste se quiser e aperte **P** para jogar.
+
+![Componente Mover registrado no objeto, com o campo Velocidade, e o código no editor de texto](../../../assets/guias/componente-mover.png)
 
 ```python
 import Range

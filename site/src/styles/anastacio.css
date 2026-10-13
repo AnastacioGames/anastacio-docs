@@ -74,3 +74,7 @@ h1, h2, .site-title { font-family: var(--ae-display); letter-spacing: .02em; }
 .ae-feat > a:hover { background: var(--sl-color-gray-6); }
 .ae-feat .ae-ver { display: inline-block; margin-top: .8rem; font-size: .8rem; color: var(--ae-gold); opacity: .7; }
 .ae-feat > a:hover .ae-ver { opacity: 1; }
+
+/* Grade de 3 colunas (recursos e exportação na capa) */
+.ae-feat.ae-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 50rem) { .ae-feat.ae-3 { grid-template-columns: 1fr; } }

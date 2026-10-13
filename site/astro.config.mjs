@@ -31,6 +31,11 @@ export default defineConfig({
 					translations: { en: 'Exporting the game' },
 					items: ['exportar/visao-geral', 'exportar/rangearmor', 'exportar/web', 'exportar/android'],
 				},
+				{
+					label: 'Recursos',
+					translations: { en: 'Features' },
+					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode'],
+				},
 				{ label: 'Módulos', translations: { en: 'Modules' }, items: modulos },
 				{ label: 'Range.types', collapsed: true, items: types },
 				{ label: 'Projeto', translations: { en: 'Project' }, items: ['sobre', 'situacao-da-doc'] },

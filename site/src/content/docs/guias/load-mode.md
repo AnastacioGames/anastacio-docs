@@ -1,7 +1,6 @@
 ---
 title: Carregamento rápido (Load Mode e Cook)
 description: Deixar objetos de fora do carregamento, criá-los só quando precisar e cozinhar a cena para abrir mais rápido.
-draft: true
 ---
 
 Uma cena grande demora para abrir porque a engine converte todos os objetos antes do primeiro quadro. A Anastacio tem duas ferramentas para isso:

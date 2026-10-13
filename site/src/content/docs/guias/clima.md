@@ -1,7 +1,6 @@
 ---
 title: Clima (chuva, raios, nuvens e neblina)
 description: Ligar e mudar o clima do World durante o jogo com setWeather e strikeLightning.
-draft: true
 ---
 
 O clima da Anastacio fica no **World**: chuva, respingos, poças, raios, nuvens, Sky Layers, nuvens volumétricas e neblina volumétrica. Você deixa tudo pronto no editor e muda os valores durante o jogo pelo Python, com [`setWeather`](../../api/types/kx_worldinfo/).
@@ -9,14 +8,14 @@ O clima da Anastacio fica no **World**: chuva, respingos, poças, raios, nuvens,
 ## 1. Prepare no editor
 
 1. Abra a aba **World** nas propriedades.
-2. No painel de clima, ligue **Rain** e ajuste a intensidade até gostar do resultado na viewport.
+2. No painel **Weather**, ligue **Rain** e ajuste a intensidade até gostar do resultado na viewport.
 3. Se for usar nuvens, ligue **Clouds** (ou Sky Layers / Volumetric Clouds) já no editor.
 
 :::caution
 As nuvens precisam de um passe criado no carregamento. Se nenhuma delas estiver ligada no World quando o jogo abre, `setWeather("clouds", True)` não tem onde desenhar. Ligue no editor e, se quiser começar sem nuvens, zere a cobertura pelo script.
 :::
 
-<!-- PRINT: aba World com o painel de clima aberto e Rain ligado -->
+<!-- PRINT: aba World com o painel Weather aberto e Rain ligado -->
 
 ## 2. Mude o clima pelo script
 

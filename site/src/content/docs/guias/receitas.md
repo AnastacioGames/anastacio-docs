@@ -1,7 +1,6 @@
 ---
 title: Receitas rápidas
 description: Trechos curtos para as tarefas mais comuns com objetos, cena, tempo e teclado.
-draft: true
 ---
 
 Trechos prontos para copiar. Todos supõem que estão dentro de um componente (`self.object` é o objeto dono) e que o arquivo começa com:
@@ -50,7 +49,7 @@ if atingido:
     print("bateu em", atingido.name)
 ```
 
-**Remover:**
+**Remover** (vale no fim do quadro):
 
 ```python
 self.object.endObject()

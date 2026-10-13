@@ -1,7 +1,6 @@
 ---
 title: Câmera do jogo (foco, efeitos e tremor)
 description: Foco automático, câmera que segue o alvo, desfoque de velocidade, DOF e tremor, sem filtros em Python.
-draft: true
 ---
 
 A câmera da Anastacio tem efeitos nativos: foco que acompanha um objeto, rastreio (a câmera gira para seguir o alvo), DOF, desfoque de velocidade, aberração, vinheta e tremor. Tudo é configurado nas propriedades da câmera e pode ser mudado pelo Python em [`KX_Camera`](../../api/types/kx_camera/).

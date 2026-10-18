@@ -887,5 +887,20 @@
   "bindId": "OpenGL id of the texture.",
   "mipmap": "Uses mipmaps on the texture (`True`/`False`).",
   "source": "Image source (video, camera, image...) drawn on the texture."
+ },
+ "SCA_WaitActuator": {
+  "duration": "Wait time in seconds (0 to 100000). A positive pulse starts the count; when it elapses the actuator finishes and an **Actuator** sensor in Finished mode fires.",
+  "useRestart": "If `True`, a new positive pulse while waiting restarts the count from zero.",
+  "waiting": "`True` while the actuator is counting.",
+  "elapsed": "Seconds elapsed since the current wait started."
+ },
+ "KX_VideoActuator": {
+  "mode": "Action on the Video Player: `0` Play, `1` Pause, `2` Toggle, `3` Stop, `4` Restart, `5` Seek.",
+  "seconds": "Position in seconds used by Seek mode.",
+  "useRelative": "In Seek mode, if `True`, `seconds` is added to the current position instead of being absolute.",
+  "object": "Object with the Video Player controlled by the actuator (`KX_GameObject`, name or `None`)."
+ },
+ "SCA_ActuatorSensor": {
+  "mode": "`0` Active: true while the watched actuator is active. `1` Finished: pulses when the actuator finishes (e.g. Wait, Action, Video)."
  }
 }

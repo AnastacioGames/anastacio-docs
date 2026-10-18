@@ -93,11 +93,12 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_VRHeadSensor` | 6 | 6 | 0 | 6 |
 | `KX_VehicleWrapper` | 30 | 30 | 0 |  |
 | `KX_VertexProxy` | 28 | 28 | 0 |  |
+| `KX_VideoActuator` | 4 | 4 | 0 | 4 |
 | `KX_VisibilityActuator` | 3 | 3 | 0 |  |
 | `KX_WorldInfo` | 36 | 36 | 0 | 15 |
 | `SCA_2DFilterActuator` | 5 | 5 | 0 |  |
 | `SCA_ANDController` | 0 | 0 | 0 |  |
-| `SCA_ActuatorSensor` | 1 | 1 | 0 |  |
+| `SCA_ActuatorSensor` | 2 | 2 | 0 | 1 |
 | `SCA_AlwaysSensor` | 0 | 0 | 0 |  |
 | `SCA_AnimationEventSensor` | 0 | 0 | 0 |  |
 | `SCA_DelaySensor` | 5 | 5 | 0 |  |
@@ -118,6 +119,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `SCA_RandomActuator` | 15 | 15 | 0 |  |
 | `SCA_RandomSensor` | 2 | 2 | 0 |  |
 | `SCA_VibrationActuator` | 8 | 8 | 0 |  |
+| `SCA_WaitActuator` | 4 | 4 | 0 | 4 |
 | `SCA_XNORController` | 0 | 0 | 0 |  |
 | `SCA_XORController` | 0 | 0 | 0 |  |
 | `Texture` | 24 | 5 | 0 |  |

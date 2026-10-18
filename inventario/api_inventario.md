@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 105 classes, 8 módulos | documentados 1046 · sem doc 248 · novos 532 · só no rst 111
+**Total:** 107 classes, 8 módulos | documentados 1046 · sem doc 248 · novos 541 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -41,6 +41,8 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_InputTable` | 4 | 0 | 0 | 4 | 0 | **não** |
 | `KX_MeshBuilder` | 4 | 0 | 0 | 4 | 0 | **não** |
 | `KX_PythonMotion` | 11 | 7 | 0 | 4 | 0 | sim |
+| `KX_VideoActuator` | 4 | 0 | 0 | 4 | 0 | **não** |
+| `SCA_WaitActuator` | 4 | 0 | 0 | 4 | 0 | **não** |
 | `KX_ChangeColorActuator` | 3 | 0 | 0 | 3 | 0 | **não** |
 | `KX_FontObject` | 7 | 4 | 0 | 3 | 0 | sim |
 | `KX_RaySensor` | 14 | 11 | 0 | 3 | 0 | sim |
@@ -58,6 +60,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_LightningActuator` | 1 | 0 | 0 | 1 | 0 | **não** |
 | `KX_LodManager` | 3 | 2 | 0 | 1 | 0 | sim |
 | `KX_Mesh` | 15 | 14 | 0 | 1 | 0 | sim |
+| `SCA_ActuatorSensor` | 2 | 1 | 0 | 1 | 0 | sim |
 | `SCA_DelaySensor` | 5 | 4 | 0 | 1 | 0 | sim |
 | `SCA_ISensor` | 14 | 13 | 0 | 1 | 0 | sim |
 | `SCA_MouseSensor` | 4 | 3 | 0 | 1 | 0 | sim |
@@ -108,7 +111,6 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_VisibilityActuator` | 3 | 3 | 0 | 0 | 0 | sim |
 | `SCA_2DFilterActuator` | 5 | 5 | 0 | 0 | 0 | sim |
 | `SCA_ANDController` | 0 | 0 | 0 | 0 | 0 | sim |
-| `SCA_ActuatorSensor` | 1 | 1 | 0 | 0 | 0 | sim |
 | `SCA_AlwaysSensor` | 0 | 0 | 0 | 0 | 0 | sim |
 | `SCA_AnimationEventSensor` | 0 | 0 | 0 | 0 | 0 | **não** |
 | `SCA_IController` | 4 | 4 | 0 | 0 | 0 | sim |
@@ -131,7 +133,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **195** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **204** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **244** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
 - **Range.events** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `OSKEY`, `JOYSTICKA`, `JOYSTICKB`, `JOYSTICKX`, `JOYSTICKY`, `JOYSTICKBACK`, `JOYSTICKGUIDE`, `JOYSTICKLEFTSTICK`, `JOYSTICKRIGHTSTICK`, `JOYSTICKRIGHTSHOUDER`, `JOYSTICKLEFTSHOUDER`, `JOYSTICKPADUP`, `JOYSTICKPADDOWN`, `JOYSTICKPADLEFT`, `JOYSTICKPADRIGHT`
@@ -173,8 +175,11 @@ Origem pelo git: **195** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_SteeringActuator** (source/source/gameengine/Ketsji/KX_SteeringActuator.cpp): `steeringVec` (só leitura), `facingMode`, `lockZVelocity`
 - **KX_VRHeadSensor** (source/source/gameengine/Ketsji/KX_VRHeadSensor.cpp): `mode` ✦2026-10-01, `angle` ✦2026-10-01, `time` ✦2026-10-01, `pitch` (só leitura) ✦2026-10-01, `yaw` (só leitura) ✦2026-10-01, `roll` (só leitura) ✦2026-10-01
 - **KX_VehicleWrapper** (source/source/gameengine/Ketsji/KX_VehicleWrapper.cpp): `setWheelIsDriveWheel`, `getCurrentSpeedKmh`, `getCurrentSpeedMps`, `getForwardVector`, `getCoordinateSystem`, `setCoordinateSystem`, `resetSuspension`, `getWheelConfig`, `getWheelState`, `savePreset`, `loadPreset`, `rebuildPreset`, `constraint_id` (só leitura), `constraint_type` (só leitura)
+- **KX_VideoActuator** (source/source/gameengine/Ketsji/KX_VideoActuator.cpp): `mode` ✦2026-10-18, `seconds` ✦2026-10-18, `useRelative` ✦2026-10-18, `object` ✦2026-10-18
 - **KX_WorldInfo** (source/source/gameengine/Ketsji/KX_WorldInfo.cpp): `getWeather` ✦2026-10-03, `backgroundColor`, `sunSize`, `skyType` ✦2026-10-09, `useSkyStars` ✦2026-10-09, `starStyle` ✦2026-10-09, `useSkyMoon` ✦2026-10-09, `moonSize` ✦2026-10-09, `moonBrightness` ✦2026-10-09, `useSkyAurora` ✦2026-10-09, `auroraColors` ✦2026-10-09, `atmosphereIntensity` ✦2026-10-09, `atmosphereRayleighColor` ✦2026-10-09, `atmosphereRayleighDensity` ✦2026-10-09, `atmosphereMieDensity` ✦2026-10-09, `atmosphereMieDirection` ✦2026-10-09, `atmosphereAltitude` ✦2026-10-09
+- **SCA_ActuatorSensor** (source/source/gameengine/GameLogic/SCA_ActuatorSensor.cpp): `mode` ✦2026-10-18
 - **SCA_DelaySensor** (source/source/gameengine/GameLogic/SCA_DelaySensor.cpp): `useDelta`
 - **SCA_ISensor** (source/source/gameengine/GameLogic/SCA_ISensor.cpp): `useDeltaTime`
 - **SCA_MouseSensor** (source/source/gameengine/GameLogic/SCA_MouseSensor.cpp): `holdTime` ✦2026-10-01
+- **SCA_WaitActuator** (source/source/gameengine/GameLogic/SCA_WaitActuator.cpp): `duration` ✦2026-10-18, `useRestart` ✦2026-10-18, `waiting` (só leitura) ✦2026-10-18, `elapsed` (só leitura) ✦2026-10-18
 - **Texture** (source/source/gameengine/VideoTexture/Texture.cpp): `close`, `refresh`, `mipmap`, `source`, `bindId` (só leitura)

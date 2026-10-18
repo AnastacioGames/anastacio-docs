@@ -15,3 +15,13 @@ o nome do atuador que o sensor está monitorando.
 
 **Tipo:** string
 
+## Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### mode
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+`0` Active: verdadeiro enquanto o actuator monitorado está ativo. `1` Finished: dá um pulso quando o actuator termina (ex.: Wait, Action, Video).
+

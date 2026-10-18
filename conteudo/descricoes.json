@@ -887,5 +887,20 @@
   "bindId": "Id OpenGL da textura.",
   "mipmap": "Usa mipmap na textura (`True`/`False`).",
   "source": "Fonte da imagem (vídeo, câmera, imagem...) desenhada na textura."
+ },
+ "SCA_WaitActuator": {
+  "duration": "Tempo de espera em segundos (0 a 100000). Ao receber pulso positivo o actuator começa a contar; quando o tempo passa, ele termina e um sensor **Actuator** em modo Finished dispara.",
+  "useRestart": "Se `True`, um novo pulso positivo durante a espera reinicia a contagem do zero.",
+  "waiting": "`True` enquanto o actuator está contando.",
+  "elapsed": "Segundos já passados desde o início da espera atual."
+ },
+ "KX_VideoActuator": {
+  "mode": "Ação sobre o Video Player: `0` Play, `1` Pause, `2` Toggle, `3` Stop, `4` Restart, `5` Seek.",
+  "seconds": "Posição em segundos usada pelo modo Seek.",
+  "useRelative": "No modo Seek, se `True`, `seconds` é somado à posição atual em vez de ser absoluto.",
+  "object": "Objeto com o Video Player que o actuator controla (`KX_GameObject`, nome ou `None`)."
+ },
+ "SCA_ActuatorSensor": {
+  "mode": "`0` Active: verdadeiro enquanto o actuator monitorado está ativo. `1` Finished: dá um pulso quando o actuator termina (ex.: Wait, Action, Video)."
  }
 }

@@ -1,0 +1,43 @@
+---
+title: Anastacio Engine
+description: Документация по API Anastacio Engine.
+template: splash
+hero:
+  title: Anastacio Engine
+  tagline: Редактор и рантайм для 3D-игр с физикой, погодой, встроенным мультиплеером, Camera FX и экспортом в Windows, Linux, Web и Android. Основан на Range Engine 1.6.
+  image:
+    file: ../../../assets/cubo.webp
+  actions:
+    - text: Читать API
+      link: ../api/modulos/logic/
+      icon: right-arrow
+    - text: Экспорт игры
+      link: ../exportar/visao-geral/
+      variant: secondary
+    - text: Первый скрипт
+      link: ../guias/primeiro-script/
+      variant: minimal
+---
+
+## Что добавляет Anastacio
+
+У каждой возможности есть руководство и страница API с примерами.
+
+<div class="ae-feat ae-3">
+<a href="/anastacio-docs/ru/api/modulos/network/"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M10.8 7.2 6.2 15.8M13.2 7.2l4.6 8.6M7.5 18h9"/></svg><h3>Встроенный мультиплеер</h3><p>Сетевой код на ENet, встроенный в игровой цикл, с дополнительным модулем Steam. <code>Range.network</code></p><span class="ae-ver">Смотреть в API →</span></a>
+<a href="/anastacio-docs/ru/api/types/kx_camera/"><svg viewBox="0 0 24 24"><path d="M3 8h3.5l1.8-2.5h7.4L17.5 8H21v11H3z"/><circle cx="12" cy="13.5" r="3.6"/><path d="M19 3.5v3M17.5 5h3"/></svg><h3>Camera FX</h3><p>Фокус, слежение, DOF, размытие, виньетка и тряска камеры в <code>KX_Camera</code>.</p><span class="ae-ver">Смотреть в API →</span></a>
+<div><svg viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg><h3>Запечённый файл</h3><p>Меши, шейдеры и физика заранее обрабатываются в <code>.cooked</code>, поэтому игры открываются быстрее.</p></div>
+<a href="/anastacio-docs/ru/api/modulos/logic/"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg><h3>Load Mode</h3><p>Объекты загружаются вместе со сценой или по требованию. <code>setObjectConvert</code>, <code>convertObject</code></p><span class="ae-ver">Смотреть в API →</span></a>
+<a href="/anastacio-docs/ru/api/types/kx_worldinfo/"><svg viewBox="0 0 24 24"><path d="M7 16a4 4 0 0 1 .5-8A5.5 5.5 0 0 1 18 9a3.5 3.5 0 0 1-1 7z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/></svg><h3>Погода</h3><p>Дождь, лужи, молнии, туман и землетрясения через <code>world.setWeather()</code>.</p><span class="ae-ver">Смотреть в API →</span></a>
+<div><svg viewBox="0 0 24 24"><path d="M3 15l2-5h14l2 5v3H3z"/><circle cx="7.5" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/><path d="M6 10l1.5-3h9L18 10"/></svg><h3>Транспорт</h3><p>Машины и мотоциклы с крутящим моментом двигателя в Н·м, педалями, джойстиком и телеметрией передач/оборотов в Vehicle Lab.</p></div>
+</div>
+
+## Экспорт игры
+
+Выпускайте игру на ПК, в браузере и на телефоне. Для каждой платформы есть пошаговое руководство.
+
+<div class="ae-feat ae-3">
+<a href="/anastacio-docs/ru/exportar/rangearmor/"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg><h3>Экспорт на ПК</h3><p>С RangeArmor: исполняемые файлы для Windows и Linux за один экспорт, с защищённым файлом игры.</p><span class="ae-ver">Как экспортировать →</span></a>
+<a href="/anastacio-docs/ru/exportar/web/"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><h3>Экспорт в Web</h3><p>Браузерная игра на WebGL 2: экранное управление, проверка и публикация на itch.io или своём сайте.</p><span class="ae-ver">Как экспортировать →</span></a>
+<a href="/anastacio-docs/ru/exportar/android/"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><h3>Экспорт в Android</h3><p>APK для телефонов и AAB для Google Play, с ключом <code>.jks</code>, который создаёт сам движок.</p><span class="ae-ver">Как экспортировать →</span></a>
+</div>

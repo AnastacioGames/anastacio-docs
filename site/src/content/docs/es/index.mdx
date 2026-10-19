@@ -1,0 +1,43 @@
+---
+title: Anastacio Engine
+description: Documentación de la API de Anastacio Engine.
+template: splash
+hero:
+  title: Anastacio Engine
+  tagline: Editor y runtime para juegos 3D, con física, clima, multijugador nativo, Camera FX y exportación a Windows, Linux, Web y Android. Basado en Range Engine 1.6.
+  image:
+    file: ../../../assets/cubo.webp
+  actions:
+    - text: Leer la API
+      link: ../api/modulos/logic/
+      icon: right-arrow
+    - text: Exportar tu juego
+      link: ../exportar/visao-geral/
+      variant: secondary
+    - text: Primer script
+      link: ../guias/primeiro-script/
+      variant: minimal
+---
+
+## Lo que agrega Anastacio
+
+Cada función tiene una guía y una página de la API con ejemplos.
+
+<div class="ae-feat ae-3">
+<a href="/anastacio-docs/es/api/modulos/network/"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M10.8 7.2 6.2 15.8M13.2 7.2l4.6 8.6M7.5 18h9"/></svg><h3>Multijugador nativo</h3><p>Red ENet integrada al bucle del juego, con complemento opcional de Steam. <code>Range.network</code></p><span class="ae-ver">Ver en la API →</span></a>
+<a href="/anastacio-docs/es/api/types/kx_camera/"><svg viewBox="0 0 24 24"><path d="M3 8h3.5l1.8-2.5h7.4L17.5 8H21v11H3z"/><circle cx="12" cy="13.5" r="3.6"/><path d="M19 3.5v3M17.5 5h3"/></svg><h3>Camera FX</h3><p>Enfoque, seguimiento, DOF, desenfoque, viñeta y vibración de cámara en <code>KX_Camera</code>.</p><span class="ae-ver">Ver en la API →</span></a>
+<div><svg viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg><h3>Archivo cocido</h3><p>Mallas, shaders y física preprocesados en <code>.cooked</code> para que los juegos abran más rápido.</p></div>
+<a href="/anastacio-docs/es/api/modulos/logic/"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg><h3>Load Mode</h3><p>Los objetos se cargan con la escena o bajo demanda. <code>setObjectConvert</code>, <code>convertObject</code></p><span class="ae-ver">Ver en la API →</span></a>
+<a href="/anastacio-docs/es/api/types/kx_worldinfo/"><svg viewBox="0 0 24 24"><path d="M7 16a4 4 0 0 1 .5-8A5.5 5.5 0 0 1 18 9a3.5 3.5 0 0 1-1 7z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/></svg><h3>Clima</h3><p>Lluvia, charcos, rayos, niebla y terremotos controlados por <code>world.setWeather()</code>.</p><span class="ae-ver">Ver en la API →</span></a>
+<div><svg viewBox="0 0 24 24"><path d="M3 15l2-5h14l2 5v3H3z"/><circle cx="7.5" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/><path d="M6 10l1.5-3h9L18 10"/></svg><h3>Vehículos</h3><p>Autos y motos con torque del motor en Nm, pedales, joystick y telemetría de marcha/RPM en el Vehicle Lab.</p></div>
+</div>
+
+## Exporta tu juego
+
+Publica tu juego en PC, navegador y teléfono. Cada destino tiene una guía paso a paso.
+
+<div class="ae-feat ae-3">
+<a href="/anastacio-docs/es/exportar/rangearmor/"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg><h3>Exportar a PC</h3><p>Con RangeArmor: ejecutables de Windows y Linux en una sola exportación, con el archivo del juego protegido.</p><span class="ae-ver">Cómo exportar →</span></a>
+<a href="/anastacio-docs/es/exportar/web/"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><h3>Exportar a Web</h3><p>Juego en el navegador con WebGL 2: controles en pantalla, validación y publicación en itch.io o en un sitio web.</p><span class="ae-ver">Cómo exportar →</span></a>
+<a href="/anastacio-docs/es/exportar/android/"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><h3>Exportar a Android</h3><p>APK para teléfonos y AAB para Google Play, con la clave <code>.jks</code> creada por el motor.</p><span class="ae-ver">Cómo exportar →</span></a>
+</div>

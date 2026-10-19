@@ -6,18 +6,18 @@ description: Step by step to build the game executable for Windows and Linux wit
 **RangeArmor** is the tool that packages the game for PC. It bundles the engine runtime, your protected `.range` and a launcher into an executable the player opens with a double click. A single export can produce both the **Windows 64-bit** and the **Linux 64-bit** builds.
 
 :::note
-The RangeArmor panel runs on Windows. It exports to Windows and Linux.
+The RangeArmor panel runs on Windows and Linux (since 0.5.3). On both systems it exports to Windows and Linux.
 :::
 
 ## 1. Install RangeArmor
 
-RangeArmor is downloaded separately from the engine, on the same release page (`RangeArmor-<version>-windows-x64.zip`).
+RangeArmor is downloaded separately from the engine, on the same release page: `RangeArmor-<version>-windows-x64.zip` on Windows or `RangeArmor-<version>-linux-x86_64.tar.xz` on Linux.
 
-1. Extract the zip.
-2. Rename the extracted folder to **`rangearmor`** and put it **inside the engine folder**, next to `AnastacioEngine.exe`:
+1. Extract the archive.
+2. Rename the extracted folder to **`rangearmor`** and put it **inside the engine folder**, next to `AnastacioEngine.exe` (on Linux, next to `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.5.0-windows-x64/
+AnastacioEngine-0.5.3-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/
@@ -25,7 +25,7 @@ AnastacioEngine-0.5.0-windows-x64/
     └── release/
 ```
 
-The engine looks for exactly `rangearmor/RangeArmor Panel.exe` at that spot. If the folder has another name, the export buttons can't find the tool.
+The engine looks for exactly `rangearmor/RangeArmor Panel.exe` (on Linux, `rangearmor/RangeArmor Panel`) at that spot. If the folder has another name, the export buttons can't find the tool.
 
 ## 2. Create the project
 
@@ -94,7 +94,7 @@ You can also export without the engine buttons, by opening the external tool dir
 
 RangeArmor Panel start screen: **Open Project**, **New Project** and the **Recent projects** list.
 
-1. Open **`rangearmor/RangeArmor Panel.exe`** in the engine folder. It also opens from the **Open RangeArmor Panel** button or **File > Export Game With RANGEARMOR**.
+1. Open **`rangearmor/RangeArmor Panel.exe`** (on Linux, `rangearmor/RangeArmor Panel`) in the engine folder. It also opens from the **Open RangeArmor Panel** button or **File > Export Game With RANGEARMOR**.
 2. On the start screen, click **New Project** to create a new project folder, or **Open Project** to open an existing one (for example, the one made with **File > Create Project**). Projects opened before show up under **Recent projects**.
 3. In the engine, open your `.range` and save the protected copy with **File > Save .Range Protected File** inside the project's `data/` folder. It has the `.rasec` extension.
 4. Back in the panel, on the **Project** tab:

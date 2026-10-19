@@ -6,11 +6,7 @@ description: Passo a passo para gerar a versão WebGL 2 do jogo, testar no naveg
 O export Web gera uma pasta que roda o jogo **dentro do navegador** (Chrome, Edge, Firefox e navegador do celular), com WebGL 2 e WebAssembly. O jogador abre um link, clica em **Jogar**, e pronto: não instala nada.
 
 :::note
-O runtime Web já vem no zip da engine, na pasta `web/` ao lado do `AnastacioEngine.exe`. Não precisa baixar mais nada.
-:::
-
-:::caution[Linux, versão 0.5.0]
-O pacote Linux da **0.5.0** veio sem a pasta `web/` (runtime Web), então o **Export Web** não funciona nele. A correção já está na engine e sai no pacote Linux da **0.5.1**, publicado em seguida. No Windows funciona normalmente desde a 0.5.0.
+O runtime Web já vem no zip da engine, na pasta `web/` ao lado do `AnastacioEngine.exe` (ou do `AnastacioEngine` no Linux). Não precisa baixar mais nada.
 :::
 
 ## 1. Abrir o painel

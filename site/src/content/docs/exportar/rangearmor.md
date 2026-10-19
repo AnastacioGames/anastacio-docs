@@ -6,18 +6,18 @@ description: Passo a passo para gerar o executável do jogo para Windows e Linux
 A **RangeArmor** é a ferramenta que empacota o jogo para PC. Ela junta o runtime da engine, o seu `.range` protegido e um launcher num executável que o jogador abre com dois cliques. Uma única exportação pode gerar a versão **Windows 64-bit** e a **Linux 64-bit**.
 
 :::note
-O painel da RangeArmor roda no Windows. Ele exporta para Windows e para Linux.
+O painel da RangeArmor roda no Windows e no Linux (desde a 0.5.3). Nos dois sistemas ele exporta para Windows e para Linux.
 :::
 
 ## 1. Instalar a RangeArmor
 
-A RangeArmor é baixada separada da engine, na mesma página da release (`RangeArmor-<versão>-windows-x64.zip`).
+A RangeArmor é baixada separada da engine, na mesma página da release: `RangeArmor-<versão>-windows-x64.zip` no Windows ou `RangeArmor-<versão>-linux-x86_64.tar.xz` no Linux.
 
-1. Extraia o zip.
-2. Renomeie a pasta extraída para **`rangearmor`** e coloque-a **dentro da pasta da engine**, ao lado do `AnastacioEngine.exe`:
+1. Extraia o arquivo.
+2. Renomeie a pasta extraída para **`rangearmor`** e coloque-a **dentro da pasta da engine**, ao lado do `AnastacioEngine.exe` (no Linux, ao lado do `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.5.0-windows-x64/
+AnastacioEngine-0.5.3-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/
@@ -25,7 +25,7 @@ AnastacioEngine-0.5.0-windows-x64/
     └── release/
 ```
 
-A engine procura exatamente `rangearmor/RangeArmor Panel.exe` nesse lugar. Se a pasta tiver outro nome, os botões de export não acham a ferramenta.
+A engine procura exatamente `rangearmor/RangeArmor Panel.exe` (no Linux, `rangearmor/RangeArmor Panel`) nesse lugar. Se a pasta tiver outro nome, os botões de export não acham a ferramenta.
 
 ## 2. Criar o projeto
 
@@ -96,7 +96,7 @@ Você também pode exportar sem passar pelos botões da engine, abrindo a ferram
 
 Tela inicial do RangeArmor Panel: **Open Project**, **New Project** e a lista **Recent projects**.
 
-1. Abra **`rangearmor/RangeArmor Panel.exe`**, na pasta da engine. Também abre pelo botão **Open RangeArmor Panel** ou por **File > Export Game With RANGEARMOR**.
+1. Abra **`rangearmor/RangeArmor Panel.exe`** (no Linux, `rangearmor/RangeArmor Panel`), na pasta da engine. Também abre pelo botão **Open RangeArmor Panel** ou por **File > Export Game With RANGEARMOR**.
 2. Na tela inicial, clique em **New Project** para criar uma pasta de projeto nova ou em **Open Project** para abrir uma existente (por exemplo, a criada pelo **File > Create Project**). Os projetos abertos antes aparecem em **Recent projects**.
 3. Na engine, abra o seu `.range` e salve a cópia protegida com **File > Save .Range Protected File** dentro da pasta `data/` do projeto. Ela tem a extensão `.rasec`.
 4. De volta ao painel, na aba **Project**:

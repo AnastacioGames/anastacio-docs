@@ -6,11 +6,7 @@ description: Step by step to build the WebGL 2 version of the game, test it in t
 Web export creates a folder that runs the game **inside the browser** (Chrome, Edge, Firefox and phone browsers), using WebGL 2 and WebAssembly. The player opens a link, clicks **Play**, and that's it: nothing to install.
 
 :::note
-The Web runtime already ships in the engine zip, in the `web/` folder next to `AnastacioEngine.exe`. Nothing else to download.
-:::
-
-:::caution[Linux, version 0.5.0]
-The **0.5.0** Linux package shipped without the `web/` folder (Web runtime), so **Export Web** doesn't work there. The fix is already in the engine and ships in the **0.5.1** Linux package, coming shortly. On Windows it has worked normally since 0.5.0.
+The Web runtime already ships in the engine zip, in the `web/` folder next to `AnastacioEngine.exe` (or `AnastacioEngine` on Linux). Nothing else to download.
 :::
 
 ## 1. Open the panel

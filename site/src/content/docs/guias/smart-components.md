@@ -19,7 +19,7 @@ No Text Editor, **Templates > Components > 04 Smart Component** abre um persegui
 ```python
 from collections import OrderedDict
 from Range import types
-from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Header
+from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Color, Header
 
 class Perseguidor(types.KX_PythonComponent):
     args = OrderedDict([
@@ -32,6 +32,7 @@ class Perseguidor(types.KX_PythonComponent):
         ("Modo", Choice("Andar", "Andar", "Correr", "Pular")),
         ("Olhar para o alvo", Bool(True, tip="Gira o corpo na direção do alvo")),
         ("Cena ao pegar", Scene(tip="Cena que entra por cima ao pegar o jogador")),
+        ("Cor de alerta", Color(1.0, 0.1, 0.1, 1.0, tip="Cor ao piscar")),
     ])
 
     def start(self, args):
@@ -48,9 +49,10 @@ class Perseguidor(types.KX_PythonComponent):
 | `Choice(padrao, item1, item2, ..., tip)` | lista na ordem escrita | `str` |
 | `Object(tip)` | escolher um objeto da cena | `KX_GameObject`, ou `None` |
 | `Scene(tip)` | escolher uma cena do arquivo | `str` com o nome (`""` se vazio), pronto para `logic.addScene` |
+| `Color(r, g, b[, a], tip)` | cor com seletor (3 ou 4 valores) | `Color` (use 4 valores para `obj.color`) |
 | `Header(nome, icon, open)` | título de seção que abre e fecha | (não é campo) |
 
-O valor fora do limite é cortado: digitar 50 num `Float(max=20)` vira 20. O formato antigo (`("Nome", 1.0)`) continua valendo na mesma lista, só sem dica.
+O valor fora do limite é cortado: digitar 50 num `Float(max=20)` vira 20. O formato antigo (`("Nome", 1.0)`) continua valendo na mesma lista, só sem dica. Renomear o objeto ou a cena escolhidos atualiza o campo sozinho.
 
 ## 2. Pedir coisas ao adicionar: `requires`
 

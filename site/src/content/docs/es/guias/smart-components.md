@@ -19,7 +19,7 @@ En el Text Editor, **Templates > Components > 04 Smart Component** abre un perse
 ```python
 from collections import OrderedDict
 from Range import types
-from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Header
+from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Color, Header
 
 class Perseguidor(types.KX_PythonComponent):
     args = OrderedDict([
@@ -32,6 +32,7 @@ class Perseguidor(types.KX_PythonComponent):
         ("Modo", Choice("Caminar", "Caminar", "Correr", "Saltar")),
         ("Mirar al objetivo", Bool(True, tip="Gira el cuerpo hacia el objetivo")),
         ("Escena al atrapar", Scene(tip="Escena que se añade encima al atrapar al jugador")),
+        ("Color de alerta", Color(1.0, 0.1, 0.1, 1.0, tip="Color al parpadear")),
     ])
 
     def start(self, args):
@@ -48,9 +49,10 @@ class Perseguidor(types.KX_PythonComponent):
 | `Choice(defecto, item1, item2, ..., tip)` | lista en el orden escrito | `str` |
 | `Object(tip)` | elegir un objeto de la escena | `KX_GameObject`, o `None` |
 | `Scene(tip)` | elegir una escena del archivo | `str` con el nombre (`""` si está vacío), listo para `logic.addScene` |
+| `Color(r, g, b[, a], tip)` | color con selector (3 o 4 valores) | `Color` (usa 4 valores para `obj.color`) |
 | `Header(nombre, icon, open)` | título de sección plegable | (no es un campo) |
 
-Los valores fuera del límite se recortan: escribir 50 en un `Float(max=20)` queda en 20. El formato antiguo (`("Nombre", 1.0)`) sigue valiendo en la misma lista, solo que sin ayuda.
+Los valores fuera del límite se recortan: escribir 50 en un `Float(max=20)` queda en 20. El formato antiguo (`("Nombre", 1.0)`) sigue valiendo en la misma lista, solo que sin ayuda. Renombrar el objeto o la escena elegidos actualiza el campo solo.
 
 ## 2. Pedir cosas al añadir: `requires`
 

@@ -19,7 +19,7 @@ In the Text Editor, **Templates > Components > 04 Smart Component** opens a full
 ```python
 from collections import OrderedDict
 from Range import types
-from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Header
+from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Color, Header
 
 class Chaser(types.KX_PythonComponent):
     args = OrderedDict([
@@ -32,6 +32,7 @@ class Chaser(types.KX_PythonComponent):
         ("Mode", Choice("Walk", "Walk", "Run", "Jump")),
         ("Face target", Bool(True, tip="Turns the body towards the target")),
         ("Scene on catch", Scene(tip="Scene added on top when it catches the player")),
+        ("Alert color", Color(1.0, 0.1, 0.1, 1.0, tip="Blink color")),
     ])
 
     def start(self, args):
@@ -48,9 +49,10 @@ class Chaser(types.KX_PythonComponent):
 | `Choice(default, item1, item2, ..., tip)` | list in the written order | `str` |
 | `Object(tip)` | pick an object of the scene | `KX_GameObject`, or `None` |
 | `Scene(tip)` | pick a scene of the file | `str` with the name (`""` if empty), ready for `logic.addScene` |
+| `Color(r, g, b[, a], tip)` | color with picker (3 or 4 values) | `Color` (use 4 values for `obj.color`) |
 | `Header(name, icon, open)` | collapsible section title | (not a field) |
 
-Values outside the limits are clamped: typing 50 in a `Float(max=20)` becomes 20. The old format (`("Name", 1.0)`) still works in the same list, just without a tooltip.
+Values outside the limits are clamped: typing 50 in a `Float(max=20)` becomes 20. The old format (`("Name", 1.0)`) still works in the same list, just without a tooltip. Renaming the picked object or scene updates the field by itself.
 
 ## 2. Asking for things when added: `requires`
 

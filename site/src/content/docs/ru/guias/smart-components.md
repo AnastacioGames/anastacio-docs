@@ -19,7 +19,7 @@ description: Поля со слайдерами, подсказками и вы�
 ```python
 from collections import OrderedDict
 from Range import types
-from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Header
+from Range.args import Float, Int, Bool, Text, Choice, Object, Scene, Color, Header
 
 class Chaser(types.KX_PythonComponent):
     args = OrderedDict([
@@ -32,6 +32,7 @@ class Chaser(types.KX_PythonComponent):
         ("Mode", Choice("Walk", "Walk", "Run", "Jump")),
         ("Face target", Bool(True, tip="Поворачивается к цели")),
         ("Scene on catch", Scene(tip="Сцена, добавляемая поверх, когда игрок пойман")),
+        ("Alert color", Color(1.0, 0.1, 0.1, 1.0, tip="Цвет мигания")),
     ])
 
     def start(self, args):
@@ -48,9 +49,10 @@ class Chaser(types.KX_PythonComponent):
 | `Choice(default, item1, item2, ..., tip)` | список в заданном порядке | `str` |
 | `Object(tip)` | выбор объекта сцены | `KX_GameObject` или `None` |
 | `Scene(tip)` | выбор сцены файла | `str` с именем (`""`, если пусто), готово для `logic.addScene` |
+| `Color(r, g, b[, a], tip)` | цвет с палитрой (3 или 4 значения) | `Color` (для `obj.color` используйте 4 значения) |
 | `Header(name, icon, open)` | сворачиваемый заголовок раздела | (не поле) |
 
-Значения за пределами ограничиваются: 50 в `Float(max=20)` превращается в 20. Старый формат (`("Name", 1.0)`) работает в том же списке, просто без подсказки.
+Значения за пределами ограничиваются: 50 в `Float(max=20)` превращается в 20. Старый формат (`("Name", 1.0)`) работает в том же списке, просто без подсказки. Переименование выбранного объекта или сцены обновляет поле автоматически.
 
 ## 2. Требования при добавлении: `requires`
 

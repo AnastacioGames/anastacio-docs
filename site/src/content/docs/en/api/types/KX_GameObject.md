@@ -1393,6 +1393,12 @@ Adds a single debug property to the debug list.
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
 
+### getCurvePoints()
+
+ <small>method</small>
+
+`getCurvePoints(world=True)`: points of the first spline of a Curve object, as a list of `Vector`. World space by default; `world=False` returns local space. Empty list if the object is not a curve.
+
 ### getTurnTo(other)
 
  <small>method</small>

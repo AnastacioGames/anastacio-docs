@@ -1342,6 +1342,12 @@ Adiciona uma propriedade à lista de depuração.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
+### getCurvePoints()
+
+ <small>método</small>
+
+`getCurvePoints(world=True)`: pontos da primeira spline de um objeto Curve, como lista de `Vector`. Coordenadas do mundo por padrão; `world=False` devolve em coordenadas locais. Lista vazia se o objeto não for uma curva.
+
 ### getTurnTo(other)
 
  <small>método</small>

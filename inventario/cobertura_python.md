@@ -2,7 +2,7 @@
 
 Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos de jogo com bindings Python; não afirma que todo controle do editor deve virar API.
 
-**Total:** 118 expostos · 10 sem binding · 0 só de editor.
+**Total:** 118 expostos · 13 sem binding · 0 só de editor.
 
 ## Partículas GPU
 
@@ -79,6 +79,7 @@ Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos 
 | `use_mark_nearby` | `useMarkNearby` | exposto |
 | `use_occlusion` | `useOcclusion` | exposto |
 | `use_particle_explosion` | `useParticleExplosion` | exposto |
+| `use_sound` | `useSound` | **sem binding** |
 
 ## Clima do World
 
@@ -97,10 +98,12 @@ Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos 
 | `use_rain_droplets` | `setWeather/getWeather(droplets)` | exposto |
 | `use_rain_lightning` | `setWeather/getWeather(lightning)` | exposto |
 | `use_rain_lightning_side` | `setWeather/getWeather(lightning_side)` | exposto |
+| `use_rain_lightning_sound` | `` | **sem binding** |
 | `use_rain_puddle_ssr` | `setWeather/getWeather(puddle_ssr)` | exposto |
 | `use_rain_puddles` | `setWeather/getWeather(puddles)` | exposto |
 | `use_rain_ripple` | `setWeather/getWeather(ripples)` | exposto |
 | `use_rain_ripple_puddle_only` | `setWeather/getWeather(ripple_puddle_only)` | exposto |
+| `use_rain_sound` | `` | **sem binding** |
 | `use_rain_splash` | `setWeather/getWeather(splash)` | exposto |
 | `use_rain_splash_puddle_only` | `setWeather/getWeather(splash_puddle_only)` | exposto |
 | `use_sky_layers` | `setWeather/getWeather(use_sky_layers)` | exposto |

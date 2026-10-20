@@ -61,6 +61,18 @@ The size (width and height) of the current text in Blender Units.
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
 
+### atlas
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Name of the text data holding the Bitmap Atlas used for drawing, `""` for the text's own atlas, or `None` for no atlas.
+
+### font
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Name of the text's font (as shown in the Text properties), or `None`. Changing it redraws the text immediately; an unknown name raises `ValueError`.
+
 ### shadowColor
 
  <small>attribute</small>
@@ -72,6 +84,18 @@ Text shadow color `[r, g, b, a]`.
  <small>attribute</small>
 
 Text shadow offset `[x, y]`.
+
+### translationKey
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Key in the language table (`locale/translations.csv`). With a key, the text shows the translation for the current [`Range.locale`](../../../guias/idiomas/) language and updates by itself when the language changes. `""` turns it off.
+
+### useLanguageFont
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+When `True`, the text uses the font and atlas set for the current language in `locale/locale.json` (useful for Russian, Japanese, etc.).
 
 ### useShadows
 

@@ -49,9 +49,9 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_CubeMap` | 0 | 0 | 0 |  |
 | `KX_DynamicActuator` | 2 | 2 | 0 |  |
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
-| `KX_FontObject` | 7 | 7 | 0 |  |
+| `KX_FontObject` | 11 | 11 | 0 | 4 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 211 | 211 | 0 | 24 |
+| `KX_GameObject` | 212 | 212 | 0 | 24 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |

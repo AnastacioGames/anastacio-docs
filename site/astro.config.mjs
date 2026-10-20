@@ -36,7 +36,7 @@ export default defineConfig({
 				{
 					label: 'Recursos',
 					translations: { en: 'Features', es: 'Recursos', ru: 'Возможности' },
-					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer'],
+					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer', 'guias/idiomas', 'guias/smart-components'],
 				},
 				{ label: 'Módulos', translations: { en: 'Modules', es: 'Módulos', ru: 'Модули' }, items: modulos },
 				{ label: 'Range.types', collapsed: true, items: types },

@@ -104,7 +104,8 @@
   "parentRecursive": "Lista de todos os pais acima do objeto, do mais próximo ao mais distante.",
   "particles": "Sistema de partículas do objeto (`KX_ParticleSystem`), ou `None`.",
   "particlesMix": "Segundo sistema de partículas (mistura) do objeto, ou `None`.",
-  "passIndex": "Pass Index do objeto, usado para separar objetos em filtros e efeitos."
+  "passIndex": "Pass Index do objeto, usado para separar objetos em filtros e efeitos.",
+  "getCurvePoints": "`getCurvePoints(world=True)`: pontos da primeira spline de um objeto Curve, como lista de `Vector`. Coordenadas do mundo por padrão; `world=False` devolve em coordenadas locais. Lista vazia se o objeto não for uma curva."
  },
  "Range.logic": {
   "preloadScene": "preloadScene(name) -> bool\nConverte uma cena com antecedência, no fim deste frame (shaders e texturas incluídos), sem adicioná-la. Depois, um `addScene` ou `replaceScene` dela só insere a cena pronta, sem travar. Chame enquanto uma tela de carregamento estiver aparecendo. Devolve `False` se a cena não existir.",
@@ -508,7 +509,11 @@
  "KX_FontObject": {
   "shadowColor": "Cor `[r, g, b, a]` da sombra do texto.",
   "shadowOffset": "Deslocamento `[x, y]` da sombra do texto.",
-  "useShadows": "Liga a sombra do texto."
+  "useShadows": "Liga a sombra do texto.",
+  "font": "Nome da fonte do texto (a fonte que aparece nas propriedades do Text), ou `None`. Trocar redesenha o texto na hora; nome que não existe no arquivo gera `ValueError`.",
+  "atlas": "Nome do texto que guarda o Bitmap Atlas usado para desenhar, `\"\"` para o atlas do próprio texto ou `None` para nenhum atlas.",
+  "translationKey": "Chave da tabela de idiomas (`locale/translations.csv`). Com chave, o texto mostra a tradução do idioma atual de [`Range.locale`](../../../guias/idiomas/) e troca sozinho quando o idioma muda. `\"\"` desliga.",
+  "useLanguageFont": "Quando `True`, o texto usa a fonte e o atlas definidos para o idioma atual no `locale/locale.json` (útil para russo, japonês etc.)."
  },
  "KX_GameActuator": {
   "extensionName": "Extensão do arquivo usado pelos modos de salvar/carregar o jogo.",

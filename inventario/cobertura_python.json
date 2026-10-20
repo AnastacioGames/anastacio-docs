@@ -337,6 +337,11 @@
      "controle_rna": "use_particle_explosion",
      "api": "useParticleExplosion",
      "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_sound",
+     "api": "useSound",
+     "estado": "sem_binding"
     }
    ]
   },
@@ -409,6 +414,11 @@
      "estado": "exposto"
     },
     {
+     "controle_rna": "use_rain_lightning_sound",
+     "api": "",
+     "estado": "sem_binding"
+    },
+    {
      "controle_rna": "use_rain_puddle_ssr",
      "api": "setWeather/getWeather(puddle_ssr)",
      "estado": "exposto"
@@ -427,6 +437,11 @@
      "controle_rna": "use_rain_ripple_puddle_only",
      "api": "setWeather/getWeather(ripple_puddle_only)",
      "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_rain_sound",
+     "api": "",
+     "estado": "sem_binding"
     },
     {
      "controle_rna": "use_rain_splash",

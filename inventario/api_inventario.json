@@ -2132,6 +2132,38 @@
      "status": "novo",
      "origem": "snapshot",
      "commit": "28775369"
+    },
+    "font": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "376fea36",
+     "data": "2026-10-20"
+    },
+    "atlas": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "376fea36",
+     "data": "2026-10-20"
+    },
+    "translationKey": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "376fea36",
+     "data": "2026-10-20"
+    },
+    "useLanguageFont": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "376fea36",
+     "data": "2026-10-20"
     }
    }
   },
@@ -2560,6 +2592,11 @@
     "getVectTo": {
      "tipo": "metodo",
      "status": "documentado"
+    },
+    "getCurvePoints": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
     },
     "getTurnTo": {
      "tipo": "metodo",
@@ -8335,6 +8372,13 @@
    "arquivo": "source/source/gameengine/Ketsji/KX_PythonInit.cpp",
    "tem_rst": true,
    "itens": {
+    "_setLocale": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "376fea36",
+     "data": "2026-10-20"
+    },
     "expandPath": {
      "tipo": "funcao",
      "status": "documentado"

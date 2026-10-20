@@ -466,7 +466,8 @@
   "parentRecursive": "List of all parents above the object, from closest to farthest.",
   "particles": "Object particle system (`KX_ParticleSystem`), or `None`.",
   "particlesMix": "Second (mix) particle system of the object, or `None`.",
-  "passIndex": "Object Pass Index, used to separate objects in filters and effects."
+  "passIndex": "Object Pass Index, used to separate objects in filters and effects.",
+  "getCurvePoints": "`getCurvePoints(world=True)`: points of the first spline of a Curve object, as a list of `Vector`. World space by default; `world=False` returns local space. Empty list if the object is not a curve."
  },
  "KX_ParticleSystem": {
   "blendMode": "How particles blend with the scene: `'ALPHA'` or `'ADDITIVE'`. An unknown value raises `ValueError`.",
@@ -648,7 +649,11 @@
  "KX_FontObject": {
   "shadowColor": "Text shadow color `[r, g, b, a]`.",
   "shadowOffset": "Text shadow offset `[x, y]`.",
-  "useShadows": "Turns on the text shadow."
+  "useShadows": "Turns on the text shadow.",
+  "font": "Name of the text's font (as shown in the Text properties), or `None`. Changing it redraws the text immediately; an unknown name raises `ValueError`.",
+  "atlas": "Name of the text data holding the Bitmap Atlas used for drawing, `\"\"` for the text's own atlas, or `None` for no atlas.",
+  "translationKey": "Key in the language table (`locale/translations.csv`). With a key, the text shows the translation for the current [`Range.locale`](../../../guias/idiomas/) language and updates by itself when the language changes. `\"\"` turns it off.",
+  "useLanguageFont": "When `True`, the text uses the font and atlas set for the current language in `locale/locale.json` (useful for Russian, Japanese, etc.)."
  },
  "KX_GameActuator": {
   "extensionName": "File extension used by the save/load game modes.",

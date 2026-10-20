@@ -61,6 +61,18 @@ O tamanho (largura e altura) do texto atual, em unidades do Blender.
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
 
+### atlas
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Nome do texto que guarda o Bitmap Atlas usado para desenhar, `""` para o atlas do próprio texto ou `None` para nenhum atlas.
+
+### font
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Nome da fonte do texto (a fonte que aparece nas propriedades do Text), ou `None`. Trocar redesenha o texto na hora; nome que não existe no arquivo gera `ValueError`.
+
 ### shadowColor
 
  <small>atributo</small>
@@ -72,6 +84,18 @@ Cor `[r, g, b, a]` da sombra do texto.
  <small>atributo</small>
 
 Deslocamento `[x, y]` da sombra do texto.
+
+### translationKey
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Chave da tabela de idiomas (`locale/translations.csv`). Com chave, o texto mostra a tradução do idioma atual de [`Range.locale`](../../../guias/idiomas/) e troca sozinho quando o idioma muda. `""` desliga.
+
+### useLanguageFont
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Quando `True`, o texto usa a fonte e o atlas definidos para o idioma atual no `locale/locale.json` (útil para russo, japonês etc.).
 
 ### useShadows
 

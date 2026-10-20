@@ -109,3 +109,22 @@ class Perseguidor(types.KX_PythonComponent):
 Por padrão os gizmos só aparecem com o objeto selecionado. A opção **Overlay > Component Gizmos** muda isso.
 
 Erro no código do `Editor` aparece em vermelho na caixa do componente e não afeta o jogo.
+
+## 4. Interface própria: `draw_ui`
+
+Para desenhar a caixa do componente do seu jeito, crie `draw_ui(self, layout, obj, comp)` na classe `Editor`. `layout` é o mesmo do Blender (`row()`, `column()`, `prop()`, `operator()`, `label()`). O desenho entra depois dos campos e antes dos botões.
+
+```python
+class VideoPlayer(types.KX_PythonComponent):
+    # ... args, start, update ...
+
+    class Editor:
+        fields = False          # esconde a lista padrão de campos
+
+        def draw_ui(self, layout, obj, comp):
+            # layout é o layout do Blender
+            layout.prop(obj, "name")
+            layout.label("Arquivo: %s" % comp.args["File"])
+```
+
+Com `fields = False`, só o seu `draw_ui` aparece. O **Video Player** e o **Rigid Body Joint** da engine já são feitos assim. Se o `draw_ui` der erro, aparece um aviso vermelho e o resto da caixa continua.

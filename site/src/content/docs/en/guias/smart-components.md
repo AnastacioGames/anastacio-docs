@@ -109,3 +109,22 @@ class Chaser(types.KX_PythonComponent):
 By default gizmos only show for the selected object. The **Overlay > Component Gizmos** option changes that.
 
 Errors in the `Editor` code show in red in the component box and do not affect the game.
+
+## 4. Your own UI: `draw_ui`
+
+To draw the component box your own way, add `draw_ui(self, layout, obj, comp)` to the `Editor` class. `layout` is the regular Blender layout (`row()`, `column()`, `prop()`, `operator()`, `label()`). It is drawn after the fields and before the buttons.
+
+```python
+class VideoPlayer(types.KX_PythonComponent):
+    # ... args, start, update ...
+
+    class Editor:
+        fields = False          # hides the default field list
+
+        def draw_ui(self, layout, obj, comp):
+            # layout is the Blender layout
+            layout.prop(obj, "name")
+            layout.label("File: %s" % comp.args["File"])
+```
+
+With `fields = False`, only your `draw_ui` is shown. The engine's **Video Player** and **Rigid Body Joint** are built this way. If `draw_ui` raises an error, a red warning appears and the rest of the box keeps working.

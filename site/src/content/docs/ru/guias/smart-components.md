@@ -109,3 +109,22 @@ class Chaser(types.KX_PythonComponent):
 По умолчанию гизмо видны только у выделенного объекта. Это меняет опция **Overlay > Component Gizmos**.
 
 Ошибки в коде `Editor` показываются красным в блоке компонента и не влияют на игру.
+
+## 4. Свой интерфейс: `draw_ui`
+
+Чтобы рисовать блок компонента по-своему, добавьте `draw_ui(self, layout, obj, comp)` в класс `Editor`. `layout` — обычный layout Blender (`row()`, `column()`, `prop()`, `operator()`, `label()`). Он рисуется после полей и перед кнопками.
+
+```python
+class VideoPlayer(types.KX_PythonComponent):
+    # ... args, start, update ...
+
+    class Editor:
+        fields = False          # скрывает стандартный список полей
+
+        def draw_ui(self, layout, obj, comp):
+            # layout — это layout Blender
+            layout.prop(obj, "name")
+            layout.label("Файл: %s" % comp.args["File"])
+```
+
+С `fields = False` показывается только ваш `draw_ui`. **Video Player** и **Rigid Body Joint** движка сделаны именно так. Если в `draw_ui` ошибка, появится красное предупреждение, а остальной блок продолжит работать.

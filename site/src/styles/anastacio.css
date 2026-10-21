@@ -120,3 +120,35 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 }
 
 .ae-langs { font-size: 1.05rem; text-align: center; margin-bottom: 1.5rem; }
+
+/* ---------- Janelas: layout de revista ---------- */
+.mag { max-width: 980px; margin: 0 auto; }
+.mag p { margin: 0 0 .8rem; }
+.mag-cover { position: relative; padding: 2rem 1.6rem 1.8rem; border-radius: 18px; overflow: hidden;
+	background: radial-gradient(120% 90% at 100% 0%, rgba(224,120,31,.35), transparent 60%), linear-gradient(160deg, #2a1f10, #120e09);
+	border: 1px solid rgba(242,178,58,.3); }
+.mag-mast { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-family: var(--ae-display); font-size: .8rem; letter-spacing: .25em; color: var(--ae-gold); border-bottom: 2px solid var(--ae-gold); padding-bottom: .5rem; margin-bottom: 1.4rem; }
+.mag-kicker { font-family: var(--ae-display); text-transform: uppercase; letter-spacing: .08em; font-size: clamp(2.6rem, 9vw, 5rem); line-height: .95; margin: 0 !important;
+	background: linear-gradient(180deg, var(--ae-gold-2), var(--ae-gold) 55%, var(--ae-ember)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sl-markdown-content .mag-title { font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--sl-color-white); margin: .4rem 0 1rem; border: 0; }
+.mag-lede { font-size: 1.15rem; max-width: 60ch; color: var(--sl-color-gray-2); }
+.mag-flow { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.2rem; }
+.mag-flow span { padding: .35rem .8rem; border-radius: 999px; border: 1px solid rgba(242,178,58,.45); font-family: var(--ae-display); color: var(--ae-gold-2); }
+.mag-flow b { color: var(--ae-ember); }
+.mag-tag { font-family: var(--ae-display); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ae-new); margin-bottom: .3rem !important; }
+.sl-markdown-content .mag-h { all: unset; display: block; font-family: var(--ae-display); font-size: 1.6rem; color: var(--ae-gold-2); margin-bottom: .5rem; }
+.mag-feature { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; margin-top: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--sl-color-gray-5); }
+.mag-num { font-family: var(--ae-display); font-size: clamp(3.5rem, 10vw, 6rem); line-height: .85; color: transparent; -webkit-text-stroke: 2px var(--ae-gold); }
+.mag-big { font-family: var(--ae-display); font-size: 1.35rem; color: var(--sl-color-white); }
+.mag-feature > div > p:not(.mag-tag):not(.mag-big)::first-letter { float: left; font-family: var(--ae-display); font-size: 3.2rem; line-height: .9; padding: .2rem .5rem 0 0; color: var(--ae-gold); }
+.mag-list { list-style: none; padding: 0; }
+.mag-list li { padding: .45rem 0 .45rem 1rem; border-left: 3px solid var(--ae-ember); margin: .4rem 0; background: linear-gradient(90deg, rgba(224,120,31,.08), transparent); }
+.mag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.mag-card { padding: 1.2rem; border-radius: 14px; border: 1px solid var(--sl-color-gray-5); background: linear-gradient(180deg, rgba(242,178,58,.07), transparent); border-top: 4px solid var(--ae-gold); }
+.mag-quote { margin: 2.5rem 0 !important; padding: 1rem 0 !important; border: 0 !important; border-top: 1px solid var(--ae-gold) !important; border-bottom: 1px solid var(--ae-gold) !important;
+	font-family: var(--ae-display); font-size: clamp(1.3rem, 3.5vw, 1.9rem); text-align: center; color: var(--ae-gold-2); background: none !important; }
+.sl-markdown-content .mag-section { all: unset; display: block; font-family: var(--ae-display); letter-spacing: .2em; text-transform: uppercase; font-size: .9rem; color: var(--ae-gold); margin-bottom: 1rem; }
+.mag-cols { columns: 2 260px; column-gap: 2rem; column-rule: 1px solid var(--sl-color-gray-5); }
+.mag-cols p { break-inside: avoid; }
+.mag-cols strong { color: var(--ae-gold-2); font-family: var(--ae-display); }
+@media (max-width: 560px) { .mag-feature { grid-template-columns: 1fr; gap: .5rem; } .mag-cover { padding: 1.4rem 1rem; } }

@@ -17,7 +17,7 @@ RangeArmor скачивается отдельно от движка, на то�
 2. Переименуйте распакованную папку в **`rangearmor`** и положите её **внутрь папки движка**, рядом с `AnastacioEngine.exe` (в Linux — рядом с `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.5.3-windows-x64/
+AnastacioEngine-0.5.4-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/

@@ -1,0 +1,73 @@
+---
+title: Logic Editor
+description: Окно логических блоков в формате журнала. Каждая часть в нескольких строках, с акцентом на новое в Anastacio.
+template: splash
+---
+
+<div class="mag">
+
+<header class="mag-cover">
+<div class="mag-mast"><span>ОКНА РЕДАКТОРА</span><span>Выпуск #1 · окт. 2026</span></div>
+<p class="mag-kicker">Logic Editor</p>
+<h2 class="mag-title">Игровая логика без написания кода</h2>
+<p class="mag-lede">Сенсоры воспринимают, контроллеры решают, актуаторы действуют. Logic Editor собирает всё это в блоки, которые вы соединяете мышью. В этом выпуске четыре новинки Anastacio делают это окно понятнее и удобнее в исправлении.</p>
+<div class="mag-flow"><span>Сенсор</span><b>→</b><span>Контроллер</span><b>→</b><span>Актуатор</span></div>
+</header>
+
+<figure class="mag-hero"><img src="/anastacio-docs/janelas/logic-editor/janela.webp" alt="Logic Editor с блоками и открытой боковой панелью" /><figcaption>Всё окно: сенсоры слева, контроллеры в центре, актуаторы справа и боковая панель (N).</figcaption></figure>
+
+<section class="mag-feature">
+<div class="mag-num">01</div>
+<div>
+<p class="mag-tag">Новое · Боковая панель</p>
+<h3 class="mag-h">Brick Inspector</h3>
+<p class="mag-big">Он находит ошибки до того, как вы нажмёте Play.</p>
+<p>Проверяет блоки объекта и показывает, что неправильно или забыто: клавиша не выбрана, пустой скрипт, блок без связи, сенсор с нулевым радиусом, Add Object с объектом на видимом слое и другое. Клик по имени блока переводит прямо к нему.</p>
+<ul class="mag-list">
+<li><strong>Viewport</strong> рисует в сцене радиус Near, Radar и Ray, а также цель Steering и Track To.</li>
+<li><strong>Show Tips</strong> показывает и лёгкие подсказки.</li>
+<li><strong>Other objects</strong> перечисляет другие объекты сцены, в которых есть проблемы.</li>
+</ul>
+</div>
+<figure class="mag-side"><img src="/anastacio-docs/janelas/logic-editor/inspector.webp" alt="Brick Inspector со списком проблем" /><figcaption>Ошибки с треугольником, подсказки с «i».</figcaption></figure>
+</section>
+
+<figure class="mag-strip"><img src="/anastacio-docs/janelas/logic-editor/barra.webp" alt="Верхняя панель с Convert to Python и Highlight Active" /><figcaption>Верхняя панель: View, Add, Convert to Python и Highlight Active.</figcaption></figure>
+
+<div class="mag-grid">
+<article class="mag-card">
+<p class="mag-tag">Новое · Верхняя панель</p>
+<h3 class="mag-h">Highlight Active</h3>
+<p>Когда игра запущена, подсвечивает блоки, которые срабатывают. Вы видите логику в действии и быстро находите блок, который не реагирует.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Новое · Верхняя панель</p>
+<h3 class="mag-h">Convert to Python</h3>
+<p>Превращает блоки объекта в скрипт Python (<a href="/anastacio-docs/ru/guias/smart-components/">Smart Component</a>). Это хорошая отправная точка, когда логика становится слишком большой для одних только блоков.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Новое · Боковая панель</p>
+<h3 class="mag-h">Brick Groups</h3>
+<p>Группирует блоки в именованные группы, например «Движение» или «Стрельба». Переименование группы двойным кликом переименовывает и её блоки.</p>
+</article>
+</div>
+
+<blockquote class="mag-quote">«Соберите логику, откройте Inspector, исправьте всё, что он покажет, и только потом нажмите Play.»</blockquote>
+
+<figure class="mag-wide"><img src="/anastacio-docs/janelas/logic-editor/bricks.webp" alt="Сенсоры, контроллеры и актуаторы соединены" /><figcaption>Провода соединяют каждый сенсор с контроллером, а каждый контроллер с актуатором.</figcaption></figure>
+
+<section class="mag-classics">
+<h3 class="mag-section">Также в этом окне</h3>
+<div class="mag-cols">
+<p><strong>Add.</strong> Меню для создания сенсоров, контроллеров и актуаторов.</p>
+<p><strong>Properties.</strong> Переменные объекта: имя, тип и значение. Кнопка <b>i</b> показывает значение на экране во время игры. В текстовых объектах свойство <b>Text</b> задаёт написанный текст.</p>
+<p><strong>States.</strong> 30 состояний объекта. <b>Visible</b> показывает или скрывает блоки каждого состояния, а <b>Initial</b> выбирает, с какими состояниями начнётся игра.</p>
+<p><strong>Горячая клавиша.</strong> Клавиша <b>N</b> открывает и закрывает боковую панель, где находятся Properties, Brick Groups, States и Brick Inspector.</p>
+</div>
+<div class="mag-pair">
+<figure><img src="/anastacio-docs/janelas/logic-editor/properties.webp" alt="Панели Properties и Brick Groups" /><figcaption>Properties и Brick Groups.</figcaption></figure>
+<figure><img src="/anastacio-docs/janelas/logic-editor/states.webp" alt="Панель States" /><figcaption>States: Visible и Initial.</figcaption></figure>
+</div>
+</section>
+
+</div>

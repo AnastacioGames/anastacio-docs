@@ -1,0 +1,93 @@
+---
+title: Properties
+description: La ventana Properties, en formato de revista. Pestañas del objeto, categorías de la pestaña Object, Game Components, Game Properties y Physics, con lo nuevo de Anastacio.
+template: splash
+---
+
+<div class="mag">
+
+<header class="mag-cover">
+<div class="mag-mast"><span>VENTANAS DEL EDITOR</span><span>Edición #2 · Oct 2026</span></div>
+<p class="mag-kicker">Properties</p>
+<h2 class="mag-title">El panel del objeto, pestaña por pestaña</h2>
+<p class="mag-lede">La ventana Properties muestra todo lo que pertenece al objeto seleccionado: posición, componentes, variables, física y daño. En esta edición, las categorías de la pestaña Object, los componentes en Python y la física separada entre comportamiento y daño explican dónde está cada cosa.</p>
+<div class="mag-flow"><span>Objeto</span><b>→</b><span>Game</span><b>→</b><span>Physics</span></div>
+</header>
+
+{/* imagen pendiente: ventana completa con la pestaña Object abierta, mostrando las pestañas, el contexto arriba y el panel del objeto */}
+<figure class="mag-hero"><img src="/anastacio-docs/janelas/properties/janela.webp" alt="Ventana Properties con la pestaña Object abierta" /><figcaption>La ventana completa: pestañas en el lado izquierdo, contexto arriba y el panel del objeto en el centro.</figcaption></figure>
+
+<section class="mag-feature">
+<div class="mag-num">01</div>
+<div>
+<p class="mag-tag">Pestañas</p>
+<h3 class="mag-h">Barra superior y barra lateral</h3>
+<p class="mag-big">Cada tema tiene su pestaña.</p>
+<p>La barra superior tiene las pestañas generales: Render, Render Layer, Scene, World, World Sound, Cutscene, Export e Input. La barra lateral tiene las pestañas del objeto seleccionado, como Object, Game, Physics, Data y Material. Solo aparecen las pestañas que sirven para lo que está seleccionado.</p>
+<ul class="mag-list">
+<li><strong>Pin</strong> fija el objeto que muestra la ventana, aunque selecciones otro.</li>
+<li>El nombre del objeto arriba del panel cambia de objeto sin salir de la pestaña.</li>
+</ul>
+</div>
+{/* imagen pendiente: barra superior con las pestañas generales y barra lateral con las pestañas del objeto */}
+<figure class="mag-side"><img src="/anastacio-docs/janelas/properties/abas.webp" alt="Barra superior y barra lateral de la ventana Properties" /><figcaption>Pestañas generales arriba y pestañas del objeto al lado.</figcaption></figure>
+</section>
+
+<section class="mag-feature">
+<div class="mag-num">02</div>
+<div>
+<p class="mag-tag">Nuevo · Pestaña Object</p>
+<h3 class="mag-h">Tres categorías arriba</h3>
+<p class="mag-big">Object, Game y Transform en un solo lugar.</p>
+<p>Con el motor Game activo, la pestaña Object muestra un selector con tres categorías. Cada una guarda un grupo de paneles, y el selector deja la pestaña corta.</p>
+<ul class="mag-list">
+<li><strong>Object</strong> tiene Relations, Relations Extras, Groups, Viewport Display y Duplication.</li>
+<li><strong>Transform</strong> tiene Transform, Delta Transform y Transform Locks.</li>
+<li><strong>Game</strong> tiene Load Object with Scene, Video Player, Animation Events y Levels of Detail (LOD).</li>
+</ul>
+</div>
+</section>
+
+{/* imagen pendiente: selector Object / Game / Transform arriba de la pestaña Object */}
+<figure class="mag-strip"><img src="/anastacio-docs/janelas/properties/categorias.webp" alt="Selector de categorías Object, Game y Transform" /><figcaption>El selector de categorías arriba de la pestaña Object.</figcaption></figure>
+
+<div class="mag-grid">
+<article class="mag-card">
+<p class="mag-tag">Nuevo · Pestaña Game</p>
+<h3 class="mag-h">Game Components</h3>
+<p>Lista los componentes Python del objeto. Cada uno tiene botones para expandir, ejecutar, recargar, cambiar de orden y quitar. Si un componente tiene un error, el mensaje aparece en rojo justo arriba de él.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Nuevo · Pestaña Game</p>
+<h3 class="mag-h">Game Properties</h3>
+<p>Las variables del objeto, con nombre, tipo y valor. El botón <b>i</b> muestra el valor en pantalla, y <b>Rep</b> replica el valor en multijugador. En valores decimales con Rep, defines Bits, Min y Max.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Nuevo · Pestaña Physics</p>
+<h3 class="mag-h">Física y daño</h3>
+<p>La pestaña Physics tiene dos categorías: <b>Physics</b> (tipo de física, Collision Bounds y Create Obstacle) y <b>Damage</b> (Destruction, Explosive y Deformation). Los paneles cambian según el tipo elegido.</p>
+</article>
+</div>
+
+<blockquote class="mag-quote">“Elige primero el tipo de física. Los campos que aparecen después dependen de él.”</blockquote>
+
+{/* imagen pendiente: pestaña Physics con el tipo Dynamic, mostrando masa, elasticidad, velocidad lineal y fricción */}
+<figure class="mag-wide"><img src="/anastacio-docs/janelas/properties/physics.webp" alt="Pestaña Physics con el tipo Dynamic y los campos de masa y fricción" /><figcaption>Pestaña Physics con el tipo Dynamic: masa, elasticidad, velocidad y fricción.</figcaption></figure>
+
+<section class="mag-classics">
+<h3 class="mag-section">También en esta ventana</h3>
+<div class="mag-cols">
+<p><strong>Character.</strong> Para personajes: altura del escalón, velocidad de caída, pendiente máxima, salto (velocidad, cantidad y dirección) y radio.</p>
+<p><strong>Dynamic y Rigid Body.</strong> Masa, radio, factor de forma, elasticidad, velocidad lineal mínima y máxima, fricción y fricción de rotación. También la opción Sleep, que deja al objeto entrar en reposo cuando se detiene.</p>
+<p><strong>Load Object with Scene.</strong> Elige cuándo se carga el objeto: <b>With Scene</b>, <b>On Demand</b> o <b>Editor Only</b>. Vale para los objetos seleccionados y sus hijos.</p>
+<p><strong>Ragdoll.</strong> El addon Ragdoll (activado por defecto) aparece en la pestaña Physics para armatures y para objetos ligados a un rig.</p>
+</div>
+<div class="mag-pair">
+{/* imagen pendiente: panel Game Components con dos componentes expandidos */}
+<figure><img src="/anastacio-docs/janelas/properties/game-components.webp" alt="Panel Game Components con dos componentes" /><figcaption>Game Components: cada componente en su propia caja.</figcaption></figure>
+{/* imagen pendiente: categoría Damage de la pestaña Physics con Destruction y Explosive */}
+<figure><img src="/anastacio-docs/janelas/properties/physics-damage.webp" alt="Categoría Damage con Destruction y Explosive" /><figcaption>Categoría Damage: Destruction y Explosive.</figcaption></figure>
+</div>
+</section>
+
+</div>

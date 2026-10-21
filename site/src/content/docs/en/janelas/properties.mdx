@@ -1,0 +1,93 @@
+---
+title: Properties
+description: The Properties window, as a magazine. Object tabs, Object tab categories, Game Components, Game Properties and Physics, with what is new in Anastacio.
+template: splash
+---
+
+<div class="mag">
+
+<header class="mag-cover">
+<div class="mag-mast"><span>EDITOR WINDOWS</span><span>Issue #2 · Oct 2026</span></div>
+<p class="mag-kicker">Properties</p>
+<h2 class="mag-title">The object panel, tab by tab</h2>
+<p class="mag-lede">The Properties window shows everything that belongs to the selected object: position, components, variables, physics and damage. In this issue, the categories of the Object tab, the Python components and the physics split between behavior and damage explain where each thing is.</p>
+<div class="mag-flow"><span>Object</span><b>→</b><span>Game</span><b>→</b><span>Physics</span></div>
+</header>
+
+{/* pending image: whole window with the Object tab open, showing the tabs, the context at the top and the object panel */}
+<figure class="mag-hero"><img src="/anastacio-docs/janelas/properties/janela.webp" alt="Properties window with the Object tab open" /><figcaption>The whole window: tabs on the left side, context at the top and the object panel in the middle.</figcaption></figure>
+
+<section class="mag-feature">
+<div class="mag-num">01</div>
+<div>
+<p class="mag-tag">Tabs</p>
+<h3 class="mag-h">Top bar and side bar</h3>
+<p class="mag-big">Each subject has its own tab.</p>
+<p>The top bar holds the general tabs: Render, Render Layer, Scene, World, World Sound, Cutscene, Export and Input. The side bar holds the tabs of the selected object, such as Object, Game, Physics, Data and Material. Only the tabs that apply to what is selected appear.</p>
+<ul class="mag-list">
+<li><strong>Pin</strong> fixes the object the window shows, even if you select another one.</li>
+<li>The object's name at the top of the panel switches objects without leaving the tab.</li>
+</ul>
+</div>
+{/* pending image: top bar with the general tabs and side bar with the object tabs */}
+<figure class="mag-side"><img src="/anastacio-docs/janelas/properties/abas.webp" alt="Top bar and side bar of the Properties window" /><figcaption>General tabs at the top and object tabs alongside.</figcaption></figure>
+</section>
+
+<section class="mag-feature">
+<div class="mag-num">02</div>
+<div>
+<p class="mag-tag">New · Object tab</p>
+<h3 class="mag-h">Three categories at the top</h3>
+<p class="mag-big">Object, Game and Transform in one place.</p>
+<p>With the Game engine active, the Object tab shows a selector with three categories. Each one holds a group of panels, and the selector keeps the tab short.</p>
+<ul class="mag-list">
+<li><strong>Object</strong> has Relations, Relations Extras, Groups, Viewport Display and Duplication.</li>
+<li><strong>Transform</strong> has Transform, Delta Transform and Transform Locks.</li>
+<li><strong>Game</strong> has Load Object with Scene, Video Player, Animation Events and Levels of Detail (LOD).</li>
+</ul>
+</div>
+</section>
+
+{/* pending image: Object / Game / Transform selector at the top of the Object tab */}
+<figure class="mag-strip"><img src="/anastacio-docs/janelas/properties/categorias.webp" alt="Object, Game and Transform category selector" /><figcaption>The category selector at the top of the Object tab.</figcaption></figure>
+
+<div class="mag-grid">
+<article class="mag-card">
+<p class="mag-tag">New · Game tab</p>
+<h3 class="mag-h">Game Components</h3>
+<p>Lists the object's Python components. Each one has buttons to expand, run, reload, reorder and remove. If a component has an error, the message appears in red right at the top of it.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">New · Game tab</p>
+<h3 class="mag-h">Game Properties</h3>
+<p>The object's variables, with name, type and value. The <b>i</b> button shows the value on screen, and <b>Rep</b> replicates the value in multiplayer. For decimal values with Rep, you set Bits, Min and Max.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">New · Physics tab</p>
+<h3 class="mag-h">Physics and damage</h3>
+<p>The Physics tab has two categories: <b>Physics</b> (physics type, Collision Bounds and Create Obstacle) and <b>Damage</b> (Destruction, Explosive and Deformation). The panels change depending on the type chosen.</p>
+</article>
+</div>
+
+<blockquote class="mag-quote">“Choose the physics type first. The fields that appear afterwards depend on it.”</blockquote>
+
+{/* pending image: Physics tab with the Dynamic type, showing mass, elasticity, linear velocity and friction */}
+<figure class="mag-wide"><img src="/anastacio-docs/janelas/properties/physics.webp" alt="Physics tab with the Dynamic type and the mass and friction fields" /><figcaption>Physics tab with the Dynamic type: mass, elasticity, velocity and friction.</figcaption></figure>
+
+<section class="mag-classics">
+<h3 class="mag-section">Also in this window</h3>
+<div class="mag-cols">
+<p><strong>Character.</strong> For characters: step height, fall speed, maximum slope, jump (speed, amount and direction) and radius.</p>
+<p><strong>Dynamic and Rigid Body.</strong> Mass, radius, form factor, elasticity, minimum and maximum linear velocity, friction and rotation friction. Also the Sleep option, which lets the object rest when it stops.</p>
+<p><strong>Load Object with Scene.</strong> Chooses when the object is loaded: <b>With Scene</b>, <b>On Demand</b> or <b>Editor Only</b>. It applies to the selected objects and their children.</p>
+<p><strong>Ragdoll.</strong> The Ragdoll addon (enabled by default) appears in the Physics tab for armatures and for objects linked to a rig.</p>
+</div>
+<div class="mag-pair">
+{/* pending image: Game Components panel with two components expanded */}
+<figure><img src="/anastacio-docs/janelas/properties/game-components.webp" alt="Game Components panel with two components" /><figcaption>Game Components: each component in its own box.</figcaption></figure>
+{/* pending image: Damage category of the Physics tab with Destruction and Explosive */}
+<figure><img src="/anastacio-docs/janelas/properties/physics-damage.webp" alt="Damage category with Destruction and Explosive" /><figcaption>Damage category: Destruction and Explosive.</figcaption></figure>
+</div>
+</section>
+
+</div>

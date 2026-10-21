@@ -1,0 +1,93 @@
+---
+title: Properties
+description: Окно Properties в формате журнала. Вкладки объекта, категории вкладки Object, Game Components, Game Properties и Physics, с новинками Anastacio.
+template: splash
+---
+
+<div class="mag">
+
+<header class="mag-cover">
+<div class="mag-mast"><span>ОКНА РЕДАКТОРА</span><span>Выпуск #2 · окт. 2026</span></div>
+<p class="mag-kicker">Properties</p>
+<h2 class="mag-title">Панель объекта, вкладка за вкладкой</h2>
+<p class="mag-lede">Окно Properties показывает всё, что относится к выбранному объекту: позицию, компоненты, переменные, физику и повреждения. В этом выпуске категории вкладки Object, компоненты Python и физика, разделённая на поведение и повреждения, объясняют, где что находится.</p>
+<div class="mag-flow"><span>Объект</span><b>→</b><span>Game</span><b>→</b><span>Physics</span></div>
+</header>
+
+{/* изображение в очереди: всё окно с открытой вкладкой Object, видны вкладки, контекст вверху и панель объекта */}
+<figure class="mag-hero"><img src="/anastacio-docs/janelas/properties/janela.webp" alt="Окно Properties с открытой вкладкой Object" /><figcaption>Всё окно: вкладки слева, контекст вверху и панель объекта в центре.</figcaption></figure>
+
+<section class="mag-feature">
+<div class="mag-num">01</div>
+<div>
+<p class="mag-tag">Вкладки</p>
+<h3 class="mag-h">Верхняя и боковая панели</h3>
+<p class="mag-big">У каждой темы своя вкладка.</p>
+<p>Верхняя панель содержит общие вкладки: Render, Render Layer, Scene, World, World Sound, Cutscene, Export и Input. Боковая панель содержит вкладки выбранного объекта, например Object, Game, Physics, Data и Material. Появляются только те вкладки, которые относятся к выбранному.</p>
+<ul class="mag-list">
+<li><strong>Pin</strong> закрепляет объект, который показывает окно, даже если вы выберете другой.</li>
+<li>Имя объекта вверху панели переключает объект, не покидая вкладку.</li>
+</ul>
+</div>
+{/* изображение в очереди: верхняя панель с общими вкладками и боковая панель с вкладками объекта */}
+<figure class="mag-side"><img src="/anastacio-docs/janelas/properties/abas.webp" alt="Верхняя и боковая панели окна Properties" /><figcaption>Общие вкладки вверху и вкладки объекта сбоку.</figcaption></figure>
+</section>
+
+<section class="mag-feature">
+<div class="mag-num">02</div>
+<div>
+<p class="mag-tag">Новое · Вкладка Object</p>
+<h3 class="mag-h">Три категории вверху</h3>
+<p class="mag-big">Object, Game и Transform в одном месте.</p>
+<p>Когда включён игровой движок Game, вкладка Object показывает переключатель с тремя категориями. Каждая хранит группу панелей, а переключатель делает вкладку короче.</p>
+<ul class="mag-list">
+<li><strong>Object</strong> содержит Relations, Relations Extras, Groups, Viewport Display и Duplication.</li>
+<li><strong>Transform</strong> содержит Transform, Delta Transform и Transform Locks.</li>
+<li><strong>Game</strong> содержит Load Object with Scene, Video Player, Animation Events и Levels of Detail (LOD).</li>
+</ul>
+</div>
+</section>
+
+{/* изображение в очереди: переключатель Object / Game / Transform вверху вкладки Object */}
+<figure class="mag-strip"><img src="/anastacio-docs/janelas/properties/categorias.webp" alt="Переключатель категорий Object, Game и Transform" /><figcaption>Переключатель категорий вверху вкладки Object.</figcaption></figure>
+
+<div class="mag-grid">
+<article class="mag-card">
+<p class="mag-tag">Новое · Вкладка Game</p>
+<h3 class="mag-h">Game Components</h3>
+<p>Список Python-компонентов объекта. У каждого есть кнопки: развернуть, выполнить, перезагрузить, изменить порядок и удалить. Если в компоненте ошибка, сообщение выводится красным прямо над ним.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Новое · Вкладка Game</p>
+<h3 class="mag-h">Game Properties</h3>
+<p>Переменные объекта с именем, типом и значением. Кнопка <b>i</b> показывает значение на экране, а <b>Rep</b> реплицирует значение в многопользовательской игре. Для дробных значений с Rep задаются Bits, Min и Max.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Новое · Вкладка Physics</p>
+<h3 class="mag-h">Физика и повреждения</h3>
+<p>Вкладка Physics имеет две категории: <b>Physics</b> (тип физики, Collision Bounds и Create Obstacle) и <b>Damage</b> (Destruction, Explosive и Deformation). Панели меняются в зависимости от выбранного типа.</p>
+</article>
+</div>
+
+<blockquote class="mag-quote">«Сначала выберите тип физики. Поля, которые появятся дальше, зависят от него.»</blockquote>
+
+{/* изображение в очереди: вкладка Physics с типом Dynamic, видны масса, упругость, линейная скорость и трение */}
+<figure class="mag-wide"><img src="/anastacio-docs/janelas/properties/physics.webp" alt="Вкладка Physics с типом Dynamic и полями массы и трения" /><figcaption>Вкладка Physics с типом Dynamic: масса, упругость, скорость и трение.</figcaption></figure>
+
+<section class="mag-classics">
+<h3 class="mag-section">Также в этом окне</h3>
+<div class="mag-cols">
+<p><strong>Character.</strong> Для персонажей: высота ступеньки, скорость падения, максимальный уклон, прыжок (скорость, количество и направление) и радиус.</p>
+<p><strong>Dynamic и Rigid Body.</strong> Масса, радиус, форм-фактор, упругость, минимальная и максимальная линейная скорость, трение и трение вращения. Также опция Sleep, которая позволяет объекту уснуть, когда он останавливается.</p>
+<p><strong>Load Object with Scene.</strong> Выбирает, когда загружается объект: <b>With Scene</b>, <b>On Demand</b> или <b>Editor Only</b>. Действует на выбранные объекты и их дочерние.</p>
+<p><strong>Ragdoll.</strong> Аддон Ragdoll (включён по умолчанию) появляется на вкладке Physics для арматур и для объектов, связанных с ригом.</p>
+</div>
+<div class="mag-pair">
+{/* изображение в очереди: панель Game Components с двумя развёрнутыми компонентами */}
+<figure><img src="/anastacio-docs/janelas/properties/game-components.webp" alt="Панель Game Components с двумя компонентами" /><figcaption>Game Components: каждый компонент в своём блоке.</figcaption></figure>
+{/* изображение в очереди: категория Damage вкладки Physics с Destruction и Explosive */}
+<figure><img src="/anastacio-docs/janelas/properties/physics-damage.webp" alt="Категория Damage с Destruction и Explosive" /><figcaption>Категория Damage: Destruction и Explosive.</figcaption></figure>
+</div>
+</section>
+
+</div>

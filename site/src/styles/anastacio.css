@@ -118,3 +118,5 @@ html {
 html[lang='en'] .sidebar-content a[data-desc-en]::after {
 	content: attr(data-desc-en);
 }
+
+.ae-langs { font-size: 1.05rem; text-align: center; margin-bottom: 1.5rem; }

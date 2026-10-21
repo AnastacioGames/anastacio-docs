@@ -44,6 +44,11 @@ export default defineConfig({
 					translations: { en: 'Windows', es: 'Ventanas', ru: 'Окна' },
 					items: [
 						{
+							label: 'Geral',
+							translations: { en: 'General', es: 'General', ru: 'Общие' },
+							items: ['janelas/view-3d'],
+						},
+						{
 							label: 'Scripting / Data',
 							translations: { en: 'Scripting / Data', es: 'Scripting / Datos', ru: 'Скрипты / Данные' },
 							items: ['janelas/text-editor', 'janelas/logic-editor', 'janelas/properties'],

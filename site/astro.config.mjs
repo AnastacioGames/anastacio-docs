@@ -49,8 +49,8 @@ export default defineConfig({
 							items: ['janelas/view-3d'],
 						},
 						{
-							label: 'Scripting / Data',
-							translations: { en: 'Scripting / Data', es: 'Scripting / Datos', ru: 'Скрипты / Данные' },
+							label: 'Scripting',
+							translations: { en: 'Scripting', es: 'Scripting', ru: 'Скрипты' },
 							items: ['janelas/text-editor', 'janelas/logic-editor', 'janelas/properties'],
 						},
 					],

@@ -1,9 +1,10 @@
-"""Monta um objeto com física e tira prints da janela Properties nas abas Object e Physics.
+"""Monta um objeto com física e tira prints da janela Properties.
 Uso: AnastacioEngine.exe -p 0 0 1600 900 --python properties.py -- <pasta_saida>"""
-import bpy, sys, os
+import bpy, sys, os, json
 
-OUT = sys.argv[sys.argv.index("--") + 1] if "--" in sys.argv else "."
+OUT = os.path.abspath(sys.argv[sys.argv.index("--") + 1] if "--" in sys.argv else ".")
 os.makedirs(OUT, exist_ok=True)
+bpy.context.user_preferences.view.show_splash = False
 
 
 def montar_cena():
@@ -19,41 +20,54 @@ def montar_cena():
     bpy.ops.object.game_property_new(type='FLOAT', name="velocidade")
 
 
-# (passo, contexto da aba ou None, rolagem em linhas, arquivo)
-PASSOS = {
-    4: ('OBJECT', None, "janela.png"),
-    7: ('PHYSICS', None, "physics.png"),
-    10: ('PHYSICS', 60, "physics-damage.png"),
-}
+# cada item: (contexto, categoria_object, categoria_physics, arquivo, salvar_json)
+PASSOS = [
+    ('OBJECT', 'OBJECT', None, "janela.png", True),
+    ('OBJECT', 'OBJECT', None, "abas.png", False),
+    ('OBJECT', 'GAME', None, "categorias.png", False),
+    ('PHYSICS', None, 'PHYSICS', "physics.png", False),
+    ('GAME', None, None, "game-components.png", False),
+    ('PHYSICS', None, 'DAMAGE', "physics-damage.png", False),
+]
 
 
 class PrintProps(bpy.types.Operator):
     bl_idname = "wm.print_props"
     bl_label = "Print Props"
     passo = 0
+    indice = 0
+    aguardando = False
 
     def modal(self, context, event):
         if event.type != 'TIMER':
             return {'PASS_THROUGH'}
         self.passo += 1
-        p = self.passo
         win = self.win
         scr = win.screen
         area = max(scr.areas, key=lambda a: a.width * a.height)
         ov = {'window': win, 'screen': scr, 'area': area}
-        if p == 1:
-            bpy.ops.screen.screen_full_area(ov)
-        elif p == 2:
-            area.spaces.active.context = 'OBJECT'
-        elif p in PASSOS:
-            contexto, rolagem, arquivo = PASSOS[p]
+        if self.passo < 3:
+            return {'RUNNING_MODAL'}
+        if self.aguardando:
+            contexto, cat_obj, cat_phys, arquivo, salvar_json = PASSOS[self.indice]
+            res = bpy.ops.screen.screenshot(ov, filepath=os.path.join(OUT, arquivo), full=True)
+            print("SHOT", arquivo, res, flush=True)
+            if salvar_json:
+                info = {"area": [area.x, area.y, area.width, area.height],
+                        "regions": {r.type: [r.x, r.y, r.width, r.height] for r in area.regions},
+                        "win": [win.width, win.height]}
+                json.dump(info, open(os.path.join(OUT, "properties.json"), "w"), indent=1)
+            self.aguardando = False
+            self.indice += 1
+        elif self.indice < len(PASSOS):
+            contexto, cat_obj, cat_phys, arquivo, salvar_json = PASSOS[self.indice]
             area.spaces.active.context = contexto
-            if rolagem:
-                reg = [r for r in area.regions if r.type == 'WINDOW'][0]
-                for _ in range(rolagem):
-                    bpy.ops.view2d.scroll_down(dict(ov, region=reg))
-            bpy.ops.screen.screenshot(ov, filepath=os.path.join(OUT, arquivo), full=True)
-        elif p == 12:
+            if cat_obj:
+                context.window_manager.ae_object_panel_category = cat_obj
+            if cat_phys:
+                context.window_manager.ae_physics_panel_category = cat_phys
+            self.aguardando = True
+        else:
             bpy.ops.wm.quit_blender()
         return {'RUNNING_MODAL'}
 

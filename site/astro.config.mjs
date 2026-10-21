@@ -25,6 +25,7 @@ export default defineConfig({
 				ru: { label: 'Русский', lang: 'ru' },
 			},
 			customCss: ['./src/styles/anastacio.css'],
+			components: { Header: './src/components/Header.astro' },
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AnastacioGames' }],
 			sidebar: [
 				{ label: 'Começar', translations: { en: 'Getting started', es: 'Empezar', ru: 'Начало работы' }, items: ['guias/primeiro-script', 'guias/range-e-bge'] },

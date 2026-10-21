@@ -23,7 +23,9 @@ def montar_cena():
     g.actuators["Mover"].offset_location[1] = 0.1
     g.sensors["Inimigo perto"].distance = 0.0
     try:
-        g.brick_groups.add().name = "Movimento"
+        g.brick_groups.new("Movimento")
+        g.sensors["Andar"].group = "Movimento"
+        g.actuators["Mover"].group = "Movimento"
     except Exception as e:
         print("grupos:", e)
     bpy.ops.object.game_property_new(type='INT', name="vida")

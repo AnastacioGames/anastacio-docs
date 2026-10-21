@@ -39,7 +39,7 @@ export default defineConfig({
 					translations: { en: 'Features', es: 'Recursos', ru: 'Возможности' },
 					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer', 'guias/idiomas', 'guias/smart-components'],
 				},
-				{ label: 'Janelas', translations: { en: 'Windows', es: 'Ventanas', ru: 'Окна' }, items: ['janelas/logic-editor'] },
+				{ label: 'Janelas', translations: { en: 'Windows', es: 'Ventanas', ru: 'Окна' }, items: ['janelas/logic-editor', 'janelas/properties'] },
 				{ label: 'Módulos', translations: { en: 'Modules', es: 'Módulos', ru: 'Модули' }, items: modulos },
 				{ label: 'Range.types', collapsed: true, items: types },
 				{ label: 'Projeto', translations: { en: 'Project', es: 'Proyecto', ru: 'Проект' }, items: ['sobre', 'situacao-da-doc'] },

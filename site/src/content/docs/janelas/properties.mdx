@@ -1,0 +1,93 @@
+---
+title: Properties
+description: A janela Properties, em formato de revista. Abas do objeto, categorias da aba Object, Game Components, Game Properties e Physics, com o que é novo na Anastacio.
+template: splash
+---
+
+<div class="mag">
+
+<header class="mag-cover">
+<div class="mag-mast"><span>JANELAS DO EDITOR</span><span>Edição #2 · Out 2026</span></div>
+<p class="mag-kicker">Properties</p>
+<h2 class="mag-title">O painel do objeto, aba por aba</h2>
+<p class="mag-lede">A janela Properties mostra tudo que é do objeto selecionado: posição, componentes, variáveis, física e dano. Nesta edição, as categorias da aba Object, os componentes em Python e a física separada entre comportamento e dano explicam onde cada coisa fica.</p>
+<div class="mag-flow"><span>Objeto</span><b>→</b><span>Game</span><b>→</b><span>Physics</span></div>
+</header>
+
+{/* imagem pendente: janela inteira com a aba Object aberta, mostrando abas, contexto no topo e painel do objeto */}
+<figure class="mag-hero"><img src="/anastacio-docs/janelas/properties/janela.webp" alt="Janela Properties com a aba Object aberta" /><figcaption>A janela inteira: abas do lado esquerdo, contexto no topo e o painel do objeto no meio.</figcaption></figure>
+
+<section class="mag-feature">
+<div class="mag-num">01</div>
+<div>
+<p class="mag-tag">Abas</p>
+<h3 class="mag-h">Barra superior e barra lateral</h3>
+<p class="mag-big">Cada assunto tem a sua aba.</p>
+<p>A barra superior traz as abas gerais: Render, Render Layer, Scene, World, World Sound, Cutscene, Export e Input. A barra lateral traz as abas do objeto selecionado, como Object, Game, Physics, Data e Material. Só aparecem as abas que servem para o que está selecionado.</p>
+<ul class="mag-list">
+<li><strong>Pin</strong> fixa o objeto que a janela mostra, mesmo se você selecionar outro.</li>
+<li>O nome do objeto no topo do painel troca de objeto sem sair da aba.</li>
+</ul>
+</div>
+{/* imagem pendente: barra superior com as abas gerais e barra lateral com as abas do objeto */}
+<figure class="mag-side"><img src="/anastacio-docs/janelas/properties/abas.webp" alt="Barra superior e barra lateral da janela Properties" /><figcaption>Abas gerais no topo e abas do objeto ao lado.</figcaption></figure>
+</section>
+
+<section class="mag-feature">
+<div class="mag-num">02</div>
+<div>
+<p class="mag-tag">Novo · Aba Object</p>
+<h3 class="mag-h">Três categorias no topo</h3>
+<p class="mag-big">Object, Game e Transform num só lugar.</p>
+<p>Com o motor Game ativo, a aba Object mostra um seletor com três categorias. Cada uma guarda um grupo de painéis, e o seletor deixa a aba curta.</p>
+<ul class="mag-list">
+<li><strong>Object</strong> tem Relations, Relations Extras, Groups, Viewport Display e Duplication.</li>
+<li><strong>Transform</strong> tem Transform, Delta Transform e Transform Locks.</li>
+<li><strong>Game</strong> tem Load Object with Scene, Video Player, Animation Events e Levels of Detail (LOD).</li>
+</ul>
+</div>
+</section>
+
+{/* imagem pendente: seletor Object / Game / Transform no topo da aba Object */}
+<figure class="mag-strip"><img src="/anastacio-docs/janelas/properties/categorias.webp" alt="Seletor de categorias Object, Game e Transform" /><figcaption>O seletor de categorias no topo da aba Object.</figcaption></figure>
+
+<div class="mag-grid">
+<article class="mag-card">
+<p class="mag-tag">Novo · Aba Game</p>
+<h3 class="mag-h">Game Components</h3>
+<p>Lista os componentes Python do objeto. Cada um tem botões para expandir, executar, recarregar, mudar de ordem e remover. Se um componente tem erro, a mensagem aparece em vermelho logo no topo dele.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Novo · Aba Game</p>
+<h3 class="mag-h">Game Properties</h3>
+<p>As variáveis do objeto, com nome, tipo e valor. O botão <b>i</b> mostra o valor na tela, e <b>Rep</b> replica o valor no multiplayer. Em valores decimais com Rep, você define Bits, Min e Max.</p>
+</article>
+<article class="mag-card">
+<p class="mag-tag">Novo · Aba Physics</p>
+<h3 class="mag-h">Física e dano</h3>
+<p>A aba Physics tem duas categorias: <b>Physics</b> (tipo de física, Collision Bounds e Create Obstacle) e <b>Damage</b> (Destruction, Explosive e Deformation). Os painéis mudam conforme o tipo escolhido.</p>
+</article>
+</div>
+
+<blockquote class="mag-quote">“Escolha o tipo de física primeiro. Os campos que aparecem depois dependem dele.”</blockquote>
+
+{/* imagem pendente: aba Physics com tipo Dynamic, mostrando massa, elasticidade, velocidade linear e atrito */}
+<figure class="mag-wide"><img src="/anastacio-docs/janelas/properties/physics.webp" alt="Aba Physics com o tipo Dynamic e os campos de massa e atrito" /><figcaption>Aba Physics com o tipo Dynamic: massa, elasticidade, velocidade e atrito.</figcaption></figure>
+
+<section class="mag-classics">
+<h3 class="mag-section">Também nesta janela</h3>
+<div class="mag-cols">
+<p><strong>Character.</strong> Para personagens: altura do degrau, velocidade de queda, inclinação máxima, pulo (velocidade, quantidade e direção) e raio.</p>
+<p><strong>Dynamic e Rigid Body.</strong> Massa, raio, fator de forma, elasticidade, velocidade linear mínima e máxima, atrito e atrito de rotação. Também a opção Sleep, que deixa o objeto entrar em repouso quando para.</p>
+<p><strong>Load Object with Scene.</strong> Escolhe quando o objeto é carregado: <b>With Scene</b>, <b>On Demand</b> ou <b>Editor Only</b>. Vale para os objetos selecionados e os filhos deles.</p>
+<p><strong>Ragdoll.</strong> O addon Ragdoll (ativado por padrão) aparece na aba Physics para armatures e para objetos ligados a um rig.</p>
+</div>
+<div class="mag-pair">
+{/* imagem pendente: painel Game Components com dois componentes expandidos */}
+<figure><img src="/anastacio-docs/janelas/properties/game-components.webp" alt="Painel Game Components com dois componentes" /><figcaption>Game Components: cada componente numa caixa.</figcaption></figure>
+{/* imagem pendente: categoria Damage da aba Physics com Destruction e Explosive */}
+<figure><img src="/anastacio-docs/janelas/properties/physics-damage.webp" alt="Categoria Damage com Destruction e Explosive" /><figcaption>Categoria Damage: Destruction e Explosive.</figcaption></figure>
+</div>
+</section>
+
+</div>

@@ -161,5 +161,6 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 .mag-strip { margin-top: 2rem !important; max-width: 640px; }
 .mag-wide { margin-top: 1rem !important; }
 .mag-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; max-width: 620px; }
+.mag-slim { max-width: 720px; margin-left: auto; margin-right: auto; }
 @media (max-width: 860px) { .mag-feature { grid-template-columns: auto 1fr; } .mag-side { grid-column: 1 / -1; max-width: 320px; } }
 @media (max-width: 560px) { .mag-feature { grid-template-columns: 1fr; } }

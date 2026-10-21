@@ -78,6 +78,7 @@ Los campos vacíos mantienen los valores predeterminados de RangeArmor.
 Hay dos botones:
 
 - **Export Game (1 Click)**: guarda una copia protegida, cocina la caché y genera todo directamente en `MiJuego/release/`. La carpeta se abre al terminar. **Este es el camino recomendado.**
+  También genera el paquete **Universal**: una carpeta (y un zip) con Windows y Linux juntos. El jugador abre `MiJuego.exe` en Windows o `MiJuego` en Linux. *(versiones posteriores a 0.5.4)*
 - **Open RangeArmor Panel**: abre la herramienta completa, con más opciones. Los ajustes del panel del motor se le pasan.
 
 El mismo panel también se abre desde **File > Export Game With RANGEARMOR**.
@@ -117,6 +118,7 @@ Pantalla inicial de RangeArmor Panel: **Open Project**, **New Project** y la lis
    - **Run game**: ejecuta el juego como lo verá el jugador, para probar primero.
    - **Set Icons**: elige los iconos `.ico` del lanzador y del ejecutable.
    - **Export to**: exporta una plataforma o **All Platforms**. **Compress targets after export** crea el zip.
+   - **Universal (Win + Linux)**: además de la carpeta de cada plataforma, crea `MiJuego-<versión>-Universal/`, una sola carpeta para los dos sistemas. Necesita los dos runtimes en la pestaña **Paths**. *(versiones posteriores a 0.5.4)*
    ![Pestaña Tasks de RangeArmor Panel](../../../../assets/exportar/rangearmor_tasks.png)
 
    Los botones de plataforma en gris y la nota *0/2 platform(s) ready* en la parte inferior indican que falta el runtime. Haz clic en **Copy Available Range Engine Files** (paso 5) y revisa **Main File** y **Data Source**; los botones se encienden cuando la plataforma está lista.
@@ -147,3 +149,4 @@ El juego exportado usa una copia **protegida** del `.range` (extensión `.rasec`
 | *Current file is not inside a RangeArmor project* | El `.range` no está en `<proyecto>/data/`. Usa **File > Create Project**. |
 | *build_release.py not found next to RangeArmor Panel* | Falta la carpeta `rangearmor/` o tiene otro nombre. Ver el paso 1. |
 | *Export finished with errors* | Abre la consola (**Window > Toggle System Console**) para ver el error completo. |
+| *Universal package skipped: no runtime for ...* | Falta el runtime de una plataforma. Configura Windows y Linux en la pestaña **Paths** (o usa **Copy Available Range Engine Files**). |

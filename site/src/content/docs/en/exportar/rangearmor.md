@@ -78,6 +78,7 @@ Empty fields keep RangeArmor's defaults.
 There are two buttons:
 
 - **Export Game (1 Click)**: saves a protected copy, cooks the cache and builds everything straight into `MyGame/release/`. The folder opens when it's done. **This is the recommended path.**
+  It also builds the **Universal** package: one folder (and a zip) with Windows and Linux together. Players open `MyGame.exe` on Windows or `MyGame` on Linux. *(versions after 0.5.4)*
 - **Open RangeArmor Panel**: opens the full tool, with more options. The engine panel settings are passed to it.
 
 The same panel also opens from **File > Export Game With RANGEARMOR**.
@@ -117,6 +118,7 @@ RangeArmor Panel start screen: **Open Project**, **New Project** and the **Recen
    - **Run game**: runs the game the way the player will see it, to test first.
    - **Set Icons**: picks the `.ico` icons for the launcher and the executable.
    - **Export to**: exports one platform or **All Platforms**. **Compress targets after export** creates the zip.
+   - **Universal (Win + Linux)**: besides each platform's folder, creates `MyGame-<version>-Universal/`, a single folder for both systems. Needs both runtimes in the **Paths** tab. *(versions after 0.5.4)*
    ![RangeArmor Panel Tasks tab](../../../../assets/exportar/rangearmor_tasks.png)
 
    Gray platform buttons and the *0/2 platform(s) ready* note at the bottom mean the runtime is missing. Click **Copy Available Range Engine Files** (step 5) and check **Main File** and **Data Source**; the buttons light up once the platform is ready.
@@ -147,3 +149,4 @@ The exported game uses a **protected** copy of the `.range` (`.rasec` extension)
 | *Current file is not inside a RangeArmor project* | The `.range` is not in `<project>/data/`. Use **File > Create Project**. |
 | *build_release.py not found next to RangeArmor Panel* | The `rangearmor/` folder is missing or misnamed. See step 1. |
 | *Export finished with errors* | Open the console (**Window > Toggle System Console**) to see the full error. |
+| *Universal package skipped: no runtime for ...* | One platform's runtime is missing. Set Windows and Linux in the **Paths** tab (or use **Copy Available Range Engine Files**). |

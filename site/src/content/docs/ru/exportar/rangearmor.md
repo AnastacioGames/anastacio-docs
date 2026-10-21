@@ -78,6 +78,7 @@ MyGame/
 Есть две кнопки:
 
 - **Export Game (1 Click)**: сохраняет защищённую копию, запекает кэш и собирает всё прямо в `MyGame/release/`. По завершении папка открывается. **Это рекомендуемый путь.**
+  Также собирается **Universal**-пакет: одна папка (и zip) с Windows и Linux вместе. Игрок запускает `MyGame.exe` в Windows или `MyGame` в Linux. *(версии после 0.5.4)*
 - **Open RangeArmor Panel**: открывает полный инструмент с дополнительными параметрами. Настройки панели движка передаются в него.
 
 Та же панель открывается и через **File > Export Game With RANGEARMOR**.
@@ -117,6 +118,7 @@ MyGame/
    - **Run game**: запускает игру так, как её увидит игрок, чтобы сначала проверить.
    - **Set Icons**: выбирает значки `.ico` для лаунчера и исполняемого файла.
    - **Export to**: экспортирует одну платформу или **All Platforms**. **Compress targets after export** создаёт zip.
+   - **Universal (Win + Linux)**: помимо папок каждой платформы создаёт `MyGame-<версия>-Universal/` — одну папку для обеих систем. Нужны оба рантайма на вкладке **Paths**. *(версии после 0.5.4)*
    ![Вкладка Tasks в RangeArmor Panel](../../../../assets/exportar/rangearmor_tasks.png)
 
    Серые кнопки платформ и надпись *0/2 platform(s) ready* внизу означают, что не хватает рантайма. Нажмите **Copy Available Range Engine Files** (шаг 5) и проверьте **Main File** и **Data Source**; кнопки загорятся, когда платформа будет готова.
@@ -147,3 +149,4 @@ MyGame/
 | *Current file is not inside a RangeArmor project* | `.range` не находится в `<project>/data/`. Используйте **File > Create Project**. |
 | *build_release.py not found next to RangeArmor Panel* | Папка `rangearmor/` отсутствует или названа неправильно. См. шаг 1. |
 | *Export finished with errors* | Откройте консоль (**Window > Toggle System Console**), чтобы увидеть полную ошибку. |
+| *Universal package skipped: no runtime for ...* | Не хватает рантайма одной из платформ. Укажите Windows и Linux на вкладке **Paths** (или нажмите **Copy Available Range Engine Files**). |

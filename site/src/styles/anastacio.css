@@ -152,3 +152,14 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 .mag-cols p { break-inside: avoid; }
 .mag-cols strong { color: var(--ae-gold-2); font-family: var(--ae-display); }
 @media (max-width: 560px) { .mag-feature { grid-template-columns: 1fr; gap: .5rem; } .mag-cover { padding: 1.4rem 1rem; } }
+.mag figure { margin: 0; }
+.mag figure img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(242,178,58,.25); box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+.mag figcaption { font-size: .85rem; color: var(--sl-color-gray-3); margin-top: .5rem; font-style: italic; }
+.mag-hero { margin-top: 1.5rem !important; }
+.mag-feature { grid-template-columns: auto 1fr 240px; }
+.mag-side img { max-height: 520px; object-fit: cover; object-position: top; }
+.mag-strip { margin-top: 2rem !important; max-width: 640px; }
+.mag-wide { margin-top: 1rem !important; }
+.mag-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; max-width: 620px; }
+@media (max-width: 860px) { .mag-feature { grid-template-columns: auto 1fr; } .mag-side { grid-column: 1 / -1; max-width: 320px; } }
+@media (max-width: 560px) { .mag-feature { grid-template-columns: 1fr; } }

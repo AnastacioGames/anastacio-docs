@@ -252,11 +252,23 @@ Saves the current vehicle setup to a preset file.
 
 Sets which axes (0=X, 1=Y, 2=Z) are right, up and forward. All three axes must be used without repeating.
 
+### setSuspensionRestLength(value, wheelIndex)
+
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
+
+Changes a wheel's suspension rest length (positive value). Applied on the next physics step.
+
 ### setWheelIsDriveWheel(wheelIndex, isDriveWheel)
 
  <small>method</small>
 
 Sets whether the wheel gets engine traction.
+
+### setWheelRadius(value, wheelIndex)
+
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
+
+Changes a wheel's radius (positive value). Applied on the next physics step.
 
 ### constraint_id
 

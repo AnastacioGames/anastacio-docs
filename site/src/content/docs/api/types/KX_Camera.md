@@ -161,6 +161,12 @@ True quando a câmera é usada como viewport; defina True para ligar uma viewpor
 
 **Tipo:** boolean
 
+### viewport
+
+Retângulo da viewport usado no último render desta câmera, em pixels (somente leitura). Proporções definidas no editor já vêm convertidas para a janela.
+
+**Tipo:** list [left, bottom, right, top]
+
 ### sphereInsideFrustum(centre, radius)
 
 Testa a esfera dada contra o frustum da visão.

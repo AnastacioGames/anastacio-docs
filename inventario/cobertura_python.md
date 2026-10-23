@@ -2,7 +2,7 @@
 
 Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos de jogo com bindings Python; não afirma que todo controle do editor deve virar API.
 
-**Total:** 118 expostos · 13 sem binding · 0 só de editor.
+**Total:** 118 expostos · 17 sem binding · 0 só de editor.
 
 ## Partículas GPU
 
@@ -58,6 +58,9 @@ Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos 
 | `effect_life` | `effectLife` | exposto |
 | `fire_amount` | `fireAmount` | exposto |
 | `fire_color` | `fireColor` | exposto |
+| `flash_color` | `flashColor` | **sem binding** |
+| `flash_duration` | `flashDuration` | **sem binding** |
+| `flash_strength` | `flashStrength` | **sem binding** |
 | `force` | `explosionForce` | exposto |
 | `fuse` | `fuse` | exposto |
 | `impact_impulse` | `impactImpulse` | exposto |
@@ -76,6 +79,7 @@ Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos 
 | `use_chain_reaction` | `useChainReaction` | exposto |
 | `use_explode_on_impact` | `useExplodeOnImpact` | exposto |
 | `use_ground_mark` | `useGroundMark` | exposto |
+| `use_light_flash` | `useLightFlash` | **sem binding** |
 | `use_mark_nearby` | `useMarkNearby` | exposto |
 | `use_occlusion` | `useOcclusion` | exposto |
 | `use_particle_explosion` | `useParticleExplosion` | exposto |

@@ -234,6 +234,21 @@
      "estado": "exposto"
     },
     {
+     "controle_rna": "flash_color",
+     "api": "flashColor",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "flash_duration",
+     "api": "flashDuration",
+     "estado": "sem_binding"
+    },
+    {
+     "controle_rna": "flash_strength",
+     "api": "flashStrength",
+     "estado": "sem_binding"
+    },
+    {
      "controle_rna": "force",
      "api": "explosionForce",
      "estado": "exposto"
@@ -322,6 +337,11 @@
      "controle_rna": "use_ground_mark",
      "api": "useGroundMark",
      "estado": "exposto"
+    },
+    {
+     "controle_rna": "use_light_flash",
+     "api": "useLightFlash",
+     "estado": "sem_binding"
     },
     {
      "controle_rna": "use_mark_nearby",

@@ -105,7 +105,10 @@
   "particles": "Sistema de partículas do objeto (`KX_ParticleSystem`), ou `None`.",
   "particlesMix": "Segundo sistema de partículas (mistura) do objeto, ou `None`.",
   "passIndex": "Pass Index do objeto, usado para separar objetos em filtros e efeitos.",
-  "getCurvePoints": "`getCurvePoints(world=True)`: pontos da primeira spline de um objeto Curve, como lista de `Vector`. Coordenadas do mundo por padrão; `world=False` devolve em coordenadas locais. Lista vazia se o objeto não for uma curva."
+  "getCurvePoints": "`getCurvePoints(world=True)`: pontos da primeira spline de um objeto Curve, como lista de `Vector`. Coordenadas do mundo por padrão; `world=False` devolve em coordenadas locais. Lista vazia se o objeto não for uma curva.",
+  "setVehicleMaxTorque": "setVehicleMaxTorque(valor)\nMuda em jogo o torque máximo do motor do veículo deste objeto (número >= 0).",
+  "setVehicleMaxRPM": "setVehicleMaxRPM(valor)\nMuda em jogo a rotação máxima (RPM) do motor do veículo (número >= 0).",
+  "setVehicleGearRatios": "setVehicleGearRatios(relacoes)\nTroca as relações de marcha do veículo. Recebe uma lista de números, uma por marcha."
  },
  "Range.logic": {
   "preloadScene": "preloadScene(name) -> bool\nConverte uma cena com antecedência, no fim deste frame (shaders e texturas incluídos), sem adicioná-la. Depois, um `addScene` ou `replaceScene` dela só insere a cena pronta, sem travar. Chame enquanto uma tela de carregamento estiver aparecendo. Devolve `False` se a cena não existir.",
@@ -676,7 +679,9 @@
   "setCoordinateSystem": "setCoordinateSystem(right, up, forward)\nDefine quais eixos (0=X, 1=Y, 2=Z) são direita, cima e frente. Precisa usar os três eixos sem repetir.",
   "setWheelIsDriveWheel": "setWheelIsDriveWheel(wheelIndex, isDriveWheel)\nDefine se a roda recebe tração do motor.",
   "constraint_id": "Id da restrição (constraint) física do veículo.",
-  "constraint_type": "Tipo da restrição física do veículo."
+  "constraint_type": "Tipo da restrição física do veículo.",
+  "setSuspensionRestLength": "setSuspensionRestLength(valor, wheelIndex)\nMuda o comprimento de repouso da suspensão de uma roda (valor positivo). Aplicado no próximo passo da física.",
+  "setWheelRadius": "setWheelRadius(valor, wheelIndex)\nMuda o raio de uma roda (valor positivo). Aplicado no próximo passo da física."
  },
  "Range.constraints": {
   "setErp": "setErp(value)\nERP do solver de física: quanto da penetração entre objetos é corrigida por passo (padrão 0.2).",
@@ -907,5 +912,9 @@
  },
  "SCA_ActuatorSensor": {
   "mode": "`0` Active: verdadeiro enquanto o actuator monitorado está ativo. `1` Finished: dá um pulso quando o actuator termina (ex.: Wait, Action, Video)."
+ },
+ "BL_ArmatureObject": {
+  "setBoneRotationOffset": "setBoneRotationOffset(bone, rotation)\nRotação extra num osso por cima das actions que estão tocando, no espaço local do osso. `rotation`: euler XYZ (3 valores, radianos) ou quaternion (4 valores, w x y z). Fica até `clearBoneRotationOffset()`.",
+  "clearBoneRotationOffset": "clearBoneRotationOffset(bone=None)\nRemove a rotação extra de um osso, ou de todos quando `bone` é omitido."
  }
 }

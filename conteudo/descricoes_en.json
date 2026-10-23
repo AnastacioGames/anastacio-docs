@@ -467,7 +467,10 @@
   "particles": "Object particle system (`KX_ParticleSystem`), or `None`.",
   "particlesMix": "Second (mix) particle system of the object, or `None`.",
   "passIndex": "Object Pass Index, used to separate objects in filters and effects.",
-  "getCurvePoints": "`getCurvePoints(world=True)`: points of the first spline of a Curve object, as a list of `Vector`. World space by default; `world=False` returns local space. Empty list if the object is not a curve."
+  "getCurvePoints": "`getCurvePoints(world=True)`: points of the first spline of a Curve object, as a list of `Vector`. World space by default; `world=False` returns local space. Empty list if the object is not a curve.",
+  "setVehicleMaxTorque": "setVehicleMaxTorque(value)\nChanges the maximum engine torque of this object's vehicle at runtime (number >= 0).",
+  "setVehicleMaxRPM": "setVehicleMaxRPM(value)\nChanges the maximum engine RPM of the vehicle at runtime (number >= 0).",
+  "setVehicleGearRatios": "setVehicleGearRatios(ratios)\nReplaces the vehicle gear ratios. Takes a list of numbers, one per gear."
  },
  "KX_ParticleSystem": {
   "blendMode": "How particles blend with the scene: `'ALPHA'` or `'ADDITIVE'`. An unknown value raises `ValueError`.",
@@ -816,7 +819,9 @@
   "setCoordinateSystem": "setCoordinateSystem(right, up, forward)\nSets which axes (0=X, 1=Y, 2=Z) are right, up and forward. All three axes must be used without repeating.",
   "setWheelIsDriveWheel": "setWheelIsDriveWheel(wheelIndex, isDriveWheel)\nSets whether the wheel gets engine traction.",
   "constraint_id": "Id of the vehicle physics constraint.",
-  "constraint_type": "Type of the vehicle physics constraint."
+  "constraint_type": "Type of the vehicle physics constraint.",
+  "setSuspensionRestLength": "setSuspensionRestLength(value, wheelIndex)\nChanges a wheel's suspension rest length (positive value). Applied on the next physics step.",
+  "setWheelRadius": "setWheelRadius(value, wheelIndex)\nChanges a wheel's radius (positive value). Applied on the next physics step."
  },
  "Range.constraints": {
   "setErp": "setErp(value)\nPhysics solver ERP: how much of the penetration between objects is corrected per step (default 0.2).",
@@ -907,5 +912,9 @@
  },
  "SCA_ActuatorSensor": {
   "mode": "`0` Active: true while the watched actuator is active. `1` Finished: pulses when the actuator finishes (e.g. Wait, Action, Video)."
+ },
+ "BL_ArmatureObject": {
+  "setBoneRotationOffset": "setBoneRotationOffset(bone, rotation)\nExtra rotation for a bone on top of the playing actions, in the bone's local space. `rotation`: euler XYZ (3 floats, radians) or quaternion (4 floats, w x y z). Stays until `clearBoneRotationOffset()`.",
+  "clearBoneRotationOffset": "clearBoneRotationOffset(bone=None)\nRemoves the extra rotation of one bone, or of all bones when `bone` is omitted."
  }
 }

@@ -2361,5 +2361,6 @@
  "whether the shape should be added to the parent compound shape. * True: the object shape should be added to the parent compound shape. * False: the object should keep its individual shape.": "Se a forma deve ser somada à forma composta do pai. * True: a forma do objeto entra na forma composta do pai. * False: o objeto mantém a própria forma.",
  "whether the visibility/occlusion should be propagated to all children of the object.": "se a visibilidade/oclusão deve ser propagada a todos os filhos do objeto.",
  "white = (255, 255, 255, 255)": "white = (255, 255, 255, 255)",
- "width in pixels": "Largura em pixels"
+ "width in pixels": "Largura em pixels",
+ "The viewport rectangle used for the last render of this camera, in pixels (read-only). Ratios set in the editor are already resolved against the window.": "Retângulo da viewport usado no último render desta câmera, em pixels (somente leitura). Proporções definidas no editor já vêm convertidas para a janela."
 }

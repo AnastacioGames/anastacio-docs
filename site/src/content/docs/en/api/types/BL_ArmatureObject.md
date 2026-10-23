@@ -40,3 +40,19 @@ on each frame to ensure that the armature is updated continously.
 
 Draw lines that represent armature to view it in real time.
 
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### clearBoneRotationOffset(bone=None)
+
+ <small>method</small>
+
+Removes the extra rotation of one bone, or of all bones when `bone` is omitted.
+
+### setBoneRotationOffset(bone, rotation)
+
+ <small>method</small>
+
+Extra rotation for a bone on top of the playing actions, in the bone's local space. `rotation`: euler XYZ (3 floats, radians) or quaternion (4 floats, w x y z). Stays until `clearBoneRotationOffset()`.
+

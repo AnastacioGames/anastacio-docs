@@ -21,7 +21,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `BL_ArmatureBone` | 15 | 0 | 0 |  |
 | `BL_ArmatureChannel` | 34 | 2 | 0 |  |
 | `BL_ArmatureConstraint` | 14 | 14 | 0 |  |
-| `BL_ArmatureObject` | 4 | 4 | 0 |  |
+| `BL_ArmatureObject` | 6 | 6 | 0 |  |
 | `BL_Shader` | 26 | 26 | 0 |  |
 | `BL_Texture` | 19 | 19 | 0 |  |
 | `EXP_BaseListValue` | 7 | 7 | 0 |  |
@@ -38,7 +38,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_BatchGroup` | 5 | 5 | 0 |  |
 | `KX_BlenderMaterial` | 18 | 18 | 0 |  |
 | `KX_BoundingBox` | 6 | 6 | 0 |  |
-| `KX_Camera` | 80 | 80 | 0 | 48 |
+| `KX_Camera` | 81 | 81 | 0 | 48 |
 | `KX_CameraActuator` | 6 | 6 | 0 |  |
 | `KX_ChangeColorActuator` | 3 | 3 | 0 |  |
 | `KX_CharacterWrapper` | 13 | 13 | 0 |  |
@@ -51,7 +51,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
 | `KX_FontObject` | 11 | 11 | 0 | 4 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 212 | 212 | 0 | 24 |
+| `KX_GameObject` | 215 | 215 | 0 | 27 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
@@ -91,7 +91,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_TextureRenderer` | 8 | 8 | 0 |  |
 | `KX_TrackToActuator` | 5 | 5 | 0 |  |
 | `KX_VRHeadSensor` | 6 | 6 | 0 | 6 |
-| `KX_VehicleWrapper` | 30 | 30 | 0 |  |
+| `KX_VehicleWrapper` | 32 | 32 | 0 | 2 |
 | `KX_VertexProxy` | 28 | 28 | 0 |  |
 | `KX_VideoActuator` | 4 | 4 | 0 | 4 |
 | `KX_VisibilityActuator` | 3 | 3 | 0 |  |

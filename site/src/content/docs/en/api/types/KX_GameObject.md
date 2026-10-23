@@ -1653,6 +1653,24 @@ Soft body physics: hardness against other soft bodies (clusters).
 
 Soft body physics: impulse split against other soft bodies (clusters).
 
+### setVehicleGearRatios(ratios)
+
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
+
+Replaces the vehicle gear ratios. Takes a list of numbers, one per gear.
+
+### setVehicleMaxRPM(value)
+
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
+
+Changes the maximum engine RPM of the vehicle at runtime (number >= 0).
+
+### setVehicleMaxTorque(value)
+
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
+
+Changes the maximum engine torque of this object's vehicle at runtime (number >= 0).
+
 ### strikeLightning(bolt=True)
 
  <small>method</small>

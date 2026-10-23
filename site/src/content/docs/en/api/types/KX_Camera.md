@@ -163,6 +163,13 @@ True when the camera is used as a viewport, set True to enable a viewport for th
 
 **Type:** boolean
 
+### viewport
+
+The viewport rectangle used for the last render of this camera, in pixels (read-only).
+Ratios set in the editor are already resolved against the window.
+
+**Type:** list [left, bottom, right, top]
+
 ### sphereInsideFrustum(centre, radius)
 
 Tests the given sphere against the view frustum.

@@ -35,3 +35,19 @@ Isto não é necessário se um KX_ArmatureActuator no modo run estiver ativo ou 
 
 Desenha linhas que representam a armature, para vê-la em tempo real.
 
+## Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### clearBoneRotationOffset(bone=None)
+
+ <small>método</small>
+
+Remove a rotação extra de um osso, ou de todos quando `bone` é omitido.
+
+### setBoneRotationOffset(bone, rotation)
+
+ <small>método</small>
+
+Rotação extra num osso por cima das actions que estão tocando, no espaço local do osso. `rotation`: euler XYZ (3 valores, radianos) ou quaternion (4 valores, w x y z). Fica até `clearBoneRotationOffset()`.
+

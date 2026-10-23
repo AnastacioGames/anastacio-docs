@@ -1602,6 +1602,24 @@ Física de corpo mole (soft body): rigidez contra outros corpos moles (clusters)
 
 Física de corpo mole (soft body): divisão de impulso contra outros corpos moles (clusters).
 
+### setVehicleGearRatios(relacoes)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
+
+Troca as relações de marcha do veículo. Recebe uma lista de números, uma por marcha.
+
+### setVehicleMaxRPM(valor)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
+
+Muda em jogo a rotação máxima (RPM) do motor do veículo (número >= 0).
+
+### setVehicleMaxTorque(valor)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
+
+Muda em jogo o torque máximo do motor do veículo deste objeto (número >= 0).
+
 ### strikeLightning(bolt=True)
 
  <small>método</small>

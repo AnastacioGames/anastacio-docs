@@ -251,11 +251,23 @@ Salva a configuração atual do veículo num arquivo de preset.
 
 Define quais eixos (0=X, 1=Y, 2=Z) são direita, cima e frente. Precisa usar os três eixos sem repetir.
 
+### setSuspensionRestLength(valor, wheelIndex)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
+
+Muda o comprimento de repouso da suspensão de uma roda (valor positivo). Aplicado no próximo passo da física.
+
 ### setWheelIsDriveWheel(wheelIndex, isDriveWheel)
 
  <small>método</small>
 
 Define se a roda recebe tração do motor.
+
+### setWheelRadius(valor, wheelIndex)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
+
+Muda o raio de uma roda (valor positivo). Aplicado no próximo passo da física.
 
 ### constraint_id
 

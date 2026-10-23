@@ -10,8 +10,8 @@ description: Build 2D game menus and HUD with nodes, no code required. Works on 
 1. In the Node Editor, switch the type to **UI Tree** and click **New**.
 2. In the **UI Tree** panel (N key or the tab in the T shelf), click **+ Menu** and/or **+ HUD**.
    - **Menu**: screens `Menu` (Play, Options, Quit) and `Opcoes` (Sound, Volume, Back).
-   - **HUD**: health bar and text at the top and a speedometer at the bottom.
-3. Click **Setup Game Logic**. It adds to the scene camera an Always sensor (pulse) with the Python Module controller `range_ui_runtime.main` and creates the properties `ui_screen`, `ui_hud`, `som`, `volume`, `vida` and `velocidade`. Running it again duplicates nothing.
+   - **HUD**: health bar and text at the top, a speedometer at the bottom, a **II** (pause) button at the bottom center and **A** and **B** buttons at the bottom left, made for phone touch.
+3. Click **Setup Game Logic**. It adds to the scene camera an Always sensor (pulse) with the Python Module controller `range_ui_runtime.main` and creates the properties `ui_screen`, `ui_hud`, `som`, `volume`, `vida`, `velocidade`, `botao_a` and `botao_b`. Running it again duplicates nothing.
 4. Press **P**. Bake runs automatically on play and on save.
 
 In the template, **Play** hides the menu and turns on the HUD; **Sound** and **Volume** drive the game master volume.
@@ -55,3 +55,17 @@ def on_play(ui):
 :::tip
 The HUD reads game properties every frame. For the health bar, just change the `vida` property in your script or with a Property actuator.
 :::
+
+## Speedometer and HUD buttons
+
+- **Speedometer without a script**: set the Gauge (or Label/Progress Bar) **Object** field to the car or character name. The HUD measures how far the object moved each frame and provides it in km/h as `velocidade` (and `speed`). Works with physics, Motion and jumps. If the object has its own `velocidade` property, that one is used.
+- **II**: pauses by going back to the menu and hiding the HUD.
+- **A** and **B**: while held, `botao_a` and `botao_b` are `True` on the camera. Read them in your script:
+
+```python
+cam = own.scene.active_camera
+if cam["botao_a"]:
+    own.applyForce((0, 0, 300))  # a jump, for example
+```
+
+HUD buttons respond to touch and mouse while no menu is open. On Web and Android touch is read as a single finger.

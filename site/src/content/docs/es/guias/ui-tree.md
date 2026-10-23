@@ -10,8 +10,8 @@ description: Arma menús y HUD 2D del juego con nodos, sin escribir código. Fun
 1. En el Node Editor, cambia el tipo a **UI Tree** y haz clic en **New**.
 2. En el panel **UI Tree** (tecla N o pestaña en la barra T), haz clic en **+ Menu** y/o **+ HUD**.
    - **Menu**: pantallas `Menu` (Jugar, Opciones, Salir) y `Opcoes` (Sonido, Volumen, Volver).
-   - **HUD**: barra y texto de vida arriba y velocímetro abajo.
-3. Haz clic en **Setup Game Logic**. Agrega a la cámara de la escena un sensor Always (pulso) con el controlador Python Module `range_ui_runtime.main` y crea las propiedades `ui_screen`, `ui_hud`, `som`, `volume`, `vida` y `velocidade`. Ejecutarlo de nuevo no duplica nada.
+   - **HUD**: barra y texto de vida arriba, velocímetro abajo, botón **II** (pausa) abajo al centro y botones **A** y **B** abajo a la izquierda, pensados para el toque en el móvil.
+3. Haz clic en **Setup Game Logic**. Agrega a la cámara de la escena un sensor Always (pulso) con el controlador Python Module `range_ui_runtime.main` y crea las propiedades `ui_screen`, `ui_hud`, `som`, `volume`, `vida`, `velocidade`, `botao_a` y `botao_b`. Ejecutarlo de nuevo no duplica nada.
 4. Pulsa **P**. El Bake es automático al jugar y al guardar.
 
 En la plantilla, **Jugar** oculta el menú y enciende el HUD; **Sonido** y **Volumen** controlan el volumen general del juego.
@@ -43,3 +43,9 @@ range_ui_runtime.hide()            # oculta el menú
 range_ui_runtime.set_hud(True)     # enciende el HUD
 pantalla = range_ui_runtime.get()  # pantalla actual
 ```
+
+## Velocímetro y botones del HUD
+
+- **Velocímetro sin script**: pon en el campo **Object** del Gauge el nombre del coche o personaje. El HUD mide cuánto se movió el objeto en cada frame y lo entrega en km/h como `velocidade` (y `speed`). Funciona con física, Motion y saltos.
+- **II**: pausa volviendo al menú y ocultando el HUD.
+- **A** y **B**: mientras se mantienen pulsados, `botao_a` y `botao_b` valen `True` en la cámara; léelos en tu script.

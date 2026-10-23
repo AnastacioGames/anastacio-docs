@@ -53,3 +53,28 @@ Measure, change one thing and measure again. The comparison section shows right 
 - **Audio (OGG)**: prepares sounds as OGG for the exported package.
 
 Originals stay untouched; prepared versions are only used on export.
+
+## Web and Android
+
+Phone GPUs are much weaker than desktop ones, and full-screen effects cost far more there. The **Performance** menu has a **Web / Android** section with these tips.
+
+### Sky Quality
+
+The **Atmospheric** sky computes the atmosphere for every pixel. In the **World**, **Sky Quality** picks its cost:
+
+| Option | Use | Measured on an Android phone |
+|---|---|---|
+| **Auto** (default) | Low on Web and Android, High on desktop | ~11 ms per frame |
+| **High** | full sky | 41 ms (~24 FPS) |
+| **Low** | phones and integrated GPUs | ~11 ms |
+| **Very Low** | weak phones or effect-heavy scenes | 3 ms |
+
+### Measuring on the phone
+
+1. Export to Web and run the package's `serve.py` on the PC.
+2. On the phone (same Wi-Fi), open `http://<PC IP>:8080/?report=1`. With a USB cable: `adb reverse tcp:8080 tcp:8080` and open `http://localhost:8080/?report=1`.
+3. Play. Every 10 seconds and on exit, the phone sends the data to the PC, which writes `reports/<date>/report.html` in the package folder.
+
+:::tip
+On the Web, time shown as **Overhead** is the browser waiting for the GPU. If it dominates, the bottleneck is pixels and effects, not scripts.
+:::

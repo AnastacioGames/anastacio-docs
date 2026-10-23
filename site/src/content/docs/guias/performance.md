@@ -53,3 +53,28 @@ Meça, mude uma coisa e meça de novo. A seção de comparação mostra na hora 
 - **Audio (OGG)**: prepara os sons em OGG para o pacote exportado.
 
 Os originais ficam intactos; as versões preparadas são usadas só na exportação.
+
+## Web e Android
+
+A GPU do celular é bem mais fraca que a do PC, e efeitos de tela cheia pesam muito mais lá. O menu **Performance** tem uma seção **Web / Android** com estas dicas.
+
+### Sky Quality
+
+O céu **Atmospheric** calcula a atmosfera em cada pixel. No **World**, a opção **Sky Quality** escolhe quanto ele custa:
+
+| Opção | Uso | Medido num celular Android |
+|---|---|---|
+| **Auto** (padrão) | Low na Web e no Android, High no PC | ~11 ms por frame |
+| **High** | céu completo | 41 ms (~24 FPS) |
+| **Low** | celular e vídeo integrado | ~11 ms |
+| **Very Low** | celular fraco ou cena cheia de efeitos | 3 ms |
+
+### Medir no celular
+
+1. Exporte para Web e rode o `serve.py` do pacote no PC.
+2. No celular (mesmo Wi-Fi), abra `http://<IP do PC>:8080/?report=1`. Com cabo USB: `adb reverse tcp:8080 tcp:8080` e abra `http://localhost:8080/?report=1`.
+3. Jogue. A cada 10 segundos e ao sair, o celular manda os dados ao PC, que gera `reports/<data>/report.html` na pasta do pacote.
+
+:::tip
+Na Web, o tempo que aparece como **Overhead** é o navegador esperando a GPU. Se ele domina, o gargalo são pixels e efeitos, não scripts.
+:::

@@ -10,8 +10,8 @@ O **UI Tree** é um tipo de árvore do Node Editor para montar a interface 2D do
 1. No Node Editor, troque o tipo para **UI Tree** e clique em **New**.
 2. No painel **UI Tree** (tecla N ou aba na prateleira T), clique em **+ Menu** e/ou **+ HUD**.
    - **Menu**: telas `Menu` (Jogar, Opções, Sair) e `Opcoes` (Som, Volume, Voltar).
-   - **HUD**: barra e texto de vida no canto de cima e velocímetro no canto de baixo.
-3. Clique em **Setup Game Logic**. Ele liga na câmera da cena um sensor Always (pulso) com o controlador Python Module `range_ui_runtime.main` e cria as propriedades `ui_screen`, `ui_hud`, `som`, `volume`, `vida` e `velocidade`. Rodar de novo não duplica nada.
+   - **HUD**: barra e texto de vida no canto de cima, velocímetro no canto de baixo, botão **II** (pausa) embaixo no meio e botões **A** e **B** embaixo à esquerda, bons para toque no celular.
+3. Clique em **Setup Game Logic**. Ele liga na câmera da cena um sensor Always (pulso) com o controlador Python Module `range_ui_runtime.main` e cria as propriedades `ui_screen`, `ui_hud`, `som`, `volume`, `vida`, `velocidade`, `botao_a` e `botao_b`. Rodar de novo não duplica nada.
 4. Aperte **P**. O Bake é automático ao jogar e ao salvar.
 
 No template, **Jogar** esconde o menu e liga o HUD; **Som** e **Volume** mandam no volume geral do jogo.
@@ -55,3 +55,17 @@ def ao_jogar(ui):
 :::tip
 O HUD lê as propriedades do jogo a cada frame. Para a barra de vida, basta mudar a propriedade `vida` no seu script ou num atuador Property.
 :::
+
+## Velocímetro e botões do HUD
+
+- **Velocímetro sem script**: preencha o campo **Object** do Gauge (ou Label/Progress Bar) com o nome do carro ou personagem. O HUD mede quanto o objeto andou a cada frame e entrega em km/h como `velocidade` (e `speed`). Funciona com física, Motion e pulo. Se o objeto tiver uma propriedade própria `velocidade`, ela é usada.
+- **II**: pausa o jogo voltando ao menu e escondendo o HUD.
+- **A** e **B**: enquanto apertados, `botao_a` e `botao_b` ficam `True` na câmera. Leia no seu script:
+
+```python
+cam = own.scene.active_camera
+if cam["botao_a"]:
+    own.applyForce((0, 0, 300))  # pulo, por exemplo
+```
+
+Os botões do HUD respondem ao toque e ao mouse quando nenhum menu está aberto. Na Web e no Android o toque é lido como um dedo só.

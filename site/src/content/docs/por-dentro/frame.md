@@ -10,7 +10,8 @@ fontes:
   - source/source/gameengine/Ketsji/KX_RenderPipeline.cpp
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
-conferido: 3ec78347
+  - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
+conferido: 7b808452
 ---
 
 <div class="ae-x">

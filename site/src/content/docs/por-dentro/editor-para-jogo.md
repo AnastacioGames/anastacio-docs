@@ -13,7 +13,9 @@ fontes:
   - source/source/gameengine/Physics/Bullet/CcdCookedData.cpp
   - source/source/blender/blenloader/intern/versioning_range.c
   - source/release/scripts/startup/bl_ui/properties_game.py
-conferido: 3ec78347
+  - source/release/scripts/startup/bl_ui/properties_game_object.py
+  - source/release/scripts/startup/bl_ui/properties_game_physics.py
+conferido: 7b808452
 ---
 
 <div class="ae-x">

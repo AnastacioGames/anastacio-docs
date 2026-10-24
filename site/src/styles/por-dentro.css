@@ -1,0 +1,93 @@
+/* Por dentro da engine: planta técnica (rota, pilha, trilhas do frame, árvore).
+   Cores só pelos tokens do Starlight, então valem no tema claro e no escuro. */
+.ae-x { --x-line: color-mix(in srgb, var(--sl-color-accent) 55%, transparent); --x-soft: color-mix(in srgb, var(--sl-color-accent) 9%, var(--sl-color-black)); --x-panel: var(--sl-color-gray-6); --x-edge: var(--sl-color-gray-5); }
+.ae-x code { font-size: .78rem; background: none; padding: 0; color: var(--sl-color-gray-3); overflow-wrap: anywhere; }
+.ae-x a { text-decoration: none; color: inherit; }
+.ae-x * + * { margin-top: 0; }
+.ae-x-eyebrow { display: block; font: 600 .68rem var(--sl-font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--sl-color-accent); }
+.ae-x-cap { font-size: .85rem; color: var(--sl-color-gray-3); margin-top: .8rem !important; max-width: 70ch; }
+
+/* Planta de capa */
+.ae-x-plate { position: relative; border: 1px solid var(--x-edge); border-radius: 16px; padding: 1.6rem 1.4rem 1.2rem; overflow: hidden; background-color: var(--x-soft);
+	background-image: linear-gradient(color-mix(in srgb, var(--sl-color-accent) 8%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--sl-color-accent) 8%, transparent) 1px, transparent 1px);
+	background-size: 24px 24px; }
+.sl-markdown-content .ae-x-plate h2 { margin: .3rem 0 .5rem; font-size: clamp(1.6rem, 4vw, 2.3rem); text-wrap: balance; border: 0; }
+.ae-x-plate > p { color: var(--sl-color-gray-2); max-width: 62ch; margin: 0; }
+
+/* Rota: estações ligadas por uma linha com pulso */
+.sl-markdown-content .ae-x-route { list-style: none; padding: 0; margin: 1.8rem 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; }
+.ae-x-route::before { content: ''; position: absolute; left: 10%; right: 10%; top: 15px; height: 2px; background: var(--x-line); }
+.ae-x-route::after { content: ''; position: absolute; top: 11px; left: 10%; width: 10px; height: 10px; border-radius: 50%; background: var(--sl-color-accent-high); box-shadow: 0 0 14px var(--sl-color-accent); animation: ae-x-run 7s linear infinite; }
+@keyframes ae-x-run { from { left: 10%; } to { left: 89%; } }
+.sl-markdown-content .ae-x-route li { margin: 0; position: relative; z-index: 1; }
+.ae-x-route a { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .35rem; padding: 0 .4rem .7rem; border-radius: 12px; transition: background .15s; }
+.ae-x-route a > div { display: flex; flex-direction: column; gap: .2rem; }
+.ae-x-route a:hover, .ae-x-route a:focus-visible { background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent); }
+.ae-x-dot { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 600 .8rem var(--sl-font-mono); color: var(--sl-color-black); background: var(--sl-color-accent); box-shadow: 0 0 0 4px var(--x-soft), 0 0 0 5px var(--x-line); }
+.ae-x-route strong { font-family: var(--ae-display); color: var(--sl-color-white); font-size: 1rem; line-height: 1.15; }
+.ae-x-route span { font-size: .8rem; color: var(--sl-color-gray-3); }
+@media (max-width: 50rem) {
+	.sl-markdown-content .ae-x-route { grid-template-columns: 1fr; gap: .3rem; }
+	.ae-x-route::before { left: 15px; right: auto; top: 16px; bottom: 16px; width: 2px; height: auto; }
+	.ae-x-route::after { left: 11px; animation-name: ae-x-run-v; }
+	.ae-x-route a { flex-direction: row; text-align: left; align-items: flex-start; gap: .8rem; padding: .4rem .4rem .4rem 0; }
+}
+@keyframes ae-x-run-v { from { top: 12px; } to { top: calc(100% - 22px); } }
+
+/* Pilha de camadas (módulos) */
+.ae-x-stack { display: grid; gap: .5rem; margin-top: 1rem; }
+.ae-x-layer { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .8rem 1rem; border: 1px solid var(--x-edge); border-radius: 12px; background: var(--x-panel); }
+.ae-x-layer.hot { border-color: var(--x-line); background: var(--x-soft); }
+.ae-x-chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.ae-x-chip { display: inline-flex; flex-direction: column; gap: .1rem; padding: .45rem .7rem; border-radius: 9px; border: 1px solid var(--x-edge); background: var(--sl-color-black); min-width: 0; }
+a.ae-x-chip:hover, a.ae-x-chip:focus-visible { border-color: var(--sl-color-accent); }
+.ae-x-chip b { font-family: var(--ae-display); color: var(--sl-color-white); font-weight: 600; font-size: .95rem; }
+.ae-x-chip.novo { border-color: color-mix(in srgb, var(--ae-new) 55%, transparent); }
+.ae-x-chip.novo b::after { content: ' novo'; font: 600 .6rem var(--sl-font-mono); color: var(--ae-new); vertical-align: super; }
+.ae-x-down { text-align: center; font: .75rem var(--sl-font-mono); color: var(--sl-color-gray-3); }
+@media (max-width: 40rem) { .ae-x-layer { grid-template-columns: 1fr; gap: .5rem; } }
+
+/* Trilhas do frame */
+.ae-x-lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.ae-x-lane { border: 1px solid var(--x-edge); border-radius: 14px; background: var(--x-panel); padding: 1rem 1rem 1.1rem; min-width: 0; }
+.ae-x-lane.hot { border-color: var(--x-line); background: var(--x-soft); }
+.ae-x-lane .ae-x-title { display: block; font-family: var(--ae-display); font-size: 1.05rem; margin: .2rem 0 .9rem; color: var(--sl-color-white); }
+.sl-markdown-content .ae-x-steps { list-style: none; padding: 0 0 0 1.3rem; margin: 0; position: relative; }
+.ae-x-steps::before { content: ''; position: absolute; left: .35rem; top: .4rem; bottom: .4rem; width: 2px; background: var(--x-line); }
+.sl-markdown-content .ae-x-steps li { position: relative; margin: 0 0 .7rem; font-size: .88rem; line-height: 1.35; color: var(--sl-color-gray-1); }
+.ae-x-steps li::before { content: ''; position: absolute; left: -1.22rem; top: .3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--sl-color-black); border: 2px solid var(--sl-color-accent); }
+.ae-x-steps li.opt::before { border-style: dashed; border-color: var(--sl-color-gray-3); }
+.ae-x-steps li.novo::before { border-color: var(--ae-new); }
+.ae-x-steps li small { display: block; color: var(--sl-color-gray-3); font: .72rem var(--sl-font-mono); }
+.ae-x-go { display: block; margin-top: .3rem; font: .72rem var(--sl-font-mono); color: var(--sl-color-accent); }
+.ae-x-pulse { position: absolute; left: .17rem; width: 8px; height: 8px; border-radius: 50%; background: var(--sl-color-accent-high); box-shadow: 0 0 10px var(--sl-color-accent); animation: ae-x-drop 4.5s ease-in-out infinite; }
+@keyframes ae-x-drop { 0% { top: .4rem; opacity: 0; } 10%, 90% { opacity: 1; } 100% { top: calc(100% - .8rem); opacity: 0; } }
+@media (max-width: 56rem) { .ae-x-lanes { grid-template-columns: 1fr; } }
+
+/* Legenda das marcas */
+.ae-x-legend { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: .9rem; font-size: .78rem; color: var(--sl-color-gray-3); }
+.ae-x-legend span::before { content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: .4rem; border: 2px solid var(--sl-color-accent); vertical-align: -1px; }
+.ae-x-legend .opt::before { border-style: dashed; border-color: var(--sl-color-gray-3); }
+.ae-x-legend .novo::before { border-color: var(--ae-new); }
+
+/* Fluxo editor → jogo */
+.ae-x-flow { display: grid; gap: .6rem; margin-top: 1rem; }
+.ae-x-row { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; }
+.ae-x-row > .ae-x-chip { flex: 1 1 9rem; }
+.ae-x-row > i { align-self: center; font: normal .72rem var(--sl-font-mono); color: var(--sl-color-accent); white-space: nowrap; }
+.ae-x-row > i::after { content: ' →'; }
+.ae-x-row.side { padding: .6rem 0 .6rem 1rem; border-left: 2px dashed var(--x-line); }
+.ae-x-row.side > .ae-x-eyebrow { flex-basis: 100%; }
+@media (max-width: 40rem) { .ae-x-row > i { flex-basis: 100%; } .ae-x-row > i::after { content: ' ↓'; } }
+
+/* Árvore do repositório */
+.sl-markdown-content .ae-x-tree { font: .84rem/1.7 var(--sl-font-mono); border: 1px solid var(--x-edge); border-radius: 12px; background: var(--sl-color-black); padding: 1rem 1.2rem; overflow-x: auto; white-space: pre; color: var(--sl-color-gray-2); margin-top: 1rem; }
+.ae-x-tree b { color: var(--sl-color-accent-high); font-weight: 600; }
+.ae-x-tree em { color: var(--sl-color-gray-3); font-style: normal; }
+
+/* Próxima parada */
+.sl-markdown-content .ae-x-next { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2.4rem; padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid var(--x-line); background: var(--x-soft); }
+.ae-x-next strong { display: block; font-family: var(--ae-display); color: var(--sl-color-white); font-size: 1.1rem; }
+.ae-x-next:hover { border-color: var(--sl-color-accent); }
+
+@media (prefers-reduced-motion: reduce) { .ae-x-route::after, .ae-x-pulse { display: none; } }

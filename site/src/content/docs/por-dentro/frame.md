@@ -4,6 +4,13 @@ description: O que a engine faz, em ordem, a cada frame.
 sidebar:
   label: 4 · Um frame
   order: 4
+fontes:
+  - source/source/gameengine/Ketsji/KX_KetsjiEngine.cpp
+  - source/source/gameengine/Ketsji/KX_SimulationPipeline.cpp
+  - source/source/gameengine/Ketsji/KX_RenderPipeline.cpp
+  - source/source/gameengine/Launcher/LA_Launcher.cpp
+  - source/source/gameengine/Ketsji/KX_Scene.cpp
+conferido: 3ec78347
 ---
 
 <div class="ae-x">

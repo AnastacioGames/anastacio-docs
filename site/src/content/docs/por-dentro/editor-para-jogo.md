@@ -4,6 +4,16 @@ description: Como uma opção marcada num painel chega ao jogo rodando.
 sidebar:
   label: 2 · Editor → jogo
   order: 2
+fontes:
+  - source/release/scripts/startup/range_logic_tree.py
+  - source/release/scripts/startup/range_ui_tree.py
+  - source/release/scripts/modules/range_ui_runtime.py
+  - source/source/gameengine/Converter/BL_BlenderDataConversion.cpp
+  - source/source/gameengine/Converter/BL_Converter.cpp
+  - source/source/gameengine/Physics/Bullet/CcdCookedData.cpp
+  - source/source/blender/blenloader/intern/versioning_range.c
+  - source/release/scripts/startup/bl_ui/properties_game.py
+conferido: 3ec78347
 ---
 
 <div class="ae-x">

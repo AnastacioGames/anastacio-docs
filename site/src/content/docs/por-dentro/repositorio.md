@@ -4,6 +4,11 @@ description: Onde fica cada parte da engine no código-fonte.
 sidebar:
   label: 1 · Repositório
   order: 1
+fontes:
+  - source/source/creator/CMakeLists.txt
+  - source/source/blenderplayer/CMakeLists.txt
+  - source/CMakeLists.txt
+conferido: 3ec78347
 ---
 
 <div class="ae-x">

@@ -4,6 +4,11 @@ description: As peças do runtime em camadas, da aplicação até a base.
 sidebar:
   label: 3 · Módulos
   order: 3
+fontes:
+  - source/source/gameengine/CMakeLists.txt
+  - source/source/gameengine/Network/CMakeLists.txt
+  - source/source/gameengine/Ketsji/KX_NetworkManager.cpp
+conferido: 3ec78347
 ---
 
 <div class="ae-x">

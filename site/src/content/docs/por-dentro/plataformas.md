@@ -4,6 +4,11 @@ description: Como o mesmo código vira editor e player para Windows, Linux, Web 
 sidebar:
   label: 5 · Plataformas
   order: 5
+fontes:
+  - source/CMakePresets.json
+  - source/release/scripts/modules/range_web/android.py
+  - source/release/scripts/modules/range_web/__init__.py
+conferido: 3ec78347
 ---
 
 <div class="ae-x">

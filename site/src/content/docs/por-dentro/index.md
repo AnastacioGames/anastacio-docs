@@ -4,6 +4,10 @@ description: O caminho que o seu jogo faz, do editor até a tela, em cinco parad
 sidebar:
   label: Mapa
   order: 0
+fontes:
+  - docs/diagramas-arquitetura.md
+  - docs/architecture.md
+conferido: 3ec78347
 ---
 
 <div class="ae-x">

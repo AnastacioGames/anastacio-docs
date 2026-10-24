@@ -24,7 +24,7 @@ export default defineConfig({
 				es: { label: 'Español', lang: 'es' },
 				ru: { label: 'Русский', lang: 'ru' },
 			},
-			customCss: ['./src/styles/anastacio.css', './src/styles/por-dentro.css'],
+			customCss: ['./src/styles/anastacio.css', './src/styles/por-dentro.css', './src/styles/historico.css'],
 			components: { Header: './src/components/Header.astro' },
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AnastacioGames' }],
 			sidebar: [
@@ -42,7 +42,7 @@ export default defineConfig({
 				{ label: 'Por dentro da engine', translations: { en: 'Inside the engine', es: 'Por dentro del motor', ru: 'Устройство движка' }, items: ['por-dentro', 'por-dentro/repositorio', 'por-dentro/editor-para-jogo', 'por-dentro/modulos', 'por-dentro/frame', 'por-dentro/plataformas'] },
 				{ label: 'Módulos', translations: { en: 'Modules', es: 'Módulos', ru: 'Модули' }, items: modulos },
 				{ label: 'Range.types', collapsed: true, items: types },
-				{ label: 'Projeto', translations: { en: 'Project', es: 'Proyecto', ru: 'Проект' }, items: ['sobre', 'situacao-da-doc'] },
+				{ label: 'Projeto', translations: { en: 'Project', es: 'Proyecto', ru: 'Проект' }, items: ['sobre', 'historico', 'situacao-da-doc'] },
 			],
 		}),
 	],

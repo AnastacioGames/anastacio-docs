@@ -1,0 +1,46 @@
+/* "O que já foi feito": diário de bordo. Um trilho dourado desce pela página;
+   cada mês é uma parada com número grande e cartões por área. */
+
+.ae-h-hero { position: relative; padding: 1.8rem 1.6rem; border: 1px solid rgba(242,178,58,.28); border-radius: 14px;
+	background: radial-gradient(120% 140% at 0 0, rgba(242,178,58,.14), transparent 60%), var(--sl-color-gray-6); }
+.ae-h-eyebrow { font: 600 .75rem var(--sl-font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--sl-color-accent); }
+.ae-h-lead { max-width: 60ch; margin: .6rem 0 0 !important; font-size: 1.15rem; color: var(--sl-color-gray-2); }
+.ae-h-odo { display: flex; flex-wrap: wrap; gap: .75rem 2.5rem; margin: 1.4rem 0 0 !important; }
+.ae-h-odo > div { margin: 0 !important; }
+.ae-h-odo dt { font: 500 .72rem var(--sl-font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--sl-color-gray-3); }
+.ae-h-odo dd { margin: 0 !important; font: 800 2.6rem/1 var(--ae-display); font-variant-numeric: tabular-nums;
+	background: linear-gradient(180deg, var(--ae-gold-2), var(--ae-gold) 55%, var(--ae-ember));
+	-webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.ae-h-month { position: relative; margin-top: 2.5rem !important; padding-left: 4.2rem; }
+.ae-h-month::before { content: ''; position: absolute; left: 1.55rem; top: 3.2rem; bottom: -2.5rem; width: 1px;
+	background: linear-gradient(var(--sl-color-accent), rgba(242,178,58,.08)); }
+.ae-h-month:last-of-type::before { bottom: 0; }
+.ae-h-month > header { display: flex; align-items: center; gap: 1rem; margin-left: -4.2rem; }
+.ae-h-num { flex: none; display: grid; place-items: center; width: 3.1rem; height: 3.1rem; border-radius: 50%;
+	font: 800 1.15rem var(--ae-display); color: var(--sl-color-black); background: linear-gradient(180deg, var(--ae-gold-2), var(--ae-ember));
+	box-shadow: 0 0 0 5px var(--sl-color-black), 0 0 18px rgba(242,178,58,.45); }
+.ae-h-month h2 { margin: 0 !important; font-size: 1.9rem; text-transform: uppercase; text-wrap: balance; }
+.ae-h-month header p { margin: .1rem 0 0 !important; color: var(--sl-color-gray-3); }
+
+.ae-h-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0; margin-top: 1.1rem !important;
+	background: var(--sl-color-black); border: 1px solid var(--sl-color-hairline); border-radius: 12px; overflow: hidden; }
+.ae-h-grid > article { margin: 0 !important; padding: 1.2rem 1.3rem; min-width: 0;
+	box-shadow: 1px 0 0 var(--sl-color-hairline), 0 1px 0 var(--sl-color-hairline); }
+.ae-h-grid h3 { margin: 0 0 .5rem !important; font: 600 .78rem var(--sl-font-mono) !important; letter-spacing: .1em; text-transform: uppercase; color: var(--sl-color-accent); }
+.ae-h-grid ul { margin: 0 !important; padding-left: 1rem; }
+.ae-h-grid li { margin: .35rem 0 0 !important; color: var(--sl-color-gray-2); font-size: .95rem; }
+.ae-h-grid li::marker { color: var(--ae-ember); }
+
+.ae-h-rel { display: inline-block; margin-top: .9rem !important; padding: .15rem .7rem; border-radius: 999px;
+	font: 600 .75rem var(--sl-font-mono); letter-spacing: .05em; color: var(--sl-color-accent); border: 1px solid rgba(242,178,58,.4); }
+.ae-h-foot { margin-top: 3rem !important; color: var(--sl-color-gray-3); }
+
+:root[data-theme='light'] .ae-h-hero { background: radial-gradient(120% 140% at 0 0, rgba(168,102,10,.12), transparent 60%), var(--sl-color-gray-6); border-color: rgba(168,102,10,.3); }
+
+@media (max-width: 40rem) {
+	.ae-h-month { padding-left: 0; }
+	.ae-h-month > header { margin-left: 0; }
+	.ae-h-month::before { display: none; }
+	.ae-h-odo dd { font-size: 2.1rem; }
+}

@@ -47,6 +47,18 @@ Meça, mude uma coisa e meça de novo. A seção de comparação mostra na hora 
 - **Generate LODs**: cria níveis de detalhe em lote, com as distâncias calculadas pelo tamanho de cada objeto. O **X** ao lado remove os LODs gerados.
 - **Collision Proxies**: cria colisão simplificada para cenário estático denso. O **X** remove.
 
+## Scripts mais rápidos
+
+Medido no RolimaRacer com 20 pilotos. Cada chamada da API custa de 0,2 a 0,6 µs só para ir do Python ao C++, e um laço por objeto multiplica isso pelo número de objetos a cada quadro.
+
+- **Calcule uma vez, leia muitas.** Se cada carro precisa de um valor dos outros (faixa, distância na pista), quem é dono calcula no próprio `update()` e guarda; os outros só leem. No Rolima isso cortou metade do custo da IA.
+- **Entrada compartilhada.** Teclas de debug ou atalhos lidos em todos os objetos: leia o teclado uma vez por quadro (guarde junto de `Range.logic.getFrameTime()`) e pule o resto quando nada está apertado.
+- **Use o que já é nativo.** Contas repetidas sobre listas grandes (seguir uma linha de pista, achar o ponto mais perto) ficam bem mais rápidas em C++. Para IA de corrida existe [`TrackLine`](../../api/types/trackline/): achar o carro na linha cai de ~128 µs para ~3 µs.
+- **Prefira `obj.get("x", padrão)`** para ler propriedades, e guarde em variável local o que usa várias vezes no mesmo `update()`.
+- **Não faça a cada quadro o que não muda.** Esconder objetos, ler configurações e procurar filhos podem rodar no `start()` ou a cada poucos quadros.
+
+Para achar o script que pesa, use o **Performance Report** acima: ele lista o tempo de cada componente.
+
 ## Preparar para exportar
 
 - **Textures (DDS)**: prepara as texturas em DDS BC1/BC3 para o jogo exportado no desktop. A seta desfaz.

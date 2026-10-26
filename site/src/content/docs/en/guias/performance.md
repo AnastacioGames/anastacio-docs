@@ -47,6 +47,18 @@ Measure, change one thing and measure again. The comparison section shows right 
 - **Generate LODs**: creates levels of detail in batch, with distances computed from each object's size. The **X** next to it removes generated LODs.
 - **Collision Proxies**: creates simplified collision for dense static scenery. The **X** removes them.
 
+## Faster scripts
+
+Measured in RolimaRacer with 20 drivers. Every API call costs 0.2 to 0.6 µs just to go from Python to C++, and a per-object loop multiplies that by the number of objects every frame.
+
+- **Compute once, read many times.** If each car needs a value from the others (lane, distance along the track), the owner computes it in its own `update()` and stores it; the others only read it. In RolimaRacer this cut the AI cost in half.
+- **Shared input.** Debug keys or shortcuts read by every object: read the keyboard once per frame (keyed by `Range.logic.getFrameTime()`) and skip the rest when nothing is pressed.
+- **Use what is already native.** Repeated math over large lists (following a track line, finding the closest point) is much faster in C++. For racing AI there is [`TrackLine`](../../api/types/trackline/): locating a car on the line drops from ~128 µs to ~3 µs.
+- **Prefer `obj.get("x", default)`** to read properties, and keep in a local variable what you use several times in the same `update()`.
+- **Do not repeat every frame what does not change.** Hiding objects, reading settings and searching for children can run in `start()` or every few frames.
+
+To find the heavy script, use the **Performance Report** above: it lists the time of each component.
+
 ## Prepare for export
 
 - **Textures (DDS)**: prepares textures as DDS BC1/BC3 for the exported desktop game. The arrow reverts.

@@ -133,6 +133,10 @@ Cor `[r, g, b, a]` da partícula no fim da vida (a cor vai mudando de `color` at
 
 Tamanho da partícula no fim da vida.
 
+### flipbook
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
 ### fragmentShaderPath
 
  <small>atributo</small>

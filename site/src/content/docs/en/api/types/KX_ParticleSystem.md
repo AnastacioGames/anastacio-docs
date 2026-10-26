@@ -133,6 +133,10 @@ Particle color `[r, g, b, a]` at the end of its life (the color fades from `colo
 
 Particle size at the end of its life.
 
+### flipbook
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
 ### fragmentShaderPath
 
  <small>attribute</small>

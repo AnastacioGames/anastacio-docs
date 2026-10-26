@@ -259,6 +259,10 @@ Cria agora um objeto que ficou de fora no carregamento pela opção **Convert** 
 
 **Retorna:** `KX_GameObject`
 
+### getQualityPreset()
+
+<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+
 ### play_cutscene(sequence=0)
 
  <small>método</small>
@@ -280,6 +284,10 @@ Libera um evento **Wait Trigger** da Cutscene esperando por `name`. `True` se el
  <small>método</small>
 
 Reinicia a Cutscene ativa e remove os objetos que ela criou.
+
+### setQualityPreset()
+
+<span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
 ### stop_cutscene()
 

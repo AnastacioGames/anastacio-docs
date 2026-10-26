@@ -1358,7 +1358,7 @@ Vetor local deste objeto até outro objeto ou ponto. Útil para saber para que l
 
 ### getVehicle()
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 O veículo criado pelo painel Vehicle deste objeto, ou `None`.
 
@@ -1366,7 +1366,7 @@ O veículo criado pelo painel Vehicle deste objeto, ou `None`.
 
 ### getVehicleGearboxType()
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Tipo de câmbio configurado no painel Vehicle.
 
@@ -1374,7 +1374,7 @@ Tipo de câmbio configurado no painel Vehicle.
 
 ### getVehicleGearRatios()
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Relações das marchas configuradas no painel Vehicle.
 
@@ -1382,7 +1382,7 @@ Relações das marchas configuradas no painel Vehicle.
 
 ### getVehicleMaxRPM()
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Rotação máxima do motor configurada no painel Vehicle.
 
@@ -1390,7 +1390,7 @@ Rotação máxima do motor configurada no painel Vehicle.
 
 ### getVehicleMaxTorque()
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Torque máximo do motor configurado no painel Vehicle.
 
@@ -1398,7 +1398,7 @@ Torque máximo do motor configurado no painel Vehicle.
 
 ### getVehicleSteeringWheel()
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Objeto do volante configurado no painel Vehicle, ou `None`.
 
@@ -1406,7 +1406,7 @@ Objeto do volante configurado no painel Vehicle, ou `None`.
 
 ### lookAt(vect, axis=2, factor=1.0)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Vira o objeto para que o eixo `axis` (0=X, 1=Y, 2=Z) aponte na direção `vect`. `factor` abaixo de 1 vira só uma parte (suaviza).
 
@@ -1430,175 +1430,175 @@ Muda o peso (0 a 1) da camada de animação `layer`.
 
 ### setCcdMotionThreshold(threshold)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Velocidade a partir da qual a detecção contínua de colisão (CCD) entra, evitando que objetos rápidos atravessem paredes.
 
 ### setCcdSweptSphereRadius(radius)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Raio da esfera usada pela detecção contínua de colisão (CCD).
 
 ### setHalfAnimations(enabled)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Com `True`, atualiza as animações do objeto em frames alternados, para economizar CPU.
 
 ### setSoftAnchorsHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez das âncoras.
 
 ### setSoftAngularStiffness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez angular.
 
 ### setSoftClusterSolverIterations(iterations)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): iterações do solver de clusters.
 
 ### setSoftContactsHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez dos contatos.
 
 ### setSoftDampingCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): amortecimento.
 
 ### setSoftDragCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): arrasto do ar.
 
 ### setSoftDriftSolverIterations(iterations)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): iterações do solver de deriva.
 
 ### setSoftDynamicFrictionCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): atrito dinâmico.
 
 ### setSoftKineticContactsHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez do contato com objetos cinemáticos.
 
 ### setSoftLiftCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): sustentação (lift).
 
 ### setSoftLinearStiffness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez linear.
 
 ### setSoftPoseMatching(enabled)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): liga a tentativa de voltar à forma original.
 
 ### setSoftPoseMatchingCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): força com que volta à forma original.
 
 ### setSoftPositionSolverIterations(iterations)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): iterações do solver de posição.
 
 ### setSoftPressureCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): pressão interna (efeito balão).
 
 ### setSoftRigidContactsHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez do contato com corpos rígidos.
 
 ### setSoftVelocitiesCorrectionFactor(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): fator de correção das velocidades.
 
 ### setSoftVelocitySolverIterations(iterations)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): iterações do solver de velocidade.
 
 ### setSoftVolume(volume)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): volume que o corpo tenta manter.
 
 ### setSoftVolumeConversationCoefficient(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): conservação de volume.
 
 ### setSoftVsKineticHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez contra corpos cinemáticos (clusters).
 
 ### setSoftVsKineticImpulseSplitCluster(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): divisão de impulso contra corpos cinemáticos (clusters).
 
 ### setSoftVsRigidHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez contra corpos rígidos (clusters).
 
 ### setSoftVsRigidImpulseSplitCluster(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): divisão de impulso contra corpos rígidos (clusters).
 
 ### setSoftVsSoftHardness(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): rigidez contra outros corpos moles (clusters).
 
 ### setSoftVsSoftImpulseSplitCluster(value)
 
- <small>método</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Física de corpo mole (soft body): divisão de impulso contra outros corpos moles (clusters).
 
@@ -1634,19 +1634,19 @@ Pausa todas as animações do objeto até `resumeAnimations()`.
 
 ### activitycullingdistance
 
- <small>atributo · só leitura</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
 Distância deste objeto até a câmera calculada pelo Activity Culling.
 
 ### angularVelocity
 
- <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
 Velocidade angular. Lê em coordenadas locais e escreve em coordenadas do mundo.
 
 ### animationEventManager
 
- <small>atributo · só leitura</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
 Gerenciador dos eventos de animação do objeto (`KX_AnimationEventManager`).
 
@@ -1742,7 +1742,7 @@ Impulso mínimo de colisão para um objeto explosivo detonar.
 
 ### linearVelocity
 
- <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
 Velocidade linear. Lê em coordenadas locais e escreve em coordenadas do mundo.
 
@@ -1754,13 +1754,13 @@ Número máximo de decalques ao mesmo tempo neste objeto.
 
 ### parentRecursive
 
- <small>atributo · só leitura</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
 Lista de todos os pais acima do objeto, do mais próximo ao mais distante.
 
 ### particles
 
- <small>atributo · só leitura</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
 Sistema de partículas do objeto (`KX_ParticleSystem`), ou `None`.
 
@@ -1772,7 +1772,7 @@ Segundo sistema de partículas (mistura) do objeto, ou `None`.
 
 ### passIndex
 
- <small>atributo</small>
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
 Pass Index do objeto, usado para separar objetos em filtros e efeitos.
 

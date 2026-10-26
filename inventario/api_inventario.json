@@ -2179,6 +2179,54 @@
      "origem": "anastacio",
      "commit": "376fea36",
      "data": "2026-10-20"
+    },
+    "textBox": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "80293068",
+     "data": "2026-10-25"
+    },
+    "lines": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "80293068",
+     "data": "2026-10-25"
+    },
+    "page": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "80293068",
+     "data": "2026-10-25"
+    },
+    "pageCount": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "80293068",
+     "data": "2026-10-25"
+    },
+    "visibleCharacters": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "80293068",
+     "data": "2026-10-25"
+    },
+    "characterCount": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "80293068",
+     "data": "2026-10-25"
     }
    }
   },
@@ -2214,7 +2262,7 @@
    }
   },
   "KX_GameObject": {
-   "arquivo": "source/source/gameengine/Ketsji/KX_GameObject.cpp",
+   "arquivo": "source/source/gameengine/Ketsji/KX_GameObject_Python.cpp",
    "rst": "KX_GameObject",
    "tem_rst": true,
    "itens": {
@@ -2261,170 +2309,198 @@
     "setCcdMotionThreshold": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setCcdSweptSphereRadius": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftLinearStiffness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftAngularStiffness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVolume": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVsRigidHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVsKineticHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVsSoftHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVsRigidImpulseSplitCluster": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVsKineticImpulseSplitCluster": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVsSoftImpulseSplitCluster": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVelocitiesCorrectionFactor": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftDampingCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftDragCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftLiftCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftPressureCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVolumeConversationCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftDynamicFrictionCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftPoseMatchingCoefficient": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftRigidContactsHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftKineticContactsHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftContactsHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftAnchorsHardness": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftVelocitySolverIterations": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftPositionSolverIterations": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftDriftSolverIterations": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftClusterSolverIterations": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setSoftPoseMatching": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getReactionForce": {
      "tipo": "metodo",
@@ -2437,8 +2513,9 @@
     "lookAt": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getAxisVect": {
      "tipo": "metodo",
@@ -2491,22 +2568,23 @@
     "setHalfAnimations": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "suspendAnimations": {
      "tipo": "metodo",
      "status": "novo",
      "origem": "anastacio",
-     "commit": "5c1a5d03",
-     "data": "2026-09-16"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "resumeAnimations": {
      "tipo": "metodo",
      "status": "novo",
      "origem": "anastacio",
-     "commit": "5c1a5d03",
-     "data": "2026-09-16"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setOcclusion": {
      "tipo": "metodo",
@@ -2523,59 +2601,65 @@
     "getVehicle": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getVehicleSteeringWheel": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getVehicleMaxTorque": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getVehicleMaxRPM": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getVehicleGearRatios": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getVehicleGearboxType": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setVehicleMaxTorque": {
      "tipo": "metodo",
      "status": "novo",
      "origem": "anastacio",
-     "commit": "0a371afc",
-     "data": "2026-10-22"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setVehicleMaxRPM": {
      "tipo": "metodo",
      "status": "novo",
      "origem": "anastacio",
-     "commit": "0a371afc",
-     "data": "2026-10-22"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "setVehicleGearRatios": {
      "tipo": "metodo",
      "status": "novo",
      "origem": "anastacio",
-     "commit": "0a371afc",
-     "data": "2026-10-22"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "getPropertyNames": {
      "tipo": "metodo",
@@ -2671,14 +2755,12 @@
     "setActionLayerWeight": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "desconhecida"
     },
     "setActionLayerSpeed": {
      "tipo": "metodo",
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "desconhecida"
     },
     "setActionFrame": {
      "tipo": "metodo",
@@ -2706,8 +2788,9 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "name": {
      "tipo": "atributo",
@@ -2723,8 +2806,9 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "groupMembers": {
      "tipo": "atributo",
@@ -2761,16 +2845,16 @@
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "989d5e3c",
-     "data": "2026-10-04"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "anisotropicFrictionCoefficients": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "989d5e3c",
-     "data": "2026-10-04"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "isSuspendDynamics": {
      "tipo": "atributo",
@@ -2817,128 +2901,128 @@
      "so_leitura": true,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "fragments": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "burstSpeed": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "debrisLifetime": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "useBreakOnCollision": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "useInheritVelocity": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "impactImpulse": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "useExplodeOnImpact": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "useChainReaction": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "dentImpulse": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "useDentOnCollision": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "bendAxis": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "bendAngle": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "bendMaxAngle": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "decal": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "decalSize": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "explosionRadius": {
      "tipo": "atributo",
@@ -3055,16 +3139,16 @@
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "maxDecals": {
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "49be685b",
-     "data": "2026-10-09"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "linVelocityMin": {
      "tipo": "atributo",
@@ -3095,8 +3179,9 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "visible": {
      "tipo": "atributo",
@@ -3108,8 +3193,8 @@
      "so_leitura": false,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "96f089eb",
-     "data": "2026-10-10"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "culled": {
      "tipo": "atributo",
@@ -3255,8 +3340,9 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "localLinearVelocity": {
      "tipo": "atributo",
@@ -3272,8 +3358,9 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "localAngularVelocity": {
      "tipo": "atributo",
@@ -3319,8 +3406,9 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "debug": {
      "tipo": "atributo",
@@ -3361,16 +3449,17 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "novo",
-     "origem": "snapshot",
-     "commit": "28775369"
+     "origem": "anastacio",
+     "commit": "43603c28",
+     "data": "2026-10-23"
     },
     "particlesMix": {
      "tipo": "atributo",
      "so_leitura": true,
      "status": "novo",
      "origem": "anastacio",
-     "commit": "f51619e1",
-     "data": "2026-10-12"
+     "commit": "43603c28",
+     "data": "2026-10-23"
     }
    }
   },
@@ -4486,6 +4575,14 @@
      "commit": "f51619e1",
      "data": "2026-10-12"
     },
+    "flipbook": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "b8f1dcb9",
+     "data": "2026-10-25"
+    },
     "blendMode": {
      "tipo": "atributo",
      "so_leitura": false,
@@ -5118,6 +5215,16 @@
     "restart": {
      "tipo": "metodo",
      "status": "documentado"
+    },
+    "setQualityPreset": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "getQualityPreset": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
     },
     "replace": {
      "tipo": "metodo",
@@ -6658,6 +6765,14 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "documentado"
+    },
+    "fireCount": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "0e330f16",
+     "data": "2026-10-23"
     },
     "executePriority": {
      "tipo": "atributo",

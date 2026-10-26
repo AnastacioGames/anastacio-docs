@@ -49,9 +49,9 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_CubeMap` | 0 | 0 | 0 |  |
 | `KX_DynamicActuator` | 2 | 2 | 0 |  |
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
-| `KX_FontObject` | 11 | 11 | 0 | 4 |
+| `KX_FontObject` | 17 | 11 | 6 | 10 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 215 | 215 | 0 | 27 |
+| `KX_GameObject` | 215 | 215 | 0 | 70 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
@@ -71,7 +71,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 34 | 34 | 0 | 12 |
+| `KX_ParticleSystem` | 35 | 34 | 1 | 13 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |
@@ -82,7 +82,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_RadarSensor` | 5 | 5 | 0 |  |
 | `KX_RaySensor` | 14 | 14 | 0 | 3 |
 | `KX_ReplaceMeshActuator` | 4 | 4 | 0 |  |
-| `KX_Scene` | 37 | 37 | 0 | 1 |
+| `KX_Scene` | 39 | 37 | 2 | 1 |
 | `KX_SceneActuator` | 4 | 4 | 0 |  |
 | `KX_SoundActuator` | 17 | 17 | 0 |  |
 | `KX_Speaker` | 41 | 41 | 0 |  |
@@ -103,7 +103,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `SCA_AnimationEventSensor` | 0 | 0 | 0 |  |
 | `SCA_DelaySensor` | 5 | 5 | 0 |  |
 | `SCA_IController` | 4 | 4 | 0 |  |
-| `SCA_ILogicBrick` | 3 | 2 | 0 |  |
+| `SCA_ILogicBrick` | 4 | 2 | 1 | 1 |
 | `SCA_IObject` | 0 | 0 | 0 |  |
 | `SCA_ISensor` | 14 | 14 | 0 |  |
 | `SCA_InputEvent` | 8 | 8 | 0 |  |

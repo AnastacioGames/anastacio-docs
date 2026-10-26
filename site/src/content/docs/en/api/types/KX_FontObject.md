@@ -67,11 +67,27 @@ These items exist in the engine but were not in the Range documentation. The one
 
 Name of the text data holding the Bitmap Atlas used for drawing, `""` for the text's own atlas, or `None` for no atlas.
 
+### characterCount
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
+
 ### font
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 
 Name of the text's font (as shown in the Text properties), or `None`. Changing it redraws the text immediately; an unknown name raises `ValueError`.
+
+### lines
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
+
+### page
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+### pageCount
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
 ### shadowColor
 
@@ -84,6 +100,10 @@ Text shadow color `[r, g, b, a]`.
  <small>attribute</small>
 
 Text shadow offset `[x, y]`.
+
+### textBox
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 
 ### translationKey
 
@@ -102,4 +122,8 @@ When `True`, the text uses the font and atlas set for the current language in `l
  <small>attribute</small>
 
 Turns on the text shadow.
+
+### visibleCharacters
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 

@@ -1,0 +1,23 @@
+Polilinha fechada para IA de corrida, calculada em C++. Diz quanto da pista o carro já percorreu, dá o ponto e o lado da pista a uma distância e guarda perfis por ponto (curvatura, velocidade segura). Monte uma vez por pista e compartilhe entre os carros.
+A linha é fechada: o último ponto liga no primeiro. `s` é a distância em metros desde o primeiro ponto e dá a volta, então `s` maior que `length` ou negativo funciona.
+ou o centro da malha da estrada
+busca global
+perto do último segmento
+12 m à frente
+vetor unitário para a direita, ou None
+pelo menos 3 pontos (`mathutils.Vector` ou sequências de 3 números).
+Comprimento total da linha fechada, em metros (só leitura).
+Segmento da linha mais perto de `pos`.
+Com `seg` >= 0 só os segmentos de `seg - back` a `seg + ahead` são testados, o que evita pular para um trecho vizinho da pista. Quando esse resultado fica a mais de `lost` metros (respawn, atalho), ou com `seg` = -1, a linha inteira é procurada.
+posição em coordenadas do mundo.
+segmento da chamada anterior, -1 se desconhecido.
+segmentos testados atrás de `seg`.
+segmentos testados à frente de `seg`.
+distância em metros que dispara a busca global.
+(distância ao quadrado até a linha, `s` em metros, índice do segmento).
+Ponto da linha a `s` metros do início.
+Vetor horizontal unitário apontando para a direita da linha em `s`, ou None onde a linha é vertical ou degenerada.
+Guarda um valor por ponto com o nome `name` (curvatura, velocidade segura, qualquer número).
+nome do perfil.
+um número por ponto da linha.
+Valor do perfil `name` interpolado em `s` metros.

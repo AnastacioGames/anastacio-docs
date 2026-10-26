@@ -67,11 +67,27 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 Nome do texto que guarda o Bitmap Atlas usado para desenhar, `""` para o atlas do próprio texto ou `None` para nenhum atlas.
 
+### characterCount
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
 ### font
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
 Nome da fonte do texto (a fonte que aparece nas propriedades do Text), ou `None`. Trocar redesenha o texto na hora; nome que não existe no arquivo gera `ValueError`.
+
+### lines
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+### page
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+### pageCount
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
 ### shadowColor
 
@@ -84,6 +100,10 @@ Cor `[r, g, b, a]` da sombra do texto.
  <small>atributo</small>
 
 Deslocamento `[x, y]` da sombra do texto.
+
+### textBox
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 
 ### translationKey
 
@@ -102,4 +122,8 @@ Quando `True`, o texto usa a fonte e o atlas definidos para o idioma atual no `l
  <small>atributo</small>
 
 Liga a sombra do texto.
+
+### visibleCharacters
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
 

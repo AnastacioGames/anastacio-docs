@@ -1409,7 +1409,7 @@ Local vector from this object to another object or point. Useful to know which w
 
 ### getVehicle()
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 The vehicle created by this object's Vehicle panel, or `None`.
 
@@ -1417,7 +1417,7 @@ The vehicle created by this object's Vehicle panel, or `None`.
 
 ### getVehicleGearboxType()
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Gearbox type set in the Vehicle panel.
 
@@ -1425,7 +1425,7 @@ Gearbox type set in the Vehicle panel.
 
 ### getVehicleGearRatios()
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Gear ratios set in the Vehicle panel.
 
@@ -1433,7 +1433,7 @@ Gear ratios set in the Vehicle panel.
 
 ### getVehicleMaxRPM()
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Maximum engine RPM set in the Vehicle panel.
 
@@ -1441,7 +1441,7 @@ Maximum engine RPM set in the Vehicle panel.
 
 ### getVehicleMaxTorque()
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Maximum engine torque set in the Vehicle panel.
 
@@ -1449,7 +1449,7 @@ Maximum engine torque set in the Vehicle panel.
 
 ### getVehicleSteeringWheel()
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Steering wheel object set in the Vehicle panel, or `None`.
 
@@ -1457,7 +1457,7 @@ Steering wheel object set in the Vehicle panel, or `None`.
 
 ### lookAt(vect, axis=2, factor=1.0)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Turns the object so its `axis` (0=X, 1=Y, 2=Z) points along `vect`. A `factor` below 1 turns only part of the way (smoothing).
 
@@ -1481,175 +1481,175 @@ Changes the weight (0 to 1) of animation layer `layer`.
 
 ### setCcdMotionThreshold(threshold)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Speed above which continuous collision detection (CCD) kicks in, so fast objects don't pass through walls.
 
 ### setCcdSweptSphereRadius(radius)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Radius of the sphere used by continuous collision detection (CCD).
 
 ### setHalfAnimations(enabled)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 With `True`, updates the object animations every other frame to save CPU.
 
 ### setSoftAnchorsHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: anchor hardness.
 
 ### setSoftAngularStiffness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: angular stiffness.
 
 ### setSoftClusterSolverIterations(iterations)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: cluster solver iterations.
 
 ### setSoftContactsHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: contact hardness.
 
 ### setSoftDampingCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: damping.
 
 ### setSoftDragCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: air drag.
 
 ### setSoftDriftSolverIterations(iterations)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: drift solver iterations.
 
 ### setSoftDynamicFrictionCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: dynamic friction.
 
 ### setSoftKineticContactsHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: hardness of contact with kinematic objects.
 
 ### setSoftLiftCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: lift.
 
 ### setSoftLinearStiffness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: linear stiffness.
 
 ### setSoftPoseMatching(enabled)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: tries to go back to the original shape.
 
 ### setSoftPoseMatchingCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: how strongly it goes back to the original shape.
 
 ### setSoftPositionSolverIterations(iterations)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: position solver iterations.
 
 ### setSoftPressureCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: internal pressure (balloon effect).
 
 ### setSoftRigidContactsHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: hardness of contact with rigid bodies.
 
 ### setSoftVelocitiesCorrectionFactor(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: velocity correction factor.
 
 ### setSoftVelocitySolverIterations(iterations)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: velocity solver iterations.
 
 ### setSoftVolume(volume)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: volume the body tries to keep.
 
 ### setSoftVolumeConversationCoefficient(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: volume conservation.
 
 ### setSoftVsKineticHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: hardness against kinematic bodies (clusters).
 
 ### setSoftVsKineticImpulseSplitCluster(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: impulse split against kinematic bodies (clusters).
 
 ### setSoftVsRigidHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: hardness against rigid bodies (clusters).
 
 ### setSoftVsRigidImpulseSplitCluster(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: impulse split against rigid bodies (clusters).
 
 ### setSoftVsSoftHardness(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: hardness against other soft bodies (clusters).
 
 ### setSoftVsSoftImpulseSplitCluster(value)
 
- <small>method</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Soft body physics: impulse split against other soft bodies (clusters).
 
@@ -1685,19 +1685,19 @@ Pauses all object animations until `resumeAnimations()`.
 
 ### activitycullingdistance
 
- <small>attribute · read-only</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
 Distance from this object to the camera, computed by Activity Culling.
 
 ### angularVelocity
 
- <small>attribute</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 
 Angular velocity. Read in local coordinates, written in world coordinates.
 
 ### animationEventManager
 
- <small>attribute · read-only</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
 Manager of the object animation events (`KX_AnimationEventManager`).
 
@@ -1793,7 +1793,7 @@ Minimum collision impulse for an explosive object to detonate.
 
 ### linearVelocity
 
- <small>attribute</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 
 Linear velocity. Read in local coordinates, written in world coordinates.
 
@@ -1805,13 +1805,13 @@ Maximum number of decals on this object at the same time.
 
 ### parentRecursive
 
- <small>attribute · read-only</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
 List of all parents above the object, from closest to farthest.
 
 ### particles
 
- <small>attribute · read-only</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
 Object particle system (`KX_ParticleSystem`), or `None`.
 
@@ -1823,7 +1823,7 @@ Second (mix) particle system of the object, or `None`.
 
 ### passIndex
 
- <small>attribute</small>
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 
 Object Pass Index, used to separate objects in filters and effects.
 

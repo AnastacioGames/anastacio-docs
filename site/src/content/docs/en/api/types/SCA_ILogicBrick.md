@@ -27,3 +27,11 @@ The name of this logic brick (read-only).
 
 **Type:** string
 
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### fireCount
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
+

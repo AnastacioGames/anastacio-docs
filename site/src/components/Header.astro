@@ -1,17 +1,18 @@
 ---
-// Cabeçalho padrão + seletor de idioma visível também no celular.
+// Cabeçalho padrão + seletores de idioma e tema visíveis também no celular (a capa não tem menu ☰).
 import Default from '@astrojs/starlight/components/Header.astro';
 import LanguageSelect from '@astrojs/starlight/components/LanguageSelect.astro';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
 ---
 
 <div class="ae-header">
 	<Default />
-	<div class="ae-lang-mobile"><LanguageSelect /></div>
+	<div class="ae-lang-mobile"><ThemeSelect /><LanguageSelect /></div>
 </div>
 
 <style>
 	.ae-header { display: flex; align-items: center; gap: .5rem; height: 100%; }
 	.ae-header > :global(.header) { flex: 1; min-width: 0; }
-	.ae-lang-mobile { display: flex; }
+	.ae-lang-mobile { display: flex; gap: .5rem; }
 	@media (min-width: 50rem) { .ae-lang-mobile { display: none; } }
 </style>

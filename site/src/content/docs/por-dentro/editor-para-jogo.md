@@ -15,7 +15,7 @@ fontes:
   - source/release/scripts/startup/bl_ui/properties_game.py
   - source/release/scripts/startup/bl_ui/properties_game_object.py
   - source/release/scripts/startup/bl_ui/properties_game_physics.py
-conferido: 7b808452
+conferido: "20351490"
 ---
 
 <div class="ae-x">

@@ -13,6 +13,10 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Um wrapper que expõe as opções de física de personagem.
 
+:::note
+Quando o objeto do personagem é removido, todo método e atributo do wrapper gera `ReferenceError`. Suspender a física mantém o personagem, então o wrapper continua funcionando.
+:::
+
 ### onGround
 
 Se o personagem está no chão ou não (somente leitura).

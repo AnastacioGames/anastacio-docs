@@ -117,6 +117,10 @@ Liga/desliga os reflexos em tela (SSR) e muda passos, bias e distância máxima.
 
 Liga/desliga o tonemap e muda exposição e gamma.
 
+### compositor
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
 ### fxaaEdgeThreshold
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>

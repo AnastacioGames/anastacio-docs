@@ -117,6 +117,10 @@ Turns screen-space reflections (SSR) on/off and changes steps, bias and maximum 
 
 Turns tonemapping on/off and changes exposure and gamma.
 
+### compositor
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
+
 ### fxaaEdgeThreshold
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>

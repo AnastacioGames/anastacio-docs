@@ -13,6 +13,11 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 A wrapper to expose character physics options.
 
+:::note
+When the character's object is removed, every method and attribute of the wrapper raises
+`ReferenceError`. Suspending physics keeps the character, so the wrapper still works.
+:::
+
 ### onGround
 
 Whether or not the character is on the ground. (read-only)

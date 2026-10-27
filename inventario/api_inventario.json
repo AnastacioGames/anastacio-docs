@@ -925,6 +925,14 @@
      "origem": "anastacio",
      "commit": "49be685b",
      "data": "2026-10-09"
+    },
+    "compositor": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "f9e3df36",
+     "data": "2026-10-26"
     }
    }
   },

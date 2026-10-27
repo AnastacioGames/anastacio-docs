@@ -8,7 +8,7 @@ fontes:
   - source/source/gameengine/CMakeLists.txt
   - source/source/gameengine/Network/CMakeLists.txt
   - source/source/gameengine/Ketsji/KX_NetworkManager.cpp
-conferido: 3ec78347
+conferido: "20351490"
 ---
 
 <div class="ae-x">

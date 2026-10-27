@@ -424,17 +424,23 @@ Pega o multiplicador entre o tempo real e o tempo da simulação. O padrão é 1
 
 Define o multiplicador entre o tempo real e o tempo da simulação. Valores maiores que 1.0 deixam a simulação mais rápida que o tempo real; valores menores, mais lenta. Valores muito altos podem deixar a física instável.
 
+A escala vale para todos os relógios do jogo: física, timers, `getFrameTime`, actions e cutscenes. O valor 0.0 pausa a lógica, então nenhum logic brick ou script roda até a escala mudar de novo; retome de fora da lógica do jogo, ou pause com `KX_Scene.suspend`.
+
 - **`time_scale`**: O novo multiplicador de tempo.
 
-### getUseExternalClock()
+### ~~getUseExternalClock()~~
 
-Diz se a engine usa o relógio interno ou um relógio externo. O padrão é o relógio interno.
+:::danger[Obsoleto 0.5.5]
+A flag não tem efeito; a simulação sempre usa o próprio relógio.
+:::
 
 **Tipo do retorno:** bool
 
-### setUseExternalClock(use_external_clock)
+### ~~setUseExternalClock(use_external_clock)~~
 
-Define se a engine usa o relógio interno ou um relógio externo. Com o relógio externo, é preciso chamar setClockTime regularmente.
+:::danger[Obsoleto 0.5.5]
+Não tem efeito na simulação e emite um `DeprecationWarning`.
+:::
 
 - **`use_external_clock`**: A nova configuração
 

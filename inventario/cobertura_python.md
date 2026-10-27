@@ -2,88 +2,17 @@
 
 Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos de jogo com bindings Python; não afirma que todo controle do editor deve virar API.
 
-**Total:** 118 expostos · 17 sem binding · 0 só de editor.
+**Total:** 61 expostos · 3 sem binding · 0 só de editor.
 
 ## Partículas GPU
 
 | Controle RNA/editor | API Python encontrada | Estado |
 |---|---|---|
-| `billboard_mode` | `billboardMode` | exposto |
-| `blend_mode` | `blendMode` | exposto |
-| `burst_interval` | `burstInterval` | exposto |
-| `collision_bounce` | `collisionBounce` | exposto |
-| `collision_friction` | `collisionFriction` | exposto |
-| `collision_ground_object` | `collisionGroundObject` | **sem binding** |
-| `collision_height` | `collisionHeight` | exposto |
-| `collision_mode` | `collisionMode` | exposto |
-| `color` | `color` | exposto |
-| `color_curve` | `colorCurve` | **sem binding** |
-| `drag` | `drag` | exposto |
-| `emission_angle` | `emissionAngle` | exposto |
-| `emission_direction` | `emissionDirection` | exposto |
-| `emission_mode` | `emissionMode` | exposto |
-| `emit_from` | `emitFrom` | **sem binding** |
-| `emitter_position` | `emitterPosition` | exposto |
-| `emitter_radius` | `emitterRadius` | exposto |
-| `enabled` | `enabled` | exposto |
-| `end_color` | `endColor` | exposto |
-| `end_size` | `endSize` | exposto |
-| `fragment_shader_path` | `fragmentShaderPath` | exposto |
-| `gravity` | `gravity` | exposto |
-| `lifetime` | `lifetime` | exposto |
-| `particle_count` | `particleCount` | exposto |
-| `particle_look` | `particleLook` | **sem binding** |
-| `size` | `size` | exposto |
-| `size_curve` | `sizeCurve` | **sem binding** |
-| `texture` | `texture` | exposto |
-| `use_backface_culling` | `useBackfaceCulling` | exposto |
-| `use_burst_on_start` | `useBurstOnStart` | **sem binding** |
-| `use_color_curve` | `useColorCurve` | **sem binding** |
-| `use_debug_ui` | `useDebugUi` | exposto |
-| `use_fragment_shader` | `useFragmentShader` | **sem binding** |
-| `use_size_curve` | `useSizeCurve` | **sem binding** |
-| `use_vortex` | `useVortex` | exposto |
-| `velocity` | `velocity` | exposto |
-| `velocity_randomness` | `velocityRandomness` | exposto |
-| `vortex_height` | `vortexHeight` | exposto |
-| `vortex_radius_top` | `vortexRadiusTop` | exposto |
-| `vortex_rotation_speed` | `vortexRotationSpeed` | exposto |
 
 ## Explosão
 
 | Controle RNA/editor | API Python encontrada | Estado |
 |---|---|---|
-| `blast_speed` | `blastSpeed` | exposto |
-| `effect` | `explosionEffect` | exposto |
-| `effect_life` | `effectLife` | exposto |
-| `fire_amount` | `fireAmount` | exposto |
-| `fire_color` | `fireColor` | exposto |
-| `flash_color` | `flashColor` | **sem binding** |
-| `flash_duration` | `flashDuration` | **sem binding** |
-| `flash_strength` | `flashStrength` | **sem binding** |
-| `force` | `explosionForce` | exposto |
-| `fuse` | `fuse` | exposto |
-| `impact_impulse` | `impactImpulse` | exposto |
-| `mark` | `groundMark` | exposto |
-| `mark_life` | `markLife` | exposto |
-| `mark_size` | `markSize` | exposto |
-| `particle_size` | `particleSize` | exposto |
-| `particle_style` | `particleStyle` | exposto |
-| `radius` | `explosionRadius` | exposto |
-| `smoke_amount` | `smokeAmount` | exposto |
-| `smoke_color` | `smokeColor` | exposto |
-| `smoke_duration` | `smokeDuration` | exposto |
-| `spark_amount` | `sparkAmount` | exposto |
-| `spark_color` | `sparkColor` | exposto |
-| `up_bias` | `upBias` | exposto |
-| `use_chain_reaction` | `useChainReaction` | exposto |
-| `use_explode_on_impact` | `useExplodeOnImpact` | exposto |
-| `use_ground_mark` | `useGroundMark` | exposto |
-| `use_light_flash` | `useLightFlash` | **sem binding** |
-| `use_mark_nearby` | `useMarkNearby` | exposto |
-| `use_occlusion` | `useOcclusion` | exposto |
-| `use_particle_explosion` | `useParticleExplosion` | exposto |
-| `use_sound` | `useSound` | **sem binding** |
 
 ## Clima do World
 

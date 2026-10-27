@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 107 classes, 8 módulos | documentados 1047 · sem doc 248 · novos 564 · só no rst 111
+**Total:** 107 classes, 8 módulos | documentados 1047 · sem doc 248 · novos 565 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -28,8 +28,8 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `KX_ParticleSystem` | 35 | 0 | 0 | 35 | 0 | **não** |
 | `KX_WorldInfo` | 36 | 19 | 0 | 17 | 0 | sim |
+| `KX_2DFilterManager` | 20 | 4 | 0 | 16 | 0 | sim |
 | `KX_VehicleWrapper` | 32 | 16 | 0 | 16 | 0 | sim |
-| `KX_2DFilterManager` | 19 | 4 | 0 | 15 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
 | `KX_FontObject` | 17 | 4 | 0 | 13 | 0 | sim |
 | `KX_Scene` | 39 | 28 | 0 | 11 | 0 | sim |
@@ -133,7 +133,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **265** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **199** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **266** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **199** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
 - **Range.events** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `OSKEY`, `JOYSTICKA`, `JOYSTICKB`, `JOYSTICKX`, `JOYSTICKY`, `JOYSTICKBACK`, `JOYSTICKGUIDE`, `JOYSTICKLEFTSTICK`, `JOYSTICKRIGHTSTICK`, `JOYSTICKRIGHTSHOUDER`, `JOYSTICKLEFTSHOUDER`, `JOYSTICKPADUP`, `JOYSTICKPADDOWN`, `JOYSTICKPADLEFT`, `JOYSTICKPADRIGHT`
@@ -147,7 +147,7 @@ Origem pelo git: **265** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **EXP_BaseListValue** (source/source/gameengine/Expressions/intern/BaseListValue.cpp): `append`, `reverse`, `index`, `count`, `get`, `filter`, `from_id`
 - **EXP_BaseListWrapper** (source/source/gameengine/Expressions/intern/BaseListWrapper.cpp): `get`
 - **KX_2DFilter** (source/source/gameengine/Ketsji/KX_2DFilter.cpp): `recompile`, `setUniform`, `compileLog` (só leitura) ✦2026-10-10, `sourceName` (só leitura) ✦2026-10-10, `sourcePath` (só leitura) ✦2026-10-10, `activeUniforms` (só leitura) ✦2026-10-10
-- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `changeSSGIValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09
+- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `changeSSGIValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09, `compositor` (só leitura) ✦2026-10-26
 - **KX_AnimationEvent** (source/source/gameengine/Ketsji/KX_AnimationEvent.cpp): `getFireCount`, `triggers` (só leitura)
 - **KX_AnimationEventManager** (source/source/gameengine/Ketsji/KX_AnimationEventManager.cpp): `events` (só leitura)
 - **KX_BlenderMaterial** (source/source/gameengine/Ketsji/KX_BlenderMaterial.cpp): `passIndex`

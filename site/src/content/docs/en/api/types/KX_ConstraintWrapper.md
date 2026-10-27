@@ -9,6 +9,12 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 KX_ConstraintWrapper
 
+:::note
+When the constraint is deleted (`Range.constraints.removeConstraint` or removing one of
+its objects), every method and attribute of the wrapper raises `ReferenceError`.
+Suspending physics keeps the constraint, so the wrapper still works.
+:::
+
 ### getConstraintId(val)
 
 Returns the contraint ID

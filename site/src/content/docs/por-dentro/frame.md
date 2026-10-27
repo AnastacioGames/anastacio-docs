@@ -11,7 +11,7 @@ fontes:
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
   - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
-conferido: 7b808452
+conferido: "20351490"
 ---
 
 <div class="ae-x">
@@ -69,6 +69,7 @@ conferido: 7b808452
 
 - **A simulação sempre roda; o desenho, não.** Quando o jogo está adiantado, a engine só calcula quanto dormir e pula o render.
 - **Passo fixo só com multiplayer.** O acumulador de passo fixo fica desligado. Com uma sessão de rede aberta ele liga sozinho, e cada passo vira um tick de rede.
+- **Um relógio só, com escala.** Frame, lógica, animação, física e cutscene avançam pelo mesmo passo escalado: `setTimeScale` deixa tudo em câmera lenta junto, e escala 0 pausa a lógica. A cutscene tem relógio próprio, que para com a cena suspensa. O relógio externo foi descontinuado.
 - **A hierarquia é atualizada várias vezes:** depois da lógica, dos atuadores e da física. A trilha B resume isso numa etapa.
 - **Medir cada etapa:** o menu Performance mostra o tempo de cada trecho do frame. Veja [Performance](/anastacio-docs/guias/performance/).
 

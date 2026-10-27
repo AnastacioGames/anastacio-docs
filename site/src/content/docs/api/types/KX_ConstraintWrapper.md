@@ -9,6 +9,10 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 KX_ConstraintWrapper
 
+:::note
+Quando a constraint é apagada (`Range.constraints.removeConstraint` ou removendo um dos seus objetos), todo método e atributo do wrapper gera `ReferenceError`. Suspender a física mantém a constraint, então o wrapper continua funcionando.
+:::
+
 ### getConstraintId(val)
 
 Devolve o ID da constraint

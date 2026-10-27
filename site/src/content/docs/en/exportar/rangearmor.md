@@ -17,7 +17,7 @@ RangeArmor is downloaded separately from the engine, on the same release page: `
 2. Rename the extracted folder to **`rangearmor`** and put it **inside the engine folder**, next to `AnastacioEngine.exe` (on Linux, next to `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.5.4-windows-x64/
+AnastacioEngine-0.6.0-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/
@@ -78,7 +78,7 @@ Empty fields keep RangeArmor's defaults.
 There are two buttons:
 
 - **Export Game (1 Click)**: saves a protected copy, cooks the cache and builds everything straight into `MyGame/release/`. The folder opens when it's done. **This is the recommended path.**
-  It also builds the **Universal** package: one folder (and a zip) with Windows and Linux together. Players open `MyGame.exe` on Windows or `MyGame` on Linux. *(versions after 0.5.4)*
+  It also builds the **Universal** package: one folder (and a zip) with Windows and Linux together. Players open `MyGame.exe` on Windows or `MyGame` on Linux. *(since 0.6.0)*
 - **Open RangeArmor Panel**: opens the full tool, with more options. The engine panel settings are passed to it.
 
 The same panel also opens from **File > Export Game With RANGEARMOR**.
@@ -118,7 +118,7 @@ RangeArmor Panel start screen: **Open Project**, **New Project** and the **Recen
    - **Run game**: runs the game the way the player will see it, to test first.
    - **Set Icons**: picks the `.ico` icons for the launcher and the executable.
    - **Export to**: exports one platform or **All Platforms**. **Compress targets after export** creates the zip.
-   - **Universal (Win + Linux)**: besides each platform's folder, creates `MyGame-<version>-Universal/`, a single folder for both systems. Needs both runtimes in the **Paths** tab. *(versions after 0.5.4)*
+   - **Universal (Win + Linux)**: besides each platform's folder, creates `MyGame-<version>-Universal/`, a single folder for both systems. Needs both runtimes in the **Paths** tab. *(since 0.6.0)*
    ![RangeArmor Panel Tasks tab](../../../../assets/exportar/rangearmor_tasks.png)
 
    Gray platform buttons and the *0/2 platform(s) ready* note at the bottom mean the runtime is missing. Click **Copy Available Range Engine Files** (step 5) and check **Main File** and **Data Source**; the buttons light up once the platform is ready.

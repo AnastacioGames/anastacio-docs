@@ -10,7 +10,7 @@ sidebar:
 <p class="ae-h-lead">Каждая строка ниже взята из технического журнала движка. Вот краткая версия: что изменилось для тех, кто делает игры.</p>
 <dl class="ae-h-odo">
 <div><dt>записей в журнале</dt><dd>716</dd></div>
-<div><dt>опубликованных версий</dt><dd>13</dd></div>
+<div><dt>опубликованных версий</dt><dd>14</dd></div>
 <div><dt>платформы</dt><dd>4</dd></div>
 </dl>
 </div>
@@ -109,7 +109,7 @@ sidebar:
 <li>Экспорт: Compile Scripts работает, а открытый <code>.range</code> больше не попадает в пакет.</li>
 </ul></article>
 </div>
-<p class="ae-h-rel">Версии 0.5.0 – 0.5.4</p>
+<p class="ae-h-rel">Версии 0.5.0 – 0.6.0</p>
 </section>
 
 <p class="ae-h-foot">Нужны подробности? Полный журнал лежит в репозитории движка: <code>docs/changelog.md</code>. Что ещё впереди — в <code>docs/roadmap.md</code>.</p>

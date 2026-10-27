@@ -17,7 +17,7 @@ A RangeArmor é baixada separada da engine, na mesma página da release: `RangeA
 2. Renomeie a pasta extraída para **`rangearmor`** e coloque-a **dentro da pasta da engine**, ao lado do `AnastacioEngine.exe` (no Linux, ao lado do `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.5.4-windows-x64/
+AnastacioEngine-0.6.0-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/
@@ -80,7 +80,7 @@ Campos vazios mantêm os valores padrão da RangeArmor.
 Há dois botões:
 
 - **Export Game (1 Click)**: salva uma cópia protegida, cozinha o cache e gera tudo direto em `MeuJogo/release/`. Ao terminar, a pasta abre sozinha. **É o caminho recomendado.**
-  Também gera o pacote **Universal**: uma pasta (e um zip) com Windows e Linux juntos. O jogador abre `MeuJogo.exe` no Windows ou `MeuJogo` no Linux. *(versões depois da 0.5.4)*
+  Também gera o pacote **Universal**: uma pasta (e um zip) com Windows e Linux juntos. O jogador abre `MeuJogo.exe` no Windows ou `MeuJogo` no Linux. *(desde a 0.6.0)*
 - **Open RangeArmor Panel**: abre a ferramenta completa, com mais opções. As configurações do painel da engine são passadas para ela.
 
 O mesmo painel também abre por **File > Export Game With RANGEARMOR**.
@@ -120,7 +120,7 @@ Tela inicial do RangeArmor Panel: **Open Project**, **New Project** e a lista **
    - **Run game**: roda o jogo como o jogador vai ver, para testar antes.
    - **Set Icons**: escolhe os ícones `.ico` do launcher e do executável.
    - **Export to**: exporta uma plataforma ou **All Platforms**. **Compress targets after export** gera o zip.
-   - **Universal (Win + Linux)**: além das pastas de cada plataforma, cria `MeuJogo-<versão>-Universal/`, uma pasta só com os dois sistemas. Precisa dos dois runtimes na aba **Paths**. *(versões depois da 0.5.4)*
+   - **Universal (Win + Linux)**: além das pastas de cada plataforma, cria `MeuJogo-<versão>-Universal/`, uma pasta só com os dois sistemas. Precisa dos dois runtimes na aba **Paths**. *(desde a 0.6.0)*
    ![Aba Tasks do RangeArmor Panel](../../../assets/exportar/rangearmor_tasks.png)
 
    Botões de plataforma cinza e o aviso *0/2 platform(s) ready* no rodapé indicam que falta o runtime. Clique em **Copy Available Range Engine Files** (passo 5) e confira **Main File** e **Data Source**; os botões acendem quando a plataforma fica pronta.

@@ -17,7 +17,7 @@ RangeArmor скачивается отдельно от движка, на то�
 2. Переименуйте распакованную папку в **`rangearmor`** и положите её **внутрь папки движка**, рядом с `AnastacioEngine.exe` (в Linux — рядом с `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.5.4-windows-x64/
+AnastacioEngine-0.6.0-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/
@@ -78,7 +78,7 @@ MyGame/
 Есть две кнопки:
 
 - **Export Game (1 Click)**: сохраняет защищённую копию, запекает кэш и собирает всё прямо в `MyGame/release/`. По завершении папка открывается. **Это рекомендуемый путь.**
-  Также собирается **Universal**-пакет: одна папка (и zip) с Windows и Linux вместе. Игрок запускает `MyGame.exe` в Windows или `MyGame` в Linux. *(версии после 0.5.4)*
+  Также собирается **Universal**-пакет: одна папка (и zip) с Windows и Linux вместе. Игрок запускает `MyGame.exe` в Windows или `MyGame` в Linux. *(начиная с 0.6.0)*
 - **Open RangeArmor Panel**: открывает полный инструмент с дополнительными параметрами. Настройки панели движка передаются в него.
 
 Та же панель открывается и через **File > Export Game With RANGEARMOR**.
@@ -118,7 +118,7 @@ MyGame/
    - **Run game**: запускает игру так, как её увидит игрок, чтобы сначала проверить.
    - **Set Icons**: выбирает значки `.ico` для лаунчера и исполняемого файла.
    - **Export to**: экспортирует одну платформу или **All Platforms**. **Compress targets after export** создаёт zip.
-   - **Universal (Win + Linux)**: помимо папок каждой платформы создаёт `MyGame-<версия>-Universal/` — одну папку для обеих систем. Нужны оба рантайма на вкладке **Paths**. *(версии после 0.5.4)*
+   - **Universal (Win + Linux)**: помимо папок каждой платформы создаёт `MyGame-<версия>-Universal/` — одну папку для обеих систем. Нужны оба рантайма на вкладке **Paths**. *(начиная с 0.6.0)*
    ![Вкладка Tasks в RangeArmor Panel](../../../../assets/exportar/rangearmor_tasks.png)
 
    Серые кнопки платформ и надпись *0/2 platform(s) ready* внизу означают, что не хватает рантайма. Нажмите **Copy Available Range Engine Files** (шаг 5) и проверьте **Main File** и **Data Source**; кнопки загорятся, когда платформа будет готова.

@@ -10,7 +10,7 @@ sidebar:
 <p class="ae-h-lead">Cada línea de abajo sale del diario técnico del motor. Esta es la versión corta: qué cambió para quien hace juegos.</p>
 <dl class="ae-h-odo">
 <div><dt>entradas en el diario</dt><dd>716</dd></div>
-<div><dt>versiones publicadas</dt><dd>13</dd></div>
+<div><dt>versiones publicadas</dt><dd>14</dd></div>
 <div><dt>plataformas</dt><dd>4</dd></div>
 </dl>
 </div>
@@ -109,7 +109,7 @@ sidebar:
 <li>Exportación: Compile Scripts funciona y el <code>.range</code> abierto ya no va en el paquete.</li>
 </ul></article>
 </div>
-<p class="ae-h-rel">Versiones 0.5.0 a 0.5.4</p>
+<p class="ae-h-rel">Versiones 0.5.0 a 0.6.0</p>
 </section>
 
 <p class="ae-h-foot">¿Quieres el detalle de algo? El diario completo está en el repositorio del motor, en <code>docs/changelog.md</code>. Lo que aún falta está en <code>docs/roadmap.md</code>.</p>

@@ -71,6 +71,8 @@ sidebar:
 <article><h3>Gráficos</h3><ul>
 <li>Os nós de material do Cycles funcionam no jogo: vidro, cabelo, volume, céu.</li>
 <li>Reflexos (probes e espelho planar), sombra colorida de vitral e sombras em cascata.</li>
+<li>Sombra de sol com cascatas (CSM) e sombras suaves com penumbra (PCSS).</li>
+<li>Efeitos de pós-processo no jogo: Directional Blur, Color Correction, Tonemap, Glare, Crop e outros.</li>
 <li>Nuvens volumétricas, névoa volumétrica e iluminação indireta (bake e SSGI).</li>
 <li>Shaders por nós com vento, ondas, pelo e contorno toon.</li>
 </ul></article>
@@ -83,6 +85,7 @@ sidebar:
 <li>Static Batch: com ele ligado empatamos com a ThunderPlayer no benchmark.</li>
 <li>Cerca de 100 pontos de trabalho repetido revisados no motor.</li>
 <li>Range Trace, Performance Report e Scene Doctor mostram onde o jogo pesa.</li>
+<li>Auto Static Batch, contador de FPS compacto e uma API Python mais barata.</li>
 </ul></article>
 <article><h3>Lógica sem código</h3><ul>
 <li>Logic Bricks 2.0 e Logic Tree: lógica por nós que vira bricks nativos.</li>
@@ -94,6 +97,16 @@ sidebar:
 <li>World Sound com música, ambiente, chuva e trovão.</li>
 <li>VR no celular, ragdoll, amassados por batida e veículos arcade.</li>
 <li>Idiomas do jogo e gravação de tela com som.</li>
+<li><code>Range.types.TrackLine</code>: pista para a IA de corrida seguir.</li>
+</ul></article>
+<article><h3>Texto e diálogos</h3><ul>
+<li>Text Boxes no jogo: quebra de linha, páginas e efeito de máquina de escrever.</li>
+<li>Diálogos sem código: nó Dialogue Box na UI Tree.</li>
+</ul></article>
+<article><h3>Tempo e estabilidade</h3><ul>
+<li>Relógio único com escala de tempo; a cutscene pausa junto com a cena.</li>
+<li>Revisão geral de cena, objetos, joystick, LibLoad e multiplayer, com vários travamentos corrigidos.</li>
+<li>Exportação: Compile Scripts funciona e o <code>.range</code> aberto não vai mais no pacote.</li>
 </ul></article>
 </div>
 <p class="ae-h-rel">Versões 0.5.0 a 0.5.4</p>

@@ -10,7 +10,7 @@ sidebar:
 <p class="ae-h-lead">Every line below comes from the engine's technical log. Here is the short version: what changed for people who make games.</p>
 <dl class="ae-h-odo">
 <div><dt>log entries</dt><dd>716</dd></div>
-<div><dt>releases published</dt><dd>14</dd></div>
+<div><dt>releases published</dt><dd>15</dd></div>
 <div><dt>platforms</dt><dd>4</dd></div>
 </dl>
 </div>
@@ -107,9 +107,10 @@ sidebar:
 <li>A single clock with time scale; the cutscene pauses along with the scene.</li>
 <li>Full review of scene, objects, joystick, LibLoad and multiplayer, with several crashes fixed.</li>
 <li>Export: Compile Scripts works and the open <code>.range</code> no longer ships in the package.</li>
+<li>Fixed Timestep with interpolated drawing, on by default in new scenes (0.6.1).</li>
 </ul></article>
 </div>
-<p class="ae-h-rel">Versions 0.5.0 to 0.6.0</p>
+<p class="ae-h-rel">Versions 0.5.0 to 0.6.1</p>
 </section>
 
 <p class="ae-h-foot">Want the detail on something? The full log lives in the engine repository, in <code>docs/changelog.md</code>. What is still missing is in <code>docs/roadmap.md</code>.</p>

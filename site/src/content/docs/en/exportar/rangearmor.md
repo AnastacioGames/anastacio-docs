@@ -17,7 +17,7 @@ RangeArmor is downloaded separately from the engine, on the same release page: `
 2. Rename the extracted folder to **`rangearmor`** and put it **inside the engine folder**, next to `AnastacioEngine.exe` (on Linux, next to `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.6.0-windows-x64/
+AnastacioEngine-0.6.1-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/

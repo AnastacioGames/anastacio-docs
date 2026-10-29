@@ -17,7 +17,7 @@ RangeArmor se descarga aparte del motor, en la misma página de la versión: `Ra
 2. Renombra la carpeta extraída a **`rangearmor`** y ponla **dentro de la carpeta del motor**, junto a `AnastacioEngine.exe` (en Linux, junto a `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.6.0-windows-x64/
+AnastacioEngine-0.6.1-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/

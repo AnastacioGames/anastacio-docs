@@ -17,7 +17,7 @@ A RangeArmor é baixada separada da engine, na mesma página da release: `RangeA
 2. Renomeie a pasta extraída para **`rangearmor`** e coloque-a **dentro da pasta da engine**, ao lado do `AnastacioEngine.exe` (no Linux, ao lado do `AnastacioEngine`):
 
 ```
-AnastacioEngine-0.6.0-windows-x64/
+AnastacioEngine-0.6.1-windows-x64/
 ├── AnastacioEngine.exe
 ├── AnastacioRuntime.exe
 └── rangearmor/

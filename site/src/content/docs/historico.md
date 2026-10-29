@@ -10,7 +10,7 @@ sidebar:
 <p class="ae-h-lead">Cada linha abaixo saiu do diário técnico da engine. Aqui está a versão curta: o que mudou para quem faz jogos.</p>
 <dl class="ae-h-odo">
 <div><dt>entradas no diário</dt><dd>716</dd></div>
-<div><dt>versões publicadas</dt><dd>14</dd></div>
+<div><dt>versões publicadas</dt><dd>15</dd></div>
 <div><dt>plataformas</dt><dd>4</dd></div>
 </dl>
 </div>
@@ -107,9 +107,10 @@ sidebar:
 <li>Relógio único com escala de tempo; a cutscene pausa junto com a cena.</li>
 <li>Revisão geral de cena, objetos, joystick, LibLoad e multiplayer, com vários travamentos corrigidos.</li>
 <li>Exportação: Compile Scripts funciona e o <code>.range</code> aberto não vai mais no pacote.</li>
+<li>Fixed Timestep com desenho interpolado, ligado por padrão em cenas novas (0.6.1).</li>
 </ul></article>
 </div>
-<p class="ae-h-rel">Versões 0.5.0 a 0.6.0</p>
+<p class="ae-h-rel">Versões 0.5.0 a 0.6.1</p>
 </section>
 
 <p class="ae-h-foot">Quer o detalhe de alguma coisa? O diário completo fica no repositório da engine, em <code>docs/changelog.md</code>. O que ainda falta está no <code>docs/roadmap.md</code>.</p>

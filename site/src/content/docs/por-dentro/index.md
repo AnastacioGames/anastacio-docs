@@ -7,7 +7,7 @@ sidebar:
 fontes:
   - docs/diagramas-arquitetura.md
   - docs/architecture.md
-conferido: 3ec78347
+conferido: d17e1b23
 ---
 
 <div class="ae-x">

@@ -1893,6 +1893,21 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "documentado"
+    },
+    "posture": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
+    "canStand": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "documentado"
+    },
+    "running": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
     }
    }
   },
@@ -5393,6 +5408,14 @@
      "so_leitura": true,
      "status": "documentado"
     },
+    "visible": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "9066be92",
+     "data": "2026-10-19"
+    },
     "activityCulling": {
      "tipo": "atributo",
      "so_leitura": true,
@@ -8737,6 +8760,14 @@
      "status": "documentado"
     },
     "setTimeScale": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "getAnimationsUseTimeScale": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "setAnimationsUseTimeScale": {
      "tipo": "funcao",
      "status": "documentado"
     },

@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 107 classes, 8 módulos | documentados 1047 · sem doc 248 · novos 565 · só no rst 111
+**Total:** 107 classes, 8 módulos | documentados 1052 · sem doc 248 · novos 566 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -10,7 +10,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 | Nome | Itens | Documentados | Sem doc | Novos | Só no rst | rst? |
 |---|---:|---:|---:|---:|---:|:---:|
-| `Range.logic` | 342 | 149 | 137 | 51 | 5 | sim |
+| `Range.logic` | 344 | 151 | 137 | 51 | 5 | sim |
 | `Range.imgui` | 42 | 0 | 0 | 42 | 0 | **não** |
 | `Range.network` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `Range.render` | 69 | 47 | 0 | 21 | 1 | sim |
@@ -32,7 +32,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_VehicleWrapper` | 32 | 16 | 0 | 16 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
 | `KX_FontObject` | 17 | 4 | 0 | 13 | 0 | sim |
-| `KX_Scene` | 39 | 28 | 0 | 11 | 0 | sim |
+| `KX_Scene` | 40 | 28 | 0 | 12 | 0 | sim |
 | `EXP_BaseListValue` | 7 | 0 | 0 | 7 | 0 | **não** |
 | `KX_PythonJoystick` | 15 | 8 | 0 | 7 | 0 | sim |
 | `KX_2DFilter` | 12 | 6 | 0 | 6 | 0 | sim |
@@ -79,7 +79,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_ArmatureSensor` | 3 | 3 | 0 | 0 | 0 | sim |
 | `KX_BatchGroup` | 5 | 5 | 0 | 0 | 0 | sim |
 | `KX_CameraActuator` | 6 | 6 | 0 | 0 | 0 | sim |
-| `KX_CharacterWrapper` | 13 | 13 | 0 | 0 | 0 | sim |
+| `KX_CharacterWrapper` | 16 | 16 | 0 | 0 | 0 | sim |
 | `KX_CollisionContactPoint` | 8 | 8 | 0 | 0 | 0 | sim |
 | `KX_CollisionSensor` | 6 | 6 | 0 | 0 | 0 | sim |
 | `KX_ConstraintActuator` | 11 | 11 | 0 | 0 | 0 | sim |
@@ -133,7 +133,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **266** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **199** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **267** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **199** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
 - **Range.events** (source/source/gameengine/Ketsji/KX_PythonInit.cpp): `OSKEY`, `JOYSTICKA`, `JOYSTICKB`, `JOYSTICKX`, `JOYSTICKY`, `JOYSTICKBACK`, `JOYSTICKGUIDE`, `JOYSTICKLEFTSTICK`, `JOYSTICKRIGHTSTICK`, `JOYSTICKRIGHTSHOUDER`, `JOYSTICKLEFTSHOUDER`, `JOYSTICKPADUP`, `JOYSTICKPADDOWN`, `JOYSTICKPADLEFT`, `JOYSTICKPADRIGHT`
@@ -171,7 +171,7 @@ Origem pelo git: **266** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **KX_PythonMotion** (source/source/gameengine/Ketsji/KX_PythonMotion.cpp): `recenter` ✦2026-10-01, `headOrientation` (só leitura) ✦2026-10-01, `smoothing` ✦2026-10-01, `recenterTime` ✦2026-10-01
 - **KX_PythonMouse** (source/source/gameengine/Ketsji/KX_PythonMouse.cpp): `reCenter`, `deltaPosition` (só leitura)
 - **KX_RaySensor** (source/source/gameengine/Ketsji/KX_RaySensor.cpp): `gazeTime` ✦2026-10-01, `gazeAngle` ✦2026-10-01, `gazeProgress` (só leitura) ✦2026-10-01
-- **KX_Scene** (source/source/gameengine/Ketsji/KX_Scene.cpp): `convertObject`, `setQualityPreset`, `getQualityPreset`, `play_cutscene`, `stop_cutscene`, `restart_cutscene`, `release_cutscene_trigger`, `unconvertedObjects` (só leitura) ✦2026-10-07, `speakers` (só leitura), `worldSun` (só leitura), `thread_logic_1`
+- **KX_Scene** (source/source/gameengine/Ketsji/KX_Scene.cpp): `convertObject`, `setQualityPreset`, `getQualityPreset`, `play_cutscene`, `stop_cutscene`, `restart_cutscene`, `release_cutscene_trigger`, `unconvertedObjects` (só leitura) ✦2026-10-07, `speakers` (só leitura), `worldSun` (só leitura), `thread_logic_1`, `visible` ✦2026-10-19
 - **KX_Speaker** (source/source/gameengine/Ketsji/KX_Speaker.cpp): `Play`, `Restart`, `Pause`, `Stop`, `SetSound`, `GetActiveEffect`, `GetActiveEffectFilter`, `SetEffect`, `RemoveEffect`, `is3D` (só leitura), `volume_maximum`, `volume_minimum`, `distance_reference`, `distance_maximum`, `attenuation`, `cone_angle_inner`, `cone_angle_outer`, `cone_volume_outer`, `sound`, `playbackManager`, `catkey`, `reverb_density`, `reverb_diffusion`, `reverb_gain`, `reverb_gain_hf`, `reverb_decay_time`, `reverb_decay_hf_ratio`, `reverb_reflections_gain`, `reverb_reflections_delay`, `reverb_late_reverb_gain`, `reverb_late_reverb_delay`, `reverb_air_absorption_gain_hf`, `reverb_room_rolloff_factor`, `reverb_decay_limit_hf`, `filter_gain`, `filter_gainlf`, `filter_gainhf`, `time`, `volume`, `pitch`, `mode`
 - **KX_SteeringActuator** (source/source/gameengine/Ketsji/KX_SteeringActuator.cpp): `steeringVec` (só leitura), `facingMode`, `lockZVelocity`
 - **KX_VRHeadSensor** (source/source/gameengine/Ketsji/KX_VRHeadSensor.cpp): `mode` ✦2026-10-01, `angle` ✦2026-10-01, `time` ✦2026-10-01, `pitch` (só leitura) ✦2026-10-01, `yaw` (só leitura) ✦2026-10-01, `roll` (só leitura) ✦2026-10-01

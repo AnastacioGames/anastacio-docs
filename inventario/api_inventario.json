@@ -2793,6 +2793,26 @@
      "tipo": "metodo",
      "status": "documentado"
     },
+    "playNLA": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "stopNLA": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "isPlayingNLA": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "getNLAFrame": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "setNLAFrame": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
     "get": {
      "tipo": "metodo",
      "status": "documentado"

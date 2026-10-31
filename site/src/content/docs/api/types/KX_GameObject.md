@@ -1329,6 +1329,46 @@ Verifica se há uma ação tocando na camada indicada.
 
 **Tipo do retorno:** boolean
 
+### playNLA(speed=1.0, loop=True)
+
+Toca as faixas do NLA de uma armature, como o NLA Editor faz. Faixas e strips mutadas são puladas, o Solo é respeitado e as faixas são misturadas de baixo para cima (Replace e Add, influência, blend in/out, repeat, scale, reverse e extrapolação). Ações tocadas com `playAction` são misturadas por cima do resultado do NLA.
+
+Chamar de novo enquanto o NLA está tocando, com os mesmos argumentos, não reinicia; por isso pode ser chamado todo frame.
+
+Ainda não suportado: strips de transição e meta, modos Subtract/Multiply (tocados como Replace), curvas de tempo da strip e NLA em objetos que não são armatures.
+
+- **`speed`**: Velocidade de reprodução (1.0 = taxa de quadros de animação da cena, 0.0 = parado, use `setNLAFrame`; negativa toca de trás para frente a partir do último frame).
+  - tipo: float
+- **`loop`**: Recomeça da primeira strip depois que a última termina; senão, segura o último frame.
+  - tipo: boolean
+
+**Retorna:** True quando o NLA começou (o objeto é uma armature com pelo menos uma strip).
+
+**Tipo do retorno:** boolean
+
+### stopNLA()
+
+Para a reprodução do NLA. A armature mantém a pose atual.
+
+### isPlayingNLA()
+
+**Retorna:** True enquanto o NLA está tocando (False depois que um NLA sem loop chegou ao fim).
+
+**Tipo do retorno:** boolean
+
+### getNLAFrame()
+
+**Retorna:** O frame atual do NLA.
+
+**Tipo do retorno:** float
+
+### setNLAFrame(frame)
+
+Pula o NLA para o frame dado, limitado ao intervalo das strips.
+
+- **`frame`**: O frame do NLA.
+  - tipo: float
+
 ### addDebugProperty (name[, debug])
 
 Adiciona uma propriedade à lista de depuração.

@@ -185,6 +185,10 @@ Se as partículas deixam de ser desenhadas quando vistas por trás.
 
 Mostra o painel de depuração do emissor durante o jogo.
 
+### useObjectRotation
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
 ### useVortex
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>

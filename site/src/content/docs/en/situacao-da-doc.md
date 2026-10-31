@@ -51,7 +51,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
 | `KX_FontObject` | 17 | 11 | 6 | 10 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 215 | 215 | 0 | 70 |
+| `KX_GameObject` | 220 | 220 | 0 | 70 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
@@ -71,7 +71,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 35 | 34 | 1 | 13 |
+| `KX_ParticleSystem` | 36 | 34 | 2 | 14 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |

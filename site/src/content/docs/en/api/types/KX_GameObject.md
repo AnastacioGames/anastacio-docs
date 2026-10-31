@@ -1380,6 +1380,51 @@ Checks to see if there is an action playing in the given layer.
 
 **Return type:** boolean
 
+### playNLA(speed=1.0, loop=True)
+
+Plays the NLA tracks of an armature, like the NLA Editor does. Muted tracks and strips are skipped,
+Solo is respected and the tracks are blended from the bottom up (Replace and Add, influence, blend
+in/out, repeat, scale, reverse and extrapolation). Actions played with `playAction` are
+blended on top of the NLA result.
+
+Calling it again while the NLA is playing with the same arguments keeps it going, so it can be
+called every frame.
+
+Not supported yet: transition and meta strips, Subtract/Multiply modes (played as Replace),
+strip time curves and NLA on objects that are not armatures.
+
+- **`speed`**: Playback speed (1.0 = scene animation frame rate, 0.0 = stopped, use `setNLAFrame`; negative plays backwards from the last frame).
+  - type: float
+- **`loop`**: Restart from the first strip after the last one ends, else hold the last frame.
+  - type: boolean
+
+**Returns:** True when the NLA started (the object is an armature with at least one strip).
+
+**Return type:** boolean
+
+### stopNLA()
+
+Stops the NLA playback. The armature keeps its current pose.
+
+### isPlayingNLA()
+
+**Returns:** True while the NLA is playing (False after a non-looping NLA reached its end).
+
+**Return type:** boolean
+
+### getNLAFrame()
+
+**Returns:** The current NLA frame.
+
+**Return type:** float
+
+### setNLAFrame(frame)
+
+Jumps the NLA to the given frame, clamped to the range of the strips.
+
+- **`frame`**: The NLA frame.
+  - type: float
+
 ### addDebugProperty (name[, debug])
 
 Adds a single debug property to the debug list.

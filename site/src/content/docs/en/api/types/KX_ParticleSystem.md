@@ -185,6 +185,10 @@ Whether particles stop being drawn when seen from behind.
 
 Shows the emitter debug panel during the game.
 
+### useObjectRotation
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
 ### useVortex
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>

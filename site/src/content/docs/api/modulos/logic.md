@@ -428,6 +428,19 @@ A escala vale para todos os relógios do jogo: física, timers, `getFrameTime`, 
 
 - **`time_scale`**: O novo multiplicador de tempo.
 
+### setAnimationsUseTimeScale(use)
+
+Escolhe se as ações seguem o `setTimeScale`. Com `False` o relógio das animações avança pelo passo de lógica sem escala, então as ações tocam em velocidade normal enquanto física, timers e lógica continuam escalados. Padrão `True`.
+
+- **`use`**: `True` para escalar as animações, `False` para mantê-las em velocidade normal.
+  - tipo: bool
+
+### getAnimationsUseTimeScale()
+
+**Retorna:** `True` se as ações seguem a escala de tempo.
+
+**Tipo do retorno:** bool
+
 ### ~~getUseExternalClock()~~
 
 :::danger[Obsoleto 0.5.5]

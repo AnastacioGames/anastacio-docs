@@ -11,7 +11,7 @@ fontes:
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
   - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
-conferido: d17e1b23
+conferido: 6d4ecf45
 ---
 
 <div class="ae-x">
@@ -70,8 +70,10 @@ conferido: d17e1b23
 - **A simulação sempre roda; o desenho, não.** Quando o jogo está adiantado, a engine só calcula quanto dormir e pula o render.
 - **Passo fixo com desenho interpolado.** Com **Fixed Timestep** ligado na cena (padrão em cenas novas desde a 0.6.1), a lógica avança em passos fixos e o desenho é interpolado entre o passo anterior e o atual, então o movimento fica liso mesmo quando o PC desenha em outro ritmo. Objetos teleportados não são suavizados. Com uma sessão de rede aberta o passo fixo liga sozinho, e cada passo vira um tick de rede.
 - **Espera entre quadros spin/sleep.** Parte da espera dorme e só o final gira; a engine mede a precisão do sleep do sistema ao abrir, então o ritmo fica certo também no Wine.
-- **Um relógio só, com escala.** Frame, lógica, animação, física e cutscene avançam pelo mesmo passo escalado: `setTimeScale` deixa tudo em câmera lenta junto, e escala 0 pausa a lógica. A cutscene tem relógio próprio, que para com a cena suspensa. O relógio externo foi descontinuado.
+- **Um relógio só, com escala.** Frame, lógica, animação, física e cutscene avançam pelo mesmo passo escalado: `setTimeScale` deixa tudo em câmera lenta junto, e escala 0 pausa a lógica. A cutscene tem relógio próprio, que para com a cena suspensa. O relógio externo foi descontinuado. Se preciso, as animações podem ignorar a escala com `Range.logic.setAnimationsUseTimeScale(False)`.
+- **Cena rodando sem aparecer.** Com `KX_Scene.visible = False` a cena continua simulando, mas sai do render; o céu passa para a próxima cena.
+- **Static Batch automático.** Em cenas novas o Auto Static Batch já vem ligado e junta as malhas estáticas no desenho.
 - **A hierarquia é atualizada várias vezes:** depois da lógica, dos atuadores e da física. A trilha B resume isso numa etapa.
-- **Medir cada etapa:** o menu Performance mostra o tempo de cada trecho do frame. Veja [Performance](/anastacio-docs/guias/performance/).
+- **Medir cada etapa:** o menu Performance mostra o tempo de cada trecho do frame. A física mostra também quantos substeps rodou no frame. Veja [Performance](/anastacio-docs/guias/performance/).
 
 <div><a class="ae-x ae-x-next" href="/anastacio-docs/por-dentro/plataformas/"><div><span class="ae-x-eyebrow">Última parada</span><strong>5 · Plataformas</strong></div><span class="ae-x-go">abrir →</span></a></div>

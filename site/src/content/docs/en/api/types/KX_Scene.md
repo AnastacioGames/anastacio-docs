@@ -320,6 +320,10 @@ List of functions called every frame on the parallel logic thread. Same usage as
 
 Names of the objects that can still be created with `convertObject()`.
 
+### visible
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
 ### worldSun
 
  <small>attribute · read-only</small>

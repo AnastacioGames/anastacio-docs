@@ -1,1 +1,3 @@
-Quando o objeto do personagem é removido, todo método e atributo do wrapper gera `ReferenceError`. Suspender a física mantém o personagem, então o wrapper continua funcionando.
+Postura atual (a forma de colisão em uso). Atribuir pede uma nova postura; ficar em pé espera até haver espaço acima do personagem (veja `canStand`).
+True quando há espaço para ficar em pé a partir da postura atual.
+Modo corrida: enquanto True o personagem anda com o fator Run Speed do objeto.

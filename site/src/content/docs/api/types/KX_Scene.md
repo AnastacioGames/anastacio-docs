@@ -313,6 +313,10 @@ Lista de funções chamadas na thread de lógica paralela, a cada frame. Mesmo u
 
 Nomes dos objetos que ainda podem ser criados com `convertObject()`.
 
+### visible
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
 ### worldSun
 
  <small>atributo · só leitura</small>

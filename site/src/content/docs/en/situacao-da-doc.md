@@ -11,7 +11,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `Range.constraints` | 52 | 51 | 0 |  |
 | `Range.events` | 135 | 135 | 0 |  |
 | `Range.imgui` | 42 | 42 | 0 | 6 |
-| `Range.logic` | 341 | 336 | 0 | 6 |
+| `Range.logic` | 343 | 338 | 0 | 6 |
 | `Range.network` | 36 | 36 | 0 | 36 |
 | `Range.network.steam` | 8 | 8 | 0 | 8 |
 | `Range.render` | 69 | 68 | 0 | 6 |
@@ -41,7 +41,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_Camera` | 81 | 81 | 0 | 48 |
 | `KX_CameraActuator` | 6 | 6 | 0 |  |
 | `KX_ChangeColorActuator` | 3 | 3 | 0 |  |
-| `KX_CharacterWrapper` | 13 | 13 | 0 |  |
+| `KX_CharacterWrapper` | 16 | 16 | 0 |  |
 | `KX_CollisionContactPoint` | 8 | 8 | 0 |  |
 | `KX_CollisionSensor` | 6 | 6 | 0 |  |
 | `KX_ConstraintActuator` | 11 | 11 | 0 |  |
@@ -82,7 +82,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_RadarSensor` | 5 | 5 | 0 |  |
 | `KX_RaySensor` | 14 | 14 | 0 | 3 |
 | `KX_ReplaceMeshActuator` | 4 | 4 | 0 |  |
-| `KX_Scene` | 39 | 37 | 2 | 1 |
+| `KX_Scene` | 40 | 37 | 3 | 2 |
 | `KX_SceneActuator` | 4 | 4 | 0 |  |
 | `KX_SoundActuator` | 17 | 17 | 0 |  |
 | `KX_Speaker` | 41 | 41 | 0 |  |

@@ -94,6 +94,24 @@ Suaviza o movimento causado pela direção de caminhada.
 
 **Tipo:** float (0.0 to 1.0)
 
+### posture
+
+Postura atual (a forma de colisão em uso). Atribuir pede uma nova postura; ficar em pé espera até haver espaço acima do personagem (veja `canStand`).
+
+**Tipo:** string, one of `'STAND'`, `'CROUCH'`, `'CRAWL'`, `'JUMP_TUCK'`
+
+### canStand
+
+True quando há espaço para ficar em pé a partir da postura atual.
+
+**Tipo:** boolean (read-only)
+
+### running
+
+Modo corrida: enquanto True o personagem anda com o fator Run Speed do objeto.
+
+**Tipo:** boolean
+
 ### reset()
 
 Zera a velocidade e a direção de caminhada do personagem.

@@ -464,6 +464,21 @@ logic, or pause with `KX_Scene.suspend` instead.
 
 - **`time_scale`**: The new time multiplier.
 
+### setAnimationsUseTimeScale(use)
+
+Choose whether actions follow `setTimeScale`. With `False` the
+animation clock advances by the unscaled logic step, so actions play at
+full speed while physics, timers and logic stay scaled. Default `True`.
+
+- **`use`**: `True` to scale animations, `False` to keep them at full speed.
+  - type: bool
+
+### getAnimationsUseTimeScale()
+
+**Returns:** `True` if actions follow the time scale.
+
+**Return type:** bool
+
 ### ~~getUseExternalClock()~~
 
 :::danger[Deprecated 0.5.5]

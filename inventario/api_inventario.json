@@ -4654,6 +4654,14 @@
      "commit": "c03248d3",
      "data": "2026-10-12"
     },
+    "useObjectRotation": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "8d6b6f33",
+     "data": "2026-10-30"
+    },
     "vortexHeight": {
      "tipo": "atributo",
      "so_leitura": false,

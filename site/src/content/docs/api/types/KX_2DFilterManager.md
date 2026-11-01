@@ -163,3 +163,15 @@ Liga ou desliga o grão de filme da cena.
 
 Força do grão de filme, de 0.0 a 1.0.
 
+### taaEnabled
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Liga ou desliga o TAA (anti-aliasing temporal) da cena (Render > TAA). `True` ou `False`. Suaviza bordas misturando quadros com a câmera levemente deslocada Em tela dividida e em estéreo só a nitidez é aplicada.
+
+### taaSharpen
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros.
+

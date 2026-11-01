@@ -289,6 +289,12 @@ Reinicia a Cutscene ativa e remove os objetos que ela criou.
 
 <span class="ae-badge pendente">sem documentação</span> <small>método</small>
 
+### skip_cutscene()
+
+ <small>método</small>
+
+Pula para o fim da Cutscene em andamento: falas, esperas, caminhos de câmera e fades são descartados; os outros eventos que faltam rodam (volta da câmera, destravar, troca de cena). Retorna `False` se nada estava tocando. Tab ou o botão Start do controle fazem o mesmo, a menos que `Range.logic.globalDict["cutscene_skip"]` seja `False`.
+
 ### stop_cutscene()
 
  <small>método</small>

@@ -394,7 +394,9 @@
   "changeSSAOValues": "changeSSAOValues(enabled, samples, strength, distance, attenuation)\nTurns ambient occlusion (SSAO) on/off and changes samples, strength, distance and attenuation.",
   "changeSSGIValues": "changeSSGIValues(enabled, radius=3.0, strength=1.0, rays=4, steps=8, thickness=0.1, divisor=0)\nTurns screen-space global illumination (SSGI) on/off and changes its parameters. `divisor` 1, 2 or 4 changes the tracing resolution; 0 keeps it. SSGI must be enabled in the scene before Play.",
   "changeSSRValues": "changeSSRValues(enabled, step_max, bias, max_distance)\nTurns screen-space reflections (SSR) on/off and changes steps, bias and maximum distance.",
-  "changeTonemapValues": "changeTonemapValues(enabled, exposure, gamma)\nTurns tonemapping on/off and changes exposure and gamma."
+  "changeTonemapValues": "changeTonemapValues(enabled, exposure, gamma)\nTurns tonemapping on/off and changes exposure and gamma.",
+  "taaEnabled": "Turns the scene TAA (temporal anti-aliasing) on or off (Render > TAA). `True` or `False`. Smooths edges by blending frames with a slightly shifted camera. In split screen and stereo only the sharpening runs.",
+  "taaSharpen": "Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending."
  },
  "KX_GameObject": {
   "isDeformable": "`True` if the object has the deformation settings on (dent, bend, decals).",
@@ -747,7 +749,8 @@
   "speakers": "List of the scene sound objects (`KX_Speaker`).",
   "thread_logic_1": "List of functions called every frame on the parallel logic thread. Same usage as `pre_draw`.",
   "unconvertedObjects": "Names of the objects that can still be created with `convertObject()`.",
-  "worldSun": "Sun light linked to the World (sky sun position), or `None`."
+  "worldSun": "Sun light linked to the World (sky sun position), or `None`.",
+  "skip_cutscene": "skip_cutscene()\nJumps to the end of the playing Cutscene: dialogs, waits, camera paths and fades are dropped; the other remaining events run (camera restore, unlock, scene change). Returns `False` when nothing was playing. Tab or the gamepad Start button do the same unless `Range.logic.globalDict[\"cutscene_skip\"]` is `False`."
  },
  "KX_Speaker": {
   "GetActiveEffect": "GetActiveEffect() -> int\nActive sound effect: 0 none, 1 reverb.",

@@ -163,3 +163,15 @@ Turns the scene film grain on or off.
 
 Film grain strength, from 0.0 to 1.0.
 
+### taaEnabled
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Turns the scene TAA (temporal anti-aliasing) on or off (Render > TAA). `True` or `False`. Smooths edges by blending frames with a slightly shifted camera. In split screen and stereo only the sharpening runs.
+
+### taaSharpen
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending.
+

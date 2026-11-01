@@ -910,6 +910,22 @@
      "commit": "49be685b",
      "data": "2026-10-09"
     },
+    "taaEnabled": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "759f421d",
+     "data": "2026-11-01"
+    },
+    "taaSharpen": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "759f421d",
+     "data": "2026-11-01"
+    },
     "grainEnabled": {
      "tipo": "atributo",
      "so_leitura": false,
@@ -5299,6 +5315,11 @@
      "status": "novo",
      "origem": "snapshot",
      "commit": "28775369"
+    },
+    "skip_cutscene": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
     },
     "restart_cutscene": {
      "tipo": "metodo",

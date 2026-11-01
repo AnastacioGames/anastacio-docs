@@ -296,6 +296,12 @@ Restarts the active Cutscene and removes the objects it created.
 
 <span class="ae-badge pendente">undocumented</span> <small>method</small>
 
+### skip_cutscene()
+
+ <small>method</small>
+
+Jumps to the end of the playing Cutscene: dialogs, waits, camera paths and fades are dropped; the other remaining events run (camera restore, unlock, scene change). Returns `False` when nothing was playing. Tab or the gamepad Start button do the same unless `Range.logic.globalDict["cutscene_skip"]` is `False`.
+
 ### stop_cutscene()
 
  <small>method</small>

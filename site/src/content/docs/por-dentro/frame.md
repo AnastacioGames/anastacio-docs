@@ -11,7 +11,7 @@ fontes:
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
   - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
-conferido: 6d4ecf45
+conferido: bc39df8d
 ---
 
 <div class="ae-x">
@@ -37,7 +37,7 @@ conferido: 6d4ecf45
 <li class="opt novo">Rede: aplica o que chegou<small>só com sessão multiplayer</small></li>
 <li>Atividade dos objetos</li>
 <li>Animações e deformação</li>
-<li>Cutscene e seus eventos</li>
+<li>Cutscene e seus eventos<small>falas, tomadas de câmera, fade; Tab/Start pula</small></li>
 <li>Lógica: sensores e controladores</li>
 <li>Atuadores</li>
 <li>Terremoto e física Bullet</li>
@@ -56,7 +56,7 @@ conferido: 6d4ecf45
 <li>Sombras<small>KX_ShadowRenderer</small></li>
 <li>Render-to-texture</li>
 <li>Cada câmera: culling, LOD/HLOD, céu e desenho<small>Static Batch junta malhas</small></li>
-<li>Filtros 2D da cena</li>
+<li>Filtros 2D da cena<small>Tonemap, TAA, FXAA, lente, customizados</small></li>
 <li>ImGui, debug e troca de buffers</li>
 </ol>
 <span class="ae-x-go">KX_RenderPipeline.cpp</span>
@@ -71,6 +71,7 @@ conferido: 6d4ecf45
 - **Passo fixo com desenho interpolado.** Com **Fixed Timestep** ligado na cena (padrão em cenas novas desde a 0.6.1), a lógica avança em passos fixos e o desenho é interpolado entre o passo anterior e o atual, então o movimento fica liso mesmo quando o PC desenha em outro ritmo. Objetos teleportados não são suavizados. Com uma sessão de rede aberta o passo fixo liga sozinho, e cada passo vira um tick de rede.
 - **Espera entre quadros spin/sleep.** Parte da espera dorme e só o final gira; a engine mede a precisão do sleep do sistema ao abrir, então o ritmo fica certo também no Wine.
 - **Um relógio só, com escala.** Frame, lógica, animação, física e cutscene avançam pelo mesmo passo escalado: `setTimeScale` deixa tudo em câmera lenta junto, e escala 0 pausa a lógica. A cutscene tem relógio próprio, que para com a cena suspensa. O relógio externo foi descontinuado. Se preciso, as animações podem ignorar a escala com `Range.logic.setAnimationsUseTimeScale(False)`.
+- **TAA treme a câmera de propósito.** Com Render > TAA ligado, a projeção da câmera do jogo anda um pouco a cada frame e o filtro mistura o quadro novo com o histórico. Culling, picking e as matrizes da câmera no Python não veem esse tremor. Em tela dividida e em estéreo o TAA fica sem tremor e sem histórico, só com a nitidez.
 - **Cena rodando sem aparecer.** Com `KX_Scene.visible = False` a cena continua simulando, mas sai do render; o céu passa para a próxima cena.
 - **Static Batch automático.** Em cenas novas o Auto Static Batch já vem ligado e junta as malhas estáticas no desenho.
 - **A hierarquia é atualizada várias vezes:** depois da lógica, dos atuadores e da física. A trilha B resume isso numa etapa.

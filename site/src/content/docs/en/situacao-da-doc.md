@@ -29,7 +29,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
 | `KX_2DFilter` | 12 | 12 | 0 | 4 |
-| `KX_2DFilterManager` | 20 | 19 | 1 | 8 |
+| `KX_2DFilterManager` | 22 | 21 | 1 | 10 |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 2 | 0 |  |
@@ -82,7 +82,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_RadarSensor` | 5 | 5 | 0 |  |
 | `KX_RaySensor` | 14 | 14 | 0 | 3 |
 | `KX_ReplaceMeshActuator` | 4 | 4 | 0 |  |
-| `KX_Scene` | 40 | 37 | 3 | 2 |
+| `KX_Scene` | 41 | 38 | 3 | 2 |
 | `KX_SceneActuator` | 4 | 4 | 0 |  |
 | `KX_SoundActuator` | 17 | 17 | 0 |  |
 | `KX_Speaker` | 41 | 41 | 0 |  |

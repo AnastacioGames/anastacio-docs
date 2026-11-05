@@ -54,7 +54,7 @@ conferido: 46cc0e0d
 <ol class="ae-x-steps">
 <li>Começa o frame</li>
 <li>Sombras<small>KX_ShadowRenderer</small></li>
-<li class="novo">Probes, cube maps e Light Probe Volume<small>etapa própria no relatório: render.probes</small></li>
+<li>Render-to-texture e probes<small>cube maps e Light Probe Volume; etapa render.probes no relatório</small></li>
 <li>Cada câmera: culling, LOD/HLOD, céu e desenho<small>Static Batch junta malhas</small></li>
 <li>Chuva e filtros 2D da cena<small>superfícies molhadas, Tonemap, TAA, FXAA, lente, customizados</small></li>
 <li>post_draw do Python, ImGui, debug e troca de buffers<small>bgl/blf desenham sem luz</small></li>

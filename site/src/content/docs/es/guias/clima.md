@@ -67,6 +67,7 @@ Los nombres aceptan el prefijo `weather.` (opcional). Algunos de los más usados
 | `rain_intensity` | float | Qué tan fuerte llueve |
 | `rain_wind` | float | Inclinación de la lluvia por el viento |
 | `puddles` | bool | Charcos en el suelo |
+| `wet` | bool | Superficies mojadas: se oscurecen y brillan mientras llueve y se secan después |
 | `lightning` | bool | Rayos automáticos |
 | `clouds` | bool | Nubes (necesita la pasada, ver el aviso arriba) |
 | `cloud_coverage` | float | Cuánto del cielo está cubierto |

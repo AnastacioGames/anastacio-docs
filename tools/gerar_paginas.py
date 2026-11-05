@@ -88,7 +88,8 @@ def trocar_bge(t):
     t = re.sub(r"\bimport bge\b", "import Range", t)
     t = re.sub(r"\bfrom bge\b", "from Range", t)
     t = re.sub(r"\bbge\.app\b", "Range.application", t)
-    return re.sub(r"\bbge\.", "Range.", t)
+    # "alias ``bge.x``" explica o próprio alias: fica como está
+    return re.sub(r"(?<!alias ``)(?<!alias `)\bbge\.", "Range.", t)
 
 
 def inline(t):

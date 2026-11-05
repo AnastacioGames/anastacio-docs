@@ -118,8 +118,8 @@
     },
     {
      "controle_rna": "use_rain_wet",
-     "api": "",
-     "estado": "sem_binding"
+     "api": "setWeather/getWeather(wet)",
+     "estado": "exposto"
     },
     {
      "controle_rna": "use_sky_layers",

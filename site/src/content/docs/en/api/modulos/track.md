@@ -3,7 +3,7 @@ title: "Range.track"
 description: "Range.track module reference"
 ---
 
-Baked track data of the Track Tool (`Range.track`, alias `Range.track`).
+Baked track data of the Track Tool (`Range.track`, alias `bge.track`).
 
 The editor tool bakes one table per sample of a track layout into the Text datablock
 `TRACK_<name>.json` (format version 1, see `docs/plano-track-tool.md`). In the game the engine

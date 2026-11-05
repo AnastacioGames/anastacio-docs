@@ -201,7 +201,7 @@ def auditoria_cobertura(classes):
         "use_rain_splash": "splash", "use_rain_puddles": "puddles",
         "use_rain_puddle_ssr": "puddle_ssr", "use_rain_ripple_puddle_only": "ripple_puddle_only",
         "use_rain_splash_puddle_only": "splash_puddle_only", "use_rain_aura": "aura",
-        "use_rain_lightning": "lightning", "use_rain_lightning_side": "lightning_side",
+        "use_rain_lightning": "lightning", "use_rain_lightning_side": "lightning_side", "use_rain_wet": "wet",
         "use_lens_flare": "lens_flare", "use_earthquake": "earthquake",
         "vfog_color": ("vfog_color_r", "vfog_color_g", "vfog_color_b"),
         "cloud_color": ("cloud_color_r", "cloud_color_g", "cloud_color_b"),

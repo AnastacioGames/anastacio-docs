@@ -67,6 +67,7 @@ class Clima(Range.types.KX_PythonComponent):
 | `rain_intensity` | float | Сила дождя |
 | `rain_wind` | float | Наклон дождя от ветра |
 | `puddles` | bool | Лужи на земле |
+| `wet` | bool | Мокрые поверхности: темнеют и блестят во время дождя, потом высыхают |
 | `lightning` | bool | Автоматические молнии |
 | `clouds` | bool | Облака (нужен проход, см. предупреждение выше) |
 | `cloud_coverage` | float | Какая часть неба закрыта |

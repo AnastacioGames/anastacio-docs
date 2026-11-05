@@ -2,7 +2,7 @@
 
 Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos de jogo com bindings Python; não afirma que todo controle do editor deve virar API.
 
-**Total:** 61 expostos · 4 sem binding · 0 só de editor.
+**Total:** 62 expostos · 3 sem binding · 0 só de editor.
 
 ## Partículas GPU
 
@@ -39,7 +39,7 @@ Gerado por `tools/api_inventario.py`. Compara somente controles RNA de recursos 
 | `use_rain_sound` | `` | **sem binding** |
 | `use_rain_splash` | `setWeather/getWeather(splash)` | exposto |
 | `use_rain_splash_puddle_only` | `setWeather/getWeather(splash_puddle_only)` | exposto |
-| `use_rain_wet` | `` | **sem binding** |
+| `use_rain_wet` | `setWeather/getWeather(wet)` | exposto |
 | `use_sky_layers` | `setWeather/getWeather(use_sky_layers)` | exposto |
 | `use_volumetric_clouds` | `setWeather/getWeather(use_volumetric_clouds)` | exposto |
 | `use_volumetric_fog` | `setWeather/getWeather(vfog)` | exposto |

@@ -67,6 +67,7 @@ Names accept the `weather.` prefix (optional). Some of the most used:
 | `rain_intensity` | float | How hard it rains |
 | `rain_wind` | float | Rain slant from wind |
 | `puddles` | bool | Puddles on the ground |
+| `wet` | bool | Wet surfaces: darker and shiny while it rains, dry afterwards |
 | `lightning` | bool | Automatic lightning |
 | `clouds` | bool | Clouds (needs the pass, see the warning above) |
 | `cloud_coverage` | float | How much of the sky is covered |

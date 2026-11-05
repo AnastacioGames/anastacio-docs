@@ -1,0 +1,1 @@
+Superfícies molhadas (chuva): booleano `wet`; inteiro `wet_smooth_quality` (0 Off, 1 Low, 2 Medium, 3 High); floats `wet_darkness` (0-1), `wet_gloss` (0-1), `wet_distance` (metros), `wet_dry_time` (segundos), `wet_smooth_strength` (0-1), `wet_smooth_radius` (0.25-4), `wet_smooth_angle` (Keep Edges, em radianos) e `wet_smooth_distance` (metros).

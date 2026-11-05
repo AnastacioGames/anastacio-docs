@@ -84,7 +84,7 @@ sidebar:
 <article><h3>Производительность</h3><ul>
 <li>Static Batch: с ним мы сравниваемся с ThunderPlayer в бенчмарке.</li>
 <li>Около 100 мест с повторяющейся работой пересмотрено в движке.</li>
-<li>Range Trace, Performance Report и Scene Doctor показывают, где игра тормозит.</li>
+<li>Game Trace, Performance Report и Scene Doctor показывают, где игра тормозит.</li>
 <li>Auto Static Batch, компактный счётчик FPS и более дешёвый Python API.</li>
 </ul></article>
 <article><h3>Логика без кода</h3><ul>

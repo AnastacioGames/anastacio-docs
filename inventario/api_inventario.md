@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 107 classes, 8 módulos | documentados 1057 · sem doc 248 · novos 570 · só no rst 111
+**Total:** 107 classes, 9 módulos | documentados 1061 · sem doc 248 · novos 570 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -18,6 +18,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `Range.network.steam` | 9 | 0 | 0 | 9 | 0 | **não** |
 | `Range.constraints` | 52 | 43 | 0 | 8 | 1 | sim |
 | `Range.texture` | 36 | 4 | 0 | 0 | 32 | sim |
+| `Range.track` | 4 | 4 | 0 | 0 | 0 | sim |
 
 ## Classes (Range.types)
 

@@ -8,7 +8,7 @@ fontes:
   - source/source/creator/CMakeLists.txt
   - source/source/blenderplayer/CMakeLists.txt
   - source/CMakeLists.txt
-conferido: 3ec78347
+conferido: 46cc0e0d
 ---
 
 <div class="ae-x">
@@ -21,11 +21,11 @@ conferido: 3ec78347
 │  │  ├─ creator/               <em>main() do editor → AnastacioEngine.exe</em>
 │  │  └─ blenderplayer/         <em>player → AnastacioRuntime.exe</em>
 │  ├─ intern/                   <em>cycles, ghost (janela), audaspace (som)</em>
-│  ├─ extern/                   <em>Bullet, ImGui, Recast, SDL2</em>
+│  ├─ extern/                   <em>Bullet, ImGui, Recast, SDL2, Basis Universal</em>
 │  └─ release/
 │     ├─ scripts/startup/       <em>painéis, operadores, Logic Tree, UI Tree</em>
-│     ├─ scripts/modules/       <em>range_web, range_locale, range_ui_runtime</em>
-│     └─ datafiles/             <em>startup.blend, splash, ícones</em>
+│     ├─ scripts/modules/       <em>range_web, range_locale, range_ui_runtime, range_track</em>
+│     └─ datafiles/             <em>startup.blend, splash, ícones, esqueletos do auto-rig</em>
 ├─ <b>tools/</b>                      <em>web, android, linux, debug, modelagem</em>
 ├─ <b>docs/</b>                       <em>documentação técnica</em>
 └─ build*/                    <em>saída dos builds (fora do git)</em></pre>

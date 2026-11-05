@@ -9,6 +9,7 @@ const MODULOS = [
 	['events', 'Teclas e botões (constantes)', 'Keys and buttons (constants)'],
 	['constraints', 'Juntas e restrições físicas', 'Physics joints and constraints'],
 	['texture', 'Texturas de vídeo e imagem', 'Video and image textures'],
+	['track', 'Dados da pista (Track Tool)', 'Track data (Track Tool)'],
 	['imgui', 'Interface de depuração', 'Debug interface'],
 	['network', 'Multiplayer', 'Multiplayer'],
 	['network.steam', 'Multiplayer via Steam (opcional)', 'Multiplayer over Steam (optional)'],

@@ -84,7 +84,7 @@ sidebar:
 <article><h3>Desempenho</h3><ul>
 <li>Static Batch: com ele ligado empatamos com a ThunderPlayer no benchmark.</li>
 <li>Cerca de 100 pontos de trabalho repetido revisados no motor.</li>
-<li>Range Trace, Performance Report e Scene Doctor mostram onde o jogo pesa.</li>
+<li>Game Trace, Performance Report e Scene Doctor mostram onde o jogo pesa.</li>
 <li>Auto Static Batch, contador de FPS compacto e uma API Python mais barata.</li>
 </ul></article>
 <article><h3>Lógica sem código</h3><ul>

@@ -11,7 +11,7 @@ fontes:
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
   - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
-conferido: bc39df8d
+conferido: 46cc0e0d
 ---
 
 <div class="ae-x">
@@ -41,7 +41,7 @@ conferido: bc39df8d
 <li>Lógica: sensores e controladores</li>
 <li>Atuadores</li>
 <li>Terremoto e física Bullet</li>
-<li class="novo">Trilho do Range Trace, LOD/HLOD, sol automático</li>
+<li class="novo">Trilho do Game Trace, LOD/HLOD, sol automático</li>
 <li>Hierarquia e Game FX da câmera</li>
 <li class="novo">Partículas GPU, chuva, raios, flicker das luzes</li>
 <li class="opt novo">Rede: servidor envia o estado<small>só com sessão multiplayer</small></li>
@@ -54,10 +54,10 @@ conferido: bc39df8d
 <ol class="ae-x-steps">
 <li>Começa o frame</li>
 <li>Sombras<small>KX_ShadowRenderer</small></li>
-<li>Render-to-texture</li>
+<li class="novo">Probes, cube maps e Light Probe Volume<small>etapa própria no relatório: render.probes</small></li>
 <li>Cada câmera: culling, LOD/HLOD, céu e desenho<small>Static Batch junta malhas</small></li>
-<li>Filtros 2D da cena<small>Tonemap, TAA, FXAA, lente, customizados</small></li>
-<li>ImGui, debug e troca de buffers</li>
+<li>Chuva e filtros 2D da cena<small>superfícies molhadas, Tonemap, TAA, FXAA, lente, customizados</small></li>
+<li>post_draw do Python, ImGui, debug e troca de buffers<small>bgl/blf desenham sem luz</small></li>
 </ol>
 <span class="ae-x-go">KX_RenderPipeline.cpp</span>
 </div>
@@ -68,8 +68,8 @@ conferido: bc39df8d
 ## Detalhes que importam
 
 - **A simulação sempre roda; o desenho, não.** Quando o jogo está adiantado, a engine só calcula quanto dormir e pula o render.
-- **Passo fixo com desenho interpolado.** Com **Fixed Timestep** ligado na cena (padrão em cenas novas desde a 0.6.1), a lógica avança em passos fixos e o desenho é interpolado entre o passo anterior e o atual, então o movimento fica liso mesmo quando o PC desenha em outro ritmo. Objetos teleportados não são suavizados. Com uma sessão de rede aberta o passo fixo liga sozinho, e cada passo vira um tick de rede.
-- **Espera entre quadros spin/sleep.** Parte da espera dorme e só o final gira; a engine mede a precisão do sleep do sistema ao abrir, então o ritmo fica certo também no Wine.
+- **Passo fixo com desenho interpolado.** Com **Fixed Timestep** ligado na cena (padrão em cenas novas desde a 0.6.1), a lógica avança em passos fixos e o desenho é interpolado entre o passo anterior e o atual, então o movimento fica liso mesmo quando o PC desenha em outro ritmo. Objetos teleportados não são suavizados. As caixas do Occlusion Culling acompanham a posição desenhada, então um objeto rápido não some na borda da tela. Com uma sessão de rede aberta o passo fixo liga sozinho, e cada passo vira um tick de rede.
+- **Espera entre quadros spin/sleep.** Parte da espera dorme e só o final gira; a engine mede a precisão do sleep do sistema ao abrir, então o ritmo fica certo também no Wine. Na Web não há espera: o navegador já marca o ritmo, e a engine pula os frames dele que chegam antes da hora (60 FPS continuam 60 numa tela de 120 Hz).
 - **Um relógio só, com escala.** Frame, lógica, animação, física e cutscene avançam pelo mesmo passo escalado: `setTimeScale` deixa tudo em câmera lenta junto, e escala 0 pausa a lógica. A cutscene tem relógio próprio, que para com a cena suspensa. O relógio externo foi descontinuado. Se preciso, as animações podem ignorar a escala com `Range.logic.setAnimationsUseTimeScale(False)`.
 - **TAA treme a câmera de propósito.** Com Render > TAA ligado, a projeção da câmera do jogo anda um pouco a cada frame e o filtro mistura o quadro novo com o histórico. Culling, picking e as matrizes da câmera no Python não veem esse tremor. Em tela dividida e em estéreo o TAA fica sem tremor e sem histórico, só com a nitidez.
 - **Cena rodando sem aparecer.** Com `KX_Scene.visible = False` a cena continua simulando, mas sai do render; o céu passa para a próxima cena.

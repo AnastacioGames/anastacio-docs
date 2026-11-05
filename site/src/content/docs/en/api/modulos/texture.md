@@ -63,6 +63,8 @@ the Blender Game Engine's fancy texturing features: GLSL, multi-texture, custom 
 
 ## Video classes
 
+## Class `VideoFFmpeg(file, capture=-1, rate=25.0, width=0, height=0)`
+
 FFmpeg video source, used for video files, video captures, or video streams.
 
 - **`file`**: Path to the video to load; if capture >= 0 on Windows, this parameter will not be used.
@@ -197,6 +199,8 @@ Refresh video - get its status and optionally copy the frame to an external buff
 
 ## Image classes
 
+## Class `ImageFFmpeg(file)`
+
 FFmpeg image source, used for image files and web based images.
 
 - **`file`**: Path to the image to load.
@@ -265,6 +269,8 @@ Reload image, i.e. reopen it.
 
 - **`newname`**: Path to a new image. (optional)
   - type: str
+
+## Class `ImageBuff(width, height, color=0, scale=False)`
 
 Image from application memory.
 For computer generated images, drawing applications.
@@ -341,6 +347,8 @@ Image size. (readonly)
 Tells if an image is available. (readonly)
 
 **Type:** bool
+
+## Class `ImageMirror(scene, observer, mirror, material=0, width, height, samples, hdr)`
 
 Image source from mirror.
 
@@ -461,6 +469,8 @@ Use whole viewport to render.
 
 **Type:** bool
 
+## Class `ImageMix`
+
 Image mixer used to mix multiple image sources together.
 
 ### filter
@@ -547,6 +557,8 @@ Set image source weight - the sum of the weights should be 256 to get full color
 Tells if an image is available. (readonly)
 
 **Type:** bool
+
+## Class `ImageRender(scene, camera, width, height, samples, hdr)`
 
 Image source from a render of a non active camera.
 The render is done on a custom framebuffer object if fbo is specified,
@@ -699,6 +711,8 @@ This only makes sense with offscreen render on texture target (see `offScreenCre
 
 **Return type:** bool
 
+## Class `ImageViewport`
+
 Image source from viewport rendered by the active camera.
 To render from a non active camera see `ImageRender`.
 
@@ -783,6 +797,8 @@ should only be used with `Range.texture.imageToArray(mode='F')`.
 Use depth component of viewport as grayscale color - suitable for texture source.
 
 **Type:** bool
+
+## Class `VideoDeckLink(format, capture=0)`
 
 Image source from an external video stream captured with a DeckLink video card from
 Black Magic Design.
@@ -962,6 +978,8 @@ Stops the capture.
 
 ## Texture classes
 
+## Class `Texture(gameObj, materialID=0, textureID=0, textureObj=None)`
+
 Class that creates the `Texture` object that loads the dynamic texture on the GPU.
 
 - **`gameObj`**: Game object to be created a video texture on.
@@ -1003,6 +1021,8 @@ Refresh texture from source.
 Source of texture.
 
 **Type:** one of... * `VideoFFmpeg` * `VideoDeckLink` * `ImageFFmpeg` * `ImageBuff` * `ImageMirror` * `ImageMix` * `ImageRender` * `ImageViewport`
+
+## Class `DeckLink(cardIdx=0, format="")`
 
 Certain DeckLink devices can be used to playback video: the host sends video frames regularly
 for immediate or scheduled playback. The video feed is outputted on HDMI or SDI interfaces.
@@ -1100,7 +1120,11 @@ This method must be called frequently to update the output frame in the DeckLink
 
 ## Filter classes
 
+## Class `FilterBGR24`
+
 Source filter BGR24.
+
+## Class `FilterBlueScreen`
 
 Filter for Blue Screen.
 The RGB channels of the color are left unchanged, while the output alpha is obtained as follows:
@@ -1133,6 +1157,8 @@ Previous pixel filter.
 
 **Type:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
+## Class `FilterColor`
+
 Filter for color calculations.
 The output color is obtained by multiplying the reduced 4x4 matrix with the input color
 and adding the remaining column to the result.
@@ -1151,6 +1177,8 @@ Previous pixel filter.
 
 **Type:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
+## Class `FilterGray`
+
 Filter for grayscale effect.
 Proportions of R, G and B contributions in the output grayscale are 28:151:77.
 
@@ -1159,6 +1187,8 @@ Proportions of R, G and B contributions in the output grayscale are 28:151:77.
 Previous pixel filter.
 
 **Type:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
+
+## Class `FilterLevel`
 
 Filter for levels calculations. Each output color component is obtained as follows:
 
@@ -1181,6 +1211,8 @@ Levels matrix [4] (min, max).
 Previous pixel filter.
 
 **Type:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
+
+## Class `FilterNormal`
 
 Normal map filter.
 
@@ -1206,8 +1238,12 @@ Previous pixel filter.
 
 **Type:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
+## Class `FilterRGB24`
+
 Returns a new input filter object to be used with `ImageBuff` object when the image passed
 to the `ImageBuff.load` function has the 3-bytes pixel format BGR.
+
+## Class `FilterRGBA32`
 
 Source filter RGBA32.
 

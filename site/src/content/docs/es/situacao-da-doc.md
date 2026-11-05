@@ -16,6 +16,7 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `Range.network.steam` | 8 | 8 | 0 | 8 |
 | `Range.render` | 69 | 68 | 0 | 6 |
 | `Range.texture` | 36 | 4 | 0 |  |
+| `Range.track` | 4 | 4 | 0 |  |
 | `BL_ActionActuator` | 12 | 12 | 0 |  |
 | `BL_ArmatureActuator` | 6 | 6 | 0 |  |
 | `BL_ArmatureBone` | 15 | 0 | 0 |  |

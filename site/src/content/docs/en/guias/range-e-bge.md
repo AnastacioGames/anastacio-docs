@@ -30,6 +30,7 @@ This documentation uses `Range` in every example.
 | `Range.texture` | `bge.texture` | Dynamic textures: video, image, camera and render to texture |
 | `Range.imgui` | `bge.imgui` | Interface windows and controls for debugging |
 | `Range.network` | `bge.network` | Multiplayer: connection, messages and object replication |
+| `Range.track` | `bge.track` | Track Tool track data: position on the track, edges and racing line |
 
 :::caution[Web export]
 The Web validator warns `WEB-PY-001` when it finds `import bge` and suggests changing it to `import Range`.

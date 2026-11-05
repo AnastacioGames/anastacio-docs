@@ -45,6 +45,8 @@ Como `Range.texture` trabalha no nível da textura, ele é compatível com todos
 
 ## Classes de vídeo
 
+## Classe `VideoFFmpeg(file, capture=-1, rate=25.0, width=0, height=0)`
+
 Fonte de vídeo FFmpeg, usada para arquivos de vídeo, capturas de vídeo ou streams de vídeo.
 
 - **`file`**: Caminho do vídeo a carregar; se capture >= 0 no Windows, este parâmetro não é usado.
@@ -173,6 +175,8 @@ Atualiza o vídeo: pega o status e, se quiser, copia o frame para um buffer exte
 
 ## Classes de imagem
 
+## Classe `ImageFFmpeg(file)`
+
 Fonte de imagem FFmpeg, usada para arquivos de imagem e imagens da web.
 
 - **`file`**: Caminho da imagem a carregar.
@@ -241,6 +245,8 @@ Recarrega a imagem, ou seja, abre de novo.
 
 - **`newname`**: Caminho para uma nova imagem (opcional).
   - tipo: str
+
+## Classe `ImageBuff(width, height, color=0, scale=False)`
 
 Imagem vinda da memória da aplicação. Para imagens geradas pelo computador, aplicativos de desenho.
 
@@ -316,6 +322,8 @@ Tamanho da imagem (somente leitura).
 Diz se há uma imagem disponível (somente leitura).
 
 **Tipo:** bool
+
+## Classe `ImageMirror(scene, observer, mirror, material=0, width, height, samples, hdr)`
 
 Fonte de imagem a partir de um espelho.
 
@@ -435,6 +443,8 @@ Usa a viewport inteira no render.
 
 **Tipo:** bool
 
+## Classe `ImageMix`
+
 Mixer de imagens, usado para misturar várias fontes de imagem.
 
 ### filter
@@ -520,6 +530,8 @@ Define o peso da fonte de imagem; a soma dos pesos deve ser 256 para ter intensi
 Diz se há uma imagem disponível (somente leitura).
 
 **Tipo:** bool
+
+## Classe `ImageRender(scene, camera, width, height, samples, hdr)`
 
 Fonte de imagem a partir do render de uma câmera não ativa. O render é feito num framebuffer object personalizado se fbo for passado; senão, no framebuffer padrão.
 
@@ -657,6 +669,8 @@ Atualiza: renderiza e, se quiser, copia a imagem para um buffer externo, depois 
 
 **Tipo do retorno:** bool
 
+## Classe `ImageViewport`
+
 Fonte de imagem a partir da viewport renderizada pela câmera ativa. Para renderizar de uma câmera não ativa, veja `ImageRender`.
 
 ### alpha
@@ -739,6 +753,8 @@ Usa o componente de profundidade da viewport como array de float; não serve com
 Usa o componente de profundidade da viewport como cor em tons de cinza; serve como fonte de textura.
 
 **Tipo:** bool
+
+## Classe `VideoDeckLink(format, capture=0)`
 
 Fonte de imagem de um stream de vídeo externo capturado com uma placa DeckLink da Black Magic Design. Antes de usar esta fonte, é preciso instalar um dispositivo DeckLink (placa PCIe ou dispositivo USB) e o pacote 'Desktop Video' (versão 10.4 ou mais nova) no host, como descrito na documentação da DeckLink. Se você também tiver uma placa nVidia Quadro recente, pode aproveitar a tecnologia 'GPUDirect' para enviar os frames capturados à GPU de forma bem eficiente. Para isso, instale o 'DeckLink SDK' versão 10.4 ou mais nova e copie a biblioteca 'dvp.dll' para a pasta de instalação do Blender ou para outro lugar de onde o Blender consiga carregar uma DLL.
 
@@ -881,6 +897,8 @@ Para a captura.
 
 ## Classes de textura
 
+## Classe `Texture(gameObj, materialID=0, textureID=0, textureObj=None)`
+
 Classe que cria o objeto `Texture`, que carrega a textura dinâmica na GPU.
 
 - **`gameObj`**: Game object em que a textura de vídeo será criada.
@@ -922,6 +940,8 @@ Atualiza a textura a partir da fonte.
 Fonte da textura.
 
 **Tipo:** one of... * `VideoFFmpeg` * `VideoDeckLink` * `ImageFFmpeg` * `ImageBuff` * `ImageMirror` * `ImageMix` * `ImageRender` * `ImageViewport`
+
+## Classe `DeckLink(cardIdx=0, format="")`
 
 Alguns dispositivos DeckLink podem ser usados para reproduzir vídeo: o host envia frames regularmente para reprodução imediata ou agendada. O vídeo sai pelas interfaces HDMI ou SDI. Esta classe suporta o modo de reprodução imediata: ela tem um atributo source que recebe um dos objetos de fonte do módulo Range.texture. Atualizar o objeto DeckLink faz a fonte de imagem ser calculada e enviada ao dispositivo DeckLink para transmissão imediata nas interfaces de saída. Keying é suportado: permite compor o frame com um vídeo de entrada que passa pela placa DeckLink.
 
@@ -986,7 +1006,11 @@ Este método precisa ser chamado com frequência para atualizar o frame de saíd
 
 ## Classes de filtro
 
+## Classe `FilterBGR24`
+
 Filtro de origem BGR24.
+
+## Classe `FilterBlueScreen`
 
 Filtro de blue screen. Os canais RGB da cor ficam iguais, e o alpha de saída é obtido assim:
 
@@ -1017,6 +1041,8 @@ Filtro de pixels anterior.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
+## Classe `FilterColor`
+
 Filtro de cálculo de cor. A cor de saída é obtida multiplicando a matriz 4x4 reduzida pela cor de entrada e somando a coluna restante ao resultado.
 
 ### matrix
@@ -1033,6 +1059,8 @@ Filtro de pixels anterior.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
+## Classe `FilterGray`
+
 Filtro de tons de cinza. As proporções de R, G e B no cinza de saída são 28:151:77.
 
 ### previous
@@ -1040,6 +1068,8 @@ Filtro de tons de cinza. As proporções de R, G e B no cinza de saída são 28:
 Filtro de pixels anterior.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
+
+## Classe `FilterLevel`
 
 Filtro de cálculo de níveis. Cada componente de cor de saída é obtido assim:
 
@@ -1062,6 +1092,8 @@ Matriz de níveis [4] (min, max).
 Filtro de pixels anterior.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
+
+## Classe `FilterNormal`
 
 Filtro de normal map.
 
@@ -1087,7 +1119,11 @@ Filtro de pixels anterior.
 
 **Tipo:** one of... * `FilterBGR24` * `FilterBlueScreen` * `FilterColor` * `FilterGray` * `FilterLevel` * `FilterNormal` * `FilterRGB24` * `FilterRGBA32`
 
+## Classe `FilterRGB24`
+
 Devolve um novo objeto de filtro de entrada para usar com `ImageBuff` quando a imagem passada à função `ImageBuff.load` tem o formato de pixel BGR de 3 bytes.
+
+## Classe `FilterRGBA32`
 
 Filtro de origem RGBA32.
 

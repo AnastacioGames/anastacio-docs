@@ -39,7 +39,11 @@ MODULOS = {
     "imgui": (None, "Range.imgui"),
     "network": (None, "Range.network"),
     "network.steam": (None, "Range.network.steam"),
+    "track": ("bge.track", "Range.track"),
 }
+
+# tipo da página sendo gerada: numa página de módulo, cada ".. class::" do rst ganha título próprio
+EM_MODULO = [False]
 
 # idioma da página sendo gerada: "pt" (raiz do site) ou "en" (site/.../docs/en)
 LANG = ["pt"]
@@ -67,7 +71,7 @@ RE_ENTRADA = re.compile(r'\{\s*"(\w+)"\s*,\s*\(PyCFunction\)[^,]+,[^,"}]+,\s*((?
 
 def docstrings_cpp():
     docs = {}
-    for arq in CPP.rglob("*.cpp"):
+    for arq in sorted(CPP.rglob("*.cpp")):
         txt = arq.read_text(encoding="utf-8", errors="replace")
         for nome, literais in RE_ENTRADA.findall(txt):
             partes = re.findall(r'"((?:[^"\\]|\\.)*)"', literais)
@@ -153,6 +157,8 @@ def rst_para_md(texto, selos=None):
             elif nome in ("method", "function", "attribute", "data", "class"):
                 nm = arg.split("(")[0].split(".")[-1]
                 if nome == "class":
+                    if EM_MODULO[0]:
+                        out += ["", f"## {L('Classe', 'Class')} `{arg}`", ""]
                     out += ["", rst_para_md("\n".join(dedent(corpo)), selos), ""]
                 else:
                     sinal = arg if "(" in arg else nm
@@ -334,6 +340,7 @@ def _tr(chave):
     chave = chave.strip()
     if (not chave or not re.search(r"[A-Za-z]{3}", chave) or "+--" in chave
             or re.fullmatch(r"[\s,]*(`[^`]+`[\s,]*)+", chave)
+            or re.fullmatch(r"Classe `[^`]+`", chave)
             or re.fullmatch(r"[\s,]*(\[`[^`]+`\]\([^)]+\)[\s,]*)+", chave)):
         return chave
     if chave in _pt:
@@ -414,7 +421,11 @@ def pagina_modulo(chave, info, docs):
              for n, i in info["itens"].items() if (s := selo_de(i))}
     corpo = ""
     if rst_nome and (RST / f"{rst_nome}.rst").exists():
-        corpo = rst_para_md((RST / f"{rst_nome}.rst").read_text(encoding="utf-8", errors="replace"), selos)
+        EM_MODULO[0] = True
+        try:
+            corpo = rst_para_md((RST / f"{rst_nome}.rst").read_text(encoding="utf-8", errors="replace"), selos)
+        finally:
+            EM_MODULO[0] = False
     else:
         corpo = L(f"Módulo `{publico}` da Anastacio Engine. Também acessível como `{publico.replace('Range.', 'bge.')}`.",
                   f"Anastacio Engine module `{publico}`. Also available as `{publico.replace('Range.', 'bge.')}`.")

@@ -36,6 +36,7 @@ MODULO_DEF = {
     "g_module_def": "network",
     "steamModule": "network.steam",
     "VideoTexture_module_def": "texture",
+    "track_module_def": "track",
 }
 MODULO_METODOS = {
     "game_methods": "logic",
@@ -46,11 +47,12 @@ MODULO_METODOS = {
     "g_methods": "network",
     "steamMethods": "network.steam",
     "moduleMethods": "texture",
+    "track_methods": "track",
 }
 # nome do .rst -> módulo
 RST_MODULO = {"bge.app": "app", "bge.logic": "logic", "bge.render": "render",
               "bge.events": "events", "bge.constraints": "constraints",
-              "bge.texture": "texture"}
+              "bge.texture": "texture", "bge.track": "track"}
 
 RE_TABELA_CLASSE = re.compile(r"(PyMethodDef|PyAttributeDef)\s+(\w+)::(Methods|Attributes)\s*\[\]\s*=\s*\{(.*?)\n\};", re.S)
 RE_TABELA_LIVRE = re.compile(r"PyMethodDef\s+(\w+)\s*\[\]\s*=\s*\{(.*?)\n\s*\};", re.S)
@@ -68,7 +70,7 @@ def sem_comentarios(txt):
 
 def ler_cpp():
     classes, modulos = {}, {}
-    for arq in CPP.rglob("*.cpp"):
+    for arq in sorted(CPP.rglob("*.cpp")):
         txt = sem_comentarios(arq.read_text(encoding="utf-8", errors="replace"))
         rel = arq.relative_to(RAIZ).as_posix()
         for tipo, cls, _, corpo in RE_TABELA_CLASSE.findall(txt):

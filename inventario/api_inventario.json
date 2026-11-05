@@ -10901,6 +10901,28 @@
      "status": "so_no_rst"
     }
    }
+  },
+  "track": {
+   "arquivo": "source/source/gameengine/Ketsji/KX_PyTrack.cpp",
+   "tem_rst": true,
+   "itens": {
+    "get": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "names": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "fromJson": {
+     "tipo": "funcao",
+     "status": "documentado"
+    },
+    "reload": {
+     "tipo": "funcao",
+     "status": "documentado"
+    }
+   }
   }
  }
 }

@@ -23,6 +23,37 @@ sce = Range.logic.getCurrentScene()
 sce.world.mistColor = [1.0, 0.0, 0.0]
 ```
 
+```python
+
+# Liga a névoa e aproxima da câmera.
+import Range
+
+world = Range.logic.getCurrentScene().world
+world.mistEnable = True
+world.mistStart = 5.0
+world.mistDistance = 40.0
+```
+
+```python
+
+# Liga a chuva e lê de volta o valor atual.
+import Range
+
+world = Range.logic.getCurrentScene().world
+world.setWeather("rain", True)
+print(world.getWeather("rain"))
+```
+
+```python
+
+# Luz de fim de tarde: horizonte quente e luz ambiente mais fraca.
+import Range
+
+world = Range.logic.getCurrentScene().world
+world.horizonColor = [1.0, 0.5, 0.2]
+world.ambientColor = [0.2, 0.15, 0.1]
+```
+
 ### KX_MIST_QUADRATIC
 
 Tipo de atenuação quadrática usada para esmaecer a névoa.

@@ -15,6 +15,61 @@ Interface Python para usar e controlar navigation meshes.
 
 Uma navigation mesh com a propriedade de jogo Boolean `dynamic_navmesh` igual a True é construída em tiles quando o jogo começa, para que obstáculos possam recortá-la em tempo de execução. Objetos com "Create Obstacle" recortam automaticamente; `addObstacle` adiciona qualquer outro objeto. Os caminhos podem ser um pouco diferentes dos da navigation mesh estática.
 
+```python
+
+# Acha um caminho do objeto até o jogador.
+import Range
+
+scene = Range.logic.getCurrentScene()
+owner = Range.logic.getCurrentController().owner
+
+navmesh = scene.objects["Navmesh"]
+player = scene.objects["Player"]
+
+path = navmesh.findPath(owner.worldPosition, player.worldPosition)
+print(len(path), "points")
+```
+
+```python
+
+# Confere se há parede até o jogador: fator abaixo de 1.0 quer dizer que o raio parou antes.
+import Range
+
+scene = Range.logic.getCurrentScene()
+owner = Range.logic.getCurrentController().owner
+
+navmesh = scene.objects["Navmesh"]
+player = scene.objects["Player"]
+
+if navmesh.raycast(owner.worldPosition, player.worldPosition) < 1.0:
+    print("Something is in the way")
+```
+
+```python
+
+# Desenha a navigation mesh para depurar. Rode a cada frame (sensor Always com True Pulse).
+import Range
+
+navmesh = Range.logic.getCurrentScene().objects["Navmesh"]
+navmesh.draw(Range.logic.RM_TRIS)
+```
+
+```python
+
+# Navigation mesh dinâmica: uma caixa bloqueia a passagem e depois libera.
+import Range
+
+scene = Range.logic.getCurrentScene()
+navmesh = scene.objects["Navmesh"]
+crate = scene.objects["Crate"]
+
+if navmesh.dynamic:
+    navmesh.addObstacle(crate, 1.5)
+
+# Depois, quando a caixa sair:
+navmesh.removeObstacle(crate)
+```
+
 ### dynamic
 
 True quando a navigation mesh foi construída em tiles e obstáculos podem recortá-la (somente leitura).

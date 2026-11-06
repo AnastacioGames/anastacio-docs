@@ -64,6 +64,87 @@ def update(cont):
 
 Ao herdar de objetos que não são vazios nem malhas, use o tipo específico. Por exemplo, herde de `BL_ArmatureObject` quando o objeto a transformar for uma armature.
 
+```python
+
+# Move e gira o objeto com W e A. Rode a cada frame (sensor Always com True Pulse).
+import Range
+
+obj = Range.logic.getCurrentController().owner
+keys = Range.logic.keyboard.events
+
+if keys[Range.events.WKEY]:
+    obj.applyMovement((0, 0.1, 0), True)
+if keys[Range.events.AKEY]:
+    obj.applyRotation((0, 0, 0.05), True)
+```
+
+```python
+
+# Lê e muda propriedades de jogo.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+obj["health"] = obj.get("health", 100) - 10
+
+if obj["health"] <= 0:
+    obj.endObject()
+```
+
+```python
+
+# Procura o chão embaixo do objeto.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+below = obj.worldPosition - obj.getAxisVect((0, 0, 1))
+
+hit, point, normal = obj.rayCast(below, obj, 10.0)
+
+if hit is not None:
+    print(hit.name, point)
+```
+
+```python
+
+# Persegue o jogador quando ele chega perto.
+import Range
+
+scene = Range.logic.getCurrentScene()
+obj = Range.logic.getCurrentController().owner
+player = scene.objects["Player"]
+
+if obj.getDistanceTo(player) < 15.0:
+    distance, direction, local = obj.getVectTo(player)
+    obj.alignAxisToVect(direction, 1, 0.1)
+    obj.applyMovement((0, 0.05, 0), True)
+```
+
+```python
+
+# Toca os frames 1 a 30 de uma action.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if not obj.isPlayingAction():
+    obj.playAction("Walk", 1, 30)
+```
+
+```python
+
+# Prende o objeto em uma mão e solta depois.
+import Range
+
+scene = Range.logic.getCurrentScene()
+obj = Range.logic.getCurrentController().owner
+
+obj.setParent(scene.objects["Hand"])
+
+# Depois:
+obj.removeParent()
+```
+
 ### name
 
 O nome do objeto.

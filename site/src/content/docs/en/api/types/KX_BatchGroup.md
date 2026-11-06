@@ -19,13 +19,47 @@ import Range
 
 scene = Range.logic.getCurrentScene()
 
-batchGroup = types.KX_BatchGroup([scene.objects["Cube"], scene.objects["Plane"]])
+batchGroup = Range.types.KX_BatchGroup([scene.objects["Cube"], scene.objects["Plane"]])
 ```
 
 :::caution
 Rendering settings unique to objects such as `KX_GameObject.layer` and `KX_GameObject.color` are shared when using batch groups.
 These settings are taken from object `referenceObject`.
 :::
+
+```python
+
+# Merge every object with the rock property to draw them in fewer calls.
+import Range
+
+scene = Range.logic.getCurrentScene()
+rocks = [obj for obj in scene.objects if "rock" in obj]
+
+group = Range.types.KX_BatchGroup(rocks)
+print(len(group.objects))
+```
+
+```python
+
+# Take one object out of its group before changing it alone.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if obj.batchGroup is not None:
+    obj.batchGroup.split([obj])
+```
+
+```python
+
+# Undo the group and give every object its original mesh back.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if obj.batchGroup is not None:
+    obj.batchGroup.destruct()
+```
 
 ### objects
 

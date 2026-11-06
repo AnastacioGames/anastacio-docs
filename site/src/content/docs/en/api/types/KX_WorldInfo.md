@@ -23,6 +23,37 @@ sce = Range.logic.getCurrentScene()
 sce.world.mistColor = [1.0, 0.0, 0.0]
 ```
 
+```python
+
+# Turn the mist on and bring it closer to the camera.
+import Range
+
+world = Range.logic.getCurrentScene().world
+world.mistEnable = True
+world.mistStart = 5.0
+world.mistDistance = 40.0
+```
+
+```python
+
+# Start the rain, and read the current value back.
+import Range
+
+world = Range.logic.getCurrentScene().world
+world.setWeather("rain", True)
+print(world.getWeather("rain"))
+```
+
+```python
+
+# Evening light: warm horizon and a weaker ambient light.
+import Range
+
+world = Range.logic.getCurrentScene().world
+world.horizonColor = [1.0, 0.5, 0.2]
+world.ambientColor = [0.2, 0.15, 0.1]
+```
+
 ### KX_MIST_QUADRATIC
 
 Type of quadratic attenuation used to fade mist.

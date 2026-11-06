@@ -9,6 +9,37 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 This class contains a list of all levels of detail used by a game object.
 
+```python
+
+# Graphics option: values above 1.0 switch to the simpler levels sooner.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if obj.lodManager is not None:
+    obj.lodManager.distanceFactor = 2.0
+```
+
+```python
+
+# Use the same levels of detail in another object.
+import Range
+
+scene = Range.logic.getCurrentScene()
+scene.objects["TreeB"].lodManager = scene.objects["TreeA"].lodManager
+```
+
+```python
+
+# Also switch the physics mesh when the level changes.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if obj.lodManager is not None:
+    obj.lodManager.updatePhysics = True
+```
+
 ### levels
 
 Return the list of all levels of detail of the lod manager.

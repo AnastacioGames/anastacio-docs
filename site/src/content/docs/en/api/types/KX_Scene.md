@@ -49,6 +49,64 @@ depth = object.position[0]*cam.world_to_camera[2][0] + object.position[1]*cam.wo
 
 @bug: All attributes are read only at the moment.
 
+```python
+
+# Add a bullet at the gun. It disappears after 120 frames.
+import Range
+
+scene = Range.logic.getCurrentScene()
+gun = Range.logic.getCurrentController().owner
+
+bullet = scene.addObject("Bullet", gun, 120)
+bullet.worldLinearVelocity = gun.getAxisVect((0, 30, 0))
+```
+
+```python
+
+# Switch to another camera.
+import Range
+
+scene = Range.logic.getCurrentScene()
+scene.active_camera = scene.cameras["CameraBack"]
+```
+
+```python
+
+# Pause or resume another scene, like the level behind a pause menu.
+import Range
+
+level = Range.logic.getSceneList()["Level"]
+
+if level.suspended:
+    level.resume()
+else:
+    level.suspend()
+```
+
+```python
+
+# Find objects by property and go to the next level.
+import Range
+
+scene = Range.logic.getCurrentScene()
+coins = [obj for obj in scene.objects if "coin" in obj]
+
+if not coins:
+    scene.replace("Level2")
+```
+
+```python
+
+# Run a function right before each frame is drawn.
+import Range
+
+def before_draw():
+    print("Drawing")
+
+scene = Range.logic.getCurrentScene()
+scene.pre_draw.append(before_draw)
+```
+
 ### name
 
 The scene's name, (read-only).

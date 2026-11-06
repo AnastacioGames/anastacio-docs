@@ -47,6 +47,64 @@ depth = object.position[0]*cam.world_to_camera[2][0] + object.position[1]*cam.wo
 
 @bug: Por enquanto todos os atributos são somente leitura.
 
+```python
+
+# Adiciona uma bala na arma. Ela some depois de 120 frames.
+import Range
+
+scene = Range.logic.getCurrentScene()
+gun = Range.logic.getCurrentController().owner
+
+bullet = scene.addObject("Bullet", gun, 120)
+bullet.worldLinearVelocity = gun.getAxisVect((0, 30, 0))
+```
+
+```python
+
+# Troca para outra câmera.
+import Range
+
+scene = Range.logic.getCurrentScene()
+scene.active_camera = scene.cameras["CameraBack"]
+```
+
+```python
+
+# Pausa ou retoma outra cena, como a fase atrás de um menu de pausa.
+import Range
+
+level = Range.logic.getSceneList()["Level"]
+
+if level.suspended:
+    level.resume()
+else:
+    level.suspend()
+```
+
+```python
+
+# Procura objetos pela propriedade e vai para a próxima fase.
+import Range
+
+scene = Range.logic.getCurrentScene()
+coins = [obj for obj in scene.objects if "coin" in obj]
+
+if not coins:
+    scene.replace("Level2")
+```
+
+```python
+
+# Roda uma função logo antes de cada frame ser desenhado.
+import Range
+
+def before_draw():
+    print("Drawing")
+
+scene = Range.logic.getCurrentScene()
+scene.pre_draw.append(before_draw)
+```
+
 ### name
 
 O nome da cena (somente leitura).

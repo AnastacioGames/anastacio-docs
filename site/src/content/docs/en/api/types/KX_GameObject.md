@@ -67,6 +67,87 @@ When subclassing objects other than empties and meshes, the specific type
 should be used - e.g. inherit from `BL_ArmatureObject` when the object
 to mutate is an armature.
 
+```python
+
+# Move and turn the object with W and A. Run it every frame (Always sensor with True Pulse).
+import Range
+
+obj = Range.logic.getCurrentController().owner
+keys = Range.logic.keyboard.events
+
+if keys[Range.events.WKEY]:
+    obj.applyMovement((0, 0.1, 0), True)
+if keys[Range.events.AKEY]:
+    obj.applyRotation((0, 0, 0.05), True)
+```
+
+```python
+
+# Read and change game properties.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+obj["health"] = obj.get("health", 100) - 10
+
+if obj["health"] <= 0:
+    obj.endObject()
+```
+
+```python
+
+# Look for the ground under the object.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+below = obj.worldPosition - obj.getAxisVect((0, 0, 1))
+
+hit, point, normal = obj.rayCast(below, obj, 10.0)
+
+if hit is not None:
+    print(hit.name, point)
+```
+
+```python
+
+# Chase the player when it comes close.
+import Range
+
+scene = Range.logic.getCurrentScene()
+obj = Range.logic.getCurrentController().owner
+player = scene.objects["Player"]
+
+if obj.getDistanceTo(player) < 15.0:
+    distance, direction, local = obj.getVectTo(player)
+    obj.alignAxisToVect(direction, 1, 0.1)
+    obj.applyMovement((0, 0.05, 0), True)
+```
+
+```python
+
+# Play the frames 1 to 30 of an action.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if not obj.isPlayingAction():
+    obj.playAction("Walk", 1, 30)
+```
+
+```python
+
+# Attach the object to a hand, and release it later.
+import Range
+
+scene = Range.logic.getCurrentScene()
+obj = Range.logic.getCurrentController().owner
+
+obj.setParent(scene.objects["Hand"])
+
+# Later:
+obj.removeParent()
+```
+
 ### name
 
 The object's name.

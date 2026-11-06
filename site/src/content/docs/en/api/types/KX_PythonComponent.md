@@ -126,6 +126,48 @@ class Component(types.KX_PythonComponent):
          pass
 ```
 
+```python
+
+# Component that spins the object, with the speed set in the editor.
+import Range
+from collections import OrderedDict
+
+class Spinner(Range.types.KX_PythonComponent):
+    args = OrderedDict([
+        ("Speed", 0.02),
+    ])
+
+    def start(self, args):
+        self.speed = args["Speed"]
+
+    def update(self):
+        self.object.applyRotation((0, 0, self.speed), True)
+```
+
+```python
+
+# Component that follows another object, chosen by name in the editor.
+import Range
+from collections import OrderedDict
+
+class Follow(Range.types.KX_PythonComponent):
+    args = OrderedDict([
+        ("Target", "Player"),
+        ("Speed", 0.05),
+    ])
+
+    def start(self, args):
+        self.target = self.object.scene.objects[args["Target"]]
+        self.speed = args["Speed"]
+
+    def update(self):
+        distance, direction, local = self.object.getVectTo(self.target)
+        self.object.worldPosition += direction * self.speed
+
+    def dispose(self):
+        print("Component removed")
+```
+
 ### object
 
 The object owner of the component.

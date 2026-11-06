@@ -27,6 +27,20 @@ box.max = box.max + Vector((0, 0, 1))
 print(box)
 ```
 
+```python
+
+# Read the size of the box of the object.
+import Range
+
+box = Range.logic.getCurrentController().owner.cullingBox
+
+size = box.max - box.min
+print("Size:", size)
+print("Center:", box.center)
+print("Radius:", box.radius)
+print("Volume:", box.volume)
+```
+
 ### min
 
 The minimal point in x, y and z axis of the bounding box.

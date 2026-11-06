@@ -17,6 +17,61 @@ A navigation mesh with a Boolean game property `dynamic_navmesh` set to True is 
 game starts, so obstacles can carve it at runtime. Objects with "Create Obstacle" carve it automatically;
 `addObstacle` adds any other object. Paths may differ slightly from the static navigation mesh.
 
+```python
+
+# Find a path from the object to the player.
+import Range
+
+scene = Range.logic.getCurrentScene()
+owner = Range.logic.getCurrentController().owner
+
+navmesh = scene.objects["Navmesh"]
+player = scene.objects["Player"]
+
+path = navmesh.findPath(owner.worldPosition, player.worldPosition)
+print(len(path), "points")
+```
+
+```python
+
+# Check for a wall on the way to the player: a factor below 1.0 means the ray stopped early.
+import Range
+
+scene = Range.logic.getCurrentScene()
+owner = Range.logic.getCurrentController().owner
+
+navmesh = scene.objects["Navmesh"]
+player = scene.objects["Player"]
+
+if navmesh.raycast(owner.worldPosition, player.worldPosition) < 1.0:
+    print("Something is in the way")
+```
+
+```python
+
+# Draw the navigation mesh to debug it. Run it every frame (Always sensor with True Pulse).
+import Range
+
+navmesh = Range.logic.getCurrentScene().objects["Navmesh"]
+navmesh.draw(Range.logic.RM_TRIS)
+```
+
+```python
+
+# Dynamic navigation mesh: a crate blocks the way, then frees it.
+import Range
+
+scene = Range.logic.getCurrentScene()
+navmesh = scene.objects["Navmesh"]
+crate = scene.objects["Crate"]
+
+if navmesh.dynamic:
+    navmesh.addObstacle(crate, 1.5)
+
+# Later, when the crate is gone:
+navmesh.removeObstacle(crate)
+```
+
 ### dynamic
 
 True when the navigation mesh was built in tiles and obstacles can carve it (read-only).

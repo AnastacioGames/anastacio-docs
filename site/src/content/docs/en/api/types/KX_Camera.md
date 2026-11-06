@@ -13,6 +13,64 @@ Base class: [`KX_GameObject`](../kx_gameobject/)
 
 A Camera object.
 
+```python
+
+# Pick the object under the mouse.
+import Range
+
+scene = Range.logic.getCurrentScene()
+x, y = Range.logic.mouse.position
+
+hit = scene.active_camera.getScreenRay(x, y, 100.0)
+
+if hit is not None:
+    print(hit.name)
+```
+
+```python
+
+# Check whether an object is inside the view of the camera.
+import Range
+
+scene = Range.logic.getCurrentScene()
+cam = scene.active_camera
+enemy = scene.objects["Enemy"]
+
+if cam.sphereInsideFrustum(enemy.worldPosition, 1.0) != cam.OUTSIDE:
+    print("Enemy on screen")
+```
+
+```python
+
+# Shake the camera for half a second, as in an explosion.
+import Range
+
+cam = Range.logic.getCurrentScene().active_camera
+cam.shake(0.8, 0.5)
+```
+
+```python
+
+# Zoom in by closing the field of view.
+import Range
+
+cam = Range.logic.getCurrentScene().active_camera
+cam.fov = 30.0
+```
+
+```python
+
+# Split screen: this camera takes the left half of the window.
+import Range
+
+cam = Range.logic.getCurrentController().owner
+width = Range.render.getWindowWidth()
+height = Range.render.getWindowHeight()
+
+cam.useViewport = True
+cam.setViewport(0, 0, width // 2, height)
+```
+
 ### INSIDE
 
 See `sphereInsideFrustum` and `boxInsideFrustum`

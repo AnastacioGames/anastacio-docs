@@ -9,6 +9,30 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 A single lod level for a game object lod manager.
 
+```python
+
+# List the levels of detail of the object.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if obj.lodManager is not None:
+    for lod in obj.lodManager.levels:
+        print(lod.level, lod.distance, lod.useMesh, lod.useMaterial)
+```
+
+```python
+
+# See which level the object is using right now.
+import Range
+
+obj = Range.logic.getCurrentController().owner
+
+if obj.lodManager is not None:
+    lod = obj.lodManager.levels[obj.currentLodLevel]
+    print(lod.level, lod.mesh)
+```
+
 ### mesh
 
 The mesh used for this lod level. (read only)

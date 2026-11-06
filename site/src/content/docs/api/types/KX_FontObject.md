@@ -25,6 +25,47 @@ if exit_key.endswith("KEY"):
 font.text = "Press key '%s' to quit the game." % exit_key
 ```
 
+```python
+
+# Mostra a pontuação guardada em uma propriedade de jogo.
+import Range
+
+font = Range.logic.getCurrentController().owner
+font.text = "Score: %d" % font["score"]
+```
+
+```python
+
+# Centraliza o texto no eixo X, usando a largura atual dele.
+import Range
+
+font = Range.logic.getCurrentController().owner
+font.text = "Game Over"
+font.localPosition.x = -font.dimensions.x / 2
+```
+
+```python
+
+# Revela o texto letra por letra. Rode a cada frame (sensor Always com True Pulse).
+import Range
+
+font = Range.logic.getCurrentController().owner
+
+if font.visibleCharacters < font.characterCount:
+    font.visibleCharacters += 1
+```
+
+```python
+
+# Coloca uma sombra escura atrás do texto.
+import Range
+
+font = Range.logic.getCurrentController().owner
+font.useShadows = True
+font.shadowColor = [0.0, 0.0, 0.0, 0.8]
+font.shadowOffset = [0.02, -0.02]
+```
+
 ### text
 
 O texto mostrado por este objeto de fonte.

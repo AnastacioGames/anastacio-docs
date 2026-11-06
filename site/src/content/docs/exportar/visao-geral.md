@@ -19,6 +19,17 @@ O Android reaproveita o pacote Web: o APK é um app que roda a versão Web do jo
 2. **Teste com P** no editor. Se o jogo não roda no editor, não vai rodar exportado.
 3. Use **caminhos relativos** para texturas, sons e scripts (`//textures/...`). Caminho absoluto (`C:\Users\...`) só existe no seu PC.
 
+## Requisitos de vídeo
+
+| Onde roda | Precisa de | Shaders |
+|---|---|---|
+| Jogo no PC (Windows e Linux) | Placa com **OpenGL 3.3** | GLSL 3.30 core |
+| Editor | OpenGL em perfil compatibility | GLSL até 4.50 compatibility, conforme o driver |
+| Navegador e Android | **WebGL 2** | GLSL ES 3.00 |
+
+O driver sempre entrega a versão mais alta que suporta. Em placas atuais da NVIDIA, AMD e Intel isso é OpenGL 4.6.
+Detalhes em [Por dentro → Plataformas](/anastacio-docs/por-dentro/plataformas/#versão-do-opengl).
+
 ## Guias
 
 - [Exportar para PC com RangeArmor](../rangearmor/)

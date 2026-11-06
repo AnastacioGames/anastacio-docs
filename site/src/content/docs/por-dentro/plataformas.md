@@ -8,7 +8,10 @@ fontes:
   - source/CMakePresets.json
   - source/release/scripts/modules/range_web/android.py
   - source/release/scripts/modules/range_web/__init__.py
-conferido: d17e1b23
+  - source/source/blender/gpu/intern/gpu_shader.c
+  - source/intern/ghost/intern/GHOST_WindowWin32.cpp
+  - source/CMakeLists.txt
+conferido: f0b2506f
 ---
 
 <div class="ae-x">
@@ -31,6 +34,25 @@ conferido: d17e1b23
 </div>
 <p class="ae-x-cap">Windows e Linux compilam editor e player nativos. A Web compila só o player; o jogo é exportado pelo editor e empacotado com ele. O Android aproveita esse pacote Web dentro de um app com WebView, então não existe build C++ próprio para celular.</p>
 </div>
+
+## Versão do OpenGL
+
+O renderizador do jogo (`RangeRuntime`) é compilado com `WITH_GL_PROFILE_CORE_RANGERUNTIME`: não usa mais a pilha
+fixa do OpenGL antigo e todos os shaders saem com `#version 330 core`. Por isso o jogo no PC precisa de
+**OpenGL 3.3**. A janela continua pedindo um contexto compatibility, e o driver entrega a versão mais alta que
+tiver, normalmente 4.6.
+
+O editor fica em compatibility de propósito, porque `editors/` e `bf_rna` ainda dependem do OpenGL antigo.
+`gpu_shader_version()` escolhe o maior `#version ... compatibility` que o driver aceitar, até 4.50.
+
+A Web compila o mesmo renderizador para WebGL 2, com `#version 300 es`. Sem geometry shader em WebGL, esse estágio
+é ignorado.
+
+| Build | Contexto | Shaders |
+|---|---|---|
+| Jogo no PC | compatibility, versão máxima do driver | `#version 330 core` |
+| Editor | compatibility, versão máxima do driver | `#version 4x0 compatibility` |
+| Web e Android | WebGL 2 | `#version 300 es` |
 
 ## Para exportar o seu jogo
 

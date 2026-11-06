@@ -19,6 +19,16 @@ Android reuses the Web package: the APK is an app that runs the Web version of t
 2. **Test with P** in the editor. If the game doesn't run in the editor, it won't run exported.
 3. Use **relative paths** for textures, sounds and scripts (`//textures/...`). An absolute path (`C:\Users\...`) only exists on your PC.
 
+## Graphics requirements
+
+| Where it runs | Needs | Shaders |
+|---|---|---|
+| Game on PC (Windows and Linux) | GPU with **OpenGL 3.3** | GLSL 3.30 core |
+| Editor | OpenGL compatibility profile | GLSL up to 4.50 compatibility, depending on the driver |
+| Browser and Android | **WebGL 2** | GLSL ES 3.00 |
+
+The driver always gives the highest version it supports. On current NVIDIA, AMD and Intel GPUs that is OpenGL 4.6.
+
 ## Guides
 
 - [Export to PC with RangeArmor](../rangearmor/)

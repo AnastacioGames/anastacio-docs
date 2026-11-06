@@ -255,6 +255,9 @@ DESCRICOES_EN_ARQ = AQUI / "conteudo" / "descricoes_en.json"
 DESCRICOES_EN = json.loads(DESCRICOES_EN_ARQ.read_text(encoding="utf-8")) if DESCRICOES_EN_ARQ.exists() else {}
 # conteudo/relacionados.json: {"Página": ["OutraPágina", ...]} para o bloco "Veja também"
 RELACIONADOS_ARQ = AQUI / "conteudo" / "relacionados.json"
+# conteudo/imagens.json: {"Página": {"arquivo": ..., "pt": alt, "en": alt}}, imagem em site/src/assets/api/
+IMAGENS_ARQ = AQUI / "conteudo" / "imagens.json"
+IMAGENS = json.loads(IMAGENS_ARQ.read_text(encoding="utf-8")) if IMAGENS_ARQ.exists() else {}
 RELACIONADOS = json.loads(RELACIONADOS_ARQ.read_text(encoding="utf-8")) if RELACIONADOS_ARQ.exists() else {}
 
 
@@ -445,8 +448,17 @@ def pagina_classe(nome, info, rst_arq, docs):
     corpo = re.sub(r"^base class --- .*$", "", corpo, flags=re.M)
     topo = f"{L('Classe base', 'Base class')}: [`{base.group(1).split('.')[-1]}`](../{base.group(1).split('.')[-1].lower()}/)\n\n" if base else ""
     pend = secao_pendentes(info["itens"], docs, nome) if info else ""
-    texto = frontmatter(nome, L(f"Referência da classe Range.types.{nome}", f"Range.types.{nome} class reference")) + topo + veja_tambem(nome) + corpo + "\n" + pend + "\n"
+    texto = frontmatter(nome, L(f"Referência da classe Range.types.{nome}", f"Range.types.{nome} class reference")) + topo + veja_tambem(nome) + imagem_pagina(nome) + corpo + "\n" + pend + "\n"
     escrever(pasta_api() / "types" / f"{nome}.md", texto)
+
+
+def imagem_pagina(nome):
+    img = IMAGENS.get(nome)
+    if not img:
+        return ""
+    subir = "../" * (4 if LANG[0] == "pt" else 5)
+    return f"![{img[LANG[0]]}]({subir}assets/api/{img['arquivo']})\n\n"
+
 
 
 def pagina_situacao(inv, docs):

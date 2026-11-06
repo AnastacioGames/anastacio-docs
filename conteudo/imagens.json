@@ -1,0 +1,7 @@
+{
+ "KX_LightObject": {
+  "arquivo": "lamp-tipos.png",
+  "pt": "Painel Lamp no editor, com os tipos Point, Sun, Spot, Hemi e Area",
+  "en": "Lamp panel in the editor, with the Point, Sun, Spot, Hemi and Area types"
+ }
+}

@@ -9,9 +9,38 @@ Classe base: [`KX_GameObject`](../kx_gameobject/)
 [`KX_WorldInfo`](../../types/kx_worldinfo/), [`KX_Scene`](../../types/kx_scene/)
 :::
 
+![Painel Lamp no editor, com os tipos Point, Sun, Spot, Hemi e Area](../../../../assets/api/lamp-tipos.png)
 
 
-Um objeto de luz.
+
+Uma luz do jogo: o objeto **Lamp** do editor (Add > Lamp). O tipo escolhido no painel Lamp é lido no Python com `type`:
+
+- **Point**: `NORMAL`, ilumina em todas as direções a partir de um ponto, como uma lâmpada comum.
+- **Sun**: `SUN`, luz paralela vinda de longe, para a luz do dia.
+- **Spot**: `SPOT`, um cone de luz, como uma lanterna.
+- **Hemi**: `HEMI`, luz suave vinda de uma meia esfera, sem sombras.
+- **Area**: não tem tipo próprio no jogo e é lida como `NORMAL`.
+
+**Fake (GPU Particle)**, no mesmo menu Add > Lamp, não é uma luz: é uma malha com uma partícula brilhante, então não é um `KX_LightObject`.
+
+```python
+
+# Confere o tipo da lâmpada ou muda durante o jogo.
+import Range
+
+light = Range.logic.getCurrentController().owner
+
+if light.type == light.NORMAL:
+    print("Point lamp")
+elif light.type == light.SUN:
+    print("Sun lamp")
+elif light.type == light.SPOT:
+    print("Spot lamp")
+elif light.type == light.HEMI:
+    print("Hemi lamp")
+
+light.type = light.SPOT  # transforma em uma lâmpada Spot
+```
 
 ```python
 
@@ -23,6 +52,58 @@ light = co.owner
 
 light.energy = 1.0
 light.color = [1.0, 0.0, 0.0]
+```
+
+```python
+
+# Pisca como uma tocha. Rode a cada frame (sensor Always com True Pulse).
+import random
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.energy = random.uniform(0.8, 1.2)
+```
+
+```python
+
+# Liga ou desliga a luz. Uma luz invisível não atualiza a sombra.
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.visible = not light.visible
+```
+
+```python
+
+# Opção de qualidade da sombra. Tamanhos maiores ficam mais nítidos, mas usam mais memória de vídeo.
+# Luzes Point mantêm o Size definido no editor.
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.shadowMapSize = 1024  # por exemplo 512, 1024, 2048 ou 4096
+```
+
+```python
+
+# Para de redesenhar a sombra a cada frame quando a cena muda pouco.
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.staticShadow = True
+
+# Depois, ao mover algo que projeta sombra, redesenha uma vez.
+light.updateShadow()
+```
+
+```python
+
+# Fecha o cone de uma luz Spot e suaviza a borda.
+import Range
+
+light = Range.logic.getCurrentController().owner
+if light.type == light.SPOT:
+    light.spotsize = 45.0  # ângulo do cone em graus
+    light.spotblend = 0.3  # suavidade da borda, de 0 a 1
 ```
 
 ### SPOT

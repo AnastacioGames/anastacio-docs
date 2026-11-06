@@ -9,9 +9,38 @@ Base class: [`KX_GameObject`](../kx_gameobject/)
 [`KX_WorldInfo`](../../types/kx_worldinfo/), [`KX_Scene`](../../types/kx_scene/)
 :::
 
+![Lamp panel in the editor, with the Point, Sun, Spot, Hemi and Area types](../../../../../assets/api/lamp-tipos.png)
 
 
-A Light object.
+
+A light in the game: the **Lamp** object of the editor (Add > Lamp). The type chosen in the Lamp panel is read in Python with `type`:
+
+- **Point**: `NORMAL`, shines in all directions from one point, like a light bulb.
+- **Sun**: `SUN`, parallel light from far away, for daylight.
+- **Spot**: `SPOT`, a cone of light, like a flashlight.
+- **Hemi**: `HEMI`, soft light from a half sphere, without shadows.
+- **Area**: has no type of its own in the game and reads as `NORMAL`.
+
+**Fake (GPU Particle)**, in the same Add > Lamp menu, is not a light: it is a mesh with one glowing particle, so it is not a `KX_LightObject`.
+
+```python
+
+# Check the type of the lamp, or change it during the game.
+import Range
+
+light = Range.logic.getCurrentController().owner
+
+if light.type == light.NORMAL:
+    print("Point lamp")
+elif light.type == light.SUN:
+    print("Sun lamp")
+elif light.type == light.SPOT:
+    print("Spot lamp")
+elif light.type == light.HEMI:
+    print("Hemi lamp")
+
+light.type = light.SPOT  # turn it into a Spot lamp
+```
 
 ```python
 
@@ -23,6 +52,58 @@ light = co.owner
 
 light.energy = 1.0
 light.color = [1.0, 0.0, 0.0]
+```
+
+```python
+
+# Flicker like a torch. Run it every frame (Always sensor with True Pulse).
+import random
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.energy = random.uniform(0.8, 1.2)
+```
+
+```python
+
+# Turn the light on or off. An invisible light does not update its shadow.
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.visible = not light.visible
+```
+
+```python
+
+# Shadow quality option. Bigger sizes look sharper but use more video memory.
+# Point lamps keep the Size set in the editor.
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.shadowMapSize = 1024  # for example 512, 1024, 2048 or 4096
+```
+
+```python
+
+# Stop redrawing the shadow every frame when the scene rarely changes.
+import Range
+
+light = Range.logic.getCurrentController().owner
+light.staticShadow = True
+
+# Later, after moving something that casts a shadow, redraw it once.
+light.updateShadow()
+```
+
+```python
+
+# Narrow the cone of a spot light and soften its edge.
+import Range
+
+light = Range.logic.getCurrentController().owner
+if light.type == light.SPOT:
+    light.spotsize = 45.0  # cone angle in degrees
+    light.spotblend = 0.3  # edge softness, from 0 to 1
 ```
 
 ### SPOT

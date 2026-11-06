@@ -17,10 +17,8 @@ class PrintLamp(bpy.types.Operator):
             return {'PASS_THROUGH'}
         self.passo += 1
         win = self.win
-        area = max(win.screen.areas, key=lambda a: a.width * a.height)
-        if self.passo == 2:
-            area.type = 'PROPERTIES'
-        elif self.passo == 4:
+        area = next(a for a in win.screen.areas if a.type == 'PROPERTIES')  # coluna normal, sem esticar
+        if self.passo == 4:
             area.spaces.active.context = 'DATA'
         elif self.passo == 8:
             ov = {'window': win, 'screen': win.screen, 'area': area}

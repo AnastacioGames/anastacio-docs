@@ -167,3 +167,30 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 
 /* Print de painel do editor: fica no tamanho real, sem ocupar a largura do texto. */
 .sl-markdown-content img[src*="lamp-tipos"] { display: block; width: 182px; max-width: 100%; height: auto; }
+
+/* Blocos de código recolhidos: public/codigo-recolhido.js */
+.expressive-code .frame.ae-recolhido pre { overflow-y: hidden; }
+.expressive-code .frame.ae-recolhido::after {
+	content: '';
+	position: absolute;
+	inset: auto 1px 1px;
+	height: 2.5rem;
+	background: linear-gradient(transparent, var(--code-background));
+	pointer-events: none;
+}
+.ae-mostrar-codigo {
+	display: block;
+	margin: .35rem auto 0;
+	padding: .2rem .9rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: .4rem;
+	background: transparent;
+	color: var(--sl-color-text-accent);
+	font-size: var(--sl-text-sm);
+	cursor: pointer;
+}
+.ae-mostrar-codigo:hover { border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+@media print {
+	.expressive-code .frame.ae-recolhido pre { max-height: none !important; }
+	.expressive-code .frame.ae-recolhido::after, .ae-mostrar-codigo { display: none; }
+}

@@ -17,6 +17,7 @@ export default defineConfig({
 			description: 'Documentação da API Python da Anastacio Engine',
 			logo: { src: './src/assets/cubo.webp', alt: '' },
 			favicon: '/favicon.png',
+			head: [{ tag: 'script', attrs: { src: `${BASE}/codigo-recolhido.js`, defer: true } }],
 			defaultLocale: 'root',
 			locales: {
 				root: { label: 'Português', lang: 'pt-BR' },

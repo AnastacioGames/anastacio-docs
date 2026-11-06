@@ -22,7 +22,7 @@
 	}
 	if (!blocos.length) return;
 
-	// Um botão só por página, fixo na tela, que abre e fecha todos os blocos juntos.
+	// Um botão só por página, embaixo do primeiro bloco recolhido, que abre e fecha todos os blocos juntos.
 	const botao = document.createElement('button');
 	botao.type = 'button';
 	botao.className = 'ae-mostrar-codigo';
@@ -42,6 +42,6 @@
 		recolher(!blocos[0].frame.classList.contains('ae-recolhido'));
 		if (referencia) window.scrollBy({ top: referencia.getBoundingClientRect().top - topo, behavior: 'instant' });
 	});
-	document.body.append(botao);
+	blocos[0].frame.after(botao);
 	recolher(true);
 })();

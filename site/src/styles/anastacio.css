@@ -166,4 +166,4 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 @media (max-width: 560px) { .mag-feature { grid-template-columns: 1fr; } }
 
 /* Print de painel do editor: fica no tamanho real, sem ocupar a largura do texto. */
-.sl-markdown-content img[src*="lamp-tipos"] { display: block; width: 364px; max-width: 100%; height: auto; }
+.sl-markdown-content img[src*="lamp-tipos"] { display: block; width: 182px; max-width: 100%; height: auto; }

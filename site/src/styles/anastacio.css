@@ -179,17 +179,20 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 	pointer-events: none;
 }
 .ae-mostrar-codigo {
-	display: block;
-	margin: .35rem auto 0;
-	padding: .2rem .9rem;
-	border: 1px solid var(--sl-color-gray-5);
-	border-radius: .4rem;
-	background: transparent;
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	z-index: 20;
+	padding: .45rem 1.1rem;
+	border: 1px solid var(--sl-color-accent);
+	border-radius: .5rem;
+	background: var(--sl-color-bg);
 	color: var(--sl-color-text-accent);
 	font-size: var(--sl-text-sm);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
 	cursor: pointer;
 }
-.ae-mostrar-codigo:hover { border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+.ae-mostrar-codigo:hover { background: var(--sl-color-accent-low); }
 @media print {
 	.expressive-code .frame.ae-recolhido pre { max-height: none !important; }
 	.expressive-code .frame.ae-recolhido::after, .ae-mostrar-codigo { display: none; }

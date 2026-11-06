@@ -189,8 +189,10 @@ html[lang='en'] .sidebar-content a[data-desc-en]::after {
 	font-size: var(--sl-text-sm);
 	cursor: pointer;
 }
+.expressive-code.ae-oculto { display: none; }
 .ae-mostrar-codigo:hover { background: var(--sl-color-accent-low); }
 @media print {
 	.expressive-code .frame.ae-recolhido pre { max-height: none !important; }
+	.expressive-code.ae-oculto { display: block; }
 	.expressive-code .frame.ae-recolhido::after, .ae-mostrar-codigo { display: none; }
 }

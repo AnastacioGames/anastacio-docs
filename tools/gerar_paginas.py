@@ -46,6 +46,8 @@ MODULOS = {
 sys.path.insert(0, str(AQUI / "tools"))
 from checar_exemplos import ler as ler_exemplos
 EXEMPLOS = ler_exemplos()
+# comentários dos exemplos já vêm em português: não vão para a lista de pendentes
+EXEMPLOS_PT = {l.strip()[2:] for lista in EXEMPLOS.values() for e in lista for l in e["pt"] if l.strip().startswith("# ")}
 
 # tipo da página sendo gerada: numa página de módulo, cada ".. class::" do rst ganha título próprio
 EM_MODULO = [False]
@@ -354,6 +356,8 @@ def _tr(chave):
         return chave
     if chave in _pt:
         return _pt[chave]
+    if chave in EXEMPLOS_PT:
+        return chave
     if chave in GERADO_PT:
         return chave
     _pendente.setdefault(_pagina_atual[0], {})[chave] = ""

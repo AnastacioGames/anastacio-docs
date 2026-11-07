@@ -16,6 +16,7 @@ import Range
 cont = Range.logic.getCurrentController()
 act = cont.actuators["Random"]
 
+cont.owner["dice"] = 0
 act.propName = "dice"
 act.setIntUniform(1, 6)
 cont.activate(act)
@@ -28,6 +29,7 @@ import Range
 cont = Range.logic.getCurrentController()
 act = cont.actuators["Random"]
 
+cont.owner["damage"] = 0.0
 act.propName = "damage"
 act.setFloatNormal(10.0, 2.0)
 cont.activate(act)

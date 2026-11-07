@@ -16,6 +16,7 @@ import Range
 cont = Range.logic.getCurrentController()
 act = cont.actuators["Property"]
 
+cont.owner["score"] = 0
 act.propName = "score"
 act.value = "score + 10"
 cont.activate(act)

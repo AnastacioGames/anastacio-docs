@@ -16,7 +16,7 @@ KX_VehicleWrapper
 TODO - description
 
 ```python
-# Create a vehicle with four wheels.
+# Create a vehicle with four wheels. The wheel objects must be set to No Collision.
 import Range
 from Range import constraints
 

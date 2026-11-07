@@ -1030,14 +1030,12 @@ print(keyboard.text)
 keyboard.setClipboard("Saved code: 1234")
 print(keyboard.getClipboard())
 === KX_RadarSensor
-# Detect enemies in a cone in front of the object. ||| Detecta inimigos em um cone na frente do objeto.
+# Detect enemies in the cone set in the editor. Distance and angle can only be read. ||| Detecta inimigos no cone definido no editor. Distância e ângulo são só de leitura.
 import Range
 
 sensor = Range.logic.getCurrentController().sensors["Radar"]
 
-sensor.axis = Range.logic.KX_RADAR_AXIS_POS_Y
-sensor.distance = 15.0
-sensor.angle = 45.0
+print(sensor.distance, sensor.angle)
 
 if sensor.positive:
     print(sensor.hitObject.name)
@@ -1162,7 +1160,7 @@ sensor = Range.logic.getCurrentController().sensors["VRHead"]
 
 print(sensor.yaw, sensor.pitch, sensor.roll)
 === KX_VehicleWrapper
-# Create a vehicle with four wheels. ||| Cria um veículo com quatro rodas.
+# Create a vehicle with four wheels. The wheel objects must be set to No Collision. ||| Cria um veículo com quatro rodas. Os objetos das rodas precisam estar em No Collision.
 import Range
 from Range import constraints
 
@@ -1471,6 +1469,7 @@ import Range
 cont = Range.logic.getCurrentController()
 act = cont.actuators["Property"]
 
+cont.owner["score"] = 0
 act.propName = "score"
 act.value = "score + 10"
 cont.activate(act)
@@ -1515,6 +1514,7 @@ import Range
 cont = Range.logic.getCurrentController()
 act = cont.actuators["Random"]
 
+cont.owner["dice"] = 0
 act.propName = "dice"
 act.setIntUniform(1, 6)
 cont.activate(act)
@@ -1525,6 +1525,7 @@ import Range
 cont = Range.logic.getCurrentController()
 act = cont.actuators["Random"]
 
+cont.owner["damage"] = 0.0
 act.propName = "damage"
 act.setFloatNormal(10.0, 2.0)
 cont.activate(act)

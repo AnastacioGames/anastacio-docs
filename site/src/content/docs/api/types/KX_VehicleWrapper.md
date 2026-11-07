@@ -16,7 +16,7 @@ KX_VehicleWrapper
 TODO - descrição
 
 ```python
-# Cria um veículo com quatro rodas.
+# Cria um veículo com quatro rodas. Os objetos das rodas precisam estar em No Collision.
 import Range
 from Range import constraints
 

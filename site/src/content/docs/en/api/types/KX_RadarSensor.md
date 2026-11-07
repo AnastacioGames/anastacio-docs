@@ -10,14 +10,12 @@ Base class: [`KX_NearSensor`](../kx_nearsensor/)
 Radar sensor is a near sensor with a conical sensor object.
 
 ```python
-# Detect enemies in a cone in front of the object.
+# Detect enemies in the cone set in the editor. Distance and angle can only be read.
 import Range
 
 sensor = Range.logic.getCurrentController().sensors["Radar"]
 
-sensor.axis = Range.logic.KX_RADAR_AXIS_POS_Y
-sensor.distance = 15.0
-sensor.angle = 45.0
+print(sensor.distance, sensor.angle)
 
 if sensor.positive:
     print(sensor.hitObject.name)

@@ -9,6 +9,26 @@ description: "Range.types.KX_InputSystem class reference"
 
 Class `Range.types.KX_InputSystem`.
 
+```python
+# List the maps and the actions that were loaded.
+import Range
+
+for mapName, tables in Range.logic.inputSystem.inputMaps.items():
+    print(mapName, list(tables))
+```
+
+```python
+# Save a new sensitivity chosen in the options menu.
+import Range
+
+system = Range.logic.inputSystem
+
+system.changeSensitivity("Player", "Look", "Mouse", 0.5)
+system.reloadInputMaps()
+```
+
+
+
 ## Not in the Range documentation
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.

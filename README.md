@@ -46,6 +46,8 @@ Sempre que a engine ganhar funções novas:
 
    **Itens novos sem docstring:** escreva a descrição em português em `conteudo/descricoes.json` (`{"Classe": {"item": "texto"}}`). Ela aparece na página e ganha da docstring do C++.
 
+   **Exemplos de código:** ficam em `conteudo/exemplos.txt`, em seções `=== <pagina>` separadas por `---`. Cada comentário é escrito como `# inglês ||| português`. O gerador põe os blocos antes do primeiro título da página, onde o botão Mostrar mais os alcança. Depois de gerar, rode `python tools/checar_exemplos.py`: ele confere sintaxe, tradução e se os nomes existem na API.
+
 4. **Ver o site no PC**
    ```
    cd site

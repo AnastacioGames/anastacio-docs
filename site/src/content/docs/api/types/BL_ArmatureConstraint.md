@@ -13,6 +13,28 @@ Proxy para uma constraint de armature. Permite mudar a constraint em tempo real.
 Nem todas as constraints de armature são suportadas na GE.
 :::
 
+```python
+# Desliga todas as constraints de um osso.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for constraint in armature.constraints:
+    if constraint.name.startswith("Hand.L"):
+        constraint.enforce = 0.0
+```
+
+```python
+# Troca o alvo e o peso de um IK.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+ik = armature.constraints["Foot.L:IK"]
+
+ik.target = Range.logic.getCurrentScene().objects["FootTarget"]
+ik.ik_weight = 1.0
+```
+
 ### type
 
 Tipo da constraint (somente leitura).

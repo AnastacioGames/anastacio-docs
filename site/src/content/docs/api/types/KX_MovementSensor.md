@@ -5,6 +5,21 @@ description: "Referência da classe Range.types.KX_MovementSensor"
 
 Classe `Range.types.KX_MovementSensor`.
 
+```python
+# Dispara quando o objeto se move em qualquer eixo.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Movement"]
+
+sensor.axis = 6
+sensor.threshold = 0.05
+
+if sensor.positive:
+    print("Moving")
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

@@ -9,6 +9,79 @@ description: "Referência do módulo Range.network"
 
 Módulo `Range.network` da Anastacio Engine. Também acessível como `bge.network`.
 
+```python
+# Abre uma sala, ou entra em uma pelo endereço.
+from Range import network
+
+
+def connected(client_id):
+    print("Connected as", client_id)
+
+
+def refused(reason, detail):
+    print("Refused:", reason, detail)
+
+
+network.on_connect(connected)
+network.on_reject(refused)
+
+# No host:
+network.host(port=7777, max_players=4, room_name="Friends")
+
+# No cliente:
+network.join("192.168.0.10:7777")
+```
+
+```python
+# Sincroniza a posição e a vida de um objeto. Chame antes de host() ou join().
+import Range
+from Range import network
+
+own = Range.logic.getCurrentController().owner
+network.replicate(own, ["life"], transform=True, velocity=True)
+```
+
+```python
+# Só o servidor cria o jogador de quem entra.
+from Range import network
+
+
+def player_joined(client_id, name):
+    print(name, "joined")
+    network.spawn("Player", owner=client_id, position=(0.0, 0.0, 1.0))
+
+
+network.on_player_join(player_joined)
+```
+
+```python
+# Só o dono do objeto lê o teclado.
+import Range
+from Range import network
+
+own = Range.logic.getCurrentController().owner
+
+if network.is_owner(own):
+    pressed = Range.logic.keyboard.inputs[Range.events.WKEY].active
+    network.set_input(bytes([1 if pressed else 0]))
+```
+
+```python
+# Chat do lobby.
+from Range import network
+
+
+def message(client_id, text):
+    print(client_id, text)
+
+
+network.on_chat(message)
+network.send_chat("Ready!")
+network.set_ready(True)
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

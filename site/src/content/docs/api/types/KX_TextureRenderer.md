@@ -9,6 +9,31 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 API Python para objetos que fazem um render guardado numa textura.
 
+```python
+# Atualiza um reflexo só a cada alguns quadros para poupar tempo.
+import Range
+
+own = Range.logic.getCurrentController().owner
+renderer = own.meshes[0].materials[0].textures[0].renderer
+
+renderer.autoUpdate = False
+own["frames"] = own.get("frames", 0) + 1
+
+if own["frames"] % 10 == 0:
+    renderer.update()
+```
+
+```python
+# Usa outro ponto de vista e uma distância menor.
+import Range
+
+own = Range.logic.getCurrentController().owner
+renderer = own.meshes[0].materials[0].textures[0].renderer
+
+renderer.viewpointObject = Range.logic.getCurrentScene().objects["Probe"]
+renderer.clipEnd = 50.0
+```
+
 ### autoUpdate
 
 Define se o texture renderer é atualizado automaticamente a cada frame.

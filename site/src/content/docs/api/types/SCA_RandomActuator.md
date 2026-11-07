@@ -9,6 +9,30 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Atuador Random
 
+```python
+# Sorteia um número de 1 a 6 e guarda em uma propriedade.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Random"]
+
+act.propName = "dice"
+act.setIntUniform(1, 6)
+cont.activate(act)
+```
+
+```python
+# Usa um valor decimal em torno de uma média.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Random"]
+
+act.propName = "damage"
+act.setFloatNormal(10.0, 2.0)
+cont.activate(act)
+```
+
 ### seed
 
 Semente do gerador de números aleatórios.

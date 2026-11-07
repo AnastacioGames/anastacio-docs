@@ -9,6 +9,28 @@ Base class: [`SCA_ISensor`](../sca_isensor/)
 
 This sensor detects player joystick events.
 
+```python
+# Read the axes of the sensor.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Joystick"]
+
+if sensor.connected:
+    print(sensor.axisValues)
+```
+
+```python
+# See which buttons are pressed.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Joystick"]
+
+print(sensor.getButtonActiveList())
+
+if sensor.getButtonStatus(0):
+    print("First button")
+```
+
 ### axisValues
 
 The state of the joysticks axis as a list of values `numAxis` long. (read-only).

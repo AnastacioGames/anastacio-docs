@@ -7,6 +7,50 @@ description: "Referência do módulo Range.render"
 [`KX_Camera`](../../types/kx_camera/), [`KX_2DFilterManager`](../../types/kx_2dfiltermanager/), [`Range.logic`](../../modulos/logic/)
 :::
 
+
+
+```python
+# Mostra o mouse e usa uma configuração mais leve em máquinas fracas.
+import Range
+
+Range.render.showMouse(True)
+Range.render.setAnisotropicFiltering(4)
+Range.render.setVsync(Range.render.VSYNC_ON)
+```
+
+```python
+# Reduz a resolução sozinho quando a taxa de quadros cai.
+import Range
+
+Range.render.setDynamicResolution(True, targetFPS=60, minScale=50, maxScale=100, step=5)
+print("Scale:", Range.render.getRenderScale())
+```
+
+```python
+# Desenha uma linha vermelha do objeto até a origem do mundo.
+import Range
+
+own = Range.logic.getCurrentController().owner
+Range.render.drawLine(own.worldPosition, (0.0, 0.0, 0.0), (1.0, 0.0, 0.0))
+```
+
+```python
+# Muda a janela e salva uma captura de tela.
+import Range
+
+Range.render.setWindowSize(1280, 720)
+print(Range.render.getWindowWidth(), Range.render.getWindowHeight())
+Range.render.makeScreenshot("//screenshot_#.png")
+```
+
+```python
+# Controla o volume geral em um menu de opções.
+import Range
+
+Range.render.setMasterVolume(0.5)
+print(Range.render.getMasterVolume())
+```
+
 ## Introdução
 
 Exemplo usando um `Range.types.SCA_MouseSensor` e dois `Range.types.KX_ObjectActuator` para fazer o mouse look:

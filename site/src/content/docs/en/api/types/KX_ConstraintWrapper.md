@@ -15,6 +15,29 @@ its objects), every method and attribute of the wrapper raises `ReferenceError`.
 Suspending physics keeps the constraint, so the wrapper still works.
 :::
 
+```python
+# Limit how far a hinge can open.
+import math
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+door = scene.objects["Door"]
+frame = scene.objects["Frame"]
+
+hinge = constraints.createConstraint(
+    door.getPhysicsId(), frame.getPhysicsId(),
+    constraints.LINEHINGE_CONSTRAINT)
+
+hinge.setParam(3, 0.0, math.radians(90.0))
+```
+
+```python
+# Break the connection when the force is too strong.
+hinge.breakingThreshold = 50.0
+print(hinge.constraint_id, hinge.enabled)
+```
+
 ### getConstraintId(val)
 
 Returns the contraint ID

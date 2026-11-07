@@ -9,6 +9,19 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 Um sensor Ray detecta o primeiro objeto numa direção.
 
+```python
+# Mostra o que está à frente do objeto.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Ray"]
+
+sensor.range = 10.0
+sensor.axis = Range.logic.KX_RAY_AXIS_POS_Y
+
+if sensor.positive:
+    print(sensor.hitObject.name, sensor.hitPosition, sensor.hitNormal)
+```
+
 ### propName
 
 A propriedade que o raio procura.

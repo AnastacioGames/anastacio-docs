@@ -5,6 +5,33 @@ description: "Referência da classe Range.types.KX_VideoActuator"
 
 Classe `Range.types.KX_VideoActuator`.
 
+```python
+# Pausa o vídeo de outro objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Video"]
+
+act.object = "Screen"
+act.mode = 1
+cont.activate(act)
+```
+
+```python
+# Avança dez segundos.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Video"]
+
+act.mode = 5
+act.seconds = 10.0
+act.useRelative = True
+cont.activate(act)
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

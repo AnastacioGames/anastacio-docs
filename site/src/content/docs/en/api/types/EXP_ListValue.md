@@ -13,6 +13,26 @@ As well as the normal index lookup (`val= clist[i]`), EXP_ListValue supports str
 
 Other operations such as `len(clist)`, `list(clist)`, `clist[0:10]` are also supported.
 
+```python
+# Walk through the objects of the scene.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+for obj in objects:
+    print(obj.name)
+```
+
+```python
+# Find one with a default value.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+print(objects.get("Player", None))
+print(len(objects.filter("Coin*")))
+```
+
 ### append(val)
 
 Add an item to the list (like pythons append)

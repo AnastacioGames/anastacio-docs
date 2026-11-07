@@ -14,6 +14,28 @@ Obtained through `BL_ArmatureObject`.constraints.
 Not all armature constraints are supported in the GE.
 :::
 
+```python
+# Turn off every constraint of one bone.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for constraint in armature.constraints:
+    if constraint.name.startswith("Hand.L"):
+        constraint.enforce = 0.0
+```
+
+```python
+# Change the target and the weight of an IK.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+ik = armature.constraints["Foot.L:IK"]
+
+ik.target = Range.logic.getCurrentScene().objects["FootTarget"]
+ik.ik_weight = 1.0
+```
+
 ### type
 
 Type of constraint, (read-only).

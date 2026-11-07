@@ -9,6 +9,23 @@ Classe base: [`SCA_ILogicBrick`](../sca_ilogicbrick/)
 
 Classe base de todos os logic bricks de controlador.
 
+```python
+# Lista o que está ligado a este controlador.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print([sensor.name for sensor in cont.sensors])
+print([act.name for act in cont.actuators])
+```
+
+```python
+# Roda este controlador antes dos outros.
+import Range
+
+Range.logic.getCurrentController().useHighPriority = True
+```
+
 ### state
 
 A máscara de bits de estado do controlador. Pode ser usada com o estado do GameObject para testar se o controlador está ativo.

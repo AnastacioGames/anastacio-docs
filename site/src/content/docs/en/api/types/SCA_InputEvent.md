@@ -9,6 +9,30 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Events for a keyboard or mouse input.
 
+```python
+# The three moments of a key.
+import Range
+
+space = Range.logic.keyboard.inputs[Range.events.SPACEKEY]
+
+if space.activated:
+    print("Pressed")
+if space.active:
+    print("Held")
+if space.released:
+    print("Released")
+```
+
+```python
+# Mouse wheel value on this frame.
+import Range
+
+wheel = Range.logic.mouse.inputs[Range.events.WHEELUPMOUSE]
+
+if wheel.active:
+    print(wheel.values[-1])
+```
+
 ### status
 
 A list of existing status of the input from the last frame.

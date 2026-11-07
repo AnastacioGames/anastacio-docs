@@ -11,6 +11,30 @@ The object actuator ("Motion Actuator") applies force, torque, displacement, ang
 velocity, or angular velocity to an object.
 Servo control allows to regulate force to achieve a certain speed target.
 
+```python
+# Move forward with a constant speed.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Motion"]
+
+act.linV = (0.0, 5.0, 0.0)
+act.useLocalLinV = True
+cont.activate(act)
+```
+
+```python
+# Push the object and turn it.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Motion"]
+
+act.force = (0.0, 0.0, 50.0)
+act.torque = (0.0, 0.0, 2.0)
+cont.activate(act)
+```
+
 ### force
 
 The force applied by the actuator.

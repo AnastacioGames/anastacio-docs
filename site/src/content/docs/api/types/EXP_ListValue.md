@@ -13,6 +13,26 @@ Além da busca normal por índice (`val= clist[i]`), EXP_ListValue aceita busca 
 
 Outras operações, como `len(clist)`, `list(clist)` e `clist[0:10]`, também são suportadas.
 
+```python
+# Percorre os objetos da cena.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+for obj in objects:
+    print(obj.name)
+```
+
+```python
+# Procura um com valor padrão.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+print(objects.get("Player", None))
+print(len(objects.filter("Coin*")))
+```
+
 ### append(val)
 
 Adiciona um item à lista (como o append do Python)

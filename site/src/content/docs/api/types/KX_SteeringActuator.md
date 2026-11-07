@@ -13,6 +13,22 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Atuador Steering para navegação.
 
+```python
+# Segue o jogador usando uma malha de navegação.
+import Range
+
+cont = Range.logic.getCurrentController()
+scene = Range.logic.getCurrentScene()
+act = cont.actuators["Steering"]
+
+act.behavior = Range.logic.KX_STEERING_PATHFOLLOWING
+act.target = scene.objects["Player"]
+act.navmesh = scene.objects["Navmesh"]
+act.velocity = 3.0
+act.distance = 1.0
+cont.activate(act)
+```
+
 ### behavior
 
 O comportamento de steering a usar.

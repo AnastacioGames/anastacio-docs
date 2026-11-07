@@ -9,6 +9,21 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Aplica mudanças a uma câmera.
 
+```python
+# Faz a câmera seguir outro objeto, a uma distância definida.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Camera"]
+
+act.object = Range.logic.getCurrentScene().objects["Car"]
+act.min = 4.0
+act.max = 8.0
+act.height = 2.5
+act.damping = 0.1
+cont.activate(act)
+```
+
 ### damping
 
 força do movimento de seguir da câmera.

@@ -7,6 +7,52 @@ description: "Referência do módulo Range.texture"
 [`Texture`](../../types/texture/), [`KX_BlenderMaterial`](../../types/kx_blendermaterial/), [`BL_Texture`](../../types/bl_texture/)
 :::
 
+
+
+```python
+# Mostra um vídeo no material do objeto.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+if "video" not in own:
+    matID = texture.materialID(own, "MAscreen")
+    tex = texture.Texture(own, matID)
+    tex.source = texture.VideoFFmpeg(Range.logic.expandPath("//movie.mp4"))
+    tex.source.play()
+    own["video"] = tex
+
+own["video"].refresh(True)
+```
+
+```python
+# Troca a imagem de um material com o jogo rodando.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageFFmpeg(Range.logic.expandPath("//poster.png"))
+tex.refresh(False)
+own["poster"] = tex
+```
+
+```python
+# Faz uma imagem de espelho com outra câmera.
+import Range
+from Range import texture
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageRender(scene, scene.objects["SecurityCamera"])
+own["monitor"] = tex
+own["monitor"].refresh(True)
+```
+
 ## Introdução
 
 O módulo `Range.texture` permite manipular texturas durante o jogo. A textura pode vir de várias fontes: arquivos de vídeo, arquivos de imagem, captura de vídeo, buffer de memória, render de câmera ou uma mistura disso. Os arquivos de vídeo e imagem podem ser carregados da Internet usando uma URL em vez de um nome de arquivo. Também dá para aplicar filtros nas imagens antes de enviá-las à GPU, para efeitos de vídeo: blue screen, faixa de cor, cinza, normal map. `Range.texture` usa o FFmpeg para carregar imagens e vídeos. Todos os formatos e codecs que o FFmpeg suporta são suportados por `Range.texture`, incluindo, entre outros:

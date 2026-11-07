@@ -23,6 +23,43 @@ In general, damping settings should be in the range of 0 to 1 and
 stiffness settings should not be much higher than about 10.
 :::
 
+```python
+# Connect two objects with a hinge.
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+door = scene.objects["Door"]
+frame = scene.objects["Frame"]
+
+hinge = constraints.createConstraint(
+    door.getPhysicsId(), frame.getPhysicsId(),
+    constraints.LINEHINGE_CONSTRAINT,
+    0.0, 0.0, 1.0)
+```
+
+```python
+# Change the world gravity and the quality of the solver.
+from Range import constraints
+
+constraints.setGravity(0.0, 0.0, -3.7)
+constraints.setNumIterations(20)
+```
+
+```python
+# See the collision shapes while testing.
+from Range import constraints
+
+constraints.setDebugMode(constraints.DBG_DRAWWIREFRAME)
+```
+
+```python
+# Remove a constraint by its id.
+from Range import constraints
+
+constraints.removeConstraint(hinge.constraint_id)
+```
+
 ## Examples
 
 :::tip

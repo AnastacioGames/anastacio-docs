@@ -13,6 +13,29 @@ KX_ConstraintWrapper
 Quando a constraint é apagada (`Range.constraints.removeConstraint` ou removendo um dos seus objetos), todo método e atributo do wrapper gera `ReferenceError`. Suspender a física mantém a constraint, então o wrapper continua funcionando.
 :::
 
+```python
+# Limita quanto uma dobradiça pode abrir.
+import math
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+door = scene.objects["Door"]
+frame = scene.objects["Frame"]
+
+hinge = constraints.createConstraint(
+    door.getPhysicsId(), frame.getPhysicsId(),
+    constraints.LINEHINGE_CONSTRAINT)
+
+hinge.setParam(3, 0.0, math.radians(90.0))
+```
+
+```python
+# Quebra a ligação quando a força é grande demais.
+hinge.breakingThreshold = 50.0
+print(hinge.constraint_id, hinge.enabled)
+```
+
 ### getConstraintId(val)
 
 Devolve o ID da constraint

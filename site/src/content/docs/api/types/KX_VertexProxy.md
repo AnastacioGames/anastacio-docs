@@ -11,6 +11,27 @@ Um vértice guarda informações de posição, UV, cor e normal.
 
 Nota: a simulação de física NÃO é atualizada por enquanto; a física não reage a mudanças na posição do vértice.
 
+```python
+# Levanta um pouco todos os vértices de uma malha.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+
+for i in range(mesh.getVertexArrayLength(0)):
+    vertex = mesh.getVertex(0, i)
+    vertex.z += 0.01
+```
+
+```python
+# Pinta os vértices de vermelho.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+
+for i in range(mesh.getVertexArrayLength(0)):
+    mesh.getVertex(0, i).color = (1.0, 0.0, 0.0, 1.0)
+```
+
 ### XYZ
 
 A posição do vértice.

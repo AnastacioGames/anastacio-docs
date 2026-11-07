@@ -5,6 +5,30 @@ description: "Range.types.SCA_WaitActuator class reference"
 
 Class `Range.types.SCA_WaitActuator`.
 
+```python
+# Wait three seconds.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Wait"]
+
+act.duration = 3.0
+act.useRestart = False
+cont.activate(act)
+```
+
+```python
+# Show the remaining time.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Wait"]
+
+if act.waiting:
+    print(act.duration - act.elapsed)
+```
+
+
+
 ## Not in the Range documentation
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.

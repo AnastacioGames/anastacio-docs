@@ -15,6 +15,18 @@ The actuator is not persistent: it automatically stops itself after setting up t
 but the filter remains active. To stop a filter you must activate the actuator with 'type'
 set to `RAS_2DFILTER_DISABLED` or `RAS_2DFILTER_NOFILTER`.
 
+```python
+# Turn on the filter of this actuator.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Filter"]
+
+act.mode = Range.logic.RAS_2DFILTER_SEPIA
+act.passNumber = 0
+cont.activate(act)
+```
+
 ### shaderText
 
 shader source code for custom shader.

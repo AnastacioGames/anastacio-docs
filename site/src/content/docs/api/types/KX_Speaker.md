@@ -9,6 +9,42 @@ description: "Referência da classe Range.types.KX_Speaker"
 
 Classe `Range.types.KX_Speaker`.
 
+```python
+# Controla um speaker da cena.
+import Range
+
+scene = Range.logic.getCurrentScene()
+
+for speaker in scene.speakers:
+    speaker.volume = 0.5
+    speaker.pitch = 1.0
+    speaker.Play()
+```
+
+```python
+# Pausa, recomeça ou para.
+import Range
+
+speaker = Range.logic.getCurrentScene().speakers[0]
+
+speaker.Pause()
+speaker.Restart()
+speaker.Stop()
+```
+
+```python
+# Som que abaixa com a distância.
+import Range
+
+speaker = Range.logic.getCurrentScene().speakers[0]
+
+speaker.distance_reference = 2.0
+speaker.distance_maximum = 40.0
+speaker.attenuation = 1.0
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

@@ -15,6 +15,28 @@ Atuador Sound.
 
 `startSound`, `pauseSound` e `stopSound` não exigem que o atuador esteja ativo: agem na hora, desde que o atuador tenha sido ativado pelo menos uma vez.
 
+```python
+# Toca um som com tom variado.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Sound"]
+
+act.pitch = 0.9 + Range.logic.getRandomFloat() * 0.2
+act.volume = 0.8
+act.startSound()
+```
+
+```python
+# Pausa e para.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Sound"]
+
+act.pauseSound()
+act.stopSound()
+```
+
 ### volume
 
 O volume (ganho) do som.

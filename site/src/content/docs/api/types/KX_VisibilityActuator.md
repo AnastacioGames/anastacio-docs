@@ -9,6 +9,18 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Atuador Visibility.
 
+```python
+# Esconde o objeto e os filhos.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Visibility"]
+
+act.visibility = False
+act.useRecursion = True
+cont.activate(act)
+```
+
 ### visibility
 
 se o atuador deixa o objeto pai visível ou invisível.

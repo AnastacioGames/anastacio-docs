@@ -11,6 +11,19 @@ Actuator sensor detect change in actuator state of the parent object.
 It generates a positive pulse if the corresponding actuator is activated
 and a negative pulse if the actuator is deactivated.
 
+```python
+# Wait for an action to end before going on.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["ActuatorDone"]
+
+sensor.actuator = "Wait"
+sensor.mode = 1
+
+if sensor.positive:
+    print("Finished")
+```
+
 ### actuator
 
 the name of the actuator that the sensor is monitoring.

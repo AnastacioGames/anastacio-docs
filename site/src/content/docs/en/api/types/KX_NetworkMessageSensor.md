@@ -11,6 +11,17 @@ The Message Sensor logic brick.
 
 Currently only loopback (local) networks are supported.
 
+```python
+# Read the messages that arrived on this frame.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Message"]
+
+if sensor.positive:
+    for subject, body in zip(sensor.subjects, sensor.bodies):
+        print(subject, body)
+```
+
 ### subject
 
 The subject the sensor is looking for.

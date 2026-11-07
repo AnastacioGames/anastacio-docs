@@ -20,6 +20,43 @@ como o tempo de desativação, e recursos de depuração
 Como esta API não é bem documentada, pode não ficar claro que valores usar nos parâmetros. Em geral, os amortecimentos devem ficar entre 0 e 1 e as rigidezes não devem passar muito de 10.
 :::
 
+```python
+# Liga dois objetos com uma dobradiça.
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+door = scene.objects["Door"]
+frame = scene.objects["Frame"]
+
+hinge = constraints.createConstraint(
+    door.getPhysicsId(), frame.getPhysicsId(),
+    constraints.LINEHINGE_CONSTRAINT,
+    0.0, 0.0, 1.0)
+```
+
+```python
+# Muda a gravidade do mundo e a qualidade do solver.
+from Range import constraints
+
+constraints.setGravity(0.0, 0.0, -3.7)
+constraints.setNumIterations(20)
+```
+
+```python
+# Mostra as formas de colisão durante os testes.
+from Range import constraints
+
+constraints.setDebugMode(constraints.DBG_DRAWWIREFRAME)
+```
+
+```python
+# Remove uma constraint pelo id.
+from Range import constraints
+
+constraints.removeConstraint(hinge.constraint_id)
+```
+
 ## Exemplos
 
 :::tip

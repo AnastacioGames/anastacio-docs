@@ -1,0 +1,1583 @@
+=== logic
+# Save a value between scenes and between game sessions. ||| Guarda um valor entre cenas e entre sessões do jogo.
+import Range
+
+Range.logic.globalDict["level"] = 3
+Range.logic.saveGlobalDict()
+---
+# Read it back when the game opens. ||| Lê de volta quando o jogo abre.
+import Range
+
+Range.logic.loadGlobalDict()
+level = Range.logic.globalDict.get("level", 1)
+print("Level:", level)
+---
+# Move the object with the keyboard, at the same speed on any frame rate. ||| Move o objeto pelo teclado, na mesma velocidade em qualquer taxa de quadros.
+import Range
+
+own = Range.logic.getCurrentController().owner
+keys = Range.logic.keyboard.inputs
+
+if keys[Range.events.WKEY].active:
+    own.applyMovement((0.0, 0.1, 0.0), True)
+---
+# Slow the whole game down for a dramatic moment. ||| Deixa o jogo inteiro em câmera lenta para um momento dramático.
+import Range
+
+Range.logic.setTimeScale(0.3)
+Range.logic.setAnimationsUseTimeScale(True)
+---
+# Load another file while the game keeps running. ||| Carrega outro arquivo com o jogo rodando.
+import Range
+
+path = Range.logic.expandPath("//levels/forest.range")
+status = Range.logic.LibLoad(path, "Scene", asynchronous=True)
+print(status.libraryName)
+---
+# Send a message that a Message sensor can receive. ||| Envia uma mensagem que um sensor Message pode receber.
+import Range
+
+Range.logic.sendMessage("door_open", "north")
+=== render
+# Show the mouse and use a lighter setup on weak machines. ||| Mostra o mouse e usa uma configuração mais leve em máquinas fracas.
+import Range
+
+Range.render.showMouse(True)
+Range.render.setAnisotropicFiltering(4)
+Range.render.setVsync(Range.render.VSYNC_ON)
+---
+# Lower the resolution by itself when the frame rate falls. ||| Reduz a resolução sozinho quando a taxa de quadros cai.
+import Range
+
+Range.render.setDynamicResolution(True, targetFPS=60, minScale=50, maxScale=100, step=5)
+print("Scale:", Range.render.getRenderScale())
+---
+# Draw a red line from the object to the world origin. ||| Desenha uma linha vermelha do objeto até a origem do mundo.
+import Range
+
+own = Range.logic.getCurrentController().owner
+Range.render.drawLine(own.worldPosition, (0.0, 0.0, 0.0), (1.0, 0.0, 0.0))
+---
+# Change the window and save a screenshot. ||| Muda a janela e salva uma captura de tela.
+import Range
+
+Range.render.setWindowSize(1280, 720)
+print(Range.render.getWindowWidth(), Range.render.getWindowHeight())
+Range.render.makeScreenshot("//screenshot_#.png")
+---
+# Control the general volume from an options menu. ||| Controla o volume geral em um menu de opções.
+import Range
+
+Range.render.setMasterVolume(0.5)
+print(Range.render.getMasterVolume())
+=== events
+# Do something once, on the frame the key was pressed. ||| Faz algo uma vez só, no quadro em que a tecla foi apertada.
+import Range
+
+keys = Range.logic.keyboard.inputs
+
+if keys[Range.events.SPACEKEY].activated:
+    print("Jump")
+---
+# Read the mouse buttons in the same way. ||| Lê os botões do mouse do mesmo jeito.
+import Range
+
+buttons = Range.logic.mouse.inputs
+
+if buttons[Range.events.LEFTMOUSE].active:
+    print("Shooting")
+---
+# Show the name of each key held down. ||| Mostra o nome de cada tecla pressionada.
+import Range
+
+for code in Range.logic.keyboard.activeInputs:
+    print(Range.events.EventToString(code))
+=== constraints
+# Connect two objects with a hinge. ||| Liga dois objetos com uma dobradiça.
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+door = scene.objects["Door"]
+frame = scene.objects["Frame"]
+
+hinge = constraints.createConstraint(
+    door.getPhysicsId(), frame.getPhysicsId(),
+    constraints.LINEHINGE_CONSTRAINT,
+    0.0, 0.0, 1.0)
+---
+# Change the world gravity and the quality of the solver. ||| Muda a gravidade do mundo e a qualidade do solver.
+from Range import constraints
+
+constraints.setGravity(0.0, 0.0, -3.7)
+constraints.setNumIterations(20)
+---
+# See the collision shapes while testing. ||| Mostra as formas de colisão durante os testes.
+from Range import constraints
+
+constraints.setDebugMode(constraints.DBG_DRAWWIREFRAME)
+---
+# Remove a constraint by its id. ||| Remove uma constraint pelo id.
+from Range import constraints
+
+constraints.removeConstraint(hinge.constraint_id)
+=== texture
+# Show a video on the material of the object. ||| Mostra um vídeo no material do objeto.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+if "video" not in own:
+    matID = texture.materialID(own, "MAscreen")
+    tex = texture.Texture(own, matID)
+    tex.source = texture.VideoFFmpeg(Range.logic.expandPath("//movie.mp4"))
+    tex.source.play()
+    own["video"] = tex
+
+own["video"].refresh(True)
+---
+# Swap the image of a material while the game runs. ||| Troca a imagem de um material com o jogo rodando.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageFFmpeg(Range.logic.expandPath("//poster.png"))
+tex.refresh(False)
+own["poster"] = tex
+---
+# Make a mirror image with another camera. ||| Faz uma imagem de espelho com outra câmera.
+import Range
+from Range import texture
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageRender(scene, scene.objects["SecurityCamera"])
+own["monitor"] = tex
+own["monitor"].refresh(True)
+=== imgui
+# A pause window, drawn every frame by a component. ||| Uma janela de pausa, desenhada a cada quadro por um componente.
+import Range
+import Range.imgui as imgui
+
+
+class PauseMenu(Range.types.KX_PythonComponent):
+    args = {}
+
+    def start(self, args):
+        self.volume = 0.5
+        imgui.set_game_ui_open(True)
+
+    def update(self):
+        w, h = imgui.get_display_size()
+        imgui.set_next_window_size(300, 200, imgui.COND_FIRST_USE_EVER)
+        imgui.set_next_window_pos(w / 2 - 150, h / 2 - 100)
+
+        is_open, want_close = imgui.begin("Pause", closable=True)
+        if is_open:
+            changed, self.volume = imgui.slider_float("Volume", self.volume, 0.0, 1.0)
+            imgui.separator()
+            if imgui.button("Quit", width=240):
+                Range.logic.endGame()
+        imgui.end()
+---
+# Common widgets return if they changed and the new value. ||| Os widgets comuns retornam se mudaram e o novo valor.
+changed, self.fullscreen = imgui.checkbox("Full screen", self.fullscreen)
+changed, self.quality = imgui.slider_int("Quality", self.quality, 0, 3)
+imgui.same_line()
+imgui.text("Level: {}".format(self.quality))
+---
+# Change the color of one button. ||| Muda a cor de um botão.
+imgui.push_style_color(imgui.COL_BUTTON, 0.8, 0.2, 0.2, 1.0)
+imgui.button("Delete save")
+imgui.pop_style_color()
+=== network
+# Open a room, or enter one by its address. ||| Abre uma sala, ou entra em uma pelo endereço.
+from Range import network
+
+
+def connected(client_id):
+    print("Connected as", client_id)
+
+
+def refused(reason, detail):
+    print("Refused:", reason, detail)
+
+
+network.on_connect(connected)
+network.on_reject(refused)
+
+# On the host: ||| No host:
+network.host(port=7777, max_players=4, room_name="Friends")
+
+# On the client: ||| No cliente:
+network.join("192.168.0.10:7777")
+---
+# Sync the position and the life of an object. Call it before host() or join(). ||| Sincroniza a posição e a vida de um objeto. Chame antes de host() ou join().
+import Range
+from Range import network
+
+own = Range.logic.getCurrentController().owner
+network.replicate(own, ["life"], transform=True, velocity=True)
+---
+# Only the server creates the player of whoever joins. ||| Só o servidor cria o jogador de quem entra.
+from Range import network
+
+
+def player_joined(client_id, name):
+    print(name, "joined")
+    network.spawn("Player", owner=client_id, position=(0.0, 0.0, 1.0))
+
+
+network.on_player_join(player_joined)
+---
+# Only the owner of the object reads the keyboard. ||| Só o dono do objeto lê o teclado.
+import Range
+from Range import network
+
+own = Range.logic.getCurrentController().owner
+
+if network.is_owner(own):
+    pressed = Range.logic.keyboard.inputs[Range.events.WKEY].active
+    network.set_input(bytes([1 if pressed else 0]))
+---
+# Lobby chat. ||| Chat do lobby.
+from Range import network
+
+
+def message(client_id, text):
+    print(client_id, text)
+
+
+network.on_chat(message)
+network.send_chat("Ready!")
+network.set_ready(True)
+=== network.steam
+# Load Steam and see who is playing. ||| Carrega a Steam e mostra quem está jogando.
+import Range
+from Range.network import steam
+
+dll = Range.logic.expandPath("//AnastacioSteam.dll")
+steam.initialize(dll, 480)
+
+info = steam.status()
+if info["ready"]:
+    print("Steam id:", info["steam_id"], steam.language())
+---
+# Unlock an achievement. ||| Desbloqueia uma conquista.
+from Range.network import steam
+
+if not steam.achievement("FIRST_WIN"):
+    steam.achievement("FIRST_WIN", unlock=True)
+---
+# Handle lobby events and invites. ||| Trata eventos de lobby e convites.
+from Range.network import steam
+
+for event in steam.poll_events():
+    print(event["type"], event["name"], event["members"])
+=== BL_ActionActuator
+# Play part of an action on a separate layer. ||| Toca parte de uma ação em uma camada separada.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Action"]
+
+act.action = "Wave"
+act.frameStart = 1
+act.frameEnd = 30
+act.layer = 1
+act.mode = Range.logic.KX_ACTIONACT_PLAY
+cont.activate(act)
+=== BL_ArmatureActuator
+# Change the target of a bone constraint. ||| Troca o alvo de uma constraint de osso.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Armature"]
+
+act.type = Range.logic.KX_ACT_ARMATURE_SETTARGET
+act.target = Range.logic.getCurrentScene().objects["Ball"]
+cont.activate(act)
+---
+# Fade the influence of the constraint. ||| Diminui a influência da constraint.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Armature"]
+
+act.type = Range.logic.KX_ACT_ARMATURE_SETINFLUENCE
+act.influence = 0.5
+cont.activate(act)
+=== BL_ArmatureBone
+# List the bones with their length and parent. ||| Lista os ossos com o tamanho e o pai.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for channel in armature.channels:
+    bone = channel.bone
+    parent = bone.parent.name if bone.parent else "-"
+    print(bone.name, bone.length, parent)
+=== BL_ArmatureChannel
+# Turn the head of the character by script. ||| Gira a cabeça do personagem por script.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+head = armature.channels["Head"]
+
+head.rotation_mode = Range.logic.ROT_MODE_XYZ
+head.rotation_euler = (0.0, 0.0, 0.5)
+armature.update()
+---
+# Find where a bone is in the world. ||| Descobre onde um osso está no mundo.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+hand = armature.channels["Hand.R"]
+
+print(armature.worldTransform * hand.pose_tail)
+=== BL_ArmatureConstraint
+# Turn off every constraint of one bone. ||| Desliga todas as constraints de um osso.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for constraint in armature.constraints:
+    if constraint.name.startswith("Hand.L"):
+        constraint.enforce = 0.0
+---
+# Change the target and the weight of an IK. ||| Troca o alvo e o peso de um IK.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+ik = armature.constraints["Foot.L:IK"]
+
+ik.target = Range.logic.getCurrentScene().objects["FootTarget"]
+ik.ik_weight = 1.0
+=== BL_ArmatureObject
+# Offset a bone on top of the animation. ||| Soma uma rotação ao osso por cima da animação.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+armature.setBoneRotationOffset("Spine", (0.2, 0.0, 0.0))
+---
+# Give the bone back to the animation. ||| Devolve o osso para a animação.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+armature.clearBoneRotationOffset("Spine")
+---
+# List the channels. ||| Lista os canais.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for channel in armature.channels:
+    print(channel.name)
+=== BL_Shader
+# Replace the shader of a material and send it a value. ||| Troca o shader de um material e envia um valor para ele.
+import Range
+
+VERTEX = """
+void main()
+{
+    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+}
+"""
+
+FRAGMENT = """
+uniform float brightness;
+
+void main()
+{
+    gl_FragColor = vec4(vec3(brightness), 1.0);
+}
+"""
+
+own = Range.logic.getCurrentController().owner
+material = own.meshes[0].materials[0]
+shader = material.getShader()
+
+if shader is not None and not shader.isValid():
+    shader.setSource(VERTEX, FRAGMENT, True)
+
+shader.setUniform1f("brightness", 0.8)
+---
+# Let the engine fill a matrix or the camera position on its own. ||| Deixa a engine preencher uma matriz ou a posição da câmera sozinha.
+import Range
+
+own = Range.logic.getCurrentController().owner
+shader = own.meshes[0].materials[0].getShader()
+
+shader.setUniformDef("cameraPosition", Range.logic.CAM_POS)
+=== BL_Texture
+# Make the first texture of the material scroll. ||| Faz a primeira textura do material deslizar.
+import Range
+
+own = Range.logic.getCurrentController().owner
+texture = own.meshes[0].materials[0].textures[0]
+
+offset = texture.uvOffset
+offset.x += 0.01
+texture.uvOffset = offset
+---
+# Control how much the texture affects the color. ||| Controla quanto a textura afeta a cor.
+import Range
+
+own = Range.logic.getCurrentController().owner
+texture = own.meshes[0].materials[0].textures[0]
+
+texture.diffuseFactor = 0.5
+texture.emit = 1.0
+=== EXP_BaseListValue
+# Look for an object without an error if it does not exist. ||| Procura um objeto sem erro caso ele não exista.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+door = objects.get("Door")
+if door is not None:
+    print(objects.index(door))
+---
+# Filter by name and property. ||| Filtra por nome e propriedade.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+for enemy in objects.filter("Enemy*", "life"):
+    print(enemy.name)
+=== EXP_BaseListWrapper
+# These lists work by name or by index, like sensors or channels. ||| Essas listas funcionam por nome ou por índice, como sensores ou canais.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+head = armature.channels.get("Head")
+first = armature.channels[0]
+print(head, first)
+=== EXP_ListValue
+# Walk through the objects of the scene. ||| Percorre os objetos da cena.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+for obj in objects:
+    print(obj.name)
+---
+# Find one with a default value. ||| Procura um com valor padrão.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+print(objects.get("Player", None))
+print(len(objects.filter("Coin*")))
+=== EXP_PropValue
+# This is a base class: objects, scenes and meshes inherit from it. ||| Esta é uma classe base: objetos, cenas e malhas herdam dela.
+import Range
+
+own = Range.logic.getCurrentController().owner
+
+print(isinstance(own, Range.types.EXP_PropValue))
+=== EXP_PyObjectPlus
+# Check that an object was not removed before using a saved reference. ||| Confere se um objeto não foi removido antes de usar uma referência guardada.
+import Range
+
+own = Range.logic.getCurrentController().owner
+target = own.get("target")
+
+if target is not None and not target.invalid:
+    print(target.worldPosition)
+=== EXP_Value
+# Every value with a name has the name attribute. ||| Todo valor com nome tem o atributo name.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(cont.owner.name)
+print(cont.name)
+=== KX_2DFilterManager
+# Add a built-in filter, then a custom one. ||| Adiciona um filtro pronto e depois um personalizado.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+manager.addFilter(0, Range.logic.RAS_2DFILTER_SEPIA)
+
+GLSL = """
+uniform sampler2D bgl_RenderedTexture;
+in vec4 bgl_TexCoord;
+out vec4 fragColor;
+
+void main()
+{
+    fragColor = texture(bgl_RenderedTexture, bgl_TexCoord.xy) * 0.5;
+}
+"""
+manager.addFilter(1, Range.logic.RAS_2DFILTER_CUSTOMFILTER, GLSL)
+---
+# Remove a filter. ||| Remove um filtro.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+if manager.getFilter(0) is not None:
+    manager.removeFilter(0)
+---
+# Adjust the effects of the graphics options. ||| Ajusta os efeitos das opções gráficas.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+manager.changeBloomValues(True, 0.6, 0.8)
+manager.changeFxaaValues(True)
+manager.changeGrainValues(True, 0.1)
+=== KX_2DFilterOffScreen
+# Read the size of the image a filter writes to. ||| Lê o tamanho da imagem em que um filtro escreve.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+offScreen = manager.getFilter(0).offScreen
+
+if offScreen is not None:
+    print(offScreen.width, offScreen.height)
+    print(offScreen.colorBindCodes, offScreen.depthBindCode)
+=== KX_AnimationEvent
+# See how many times each event of the animation fired. ||| Mostra quantas vezes cada evento da animação disparou.
+import Range
+
+own = Range.logic.getCurrentController().owner
+
+for event in own.animationEventManager.events:
+    print(event.triggers, event.getFireCount())
+=== KX_AnimationEventManager
+# Play a step sound on the frames marked in the animation. ||| Toca um som de passo nos quadros marcados na animação.
+import Range
+
+cont = Range.logic.getCurrentController()
+own = cont.owner
+
+fired = sum(event.getFireCount() for event in own.animationEventManager.events)
+
+if fired != own.get("steps", 0):
+    own["steps"] = fired
+    cont.activate("StepSound")
+=== KX_ArmatureSensor
+# React when the IK error gets too big. ||| Reage quando o erro do IK fica grande demais.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors["Armature"]
+
+sensor.type = Range.logic.KX_ARMSENSOR_LIN_ERROR_ABOVE
+sensor.value = 0.1
+
+if sensor.positive:
+    print("Bone cannot reach the target:", sensor.constraint.name)
+=== KX_CameraActuator
+# Make the camera follow another object, at a set distance. ||| Faz a câmera seguir outro objeto, a uma distância definida.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Camera"]
+
+act.object = Range.logic.getCurrentScene().objects["Car"]
+act.min = 4.0
+act.max = 8.0
+act.height = 2.5
+act.damping = 0.1
+cont.activate(act)
+=== KX_ChangeColorActuator
+# Fade the color of the object to red. ||| Muda aos poucos a cor do objeto para vermelho.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["ChangeColor"]
+
+act.color = [1.0, 0.0, 0.0, 1.0]
+act.useLerp = True
+act.lerp = 0.2
+cont.activate(act)
+=== KX_CharacterWrapper
+# Walk and jump with a Character object. ||| Anda e pula com um objeto Character.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+keys = Range.logic.keyboard.inputs
+
+speed = 0.1 if keys[Range.events.WKEY].active else 0.0
+character.walkDirection = (0.0, speed, 0.0)
+
+if keys[Range.events.SPACEKEY].activated and character.onGround:
+    character.jump()
+---
+# Crouch, and stand up when there is room. ||| Abaixa, e levanta quando houver espaço.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+crouch = Range.logic.keyboard.inputs[Range.events.LEFTCTRLKEY].active
+
+if crouch:
+    character.posture = "CROUCH"
+elif character.canStand:
+    character.posture = "STAND"
+---
+# Allow a double jump. ||| Permite pulo duplo.
+import Range
+from Range import constraints
+
+character = constraints.getCharacter(Range.logic.getCurrentController().owner)
+
+character.maxJumps = 2
+character.jumpSpeed = 8.0
+=== KX_CollisionSensor
+# See what hit the object. ||| Mostra o que bateu no objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors["Collision"]
+
+if sensor.positive:
+    for obj in sensor.hitObjectList:
+        print(obj.name)
+---
+# Only detect objects with the coin property. ||| Só detecta objetos com a propriedade coin.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Collision"]
+
+sensor.propName = "coin"
+sensor.useMaterial = False
+=== KX_ConstraintActuator
+# Keep the object at a distance from the ground. ||| Mantém o objeto a uma distância do chão.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Constraint"]
+
+act.distance = 1.5
+act.rayLength = 5.0
+act.damp = 10
+cont.activate(act)
+=== KX_ConstraintWrapper
+# Limit how far a hinge can open. ||| Limita quanto uma dobradiça pode abrir.
+import math
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+door = scene.objects["Door"]
+frame = scene.objects["Frame"]
+
+hinge = constraints.createConstraint(
+    door.getPhysicsId(), frame.getPhysicsId(),
+    constraints.LINEHINGE_CONSTRAINT)
+
+hinge.setParam(3, 0.0, math.radians(90.0))
+---
+# Break the connection when the force is too strong. ||| Quebra a ligação quando a força é grande demais.
+hinge.breakingThreshold = 50.0
+print(hinge.constraint_id, hinge.enabled)
+=== KX_DynamicActuator
+# Change the mass of the object. ||| Muda a massa do objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Dynamics"]
+
+act.mode = Range.logic.KX_DYN_SET_MASS
+act.mass = 5.0
+cont.activate(act)
+---
+# Turn the physics of the object off. ||| Desliga a física do objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Dynamics"]
+
+act.mode = Range.logic.KX_DYN_DISABLE_DYNAMICS
+cont.activate(act)
+=== KX_EndObjectActuator
+# Remove the object when its life runs out. ||| Remove o objeto quando a vida acaba.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+if cont.owner["life"] <= 0:
+    cont.activate(cont.actuators["EndObject"])
+=== KX_GameActuator
+# Restart the game. ||| Reinicia o jogo.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Game"]
+
+act.mode = Range.logic.KX_GAME_RESTART
+cont.activate(act)
+---
+# Open another game file. ||| Abre outro arquivo de jogo.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Game"]
+
+act.mode = Range.logic.KX_GAME_START
+act.fileName = "//level2.range"
+cont.activate(act)
+=== KX_InputSystem
+# List the maps and the actions that were loaded. ||| Lista os mapas e as ações carregados.
+import Range
+
+for mapName, tables in Range.logic.inputSystem.inputMaps.items():
+    print(mapName, list(tables))
+---
+# Save a new sensitivity chosen in the options menu. ||| Salva uma nova sensibilidade escolhida no menu de opções.
+import Range
+
+system = Range.logic.inputSystem
+
+system.changeSensitivity("Player", "Look", "Mouse", 0.5)
+system.reloadInputMaps()
+=== KX_InputTable
+# Use an action without knowing which key is connected to it. ||| Usa uma ação sem saber qual tecla está ligada a ela.
+import Range
+
+maps = Range.logic.inputSystem.inputMaps
+jump = maps["Player"]["Jump"]
+
+if jump.activated:
+    print("Jump")
+---
+# Read an axis. ||| Lê um eixo.
+import Range
+
+move = Range.logic.inputSystem.inputMaps["Player"]["Move"]
+
+if move.active:
+    print(move.values)
+=== KX_LightningActuator
+# Fire a flash with a visible bolt. ||| Dispara um clarão com o raio visível.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Lightning"]
+
+act.bolt = True
+cont.activate(act)
+=== KX_MeshBuilder
+# Create a triangle by script and put it on the object. ||| Cria um triângulo por script e coloca no objeto.
+import Range
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+builder = Range.types.KX_MeshBuilder("Triangle", scene, ["UVMap"], ["Col"])
+slot = builder.addSlot(own.meshes[0].materials[0])
+
+a = slot.addVertex((0.0, 0.0, 0.0))
+b = slot.addVertex((1.0, 0.0, 0.0))
+c = slot.addVertex((0.0, 1.0, 0.0))
+slot.addIndex([a, b, c])
+slot.recalculateNormals()
+
+own.replaceMesh(builder.finish())
+---
+# Copy an existing mesh to change it. ||| Copia uma malha existente para alterar.
+import Range
+
+own = Range.logic.getCurrentController().owner
+
+builder = Range.types.KX_MeshBuilder.FromMesh("Copy", own.meshes[0])
+print(len(builder.slots))
+=== KX_MeshBuilderSlot
+# Add a square made of two triangles. ||| Adiciona um quadrado feito de dois triângulos.
+points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+ids = [slot.addVertex(point) for point in points]
+
+slot.addIndex([ids[0], ids[1], ids[2]])
+slot.addIndex([ids[0], ids[2], ids[3]])
+slot.recalculateNormals()
+---
+# See what the slot has. ||| Mostra o que o slot tem.
+print(len(slot.vertices), len(slot.indices))
+print(slot.uvCount, slot.colorCount)
+=== KX_MouseActuator
+# First-person view with limits to look up and down. ||| Visão em primeira pessoa com limites para olhar para cima e para baixo.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Mouse"]
+
+act.sensitivity = [2.0, 2.0]
+act.limit_y = [-80.0, 80.0]
+act.visible = False
+cont.activate(act)
+---
+# Center the view again. ||| Centraliza a visão de novo.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Mouse"]
+act.reset()
+=== KX_MouseFocusSensor
+# Select what is under the mouse. ||| Seleciona o que está embaixo do mouse.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["MouseOver"]
+
+if sensor.positive:
+    print(sensor.hitObject.name, sensor.hitPosition)
+=== KX_MovementSensor
+# Fire when the object moves on any axis. ||| Dispara quando o objeto se move em qualquer eixo.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Movement"]
+
+sensor.axis = 6
+sensor.threshold = 0.05
+
+if sensor.positive:
+    print("Moving")
+=== KX_NearSensor
+# Open the door when someone gets close, and only close it further away. ||| Abre a porta quando alguém chega perto e só fecha mais longe.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Near"]
+
+sensor.distance = 3.0
+sensor.resetDistance = 5.0
+
+if sensor.positive:
+    print(sensor.hitObject.name, "is near")
+=== KX_NetworkMessageActuator
+# Send a message to objects in the scene. ||| Envia uma mensagem para objetos da cena.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Message"]
+
+act.subject = "door_open"
+act.body = "north"
+act.usePropBody = False
+cont.activate(act)
+=== KX_NetworkMessageSensor
+# Read the messages that arrived on this frame. ||| Lê as mensagens que chegaram neste quadro.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Message"]
+
+if sensor.positive:
+    for subject, body in zip(sensor.subjects, sensor.bodies):
+        print(subject, body)
+=== KX_ObjectActuator
+# Move forward with a constant speed. ||| Anda para frente com velocidade constante.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Motion"]
+
+act.linV = (0.0, 5.0, 0.0)
+act.useLocalLinV = True
+cont.activate(act)
+---
+# Push the object and turn it. ||| Empurra o objeto e gira.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Motion"]
+
+act.force = (0.0, 0.0, 50.0)
+act.torque = (0.0, 0.0, 2.0)
+cont.activate(act)
+=== KX_ParentActuator
+# Attach the object to another one. ||| Prende o objeto em outro.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_SET
+act.object = Range.logic.getCurrentScene().objects["Hand"]
+act.ghost = True
+cont.activate(act)
+---
+# Release it. ||| Solta.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_REMOVE
+cont.activate(act)
+=== KX_ParticleSystem
+# Change the fire of the object while the game runs. ||| Muda o fogo do objeto com o jogo rodando.
+import Range
+
+own = Range.logic.getCurrentController().owner
+particles = own.particles
+
+if particles is not None:
+    particles.particleCount = 200
+    particles.lifetime = 1.5
+    particles.blendMode = "ADDITIVE"
+---
+# A single explosion. ||| Uma explosão só.
+import Range
+
+particles = Range.logic.getCurrentController().owner.particles
+
+particles.emissionMode = "BURST"
+particles.burst()
+---
+# Stop emitting. ||| Para de emitir.
+import Range
+
+particles = Range.logic.getCurrentController().owner.particles
+particles.enabled = False
+=== KX_PlanarMap
+# Update a mirror only when needed. ||| Atualiza um espelho só quando precisa.
+import Range
+
+own = Range.logic.getCurrentController().owner
+mirror = own.meshes[0].materials[0].textures[0].renderer
+
+mirror.autoUpdate = False
+mirror.update()
+print(mirror.normal)
+=== KX_PolyProxy
+# Find the material of the face hit by a ray. ||| Descobre o material da face atingida por um raio.
+import Range
+
+own = Range.logic.getCurrentController().owner
+hit, point, normal, poly = own.rayCast((0, 0, -10), own, 20.0, "", 0, 0, 1)
+
+if poly is not None:
+    print(poly.material_name, poly.getNumVertex())
+---
+# Read the vertices of the first face of a mesh. ||| Lê os vértices da primeira face de uma malha.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+poly = mesh.getPolygon(0)
+
+for i in range(poly.getNumVertex()):
+    print(poly.getVertexIndex(i))
+=== KX_PythonJoystick
+# Move with the left stick and jump with a button. ||| Anda com o analógico esquerdo e pula com um botão.
+import Range
+
+joystick = Range.logic.joysticks[0]
+
+if joystick is not None:
+    x, y = joystick.axisValues[0], joystick.axisValues[1]
+    print(x, y)
+
+    if 0 in joystick.activeButtons:
+        print("Jump")
+---
+# Vibrate for half a second. ||| Vibra por meio segundo.
+import Range
+
+joystick = Range.logic.joysticks[0]
+
+if joystick is not None and joystick.hasVibration:
+    joystick.strengthLeft = 0.8
+    joystick.strengthRight = 0.8
+    joystick.duration = 500
+    joystick.startVibration()
+=== KX_PythonKeyboard
+# Check keys by state. ||| Confere as teclas pelo estado.
+import Range
+
+keyboard = Range.logic.keyboard
+
+if keyboard.inputs[Range.events.ESCKEY].activated:
+    print("Pause")
+---
+# Read typed text and use the clipboard. ||| Lê o texto digitado e usa a área de transferência.
+import Range
+
+keyboard = Range.logic.keyboard
+
+print(keyboard.text)
+keyboard.setClipboard("Saved code: 1234")
+print(keyboard.getClipboard())
+=== KX_RadarSensor
+# Detect enemies in a cone in front of the object. ||| Detecta inimigos em um cone na frente do objeto.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Radar"]
+
+sensor.axis = Range.logic.KX_RADAR_AXIS_POS_Y
+sensor.distance = 15.0
+sensor.angle = 45.0
+
+if sensor.positive:
+    print(sensor.hitObject.name)
+=== KX_RaySensor
+# See what is ahead of the object. ||| Mostra o que está à frente do objeto.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Ray"]
+
+sensor.range = 10.0
+sensor.axis = Range.logic.KX_RAY_AXIS_POS_Y
+
+if sensor.positive:
+    print(sensor.hitObject.name, sensor.hitPosition, sensor.hitNormal)
+=== KX_SoundActuator
+# Play a sound with a random pitch. ||| Toca um som com tom variado.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Sound"]
+
+act.pitch = 0.9 + Range.logic.getRandomFloat() * 0.2
+act.volume = 0.8
+act.startSound()
+---
+# Pause and stop it. ||| Pausa e para.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Sound"]
+
+act.pauseSound()
+act.stopSound()
+=== KX_Speaker
+# Control a speaker of the scene. ||| Controla um speaker da cena.
+import Range
+
+scene = Range.logic.getCurrentScene()
+
+for speaker in scene.speakers:
+    speaker.volume = 0.5
+    speaker.pitch = 1.0
+    speaker.Play()
+---
+# Pause, continue from the start or stop. ||| Pausa, recomeça ou para.
+import Range
+
+speaker = Range.logic.getCurrentScene().speakers[0]
+
+speaker.Pause()
+speaker.Restart()
+speaker.Stop()
+---
+# Sound that gets lower with distance. ||| Som que abaixa com a distância.
+import Range
+
+speaker = Range.logic.getCurrentScene().speakers[0]
+
+speaker.distance_reference = 2.0
+speaker.distance_maximum = 40.0
+speaker.attenuation = 1.0
+=== KX_StateActuator
+# Turn on state 2 of the object. ||| Liga o estado 2 do objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["State"]
+
+act.operation = Range.logic.KX_STATE_OP_SET
+act.mask = Range.logic.KX_STATE2
+cont.activate(act)
+=== KX_SteeringActuator
+# Follow the player using a navigation mesh. ||| Segue o jogador usando uma malha de navegação.
+import Range
+
+cont = Range.logic.getCurrentController()
+scene = Range.logic.getCurrentScene()
+act = cont.actuators["Steering"]
+
+act.behavior = Range.logic.KX_STEERING_PATHFOLLOWING
+act.target = scene.objects["Player"]
+act.navmesh = scene.objects["Navmesh"]
+act.velocity = 3.0
+act.distance = 1.0
+cont.activate(act)
+=== KX_TextureRenderer
+# Update a reflection only every few frames to save time. ||| Atualiza um reflexo só a cada alguns quadros para poupar tempo.
+import Range
+
+own = Range.logic.getCurrentController().owner
+renderer = own.meshes[0].materials[0].textures[0].renderer
+
+renderer.autoUpdate = False
+own["frames"] = own.get("frames", 0) + 1
+
+if own["frames"] % 10 == 0:
+    renderer.update()
+---
+# Use another point of view and a shorter distance. ||| Usa outro ponto de vista e uma distância menor.
+import Range
+
+own = Range.logic.getCurrentController().owner
+renderer = own.meshes[0].materials[0].textures[0].renderer
+
+renderer.viewpointObject = Range.logic.getCurrentScene().objects["Probe"]
+renderer.clipEnd = 50.0
+=== KX_VRHeadSensor
+# Confirm with a nod of the head. ||| Confirma com um aceno de cabeça.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["VRHead"]
+
+sensor.mode = 4
+sensor.time = 1.0
+
+if sensor.positive:
+    print("Yes")
+---
+# Read the current rotation of the head. ||| Lê a rotação atual da cabeça.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["VRHead"]
+
+print(sensor.yaw, sensor.pitch, sensor.roll)
+=== KX_VehicleWrapper
+# Create a vehicle with four wheels. ||| Cria um veículo com quatro rodas.
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+vehicle = constraints.createVehicle(own.getPhysicsId())
+own["vehicle_id"] = vehicle.getConstraintId()
+
+wheels = (
+    ("WheelFL", (-1.0, 1.5, 0.0), True),
+    ("WheelFR", (1.0, 1.5, 0.0), True),
+    ("WheelRL", (-1.0, -1.5, 0.0), False),
+    ("WheelRR", (1.0, -1.5, 0.0), False),
+)
+
+for name, position, steering in wheels:
+    vehicle.addWheel(scene.objects[name], position, (0, 0, -1), (-1, 0, 0), 0.4, 0.5, steering)
+---
+# Drive it every frame. ||| Dirige a cada quadro.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+vehicle = constraints.getVehicleConstraint(own["vehicle_id"])
+keys = Range.logic.keyboard.inputs
+
+force = -800.0 if keys[Range.events.WKEY].active else 0.0
+steer = 0.3 if keys[Range.events.AKEY].active else 0.0
+
+for wheel in range(vehicle.getNumWheels()):
+    vehicle.applyEngineForce(force, wheel)
+
+vehicle.setSteeringValue(steer, 0)
+vehicle.setSteeringValue(steer, 1)
+print(vehicle.getCurrentSpeedKmh())
+---
+# Adjust the suspension of each wheel. ||| Ajusta a suspensão de cada roda.
+for wheel in range(vehicle.getNumWheels()):
+    vehicle.setSuspensionStiffness(20.0, wheel)
+    vehicle.setSuspensionDamping(2.0, wheel)
+    vehicle.setSuspensionCompression(4.0, wheel)
+    vehicle.setTyreFriction(2.0, wheel)
+=== KX_VertexProxy
+# Raise every vertex of a mesh a little. ||| Levanta um pouco todos os vértices de uma malha.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+
+for i in range(mesh.getVertexArrayLength(0)):
+    vertex = mesh.getVertex(0, i)
+    vertex.z += 0.01
+---
+# Paint the vertices red. ||| Pinta os vértices de vermelho.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+
+for i in range(mesh.getVertexArrayLength(0)):
+    mesh.getVertex(0, i).color = (1.0, 0.0, 0.0, 1.0)
+=== KX_VideoActuator
+# Pause the video of another object. ||| Pausa o vídeo de outro objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Video"]
+
+act.object = "Screen"
+act.mode = 1
+cont.activate(act)
+---
+# Skip ten seconds ahead. ||| Avança dez segundos.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Video"]
+
+act.mode = 5
+act.seconds = 10.0
+act.useRelative = True
+cont.activate(act)
+=== KX_VisibilityActuator
+# Hide the object and its children. ||| Esconde o objeto e os filhos.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Visibility"]
+
+act.visibility = False
+act.useRecursion = True
+cont.activate(act)
+=== SCA_2DFilterActuator
+# Turn on the filter of this actuator. ||| Liga o filtro deste atuador.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Filter"]
+
+act.mode = Range.logic.RAS_2DFILTER_SEPIA
+act.passNumber = 0
+cont.activate(act)
+=== SCA_ANDController
+# With an AND controller, the actuators run when all sensors are positive. This script shows the same rule. ||| Com um controlador AND, os atuadores rodam quando todos os sensores estão positivos. Este script mostra a mesma regra.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+if all(sensor.positive for sensor in cont.sensors):
+    print("All sensors are on")
+=== SCA_ActuatorSensor
+# Wait for an action to end before going on. ||| Espera uma ação terminar antes de continuar.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["ActuatorDone"]
+
+sensor.actuator = "Wait"
+sensor.mode = 1
+
+if sensor.positive:
+    print("Finished")
+=== SCA_AlwaysSensor
+# Run a script only once, when the object starts. ||| Roda um script uma vez só, quando o objeto começa.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors["Always"]
+
+sensor.usePosPulseMode = False
+
+if sensor.positive:
+    cont.owner["life"] = 100
+---
+# Repeat every 30 logic frames. ||| Repete a cada 30 quadros de lógica.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Always"]
+
+sensor.usePosPulseMode = True
+sensor.skippedTicks = 30
+=== SCA_AnimationEventSensor
+# Fires on the frames marked in the animation. ||| Dispara nos quadros marcados na animação.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+if cont.sensors["AnimationEvent"].positive:
+    print("Step")
+=== SCA_DelaySensor
+# Fire 60 logic frames after the object starts. ||| Dispara 60 quadros de lógica depois que o objeto começa.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Delay"]
+
+sensor.delay = 60
+sensor.duration = 10
+sensor.repeat = False
+=== SCA_IActuator
+# All actuators are turned on and off by the controller. ||| Todos os atuadores são ligados e desligados pelo controlador.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+for act in cont.actuators:
+    if cont.sensors[0].positive:
+        cont.activate(act)
+    else:
+        cont.deactivate(act)
+=== SCA_IController
+# List what is connected to this controller. ||| Lista o que está ligado a este controlador.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print([sensor.name for sensor in cont.sensors])
+print([act.name for act in cont.actuators])
+---
+# Run this controller before the others. ||| Roda este controlador antes dos outros.
+import Range
+
+Range.logic.getCurrentController().useHighPriority = True
+=== SCA_ILogicBrick
+# Sensors, controllers and actuators know their object. ||| Sensores, controladores e atuadores conhecem o objeto deles.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors[0]
+
+print(sensor.owner.name, sensor.name, sensor.executePriority)
+=== SCA_ISensor
+# Separate the frame of the press from the frame of the release. ||| Separa o quadro de apertar do quadro de soltar.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+if sensor.triggered and sensor.positive:
+    print("Pressed")
+elif sensor.triggered:
+    print("Released")
+---
+# Use the state of the sensor. ||| Usa o estado do sensor.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+if sensor.status == Range.logic.KX_SENSOR_JUST_ACTIVATED:
+    print("Just pressed")
+---
+# Turn the result of the sensor upside down. ||| Inverte o resultado do sensor.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.invert = True
+sensor.reset()
+=== SCA_InputEvent
+# The three moments of a key. ||| Os três momentos de uma tecla.
+import Range
+
+space = Range.logic.keyboard.inputs[Range.events.SPACEKEY]
+
+if space.activated:
+    print("Pressed")
+if space.active:
+    print("Held")
+if space.released:
+    print("Released")
+---
+# Mouse wheel value on this frame. ||| Valor da roda do mouse neste quadro.
+import Range
+
+wheel = Range.logic.mouse.inputs[Range.events.WHEELUPMOUSE]
+
+if wheel.active:
+    print(wheel.values[-1])
+=== SCA_JoystickSensor
+# Read the axes of the sensor. ||| Lê os eixos do sensor.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Joystick"]
+
+if sensor.connected:
+    print(sensor.axisValues)
+---
+# See which buttons are pressed. ||| Mostra quais botões estão apertados.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Joystick"]
+
+print(sensor.getButtonActiveList())
+
+if sensor.getButtonStatus(0):
+    print("First button")
+=== SCA_KeyboardSensor
+# Watch all keys and show the ones held down. ||| Vigia todas as teclas e mostra as apertadas.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.useAllKeys = True
+
+for code, event in sensor.inputs.items():
+    if event.active:
+        print(Range.events.EventToString(code))
+---
+# Change the key by script. ||| Troca a tecla por script.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.key = Range.events.EKEY
+=== SCA_MouseSensor
+# Read the position of the mouse and the left button. ||| Lê a posição do mouse e o botão esquerdo.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Mouse"]
+
+print(sensor.position)
+
+if sensor.getButtonStatus(Range.logic.KX_MOUSE_BUT_LEFT) == Range.logic.KX_INPUT_ACTIVE:
+    print("Left button held")
+=== SCA_NANDController
+# NAND turns the actuators on unless all sensors are positive. ||| NAND liga os atuadores, a não ser que todos os sensores estejam positivos.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(not all(sensor.positive for sensor in cont.sensors))
+=== SCA_NORController
+# NOR turns the actuators on only when no sensor is positive. ||| NOR liga os atuadores só quando nenhum sensor está positivo.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(not any(sensor.positive for sensor in cont.sensors))
+=== SCA_ORController
+# OR turns the actuators on when at least one sensor is positive. ||| OR liga os atuadores quando pelo menos um sensor está positivo.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(any(sensor.positive for sensor in cont.sensors))
+=== SCA_PropertyActuator
+# Change the property that this actuator writes. ||| Troca a propriedade em que este atuador escreve.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Property"]
+
+act.propName = "score"
+act.value = "score + 10"
+cont.activate(act)
+=== SCA_PropertySensor
+# Fire when the life property reaches zero. ||| Dispara quando a propriedade life chega a zero.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Property"]
+
+sensor.mode = Range.logic.KX_PROPSENSOR_EQUAL
+sensor.propName = "life"
+sensor.value = "0"
+---
+# Fire when the value is inside an interval. ||| Dispara quando o valor está dentro de um intervalo.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Property"]
+
+sensor.mode = Range.logic.KX_PROPSENSOR_INTERVAL
+sensor.propName = "life"
+sensor.min = "1"
+sensor.max = "20"
+=== SCA_PythonController
+# The usual start of a script. ||| O começo comum de um script.
+import Range
+
+cont = Range.logic.getCurrentController()
+own = cont.owner
+
+if cont.sensors["Keyboard"].positive:
+    cont.activate("Motion")
+else:
+    cont.deactivate("Motion")
+---
+# Module mode: the engine calls one function and passes the controller. ||| Modo Module: a engine chama uma função e passa o controlador.
+def main(cont):
+    print(cont.owner.name, cont.script)
+=== SCA_RandomActuator
+# Choose a number from 1 to 6 and save it in a property. ||| Sorteia um número de 1 a 6 e guarda em uma propriedade.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Random"]
+
+act.propName = "dice"
+act.setIntUniform(1, 6)
+cont.activate(act)
+---
+# Use a float value around a mean. ||| Usa um valor decimal em torno de uma média.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Random"]
+
+act.propName = "damage"
+act.setFloatNormal(10.0, 2.0)
+cont.activate(act)
+=== SCA_RandomSensor
+# Use a fixed seed to repeat the same sequence. ||| Usa uma semente fixa para repetir a mesma sequência.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Random"]
+
+sensor.seed = 1234
+print(sensor.lastDraw)
+=== SCA_VibrationActuator
+# Vibrate the first controller when hit. ||| Vibra o primeiro controle ao levar um golpe.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Vibration"]
+
+if act.hasVibration and not act.isVibrating:
+    act.joyindex = 0
+    act.strengthLeft = 1.0
+    act.strengthRight = 0.5
+    act.duration = 300
+    act.startVibration()
+=== SCA_WaitActuator
+# Wait three seconds. ||| Espera três segundos.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Wait"]
+
+act.duration = 3.0
+act.useRestart = False
+cont.activate(act)
+---
+# Show the remaining time. ||| Mostra o tempo que falta.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Wait"]
+
+if act.waiting:
+    print(act.duration - act.elapsed)
+=== SCA_XNORController
+# XNOR turns the actuators on unless exactly one sensor is positive. ||| XNOR liga os atuadores, a não ser que exatamente um sensor esteja positivo.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(sum(sensor.positive for sensor in cont.sensors) != 1)
+=== SCA_XORController
+# XOR turns the actuators on when exactly one sensor is positive. ||| XOR liga os atuadores quando exatamente um sensor está positivo.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(sum(sensor.positive for sensor in cont.sensors) == 1)
+=== Texture
+# Put an image on a material. Keep the object in a property or it will be released. ||| Coloca uma imagem em um material. Guarde o objeto em uma propriedade, senão ele é liberado.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageFFmpeg(Range.logic.expandPath("//poster.png"))
+tex.mipmap = True
+tex.refresh(False)
+own["poster"] = tex
+---
+# Give the original texture back. ||| Devolve a textura original.
+import Range
+
+own = Range.logic.getCurrentController().owner
+
+own["poster"].close()
+del own["poster"]

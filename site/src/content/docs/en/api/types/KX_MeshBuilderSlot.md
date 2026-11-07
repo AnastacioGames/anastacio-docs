@@ -9,6 +9,24 @@ description: "Range.types.KX_MeshBuilderSlot class reference"
 
 Class `Range.types.KX_MeshBuilderSlot`.
 
+```python
+# Add a square made of two triangles.
+points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+ids = [slot.addVertex(point) for point in points]
+
+slot.addIndex([ids[0], ids[1], ids[2]])
+slot.addIndex([ids[0], ids[2], ids[3]])
+slot.recalculateNormals()
+```
+
+```python
+# See what the slot has.
+print(len(slot.vertices), len(slot.indices))
+print(slot.uvCount, slot.colorCount)
+```
+
+
+
 ## Not in the Range documentation
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.

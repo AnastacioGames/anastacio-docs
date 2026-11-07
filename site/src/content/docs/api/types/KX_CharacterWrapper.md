@@ -17,6 +17,48 @@ Um wrapper que expõe as opções de física de personagem.
 Quando o objeto do personagem é removido, todo método e atributo do wrapper gera `ReferenceError`. Suspender a física mantém o personagem, então o wrapper continua funcionando.
 :::
 
+```python
+# Anda e pula com um objeto Character.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+keys = Range.logic.keyboard.inputs
+
+speed = 0.1 if keys[Range.events.WKEY].active else 0.0
+character.walkDirection = (0.0, speed, 0.0)
+
+if keys[Range.events.SPACEKEY].activated and character.onGround:
+    character.jump()
+```
+
+```python
+# Abaixa, e levanta quando houver espaço.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+crouch = Range.logic.keyboard.inputs[Range.events.LEFTCTRLKEY].active
+
+if crouch:
+    character.posture = "CROUCH"
+elif character.canStand:
+    character.posture = "STAND"
+```
+
+```python
+# Permite pulo duplo.
+import Range
+from Range import constraints
+
+character = constraints.getCharacter(Range.logic.getCurrentController().owner)
+
+character.maxJumps = 2
+character.jumpSpeed = 8.0
+```
+
 ### onGround
 
 Se o personagem está no chão ou não (somente leitura).

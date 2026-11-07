@@ -13,6 +13,46 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 BL_Shader é uma classe usada para compilar e usar scripts de shader personalizados. Suporta vertex, fragment e geometry shaders. O shader é compilado com um cabeçalho gerado para os três scripts. Esse cabeçalho define a diretiva `#version`, então o usuário não deve definir a sua própria `#version`.
 
+```python
+# Troca o shader de um material e envia um valor para ele.
+import Range
+
+VERTEX = """
+void main()
+{
+    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+}
+"""
+
+FRAGMENT = """
+uniform float brightness;
+
+void main()
+{
+    gl_FragColor = vec4(vec3(brightness), 1.0);
+}
+"""
+
+own = Range.logic.getCurrentController().owner
+material = own.meshes[0].materials[0]
+shader = material.getShader()
+
+if shader is not None and not shader.isValid():
+    shader.setSource(VERTEX, FRAGMENT, True)
+
+shader.setUniform1f("brightness", 0.8)
+```
+
+```python
+# Deixa a engine preencher uma matriz ou a posição da câmera sozinha.
+import Range
+
+own = Range.logic.getCurrentController().owner
+shader = own.meshes[0].materials[0].getShader()
+
+shader.setUniformDef("cameraPosition", Range.logic.CAM_POS)
+```
+
 ### enabled
 
 Liga o shader para uso.

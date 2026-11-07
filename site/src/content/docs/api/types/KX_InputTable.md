@@ -9,6 +9,29 @@ description: "Referência da classe Range.types.KX_InputTable"
 
 Classe `Range.types.KX_InputTable`.
 
+```python
+# Usa uma ação sem saber qual tecla está ligada a ela.
+import Range
+
+maps = Range.logic.inputSystem.inputMaps
+jump = maps["Player"]["Jump"]
+
+if jump.activated:
+    print("Jump")
+```
+
+```python
+# Lê um eixo.
+import Range
+
+move = Range.logic.inputSystem.inputMaps["Player"]["Move"]
+
+if move.active:
+    print(move.values)
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

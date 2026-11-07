@@ -13,6 +13,27 @@ Note:
 The physics simulation is NOT currently updated - physics will not respond
 to changes in the vertex position.
 
+```python
+# Raise every vertex of a mesh a little.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+
+for i in range(mesh.getVertexArrayLength(0)):
+    vertex = mesh.getVertex(0, i)
+    vertex.z += 0.01
+```
+
+```python
+# Paint the vertices red.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+
+for i in range(mesh.getVertexArrayLength(0)):
+    mesh.getVertex(0, i).color = (1.0, 0.0, 0.0, 1.0)
+```
+
 ### XYZ
 
 The position of the vertex.

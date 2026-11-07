@@ -9,6 +9,37 @@ description: "Referência da classe Range.types.KX_MeshBuilder"
 
 Classe `Range.types.KX_MeshBuilder`.
 
+```python
+# Cria um triângulo por script e coloca no objeto.
+import Range
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+builder = Range.types.KX_MeshBuilder("Triangle", scene, ["UVMap"], ["Col"])
+slot = builder.addSlot(own.meshes[0].materials[0])
+
+a = slot.addVertex((0.0, 0.0, 0.0))
+b = slot.addVertex((1.0, 0.0, 0.0))
+c = slot.addVertex((0.0, 1.0, 0.0))
+slot.addIndex([a, b, c])
+slot.recalculateNormals()
+
+own.replaceMesh(builder.finish())
+```
+
+```python
+# Copia uma malha existente para alterar.
+import Range
+
+own = Range.logic.getCurrentController().owner
+
+builder = Range.types.KX_MeshBuilder.FromMesh("Copy", own.meshes[0])
+print(len(builder.slots))
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

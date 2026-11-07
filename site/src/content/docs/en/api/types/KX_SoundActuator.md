@@ -15,6 +15,28 @@ Sound Actuator.
 
 The `startSound`, `pauseSound` and `stopSound` do not require the actuator to be activated - they act instantly provided that the actuator has been activated once at least.
 
+```python
+# Play a sound with a random pitch.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Sound"]
+
+act.pitch = 0.9 + Range.logic.getRandomFloat() * 0.2
+act.volume = 0.8
+act.startSound()
+```
+
+```python
+# Pause and stop it.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Sound"]
+
+act.pauseSound()
+act.stopSound()
+```
+
 ### volume
 
 The volume (gain) of the sound.

@@ -9,6 +9,30 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 Random Actuator
 
+```python
+# Choose a number from 1 to 6 and save it in a property.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Random"]
+
+act.propName = "dice"
+act.setIntUniform(1, 6)
+cont.activate(act)
+```
+
+```python
+# Use a float value around a mean.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Random"]
+
+act.propName = "damage"
+act.setFloatNormal(10.0, 2.0)
+cont.activate(act)
+```
+
 ### seed
 
 Seed of the random number generator.

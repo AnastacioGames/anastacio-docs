@@ -12,6 +12,16 @@ The mouse focus sensor detects when the mouse is over the current game object.
 The mouse focus sensor works by transforming the mouse coordinates from 2d device
 space to 3d space then raycasting away from the camera.
 
+```python
+# Select what is under the mouse.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["MouseOver"]
+
+if sensor.positive:
+    print(sensor.hitObject.name, sensor.hitPosition)
+```
+
 ### raySource
 
 The worldspace source of the ray (the view position).

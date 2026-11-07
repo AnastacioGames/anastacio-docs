@@ -15,6 +15,17 @@ O sensor roda o ciclo OFF-ON uma vez, a menos que a opção repeat esteja ligada
 
 Use `SCA_ISensor.reset` a qualquer momento para reiniciar o sensor.
 
+```python
+# Dispara 60 quadros de lógica depois que o objeto começa.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Delay"]
+
+sensor.delay = 60
+sensor.duration = 10
+sensor.repeat = False
+```
+
 ### delay
 
 duração do período OFF inicial em número de frames; 0 para disparar na hora.

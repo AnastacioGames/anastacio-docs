@@ -9,6 +9,20 @@ Classe base: [`KX_NearSensor`](../kx_nearsensor/)
 
 O sensor radar é um sensor near com um objeto sensor em forma de cone.
 
+```python
+# Detecta inimigos em um cone na frente do objeto.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Radar"]
+
+sensor.axis = Range.logic.KX_RADAR_AXIS_POS_Y
+sensor.distance = 15.0
+sensor.angle = 45.0
+
+if sensor.positive:
+    print(sensor.hitObject.name)
+```
+
 ### coneOrigin
 
 A origem do cone usado no teste. A origem fica no meio do cone (somente leitura).

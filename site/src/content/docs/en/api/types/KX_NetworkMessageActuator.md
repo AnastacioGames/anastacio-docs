@@ -9,6 +9,19 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 Message Actuator
 
+```python
+# Send a message to objects in the scene.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Message"]
+
+act.subject = "door_open"
+act.body = "north"
+act.usePropBody = False
+cont.activate(act)
+```
+
 ### propName
 
 Messages will only be sent to objects with the given property name.

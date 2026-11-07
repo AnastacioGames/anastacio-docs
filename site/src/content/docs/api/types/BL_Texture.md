@@ -9,6 +9,29 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 Um objeto de textura com os atributos de uma textura de material.
 
+```python
+# Faz a primeira textura do material deslizar.
+import Range
+
+own = Range.logic.getCurrentController().owner
+texture = own.meshes[0].materials[0].textures[0]
+
+offset = texture.uvOffset
+offset.x += 0.01
+texture.uvOffset = offset
+```
+
+```python
+# Controla quanto a textura afeta a cor.
+import Range
+
+own = Range.logic.getCurrentController().owner
+texture = own.meshes[0].materials[0].textures[0]
+
+texture.diffuseFactor = 0.5
+texture.emit = 1.0
+```
+
 ### diffuseIntensity
 
 Quanto a textura afeta a refletividade difusa.

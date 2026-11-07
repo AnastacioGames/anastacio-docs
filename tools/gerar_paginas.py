@@ -42,6 +42,11 @@ MODULOS = {
     "track": ("bge.track", "Range.track"),
 }
 
+# exemplos escritos à mão, para páginas com ou sem .rst
+sys.path.insert(0, str(AQUI / "tools"))
+from checar_exemplos import ler as ler_exemplos
+EXEMPLOS = ler_exemplos()
+
 # tipo da página sendo gerada: numa página de módulo, cada ".. class::" do rst ganha título próprio
 EM_MODULO = [False]
 
@@ -413,6 +418,23 @@ def escrever(caminho, texto):
     caminho.write_text(fm + "\n---\n" + (traduzir_md(corpo) if LANG[0] == "pt" else corpo), encoding="utf-8")
 
 
+def exemplos_de(nome):
+    """Exemplos de conteudo/exemplos.txt, no idioma da página."""
+    if nome not in EXEMPLOS:
+        return ""
+    return "".join("```python\n" + "\n".join(e[LANG[0]]) + "\n```\n\n" for e in EXEMPLOS[nome])
+
+
+def com_exemplos(corpo, nome):
+    """Põe os exemplos antes do primeiro título, onde o botão Mostrar mais os alcança."""
+    blocos = exemplos_de(nome)
+    if not blocos:
+        return corpo
+    m = re.search(r"^#{2,3} ", corpo, re.M)
+    i = m.start() if m else len(corpo)
+    return corpo[:i].rstrip() + "\n\n" + blocos + corpo[i:]
+
+
 def pasta_api():
     return DESTINO / "api" if LANG[0] == "pt" else DESTINO / "en" / "api"
 
@@ -434,6 +456,7 @@ def pagina_modulo(chave, info, docs):
         corpo = L(f"Módulo `{publico}` da Anastacio Engine. Também acessível como `{publico.replace('Range.', 'bge.')}`.",
                   f"Anastacio Engine module `{publico}`. Also available as `{publico.replace('Range.', 'bge.')}`.")
     nome_arq = publico.replace("Range.", "")
+    corpo = com_exemplos(corpo, nome_arq)
     texto = frontmatter(publico, L(f"Referência do módulo {publico}", f"{publico} module reference")) + veja_tambem(publico) + corpo + "\n" + secao_pendentes(info["itens"], docs, publico) + "\n"
     escrever(pasta_api() / "modulos" / f"{nome_arq}.md", texto)
 
@@ -446,6 +469,7 @@ def pagina_classe(nome, info, rst_arq, docs):
     else:
         corpo, base = L(f"Classe `Range.types.{nome}`.", f"Class `Range.types.{nome}`."), None
     corpo = re.sub(r"^base class --- .*$", "", corpo, flags=re.M)
+    corpo = com_exemplos(corpo, nome)
     topo = f"{L('Classe base', 'Base class')}: [`{base.group(1).split('.')[-1]}`](../{base.group(1).split('.')[-1].lower()}/)\n\n" if base else ""
     pend = secao_pendentes(info["itens"], docs, nome) if info else ""
     texto = frontmatter(nome, L(f"Referência da classe Range.types.{nome}", f"Range.types.{nome} class reference")) + topo + veja_tambem(nome) + imagem_pagina(nome) + corpo + "\n" + pend + "\n"

@@ -9,6 +9,19 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Um atuador Constraint limita a posição, rotação, distância ou orientação de um objeto.
 
+```python
+# Mantém o objeto a uma distância do chão.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Constraint"]
+
+act.distance = 1.5
+act.rayLength = 5.0
+act.damp = 10
+cont.activate(act)
+```
+
 ### damp
 
 Constante de tempo da constraint, em frames (não usada pela constraint Force field).

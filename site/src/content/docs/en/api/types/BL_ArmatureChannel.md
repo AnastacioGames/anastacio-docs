@@ -14,6 +14,28 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 Proxy to armature pose channel. Allows to read and set armature pose.
 The attributes are identical to RNA attributes, but mostly in read-only mode.
 
+```python
+# Turn the head of the character by script.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+head = armature.channels["Head"]
+
+head.rotation_mode = Range.logic.ROT_MODE_XYZ
+head.rotation_euler = (0.0, 0.0, 0.5)
+armature.update()
+```
+
+```python
+# Find where a bone is in the world.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+hand = armature.channels["Hand.R"]
+
+print(armature.worldTransform * hand.pose_tail)
+```
+
 ### name
 
 channel name (=bone name), read-only.

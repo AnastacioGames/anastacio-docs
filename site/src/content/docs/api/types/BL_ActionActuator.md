@@ -13,6 +13,21 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Os atuadores Action aplicam uma action a um ator.
 
+```python
+# Toca parte de uma ação em uma camada separada.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Action"]
+
+act.action = "Wave"
+act.frameStart = 1
+act.frameEnd = 30
+act.layer = 1
+act.mode = Range.logic.KX_ACTIONACT_PLAY
+cont.activate(act)
+```
+
 ### action
 
 O nome da action a usar como action atual.

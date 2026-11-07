@@ -9,6 +9,18 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Proxy para a estrutura de bone do Blender. Todos os campos são somente leitura e seguem os nomes do RNA. Todos os atributos de espaço correspondem à rest pose.
 
+```python
+# Lista os ossos com o tamanho e o pai.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for channel in armature.channels:
+    bone = channel.bone
+    parent = bone.parent.name if bone.parent else "-"
+    print(bone.name, bone.length, parent)
+```
+
 ### name
 
 nome do bone.

@@ -9,6 +9,29 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 O atuador de jogo carrega um novo arquivo .blend, reinicia o .blend atual ou fecha o jogo.
 
+```python
+# Reinicia o jogo.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Game"]
+
+act.mode = Range.logic.KX_GAME_RESTART
+cont.activate(act)
+```
+
+```python
+# Abre outro arquivo de jogo.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Game"]
+
+act.mode = Range.logic.KX_GAME_START
+act.fileName = "//level2.range"
+cont.activate(act)
+```
+
 ### fileName
 
 o novo arquivo .blend a carregar.

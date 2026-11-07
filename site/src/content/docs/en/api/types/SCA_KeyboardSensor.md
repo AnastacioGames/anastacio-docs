@@ -11,6 +11,28 @@ A keyboard sensor detects player key presses.
 
 See module `Range.events` for keycode values.
 
+```python
+# Watch all keys and show the ones held down.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.useAllKeys = True
+
+for code, event in sensor.inputs.items():
+    if event.active:
+        print(Range.events.EventToString(code))
+```
+
+```python
+# Change the key by script.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.key = Range.events.EKEY
+```
+
 ### key
 
 The key code this sensor is looking for.

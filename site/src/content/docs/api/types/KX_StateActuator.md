@@ -9,6 +9,18 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 O atuador State muda a máscara de estado do objeto pai.
 
+```python
+# Liga o estado 2 do objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["State"]
+
+act.operation = Range.logic.KX_STATE_OP_SET
+act.mask = Range.logic.KX_STATE2
+cont.activate(act)
+```
+
 ### operation
 
 Tipo de operação de bits aplicada à máscara de estado do objeto.

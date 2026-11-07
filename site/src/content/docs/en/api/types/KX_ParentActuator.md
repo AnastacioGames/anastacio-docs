@@ -9,6 +9,30 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 The parent actuator can set or remove an objects parent object.
 
+```python
+# Attach the object to another one.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_SET
+act.object = Range.logic.getCurrentScene().objects["Hand"]
+act.ghost = True
+cont.activate(act)
+```
+
+```python
+# Release it.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_REMOVE
+cont.activate(act)
+```
+
 ### object
 
 the object this actuator sets the parent too.

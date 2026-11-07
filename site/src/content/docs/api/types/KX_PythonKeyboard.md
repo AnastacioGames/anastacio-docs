@@ -13,6 +13,27 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 O teclado atual.
 
+```python
+# Confere as teclas pelo estado.
+import Range
+
+keyboard = Range.logic.keyboard
+
+if keyboard.inputs[Range.events.ESCKEY].activated:
+    print("Pause")
+```
+
+```python
+# Lê o texto digitado e usa a área de transferência.
+import Range
+
+keyboard = Range.logic.keyboard
+
+print(keyboard.text)
+keyboard.setClipboard("Saved code: 1234")
+print(keyboard.getClipboard())
+```
+
 ### inputs
 
 Dicionário com a entrada de cada tecla do teclado (somente leitura).

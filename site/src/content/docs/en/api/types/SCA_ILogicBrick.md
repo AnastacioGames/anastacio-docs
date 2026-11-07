@@ -9,6 +9,16 @@ Base class: [`EXP_Value`](../exp_value/)
 
 Base class for all logic bricks.
 
+```python
+# Sensors, controllers and actuators know their object.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors[0]
+
+print(sensor.owner.name, sensor.name, sensor.executePriority)
+```
+
 ### executePriority
 
 This determines the order controllers are evaluated, and actuators are activated (lower priority is executed first).

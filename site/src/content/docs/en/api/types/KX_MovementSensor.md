@@ -5,6 +5,21 @@ description: "Range.types.KX_MovementSensor class reference"
 
 Class `Range.types.KX_MovementSensor`.
 
+```python
+# Fire when the object moves on any axis.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Movement"]
+
+sensor.axis = 6
+sensor.threshold = 0.05
+
+if sensor.positive:
+    print("Moving")
+```
+
+
+
 ## Not in the Range documentation
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.

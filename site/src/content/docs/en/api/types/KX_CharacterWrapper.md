@@ -18,6 +18,48 @@ When the character's object is removed, every method and attribute of the wrappe
 `ReferenceError`. Suspending physics keeps the character, so the wrapper still works.
 :::
 
+```python
+# Walk and jump with a Character object.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+keys = Range.logic.keyboard.inputs
+
+speed = 0.1 if keys[Range.events.WKEY].active else 0.0
+character.walkDirection = (0.0, speed, 0.0)
+
+if keys[Range.events.SPACEKEY].activated and character.onGround:
+    character.jump()
+```
+
+```python
+# Crouch, and stand up when there is room.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+crouch = Range.logic.keyboard.inputs[Range.events.LEFTCTRLKEY].active
+
+if crouch:
+    character.posture = "CROUCH"
+elif character.canStand:
+    character.posture = "STAND"
+```
+
+```python
+# Allow a double jump.
+import Range
+from Range import constraints
+
+character = constraints.getCharacter(Range.logic.getCurrentController().owner)
+
+character.maxJumps = 2
+character.jumpSpeed = 8.0
+```
+
 ### onGround
 
 Whether or not the character is on the ground. (read-only)

@@ -9,6 +9,30 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 Armature Actuators change constraint condition on armatures.
 
+```python
+# Change the target of a bone constraint.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Armature"]
+
+act.type = Range.logic.KX_ACT_ARMATURE_SETTARGET
+act.target = Range.logic.getCurrentScene().objects["Ball"]
+cont.activate(act)
+```
+
+```python
+# Fade the influence of the constraint.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Armature"]
+
+act.type = Range.logic.KX_ACT_ARMATURE_SETINFLUENCE
+act.influence = 0.5
+cont.activate(act)
+```
+
 ### type
 
 The type of action that the actuator executes when it is active.

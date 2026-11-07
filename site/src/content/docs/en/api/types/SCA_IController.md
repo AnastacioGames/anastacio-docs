@@ -9,6 +9,23 @@ Base class: [`SCA_ILogicBrick`](../sca_ilogicbrick/)
 
 Base class for all controller logic bricks.
 
+```python
+# List what is connected to this controller.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print([sensor.name for sensor in cont.sensors])
+print([act.name for act in cont.actuators])
+```
+
+```python
+# Run this controller before the others.
+import Range
+
+Range.logic.getCurrentController().useHighPriority = True
+```
+
 ### state
 
 The controllers state bitmask. This can be used with the GameObject's state to test if the controller is active.

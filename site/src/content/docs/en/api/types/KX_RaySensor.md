@@ -9,6 +9,19 @@ Base class: [`SCA_ISensor`](../sca_isensor/)
 
 A ray sensor detects the first object in a given direction.
 
+```python
+# See what is ahead of the object.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Ray"]
+
+sensor.range = 10.0
+sensor.axis = Range.logic.KX_RAY_AXIS_POS_Y
+
+if sensor.positive:
+    print(sensor.hitObject.name, sensor.hitPosition, sensor.hitNormal)
+```
+
 ### propName
 
 The property the ray is looking for.

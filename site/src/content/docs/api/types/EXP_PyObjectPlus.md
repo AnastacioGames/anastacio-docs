@@ -5,6 +5,17 @@ description: "Referência da classe Range.types.EXP_PyObjectPlus"
 
 EXP_PyObjectPlus é a classe base da maioria dos outros tipos da Game Engine.
 
+```python
+# Confere se um objeto não foi removido antes de usar uma referência guardada.
+import Range
+
+own = Range.logic.getCurrentController().owner
+target = own.get("target")
+
+if target is not None and not target.invalid:
+    print(target.worldPosition)
+```
+
 ### invalid
 
 Testa se o objeto foi liberado pela game engine e não é mais válido.

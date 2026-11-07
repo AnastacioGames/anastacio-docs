@@ -9,6 +9,50 @@ description: "Range.imgui module reference"
 
 Anastacio Engine module `Range.imgui`. Also available as `bge.imgui`.
 
+```python
+# A pause window, drawn every frame by a component.
+import Range
+import Range.imgui as imgui
+
+
+class PauseMenu(Range.types.KX_PythonComponent):
+    args = {}
+
+    def start(self, args):
+        self.volume = 0.5
+        imgui.set_game_ui_open(True)
+
+    def update(self):
+        w, h = imgui.get_display_size()
+        imgui.set_next_window_size(300, 200, imgui.COND_FIRST_USE_EVER)
+        imgui.set_next_window_pos(w / 2 - 150, h / 2 - 100)
+
+        is_open, want_close = imgui.begin("Pause", closable=True)
+        if is_open:
+            changed, self.volume = imgui.slider_float("Volume", self.volume, 0.0, 1.0)
+            imgui.separator()
+            if imgui.button("Quit", width=240):
+                Range.logic.endGame()
+        imgui.end()
+```
+
+```python
+# Common widgets return if they changed and the new value.
+changed, self.fullscreen = imgui.checkbox("Full screen", self.fullscreen)
+changed, self.quality = imgui.slider_int("Quality", self.quality, 0, 3)
+imgui.same_line()
+imgui.text("Level: {}".format(self.quality))
+```
+
+```python
+# Change the color of one button.
+imgui.push_style_color(imgui.COL_BUTTON, 0.8, 0.2, 0.2, 1.0)
+imgui.button("Delete save")
+imgui.pop_style_color()
+```
+
+
+
 ## Not in the Range documentation
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.

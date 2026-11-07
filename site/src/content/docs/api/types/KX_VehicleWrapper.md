@@ -15,6 +15,57 @@ KX_VehicleWrapper
 
 TODO - descrição
 
+```python
+# Cria um veículo com quatro rodas.
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+vehicle = constraints.createVehicle(own.getPhysicsId())
+own["vehicle_id"] = vehicle.getConstraintId()
+
+wheels = (
+    ("WheelFL", (-1.0, 1.5, 0.0), True),
+    ("WheelFR", (1.0, 1.5, 0.0), True),
+    ("WheelRL", (-1.0, -1.5, 0.0), False),
+    ("WheelRR", (1.0, -1.5, 0.0), False),
+)
+
+for name, position, steering in wheels:
+    vehicle.addWheel(scene.objects[name], position, (0, 0, -1), (-1, 0, 0), 0.4, 0.5, steering)
+```
+
+```python
+# Dirige a cada quadro.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+vehicle = constraints.getVehicleConstraint(own["vehicle_id"])
+keys = Range.logic.keyboard.inputs
+
+force = -800.0 if keys[Range.events.WKEY].active else 0.0
+steer = 0.3 if keys[Range.events.AKEY].active else 0.0
+
+for wheel in range(vehicle.getNumWheels()):
+    vehicle.applyEngineForce(force, wheel)
+
+vehicle.setSteeringValue(steer, 0)
+vehicle.setSteeringValue(steer, 1)
+print(vehicle.getCurrentSpeedKmh())
+```
+
+```python
+# Ajusta a suspensão de cada roda.
+for wheel in range(vehicle.getNumWheels()):
+    vehicle.setSuspensionStiffness(20.0, wheel)
+    vehicle.setSuspensionDamping(2.0, wheel)
+    vehicle.setSuspensionCompression(4.0, wheel)
+    vehicle.setTyreFriction(2.0, wheel)
+```
+
 ### addWheel(wheel, attachPos, downDir, axleDir, suspensionRestLength, wheelRadius, hasSteering)
 
 Adiciona uma roda ao veículo

@@ -13,6 +13,25 @@ Classe base: [`SCA_IController`](../sca_icontroller/)
 
 Um controlador Python usa um script Python para ativar seus atuadores, com base nos seus sensores.
 
+```python
+# O começo comum de um script.
+import Range
+
+cont = Range.logic.getCurrentController()
+own = cont.owner
+
+if cont.sensors["Keyboard"].positive:
+    cont.activate("Motion")
+else:
+    cont.deactivate("Motion")
+```
+
+```python
+# Modo Module: a engine chama uma função e passa o controlador.
+def main(cont):
+    print(cont.owner.name, cont.script)
+```
+
 ### owner
 
 O objeto ao qual o controlador está ligado.

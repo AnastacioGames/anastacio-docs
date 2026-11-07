@@ -9,6 +9,30 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Eventos de uma entrada de teclado ou mouse.
 
+```python
+# Os três momentos de uma tecla.
+import Range
+
+space = Range.logic.keyboard.inputs[Range.events.SPACEKEY]
+
+if space.activated:
+    print("Pressed")
+if space.active:
+    print("Held")
+if space.released:
+    print("Released")
+```
+
+```python
+# Valor da roda do mouse neste quadro.
+import Range
+
+wheel = Range.logic.mouse.inputs[Range.events.WHEELUPMOUSE]
+
+if wheel.active:
+    print(wheel.values[-1])
+```
+
 ### status
 
 Lista dos estados da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_NONE` e `Range.logic.KX_INPUT_ACTIVE`. A lista sempre tem um valor. O primeiro valor da lista é o último valor da lista no frame anterior (somente leitura).

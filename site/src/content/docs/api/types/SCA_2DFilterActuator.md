@@ -11,6 +11,18 @@ Cria, liga e desliga filtros 2D.
 
 As propriedades a seguir não têm efeito imediato. É preciso ativar o atuador para ver o resultado. O atuador não é persistente: ele para sozinho depois de configurar o filtro, mas o filtro continua ativo. Para parar um filtro, ative o atuador com 'type' igual a `RAS_2DFILTER_DISABLED` ou `RAS_2DFILTER_NOFILTER`.
 
+```python
+# Liga o filtro deste atuador.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Filter"]
+
+act.mode = Range.logic.RAS_2DFILTER_SEPIA
+act.passNumber = 0
+cont.activate(act)
+```
+
 ### shaderText
 
 código-fonte do shader personalizado.

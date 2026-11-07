@@ -11,6 +11,28 @@ Um sensor de teclado detecta as teclas apertadas pelo jogador.
 
 Veja o módulo `Range.events` para os códigos de tecla.
 
+```python
+# Vigia todas as teclas e mostra as apertadas.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.useAllKeys = True
+
+for code, event in sensor.inputs.items():
+    if event.active:
+        print(Range.events.EventToString(code))
+```
+
+```python
+# Troca a tecla por script.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.key = Range.events.EKEY
+```
+
 ### key
 
 O código da tecla que este sensor procura.

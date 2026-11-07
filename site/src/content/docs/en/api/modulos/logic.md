@@ -7,6 +7,60 @@ description: "Range.logic module reference"
 [`KX_GameObject`](../../types/kx_gameobject/), [`KX_Scene`](../../types/kx_scene/), [`Range.events`](../../modulos/events/), [`SCA_PythonController`](../../types/sca_pythoncontroller/)
 :::
 
+
+
+```python
+# Save a value between scenes and between game sessions.
+import Range
+
+Range.logic.globalDict["level"] = 3
+Range.logic.saveGlobalDict()
+```
+
+```python
+# Read it back when the game opens.
+import Range
+
+Range.logic.loadGlobalDict()
+level = Range.logic.globalDict.get("level", 1)
+print("Level:", level)
+```
+
+```python
+# Move the object with the keyboard, at the same speed on any frame rate.
+import Range
+
+own = Range.logic.getCurrentController().owner
+keys = Range.logic.keyboard.inputs
+
+if keys[Range.events.WKEY].active:
+    own.applyMovement((0.0, 0.1, 0.0), True)
+```
+
+```python
+# Slow the whole game down for a dramatic moment.
+import Range
+
+Range.logic.setTimeScale(0.3)
+Range.logic.setAnimationsUseTimeScale(True)
+```
+
+```python
+# Load another file while the game keeps running.
+import Range
+
+path = Range.logic.expandPath("//levels/forest.range")
+status = Range.logic.LibLoad(path, "Scene", asynchronous=True)
+print(status.libraryName)
+```
+
+```python
+# Send a message that a Message sensor can receive.
+import Range
+
+Range.logic.sendMessage("door_open", "north")
+```
+
 ## Introduction
 
 Module to access logic functions, imported automatically into the python controllers namespace.

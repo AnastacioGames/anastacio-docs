@@ -9,6 +9,29 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 Ativa quando a propriedade do game object corresponde.
 
+```python
+# Dispara quando a propriedade life chega a zero.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Property"]
+
+sensor.mode = Range.logic.KX_PROPSENSOR_EQUAL
+sensor.propName = "life"
+sensor.value = "0"
+```
+
+```python
+# Dispara quando o valor está dentro de um intervalo.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Property"]
+
+sensor.mode = Range.logic.KX_PROPSENSOR_INTERVAL
+sensor.propName = "life"
+sensor.min = "1"
+sensor.max = "20"
+```
+
 ### mode
 
 Tipo de verificação da propriedade. Pode ser uma `destas constantes`

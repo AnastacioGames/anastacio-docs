@@ -9,6 +9,29 @@ Base class: [`EXP_Value`](../exp_value/)
 
 A texture object that contains attributes of a material texture.
 
+```python
+# Make the first texture of the material scroll.
+import Range
+
+own = Range.logic.getCurrentController().owner
+texture = own.meshes[0].materials[0].textures[0]
+
+offset = texture.uvOffset
+offset.x += 0.01
+texture.uvOffset = offset
+```
+
+```python
+# Control how much the texture affects the color.
+import Range
+
+own = Range.logic.getCurrentController().owner
+texture = own.meshes[0].materials[0].textures[0]
+
+texture.diffuseFactor = 0.5
+texture.emit = 1.0
+```
+
 ### diffuseIntensity
 
 Amount texture affects diffuse reflectivity.

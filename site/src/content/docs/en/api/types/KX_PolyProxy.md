@@ -13,6 +13,28 @@ Note:
 The polygon attributes are read-only, you need to retrieve the vertex proxy if you want
 to change the vertex settings.
 
+```python
+# Find the material of the face hit by a ray.
+import Range
+
+own = Range.logic.getCurrentController().owner
+hit, point, normal, poly = own.rayCast((0, 0, -10), own, 20.0, "", 0, 0, 1)
+
+if poly is not None:
+    print(poly.material_name, poly.getNumVertex())
+```
+
+```python
+# Read the vertices of the first face of a mesh.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+poly = mesh.getPolygon(0)
+
+for i in range(poly.getNumVertex()):
+    print(poly.getVertexIndex(i))
+```
+
 ### material_name
 
 The name of polygon material, empty if no material.

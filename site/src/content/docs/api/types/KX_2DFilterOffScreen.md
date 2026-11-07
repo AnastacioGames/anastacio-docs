@@ -9,6 +9,18 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 Off screen personalizado de filtro 2D.
 
+```python
+# Lê o tamanho da imagem em que um filtro escreve.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+offScreen = manager.getFilter(0).offScreen
+
+if offScreen is not None:
+    print(offScreen.width, offScreen.height)
+    print(offScreen.colorBindCodes, offScreen.depthBindCode)
+```
+
 ### width
 
 A largura do off screen; -1 se o off screen pode ser redimensionado dinamicamente (somente leitura).

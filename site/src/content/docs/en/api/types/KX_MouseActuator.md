@@ -9,6 +9,27 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 The mouse actuator gives control over the visibility of the mouse cursor and rotates the parent object according to mouse movement.
 
+```python
+# First-person view with limits to look up and down.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Mouse"]
+
+act.sensitivity = [2.0, 2.0]
+act.limit_y = [-80.0, 80.0]
+act.visible = False
+cont.activate(act)
+```
+
+```python
+# Center the view again.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Mouse"]
+act.reset()
+```
+
 ### reset()
 
 Undoes the rotation caused by the mouse actuator.

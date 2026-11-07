@@ -7,6 +7,52 @@ description: "Range.texture module reference"
 [`Texture`](../../types/texture/), [`KX_BlenderMaterial`](../../types/kx_blendermaterial/), [`BL_Texture`](../../types/bl_texture/)
 :::
 
+
+
+```python
+# Show a video on the material of the object.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+if "video" not in own:
+    matID = texture.materialID(own, "MAscreen")
+    tex = texture.Texture(own, matID)
+    tex.source = texture.VideoFFmpeg(Range.logic.expandPath("//movie.mp4"))
+    tex.source.play()
+    own["video"] = tex
+
+own["video"].refresh(True)
+```
+
+```python
+# Swap the image of a material while the game runs.
+import Range
+from Range import texture
+
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageFFmpeg(Range.logic.expandPath("//poster.png"))
+tex.refresh(False)
+own["poster"] = tex
+```
+
+```python
+# Make a mirror image with another camera.
+import Range
+from Range import texture
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+tex = texture.Texture(own, 0)
+tex.source = texture.ImageRender(scene, scene.objects["SecurityCamera"])
+own["monitor"] = tex
+own["monitor"].refresh(True)
+```
+
 ## Introduction
 
 The `Range.texture` module allows you to manipulate textures during the game.

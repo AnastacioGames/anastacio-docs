@@ -9,6 +9,30 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Os atuadores Armature mudam a condição das constraints em armatures.
 
+```python
+# Troca o alvo de uma constraint de osso.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Armature"]
+
+act.type = Range.logic.KX_ACT_ARMATURE_SETTARGET
+act.target = Range.logic.getCurrentScene().objects["Ball"]
+cont.activate(act)
+```
+
+```python
+# Diminui a influência da constraint.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Armature"]
+
+act.type = Range.logic.KX_ACT_ARMATURE_SETINFLUENCE
+act.influence = 0.5
+cont.activate(act)
+```
+
 ### type
 
 O tipo de ação que o atuador executa quando está ativo.

@@ -13,6 +13,27 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 The current keyboard.
 
+```python
+# Check keys by state.
+import Range
+
+keyboard = Range.logic.keyboard
+
+if keyboard.inputs[Range.events.ESCKEY].activated:
+    print("Pause")
+```
+
+```python
+# Read typed text and use the clipboard.
+import Range
+
+keyboard = Range.logic.keyboard
+
+print(keyboard.text)
+keyboard.setClipboard("Saved code: 1234")
+print(keyboard.getClipboard())
+```
+
 ### inputs
 
 A dictionary containing the input of each keyboard key. (read-only).

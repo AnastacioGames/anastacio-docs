@@ -13,6 +13,33 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 A Python interface to a joystick.
 
+```python
+# Move with the left stick and jump with a button.
+import Range
+
+joystick = Range.logic.joysticks[0]
+
+if joystick is not None:
+    x, y = joystick.axisValues[0], joystick.axisValues[1]
+    print(x, y)
+
+    if 0 in joystick.activeButtons:
+        print("Jump")
+```
+
+```python
+# Vibrate for half a second.
+import Range
+
+joystick = Range.logic.joysticks[0]
+
+if joystick is not None and joystick.hasVibration:
+    joystick.strengthLeft = 0.8
+    joystick.strengthRight = 0.8
+    joystick.duration = 500
+    joystick.startVibration()
+```
+
 ### name
 
 The name assigned to the joystick by the operating system. (read-only)

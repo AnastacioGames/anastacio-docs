@@ -13,6 +13,48 @@ Classe base: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 
 Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.
 
+```python
+# Adiciona um filtro pronto e depois um personalizado.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+manager.addFilter(0, Range.logic.RAS_2DFILTER_SEPIA)
+
+GLSL = """
+uniform sampler2D bgl_RenderedTexture;
+in vec4 bgl_TexCoord;
+out vec4 fragColor;
+
+void main()
+{
+    fragColor = texture(bgl_RenderedTexture, bgl_TexCoord.xy) * 0.5;
+}
+"""
+manager.addFilter(1, Range.logic.RAS_2DFILTER_CUSTOMFILTER, GLSL)
+```
+
+```python
+# Remove um filtro.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+if manager.getFilter(0) is not None:
+    manager.removeFilter(0)
+```
+
+```python
+# Ajusta os efeitos das opções gráficas.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+manager.changeBloomValues(True, 0.6, 0.8)
+manager.changeFxaaValues(True)
+manager.changeGrainValues(True, 0.1)
+```
+
 ### addFilter(index, type, fragmentProgram="", owner=None, mipmap=False)
 
 Adiciona um filtro no passe `index`, do tipo `type`, com o fragment program se for filtro personalizado.

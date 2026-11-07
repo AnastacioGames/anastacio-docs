@@ -9,6 +9,30 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 O atuador parent define ou remove o objeto pai de um objeto.
 
+```python
+# Prende o objeto em outro.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_SET
+act.object = Range.logic.getCurrentScene().objects["Hand"]
+act.ghost = True
+cont.activate(act)
+```
+
+```python
+# Solta.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_REMOVE
+cont.activate(act)
+```
+
 ### object
 
 o objeto que este atuador define como pai.

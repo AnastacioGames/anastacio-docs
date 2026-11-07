@@ -9,6 +9,18 @@ Base class: [`SCA_ISensor`](../sca_isensor/)
 
 Mouse Sensor logic brick.
 
+```python
+# Read the position of the mouse and the left button.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Mouse"]
+
+print(sensor.position)
+
+if sensor.getButtonStatus(Range.logic.KX_MOUSE_BUT_LEFT) == Range.logic.KX_INPUT_ACTIVE:
+    print("Left button held")
+```
+
 ### position
 
 current [x, y] coordinates of the mouse, in frame coordinates (pixels).

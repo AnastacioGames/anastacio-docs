@@ -9,3 +9,14 @@ Classe base: [`EXP_Value`](../exp_value/)
 
 Esta classe não tem funções Python
 
+```python
+# Esta é uma classe base: objetos, cenas e malhas herdam dela.
+import Range
+
+own = Range.logic.getCurrentController().owner
+
+print(isinstance(own, Range.types.EXP_PropValue))
+```
+
+
+

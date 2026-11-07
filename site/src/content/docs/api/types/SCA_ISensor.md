@@ -9,6 +9,38 @@ Classe base: [`SCA_ILogicBrick`](../sca_ilogicbrick/)
 
 Classe base de todos os logic bricks de sensor.
 
+```python
+# Separa o quadro de apertar do quadro de soltar.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+if sensor.triggered and sensor.positive:
+    print("Pressed")
+elif sensor.triggered:
+    print("Released")
+```
+
+```python
+# Usa o estado do sensor.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+if sensor.status == Range.logic.KX_SENSOR_JUST_ACTIVATED:
+    print("Just pressed")
+```
+
+```python
+# Inverte o resultado do sensor.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Keyboard"]
+
+sensor.invert = True
+sensor.reset()
+```
+
 ### usePosPulseMode
 
 Flag que liga e desliga o modo de pulso positivo.

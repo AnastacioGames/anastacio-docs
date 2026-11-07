@@ -10,6 +10,18 @@ Base class: [`EXP_PyObjectPlus`](../exp_pyobjectplus/)
 Proxy to Blender bone structure. All fields are read-only and comply to RNA names.
 All space attribute correspond to the rest pose.
 
+```python
+# List the bones with their length and parent.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for channel in armature.channels:
+    bone = channel.bone
+    parent = bone.parent.name if bone.parent else "-"
+    print(bone.name, bone.length, parent)
+```
+
 ### name
 
 bone name.

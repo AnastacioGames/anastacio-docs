@@ -11,3 +11,14 @@ An XNOR controller activates when all linked sensors are the same (activated or 
 
 There are no special python methods for this controller.
 
+```python
+# XNOR turns the actuators on unless exactly one sensor is positive.
+import Range
+
+cont = Range.logic.getCurrentController()
+
+print(sum(sensor.positive for sensor in cont.sensors) != 1)
+```
+
+
+

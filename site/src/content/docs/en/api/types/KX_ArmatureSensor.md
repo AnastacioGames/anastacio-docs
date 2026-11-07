@@ -9,6 +9,20 @@ Base class: [`SCA_ISensor`](../sca_isensor/)
 
 Armature sensor detect conditions on armatures.
 
+```python
+# React when the IK error gets too big.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors["Armature"]
+
+sensor.type = Range.logic.KX_ARMSENSOR_LIN_ERROR_ABOVE
+sensor.value = 0.1
+
+if sensor.positive:
+    print("Bone cannot reach the target:", sensor.constraint.name)
+```
+
 ### type
 
 The type of measurement that the sensor make when it is active.

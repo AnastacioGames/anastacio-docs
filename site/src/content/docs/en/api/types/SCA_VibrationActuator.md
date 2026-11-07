@@ -9,6 +9,20 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 Vibration Actuator.
 
+```python
+# Vibrate the first controller when hit.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Vibration"]
+
+if act.hasVibration and not act.isVibrating:
+    act.joyindex = 0
+    act.strengthLeft = 1.0
+    act.strengthRight = 0.5
+    act.duration = 300
+    act.startVibration()
+```
+
 ### joyindex
 
 Joystick index.

@@ -9,6 +9,30 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 O atuador de objeto ("Motion Actuator") aplica força, torque, deslocamento, deslocamento angular, velocidade ou velocidade angular a um objeto. O controle servo permite regular a força para atingir uma velocidade alvo.
 
+```python
+# Anda para frente com velocidade constante.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Motion"]
+
+act.linV = (0.0, 5.0, 0.0)
+act.useLocalLinV = True
+cont.activate(act)
+```
+
+```python
+# Empurra o objeto e gira.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Motion"]
+
+act.force = (0.0, 0.0, 50.0)
+act.torque = (0.0, 0.0, 2.0)
+cont.activate(act)
+```
+
 ### force
 
 A força aplicada pelo atuador.

@@ -11,6 +11,16 @@ O sensor Mouse focus detecta quando o mouse está sobre o game object atual.
 
 O sensor Mouse focus transforma as coordenadas do mouse do espaço 2D do dispositivo para o espaço 3D e lança um raio a partir da câmera.
 
+```python
+# Seleciona o que está embaixo do mouse.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["MouseOver"]
+
+if sensor.positive:
+    print(sensor.hitObject.name, sensor.hitPosition)
+```
+
 ### raySource
 
 A origem do raio no espaço do mundo (a posição da vista).

@@ -7,6 +7,36 @@ description: "Range.events module reference"
 [`KX_PythonKeyboard`](../../types/kx_pythonkeyboard/), [`KX_PythonMouse`](../../types/kx_pythonmouse/), [`SCA_InputEvent`](../../types/sca_inputevent/), [`SCA_KeyboardSensor`](../../types/sca_keyboardsensor/)
 :::
 
+
+
+```python
+# Do something once, on the frame the key was pressed.
+import Range
+
+keys = Range.logic.keyboard.inputs
+
+if keys[Range.events.SPACEKEY].activated:
+    print("Jump")
+```
+
+```python
+# Read the mouse buttons in the same way.
+import Range
+
+buttons = Range.logic.mouse.inputs
+
+if buttons[Range.events.LEFTMOUSE].active:
+    print("Shooting")
+```
+
+```python
+# Show the name of each key held down.
+import Range
+
+for code in Range.logic.keyboard.activeInputs:
+    print(Range.events.EventToString(code))
+```
+
 ## Intro
 
 This module holds key constants for the SCA_KeyboardSensor.

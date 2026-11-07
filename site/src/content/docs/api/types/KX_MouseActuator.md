@@ -9,6 +9,27 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 O atuador Mouse controla a visibilidade do cursor do mouse e gira o objeto pai conforme o movimento do mouse.
 
+```python
+# Visão em primeira pessoa com limites para olhar para cima e para baixo.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Mouse"]
+
+act.sensitivity = [2.0, 2.0]
+act.limit_y = [-80.0, 80.0]
+act.visible = False
+cont.activate(act)
+```
+
+```python
+# Centraliza a visão de novo.
+import Range
+
+act = Range.logic.getCurrentController().actuators["Mouse"]
+act.reset()
+```
+
 ### reset()
 
 Desfaz a rotação causada pelo atuador Mouse.

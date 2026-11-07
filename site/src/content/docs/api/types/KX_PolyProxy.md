@@ -11,6 +11,28 @@ Um polígono guarda o índice dos vértices que o formam.
 
 Nota: os atributos do polígono são somente leitura; para mudar as configurações de um vértice, pegue o vertex proxy.
 
+```python
+# Descobre o material da face atingida por um raio.
+import Range
+
+own = Range.logic.getCurrentController().owner
+hit, point, normal, poly = own.rayCast((0, 0, -10), own, 20.0, "", 0, 0, 1)
+
+if poly is not None:
+    print(poly.material_name, poly.getNumVertex())
+```
+
+```python
+# Lê os vértices da primeira face de uma malha.
+import Range
+
+mesh = Range.logic.getCurrentController().owner.meshes[0]
+poly = mesh.getPolygon(0)
+
+for i in range(poly.getNumVertex()):
+    print(poly.getVertexIndex(i))
+```
+
 ### material_name
 
 O nome do material do polígono; vazio se não houver material.

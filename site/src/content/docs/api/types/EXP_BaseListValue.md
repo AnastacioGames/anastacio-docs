@@ -5,6 +5,29 @@ description: "Referência da classe Range.types.EXP_BaseListValue"
 
 Classe `Range.types.EXP_BaseListValue`.
 
+```python
+# Procura um objeto sem erro caso ele não exista.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+door = objects.get("Door")
+if door is not None:
+    print(objects.index(door))
+```
+
+```python
+# Filtra por nome e propriedade.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+for enemy in objects.filter("Enemy*", "life"):
+    print(enemy.name)
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

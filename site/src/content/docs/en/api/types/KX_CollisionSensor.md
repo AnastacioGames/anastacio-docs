@@ -9,6 +9,28 @@ Base class: [`SCA_ISensor`](../sca_isensor/)
 
 Collision sensor detects collisions between objects.
 
+```python
+# See what hit the object.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors["Collision"]
+
+if sensor.positive:
+    for obj in sensor.hitObjectList:
+        print(obj.name)
+```
+
+```python
+# Only detect objects with the coin property.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Collision"]
+
+sensor.propName = "coin"
+sensor.useMaterial = False
+```
+
 ### propName
 
 The property or material to collide with.

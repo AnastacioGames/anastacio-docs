@@ -5,6 +5,30 @@ description: "Referência da classe Range.types.KX_VRHeadSensor"
 
 Classe `Range.types.KX_VRHeadSensor`.
 
+```python
+# Confirma com um aceno de cabeça.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["VRHead"]
+
+sensor.mode = 4
+sensor.time = 1.0
+
+if sensor.positive:
+    print("Yes")
+```
+
+```python
+# Lê a rotação atual da cabeça.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["VRHead"]
+
+print(sensor.yaw, sensor.pitch, sensor.roll)
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

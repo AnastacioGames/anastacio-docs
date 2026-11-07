@@ -15,6 +15,46 @@ BL_Shader is a class used to compile and use custom shaders scripts. It supports
 The shader is compiled with a generated header for the three shaders scripts.
 This header set the `#version` directive, so the user must not define his own `#version`.
 
+```python
+# Replace the shader of a material and send it a value.
+import Range
+
+VERTEX = """
+void main()
+{
+    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+}
+"""
+
+FRAGMENT = """
+uniform float brightness;
+
+void main()
+{
+    gl_FragColor = vec4(vec3(brightness), 1.0);
+}
+"""
+
+own = Range.logic.getCurrentController().owner
+material = own.meshes[0].materials[0]
+shader = material.getShader()
+
+if shader is not None and not shader.isValid():
+    shader.setSource(VERTEX, FRAGMENT, True)
+
+shader.setUniform1f("brightness", 0.8)
+```
+
+```python
+# Let the engine fill a matrix or the camera position on its own.
+import Range
+
+own = Range.logic.getCurrentController().owner
+shader = own.meshes[0].materials[0].getShader()
+
+shader.setUniformDef("cameraPosition", Range.logic.CAM_POS)
+```
+
 ### enabled
 
 Set shader enabled to use.

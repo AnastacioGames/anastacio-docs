@@ -9,6 +9,37 @@ description: "Referência do módulo Range.network.steam"
 
 Módulo `Range.network.steam` da Anastacio Engine. Também acessível como `bge.network.steam`.
 
+```python
+# Carrega a Steam e mostra quem está jogando.
+import Range
+from Range.network import steam
+
+dll = Range.logic.expandPath("//AnastacioSteam.dll")
+steam.initialize(dll, 480)
+
+info = steam.status()
+if info["ready"]:
+    print("Steam id:", info["steam_id"], steam.language())
+```
+
+```python
+# Desbloqueia uma conquista.
+from Range.network import steam
+
+if not steam.achievement("FIRST_WIN"):
+    steam.achievement("FIRST_WIN", unlock=True)
+```
+
+```python
+# Trata eventos de lobby e convites.
+from Range.network import steam
+
+for event in steam.poll_events():
+    print(event["type"], event["name"], event["members"])
+```
+
+
+
 ## Sem documentação da Range
 
 Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.

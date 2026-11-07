@@ -9,6 +9,39 @@ description: "Range.types.KX_ParticleSystem class reference"
 
 Class `Range.types.KX_ParticleSystem`.
 
+```python
+# Change the fire of the object while the game runs.
+import Range
+
+own = Range.logic.getCurrentController().owner
+particles = own.particles
+
+if particles is not None:
+    particles.particleCount = 200
+    particles.lifetime = 1.5
+    particles.blendMode = "ADDITIVE"
+```
+
+```python
+# A single explosion.
+import Range
+
+particles = Range.logic.getCurrentController().owner.particles
+
+particles.emissionMode = "BURST"
+particles.burst()
+```
+
+```python
+# Stop emitting.
+import Range
+
+particles = Range.logic.getCurrentController().owner.particles
+particles.enabled = False
+```
+
+
+
 ## Not in the Range documentation
 
 These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.

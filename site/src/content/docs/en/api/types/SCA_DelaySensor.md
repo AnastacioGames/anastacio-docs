@@ -17,6 +17,17 @@ The sensor runs the OFF-ON cycle once unless the repeat option is set: the OFF-O
 
 Use `SCA_ISensor.reset` at any time to restart sensor.
 
+```python
+# Fire 60 logic frames after the object starts.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Delay"]
+
+sensor.delay = 60
+sensor.duration = 10
+sensor.repeat = False
+```
+
 ### delay
 
 length of the initial OFF period as number of frame, 0 for immediate trigger.

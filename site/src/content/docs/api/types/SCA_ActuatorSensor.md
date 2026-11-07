@@ -9,6 +9,19 @@ Classe base: [`SCA_ISensor`](../sca_isensor/)
 
 O sensor Actuator detecta mudanças no estado de um atuador do objeto pai. Ele gera um pulso positivo quando o atuador é ativado e um pulso negativo quando é desativado.
 
+```python
+# Espera uma ação terminar antes de continuar.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["ActuatorDone"]
+
+sensor.actuator = "Wait"
+sensor.mode = 1
+
+if sensor.positive:
+    print("Finished")
+```
+
 ### actuator
 
 o nome do atuador que o sensor está monitorando.

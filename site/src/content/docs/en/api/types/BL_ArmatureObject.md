@@ -13,6 +13,34 @@ Base class: [`KX_GameObject`](../kx_gameobject/)
 
 An armature object.
 
+```python
+# Offset a bone on top of the animation.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+armature.setBoneRotationOffset("Spine", (0.2, 0.0, 0.0))
+```
+
+```python
+# Give the bone back to the animation.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+armature.clearBoneRotationOffset("Spine")
+```
+
+```python
+# List the channels.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for channel in armature.channels:
+    print(channel.name)
+```
+
 ### constraints
 
 The list of armature constraint defined on this armature.

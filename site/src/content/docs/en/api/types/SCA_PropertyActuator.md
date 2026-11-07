@@ -9,6 +9,18 @@ Base class: [`SCA_IActuator`](../sca_iactuator/)
 
 Property Actuator
 
+```python
+# Change the property that this actuator writes.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Property"]
+
+act.propName = "score"
+act.value = "score + 10"
+cont.activate(act)
+```
+
 ### propName
 
 the property on which to operate.

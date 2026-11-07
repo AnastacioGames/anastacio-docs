@@ -9,6 +9,29 @@ Classe base: [`SCA_IActuator`](../sca_iactuator/)
 
 Atuador Dynamic.
 
+```python
+# Muda a massa do objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Dynamics"]
+
+act.mode = Range.logic.KX_DYN_SET_MASS
+act.mass = 5.0
+cont.activate(act)
+```
+
+```python
+# Desliga a física do objeto.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Dynamics"]
+
+act.mode = Range.logic.KX_DYN_DISABLE_DYNAMICS
+cont.activate(act)
+```
+
 ### mode
 
 **Tipo:** integer

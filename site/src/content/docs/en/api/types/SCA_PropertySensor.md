@@ -9,6 +9,29 @@ Base class: [`SCA_ISensor`](../sca_isensor/)
 
 Activates when the game object property matches.
 
+```python
+# Fire when the life property reaches zero.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Property"]
+
+sensor.mode = Range.logic.KX_PROPSENSOR_EQUAL
+sensor.propName = "life"
+sensor.value = "0"
+```
+
+```python
+# Fire when the value is inside an interval.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["Property"]
+
+sensor.mode = Range.logic.KX_PROPSENSOR_INTERVAL
+sensor.propName = "life"
+sensor.min = "1"
+sensor.max = "20"
+```
+
 ### mode
 
 Type of check on the property. Can be one of `these constants`

@@ -15,7 +15,7 @@ sys.path.insert(0, str(AQUI / "tools"))
 # métodos do Python e de bibliotecas que não aparecem na API da engine
 PYTHON = set(dir(dict)) | set(dir(list)) | set(dir(str)) | set(dir(bytes)) | {"radians", "x", "y", "z", "w"}
 # submódulos de Range, classes e constantes de imgui, que não têm título próprio
-PYTHON |= {"logic", "events", "render", "types", "texture", "constraints", "network", "imgui", "COL_BUTTON", "COND_FIRST_USE_EVER", "KX_PythonComponent", "KX_MeshBuilder", "KX_MeshBuilder", "EXP_PropValue", "inputSystem"}
+PYTHON |= {"logic", "events", "render", "types", "texture", "constraints", "network", "imgui", "COL_BUTTON", "COND_FIRST_USE_EVER", "KX_PythonComponent", "KX_MeshBuilder", "KX_MeshBuilder", "EXP_Value", "inputSystem", "rpc"}
 
 
 def ler(caminho=AQUI / "conteudo" / "exemplos.txt"):

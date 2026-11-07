@@ -29,7 +29,7 @@ own.replaceMesh(builder.finish())
 ```
 
 ```python
-# Copy an existing mesh to change it.
+# Copy an existing mesh to change it. Keep the builder in a variable while you use its slots.
 import Range
 
 own = Range.logic.getCurrentController().owner

@@ -29,7 +29,7 @@ own.replaceMesh(builder.finish())
 ```
 
 ```python
-# Copia uma malha existente para alterar.
+# Copia uma malha existente para alterar. Guarde o construtor em uma variável enquanto usa os slots.
 import Range
 
 own = Range.logic.getCurrentController().owner

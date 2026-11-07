@@ -810,7 +810,7 @@ slot.recalculateNormals()
 
 own.replaceMesh(builder.finish())
 ---
-# Copy an existing mesh to change it. ||| Copia uma malha existente para alterar.
+# Copy an existing mesh to change it. Keep the builder in a variable while you use its slots. ||| Copia uma malha existente para alterar. Guarde o construtor em uma variável enquanto usa os slots.
 import Range
 
 own = Range.logic.getCurrentController().owner
@@ -828,6 +828,7 @@ slot.recalculateNormals()
 ---
 # See what the slot has. ||| Mostra o que o slot tem.
 print(len(slot.vertices), len(slot.indices))
+print(slot.uvCount, slot.colorCount)
 === KX_MouseActuator
 # First-person view with limits to look up and down. ||| Visão em primeira pessoa com limites para olhar para cima e para baixo.
 import Range

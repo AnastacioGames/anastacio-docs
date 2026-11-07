@@ -704,12 +704,12 @@
   "removePrimitiveIndex": "removePrimitiveIndex(start, end=-1)\nRemoves primitive indices from `start` to `end`.",
   "removeTriangleIndex": "removeTriangleIndex(start, end=-1)\nRemoves triangle indices from `start` to `end`.",
   "removeVertex": "removeVertex(start, end=-1)\nRemoves vertices from `start` to `end`.",
-  "colorCount": "Whether the slot has a vertex color layer (`True`/`False`).",
+  "colorCount": "How many vertex color layers the slot has.",
   "indices": "List of primitive indices.",
   "material": "Slot material.",
   "primitive": "Slot primitive type (points, lines or triangles).",
   "triangleIndices": "List of triangle indices.",
-  "uvCount": "Whether the slot has a UV layer (`True`/`False`).",
+  "uvCount": "How many UV layers the slot has.",
   "vertices": "List of the slot vertices."
  },
  "KX_MovementSensor": {

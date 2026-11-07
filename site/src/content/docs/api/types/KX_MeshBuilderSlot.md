@@ -22,6 +22,7 @@ slot.recalculateNormals()
 ```python
 # Mostra o que o slot tem.
 print(len(slot.vertices), len(slot.indices))
+print(slot.uvCount, slot.colorCount)
 ```
 
 
@@ -84,7 +85,7 @@ Remove vértices de `start` até `end`.
 
  <small>atributo · só leitura</small>
 
-Indica se o slot tem camada de cor de vértice (`True`/`False`).
+Quantas camadas de cor de vértice o slot tem.
 
 ### indices
 
@@ -114,7 +115,7 @@ Lista dos índices de triângulos.
 
  <small>atributo · só leitura</small>
 
-Indica se o slot tem camada de UV (`True`/`False`).
+Quantas camadas de UV o slot tem.
 
 ### vertices
 

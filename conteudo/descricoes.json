@@ -564,12 +564,12 @@
   "removePrimitiveIndex": "removePrimitiveIndex(start, end=-1)\nRemove índices de primitivos de `start` até `end`.",
   "removeTriangleIndex": "removeTriangleIndex(start, end=-1)\nRemove índices de triângulos de `start` até `end`.",
   "removeVertex": "removeVertex(start, end=-1)\nRemove vértices de `start` até `end`.",
-  "colorCount": "Indica se o slot tem camada de cor de vértice (`True`/`False`).",
+  "colorCount": "Quantas camadas de cor de vértice o slot tem.",
   "indices": "Lista dos índices de primitivos.",
   "material": "Material do slot.",
   "primitive": "Tipo de primitivo do slot (pontos, linhas ou triângulos).",
   "triangleIndices": "Lista dos índices de triângulos.",
-  "uvCount": "Indica se o slot tem camada de UV (`True`/`False`).",
+  "uvCount": "Quantas camadas de UV o slot tem.",
   "vertices": "Lista dos vértices do slot."
  },
  "KX_MovementSensor": {

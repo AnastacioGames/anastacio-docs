@@ -30,7 +30,7 @@ import Range
 objects = Range.logic.getCurrentScene().objects
 
 print(objects.get("Player", None))
-print(len(objects.filter("Coin*")))
+print(len(objects.filter("Coin.*")))
 ```
 
 ### append(val)

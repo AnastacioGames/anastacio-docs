@@ -58,5 +58,5 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
  <small>atributo · só leitura</small>
 
-Valores atuais da ação: tupla com 1, 2 ou 3 números, conforme o tipo (botão, eixo 2D ou 3D).
+Valores atuais da ação: `True`/`False` num botão simples (`VECTOR1D`); tupla com 2 ou 3 números em eixos 2D ou 3D.
 

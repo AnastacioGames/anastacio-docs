@@ -187,6 +187,10 @@ A list of attached `SCA_PythonJoystick`.
 The list size is the maximum number of supported joysticks.
 If no joystick is available for a given slot, the slot is set to None.
 
+### inputSystem
+
+The input maps of the game, a `KX_InputSystem`. They are loaded from the JSON files in the KeyMapping folder, next to the game file.
+
 ## General functions
 
 ### getCurrentController()

@@ -18,13 +18,23 @@ for mapName, tables in Range.logic.inputSystem.inputMaps.items():
 ```
 
 ```python
-# Salva uma nova sensibilidade escolhida no menu de opções.
+# Salva uma nova sensibilidade escolhida no menu de opções. Argumentos: mapa, ação, binding, valor.
 import Range
 
 system = Range.logic.inputSystem
 
-system.changeSensitivity("Player", "Look", "Mouse", 0.5)
-system.reloadInputMaps()
+if system.changeSensitivity("Player", "Jump", "keyboard", 0.5):
+    system.reloadInputMaps()
+```
+
+```python
+# Troca a tecla de uma ação. O mapa é o arquivo KeyMapping/Player.json, ao lado do jogo.
+import Range
+
+system = Range.logic.inputSystem
+
+if system.changeKeyMap("Player", "Jump", "keyboard", "BUTTON", Range.events.SPACEKEY):
+    system.reloadInputMaps()
 ```
 
 

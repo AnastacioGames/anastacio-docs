@@ -18,13 +18,23 @@ for mapName, tables in Range.logic.inputSystem.inputMaps.items():
 ```
 
 ```python
-# Save a new sensitivity chosen in the options menu.
+# Save a new sensitivity chosen in the options menu. Arguments: map, action, binding, value.
 import Range
 
 system = Range.logic.inputSystem
 
-system.changeSensitivity("Player", "Look", "Mouse", 0.5)
-system.reloadInputMaps()
+if system.changeSensitivity("Player", "Jump", "keyboard", 0.5):
+    system.reloadInputMaps()
+```
+
+```python
+# Change the key of an action. The map is the file KeyMapping/Player.json, next to the game.
+import Range
+
+system = Range.logic.inputSystem
+
+if system.changeKeyMap("Player", "Jump", "keyboard", "BUTTON", Range.events.SPACEKEY):
+    system.reloadInputMaps()
 ```
 
 

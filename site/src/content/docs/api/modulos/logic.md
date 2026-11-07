@@ -182,6 +182,10 @@ Os sensores de movimento do aparelho (giroscópio, acelerômetro, inclinação),
 
 Lista dos `SCA_PythonJoystick` conectados. O tamanho da lista é o número máximo de joysticks suportados. Se não houver joystick numa posição, ela vale None.
 
+### inputSystem
+
+Os mapas de entrada do jogo, um `KX_InputSystem`. Eles são carregados dos arquivos JSON da pasta KeyMapping, ao lado do arquivo do jogo.
+
 ## Funções gerais
 
 ### getCurrentController()

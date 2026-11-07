@@ -80,6 +80,19 @@ network.send_chat("Ready!")
 network.set_ready(True)
 ```
 
+```python
+# Call a function on every player. Register it the same way on all of them.
+from Range import network
+
+
+@network.rpc(target="all")
+def say_hello(text):
+    print(text)
+
+
+network.call("say_hello", "Hello!")
+```
+
 
 
 ## Not in the Range documentation

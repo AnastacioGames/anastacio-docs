@@ -675,7 +675,7 @@
   "activated": "`True` on the frame the action was just triggered.",
   "active": "`True` while the action is triggered.",
   "released": "`True` on the frame the action was just released.",
-  "values": "Current action values: tuple with 1, 2 or 3 numbers, depending on the type (button, 2D or 3D axis)."
+  "values": "Current action values: `True`/`False` on a simple button (`VECTOR1D`); tuple with 2 or 3 numbers on 2D or 3D axes."
  },
  "KX_LightObject": {
   "autoShadowUpdate": "When `False`, this light shadow stops being recomputed every frame (saves GPU in static scenes)."
@@ -704,12 +704,12 @@
   "removePrimitiveIndex": "removePrimitiveIndex(start, end=-1)\nRemoves primitive indices from `start` to `end`.",
   "removeTriangleIndex": "removeTriangleIndex(start, end=-1)\nRemoves triangle indices from `start` to `end`.",
   "removeVertex": "removeVertex(start, end=-1)\nRemoves vertices from `start` to `end`.",
-  "colorCount": "How many vertex color layers the slot has.",
+  "colorCount": "Whether the slot has a vertex color layer (`True`/`False`).",
   "indices": "List of primitive indices.",
   "material": "Slot material.",
   "primitive": "Slot primitive type (points, lines or triangles).",
   "triangleIndices": "List of triangle indices.",
-  "uvCount": "How many UV layers the slot has.",
+  "uvCount": "Whether the slot has a UV layer (`True`/`False`).",
   "vertices": "List of the slot vertices."
  },
  "KX_MovementSensor": {

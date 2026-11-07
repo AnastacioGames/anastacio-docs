@@ -10,12 +10,12 @@ Base class: [`EXP_Value`](../exp_value/)
 This class has no python functions
 
 ```python
-# This is a base class: objects, scenes and meshes inherit from it.
+# This is an internal base class and is not available in Range.types. Check the public base class instead.
 import Range
 
 own = Range.logic.getCurrentController().owner
 
-print(isinstance(own, Range.types.EXP_PropValue))
+print(isinstance(own, Range.types.EXP_Value))
 ```
 
 

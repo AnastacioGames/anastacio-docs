@@ -2502,5 +2502,6 @@
  "Play the frames 1 to 30 of an action.": "Toca os frames 1 a 30 de uma action.",
  "Attach the object to a hand, and release it later.": "Prende o objeto em uma mão e solta depois.",
  "Later:": "Depois:",
- "Every game object is also a SCA_IObject.": "Todo objeto do jogo também é um SCA_IObject."
+ "Every game object is also a SCA_IObject.": "Todo objeto do jogo também é um SCA_IObject.",
+ "The input maps of the game, a `KX_InputSystem`. They are loaded from the JSON files in the KeyMapping folder, next to the game file.": "Os mapas de entrada do jogo, um `KX_InputSystem`. Eles são carregados dos arquivos JSON da pasta KeyMapping, ao lado do arquivo do jogo."
 }

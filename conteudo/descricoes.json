@@ -535,7 +535,7 @@
   "activated": "`True` no frame em que a ação acabou de ser acionada.",
   "active": "`True` enquanto a ação está acionada.",
   "released": "`True` no frame em que a ação acabou de ser solta.",
-  "values": "Valores atuais da ação: tupla com 1, 2 ou 3 números, conforme o tipo (botão, eixo 2D ou 3D)."
+  "values": "Valores atuais da ação: `True`/`False` num botão simples (`VECTOR1D`); tupla com 2 ou 3 números em eixos 2D ou 3D."
  },
  "KX_LightObject": {
   "autoShadowUpdate": "Quando `False`, a sombra desta luz para de ser recalculada a cada frame (economiza GPU em cenas paradas)."
@@ -564,12 +564,12 @@
   "removePrimitiveIndex": "removePrimitiveIndex(start, end=-1)\nRemove índices de primitivos de `start` até `end`.",
   "removeTriangleIndex": "removeTriangleIndex(start, end=-1)\nRemove índices de triângulos de `start` até `end`.",
   "removeVertex": "removeVertex(start, end=-1)\nRemove vértices de `start` até `end`.",
-  "colorCount": "Quantas camadas de cor de vértice o slot tem.",
+  "colorCount": "Indica se o slot tem camada de cor de vértice (`True`/`False`).",
   "indices": "Lista dos índices de primitivos.",
   "material": "Material do slot.",
   "primitive": "Tipo de primitivo do slot (pontos, linhas ou triângulos).",
   "triangleIndices": "Lista dos índices de triângulos.",
-  "uvCount": "Quantas camadas de UV o slot tem.",
+  "uvCount": "Indica se o slot tem camada de UV (`True`/`False`).",
   "vertices": "Lista dos vértices do slot."
  },
  "KX_MovementSensor": {

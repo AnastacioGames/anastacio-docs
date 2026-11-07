@@ -58,5 +58,5 @@ These items exist in the engine but were not in the Range documentation. The one
 
  <small>attribute · read-only</small>
 
-Current action values: tuple with 1, 2 or 3 numbers, depending on the type (button, 2D or 3D axis).
+Current action values: `True`/`False` on a simple button (`VECTOR1D`); tuple with 2 or 3 numbers on 2D or 3D axes.
 

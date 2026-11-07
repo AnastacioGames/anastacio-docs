@@ -22,7 +22,6 @@ slot.recalculateNormals()
 ```python
 # See what the slot has.
 print(len(slot.vertices), len(slot.indices))
-print(slot.uvCount, slot.colorCount)
 ```
 
 
@@ -85,7 +84,7 @@ Removes vertices from `start` to `end`.
 
  <small>attribute · read-only</small>
 
-How many vertex color layers the slot has.
+Whether the slot has a vertex color layer (`True`/`False`).
 
 ### indices
 
@@ -115,7 +114,7 @@ List of triangle indices.
 
  <small>attribute · read-only</small>
 
-How many UV layers the slot has.
+Whether the slot has a UV layer (`True`/`False`).
 
 ### vertices
 

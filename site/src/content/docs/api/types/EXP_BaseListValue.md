@@ -17,12 +17,12 @@ if door is not None:
 ```
 
 ```python
-# Filtra por nome e propriedade.
+# Filtra por nome e propriedade. Os dois são expressões regulares.
 import Range
 
 objects = Range.logic.getCurrentScene().objects
 
-for enemy in objects.filter("Enemy*", "life"):
+for enemy in objects.filter("Enemy.*", "life"):
     print(enemy.name)
 ```
 

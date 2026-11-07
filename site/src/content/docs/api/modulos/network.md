@@ -80,6 +80,19 @@ network.send_chat("Ready!")
 network.set_ready(True)
 ```
 
+```python
+# Chama uma função em todos os jogadores. Registre do mesmo jeito em todos.
+from Range import network
+
+
+@network.rpc(target="all")
+def say_hello(text):
+    print(text)
+
+
+network.call("say_hello", "Hello!")
+```
+
 
 
 ## Sem documentação da Range

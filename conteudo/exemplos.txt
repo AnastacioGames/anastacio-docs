@@ -256,6 +256,17 @@ def message(client_id, text):
 network.on_chat(message)
 network.send_chat("Ready!")
 network.set_ready(True)
+---
+# Call a function on every player. Register it the same way on all of them. ||| Chama uma função em todos os jogadores. Registre do mesmo jeito em todos.
+from Range import network
+
+
+@network.rpc(target="all")
+def say_hello(text):
+    print(text)
+
+
+network.call("say_hello", "Hello!")
 === network.steam
 # Load Steam and see who is playing. ||| Carrega a Steam e mostra quem está jogando.
 import Range
@@ -445,12 +456,12 @@ door = objects.get("Door")
 if door is not None:
     print(objects.index(door))
 ---
-# Filter by name and property. ||| Filtra por nome e propriedade.
+# Filter by name and property. Both are regular expressions. ||| Filtra por nome e propriedade. Os dois são expressões regulares.
 import Range
 
 objects = Range.logic.getCurrentScene().objects
 
-for enemy in objects.filter("Enemy*", "life"):
+for enemy in objects.filter("Enemy.*", "life"):
     print(enemy.name)
 === EXP_BaseListWrapper
 # These lists work by name or by index, like sensors or channels. ||| Essas listas funcionam por nome ou por índice, como sensores ou canais.
@@ -476,14 +487,14 @@ import Range
 objects = Range.logic.getCurrentScene().objects
 
 print(objects.get("Player", None))
-print(len(objects.filter("Coin*")))
+print(len(objects.filter("Coin.*")))
 === EXP_PropValue
-# This is a base class: objects, scenes and meshes inherit from it. ||| Esta é uma classe base: objetos, cenas e malhas herdam dela.
+# This is an internal base class and is not available in Range.types. Check the public base class instead. ||| Esta é uma classe base interna e não está em Range.types. Confira a classe base pública.
 import Range
 
 own = Range.logic.getCurrentController().owner
 
-print(isinstance(own, Range.types.EXP_PropValue))
+print(isinstance(own, Range.types.EXP_Value))
 === EXP_PyObjectPlus
 # Check that an object was not removed before using a saved reference. ||| Confere se um objeto não foi removido antes de usar uma referência guardada.
 import Range
@@ -740,13 +751,21 @@ import Range
 for mapName, tables in Range.logic.inputSystem.inputMaps.items():
     print(mapName, list(tables))
 ---
-# Save a new sensitivity chosen in the options menu. ||| Salva uma nova sensibilidade escolhida no menu de opções.
+# Save a new sensitivity chosen in the options menu. Arguments: map, action, binding, value. ||| Salva uma nova sensibilidade escolhida no menu de opções. Argumentos: mapa, ação, binding, valor.
 import Range
 
 system = Range.logic.inputSystem
 
-system.changeSensitivity("Player", "Look", "Mouse", 0.5)
-system.reloadInputMaps()
+if system.changeSensitivity("Player", "Jump", "keyboard", 0.5):
+    system.reloadInputMaps()
+---
+# Change the key of an action. The map is the file KeyMapping/Player.json, next to the game. ||| Troca a tecla de uma ação. O mapa é o arquivo KeyMapping/Player.json, ao lado do jogo.
+import Range
+
+system = Range.logic.inputSystem
+
+if system.changeKeyMap("Player", "Jump", "keyboard", "BUTTON", Range.events.SPACEKEY):
+    system.reloadInputMaps()
 === KX_InputTable
 # Use an action without knowing which key is connected to it. ||| Usa uma ação sem saber qual tecla está ligada a ela.
 import Range
@@ -809,7 +828,6 @@ slot.recalculateNormals()
 ---
 # See what the slot has. ||| Mostra o que o slot tem.
 print(len(slot.vertices), len(slot.indices))
-print(slot.uvCount, slot.colorCount)
 === KX_MouseActuator
 # First-person view with limits to look up and down. ||| Visão em primeira pessoa com limites para olhar para cima e para baixo.
 import Range

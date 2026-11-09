@@ -55,6 +55,8 @@ Sempre que a engine ganhar funções novas:
    npm run dev      (abre em http://localhost:4321/anastacio-docs/)
    ```
 
+   **Arquivo único para baixar:** depois de gerar, rode `python tools/gerar_md_unico.py`. Ele grava `site/public/anastacio-api-en.md` e `-pt.md` (índice + um título por função), publicados em `/anastacio-docs/anastacio-api-en.md`.
+
 5. **Publicar**: commit + push na `main`. A Action `.github/workflows/deploy.yml` compila e publica no GitHub Pages.
    Na primeira vez: no GitHub, Settings > Pages > Source = **GitHub Actions**. Se o repositório ou o usuário não forem `AnastacioGames/anastacio-docs`, ajuste `SITE` e `BASE` em `site/astro.config.mjs`.
 

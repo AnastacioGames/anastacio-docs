@@ -8,7 +8,7 @@ fontes:
   - source/source/creator/CMakeLists.txt
   - source/source/blenderplayer/CMakeLists.txt
   - source/CMakeLists.txt
-conferido: 46cc0e0d
+conferido: 24bb16de
 ---
 
 <div class="ae-x">
@@ -25,7 +25,7 @@ conferido: 46cc0e0d
 │  └─ release/
 │     ├─ scripts/startup/       <em>painéis, operadores, Logic Tree, UI Tree</em>
 │     ├─ scripts/modules/       <em>range_web, range_locale, range_ui_runtime, range_track</em>
-│     └─ datafiles/             <em>startup.blend, splash, ícones, esqueletos do auto-rig</em>
+│     └─ datafiles/             <em>startup.blend, splash, ícones, texturas do tema, esqueletos do auto-rig</em>
 ├─ <b>tools/</b>                      <em>web, android, linux, debug, modelagem</em>
 ├─ <b>docs/</b>                       <em>documentação técnica</em>
 └─ build*/                    <em>saída dos builds (fora do git)</em></pre>

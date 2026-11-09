@@ -8,7 +8,7 @@ fontes:
   - source/CMakePresets.json
   - source/release/scripts/modules/range_web/android.py
   - source/release/scripts/modules/range_web/__init__.py
-conferido: d17e1b23
+conferido: 24bb16de
 ---
 
 <div class="ae-x">
@@ -31,6 +31,8 @@ conferido: d17e1b23
 </div>
 <p class="ae-x-cap">Windows e Linux compilam editor e player nativos. A Web compila só o player; o jogo é exportado pelo editor e empacotado com ele. O Android aproveita esse pacote Web dentro de um app com WebView, então não existe build C++ próprio para celular.</p>
 </div>
+
+O microfone na Web usa `getUserMedia` + AudioWorklet. No Android, o APK só pede `RECORD_AUDIO` quando o pacote Web foi exportado com microfone.
 
 ## Para exportar o seu jogo
 

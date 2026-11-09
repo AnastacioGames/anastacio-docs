@@ -11,7 +11,7 @@ fontes:
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
   - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
-conferido: 46cc0e0d
+conferido: 24bb16de
 ---
 
 <div class="ae-x">
@@ -75,6 +75,7 @@ conferido: 46cc0e0d
 - **Cena rodando sem aparecer.** Com `KX_Scene.visible = False` a cena continua simulando, mas sai do render; o céu passa para a próxima cena.
 - **Static Batch automático.** Em cenas novas o Auto Static Batch já vem ligado e junta as malhas estáticas no desenho.
 - **A hierarquia é atualizada várias vezes:** depois da lógica, dos atuadores e da física. A trilha B resume isso numa etapa.
+- **Oclusão que se desliga sozinha.** Com **Automatic Occluders**, a cada 30 quadros a câmera ativa roda o outro modo só para contar os objetos visíveis; em campo aberto, onde a oclusão esconde pouco, ela fica desligada e não gasta CPU.
 - **Medir cada etapa:** o menu Performance mostra o tempo de cada trecho do frame. A física mostra também quantos substeps rodou no frame. Veja [Performance](/anastacio-docs/guias/performance/).
 
 <div><a class="ae-x ae-x-next" href="/anastacio-docs/por-dentro/plataformas/"><div><span class="ae-x-eyebrow">Última parada</span><strong>5 · Plataformas</strong></div><span class="ae-x-go">abrir →</span></a></div>

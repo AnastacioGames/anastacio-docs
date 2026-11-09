@@ -163,6 +163,8 @@ Liga/desliga o tonemap e muda exposição e gamma.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Filtro gerado pela árvore do Compositor da cena (Use Nodes). Nós Value e RGB mudam ao vivo com `compositor.setUniform()`. Só leitura.
+
 ### fxaaEdgeThreshold
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>

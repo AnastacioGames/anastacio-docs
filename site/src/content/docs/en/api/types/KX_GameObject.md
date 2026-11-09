@@ -1206,6 +1206,9 @@ and max Z for bit 2, so `[0]` is the minimum corner and `[7]` the maximum one.
 
 **Return type:** list of `mathutils.Vector`
 
+The `'WORLD'` corners can be passed straight to
+`boxInsideFrustum` to test if the object is in the camera view.
+
 ### getBoundBoxVolume()
 
 Compatibility with Range 1.x scripts: returns `[volume, corner1, ..., corner8]`. The volume uses

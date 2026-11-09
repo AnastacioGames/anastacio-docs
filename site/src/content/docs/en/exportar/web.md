@@ -46,6 +46,10 @@ Pick the layout that matches what your game reads. If the game uses a **Keyboard
 
 To see the controls on a PC, open the game with `?touch=1` at the end of the address and use the mouse as your finger.
 
+### Microphone
+
+If the game uses the microphone, check the **Microphone** option in the panel: **Auto** turns it on when the scene has a Microphone sensor, Voice actuator, microphone node or script that uses it; **On** always asks; **Off** never asks. The microphone starts after the first tap or click and needs `https` (or `localhost`).
+
 ## 4. Validate
 
 Click **Validate Web**. The engine checks scenes, logic bricks, scripts and files and lists the problems:

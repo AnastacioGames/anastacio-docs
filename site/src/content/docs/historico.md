@@ -6,10 +6,10 @@ sidebar:
 ---
 
 <div class="ae-h-hero">
-<span class="ae-h-eyebrow">Diário de bordo · ago → out 2026</span>
+<span class="ae-h-eyebrow">Diário de bordo · ago → nov 2026</span>
 <p class="ae-h-lead">Cada linha abaixo saiu do diário técnico da engine. Aqui está a versão curta: o que mudou para quem faz jogos.</p>
 <dl class="ae-h-odo">
-<div><dt>entradas no diário</dt><dd>716</dd></div>
+<div><dt>entradas no diário</dt><dd>984</dd></div>
 <div><dt>versões publicadas</dt><dd>15</dd></div>
 <div><dt>plataformas</dt><dd>4</dd></div>
 </dl>
@@ -111,6 +111,40 @@ sidebar:
 </ul></article>
 </div>
 <p class="ae-h-rel">Versões 0.5.0 a 0.6.1</p>
+</section>
+
+<section class="ae-h-month">
+<header><span class="ae-h-num">11</span><div><h2>Novembro</h2><p>A engine ganha voz</p></div></header>
+<div class="ae-h-grid">
+<article><h3>Microfone</h3><ul>
+<li>Botão Record no editor e gravação na cutscene, na Logic Tree e no Sequencer.</li>
+<li>Microfone no jogo: sensor, atuador Voice, nós e <code>Range.audio</code>, com efeitos de voz.</li>
+<li>Funciona também na Web e no Android.</li>
+</ul></article>
+<article><h3>Criação</h3><ul>
+<li>Rec Play: grave jogando em Takes, com camadas e regravação.</li>
+<li>Personagem automático do Fuse, sem Mixamo.</li>
+<li>Posturas do Character: abaixar, rastejar e encolher no pulo.</li>
+<li>Track Tool: gerador de pistas com faixas, inclinação e cenário.</li>
+<li>Minimap na UI Tree.</li>
+</ul></article>
+<article><h3>Gráficos</h3><ul>
+<li>Light Probe Volumes: luz indireta por grade de sondas.</li>
+<li>Texturas KTX2 e DDS BC5 para normal maps.</li>
+<li>FSR 1 como upscale padrão da resolução dinâmica.</li>
+<li>Superfícies molhadas enquanto chove.</li>
+</ul></article>
+<article><h3>Desempenho</h3><ul>
+<li>Automatic Occluders: escolhe os occluders e liga a oclusão só quando ajuda.</li>
+<li>Trace Doctor explica como corrigir o problema encontrado.</li>
+</ul></article>
+<article><h3>Estabilidade</h3><ul>
+<li>Crashes achados por varredura automática de operadores.</li>
+<li>Cápsula do Character acompanha a malha.</li>
+<li>Export leva módulos, arquivos do projeto e <code>.cooked</code> com os assets.</li>
+</ul></article>
+</div>
+<p class="ae-h-rel">Versão 0.7.0</p>
 </section>
 
 <p class="ae-h-foot">Quer o detalhe de alguma coisa? O diário completo fica no repositório da engine, em <code>docs/changelog.md</code>. O que ainda falta está no <code>docs/roadmap.md</code>.</p>

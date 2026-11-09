@@ -38,6 +38,10 @@ Com a interface em português, os nomes aparecem traduzidos, como no print. Nest
 **Nunca mude o App ID depois de publicar.** Para o Android seria outro app: o jogador teria dois ícones e perderia o save.
 :::
 
+### Microfone
+
+O APK só pede a permissão `RECORD_AUDIO` quando o pacote Web foi exportado com microfone (opção **Microphone** do painel Web). Veja o [guia de Microfone](../../guias/microfone/).
+
 ## 4. Build
 
 - **Build type**:

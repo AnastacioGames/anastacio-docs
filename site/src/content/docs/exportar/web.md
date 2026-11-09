@@ -48,6 +48,10 @@ Escolha o layout que combina com o que o jogo lê. Se o jogo usa sensor **Keyboa
 
 Para ver o controle no PC, abra o jogo com `?touch=1` no fim do endereço e use o mouse como dedo.
 
+### Microfone
+
+Se o jogo usa o microfone, confira a opção **Microphone** no painel: **Auto** liga quando a cena tem sensor Microphone, atuador Voice, nó de microfone ou script que o use; **On** sempre pede; **Off** nunca pede. O microfone começa depois do primeiro toque ou clique e precisa de `https` (ou `localhost`).
+
 ## 4. Validar
 
 Clique em **Validate Web**. A engine analisa cenas, logic bricks, scripts e arquivos e lista os problemas:

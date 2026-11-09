@@ -34,7 +34,8 @@
   "changeSSRValues": "changeSSRValues(enabled, step_max, bias, max_distance)\nLiga/desliga os reflexos em tela (SSR) e muda passos, bias e distância máxima.",
   "changeTonemapValues": "changeTonemapValues(enabled, exposure, gamma)\nLiga/desliga o tonemap e muda exposição e gamma.",
   "taaEnabled": "Liga ou desliga o TAA (anti-aliasing temporal) da cena (Render > TAA). `True` ou `False`. Suaviza bordas misturando quadros com a câmera levemente deslocada Em tela dividida e em estéreo só a nitidez é aplicada.",
-  "taaSharpen": "Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros."
+  "taaSharpen": "Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros.",
+  "compositor": "Filtro gerado pela árvore do Compositor da cena (Use Nodes). Nós Value e RGB mudam ao vivo com `compositor.setUniform()`. Só leitura."
  },
  "KX_GameObject": {
   "isDeformable": "`True` se o objeto tem as configurações de deformação ligadas (amassar, entortar, decalques).",
@@ -521,7 +522,13 @@
   "font": "Nome da fonte do texto (a fonte que aparece nas propriedades do Text), ou `None`. Trocar redesenha o texto na hora; nome que não existe no arquivo gera `ValueError`.",
   "atlas": "Nome do texto que guarda o Bitmap Atlas usado para desenhar, `\"\"` para o atlas do próprio texto ou `None` para nenhum atlas.",
   "translationKey": "Chave da tabela de idiomas (`locale/translations.csv`). Com chave, o texto mostra a tradução do idioma atual de [`Range.locale`](../../../guias/idiomas/) e troca sozinho quando o idioma muda. `\"\"` desliga.",
-  "useLanguageFont": "Quando `True`, o texto usa a fonte e o atlas definidos para o idioma atual no `locale/locale.json` (útil para russo, japonês etc.)."
+  "useLanguageFont": "Quando `True`, o texto usa a fonte e o atlas definidos para o idioma atual no `locale/locale.json` (útil para russo, japonês etc.).",
+  "textBox": "Tamanho `(largura, altura)` da caixa de texto. O texto quebra as linhas e se divide em páginas para caber nela; `(0, 0)` desliga.",
+  "lines": "Lista com as linhas do texto depois da quebra. Só leitura.",
+  "page": "Página atual da caixa de texto, a partir de 0. Valores fora do intervalo são limitados à última página válida.",
+  "pageCount": "Número de páginas da caixa de texto. Só leitura.",
+  "visibleCharacters": "Quantos caracteres aparecem, para o efeito de máquina de escrever. `-1` mostra tudo.",
+  "characterCount": "Número total de caracteres do texto. Só leitura."
  },
  "KX_GameActuator": {
   "extensionName": "Extensão do arquivo usado pelos modos de salvar/carregar o jogo.",

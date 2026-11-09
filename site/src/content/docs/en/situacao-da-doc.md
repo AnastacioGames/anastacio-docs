@@ -31,7 +31,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
 | `KX_2DFilter` | 12 | 12 | 0 | 4 |
-| `KX_2DFilterManager` | 22 | 21 | 1 | 10 |
+| `KX_2DFilterManager` | 22 | 22 | 0 | 10 |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 2 | 0 |  |
@@ -51,7 +51,7 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 | `KX_CubeMap` | 0 | 0 | 0 |  |
 | `KX_DynamicActuator` | 2 | 2 | 0 |  |
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
-| `KX_FontObject` | 17 | 11 | 6 | 10 |
+| `KX_FontObject` | 17 | 17 | 0 | 10 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
 | `KX_GameObject` | 226 | 226 | 0 | 70 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |

@@ -1162,6 +1162,8 @@ Os 8 cantos da caixa envolvente. O canto `i` usa o X máximo com o bit 0 ligado,
 
 **Tipo do retorno:** list of `mathutils.Vector`
 
+Os cantos `'WORLD'` podem ser passados direto para `boxInsideFrustum`, para testar se o objeto está na visão da câmera.
+
 ### getBoundBoxVolume()
 
 Compatibilidade com scripts da Range 1.x: retorna `[volume, canto1, ..., canto8]`. O volume usa a escala de mundo e os cantos são os `'OFFSET'` de `getBoundBoxCorners`; assim, `obj.worldPosition + box[i]` é um canto no mundo.

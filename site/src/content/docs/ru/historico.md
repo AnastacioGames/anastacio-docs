@@ -6,10 +6,10 @@ sidebar:
 ---
 
 <div class="ae-h-hero">
-<span class="ae-h-eyebrow">Журнал разработки · авг → окт 2026</span>
+<span class="ae-h-eyebrow">Журнал разработки · авг → ноя 2026</span>
 <p class="ae-h-lead">Каждая строка ниже взята из технического журнала движка. Вот краткая версия: что изменилось для тех, кто делает игры.</p>
 <dl class="ae-h-odo">
-<div><dt>записей в журнале</dt><dd>716</dd></div>
+<div><dt>записей в журнале</dt><dd>984</dd></div>
 <div><dt>опубликованных версий</dt><dd>15</dd></div>
 <div><dt>платформы</dt><dd>4</dd></div>
 </dl>
@@ -111,6 +111,40 @@ sidebar:
 </ul></article>
 </div>
 <p class="ae-h-rel">Версии 0.5.0 – 0.6.1</p>
+</section>
+
+<section class="ae-h-month">
+<header><span class="ae-h-num">11</span><div><h2>Ноябрь</h2><p>Движок обретает голос</p></div></header>
+<div class="ae-h-grid">
+<article><h3>Микрофон</h3><ul>
+<li>Кнопка Record в редакторе и запись в катсценах, Logic Tree и Sequencer.</li>
+<li>Микрофон в игре: сенсор, актуатор Voice, ноды и <code>Range.audio</code> с голосовыми эффектами.</li>
+<li>Работает также в Web и на Android.</li>
+</ul></article>
+<article><h3>Создание</h3><ul>
+<li>Rec Play: запись Takes прямо во время игры, со слоями и перезаписью.</li>
+<li>Автоматический персонаж из Fuse, без Mixamo.</li>
+<li>Позы Character: присесть, ползти и поджаться в прыжке.</li>
+<li>Track Tool: генератор трасс с полосами, наклоном и окружением.</li>
+<li>Minimap в UI Tree.</li>
+</ul></article>
+<article><h3>Графика</h3><ul>
+<li>Light Probe Volumes: непрямой свет от сетки зондов.</li>
+<li>Текстуры KTX2 и DDS BC5 для карт нормалей.</li>
+<li>FSR 1 — апскейл динамического разрешения по умолчанию.</li>
+<li>Поверхности намокают во время дождя.</li>
+</ul></article>
+<article><h3>Производительность</h3><ul>
+<li>Automatic Occluders: сам выбирает окклюдеры и включает окклюзию, только когда она полезна.</li>
+<li>Trace Doctor объясняет, как исправить найденную проблему.</li>
+</ul></article>
+<article><h3>Стабильность</h3><ul>
+<li>Вылеты, найденные автоматической проверкой операторов.</li>
+<li>Капсула Character следует за мешем.</li>
+<li>Экспорт включает модули, файлы проекта и <code>.cooked</code> с ассетами.</li>
+</ul></article>
+</div>
+<p class="ae-h-rel">Версия 0.7.0</p>
 </section>
 
 <p class="ae-h-foot">Нужны подробности? Полный журнал лежит в репозитории движка: <code>docs/changelog.md</code>. Что ещё впереди — в <code>docs/roadmap.md</code>.</p>

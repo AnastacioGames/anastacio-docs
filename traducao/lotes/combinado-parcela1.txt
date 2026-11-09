@@ -1,0 +1,6 @@
+===== KX_Camera
+Oito (8) pontos dos cantos da caixa (em coordenadas do mundo), ou um `KX_GameObject` para testar a caixa delimitadora dele no mundo.
+Para testar um objeto do jogo, passe o próprio objeto. É o mesmo que passar os cantos dele no mundo, vindos de `getBoundBoxCorners`:
+mesmo resultado:
+===== KX_GameObject
+Os cantos `'WORLD'` podem ser passados direto para `boxInsideFrustum`, para testar se o objeto está na visão da câmera.

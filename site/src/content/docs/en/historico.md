@@ -6,10 +6,10 @@ sidebar:
 ---
 
 <div class="ae-h-hero">
-<span class="ae-h-eyebrow">Dev log · Aug → Oct 2026</span>
+<span class="ae-h-eyebrow">Dev log · Aug → Nov 2026</span>
 <p class="ae-h-lead">Every line below comes from the engine's technical log. Here is the short version: what changed for people who make games.</p>
 <dl class="ae-h-odo">
-<div><dt>log entries</dt><dd>716</dd></div>
+<div><dt>log entries</dt><dd>984</dd></div>
 <div><dt>releases published</dt><dd>15</dd></div>
 <div><dt>platforms</dt><dd>4</dd></div>
 </dl>
@@ -111,6 +111,40 @@ sidebar:
 </ul></article>
 </div>
 <p class="ae-h-rel">Versions 0.5.0 to 0.6.1</p>
+</section>
+
+<section class="ae-h-month">
+<header><span class="ae-h-num">11</span><div><h2>November</h2><p>The engine gets a voice</p></div></header>
+<div class="ae-h-grid">
+<article><h3>Microphone</h3><ul>
+<li>Record button in the editor, plus recording in cutscenes, Logic Tree and Sequencer.</li>
+<li>Microphone in the game: sensor, Voice actuator, nodes and <code>Range.audio</code>, with voice effects.</li>
+<li>Also works on Web and Android.</li>
+</ul></article>
+<article><h3>Creation</h3><ul>
+<li>Rec Play: record Takes while playing, with layers and re-recording.</li>
+<li>Automatic character from Fuse, without Mixamo.</li>
+<li>Character postures: crouch, crawl and tuck while jumping.</li>
+<li>Track Tool: track generator with lanes, banking and scenery.</li>
+<li>Minimap in UI Tree.</li>
+</ul></article>
+<article><h3>Graphics</h3><ul>
+<li>Light Probe Volumes: indirect light from a probe grid.</li>
+<li>KTX2 textures and DDS BC5 for normal maps.</li>
+<li>FSR 1 as the default dynamic resolution upscale.</li>
+<li>Surfaces get wet while it rains.</li>
+</ul></article>
+<article><h3>Performance</h3><ul>
+<li>Automatic Occluders: picks the occluders and enables occlusion only when it helps.</li>
+<li>Trace Doctor explains how to fix what it finds.</li>
+</ul></article>
+<article><h3>Stability</h3><ul>
+<li>Crashes found by automated operator sweeps.</li>
+<li>The Character capsule follows the mesh.</li>
+<li>Export carries modules, project files and <code>.cooked</code> with the assets.</li>
+</ul></article>
+</div>
+<p class="ae-h-rel">Version 0.7.0</p>
 </section>
 
 <p class="ae-h-foot">Want the detail on something? The full log lives in the engine repository, in <code>docs/changelog.md</code>. What is still missing is in <code>docs/roadmap.md</code>.</p>

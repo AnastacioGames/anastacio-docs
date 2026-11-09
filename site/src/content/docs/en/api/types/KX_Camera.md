@@ -263,8 +263,8 @@ else:
 
 Tests the given box against the view frustum.
 
-- **`box`**: Eight (8) corner points of the box (in world coordinates.)
-  - type: list of lists
+- **`box`**: Eight (8) corner points of the box (in world coordinates), or a `KX_GameObject` to test its world bounding box.
+  - type: list of lists or `KX_GameObject`
 
 **Returns:** `INSIDE`, `OUTSIDE` or `INTERSECT`
 
@@ -294,6 +294,18 @@ if (cam.boxInsideFrustum(box) != cam.OUTSIDE):
   # Do something useful !
 else:
   # Box is outside the frustum !
+```
+
+To test a game object, pass the object itself. It is the same as passing its world corners
+from `getBoundBoxCorners`:
+
+```python
+
+if cam.boxInsideFrustum(obj) != cam.OUTSIDE:
+    print(obj.name, "is visible (at least partly)")
+
+# same result:
+cam.boxInsideFrustum(obj.getBoundBoxCorners('WORLD'))
 ```
 
 ### pointInsideFrustum(point)

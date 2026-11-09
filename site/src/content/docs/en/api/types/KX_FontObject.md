@@ -112,6 +112,8 @@ Name of the text data holding the Bitmap Atlas used for drawing, `""` for the te
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
+Número total de caracteres do texto. Só leitura.
+
 ### font
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
@@ -122,13 +124,19 @@ Name of the text's font (as shown in the Text properties), or `None`. Changing i
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
+Lista com as linhas do texto depois da quebra. Só leitura.
+
 ### page
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
 
+Página atual da caixa de texto, a partir de 0. Valores fora do intervalo são limitados à última página válida.
+
 ### pageCount
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
+
+Número de páginas da caixa de texto. Só leitura.
 
 ### shadowColor
 
@@ -145,6 +153,8 @@ Text shadow offset `[x, y]`.
 ### textBox
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Tamanho `(largura, altura)` da caixa de texto. O texto quebra as linhas e se divide em páginas para caber nela; `(0, 0)` desliga.
 
 ### translationKey
 
@@ -167,4 +177,6 @@ Turns on the text shadow.
 ### visibleCharacters
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+Quantos caracteres aparecem, para o efeito de máquina de escrever. `-1` mostra tudo.
 

@@ -163,6 +163,8 @@ Turns tonemapping on/off and changes exposure and gamma.
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
+Filtro gerado pela árvore do Compositor da cena (Use Nodes). Nós Value e RGB mudam ao vivo com `compositor.setUniform()`. Só leitura.
+
 ### fxaaEdgeThreshold
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>

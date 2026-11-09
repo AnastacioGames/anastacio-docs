@@ -36,6 +36,10 @@ El motor encuentra Android Studio por sí solo (también revisa `JAVA_HOME` y `A
 **Nunca cambies el App ID después de publicar.** Android lo trataría como otra app: los jugadores tendrían dos iconos y perderían su partida guardada.
 :::
 
+### Micrófono
+
+El APK solo pide el permiso `RECORD_AUDIO` cuando el paquete Web se exportó con micrófono (opción **Microphone** del panel Web). Consulta la [guía de Micrófono](../../guias/microfone/).
+
 ## 4. Build
 
 - **Build type**:

@@ -8,10 +8,11 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 
 | Página | Elementos | Documentados | Pendientes | Nuevo en Anastacio |
 |---|---:|---:|---:|---:|
+| `Range.audio` | 35 | 35 | 0 | 35 |
 | `Range.constraints` | 52 | 51 | 0 |  |
 | `Range.events` | 135 | 135 | 0 |  |
 | `Range.imgui` | 42 | 42 | 0 | 6 |
-| `Range.logic` | 341 | 336 | 0 | 6 |
+| `Range.logic` | 344 | 338 | 0 | 6 |
 | `Range.network` | 36 | 36 | 0 | 36 |
 | `Range.network.steam` | 8 | 8 | 0 | 8 |
 | `Range.render` | 69 | 68 | 0 | 6 |
@@ -20,9 +21,9 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `BL_ActionActuator` | 12 | 12 | 0 |  |
 | `BL_ArmatureActuator` | 6 | 6 | 0 |  |
 | `BL_ArmatureBone` | 15 | 0 | 0 |  |
-| `BL_ArmatureChannel` | 34 | 2 | 0 |  |
+| `BL_ArmatureChannel` | 34 | 3 | 0 |  |
 | `BL_ArmatureConstraint` | 14 | 14 | 0 |  |
-| `BL_ArmatureObject` | 4 | 4 | 0 |  |
+| `BL_ArmatureObject` | 6 | 6 | 0 |  |
 | `BL_Shader` | 26 | 26 | 0 |  |
 | `BL_Texture` | 19 | 19 | 0 |  |
 | `EXP_BaseListValue` | 7 | 7 | 0 |  |
@@ -30,7 +31,7 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
 | `KX_2DFilter` | 12 | 12 | 0 | 4 |
-| `KX_2DFilterManager` | 19 | 19 | 0 | 7 |
+| `KX_2DFilterManager` | 22 | 22 | 0 | 10 |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 2 | 0 |  |
@@ -39,10 +40,10 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `KX_BatchGroup` | 5 | 5 | 0 |  |
 | `KX_BlenderMaterial` | 18 | 18 | 0 |  |
 | `KX_BoundingBox` | 6 | 6 | 0 |  |
-| `KX_Camera` | 80 | 80 | 0 | 48 |
+| `KX_Camera` | 81 | 81 | 0 | 48 |
 | `KX_CameraActuator` | 6 | 6 | 0 |  |
 | `KX_ChangeColorActuator` | 3 | 3 | 0 |  |
-| `KX_CharacterWrapper` | 13 | 13 | 0 |  |
+| `KX_CharacterWrapper` | 16 | 16 | 0 |  |
 | `KX_CollisionContactPoint` | 8 | 8 | 0 |  |
 | `KX_CollisionSensor` | 6 | 6 | 0 |  |
 | `KX_ConstraintActuator` | 11 | 11 | 0 |  |
@@ -50,9 +51,9 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `KX_CubeMap` | 0 | 0 | 0 |  |
 | `KX_DynamicActuator` | 2 | 2 | 0 |  |
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
-| `KX_FontObject` | 7 | 7 | 0 |  |
+| `KX_FontObject` | 17 | 17 | 0 | 10 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 211 | 211 | 0 | 24 |
+| `KX_GameObject` | 226 | 226 | 0 | 70 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
@@ -63,6 +64,7 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `KX_Mesh` | 15 | 15 | 0 |  |
 | `KX_MeshBuilder` | 4 | 4 | 0 |  |
 | `KX_MeshBuilderSlot` | 15 | 15 | 0 |  |
+| `KX_MicrophoneSensor` | 6 | 6 | 0 | 6 |
 | `KX_MouseActuator` | 14 | 14 | 0 |  |
 | `KX_MouseFocusSensor` | 12 | 12 | 0 |  |
 | `KX_MovementSensor` | 2 | 2 | 0 |  |
@@ -72,7 +74,7 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 34 | 34 | 0 | 12 |
+| `KX_ParticleSystem` | 36 | 34 | 2 | 14 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |
@@ -83,7 +85,7 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `KX_RadarSensor` | 5 | 5 | 0 |  |
 | `KX_RaySensor` | 14 | 14 | 0 | 3 |
 | `KX_ReplaceMeshActuator` | 4 | 4 | 0 |  |
-| `KX_Scene` | 37 | 37 | 0 | 1 |
+| `KX_Scene` | 43 | 40 | 3 | 3 |
 | `KX_SceneActuator` | 4 | 4 | 0 |  |
 | `KX_SoundActuator` | 17 | 17 | 0 |  |
 | `KX_Speaker` | 41 | 41 | 0 |  |
@@ -92,10 +94,11 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `KX_TextureRenderer` | 8 | 8 | 0 |  |
 | `KX_TrackToActuator` | 5 | 5 | 0 |  |
 | `KX_VRHeadSensor` | 6 | 6 | 0 | 6 |
-| `KX_VehicleWrapper` | 30 | 30 | 0 |  |
+| `KX_VehicleWrapper` | 32 | 32 | 0 | 2 |
 | `KX_VertexProxy` | 28 | 28 | 0 |  |
 | `KX_VideoActuator` | 4 | 4 | 0 | 4 |
 | `KX_VisibilityActuator` | 3 | 3 | 0 |  |
+| `KX_VoiceActuator` | 7 | 7 | 0 | 7 |
 | `KX_WorldInfo` | 36 | 36 | 0 | 15 |
 | `SCA_2DFilterActuator` | 5 | 5 | 0 |  |
 | `SCA_ANDController` | 0 | 0 | 0 |  |
@@ -104,7 +107,7 @@ Generado a partir del inventario del motor. Los elementos **Pendientes** existen
 | `SCA_AnimationEventSensor` | 0 | 0 | 0 |  |
 | `SCA_DelaySensor` | 5 | 5 | 0 |  |
 | `SCA_IController` | 4 | 4 | 0 |  |
-| `SCA_ILogicBrick` | 3 | 2 | 0 |  |
+| `SCA_ILogicBrick` | 4 | 2 | 1 | 1 |
 | `SCA_IObject` | 0 | 0 | 0 |  |
 | `SCA_ISensor` | 14 | 14 | 0 |  |
 | `SCA_InputEvent` | 8 | 8 | 0 |  |

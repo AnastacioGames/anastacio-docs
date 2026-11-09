@@ -260,8 +260,8 @@ else:
 
 Testa a caixa dada contra o frustum da visão.
 
-- **`box`**: Os oito (8) cantos da caixa (em coordenadas do mundo).
-  - tipo: list of lists
+- **`box`**: Oito (8) pontos dos cantos da caixa (em coordenadas do mundo), ou um `KX_GameObject` para testar a caixa delimitadora dele no mundo.
+  - tipo: list of lists or `KX_GameObject`
 
 **Retorna:** `INSIDE`, `OUTSIDE` ou `INTERSECT`
 
@@ -291,6 +291,17 @@ if (cam.boxInsideFrustum(box) != cam.OUTSIDE):
   # Faça algo útil!
 else:
   # A caixa está fora do frustum!
+```
+
+Para testar um objeto do jogo, passe o próprio objeto. É o mesmo que passar os cantos dele no mundo, vindos de `getBoundBoxCorners`:
+
+```python
+
+if cam.boxInsideFrustum(obj) != cam.OUTSIDE:
+    print(obj.name, "is visible (at least partly)")
+
+# mesmo resultado:
+cam.boxInsideFrustum(obj.getBoundBoxCorners('WORLD'))
 ```
 
 ### pointInsideFrustum(point)

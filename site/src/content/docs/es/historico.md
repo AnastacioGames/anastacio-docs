@@ -6,10 +6,10 @@ sidebar:
 ---
 
 <div class="ae-h-hero">
-<span class="ae-h-eyebrow">Diario de a bordo · ago → oct 2026</span>
+<span class="ae-h-eyebrow">Diario de a bordo · ago → nov 2026</span>
 <p class="ae-h-lead">Cada línea de abajo sale del diario técnico del motor. Esta es la versión corta: qué cambió para quien hace juegos.</p>
 <dl class="ae-h-odo">
-<div><dt>entradas en el diario</dt><dd>716</dd></div>
+<div><dt>entradas en el diario</dt><dd>984</dd></div>
 <div><dt>versiones publicadas</dt><dd>15</dd></div>
 <div><dt>plataformas</dt><dd>4</dd></div>
 </dl>
@@ -111,6 +111,40 @@ sidebar:
 </ul></article>
 </div>
 <p class="ae-h-rel">Versiones 0.5.0 a 0.6.1</p>
+</section>
+
+<section class="ae-h-month">
+<header><span class="ae-h-num">11</span><div><h2>Noviembre</h2><p>El motor gana voz</p></div></header>
+<div class="ae-h-grid">
+<article><h3>Micrófono</h3><ul>
+<li>Botón Record en el editor y grabación en cutscenes, Logic Tree y Sequencer.</li>
+<li>Micrófono en el juego: sensor, actuador Voice, nodos y <code>Range.audio</code>, con efectos de voz.</li>
+<li>También funciona en Web y Android.</li>
+</ul></article>
+<article><h3>Creación</h3><ul>
+<li>Rec Play: graba Takes mientras juegas, con capas y regrabación.</li>
+<li>Personaje automático desde Fuse, sin Mixamo.</li>
+<li>Posturas del Character: agacharse, arrastrarse y encogerse al saltar.</li>
+<li>Track Tool: generador de pistas con carriles, peralte y escenario.</li>
+<li>Minimap en UI Tree.</li>
+</ul></article>
+<article><h3>Gráficos</h3><ul>
+<li>Light Probe Volumes: luz indirecta con una rejilla de sondas.</li>
+<li>Texturas KTX2 y DDS BC5 para normal maps.</li>
+<li>FSR 1 como escalado predeterminado de la resolución dinámica.</li>
+<li>Superficies mojadas mientras llueve.</li>
+</ul></article>
+<article><h3>Rendimiento</h3><ul>
+<li>Automatic Occluders: elige los oclusores y activa la oclusión solo cuando ayuda.</li>
+<li>Trace Doctor explica cómo corregir lo que encuentra.</li>
+</ul></article>
+<article><h3>Estabilidad</h3><ul>
+<li>Cierres inesperados hallados con barridos automáticos de operadores.</li>
+<li>La cápsula del Character sigue la malla.</li>
+<li>La exportación lleva módulos, archivos del proyecto y <code>.cooked</code> con los assets.</li>
+</ul></article>
+</div>
+<p class="ae-h-rel">Versión 0.7.0</p>
 </section>
 
 <p class="ae-h-foot">¿Quieres el detalle de algo? El diario completo está en el repositorio del motor, en <code>docs/changelog.md</code>. Lo que aún falta está en <code>docs/roadmap.md</code>.</p>

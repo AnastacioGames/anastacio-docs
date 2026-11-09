@@ -36,6 +36,10 @@ The engine finds Android Studio by itself (it also checks `JAVA_HOME` and `ANDRO
 **Never change the App ID after publishing.** Android would treat it as a different app: players would get two icons and lose their save.
 :::
 
+### Microphone
+
+The APK only asks for the `RECORD_AUDIO` permission when the Web package was exported with microphone (the **Microphone** option in the Web panel). See the [Microphone guide](../../guias/microfone/).
+
 ## 4. Build
 
 - **Build type**:

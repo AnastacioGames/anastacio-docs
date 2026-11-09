@@ -46,6 +46,10 @@ Elige el diseño que coincida con lo que lee tu juego. Si el juego usa un sensor
 
 Para ver los controles en una PC, abre el juego con `?touch=1` al final de la dirección y usa el mouse como dedo.
 
+### Micrófono
+
+Si el juego usa el micrófono, revisa la opción **Microphone** del panel: **Auto** lo activa cuando la escena tiene un sensor Microphone, un actuador Voice, un nodo de micrófono o un script que lo use; **On** siempre lo pide; **Off** nunca lo pide. El micrófono empieza tras el primer toque o clic y necesita `https` (o `localhost`).
+
 ## 4. Validar
 
 Haz clic en **Validate Web**. El motor revisa escenas, logic bricks, scripts y archivos y lista los problemas:

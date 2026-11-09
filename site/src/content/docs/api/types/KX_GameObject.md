@@ -1145,6 +1145,29 @@ Lê a lista com os nomes de todas as propriedades.
 
 **Tipo do retorno:** list
 
+### getBoundBoxSize()
+
+Tamanho da caixa envolvente (`cullingBox`) nos eixos do próprio objeto, com a escala de mundo.
+
+**Retorna:** largura, profundidade e altura.
+
+**Tipo do retorno:** `mathutils.Vector`
+
+### getBoundBoxCorners(space='WORLD')
+
+Os 8 cantos da caixa envolvente. O canto `i` usa o X máximo com o bit 0 ligado, o Y máximo com o bit 1 e o Z máximo com o bit 2; assim, `[0]` é o canto mínimo e `[7]` o máximo.
+
+- **`space`**: `'WORLD'` (posições no mundo), `'OFFSET'` (a partir de `worldPosition`, com rotação e escala) ou `'LOCAL'` (espaço do objeto, sem escala).
+  - tipo: string
+
+**Tipo do retorno:** list of `mathutils.Vector`
+
+### getBoundBoxVolume()
+
+Compatibilidade com scripts da Range 1.x: retorna `[volume, canto1, ..., canto8]`. O volume usa a escala de mundo e os cantos são os `'OFFSET'` de `getBoundBoxCorners`; assim, `obj.worldPosition + box[i]` é um canto no mundo.
+
+**Tipo do retorno:** list
+
 ### getDistanceTo(other)
 
 - **`other`**: Um ponto ou outro `KX_GameObject` até onde medir a distância.
@@ -1525,11 +1548,27 @@ Objeto do volante configurado no painel Vehicle, ou `None`.
 
 **Retorna:** `KX_GameObject`
 
+### is_playing_take()
+
+ <small>método</small>
+
+`True` enquanto um Take do Rec Play move este objeto.
+
+**Retorna:** `bool`
+
 ### lookAt(vect, axis=2, factor=1.0)
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Vira o objeto para que o eixo `axis` (0=X, 1=Y, 2=Z) aponte na direção `vect`. `factor` abaixo de 1 vira só uma parte (suaviza).
+
+### play_take(name)
+
+ <small>método</small>
+
+Toca o que um Take do Rec Play gravou deste objeto. `False` se não gravou nada dele.
+
+**Retorna:** `bool`
 
 ### resumeAnimations()
 
@@ -1740,6 +1779,12 @@ Muda em jogo a rotação máxima (RPM) do motor do veículo (número >= 0).
 <span class="ae-badge novo">novo na Anastacio</span> <small>método</small>
 
 Muda em jogo o torque máximo do motor do veículo deste objeto (número >= 0).
+
+### stop_take()
+
+ <small>método</small>
+
+Para o Take deste objeto e o devolve à lógica e à física.
 
 ### strikeLightning(bolt=True)
 

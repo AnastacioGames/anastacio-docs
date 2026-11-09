@@ -329,6 +329,14 @@ Começa a Cutscene nativa da cena. Retorna `True` se deu certo.
 
 **Retorna:** `bool`
 
+### play_take(name)
+
+ <small>método</small>
+
+Toca um Take do Rec Play em todos os atores. `True` se o Take existe.
+
+**Retorna:** `bool`
+
 ### release_cutscene_trigger(name)
 
  <small>método</small>
@@ -364,6 +372,12 @@ Para a Cutscene e remove os objetos que ela criou.
  <small>atributo · só leitura</small>
 
 Lista dos objetos de som (`KX_Speaker`) da cena.
+
+### takes
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
+
+Nomes dos Takes do Rec Play da cena (só leitura).
 
 ### thread_logic_1
 

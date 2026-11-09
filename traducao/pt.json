@@ -2503,5 +2503,13 @@
  "Attach the object to a hand, and release it later.": "Prende o objeto em uma mão e solta depois.",
  "Later:": "Depois:",
  "Every game object is also a SCA_IObject.": "Todo objeto do jogo também é um SCA_IObject.",
- "The input maps of the game, a `KX_InputSystem`. They are loaded from the JSON files in the KeyMapping folder, next to the game file.": "Os mapas de entrada do jogo, um `KX_InputSystem`. Eles são carregados dos arquivos JSON da pasta KeyMapping, ao lado do arquivo do jogo."
+ "The input maps of the game, a `KX_InputSystem`. They are loaded from the JSON files in the KeyMapping folder, next to the game file.": "Os mapas de entrada do jogo, um `KX_InputSystem`. Eles são carregados dos arquivos JSON da pasta KeyMapping, ao lado do arquivo do jogo.",
+ "Módulo `Range.audio` da Anastacio Engine. Também acessível como `bge.audio`.": "Módulo `Range.audio` da Anastacio Engine. Também acessível como `bge.audio`.",
+ "Classe `Range.types.KX_MicrophoneSensor`.": "Sensor Microphone: reage à voz do jogador.",
+ "Classe `Range.types.KX_VoiceActuator`.": "Atuador Voice: grava, toca e salva a voz do jogador.",
+ "Size of the bounding box (`cullingBox`) along the object's own axes, with its world scale.": "Tamanho da caixa envolvente (`cullingBox`) nos eixos do próprio objeto, com a escala de mundo.",
+ "width, depth and height.": "largura, profundidade e altura.",
+ "The 8 corners of the bounding box. Corner `i` uses the max X when bit 0 is set, max Y for bit 1 and max Z for bit 2, so `[0]` is the minimum corner and `[7]` the maximum one.": "Os 8 cantos da caixa envolvente. O canto `i` usa o X máximo com o bit 0 ligado, o Y máximo com o bit 1 e o Z máximo com o bit 2; assim, `[0]` é o canto mínimo e `[7]` o máximo.",
+ "`'WORLD'` (positions in the world), `'OFFSET'` (from `worldPosition`, with rotation and scale) or `'LOCAL'` (object space, without scale).": "`'WORLD'` (posições no mundo), `'OFFSET'` (a partir de `worldPosition`, com rotação e escala) ou `'LOCAL'` (espaço do objeto, sem escala).",
+ "Compatibility with Range 1.x scripts: returns `[volume, corner1, ..., corner8]`. The volume uses the world scale and the corners are the `'OFFSET'` ones of `getBoundBoxCorners`, so `obj.worldPosition + box[i]` is a corner in the world.": "Compatibilidade com scripts da Range 1.x: retorna `[volume, canto1, ..., canto8]`. O volume usa a escala de mundo e os cantos são os `'OFFSET'` de `getBoundBoxCorners`; assim, `obj.worldPosition + box[i]` é um canto no mundo."
 }

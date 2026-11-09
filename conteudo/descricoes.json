@@ -110,7 +110,10 @@
   "getCurvePoints": "`getCurvePoints(world=True)`: pontos da primeira spline de um objeto Curve, como lista de `Vector`. Coordenadas do mundo por padrão; `world=False` devolve em coordenadas locais. Lista vazia se o objeto não for uma curva.",
   "setVehicleMaxTorque": "setVehicleMaxTorque(valor)\nMuda em jogo o torque máximo do motor do veículo deste objeto (número >= 0).",
   "setVehicleMaxRPM": "setVehicleMaxRPM(valor)\nMuda em jogo a rotação máxima (RPM) do motor do veículo (número >= 0).",
-  "setVehicleGearRatios": "setVehicleGearRatios(relacoes)\nTroca as relações de marcha do veículo. Recebe uma lista de números, uma por marcha."
+  "setVehicleGearRatios": "setVehicleGearRatios(relacoes)\nTroca as relações de marcha do veículo. Recebe uma lista de números, uma por marcha.",
+  "play_take": "play_take(name) -> bool\nToca o que um Take do Rec Play gravou deste objeto. `False` se não gravou nada dele.",
+  "stop_take": "stop_take()\nPara o Take deste objeto e o devolve à lógica e à física.",
+  "is_playing_take": "is_playing_take() -> bool\n`True` enquanto um Take do Rec Play move este objeto."
  },
  "Range.logic": {
   "preloadScene": "preloadScene(name) -> bool\nConverte uma cena com antecedência, no fim deste frame (shaders e texturas incluídos), sem adicioná-la. Depois, um `addScene` ou `replaceScene` dela só insere a cena pronta, sem travar. Chame enquanto uma tela de carregamento estiver aparecendo. Devolve `False` se a cena não existir.",
@@ -610,7 +613,9 @@
   "thread_logic_1": "Lista de funções chamadas na thread de lógica paralela, a cada frame. Mesmo uso de `pre_draw`.",
   "unconvertedObjects": "Nomes dos objetos que ainda podem ser criados com `convertObject()`.",
   "worldSun": "Luz Sun ligada ao World (posição do sol do céu), ou `None`.",
-  "skip_cutscene": "skip_cutscene()\nPula para o fim da Cutscene em andamento: falas, esperas, caminhos de câmera e fades são descartados; os outros eventos que faltam rodam (volta da câmera, destravar, troca de cena). Retorna `False` se nada estava tocando. Tab ou o botão Start do controle fazem o mesmo, a menos que `Range.logic.globalDict[\"cutscene_skip\"]` seja `False`."
+  "skip_cutscene": "skip_cutscene()\nPula para o fim da Cutscene em andamento: falas, esperas, caminhos de câmera e fades são descartados; os outros eventos que faltam rodam (volta da câmera, destravar, troca de cena). Retorna `False` se nada estava tocando. Tab ou o botão Start do controle fazem o mesmo, a menos que `Range.logic.globalDict[\"cutscene_skip\"]` seja `False`.",
+  "takes": "Nomes dos Takes do Rec Play da cena (só leitura).",
+  "play_take": "play_take(name) -> bool\nToca um Take do Rec Play em todos os atores. `True` se o Take existe."
  },
  "KX_Speaker": {
   "GetActiveEffect": "GetActiveEffect() -> int\nEfeito de som ativo: 0 nenhum, 1 reverb.",
@@ -919,5 +924,59 @@
  "BL_ArmatureObject": {
   "setBoneRotationOffset": "setBoneRotationOffset(bone, rotation)\nRotação extra num osso por cima das actions que estão tocando, no espaço local do osso. `rotation`: euler XYZ (3 valores, radianos) ou quaternion (4 valores, w x y z). Fica até `clearBoneRotationOffset()`.",
   "clearBoneRotationOffset": "clearBoneRotationOffset(bone=None)\nRemove a rotação extra de um osso, ou de todos quando `bone` é omitido."
+ },
+ "Range.audio": {
+  "play": "play(module, sound=\"\", fade=-1.0) -> bool\nToca um som de um módulo do World Sound, ou retoma o módulo pausado. Sem `sound`, Music toca a faixa atual e Ambient toca todas as camadas. `fade` em segundos; negativo usa o Fade do módulo. `False` se o módulo ou o som não existe.",
+  "stop": "stop(module, sound=\"\", fade=-1.0)\nPara um módulo do World Sound, ou só um dos sons dele. `fade` em segundos; negativo usa o Fade do módulo.",
+  "pause": "pause(module)\nPausa todos os sons do módulo onde estão.",
+  "resume": "resume(module)\nContinua de onde `pause(module)` parou.",
+  "next": "next(module)\nMusic: passa para a próxima faixa.",
+  "previous": "previous(module)\nMusic: volta para a faixa anterior.",
+  "setVolume": "setVolume(module, volume)\nDefine o volume do módulo, de 0.0 a 1.0.",
+  "getVolume": "getVolume(module) -> float\nVolume do módulo; `None` se ele não existe.",
+  "isPlaying": "isPlaying(module) -> bool\n`True` enquanto um som do módulo toca.",
+  "playing": "playing(module) -> list\nNomes dos sons tocando agora (Music: a faixa atual).",
+  "sounds": "sounds(module) -> list\nNomes dos sons do módulo.",
+  "modules": "modules() -> list\nNomes dos módulos do World Sound carregados até agora.",
+  "microphoneStart": "microphoneStart(device=\"\") -> bool\nLiga o microfone. Na Web, chame depois de um clique ou toque. `False` se não abrir.",
+  "microphoneStop": "microphoneStop()\nDesliga o microfone.",
+  "microphoneState": "microphoneState() -> str\nEstado do microfone: `'closed'`, `'pending'`, `'granted'`, `'denied'` ou `'error'`.",
+  "microphoneError": "microphoneError() -> str\nMotivo de o microfone não ter aberto.",
+  "microphoneLevel": "microphoneLevel() -> float\nNível da voz agora, de 0 a 1.",
+  "microphonePeak": "microphonePeak() -> float\nPico com queda lenta, de 0 a 1.",
+  "microphoneDropped": "microphoneDropped() -> int\nQuantas vezes o áudio se perdeu porque o jogo travou.",
+  "microphoneRecordStart": "microphoneRecordStart()\nComeça a gravar.",
+  "microphoneRecordStop": "microphoneRecordStop(slot=\"last\") -> aud.Sound\nPara e guarda a gravação com o nome `slot`. Retorna o `aud.Sound` ou `None`.",
+  "microphoneIsRecording": "microphoneIsRecording() -> bool\n`True` enquanto grava.",
+  "microphoneRecordingSeconds": "microphoneRecordingSeconds() -> float\nDuração da gravação em andamento, em segundos.",
+  "microphoneSave": "microphoneSave(slot, path)\nSalva uma gravação em WAV. Caminho relativo vai para a pasta do jogo (Web: `/saves`).",
+  "microphone": "microphone() -> aud.Microphone\nO `aud.Microphone` em uso, para uso avançado; `None` antes de ligar.",
+  "recordings": "recordings() -> list\nNomes das gravações guardadas até agora.",
+  "recording": "recording(slot) -> aud.Sound\nO `aud.Sound` de uma gravação, ou `None`.",
+  "setRecording": "setRecording(slot, sound)\nGuarda um `aud.Sound` com um nome. `None` remove.",
+  "playVoice": "playVoice(sound, effect=\"NONE\", amount=1.0, volume=1.0, reverb=False) -> bool\nToca uma gravação (nome ou `aud.Sound`) com efeito de voz; veja `voicePresets()`. `reverb=True` usa o reverb da área ou do World. `False` se a gravação ou o efeito não existe.",
+  "playLive": "playLive(effect=\"NONE\", amount=1.0, volume=1.0, reverb=False)\nFaz ouvir o microfone agora, com efeito de voz. Só um por vez; chamar de novo troca o efeito. Use fones: caixas de som realimentam o microfone.",
+  "stopLive": "stopLive()\nPara de ouvir o microfone.",
+  "isLive": "isLive() -> bool\n`True` enquanto o microfone está sendo ouvido.",
+  "voiceFx": "voiceFx(sound, preset, amount=1.0) -> aud.Sound\nAplica um efeito de voz; igual a `aud.voice_fx`.",
+  "edit": "edit(sound, start=0, end=-1, fade_in=0, fade_out=0, normalize=False) -> aud.Sound\nCorta, aplica fades e normaliza um som; igual a `aud.edit`.",
+  "voicePresets": "voicePresets(live=False) -> list\nNomes dos efeitos de voz."
+ },
+ "KX_MicrophoneSensor": {
+  "mode": "Modo: `0` falando (nível acima de `threshold`), `1` pico (um pulso, como palma ou sopro), `2` silêncio (depois de `hold` segundos abaixo de `threshold`).",
+  "threshold": "Nível de voz que dispara o sensor, de 0 a 1.",
+  "hold": "Segundos, de 0 a 60: quanto a fala se mantém positiva, ou quanto silêncio é preciso.",
+  "propName": "Nome da propriedade do objeto ligada ao sensor.",
+  "level": "Nível da voz agora (só leitura).",
+  "peak": "Pico da voz (só leitura)."
+ },
+ "KX_VoiceActuator": {
+  "mode": "Ação: `0` gravar, `1` tocar, `2` ao vivo, `3` parar, `4` salvar.",
+  "slot": "Nome da gravação usada pelo atuador.",
+  "effect": "Efeito de voz, como `NONE`, `CHIPMUNK`, `GIANT`, `ROBOT`, `RADIO`, `ECHO` ou `CAVE`.",
+  "amount": "Intensidade do efeito, de 0 a 1.",
+  "volume": "Volume, de 0 a 4.",
+  "maxSeconds": "Tempo máximo de gravação em segundos, de 0 a 600.",
+  "useReverb": "Usa o reverb da área ou do World."
  }
 }

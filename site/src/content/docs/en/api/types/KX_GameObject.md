@@ -1188,6 +1188,32 @@ Gets a list of all property names.
 
 **Return type:** list
 
+### getBoundBoxSize()
+
+Size of the bounding box (`cullingBox`) along the object's own axes, with its world scale.
+
+**Returns:** width, depth and height.
+
+**Return type:** `mathutils.Vector`
+
+### getBoundBoxCorners(space='WORLD')
+
+The 8 corners of the bounding box. Corner `i` uses the max X when bit 0 is set, max Y for bit 1
+and max Z for bit 2, so `[0]` is the minimum corner and `[7]` the maximum one.
+
+- **`space`**: `'WORLD'` (positions in the world), `'OFFSET'` (from `worldPosition`, with rotation and scale) or `'LOCAL'` (object space, without scale).
+  - type: string
+
+**Return type:** list of `mathutils.Vector`
+
+### getBoundBoxVolume()
+
+Compatibility with Range 1.x scripts: returns `[volume, corner1, ..., corner8]`. The volume uses
+the world scale and the corners are the `'OFFSET'` ones of `getBoundBoxCorners`, so
+`obj.worldPosition + box[i]` is a corner in the world.
+
+**Return type:** list
+
 ### getDistanceTo(other)
 
 - **`other`**: a point or another `KX_GameObject` to measure the distance to.
@@ -1581,11 +1607,27 @@ Steering wheel object set in the Vehicle panel, or `None`.
 
 **Returns:** `KX_GameObject`
 
+### is_playing_take()
+
+ <small>method</small>
+
+`True` while a Rec Play take moves this object.
+
+**Returns:** `bool`
+
 ### lookAt(vect, axis=2, factor=1.0)
 
 <span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Turns the object so its `axis` (0=X, 1=Y, 2=Z) points along `vect`. A `factor` below 1 turns only part of the way (smoothing).
+
+### play_take(name)
+
+ <small>method</small>
+
+Plays what a Rec Play take recorded of this object. `False` if it recorded nothing of it.
+
+**Returns:** `bool`
 
 ### resumeAnimations()
 
@@ -1796,6 +1838,12 @@ Changes the maximum engine RPM of the vehicle at runtime (number >= 0).
 <span class="ae-badge novo">new in Anastacio</span> <small>method</small>
 
 Changes the maximum engine torque of this object's vehicle at runtime (number >= 0).
+
+### stop_take()
+
+ <small>method</small>
+
+Stops the take of this object and gives it back to its logic and physics.
 
 ### strikeLightning(bolt=True)
 

@@ -190,6 +190,11 @@
      "so_leitura": true,
      "status": "documentado"
     },
+    "joint_rotation": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
     "name": {
      "tipo": "?",
      "status": "so_no_rst"
@@ -311,10 +316,6 @@
      "status": "so_no_rst"
     },
     "ik_lin_weight": {
-     "tipo": "?",
-     "status": "so_no_rst"
-    },
-    "joint_rotation": {
      "tipo": "?",
      "status": "so_no_rst"
     }
@@ -2813,6 +2814,33 @@
      "tipo": "metodo",
      "status": "documentado"
     },
+    "play_take": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "stop_take": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "is_playing_take": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "getBoundBoxVolume": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "getBoundBoxSize": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
+    "getBoundBoxCorners": {
+     "tipo": "metodo",
+     "status": "documentado"
+    },
     "stopNLA": {
      "tipo": "metodo",
      "status": "documentado"
@@ -4050,6 +4078,61 @@
      "status": "novo",
      "origem": "snapshot",
      "commit": "28775369"
+    }
+   }
+  },
+  "KX_MicrophoneSensor": {
+   "arquivo": "source/source/gameengine/Ketsji/KX_MicrophoneSensor.cpp",
+   "rst": null,
+   "tem_rst": false,
+   "itens": {
+    "mode": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "threshold": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "hold": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "propName": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "level": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "peak": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
     }
    }
   },
@@ -5310,6 +5393,11 @@
      "status": "novo",
      "origem": "desconhecida"
     },
+    "play_take": {
+     "tipo": "metodo",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
     "stop_cutscene": {
      "tipo": "metodo",
      "status": "novo",
@@ -5387,6 +5475,14 @@
      "tipo": "atributo",
      "so_leitura": true,
      "status": "documentado"
+    },
+    "takes": {
+     "tipo": "atributo",
+     "so_leitura": true,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "f0b2506f",
+     "data": "2026-11-06"
     },
     "filterManager": {
      "tipo": "atributo",
@@ -6469,6 +6565,69 @@
      "tipo": "atributo",
      "so_leitura": false,
      "status": "documentado"
+    }
+   }
+  },
+  "KX_VoiceActuator": {
+   "arquivo": "source/source/gameengine/Ketsji/KX_VoiceActuator.cpp",
+   "rst": null,
+   "tem_rst": false,
+   "itens": {
+    "mode": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "slot": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "effect": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "amount": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "volume": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "maxSeconds": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
+    },
+    "useReverb": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "6c7c573e",
+     "data": "2026-11-08"
     }
    }
   },
@@ -7558,6 +7717,257 @@
   }
  },
  "modulos": {
+  "audio": {
+   "arquivo": "source/source/gameengine/Ketsji/KX_AudioManager.cpp",
+   "tem_rst": false,
+   "itens": {
+    "play": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "stop": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "pause": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "resume": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "next": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "previous": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "setVolume": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "getVolume": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "isPlaying": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "playing": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "sounds": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "modules": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "e7b32076",
+     "data": "2026-10-12"
+    },
+    "microphoneStart": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneStop": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneState": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneError": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneLevel": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphonePeak": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneDropped": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneRecordStart": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneRecordStop": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneIsRecording": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneRecordingSeconds": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphoneSave": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "microphone": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "recordings": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "recording": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "setRecording": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "playVoice": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "playLive": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "stopLive": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "isLive": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "voiceFx": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "edit": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    },
+    "voicePresets": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "c4e14021",
+     "data": "2026-11-08"
+    }
+   }
+  },
   "constraints": {
    "arquivo": "source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp",
    "tem_rst": true,
@@ -8799,6 +9209,13 @@
     "getRealTime": {
      "tipo": "funcao",
      "status": "documentado"
+    },
+    "_simulateInput": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "5cb26fc9",
+     "data": "2026-11-08"
     },
     "getAverageFrameRate": {
      "tipo": "funcao",
@@ -10066,6 +10483,10 @@
      "status": "so_no_rst"
     },
     "joysticks": {
+     "tipo": "?",
+     "status": "so_no_rst"
+    },
+    "inputSystem": {
      "tipo": "?",
      "status": "so_no_rst"
     }

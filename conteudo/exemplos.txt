@@ -1601,3 +1601,42 @@ own = Range.logic.getCurrentController().owner
 
 own["poster"].close()
 del own["poster"]
+
+=== audio
+# Turn the microphone on and read the voice level. ||| Liga o microfone e lê o nível da voz.
+import Range
+
+if Range.audio.microphoneState() == "closed":
+    Range.audio.microphoneStart()
+
+print("Voice:", Range.audio.microphoneLevel())
+---
+# Record the voice and play it back with a robot effect. ||| Grava a voz e toca de volta com efeito de robô.
+import Range
+
+Range.audio.microphoneRecordStart()
+
+# Later, when the player stops talking. ||| Depois, quando o jogador parar de falar.
+Range.audio.microphoneRecordStop("taunt")
+Range.audio.playVoice("taunt", effect="ROBOT", reverb=True)
+---
+# Control a World Sound module by name. ||| Controla um módulo do World Sound pelo nome.
+import Range
+
+Range.audio.play("Music", fade=2.0)
+Range.audio.setVolume("Music", 0.5)
+=== KX_MicrophoneSensor
+# Open the mouth of the character while the player talks. ||| Abre a boca do personagem enquanto o jogador fala.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors["Microphone"]
+cont.owner["mouth"] = sensor.level
+=== KX_VoiceActuator
+# Change the voice effect before playing. ||| Troca o efeito de voz antes de tocar.
+import Range
+
+cont = Range.logic.getCurrentController()
+voice = cont.actuators["Voice"]
+voice.effect = "RADIO"
+cont.activate(voice)

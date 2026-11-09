@@ -336,6 +336,14 @@ Starts the scene native Cutscene. Returns `True` on success.
 
 **Returns:** `bool`
 
+### play_take(name)
+
+ <small>method</small>
+
+Plays a Rec Play take on all its actors. `True` when the take exists.
+
+**Returns:** `bool`
+
 ### release_cutscene_trigger(name)
 
  <small>method</small>
@@ -371,6 +379,12 @@ Stops the Cutscene and removes the objects it created.
  <small>attribute · read-only</small>
 
 List of the scene sound objects (`KX_Speaker`).
+
+### takes
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
+
+Names of the scene's Rec Play takes (read-only).
 
 ### thread_logic_1
 

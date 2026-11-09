@@ -8,10 +8,11 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 
 | Página | Itens | Documentados | Pendentes | Novos na Anastacio |
 |---|---:|---:|---:|---:|
+| `Range.audio` | 35 | 35 | 0 | 35 |
 | `Range.constraints` | 52 | 51 | 0 |  |
 | `Range.events` | 135 | 135 | 0 |  |
 | `Range.imgui` | 42 | 42 | 0 | 6 |
-| `Range.logic` | 343 | 338 | 0 | 6 |
+| `Range.logic` | 344 | 338 | 0 | 6 |
 | `Range.network` | 36 | 36 | 0 | 36 |
 | `Range.network.steam` | 8 | 8 | 0 | 8 |
 | `Range.render` | 69 | 68 | 0 | 6 |
@@ -20,7 +21,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `BL_ActionActuator` | 12 | 12 | 0 |  |
 | `BL_ArmatureActuator` | 6 | 6 | 0 |  |
 | `BL_ArmatureBone` | 15 | 0 | 0 |  |
-| `BL_ArmatureChannel` | 34 | 2 | 0 |  |
+| `BL_ArmatureChannel` | 34 | 3 | 0 |  |
 | `BL_ArmatureConstraint` | 14 | 14 | 0 |  |
 | `BL_ArmatureObject` | 6 | 6 | 0 |  |
 | `BL_Shader` | 26 | 26 | 0 |  |
@@ -52,7 +53,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
 | `KX_FontObject` | 17 | 11 | 6 | 10 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 220 | 220 | 0 | 70 |
+| `KX_GameObject` | 226 | 226 | 0 | 70 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |
@@ -63,6 +64,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_Mesh` | 15 | 15 | 0 |  |
 | `KX_MeshBuilder` | 4 | 4 | 0 |  |
 | `KX_MeshBuilderSlot` | 15 | 15 | 0 |  |
+| `KX_MicrophoneSensor` | 6 | 6 | 0 | 6 |
 | `KX_MouseActuator` | 14 | 14 | 0 |  |
 | `KX_MouseFocusSensor` | 12 | 12 | 0 |  |
 | `KX_MovementSensor` | 2 | 2 | 0 |  |
@@ -83,7 +85,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_RadarSensor` | 5 | 5 | 0 |  |
 | `KX_RaySensor` | 14 | 14 | 0 | 3 |
 | `KX_ReplaceMeshActuator` | 4 | 4 | 0 |  |
-| `KX_Scene` | 41 | 38 | 3 | 2 |
+| `KX_Scene` | 43 | 40 | 3 | 3 |
 | `KX_SceneActuator` | 4 | 4 | 0 |  |
 | `KX_SoundActuator` | 17 | 17 | 0 |  |
 | `KX_Speaker` | 41 | 41 | 0 |  |
@@ -96,6 +98,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_VertexProxy` | 28 | 28 | 0 |  |
 | `KX_VideoActuator` | 4 | 4 | 0 | 4 |
 | `KX_VisibilityActuator` | 3 | 3 | 0 |  |
+| `KX_VoiceActuator` | 7 | 7 | 0 | 7 |
 | `KX_WorldInfo` | 36 | 36 | 0 | 15 |
 | `SCA_2DFilterActuator` | 5 | 5 | 0 |  |
 | `SCA_ANDController` | 0 | 0 | 0 |  |

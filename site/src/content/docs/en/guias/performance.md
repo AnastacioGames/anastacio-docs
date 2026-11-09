@@ -47,6 +47,20 @@ Measure, change one thing and measure again. The comparison section shows right 
 - **Generate LODs**: creates levels of detail in batch, with distances computed from each object's size. The **X** next to it removes generated LODs.
 - **Collision Proxies**: creates simplified collision for dense static scenery. The **X** removes them.
 
+### Automatic Occluders
+
+In the **Scene** tab, under **Game Settings > Physics**, **Culling** box, below **Occlusion Culling**, check **Automatic Occluders**. Large walls, floors and buildings start hiding what is behind them, and the engine stops drawing those objects.
+
+- **Picked automatically at load:** still meshes (Static or No Collision physics), opaque, up to 2048 triangles and large (second largest side at least 1.5 m and largest face at least 6 m²). They **keep their collision**. The **Occluder** physics type in the Physics tab, on the other hand, removes the object's collision.
+- **Turns itself on and off in the game:** every 30 frames the engine counts how many objects occlusion hides from the active camera. In open areas, where it hides little, it stays off and costs nothing; indoors it turns on.
+- **When it helps:** interiors with many rooms and PCs with a weak GPU. In a 36-room building with a simulated weak GPU, frame time dropped from 5.1 to 3.75 ms. On a good PC the difference is small, because Auto Static Batch already merges the draw calls.
+- It comes **off**. The **Scene Doctor** suggests it when the scene has 150 meshes or more and at least 8 walls or buildings that would qualify.
+- Objects loaded by `LibLoad` are not part of the automatic choice.
+
+:::tip[Measuring without an FPS cap]
+The game always follows the scene's logic FPS (**Scene > Game Settings > Physics > Steps & Timing > FPS**, 60 by default). Unchecking **Use Frame Rate** (Render tab, **System**) does not uncap it: that option only chooses how physics steps. To compare two versions by frame time, raise the logic FPS in a copy of the test scene (for example, 1000) and read the work time in the Performance Report.
+:::
+
 ## Faster scripts
 
 Measured in RolimaRacer with 20 drivers. Every API call costs 0.2 to 0.6 µs just to go from Python to C++, and a per-object loop multiplies that by the number of objects every frame.

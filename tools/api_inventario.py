@@ -37,6 +37,7 @@ MODULO_DEF = {
     "steamModule": "network.steam",
     "VideoTexture_module_def": "texture",
     "track_module_def": "track",
+    "py_audio_module_def": "audio",
 }
 MODULO_METODOS = {
     "game_methods": "logic",
@@ -48,6 +49,7 @@ MODULO_METODOS = {
     "steamMethods": "network.steam",
     "moduleMethods": "texture",
     "track_methods": "track",
+    "py_audio_methods": "audio",
 }
 # nome do .rst -> módulo
 RST_MODULO = {"bge.app": "app", "bge.logic": "logic", "bge.render": "render",

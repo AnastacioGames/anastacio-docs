@@ -40,6 +40,7 @@ MODULOS = {
     "network": (None, "Range.network"),
     "network.steam": (None, "Range.network.steam"),
     "track": ("bge.track", "Range.track"),
+    "audio": (None, "Range.audio"),
 }
 
 # exemplos escritos à mão, para páginas com ou sem .rst

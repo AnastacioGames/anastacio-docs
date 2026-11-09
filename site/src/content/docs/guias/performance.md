@@ -47,6 +47,20 @@ Meça, mude uma coisa e meça de novo. A seção de comparação mostra na hora 
 - **Generate LODs**: cria níveis de detalhe em lote, com as distâncias calculadas pelo tamanho de cada objeto. O **X** ao lado remove os LODs gerados.
 - **Collision Proxies**: cria colisão simplificada para cenário estático denso. O **X** remove.
 
+### Automatic Occluders
+
+Na aba **Scene**, em **Game Settings > Physics**, caixa **Culling**, embaixo de **Occlusion Culling**, marque **Automatic Occluders**. Paredes, pisos e prédios grandes passam a esconder o que está atrás deles, e a engine deixa de desenhar esses objetos.
+
+- **Escolha sozinha, no carregamento:** malhas paradas (física Static ou No Collision), opacas, com até 2048 triângulos e grandes (o segundo maior lado com pelo menos 1,5 m e a maior face com pelo menos 6 m²). Elas **continuam com colisão**. O tipo de física **Occluder** da aba Physics, ao contrário, tira a colisão do objeto.
+- **Liga e desliga sozinha, no jogo:** a cada 30 quadros a engine conta quantos objetos a oclusão está escondendo para a câmera ativa. Em campo aberto, onde ela esconde pouco, fica desligada e não gasta nada; em interiores, liga.
+- **Quando vale:** interiores com muitas salas e PCs com GPU fraca. Num prédio de 36 salas com GPU fraca simulada, o tempo de quadro caiu de 5,1 para 3,75 ms. Em PC bom a diferença é pequena, porque o Auto Static Batch já junta os draw calls.
+- Vem **desligada**. O **Scene Doctor** sugere ligar quando a cena tem 150 malhas ou mais e pelo menos 8 paredes ou prédios que serviriam.
+- Objetos carregados por `LibLoad` não entram na escolha automática.
+
+:::tip[Medir sem limite de FPS]
+O jogo sempre segue o FPS de lógica da cena (**Scene > Game Settings > Physics > Steps & Timing > FPS**, 60 por padrão). Desmarcar **Use Frame Rate** (aba Render, **System**) não solta o FPS: essa opção só escolhe como a física avança. Para comparar duas versões pelo tempo de quadro, suba o FPS de lógica numa cópia da cena de teste (por exemplo, 1000) e olhe o tempo de trabalho no Performance Report.
+:::
+
 ## Scripts mais rápidos
 
 Medido no RolimaRacer com 20 pilotos. Cada chamada da API custa de 0,2 a 0,6 µs só para ir do Python ao C++, e um laço por objeto multiplica isso pelo número de objetos a cada quadro.

@@ -472,7 +472,10 @@
   "getCurvePoints": "`getCurvePoints(world=True)`: points of the first spline of a Curve object, as a list of `Vector`. World space by default; `world=False` returns local space. Empty list if the object is not a curve.",
   "setVehicleMaxTorque": "setVehicleMaxTorque(value)\nChanges the maximum engine torque of this object's vehicle at runtime (number >= 0).",
   "setVehicleMaxRPM": "setVehicleMaxRPM(value)\nChanges the maximum engine RPM of the vehicle at runtime (number >= 0).",
-  "setVehicleGearRatios": "setVehicleGearRatios(ratios)\nReplaces the vehicle gear ratios. Takes a list of numbers, one per gear."
+  "setVehicleGearRatios": "setVehicleGearRatios(ratios)\nReplaces the vehicle gear ratios. Takes a list of numbers, one per gear.",
+  "play_take": "play_take(name) -> bool\nPlays what a Rec Play take recorded of this object. `False` if it recorded nothing of it.",
+  "stop_take": "stop_take()\nStops the take of this object and gives it back to its logic and physics.",
+  "is_playing_take": "is_playing_take() -> bool\n`True` while a Rec Play take moves this object."
  },
  "KX_ParticleSystem": {
   "blendMode": "How particles blend with the scene: `'ALPHA'` or `'ADDITIVE'`. An unknown value raises `ValueError`.",
@@ -750,7 +753,9 @@
   "thread_logic_1": "List of functions called every frame on the parallel logic thread. Same usage as `pre_draw`.",
   "unconvertedObjects": "Names of the objects that can still be created with `convertObject()`.",
   "worldSun": "Sun light linked to the World (sky sun position), or `None`.",
-  "skip_cutscene": "skip_cutscene()\nJumps to the end of the playing Cutscene: dialogs, waits, camera paths and fades are dropped; the other remaining events run (camera restore, unlock, scene change). Returns `False` when nothing was playing. Tab or the gamepad Start button do the same unless `Range.logic.globalDict[\"cutscene_skip\"]` is `False`."
+  "skip_cutscene": "skip_cutscene()\nJumps to the end of the playing Cutscene: dialogs, waits, camera paths and fades are dropped; the other remaining events run (camera restore, unlock, scene change). Returns `False` when nothing was playing. Tab or the gamepad Start button do the same unless `Range.logic.globalDict[\"cutscene_skip\"]` is `False`.",
+  "takes": "Names of the scene's Rec Play takes (read-only).",
+  "play_take": "play_take(name) -> bool\nPlays a Rec Play take on all its actors. `True` when the take exists."
  },
  "KX_Speaker": {
   "GetActiveEffect": "GetActiveEffect() -> int\nActive sound effect: 0 none, 1 reverb.",
@@ -919,5 +924,59 @@
  "BL_ArmatureObject": {
   "setBoneRotationOffset": "setBoneRotationOffset(bone, rotation)\nExtra rotation for a bone on top of the playing actions, in the bone's local space. `rotation`: euler XYZ (3 floats, radians) or quaternion (4 floats, w x y z). Stays until `clearBoneRotationOffset()`.",
   "clearBoneRotationOffset": "clearBoneRotationOffset(bone=None)\nRemoves the extra rotation of one bone, or of all bones when `bone` is omitted."
+ },
+ "Range.audio": {
+  "play": "play(module, sound=\"\", fade=-1.0) -> bool\nPlays a sound of a World Sound module, or resumes a paused module. Without `sound`, Music plays the current track and Ambient plays every layer. `fade` is in seconds; negative uses the module Fade. `False` when the module or sound does not exist.",
+  "stop": "stop(module, sound=\"\", fade=-1.0)\nStops a World Sound module, or only one of its sounds. `fade` is in seconds; negative uses the module Fade.",
+  "pause": "pause(module)\nPauses every sound of the module where it is.",
+  "resume": "resume(module)\nGoes on from where `pause(module)` stopped.",
+  "next": "next(module)\nMusic: crosses to the next track.",
+  "previous": "previous(module)\nMusic: crosses to the previous track.",
+  "setVolume": "setVolume(module, volume)\nSets the module volume, 0.0 to 1.0.",
+  "getVolume": "getVolume(module) -> float\nModule volume; `None` when it does not exist.",
+  "isPlaying": "isPlaying(module) -> bool\n`True` while a sound of the module plays.",
+  "playing": "playing(module) -> list\nNames of the sounds playing now (Music: the current track).",
+  "sounds": "sounds(module) -> list\nNames of the sounds of the module.",
+  "modules": "modules() -> list\nNames of the World Sound modules loaded so far.",
+  "microphoneStart": "microphoneStart(device=\"\") -> bool\nTurns the microphone on. On the Web, call it after a click or touch. `False` when it cannot open.",
+  "microphoneStop": "microphoneStop()\nTurns the microphone off.",
+  "microphoneState": "microphoneState() -> str\nMicrophone state: `'closed'`, `'pending'`, `'granted'`, `'denied'` or `'error'`.",
+  "microphoneError": "microphoneError() -> str\nWhy the microphone did not open.",
+  "microphoneLevel": "microphoneLevel() -> float\nVoice level now, 0 to 1.",
+  "microphonePeak": "microphonePeak() -> float\nPeak with a slow fall, 0 to 1.",
+  "microphoneDropped": "microphoneDropped() -> int\nTimes audio was lost because the game hitched.",
+  "microphoneRecordStart": "microphoneRecordStart()\nStarts recording.",
+  "microphoneRecordStop": "microphoneRecordStop(slot=\"last\") -> aud.Sound\nStops and keeps the recording as `slot`. Returns the `aud.Sound` or `None`.",
+  "microphoneIsRecording": "microphoneIsRecording() -> bool\n`True` while recording.",
+  "microphoneRecordingSeconds": "microphoneRecordingSeconds() -> float\nLength of the recording in progress, in seconds.",
+  "microphoneSave": "microphoneSave(slot, path)\nSaves a recording as WAV. Relative paths go to the game folder (Web: `/saves`).",
+  "microphone": "microphone() -> aud.Microphone\nThe `aud.Microphone` in use, for advanced use; `None` before it starts.",
+  "recordings": "recordings() -> list\nNames of the recordings kept so far.",
+  "recording": "recording(slot) -> aud.Sound\nThe `aud.Sound` of a recording, or `None`.",
+  "setRecording": "setRecording(slot, sound)\nKeeps an `aud.Sound` under a name. `None` removes it.",
+  "playVoice": "playVoice(sound, effect=\"NONE\", amount=1.0, volume=1.0, reverb=False) -> bool\nPlays a recording (name or `aud.Sound`) with a voice effect; see `voicePresets()`. `reverb=True` uses the area or World reverb. `False` when the recording or effect does not exist.",
+  "playLive": "playLive(effect=\"NONE\", amount=1.0, volume=1.0, reverb=False)\nPlays the microphone now with a voice effect. One at a time; calling again swaps the effect. Use headphones: speakers feed back into the microphone.",
+  "stopLive": "stopLive()\nStops hearing the microphone.",
+  "isLive": "isLive() -> bool\n`True` while the microphone is being heard.",
+  "voiceFx": "voiceFx(sound, preset, amount=1.0) -> aud.Sound\nApplies a voice effect; same as `aud.voice_fx`.",
+  "edit": "edit(sound, start=0, end=-1, fade_in=0, fade_out=0, normalize=False) -> aud.Sound\nTrims, fades and normalizes a sound; same as `aud.edit`.",
+  "voicePresets": "voicePresets(live=False) -> list\nNames of the voice effects."
+ },
+ "KX_MicrophoneSensor": {
+  "mode": "Mode: `0` talking (level above `threshold`), `1` peak (one pulse, like a clap or blow), `2` silence (after `hold` seconds below `threshold`).",
+  "threshold": "Voice level that triggers the sensor, 0 to 1.",
+  "hold": "Seconds, 0 to 60: how long talking stays positive, or how much silence is needed.",
+  "propName": "Name of the object property tied to the sensor.",
+  "level": "Voice level now (read-only).",
+  "peak": "Voice peak (read-only)."
+ },
+ "KX_VoiceActuator": {
+  "mode": "Action: `0` record, `1` play, `2` live, `3` stop, `4` save.",
+  "slot": "Name of the recording used by the actuator.",
+  "effect": "Voice effect, such as `NONE`, `CHIPMUNK`, `GIANT`, `ROBOT`, `RADIO`, `ECHO` or `CAVE`.",
+  "amount": "Effect strength, 0 to 1.",
+  "volume": "Volume, 0 to 4.",
+  "maxSeconds": "Maximum recording time in seconds, 0 to 600.",
+  "useReverb": "Uses the area or World reverb."
  }
 }

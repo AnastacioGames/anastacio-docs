@@ -79,7 +79,3 @@ O sinal da força depende de para onde o chassi aponta. Se o carro andar de ré 
 ## Salvar o acerto do carro
 
 `vehicle.savePreset("//acerto.json")` grava massa, suspensão, atrito e rodas num arquivo. `vehicle.loadPreset(...)` reaplica o acerto no mesmo carro, por exemplo para trocar entre "asfalto" e "terra".
-
-:::caution
-`savePreset()` falha se o campo **Ray Cast Mask** do veículo estiver no valor padrão (0): a engine grava internamente -1 e a própria validação recusa esse valor. Defina o Ray Cast Mask manualmente no painel Vehicle antes de salvar o acerto.
-:::

@@ -83,7 +83,3 @@ The force's sign depends on which way the chassis faces. If the car reverses wit
 ## Saving the car setup
 
 `vehicle.savePreset("//acerto.json")` writes mass, suspension, friction and wheels to a file. `vehicle.loadPreset(...)` reapplies the setup to the same car, for example to switch between "asphalt" and "dirt".
-
-:::caution
-`savePreset()` fails if the vehicle's **Ray Cast Mask** field is left at its default value (0): the engine internally stores -1, and its own validation rejects that value. Set the Ray Cast Mask manually in the Vehicle panel before saving the setup.
-:::

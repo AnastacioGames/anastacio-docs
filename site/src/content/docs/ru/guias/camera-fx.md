@@ -69,7 +69,7 @@ camera.useDof = False
 
 ## Зерно плёнки
 
-Зерно относится к сцене, а не к камере: **Render > Post Processing**, опция Film Grain. В игре:
+Зерно относится к сцене, а не к камере: **Render > Post Processing Shaders**, опция Film Grain. В игре:
 
 ```python
 cena = Range.logic.getCurrentScene()

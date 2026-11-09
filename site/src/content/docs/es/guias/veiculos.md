@@ -83,7 +83,3 @@ El signo de la fuerza depende de hacia dónde mira el chasis. Si el auto va en r
 ## Guardar el ajuste del auto
 
 `vehicle.savePreset("//acerto.json")` escribe masa, suspensión, fricción y ruedas en un archivo. `vehicle.loadPreset(...)` vuelve a aplicar el ajuste al mismo auto, por ejemplo para alternar entre "asfalto" y "tierra".
-
-:::caution
-`savePreset()` falla si el campo **Ray Cast Mask** del vehículo queda en su valor predeterminado (0): el motor guarda internamente -1, y su propia validación rechaza ese valor. Ajusta el Ray Cast Mask manualmente en el panel Vehicle antes de guardar el ajuste.
-:::

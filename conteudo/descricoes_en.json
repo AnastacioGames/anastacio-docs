@@ -396,7 +396,8 @@
   "changeSSRValues": "changeSSRValues(enabled, step_max, bias, max_distance)\nTurns screen-space reflections (SSR) on/off and changes steps, bias and maximum distance.",
   "changeTonemapValues": "changeTonemapValues(enabled, exposure, gamma)\nTurns tonemapping on/off and changes exposure and gamma.",
   "taaEnabled": "Turns the scene TAA (temporal anti-aliasing) on or off (Render > TAA). `True` or `False`. Smooths edges by blending frames with a slightly shifted camera. In split screen and stereo only the sharpening runs.",
-  "taaSharpen": "Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending."
+  "taaSharpen": "Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending.",
+  "compositor": "Filter generated from the scene's Compositor tree (Use Nodes). Value and RGB nodes change live with `compositor.setUniform()`. Read-only."
  },
  "KX_GameObject": {
   "isDeformable": "`True` if the object has the deformation settings on (dent, bend, decals).",
@@ -661,7 +662,13 @@
   "font": "Name of the text's font (as shown in the Text properties), or `None`. Changing it redraws the text immediately; an unknown name raises `ValueError`.",
   "atlas": "Name of the text data holding the Bitmap Atlas used for drawing, `\"\"` for the text's own atlas, or `None` for no atlas.",
   "translationKey": "Key in the language table (`locale/translations.csv`). With a key, the text shows the translation for the current [`Range.locale`](../../../guias/idiomas/) language and updates by itself when the language changes. `\"\"` turns it off.",
-  "useLanguageFont": "When `True`, the text uses the font and atlas set for the current language in `locale/locale.json` (useful for Russian, Japanese, etc.)."
+  "useLanguageFont": "When `True`, the text uses the font and atlas set for the current language in `locale/locale.json` (useful for Russian, Japanese, etc.).",
+  "textBox": "Size `(width, height)` of the text box. The text wraps and splits into pages to fit it; `(0, 0)` turns it off.",
+  "lines": "List of the text lines after wrapping. Read-only.",
+  "page": "Current page of the text box, from 0. Out-of-range values are clamped to the last valid page.",
+  "pageCount": "Number of pages in the text box. Read-only.",
+  "visibleCharacters": "How many characters are shown, for the typewriter effect. `-1` shows everything.",
+  "characterCount": "Total number of characters in the text. Read-only."
  },
  "KX_GameActuator": {
   "extensionName": "File extension used by the save/load game modes.",

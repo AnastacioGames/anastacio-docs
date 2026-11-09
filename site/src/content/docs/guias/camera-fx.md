@@ -67,7 +67,7 @@ camera.useDof = False
 
 ## Grão de filme
 
-O grão fica na cena, não na câmera: **Render > Post Processing**, opção Film Grain. No jogo:
+O grão fica na cena, não na câmera: **Render > Post Processing Shaders**, opção Film Grain. No jogo:
 
 ```python
 cena = Range.logic.getCurrentScene()

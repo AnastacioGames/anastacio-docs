@@ -46,7 +46,7 @@ The **Add Object** actuator already understands On Demand: the object is created
 
 ## Cook
 
-The **Cook** button is in the Render panel and next to Play in the header. It runs the scene once and writes, next to the `.blend`, a `.cooked` file with:
+The **Cook** button is in the Render panel and next to Play in the header. It runs the scene once and writes, next to the `.range`, a `.cooked` file with:
 
 - collision shapes (Convex Hull and Triangle Mesh) already computed;
 - mesh buffers, normals and tangents;
@@ -54,7 +54,7 @@ The **Cook** button is in the Render panel and next to Play in the header. It ru
 
 On the next load, the engine reads the file instead of computing. In tests, loading a scene dropped from about 2.4 s to under 0.5 s.
 
-- The `.blend` must be saved (without a saved file the button is greyed out).
+- The `.range` must be saved (without a saved file the button is greyed out).
 - **Clear Cooked** deletes the cache. If you change a mesh you don't need to clear it: the changed part is recomputed.
 - In the exported game, the `.cooked` goes along. Shaders are stored on the player's computer on first launch, which shows a preparation screen.
 

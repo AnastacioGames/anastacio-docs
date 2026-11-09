@@ -46,7 +46,7 @@ O atuador **Add Object** já entende On Demand: o objeto é criado na primeira v
 
 ## Cook
 
-O botão **Cook** fica no painel Render e ao lado do Play no cabeçalho. Ele roda a cena uma vez e grava, ao lado do `.blend`, um arquivo `.cooked` com:
+O botão **Cook** fica no painel Render e ao lado do Play no cabeçalho. Ele roda a cena uma vez e grava, ao lado do `.range`, um arquivo `.cooked` com:
 
 - formas de colisão (Convex Hull e Triangle Mesh) já calculadas;
 - buffers de malha, normais e tangentes;
@@ -54,7 +54,7 @@ O botão **Cook** fica no painel Render e ao lado do Play no cabeçalho. Ele rod
 
 Na próxima abertura, a engine lê o arquivo em vez de calcular. Em testes, carregar uma cena caiu de cerca de 2,4 s para menos de 0,5 s.
 
-- O `.blend` precisa estar salvo (sem arquivo salvo o botão fica apagado).
+- O `.range` precisa estar salvo (sem arquivo salvo o botão fica apagado).
 - **Clear Cooked** apaga o cache. Se mudar uma malha, não precisa limpar: a parte mudada é recalculada.
 - No jogo exportado, o `.cooked` vai junto. Os shaders são guardados no computador do jogador na primeira abertura, que mostra uma tela de preparação.
 

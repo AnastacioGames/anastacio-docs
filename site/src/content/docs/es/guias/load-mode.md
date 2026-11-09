@@ -46,7 +46,7 @@ El actuador **Add Object** ya entiende On Demand: el objeto se crea la primera v
 
 ## Cook
 
-El botón **Cook** está en el panel Render y junto a Play en la cabecera. Ejecuta la escena una vez y escribe, junto al `.blend`, un archivo `.cooked` con:
+El botón **Cook** está en el panel Render y junto a Play en la cabecera. Ejecuta la escena una vez y escribe, junto al `.range`, un archivo `.cooked` con:
 
 - formas de colisión (Convex Hull y Triangle Mesh) ya calculadas;
 - buffers de malla, normales y tangentes;
@@ -54,7 +54,7 @@ El botón **Cook** está en el panel Render y junto a Play en la cabecera. Ejecu
 
 En la siguiente carga, el motor lee el archivo en lugar de calcular. En pruebas, la carga de una escena bajó de unos 2,4 s a menos de 0,5 s.
 
-- El `.blend` debe estar guardado (sin archivo guardado el botón aparece deshabilitado).
+- El `.range` debe estar guardado (sin archivo guardado el botón aparece deshabilitado).
 - **Clear Cooked** borra la caché. Si cambias una malla no necesitas borrarla: la parte modificada se recalcula.
 - En el juego exportado, el `.cooked` va incluido. Los shaders se guardan en la computadora del jugador en el primer inicio, que muestra una pantalla de preparación.
 

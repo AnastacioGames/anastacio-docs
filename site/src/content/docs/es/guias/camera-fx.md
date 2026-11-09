@@ -69,7 +69,7 @@ camera.useDof = False
 
 ## Grano de película
 
-El grano pertenece a la escena, no a la cámara: **Render > Post Processing**, opción Film Grain. En el juego:
+El grano pertenece a la escena, no a la cámara: **Render > Post Processing Shaders**, opción Film Grain. En el juego:
 
 ```python
 cena = Range.logic.getCurrentScene()

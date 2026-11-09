@@ -69,7 +69,7 @@ camera.useDof = False
 
 ## Film grain
 
-Grain belongs to the scene, not the camera: **Render > Post Processing**, Film Grain option. In the game:
+Grain belongs to the scene, not the camera: **Render > Post Processing Shaders**, Film Grain option. In the game:
 
 ```python
 cena = Range.logic.getCurrentScene()

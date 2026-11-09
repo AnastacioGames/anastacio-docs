@@ -38,7 +38,7 @@ export default defineConfig({
 				{
 					label: 'Recursos',
 					translations: { en: 'Features', es: 'Recursos', ru: 'Возможности' },
-					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer', 'guias/idiomas', 'guias/smart-components', 'guias/ui-tree', 'guias/performance', 'guias/microfone'],
+					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer', 'guias/idiomas', 'guias/smart-components', 'guias/ui-tree', 'guias/performance', 'guias/microfone', 'guias/rec-play', 'guias/personagem-fuse', 'guias/minimap'],
 				},
 				{ label: 'Por dentro da engine', translations: { en: 'Inside the engine', es: 'Por dentro del motor', ru: 'Устройство движка' }, items: ['por-dentro', 'por-dentro/repositorio', 'por-dentro/editor-para-jogo', 'por-dentro/modulos', 'por-dentro/frame', 'por-dentro/plataformas'] },
 				{ label: 'Módulos', translations: { en: 'Modules', es: 'Módulos', ru: 'Модули' }, items: modulos },

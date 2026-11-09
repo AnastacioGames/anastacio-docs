@@ -102,6 +102,16 @@ Este componente fica num objeto fixo da cena (todos os jogadores rodam). No host
 
 (lembre de `import struct` no começo do arquivo da Partida)
 
+## Jogar pelo navegador e no Android
+
+Jogadores na versão Web e no APK Android entram pela sala usando WebSocket. A sala precisa ser aberta por um jogo de PC ou por um servidor `--server`, com a porta WebSocket ligada.
+
+1. Em **Properties > Export Game > Network**, confira **WebSocket Port** (padrão `7778`; `0` desliga).
+2. No jogo Web, entre usando essa porta: `network.join("192.168.0.10:7778")`.
+3. Se o jogo estiver numa página `https://`, o navegador exige `wss://`. O servidor da engine só fala `ws://`, então coloque um proxy TLS na frente e use a URL completa: `network.join("wss://game.exemplo.com/ws")`.
+
+Numa página `http://` ou em `localhost`, o endereço normal basta. Não há partida entre jogadores da Web e salas da Steam.
+
 ## Testar na mesma máquina
 
 Abra o jogo duas vezes. Em uma, **Criar sala**; na outra, **Entrar por IP** com `127.0.0.1`.

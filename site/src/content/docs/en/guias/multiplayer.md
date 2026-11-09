@@ -106,6 +106,16 @@ This component sits on a fixed scene object (every player runs it). On the host,
 
 (remember `import struct` at the top of the Partida file)
 
+## Playing in the browser and on Android
+
+Players on the Web version and the Android APK join the room over WebSocket. The room must be opened by a PC game or a `--server` server, with the WebSocket port on.
+
+1. In **Properties > Export Game > Network**, check **WebSocket Port** (default `7778`; `0` turns it off).
+2. In the Web game, join using that port: `network.join("192.168.0.10:7778")`.
+3. If the game is on an `https://` page, the browser requires `wss://`. The engine server only speaks `ws://`, so put a TLS proxy in front and use the full URL: `network.join("wss://game.example.com/ws")`.
+
+On an `http://` page or on `localhost`, the normal address is enough. Web players cannot join Steam rooms.
+
 ## Testing on the same machine
 
 Open the game twice. In one, **Create room**; in the other, **Join by IP** with `127.0.0.1`.

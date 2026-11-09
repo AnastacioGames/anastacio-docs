@@ -17,11 +17,11 @@ IDIOMAS = {
     "en": (DOCS / "en" / "api", "Anastacio Engine - Python API reference",
            "Single-file version of the API reference, for search and local AI (RAG). "
            "Each function and property has its own heading.", "Contents", "Modules", "Types",
-           "See also"),
+           "{} pages, {} entries (functions, properties and constants)."),
     "pt": (DOCS / "api", "Anastacio Engine - Referência da API Python",
            "Versão em arquivo único da referência da API, para busca e IA local (RAG). "
            "Cada função e propriedade tem um título próprio.", "Índice", "Módulos", "Tipos",
-           "Veja também"),
+           "{} páginas, {} itens (funções, propriedades e constantes)."),
 }
 
 
@@ -44,8 +44,8 @@ def ler_pagina(arq):
     return titulo, texto
 
 
-def limpar(texto, titulos, veja):
-    saida, em_codigo, membros = [], False, []
+def limpar(texto, titulos):
+    saida, em_codigo = [], False
     for linha in texto.split("\n"):
         if linha.startswith("```"):
             em_codigo = not em_codigo
@@ -77,15 +77,13 @@ def limpar(texto, titulos, veja):
         if h:
             nivel = len(h.group(1)) + 1
             linha = "#" * min(nivel, 6) + " " + h.group(2)
-            if len(h.group(1)) == 3:
-                membros.append(h.group(2).strip())
         saida.append(linha)
     corpo = re.sub(r"\n{3,}", "\n\n", "\n".join(saida)).strip()
-    return corpo, membros
+    return corpo
 
 
 def gerar(lang):
-    pasta, titulo, intro, rot_ind, rot_mod, rot_tip, veja = IDIOMAS[lang]
+    pasta, titulo, intro, rot_ind, rot_mod, rot_tip, resumo = IDIOMAS[lang]
     grupos = [(rot_mod, sorted((pasta / "modulos").glob("*.md"))),
               (rot_tip, sorted((pasta / "types").glob("*.md")))]
     paginas = [(g, a) + ler_pagina(a) for g, arqs in grupos for a in arqs]
@@ -97,11 +95,11 @@ def gerar(lang):
             grupo_atual = grupo
             corpo.append(f"# {grupo}")
             indice.append(f"\n**{grupo}**\n")
-        conteudo, membros = limpar(texto, titulos, veja)
+        conteudo = limpar(texto, titulos)
         corpo.append(f"## {tit}\n\n{conteudo}")
         indice.append(f"- [{tit}](#{ancora(tit)})")
     total = sum(len(re.findall(r"^#### ", c, re.M)) for c in corpo)
-    cab = f"# {titulo}\n\n{intro}\n\n{len(paginas)} pages, {total} entries (functions, properties and constants).\n\n## {rot_ind}\n"
+    cab = f"# {titulo}\n\n{intro}\n\n{resumo.format(len(paginas), total)}\n\n## {rot_ind}\n"
     texto = cab + "\n".join(indice) + "\n\n---\n\n" + "\n\n---\n\n".join(corpo) + "\n"
     PUBLICO.mkdir(exist_ok=True)
     dest = PUBLICO / f"anastacio-api-{lang}.md"

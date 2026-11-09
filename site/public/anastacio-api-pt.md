@@ -2,7 +2,7 @@
 
 Versão em arquivo único da referência da API, para busca e IA local (RAG). Cada função e propriedade tem um título próprio.
 
-123 pages, 2182 entries (functions, properties and constants).
+123 páginas, 2182 itens (funções, propriedades e constantes).
 
 ## Índice
 

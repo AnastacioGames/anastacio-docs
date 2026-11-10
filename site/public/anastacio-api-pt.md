@@ -2,7 +2,7 @@
 
 Versão em arquivo único da referência da API, para busca e IA local (RAG). Cada função e propriedade tem um título próprio.
 
-123 páginas, 2182 itens (funções, propriedades e constantes).
+123 páginas, 2194 itens (funções, propriedades e constantes).
 
 ## Índice
 
@@ -250,6 +250,12 @@ Nível da voz agora, de 0 a 1.
 
 **Retorna:** `float`
 
+#### microphoneNote(a4=440.0)
+
+*(novo na Anastacio)* `função`
+
+(name, cents, midi) of the current note, e.g. ('A4', -12.5, 69); ('', 0.0, 0) with no clear note.
+
 #### microphonePeak()
 
 *(novo na Anastacio)* `função`
@@ -257,6 +263,10 @@ Nível da voz agora, de 0 a 1.
 Pico com queda lenta, de 0 a 1.
 
 **Retorna:** `float`
+
+#### microphonePitch()
+
+*(novo na Anastacio)* `função`
 
 #### microphoneRecordingSeconds()
 
@@ -3887,6 +3897,46 @@ Botão lateral esquerdo do mouse (polegar).
  `constante`
 
 Botão lateral direito do mouse (polegar).
+
+#### KX_MOUSESENSORMODE_BUTTON6
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_BUTTON7
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_LEFTBUTTON
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_LEFTTHUMBMOUSE
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_MIDDLEBUTTON
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_MOVEMENT
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_RIGHTBUTTON
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_WHEELDOWN
+
+*(sem documentação)* `constante`
+
+#### KX_MOUSESENSORMODE_WHEELUP
+
+*(sem documentação)* `constante`
 
 #### KX_MOVEMENT_ALL_AXIS
 
@@ -18806,7 +18856,9 @@ As coordenadas [x, y] atuais do mouse, em coordenadas do frame (pixels).
 
 O modo do sensor.
 
-**Tipo:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_WHEELUP(4) * KX_MOUSESENSORMODE_WHEELDOWN(5) * KX_MOUSESENSORMODE_MOVEMENT(6)
+Diferente da UPBGE, a Range tem os botões do polegar e os botões 6 e 7 antes da roda, então roda para cima, roda para baixo e movimento valem 8, 9 e 10 (na UPBGE eram 4, 5 e 6). Compare com as constantes Range.logic.KX_MOUSESENSORMODE_* em vez de números. Sensores de mouse de arquivos .blend da UPBGE e da BGE original são convertidos ao abrir o arquivo.
+
+**Tipo:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_LEFTTHUMBMOUSE(4) * KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE(5) * KX_MOUSESENSORMODE_BUTTON6(6) * KX_MOUSESENSORMODE_BUTTON7(7) * KX_MOUSESENSORMODE_WHEELUP(8) * KX_MOUSESENSORMODE_WHEELDOWN(9) * KX_MOUSESENSORMODE_MOVEMENT(10)
 
 #### getButtonStatus(button)
 

@@ -2,7 +2,7 @@
 
 Single-file version of the API reference, for search and local AI (RAG). Each function and property has its own heading.
 
-123 pages, 2182 entries (functions, properties and constants).
+123 pages, 2194 entries (functions, properties and constants).
 
 ## Contents
 
@@ -250,6 +250,12 @@ Voice level now, 0 to 1.
 
 **Returns:** `float`
 
+#### microphoneNote(a4=440.0)
+
+*(new in Anastacio)* `function`
+
+(name, cents, midi) of the current note, e.g. ('A4', -12.5, 69); ('', 0.0, 0) with no clear note.
+
 #### microphonePeak()
 
 *(new in Anastacio)* `function`
@@ -257,6 +263,10 @@ Voice level now, 0 to 1.
 Peak with a slow fall, 0 to 1.
 
 **Returns:** `float`
+
+#### microphonePitch()
+
+*(new in Anastacio)* `function`
 
 #### microphoneRecordingSeconds()
 
@@ -3946,6 +3956,46 @@ Left side mouse button (thumb).
  `constant`
 
 Right side mouse button (thumb).
+
+#### KX_MOUSESENSORMODE_BUTTON6
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_BUTTON7
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_LEFTBUTTON
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_LEFTTHUMBMOUSE
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_MIDDLEBUTTON
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_MOVEMENT
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_RIGHTBUTTON
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_WHEELDOWN
+
+*(undocumented)* `constant`
+
+#### KX_MOUSESENSORMODE_WHEELUP
+
+*(undocumented)* `constant`
 
 #### KX_MOVEMENT_ALL_AXIS
 
@@ -19259,7 +19309,9 @@ current [x, y] coordinates of the mouse, in frame coordinates (pixels).
 
 sensor mode.
 
-**Type:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_WHEELUP(4) * KX_MOUSESENSORMODE_WHEELDOWN(5) * KX_MOUSESENSORMODE_MOVEMENT(6)
+Unlike UPBGE, Range has the thumb buttons and buttons 6 and 7 before the wheel, so wheel up, wheel down and movement are 8, 9 and 10 (4, 5 and 6 in UPBGE). Compare with the Range.logic.KX_MOUSESENSORMODE_* constants instead of numbers. Mouse sensors in .blend files from UPBGE and the original BGE are converted when the file is opened.
+
+**Type:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_LEFTTHUMBMOUSE(4) * KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE(5) * KX_MOUSESENSORMODE_BUTTON6(6) * KX_MOUSESENSORMODE_BUTTON7(7) * KX_MOUSESENSORMODE_WHEELUP(8) * KX_MOUSESENSORMODE_WHEELDOWN(9) * KX_MOUSESENSORMODE_MOVEMENT(10)
 
 #### getButtonStatus(button)
 

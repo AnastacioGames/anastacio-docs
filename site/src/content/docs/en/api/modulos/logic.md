@@ -2055,6 +2055,46 @@ Left side mouse button (thumb).
 
 Right side mouse button (thumb).
 
+### KX_MOUSESENSORMODE_BUTTON6
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_BUTTON7
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_LEFTBUTTON
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_LEFTTHUMBMOUSE
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_MIDDLEBUTTON
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_MOVEMENT
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_RIGHTBUTTON
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_WHEELDOWN
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
+### KX_MOUSESENSORMODE_WHEELUP
+
+<span class="ae-badge pendente">undocumented</span> <small>constant</small>
+
 ### KX_MOVEMENT_ALL_AXIS
 
  <small>constant</small>

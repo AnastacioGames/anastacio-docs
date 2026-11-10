@@ -8,11 +8,11 @@ Generated from the engine inventory. **Pending** items exist in the code but hav
 
 | Page | Items | Documented | Pending | New in Anastacio |
 |---|---:|---:|---:|---:|
-| `Range.audio` | 35 | 35 | 0 | 35 |
+| `Range.audio` | 37 | 36 | 1 | 37 |
 | `Range.constraints` | 52 | 51 | 0 |  |
 | `Range.events` | 135 | 135 | 0 |  |
 | `Range.imgui` | 42 | 42 | 0 | 6 |
-| `Range.logic` | 344 | 338 | 0 | 6 |
+| `Range.logic` | 354 | 348 | 0 | 6 |
 | `Range.network` | 36 | 36 | 0 | 36 |
 | `Range.network.steam` | 8 | 8 | 0 | 8 |
 | `Range.render` | 69 | 68 | 0 | 6 |

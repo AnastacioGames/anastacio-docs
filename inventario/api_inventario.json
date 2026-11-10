@@ -7833,6 +7833,20 @@
      "commit": "c4e14021",
      "data": "2026-11-08"
     },
+    "microphonePitch": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "83e5bd3f",
+     "data": "2026-11-09"
+    },
+    "microphoneNote": {
+     "tipo": "funcao",
+     "status": "novo",
+     "origem": "anastacio",
+     "commit": "83e5bd3f",
+     "data": "2026-11-09"
+    },
     "microphoneLevel": {
      "tipo": "funcao",
      "status": "novo",
@@ -10004,6 +10018,56 @@
      "origem": "desconhecida"
     },
     "KX_MOUSE_BUT_BUTTON7": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_LEFTBUTTON": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_MIDDLEBUTTON": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_RIGHTBUTTON": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_LEFTTHUMBMOUSE": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_BUTTON6": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_BUTTON7": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_WHEELUP": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_WHEELDOWN": {
+     "tipo": "constante",
+     "status": "novo",
+     "origem": "desconhecida"
+    },
+    "KX_MOUSESENSORMODE_MOVEMENT": {
      "tipo": "constante",
      "status": "novo",
      "origem": "desconhecida"

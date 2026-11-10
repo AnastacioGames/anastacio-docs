@@ -112,6 +112,12 @@ Nível da voz agora, de 0 a 1.
 
 **Retorna:** `float`
 
+### microphoneNote(a4=440.0)
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
+
+(name, cents, midi) of the current note, e.g. ('A4', -12.5, 69); ('', 0.0, 0) with no clear note.
+
 ### microphonePeak()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
@@ -119,6 +125,10 @@ Nível da voz agora, de 0 a 1.
 Pico com queda lenta, de 0 a 1.
 
 **Retorna:** `float`
+
+### microphonePitch()
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
 ### microphoneRecordingSeconds()
 

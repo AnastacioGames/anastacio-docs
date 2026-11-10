@@ -31,7 +31,9 @@ As coordenadas [x, y] atuais do mouse, em coordenadas do frame (pixels).
 
 O modo do sensor.
 
-**Tipo:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_WHEELUP(4) * KX_MOUSESENSORMODE_WHEELDOWN(5) * KX_MOUSESENSORMODE_MOVEMENT(6)
+Diferente da UPBGE, a Range tem os botões do polegar e os botões 6 e 7 antes da roda, então roda para cima, roda para baixo e movimento valem 8, 9 e 10 (na UPBGE eram 4, 5 e 6). Compare com as constantes Range.logic.KX_MOUSESENSORMODE_* em vez de números. Sensores de mouse de arquivos .blend da UPBGE e da BGE original são convertidos ao abrir o arquivo.
+
+**Tipo:** integer * KX_MOUSESENSORMODE_LEFTBUTTON(1) * KX_MOUSESENSORMODE_MIDDLEBUTTON(2) * KX_MOUSESENSORMODE_RIGHTBUTTON(3) * KX_MOUSESENSORMODE_LEFTTHUMBMOUSE(4) * KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE(5) * KX_MOUSESENSORMODE_BUTTON6(6) * KX_MOUSESENSORMODE_BUTTON7(7) * KX_MOUSESENSORMODE_WHEELUP(8) * KX_MOUSESENSORMODE_WHEELDOWN(9) * KX_MOUSESENSORMODE_MOVEMENT(10)
 
 ### getButtonStatus(button)
 

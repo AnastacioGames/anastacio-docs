@@ -31,7 +31,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `EXP_PyObjectPlus` | 1 | 1 | 0 |  |
 | `EXP_Value` | 1 | 1 | 0 |  |
 | `KX_2DFilter` | 12 | 12 | 0 | 4 |
-| `KX_2DFilterManager` | 22 | 22 | 0 | 10 |
+| `KX_2DFilterManager` | 23 | 23 | 0 | 11 |
 | `KX_2DFilterOffScreen` | 4 | 4 | 0 |  |
 | `KX_AddObjectActuator` | 6 | 6 | 0 |  |
 | `KX_AnimationEvent` | 2 | 2 | 0 |  |

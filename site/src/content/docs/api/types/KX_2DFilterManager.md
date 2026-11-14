@@ -219,3 +219,9 @@ Liga ou desliga o TAA (anti-aliasing temporal) da cena (Render > TAA). `True` ou
 
 Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros.
 
+### taaUpscale
+
+<span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+Upscaling temporal do TAA (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. A cena é desenhada menor e o TAA amplia para o tamanho da janela; cenas de HUD por cima ficam no tamanho da janela. Outro valor dá `ValueError`.
+

@@ -2,7 +2,7 @@
 
 Single-file version of the API reference, for search and local AI (RAG). Each function and property has its own heading.
 
-123 pages, 2194 entries (functions, properties and constants).
+123 pages, 2195 entries (functions, properties and constants).
 
 ## Contents
 
@@ -8631,6 +8631,12 @@ Turns the scene TAA (temporal anti-aliasing) on or off (Render > TAA). `True` or
 *(new in Anastacio)* `attribute`
 
 Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending.
+
+#### taaUpscale
+
+*(new in Anastacio)* `attribute`
+
+TAA temporal upscaling (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. The scene renders smaller and TAA scales it up to the window size; overlay (HUD) scenes draw at window size. Other values raise `ValueError`.
 
 ---
 

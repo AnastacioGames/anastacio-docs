@@ -1,0 +1,1 @@
+(name, cents, midi) da nota atual, por exemplo ('A4', -12.5, 69); ('', 0.0, 0) sem nota clara.

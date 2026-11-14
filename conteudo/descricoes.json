@@ -35,7 +35,8 @@
   "changeTonemapValues": "changeTonemapValues(enabled, exposure, gamma)\nLiga/desliga o tonemap e muda exposição e gamma.",
   "taaEnabled": "Liga ou desliga o TAA (anti-aliasing temporal) da cena (Render > TAA). `True` ou `False`. Suaviza bordas misturando quadros com a câmera levemente deslocada Em tela dividida e em estéreo só a nitidez é aplicada.",
   "taaSharpen": "Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros.",
-  "compositor": "Filtro gerado pela árvore do Compositor da cena (Use Nodes). Nós Value e RGB mudam ao vivo com `compositor.setUniform()`. Só leitura."
+  "compositor": "Filtro gerado pela árvore do Compositor da cena (Use Nodes). Nós Value e RGB mudam ao vivo com `compositor.setUniform()`. Só leitura.",
+  "taaUpscale": "Upscaling temporal do TAA (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. A cena é desenhada menor e o TAA amplia para o tamanho da janela; cenas de HUD por cima ficam no tamanho da janela. Outro valor dá `ValueError`."
  },
  "KX_GameObject": {
   "isDeformable": "`True` se o objeto tem as configurações de deformação ligadas (amassar, entortar, decalques).",

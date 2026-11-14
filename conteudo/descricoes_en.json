@@ -397,7 +397,8 @@
   "changeTonemapValues": "changeTonemapValues(enabled, exposure, gamma)\nTurns tonemapping on/off and changes exposure and gamma.",
   "taaEnabled": "Turns the scene TAA (temporal anti-aliasing) on or off (Render > TAA). `True` or `False`. Smooths edges by blending frames with a slightly shifted camera. In split screen and stereo only the sharpening runs.",
   "taaSharpen": "Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending.",
-  "compositor": "Filter generated from the scene's Compositor tree (Use Nodes). Value and RGB nodes change live with `compositor.setUniform()`. Read-only."
+  "compositor": "Filter generated from the scene's Compositor tree (Use Nodes). Value and RGB nodes change live with `compositor.setUniform()`. Read-only.",
+  "taaUpscale": "TAA temporal upscaling (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. The scene renders smaller and TAA scales it up to the window size; overlay (HUD) scenes draw at window size. Other values raise `ValueError`."
  },
  "KX_GameObject": {
   "isDeformable": "`True` if the object has the deformation settings on (dent, bend, decals).",

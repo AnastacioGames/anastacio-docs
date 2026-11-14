@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 109 classes, 10 módulos | documentados 1065 · sem doc 248 · novos 636 · só no rst 111
+**Total:** 109 classes, 10 módulos | documentados 1065 · sem doc 248 · novos 637 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -29,7 +29,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 | `KX_Camera` | 81 | 32 | 0 | 49 | 0 | sim |
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `KX_ParticleSystem` | 36 | 0 | 0 | 36 | 0 | **não** |
-| `KX_2DFilterManager` | 22 | 4 | 0 | 18 | 0 | sim |
+| `KX_2DFilterManager` | 23 | 4 | 0 | 19 | 0 | sim |
 | `KX_WorldInfo` | 36 | 19 | 0 | 17 | 0 | sim |
 | `KX_VehicleWrapper` | 32 | 16 | 0 | 16 | 0 | sim |
 | `KX_MeshBuilderSlot` | 15 | 0 | 0 | 15 | 0 | **não** |
@@ -137,7 +137,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 ## Itens novos por classe/módulo
 
-Origem pelo git: **322** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **199** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
+Origem pelo git: **323** adicionados depois de 15/09/2026 (Anastacio, marcados com ✦data); **199** já estavam no snapshot inicial do código (Range sem doc ou Anastacio antiga, precisa confirmar).
 
 - **Range.audio** (source/source/gameengine/Ketsji/KX_AudioManager.cpp): `play` ✦2026-10-12, `stop` ✦2026-10-12, `pause` ✦2026-10-12, `resume` ✦2026-10-12, `next` ✦2026-10-12, `previous` ✦2026-10-12, `setVolume` ✦2026-10-12, `getVolume` ✦2026-10-12, `isPlaying` ✦2026-10-12, `playing` ✦2026-10-12, `sounds` ✦2026-10-12, `modules` ✦2026-10-12, `microphoneStart` ✦2026-11-08, `microphoneStop` ✦2026-11-08, `microphoneState` ✦2026-11-08, `microphoneError` ✦2026-11-08, `microphonePitch` ✦2026-11-09, `microphoneNote` ✦2026-11-09, `microphoneLevel` ✦2026-11-08, `microphonePeak` ✦2026-11-08, `microphoneDropped` ✦2026-11-08, `microphoneRecordStart` ✦2026-11-08, `microphoneRecordStop` ✦2026-11-08, `microphoneIsRecording` ✦2026-11-08, `microphoneRecordingSeconds` ✦2026-11-08, `microphoneSave` ✦2026-11-08, `microphone` ✦2026-11-08, `recordings` ✦2026-11-08, `recording` ✦2026-11-08, `setRecording` ✦2026-11-08, `playVoice` ✦2026-11-08, `playLive` ✦2026-11-08, `stopLive` ✦2026-11-08, `isLive` ✦2026-11-08, `voiceFx` ✦2026-11-08, `edit` ✦2026-11-08, `voicePresets` ✦2026-11-08
 - **Range.constraints** (source/source/gameengine/Ketsji/KX_PyConstraintBinding.cpp): `setErp`, `setErp2`, `setGlobalCfm`, `setSplitImpulse`, `setSplitImpulsePenetrationThreshold`, `setSplitImpulseTurnErp`, `setWarmstartingFactor`, `setMaxGyroscopicForce`
@@ -152,7 +152,7 @@ Origem pelo git: **322** adicionados depois de 15/09/2026 (Anastacio, marcados c
 - **EXP_BaseListValue** (source/source/gameengine/Expressions/intern/BaseListValue.cpp): `append`, `reverse`, `index`, `count`, `get`, `filter`, `from_id`
 - **EXP_BaseListWrapper** (source/source/gameengine/Expressions/intern/BaseListWrapper.cpp): `get`
 - **KX_2DFilter** (source/source/gameengine/Ketsji/KX_2DFilter.cpp): `recompile`, `setUniform`, `compileLog` (só leitura) ✦2026-10-10, `sourceName` (só leitura) ✦2026-10-10, `sourcePath` (só leitura) ✦2026-10-10, `activeUniforms` (só leitura) ✦2026-10-10
-- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `changeSSGIValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `taaEnabled` ✦2026-11-01, `taaSharpen` ✦2026-11-01, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09, `compositor` (só leitura) ✦2026-10-26
+- **KX_2DFilterManager** (source/source/gameengine/Ketsji/KX_2DFilterManager.cpp): `changeFxaaValues`, `changeTonemapValues`, `changeBloomValues`, `changeGrainValues`, `changeLightScatterValues`, `changeSSRValues`, `changeSSAOValues`, `changeSSGIValues`, `fxaaEnabled` ✦2026-10-09, `fxaaEdgeThreshold` ✦2026-10-09, `fxaaEdgeThresholdMin` ✦2026-10-09, `fxaaSubpix` ✦2026-10-09, `fxaaSearchSteps` ✦2026-10-09, `taaEnabled` ✦2026-11-01, `taaSharpen` ✦2026-11-01, `taaUpscale` ✦2026-11-11, `grainEnabled` ✦2026-10-09, `grainStrength` ✦2026-10-09, `compositor` (só leitura) ✦2026-10-26
 - **KX_AnimationEvent** (source/source/gameengine/Ketsji/KX_AnimationEvent.cpp): `getFireCount`, `triggers` (só leitura)
 - **KX_AnimationEventManager** (source/source/gameengine/Ketsji/KX_AnimationEventManager.cpp): `events` (só leitura)
 - **KX_BlenderMaterial** (source/source/gameengine/Ketsji/KX_BlenderMaterial.cpp): `passIndex`

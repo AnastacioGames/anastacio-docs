@@ -219,3 +219,9 @@ Turns the scene TAA (temporal anti-aliasing) on or off (Render > TAA). `True` or
 
 Sharpening applied after TAA, from 0.0 to 1.0 (default 0.25). Makes up for the slight blur of frame blending.
 
+### taaUpscale
+
+<span class="ae-badge novo">new in Anastacio</span> <small>attribute</small>
+
+TAA temporal upscaling (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. The scene renders smaller and TAA scales it up to the window size; overlay (HUD) scenes draw at window size. Other values raise `ValueError`.
+

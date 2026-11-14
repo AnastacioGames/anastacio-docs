@@ -11,7 +11,7 @@ fontes:
   - source/source/gameengine/Launcher/LA_Launcher.cpp
   - source/source/gameengine/Ketsji/KX_Scene.cpp
   - source/source/gameengine/Ketsji/KX_SceneCutscene.cpp
-conferido: 24bb16de
+conferido: ff0eda7b
 ---
 
 <div class="ae-x">
@@ -36,10 +36,10 @@ conferido: 24bb16de
 <ol class="ae-x-steps"><i class="ae-x-pulse" aria-hidden="true"></i>
 <li class="opt novo">Rede: aplica o que chegou<small>só com sessão multiplayer</small></li>
 <li>Atividade dos objetos</li>
-<li>Animações e deformação</li>
 <li>Cutscene e seus eventos<small>falas, tomadas de câmera, fade; Tab/Start pula</small></li>
 <li>Lógica: sensores e controladores</li>
 <li>Atuadores</li>
+<li>Animações e deformação<small>depois da lógica, como na BGE/UPBGE</small></li>
 <li>Terremoto e física Bullet</li>
 <li class="novo">Trilho do Game Trace, LOD/HLOD, sol automático</li>
 <li>Hierarquia e Game FX da câmera</li>
@@ -56,7 +56,8 @@ conferido: 24bb16de
 <li>Sombras<small>KX_ShadowRenderer</small></li>
 <li>Render-to-texture e probes<small>cube maps e Light Probe Volume; etapa render.probes no relatório</small></li>
 <li>Cada câmera: culling, LOD/HLOD, céu e desenho<small>Static Batch junta malhas</small></li>
-<li>Chuva e filtros 2D da cena<small>superfícies molhadas, Tonemap, TAA, FXAA, lente, customizados</small></li>
+<li>Chuva e filtros 2D da cena<small>superfícies molhadas, Tonemap, TAA (com upscaling), FXAA, lente, customizados</small></li>
+<li class="opt novo">Cenas de HUD por cima da imagem já ampliada<small>só com TAA Upscaling</small></li>
 <li>post_draw do Python, ImGui, debug e troca de buffers<small>bgl/blf desenham sem luz</small></li>
 </ol>
 <span class="ae-x-go">KX_RenderPipeline.cpp</span>
@@ -72,6 +73,10 @@ conferido: 24bb16de
 - **Espera entre quadros spin/sleep.** Parte da espera dorme e só o final gira; a engine mede a precisão do sleep do sistema ao abrir, então o ritmo fica certo também no Wine. Na Web não há espera: o navegador já marca o ritmo, e a engine pula os frames dele que chegam antes da hora (60 FPS continuam 60 numa tela de 120 Hz).
 - **Um relógio só, com escala.** Frame, lógica, animação, física e cutscene avançam pelo mesmo passo escalado: `setTimeScale` deixa tudo em câmera lenta junto, e escala 0 pausa a lógica. A cutscene tem relógio próprio, que para com a cena suspensa. O relógio externo foi descontinuado. Se preciso, as animações podem ignorar a escala com `Range.logic.setAnimationsUseTimeScale(False)`.
 - **TAA treme a câmera de propósito.** Com Render > TAA ligado, a projeção da câmera do jogo anda um pouco a cada frame e o filtro mistura o quadro novo com o histórico. Culling, picking e as matrizes da câmera no Python não veem esse tremor. Em tela dividida e em estéreo o TAA fica sem tremor e sem histórico, só com a nitidez.
+- **Animações depois da lógica.** Como na BGE/UPBGE: uma action em `delta_location` ainda move um objeto cujo script define `worldPosition` a cada frame (o delta entra por cima). Logo depois a hierarquia é atualizada, para corpos cinemáticos e pais de osso chegarem certos na física.
+- **TAA com movimento e upscaling.** Os materiais gravam o movimento de cada objeto rígido e opaco num alvo extra, e o TAA usa isso para não deixar rastro. Com **Upscaling** (Off/Quality/Balanced/Performance, ou `filterManager.taaUpscale`) a cena é desenhada menor e o TAA amplia para o tamanho da janela; cenas de HUD por cima são desenhadas já no tamanho da janela. Se uma cena de HUD tiver filtro 2D ativo, o frame volta à ampliação simples.
+- **Aquecimento de shaders ao abrir.** Antes do primeiro frame, além das cenas do jogo, os arquivos de LibLoad listados em `<jogo>.warmup` têm os shaders compilados com as luzes da cena, para não travar quando forem carregados.
+- **ESC na Web.** No navegador o ESC sai da tela cheia, então não encerra o jogo; outra tecla de saída escolhida pelo jogo encerra. Qualquer fim do laço avisa a página (antes a tela congelava no último quadro).
 - **Cena rodando sem aparecer.** Com `KX_Scene.visible = False` a cena continua simulando, mas sai do render; o céu passa para a próxima cena.
 - **Static Batch automático.** Em cenas novas o Auto Static Batch já vem ligado e junta as malhas estáticas no desenho.
 - **A hierarquia é atualizada várias vezes:** depois da lógica, dos atuadores e da física. A trilha B resume isso numa etapa.

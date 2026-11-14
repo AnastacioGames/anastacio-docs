@@ -1,5 +1,1 @@
-{
- "audio": {
-  "(name, cents, midi) of the current note, e.g. ('A4', -12.5, 69); ('', 0.0, 0) with no clear note.": ""
- }
-}
+{}

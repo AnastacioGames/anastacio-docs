@@ -2,7 +2,7 @@
 
 Versão em arquivo único da referência da API, para busca e IA local (RAG). Cada função e propriedade tem um título próprio.
 
-123 páginas, 2194 itens (funções, propriedades e constantes).
+123 páginas, 2195 itens (funções, propriedades e constantes).
 
 ## Índice
 
@@ -254,7 +254,7 @@ Nível da voz agora, de 0 a 1.
 
 *(novo na Anastacio)* `função`
 
-(name, cents, midi) of the current note, e.g. ('A4', -12.5, 69); ('', 0.0, 0) with no clear note.
+(name, cents, midi) da nota atual, por exemplo ('A4', -12.5, 69); ('', 0.0, 0) sem nota clara.
 
 #### microphonePeak()
 
@@ -8378,6 +8378,12 @@ Liga ou desliga o TAA (anti-aliasing temporal) da cena (Render > TAA). `True` ou
 *(novo na Anastacio)* `atributo`
 
 Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros.
+
+#### taaUpscale
+
+*(novo na Anastacio)* `atributo`
+
+Upscaling temporal do TAA (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. A cena é desenhada menor e o TAA amplia para o tamanho da janela; cenas de HUD por cima ficam no tamanho da janela. Outro valor dá `ValueError`.
 
 ---
 

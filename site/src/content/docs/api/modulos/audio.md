@@ -116,7 +116,7 @@ Nível da voz agora, de 0 a 1.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
-(name, cents, midi) of the current note, e.g. ('A4', -12.5, 69); ('', 0.0, 0) with no clear note.
+(name, cents, midi) da nota atual, por exemplo ('A4', -12.5, 69); ('', 0.0, 0) sem nota clara.
 
 ### microphonePeak()
 

@@ -37,14 +37,22 @@ h1, h2, .site-title { font-family: var(--ae-display); letter-spacing: .02em; }
 .site-title { text-transform: uppercase; color: var(--ae-gold-2) !important; }
 
 /* Início */
-[data-has-hero] .page { background: linear-gradient(0deg, #3a2608 0, #1c1306 22rem, var(--sl-color-black) 44rem) no-repeat; }
+[data-has-hero] .page {
+	background:
+		linear-gradient(180deg, rgba(8,10,16,.55) 0, rgba(8,10,16,.35) 30%, var(--sl-color-black) 46rem),
+		url('/anastacio-docs/fundo-tempestade.webp') center top / cover no-repeat;
+	background-size: 100% 100%, max(100%, 114rem) auto;
+}
+:root[data-theme='light'] [data-has-hero] .page { background: linear-gradient(180deg, rgba(255,255,255,.15) 0, var(--sl-color-white) 46rem), url('/anastacio-docs/fundo-tempestade.webp') center top / max(100%, 114rem) auto no-repeat; }
+[data-has-hero] .hero .tagline { color: #e8e6e0; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
 [data-has-hero] header.header { background: transparent; }
 .hero h1 {
 	font-weight: 800; text-transform: uppercase; line-height: 1;
 	background: linear-gradient(180deg, var(--ae-gold-2), var(--ae-gold) 55%, var(--ae-ember));
 	-webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.hero img { animation: ae-float 6s ease-in-out infinite; }
+[data-has-hero] .hero > img, [data-has-hero] .hero picture { display: none; }
+[data-has-hero] .hero { grid-template-columns: 1fr; min-height: 34rem; }
 @keyframes ae-float { 50% { transform: translateY(-10px); } }
 @media (prefers-reduced-motion: reduce) { .hero img { animation: none; } }
 

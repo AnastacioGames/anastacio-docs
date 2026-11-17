@@ -16,6 +16,7 @@ O código da engine fica em outro repositório (`D:\AnastacioEngine`). Este repo
 | `inventario/` | Saída do inventário (`api_inventario.*`) e da cobertura (`cobertura_python.*`). |
 | `prototipo/` | Protótipo visual aprovado do site (`site-prototipo.html`, abre direto no navegador). |
 | `site/` | Projeto Astro Starlight do site. Páginas escritas à mão em `site/src/content/docs/` (início, sobre, guias); `api/` é gerada. |
+| `docs/` | Planos de trabalho do site. [plano-editor-web.md](docs/plano-editor-web.md): divisão do editor web e sua atualização automática. |
 
 ## Como atualizar a documentação
 

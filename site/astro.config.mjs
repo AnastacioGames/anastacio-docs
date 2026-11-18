@@ -30,7 +30,7 @@ export default defineConfig({
 			components: { Header: './src/components/Header.astro' },
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AnastacioGames' }],
 			sidebar: [
-				{ label: 'Começar', translations: { en: 'Getting started', es: 'Empezar', ru: 'Начало работы' }, items: ['guias/primeiro-script', 'guias/range-e-bge'] },
+				{ label: 'Começar', translations: { en: 'Getting started', es: 'Empezar', ru: 'Начало работы' }, items: ['guias/tutoriais', 'guias/primeiro-script', 'guias/range-e-bge'] },
 				{
 					label: 'Exportar o jogo',
 					translations: { en: 'Exporting the game', es: 'Exportar el juego', ru: 'Экспорт игры' },
@@ -39,7 +39,7 @@ export default defineConfig({
 				{
 					label: 'Recursos',
 					translations: { en: 'Features', es: 'Recursos', ru: 'Возможности' },
-					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer', 'guias/idiomas', 'guias/smart-components', 'guias/ui-tree', 'guias/performance', 'guias/microfone', 'guias/rec-play', 'guias/personagem-fuse', 'guias/minimap'],
+					items: ['guias/receitas', 'guias/clima', 'guias/camera-fx', 'guias/load-mode', 'guias/veiculos', 'guias/multiplayer', 'guias/idiomas', 'guias/smart-components', 'guias/ui-tree', 'guias/performance', 'guias/microfone', 'guias/rec-play', 'guias/personagem-fuse', 'guias/minimap', 'guias/box-impostor'],
 				},
 				{ label: 'Por dentro da engine', translations: { en: 'Inside the engine', es: 'Por dentro del motor', ru: 'Устройство движка' }, items: ['por-dentro', 'por-dentro/repositorio', 'por-dentro/editor-para-jogo', 'por-dentro/modulos', 'por-dentro/frame', 'por-dentro/plataformas'] },
 				{ label: 'Módulos', translations: { en: 'Modules', es: 'Módulos', ru: 'Модули' }, items: [{ label: '⬇ API .md (English)', link: 'https://anastaciogames.github.io/anastacio-docs/anastacio-api-en.md', attrs: { download: '' } }, { label: '⬇ API .md (Português)', link: 'https://anastaciogames.github.io/anastacio-docs/anastacio-api-pt.md', attrs: { download: '' } }, ...modulos] },

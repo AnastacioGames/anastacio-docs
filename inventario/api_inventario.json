@@ -2874,6 +2874,11 @@
      "so_leitura": true,
      "status": "documentado"
     },
+    "lodLevelMax": {
+     "tipo": "atributo",
+     "so_leitura": false,
+     "status": "documentado"
+    },
     "lodManager": {
      "tipo": "atributo",
      "so_leitura": false,

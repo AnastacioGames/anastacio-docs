@@ -2,7 +2,7 @@
 
 Single-file version of the API reference, for search and local AI (RAG). Each function and property has its own heading.
 
-123 pages, 2195 entries (functions, properties and constants).
+123 pages, 2196 entries (functions, properties and constants).
 
 ## Contents
 
@@ -11577,6 +11577,13 @@ If true, the object's and children's debug properties will be displayed on scree
 The index of the level of detail (LOD) currently used by this object (read-only).
 
 **Type:** int
+
+#### lodLevelMax
+
+Highest level of detail (LOD) index this object may switch to; -1 (default) means no limit. Farther levels
+are skipped while it is set, e.g. a ragdoll character keeps a mesh level instead of a sitting impostor card.
+
+**Type:** int (-1 to 255)
 
 #### lodManager
 

@@ -675,6 +675,7 @@
  "High resolution can use a lot of memory and may crash.": "Resoluções altas podem usar muita memória e travar.",
  "High size can use a lot of memory and may crash.": "Tamanhos grandes podem usar muita memória e travar.",
  "Higher values result in a more focused light source.": "Valores mais altos deixam a luz mais concentrada.",
+ "Highest level of detail (LOD) index this object may switch to; -1 (default) means no limit. Farther levels are skipped while it is set, e.g. a ragdoll character keeps a mesh level instead of a sitting impostor card.": "Maior índice de nível de detalhe (LOD) para o qual o objeto pode trocar; -1 (padrão) significa sem limite. Enquanto estiver definido, os níveis mais distantes são pulados; por exemplo, um personagem em ragdoll fica num nível com malha em vez do cartão de impostor sentado.",
  "Highest scale, in percent (25-100).": "Escala máxima, em porcentagem (25-100).",
  "Horizon color.": "Cor do horizonte.",
  "Horizontal unit vector pointing to the right of the line at `s`, or None where the line is vertical or degenerate.": "Vetor horizontal unitário apontando para a direita da linha em `s`, ou None onde a linha é vertical ou degenerada.",

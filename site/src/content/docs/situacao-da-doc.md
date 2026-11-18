@@ -53,7 +53,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_EndObjectActuator` | 0 | 0 | 0 |  |
 | `KX_FontObject` | 17 | 17 | 0 | 10 |
 | `KX_GameActuator` | 4 | 4 | 0 |  |
-| `KX_GameObject` | 226 | 226 | 0 | 70 |
+| `KX_GameObject` | 227 | 227 | 0 | 70 |
 | `KX_InputSystem` | 5 | 5 | 0 |  |
 | `KX_InputTable` | 4 | 4 | 0 |  |
 | `KX_LibLoadStatus` | 5 | 5 | 0 |  |

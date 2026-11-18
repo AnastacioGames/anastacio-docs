@@ -143,8 +143,20 @@ sidebar:
 <li>La cápsula del Character sigue la malla.</li>
 <li>La exportación lleva módulos, archivos del proyecto y <code>.cooked</code> con los assets.</li>
 </ul></article>
+<article><h3>Aprender</h3><ul>
+<li>38 tutoriales interactivos dentro de la engine, con ventana de tutoriales.</li>
+<li>Botón Help: una “i” en cada panel explica qué hace.</li>
+<li>Mind Map: mapas mentales dentro del editor.</li>
+</ul></article>
+<article><h3>Lo siguiente</h3><ul>
+<li>Nodes GLSL por archivo y TAAU (escalado temporal).</li>
+<li>Bake Probes de todos los volúmenes a la vez.</li>
+<li>Export to Desktop: exportar a PC en una ventana, sin RangeArmor.</li>
+<li>Impostor de Caja: objetos lejanos se vuelven una tarjeta con volumen.</li>
+<li>El Text Editor recarga scripts guardados en VS Code y abre el archivo allí.</li>
+</ul></article>
 </div>
-<p class="ae-h-rel">Versión 0.7.0</p>
+<p class="ae-h-rel">Versiones 0.7.0 a 0.7.2 · Export to Desktop e Impostor de Caja llegan en la próxima</p>
 </section>
 
 <p class="ae-h-foot">¿Quieres el detalle de algo? El diario completo está en el repositorio del motor, en <code>docs/changelog.md</code>. Lo que aún falta está en <code>docs/roadmap.md</code>.</p>

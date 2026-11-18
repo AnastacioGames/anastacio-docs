@@ -647,6 +647,12 @@ O índice do nível de detalhe (LOD) que o objeto está usando agora (somente le
 
 **Tipo:** int
 
+### lodLevelMax
+
+Maior índice de nível de detalhe (LOD) para o qual o objeto pode trocar; -1 (padrão) significa sem limite. Enquanto estiver definido, os níveis mais distantes são pulados; por exemplo, um personagem em ragdoll fica num nível com malha em vez do cartão de impostor sentado.
+
+**Tipo:** int (-1 to 255)
+
 ### lodManager
 
 Devolve o gerenciador de LOD do objeto, necessário para configurar os níveis de detalhe dele. O gerenciador é compartilhado entre as instâncias e pode ser trocado para usar os níveis de LOD de outro objeto. Se for definido como `None`, a malha do objeto volta a ser a do primeiro nível de LOD anterior.

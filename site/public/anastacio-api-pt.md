@@ -2,7 +2,7 @@
 
 Versão em arquivo único da referência da API, para busca e IA local (RAG). Cada função e propriedade tem um título próprio.
 
-123 páginas, 2195 itens (funções, propriedades e constantes).
+123 páginas, 2196 itens (funções, propriedades e constantes).
 
 ## Índice
 
@@ -11287,6 +11287,12 @@ Se for True, as propriedades de depuração do objeto e dos filhos aparecem na t
 O índice do nível de detalhe (LOD) que o objeto está usando agora (somente leitura).
 
 **Tipo:** int
+
+#### lodLevelMax
+
+Maior índice de nível de detalhe (LOD) para o qual o objeto pode trocar; -1 (padrão) significa sem limite. Enquanto estiver definido, os níveis mais distantes são pulados; por exemplo, um personagem em ragdoll fica num nível com malha em vez do cartão de impostor sentado.
+
+**Tipo:** int (-1 to 255)
 
 #### lodManager
 

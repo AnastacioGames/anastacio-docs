@@ -143,8 +143,20 @@ sidebar:
 <li>The Character capsule follows the mesh.</li>
 <li>Export carries modules, project files and <code>.cooked</code> with the assets.</li>
 </ul></article>
+<article><h3>Learning</h3><ul>
+<li>38 interactive tutorials inside the engine, with a tutorials window.</li>
+<li>Help button: an “i” on each panel explains what it does.</li>
+<li>Mind Map: mind maps inside the editor.</li>
+</ul></article>
+<article><h3>Next up</h3><ul>
+<li>File-based GLSL nodes and TAAU (temporal upscaling).</li>
+<li>Bake Probes for every volume at once.</li>
+<li>Export to Desktop: export to PC in one window, without RangeArmor.</li>
+<li>Box Impostor: distant objects become a card with depth.</li>
+<li>Text Editor reloads scripts saved in VS Code and opens the file there.</li>
+</ul></article>
 </div>
-<p class="ae-h-rel">Version 0.7.0</p>
+<p class="ae-h-rel">Versions 0.7.0 to 0.7.2 · Export to Desktop and Box Impostor ship next</p>
 </section>
 
 <p class="ae-h-foot">Want the detail on something? The full log lives in the engine repository, in <code>docs/changelog.md</code>. What is still missing is in <code>docs/roadmap.md</code>.</p>

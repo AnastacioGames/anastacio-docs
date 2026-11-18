@@ -143,8 +143,20 @@ sidebar:
 <li>Капсула Character следует за мешем.</li>
 <li>Экспорт включает модули, файлы проекта и <code>.cooked</code> с ассетами.</li>
 </ul></article>
+<article><h3>Обучение</h3><ul>
+<li>38 интерактивных уроков внутри движка, с окном уроков.</li>
+<li>Кнопка Help: значок «i» на каждой панели объясняет её назначение.</li>
+<li>Mind Map: интеллект-карты в редакторе.</li>
+</ul></article>
+<article><h3>Дальше</h3><ul>
+<li>GLSL-ноды из файлов и TAAU (временной апскейл).</li>
+<li>Bake Probes для всех объёмов сразу.</li>
+<li>Export to Desktop: экспорт на ПК в одном окне, без RangeArmor.</li>
+<li>Box Impostor: дальние объекты становятся карточкой с объёмом.</li>
+<li>Text Editor перечитывает скрипты, сохранённые в VS Code, и открывает файл в нём.</li>
+</ul></article>
 </div>
-<p class="ae-h-rel">Версия 0.7.0</p>
+<p class="ae-h-rel">0.7.0 – 0.7.2 · Export to Desktop и Box Impostor — в следующей версии</p>
 </section>
 
 <p class="ae-h-foot">Нужны подробности? Полный журнал лежит в репозитории движка: <code>docs/changelog.md</code>. Что ещё впереди — в <code>docs/roadmap.md</code>.</p>

@@ -2,7 +2,7 @@
 
 Gerado por `tools/docs/api_inventario.py`. Módulos expostos como `Range.<módulo>` e `bge.<módulo>`.
 
-**Total:** 109 classes, 10 módulos | documentados 1065 · sem doc 248 · novos 637 · só no rst 111
+**Total:** 109 classes, 10 módulos | documentados 1066 · sem doc 248 · novos 637 · só no rst 111
 
 Legenda: **novo** = existe no C++ e não está no rst (provável função da Anastacio); **sem doc** = está no rst sem descrição; **só no rst** = documentado mas não achado no C++ (removido, herdado de classe base ou definido de outro jeito).
 
@@ -25,7 +25,7 @@ Legenda: **novo** = existe no C++ e não está no rst (provável função da Ana
 
 | Nome | Itens | Documentados | Sem doc | Novos | Só no rst | rst? |
 |---|---:|---:|---:|---:|---:|:---:|
-| `KX_GameObject` | 226 | 148 | 0 | 78 | 0 | sim |
+| `KX_GameObject` | 227 | 149 | 0 | 78 | 0 | sim |
 | `KX_Camera` | 81 | 32 | 0 | 49 | 0 | sim |
 | `KX_Speaker` | 41 | 0 | 0 | 41 | 0 | **não** |
 | `KX_ParticleSystem` | 36 | 0 | 0 | 36 | 0 | **não** |

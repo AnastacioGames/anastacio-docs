@@ -11,6 +11,7 @@ const BASE = '/anastacio-docs';
 export default defineConfig({
 	site: SITE,
 	base: BASE,
+	redirects: { '/exportar/rangearmor': `${BASE}/exportar/desktop/`, '/en/exportar/rangearmor': `${BASE}/en/exportar/desktop/`, '/es/exportar/rangearmor': `${BASE}/es/exportar/desktop/`, '/ru/exportar/rangearmor': `${BASE}/ru/exportar/desktop/` },
 	integrations: [
 		starlight({
 			title: 'Anastacio Engine',
@@ -33,7 +34,7 @@ export default defineConfig({
 				{
 					label: 'Exportar o jogo',
 					translations: { en: 'Exporting the game', es: 'Exportar el juego', ru: 'Экспорт игры' },
-					items: ['exportar/visao-geral', 'exportar/rangearmor', 'exportar/web', 'exportar/android'],
+					items: ['exportar/visao-geral', 'exportar/desktop', 'exportar/web', 'exportar/android'],
 				},
 				{
 					label: 'Recursos',

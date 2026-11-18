@@ -3,11 +3,11 @@ title: Exportar o jogo
 description: Como transformar o seu .range num jogo que outras pessoas podem jogar, no PC, no navegador ou no celular.
 ---
 
-Todas as opções de exportação ficam na mesma aba: **Propriedades > Export Game** (o ícone de caixa, na coluna de abas à direita). Lá há três painéis, um para cada destino.
+Todas as opções de exportação ficam na mesma aba: **Propriedades > Export Game** (o ícone de caixa, na coluna de abas à direita). Lá há um painel para cada destino.
 
 | Destino | Painel | O que sai | Quando usar |
 |---|---|---|---|
-| PC (Windows e Linux) | **Export (RangeArmor)** | Pasta `release/` com o executável do jogo | Para distribuir no itch.io, Steam ou num zip |
+| PC (Windows e Linux) | **Export to Desktop** | Pasta `release/` com o executável do jogo | Para distribuir no itch.io, Steam ou num zip |
 | Navegador | **Web** | Pasta com `index.html` e o runtime WebGL 2 | Para jogar no site, sem instalar nada |
 | Celular Android | **Android (Web)** | Arquivo `.apk` (e `.aab` para a Google Play) | Para instalar no celular ou publicar na loja |
 
@@ -21,6 +21,6 @@ O Android reaproveita o pacote Web: o APK é um app que roda a versão Web do jo
 
 ## Guias
 
-- [Exportar para PC com RangeArmor](../rangearmor/)
+- [Exportar para PC (Export to Desktop)](../desktop/)
 - [Exportar para o navegador (Web/WebGL)](../web/)
 - [Exportar para Android (APK e chave .jks)](../android/)

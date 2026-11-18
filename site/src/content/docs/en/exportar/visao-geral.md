@@ -7,7 +7,7 @@ All export options live in the same tab: **Properties > Export Game** (the box i
 
 | Target | Panel | Output | When to use |
 |---|---|---|---|
-| PC (Windows and Linux) | **Export (RangeArmor)** | `release/` folder with the game executable | To ship on itch.io, Steam or as a zip |
+| PC (Windows and Linux) | **Export to Desktop** | `release/` folder with the game executable | To ship on itch.io, Steam or as a zip |
 | Browser | **Web** | Folder with `index.html` and the WebGL 2 runtime | To play on a website, no install needed |
 | Android phone | **Android (Web)** | `.apk` file (plus `.aab` for Google Play) | To install on a phone or publish on the store |
 
@@ -21,6 +21,6 @@ Android reuses the Web package: the APK is an app that runs the Web version of t
 
 ## Guides
 
-- [Export to PC with RangeArmor](../rangearmor/)
+- [Export to PC (Export to Desktop)](../desktop/)
 - [Export to the browser (Web/WebGL)](../web/)
 - [Export to Android (APK and .jks key)](../android/)

@@ -7,7 +7,7 @@ description: Как превратить ваш .range в игру, в кото�
 
 | Платформа | Панель | Результат | Когда использовать |
 |---|---|---|---|
-| ПК (Windows и Linux) | **Export (RangeArmor)** | Папка `release/` с исполняемым файлом игры | Для выпуска на itch.io, в Steam или в виде zip |
+| ПК (Windows и Linux) | **Export to Desktop** | Папка `release/` с исполняемым файлом игры | Для выпуска на itch.io, в Steam или в виде zip |
 | Браузер | **Web** | Папка с `index.html` и рантаймом WebGL 2 | Для игры на сайте без установки |
 | Телефон Android | **Android (Web)** | Файл `.apk` (плюс `.aab` для Google Play) | Для установки на телефон или публикации в магазине |
 
@@ -21,6 +21,6 @@ Android использует пакет Web: APK — это приложение
 
 ## Руководства
 
-- [Экспорт на ПК с RangeArmor](../rangearmor/)
+- [Экспорт на ПК (Export to Desktop)](../desktop/)
 - [Экспорт в браузер (Web/WebGL)](../web/)
 - [Экспорт в Android (APK и ключ .jks)](../android/)

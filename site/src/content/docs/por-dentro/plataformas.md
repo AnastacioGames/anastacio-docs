@@ -37,7 +37,7 @@ O microfone na Web usa `getUserMedia` + AudioWorklet. No Android, o APK só pede
 ## Para exportar o seu jogo
 
 - [Visão geral da exportação](/anastacio-docs/exportar/visao-geral/)
-- [RangeArmor](/anastacio-docs/exportar/rangearmor/), para proteger o jogo no desktop
+- [Export to Desktop](/anastacio-docs/exportar/desktop/), para gerar e proteger o jogo no desktop
 - [Web](/anastacio-docs/exportar/web/) e [Android](/anastacio-docs/exportar/android/)
 
 <div><a class="ae-x ae-x-next" href="/anastacio-docs/por-dentro/"><div><span class="ae-x-eyebrow">Fim do percurso</span><strong>Voltar ao mapa</strong></div><span class="ae-x-go">abrir →</span></a></div>

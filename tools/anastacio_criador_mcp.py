@@ -277,6 +277,21 @@ def editor_tecla(tecla, x=0, y=0):
     return f"tecla {tecla} enviada"
 
 
+def pedir_liberacao(motivo, espera=60):
+    """Mostra o aviso no editor e espera o clique do usuário (permitir/negar/expirar)."""
+    r = editor().pedir("pedir_liberacao", motivo=motivo)
+    fim = time.time() + espera
+    while r.get("estado") == "pendente" and time.time() < fim:
+        time.sleep(1)
+        r = editor().pedir("resposta_pedido")
+    estado = r.get("estado") or "expirou"
+    if estado == "permitido":
+        return "o usuário liberou a edição; pode continuar"
+    if estado == "negado":
+        return "o usuário NEGOU a edição. Não insista nem tente outro caminho; pergunte o que ele prefere. " + r.get("aviso", "")
+    return "sem resposta do usuário (expirou). Peça a ele para clicar em Liberar edição, ou tente de novo mais tarde."
+
+
 def mutar(texto_ou_fn):
     aviso = backup()
     resultado = texto_ou_fn()
@@ -310,6 +325,9 @@ F = {
     "propriedade_ler": ("Lê uma propriedade por caminho, ex.: bpy.data.objects[\"Cubo\"].location (sem chamadas).",
                         {"caminho": ("string", True)}, lambda a: (exigir_caminho(a["caminho"]),
                                                                   js(editor().pedir("ler", caminho=a["caminho"])))[1]),
+    "pedir_liberacao": ("Em modo só observar, mostra um aviso no editor pedindo ao usuário para liberar a edição e espera a "
+                        "resposta (até 60 s). Só o clique do usuário libera. Dê o motivo em uma frase.",
+                        {"motivo": ("string", True)}, lambda a: pedir_liberacao(a["motivo"])),
     "script_gravar": ("Cria um script (texto do projeto) pelo nome e grava o conteúdo (código do jogo com `Range`, não `bpy`). "
                       "Só grava, não executa. Recusa se o nome já existe; `sobrescrever` só com autorização do usuário. "
                       "Use esta ferramenta, nunca os operadores text.* do editor.",

@@ -28,7 +28,7 @@ Se as ferramentas MCP não estiverem disponíveis, diga isso ao usuário e mostr
 ## Editor que o usuário já abriu
 
 - Se o usuário já tem o editor aberto, peça para ele ativar o addon **Controle por IA** (Preferências > Add-ons) e clicar em Ligar; depois chame `projeto_conectar`. A resposta diz o modo.
-- Em **só observar** você só lê (`cena_descrever`, `objeto_descrever`, `editor_tela`, `propriedade_ler`, `op_listar`). Uma alteração recusada com a mensagem de modo observar **não é falha**: explique o que pretende fazer e peça para o usuário clicar em **Liberar edição**. Não tente outro caminho para contornar.
+- Em **só observar** você só lê (`cena_descrever`, `objeto_descrever`, `editor_tela`, `propriedade_ler`, `op_listar`). Uma alteração recusada com a mensagem de modo observar **não é falha**: explique o que pretende fazer e chame `pedir_liberacao` com o motivo em uma frase (aparece um aviso no editor; só o clique do usuário libera). Se ele negar, não insista; se expirar, peça que clique em **Liberar edição**. Não tente outro caminho para contornar.
 - Não use `editor_fechar` para encerrar: num editor do usuário ele só desliga o controle.
 - Se a conexão cair, o usuário pode ter desligado o controle; peça para ligar de novo.
 

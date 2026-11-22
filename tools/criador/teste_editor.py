@@ -38,6 +38,11 @@ def f(_c):
     if n[0] == 3:
         addon_utils.enable('anastacio_controle_ia')
         bpy.ops.wm.anastacio_ia_ligar()
+    for nome, perm in (('permitir', True), ('negar', False)):
+        f = {str(TMP)!r} + '/' + nome + '.flag'
+        if n[0] > 3 and os.path.exists(f):
+            os.remove(f)
+            bpy.ops.wm.anastacio_ia_responder(permitir=perm)
     if n[0] > 3 and os.path.exists({str(FLAG)!r}):
         os.remove({str(FLAG)!r})
         bpy.ops.wm.anastacio_ia_liberar()
@@ -62,7 +67,7 @@ def recusa(fn, trecho):
 
 
 def abrir(extra_env=None):
-    env = dict(os.environ, ANASTACIO_EVENT_SIMULATE='1')
+    env = dict(os.environ, ANASTACIO_EVENT_SIMULATE='1', ANASTACIO_CRIADOR_ESPERA_NEGADO='2')
     env.pop('ANASTACIO_CRIADOR_PY', None)
     if arg('--scripts'):
         env['BLENDER_USER_SCRIPTS'] = arg('--scripts')
@@ -94,8 +99,24 @@ try:
        'observar não troca o layout para a tela')
     ok(os.path.exists(c.pedir('tela', arquivo=str(TMP / 't.png'))), 'observar permite a tela da área já aberta')
 
-    FLAG.write_text('1')
-    ok(esperar(lambda: c.pedir('ping')['modo'] == 'controle', 30, 'liberar'), 'liberar muda para controle')
+    # pedido de liberação: só o clique do usuário libera
+    ok(recusa(lambda: c.pedir('pedir_liberacao'), 'motivo'), 'pedido sem motivo recusado')
+    r = c.pedir('pedir_liberacao', motivo='x' * 300)
+    ok(r['estado'] == 'pendente' and len(c.pedir('ping')['pedido']['motivo']) == 200, 'pedir_liberacao mostra o aviso (motivo cortado em 200)')
+    ok(recusa(lambda: c.pedir('op', nome='wm.anastacio_ia_responder', args={'permitir': True}), 'observar'),
+       'a IA não aprova o próprio pedido por op')
+    ok(recusa(lambda: c.pedir('evento', tipo='LEFTMOUSE', valor='PRESS', x=10, y=10), 'observar'), 'nem clicando')
+    ok(c.pedir('ping')['modo'] == 'observar', 'pedido pendente não libera')
+    (TMP / 'negar.flag').write_text('1')
+    ok(esperar(lambda: c.pedir('resposta_pedido')['estado'] == 'negado', 20, 'negar'), 'usuário nega: resposta negado')
+    ok(c.pedir('pedir_liberacao', motivo='de novo')['estado'] == 'negado', 'novo pedido logo após negar é segurado')
+    ok(c.pedir('ping')['modo'] == 'observar' and c.pedir('ping')['pedido'] is None, 'negado continua observando, sem aviso')
+    time.sleep(3)  # ESPERA_NEGADO do teste é 2 s
+    ok(c.pedir('pedir_liberacao', motivo='criar o script')['estado'] == 'pendente', 'depois da espera o pedido volta a valer')
+    (TMP / 'permitir.flag').write_text('1')
+    ok(esperar(lambda: c.pedir('ping')['modo'] == 'controle', 30, 'permitir'), 'usuário permite: muda para controle')
+    ok(c.pedir('ping')['pedido'] is None, 'aviso some depois de permitir')
+    ok(c.pedir('pedir_liberacao', motivo='y')['estado'] == 'permitido', 'pedir com edição liberada só informa')
     ok(c.pedir('op', nome='object.select_all', args={'action': 'DESELECT'})['estado'] == ['FINISHED'], 'controle permite op')
     ok(recusa(lambda: c.pedir('op', nome='script.python_file_run', args={'filepath': 'x.py'}), 'ANASTACIO_CRIADOR_PY'),
        'operador que roda código bloqueado')

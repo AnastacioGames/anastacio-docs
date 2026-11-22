@@ -164,6 +164,8 @@ Tamanho da partícula no fim da vida.
 
 *(novo na Anastacio)* `atributo`
 
+Animação por quadros da textura da partícula, como tupla `(colunas, linhas, ciclos, aleatório)`. Ao atribuir, `ciclos` (padrão 1.0) e `aleatório` (padrão `False`) são opcionais: `ps.flipbook = (4, 4)`.
+
 ### fragmentShaderPath
 
  `atributo`
@@ -215,6 +217,8 @@ Mostra o painel de depuração do emissor durante o jogo.
 ### useObjectRotation
 
 *(novo na Anastacio)* `atributo`
+
+`True` faz gravidade, velocidade, direção, deslocamento e o eixo do vórtice seguirem a rotação do objeto dono.
 
 ### useVortex
 

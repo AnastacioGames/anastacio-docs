@@ -79,7 +79,6 @@
   "RIGHTSHIFTKEY": "Right Shift key.",
   "ESCKEY": "Esc key.",
   "TABKEY": "Tab key.",
-  "RETKEY": "Enter key (same code as ENTERKEY).",
   "ENTERKEY": "Enter key.",
   "SPACEKEY": "Space bar.",
   "LINEFEEDKEY": "Line Feed key (rare on modern keyboards).",
@@ -359,7 +358,18 @@
   "KX_JOYSTICK_BUT_RIGHTSHOUDER": "Gamepad right shoulder button (RB).",
   "KX_JOYSTICK_BUT_RIGHTSTICK": "Gamepad right stick click.",
   "KX_JOYSTICK_BUT_X": "Gamepad X button.",
-  "KX_JOYSTICK_BUT_Y": "Gamepad Y button."
+  "KX_JOYSTICK_BUT_Y": "Gamepad Y button.",
+  "KX_MOUSESENSORMODE_BUTTON6": "Mouse sensor mode: reacts to mouse button 6.",
+  "KX_MOUSESENSORMODE_BUTTON7": "Mouse sensor mode: reacts to mouse button 7.",
+  "KX_MOUSESENSORMODE_LEFTBUTTON": "Mouse sensor mode: reacts to left mouse button.",
+  "KX_MOUSESENSORMODE_MIDDLEBUTTON": "Mouse sensor mode: reacts to middle mouse button.",
+  "KX_MOUSESENSORMODE_RIGHTBUTTON": "Mouse sensor mode: reacts to right mouse button.",
+  "KX_MOUSESENSORMODE_LEFTTHUMBMOUSE": "Mouse sensor mode: reacts to left thumb mouse button.",
+  "KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE": "Mouse sensor mode: reacts to right thumb mouse button.",
+  "KX_MOUSESENSORMODE_WHEELUP": "Mouse sensor mode: reacts to mouse wheel up.",
+  "KX_MOUSESENSORMODE_WHEELDOWN": "Mouse sensor mode: reacts to mouse wheel down.",
+  "KX_MOUSESENSORMODE_MOVEMENT": "Mouse sensor mode: reacts to mouse movement.",
+  "SHD_TANGENT": "`BL_Shader` vertex attribute type: the vertex tangent. Value `1`."
  },
  "KX_WorldInfo": {
   "skyType": "World sky type: `'FLAT'`, `'GRADIENT'`, `'PROCEDURAL'` or `'ATMOSPHERIC'`. Changing it recompiles the world shader on the next frame; object materials keep the sky type they were compiled with.",
@@ -513,7 +523,9 @@
   "size": "Initial particle size.",
   "texture": "Path of the image used on particles. Empty removes the texture.",
   "velocity": "Initial particle velocity.",
-  "velocityRandomness": "Random variation of the initial velocity (0 = all the same)."
+  "velocityRandomness": "Random variation of the initial velocity (0 = all the same).",
+  "flipbook": "Flipbook animation of the particle texture, as a `(columns, rows, cycles, random)` tuple. When assigning, `cycles` (default 1.0) and `random` (default `False`) are optional: `ps.flipbook = (4, 4)`.",
+  "useObjectRotation": "`True` makes gravity, velocity, direction, offset and the vortex axis follow the owner object rotation."
  },
  "Range.network": {
   "host": "host(port=0, max_players=0, room_name='', password='', dedicated=False, websocket_port=-1, transport='enet') -> bool\nOpens a server (room). Zero or empty values use the scene Network panel. `dedicated=True` creates no local player; `websocket_port` accepts Web clients; `transport` is `'enet'` (LAN/IP) or `'steam'`.",
@@ -763,7 +775,10 @@
   "worldSun": "Sun light linked to the World (sky sun position), or `None`.",
   "skip_cutscene": "skip_cutscene()\nJumps to the end of the playing Cutscene: dialogs, waits, camera paths and fades are dropped; the other remaining events run (camera restore, unlock, scene change). Returns `False` when nothing was playing. Tab or the gamepad Start button do the same unless `Range.logic.globalDict[\"cutscene_skip\"]` is `False`.",
   "takes": "Names of the scene's Rec Play takes (read-only).",
-  "play_take": "play_take(name) -> bool\nPlays a Rec Play take on all its actors. `True` when the take exists."
+  "play_take": "play_take(name) -> bool\nPlays a Rec Play take on all its actors. `True` when the take exists.",
+  "setQualityPreset": "setQualityPreset(name)\nSets the global quality preset: `'CUSTOM'`, `'VERY_LOW'`, `'LOW'`, `'MEDIUM'`, `'HIGH'`, `'ULTRA'` or `'AUTO'`. Steps and samples (SSAO, SSGI, SSR, Light Scattering, clouds, Volumetric Fog) change now; resolutions, shadows, DOF and sky apply on the next `scene.restart()` or load. Raises `ValueError` for an unknown name.",
+  "getQualityPreset": "getQualityPreset() -> str\nName of the global quality preset (`'CUSTOM'`, `'VERY_LOW'`, ..., `'AUTO'`).",
+  "visible": "`False` hides the scene: it is no longer drawn. Useful for an overlay (HUD) scene that should disappear without being removed."
  },
  "KX_Speaker": {
   "GetActiveEffect": "GetActiveEffect() -> int\nActive sound effect: 0 none, 1 reverb.",
@@ -847,7 +862,13 @@
   "setSplitImpulse": "setSplitImpulse(enabled)\nSolves contact position and velocity separately. Avoids objects \"popping\" when separating.",
   "setSplitImpulsePenetrationThreshold": "setSplitImpulsePenetrationThreshold(value)\nPenetration from which split impulse is used (default -0.04).",
   "setSplitImpulseTurnErp": "setSplitImpulseTurnErp(value)\nSplit impulse rotation correction (default 0.1).",
-  "setWarmstartingFactor": "setWarmstartingFactor(value)\nHow much the solver reuses the previous frame result (0.0 to 1.0)."
+  "setWarmstartingFactor": "setWarmstartingFactor(value)\nHow much the solver reuses the previous frame result (0.0 to 1.0).",
+  "POINTTOPOINT_CONSTRAINT": "Constraint type for `createConstraint`, point to point: the two bodies are pinned at a pivot point and can rotate freely around it (ball joint).",
+  "LINEHINGE_CONSTRAINT": "Constraint type for `createConstraint`, hinge: the bodies rotate around a shared axis.",
+  "ANGULAR_CONSTRAINT": "Constraint type for `createConstraint`, angular: like the hinge, but it only limits rotation and does not pin the position.",
+  "CONETWIST_CONSTRAINT": "Constraint type for `createConstraint`, cone twist: a shoulder-like joint that limits cone swing and twist.",
+  "VEHICLE_CONSTRAINT": "Constraint type for `createConstraint`, vehicle: used to create a vehicle (see `getVehicleConstraint`).",
+  "GENERIC_6DOF_CONSTRAINT": "Constraint type for `createConstraint`, generic 6 degrees of freedom: each movement and rotation axis can be limited."
  },
  "Range.imgui": {
   "close_current_popup": "close_current_popup()\nCloses the open popup.",
@@ -968,7 +989,8 @@
   "isLive": "isLive() -> bool\n`True` while the microphone is being heard.",
   "voiceFx": "voiceFx(sound, preset, amount=1.0) -> aud.Sound\nApplies a voice effect; same as `aud.voice_fx`.",
   "edit": "edit(sound, start=0, end=-1, fade_in=0, fade_out=0, normalize=False) -> aud.Sound\nTrims, fades and normalizes a sound; same as `aud.edit`.",
-  "voicePresets": "voicePresets(live=False) -> list\nNames of the voice effects."
+  "voicePresets": "voicePresets(live=False) -> list\nNames of the voice effects.",
+  "microphonePitch": "microphonePitch() -> float\nFrequency of the note being sung or played into the microphone, in Hz; 0 when there is no clear note."
  },
  "KX_MicrophoneSensor": {
   "mode": "Mode: `0` talking (level above `threshold`), `1` peak (one pulse, like a clap or blow), `2` silence (after `hold` seconds below `threshold`).",
@@ -1020,5 +1042,8 @@
   "IMB_BLEND_COPY": "Blend mode for the `mode` argument of `ImageBuff.plot` (default): copies the source over the destination, RGB and alpha, with no blending.",
   "IMB_BLEND_COPY_RGB": "Blend mode for the `mode` argument of `ImageBuff.plot`: copies only the source colors (RGB) and keeps the destination alpha.",
   "IMB_BLEND_COPY_ALPHA": "Blend mode for the `mode` argument of `ImageBuff.plot`: copies only the source alpha and keeps the destination colors."
+ },
+ "SCA_ILogicBrick": {
+  "fireCount": "How many times this brick fired: a sensor counts its activations (rises) and an actuator counts its starts; other bricks return 0. Read-only."
  }
 }

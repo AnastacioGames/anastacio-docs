@@ -363,25 +363,37 @@ Constraint type to be used with `createConstraint`.
 
 ### POINTTOPOINT_CONSTRAINT
 
+Constraint type for `createConstraint`, point to point: the two bodies are pinned at a pivot point and can rotate freely around it (ball joint).
+
 .. to do
 
 ### LINEHINGE_CONSTRAINT
+
+Constraint type for `createConstraint`, hinge: the bodies rotate around a shared axis.
 
 .. to do
 
 ### ANGULAR_CONSTRAINT
 
+Constraint type for `createConstraint`, angular: like the hinge, but it only limits rotation and does not pin the position.
+
 .. to do
 
 ### CONETWIST_CONSTRAINT
+
+Constraint type for `createConstraint`, cone twist: a shoulder-like joint that limits cone swing and twist.
 
 .. to do
 
 ### VEHICLE_CONSTRAINT
 
+Constraint type for `createConstraint`, vehicle: used to create a vehicle (see `getVehicleConstraint`).
+
 .. to do
 
 ### GENERIC_6DOF_CONSTRAINT
+
+Constraint type for `createConstraint`, generic 6 degrees of freedom: each movement and rotation axis can be limited.
 
 .. to do
 

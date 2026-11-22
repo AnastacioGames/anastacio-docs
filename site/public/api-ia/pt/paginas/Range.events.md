@@ -156,6 +156,8 @@ Movimento horizontal do mouse.
 
 ### MOUSEY
 
+Movimento vertical do mouse.
+
 ## Teclas do teclado
 
 ## Letras
@@ -262,6 +264,8 @@ Tecla Y.
 
 ### ZKEY
 
+Tecla Z.
+
 ## Números
 
 ### ZEROKEY
@@ -302,6 +306,8 @@ Tecla 8 da fileira de números (não a do teclado numérico).
 
 ### NINEKEY
 
+Tecla 9 da fileira de números (não a do teclado numérico).
+
 ## Teclas modificadoras
 
 ### CAPSLOCKKEY
@@ -330,6 +336,8 @@ Tecla Shift da direita.
 
 ### LEFTSHIFTKEY
 
+Tecla Shift da esquerda.
+
 ## Setas
 
 ### LEFTARROWKEY
@@ -345,6 +353,8 @@ Seta para baixo.
 Seta para a direita.
 
 ### UPARROWKEY
+
+Seta para cima.
 
 ## Teclado numérico
 
@@ -409,6 +419,8 @@ Tecla - do teclado numérico.
 Tecla Enter do teclado numérico.
 
 ### PADPLUSKEY
+
+Tecla + do teclado numérico.
 
 ## Teclas de função
 
@@ -485,6 +497,8 @@ Tecla F17.
 Tecla F18.
 
 ### F19KEY
+
+Tecla F19.
 
 ## Outras teclas
 

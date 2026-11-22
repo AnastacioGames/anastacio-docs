@@ -319,7 +319,11 @@ Cria agora um objeto que ficou de fora no carregamento pela opção **Convert** 
 
 ### getQualityPreset()
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Nome do preset de qualidade global (`'CUSTOM'`, `'VERY_LOW'`, ..., `'AUTO'`).
+
+**Retorna:** `str`
 
 ### play_cutscene(sequence=0)
 
@@ -351,9 +355,11 @@ Libera um evento **Wait Trigger** da Cutscene esperando por `name`. `True` se el
 
 Reinicia a Cutscene ativa e remove os objetos que ela criou.
 
-### setQualityPreset()
+### setQualityPreset(name)
 
-<span class="ae-badge pendente">sem documentação</span> <small>método</small>
+ <small>método</small>
+
+Define o preset de qualidade global: `'CUSTOM'`, `'VERY_LOW'`, `'LOW'`, `'MEDIUM'`, `'HIGH'`, `'ULTRA'` ou `'AUTO'`. Passos e amostras (SSAO, SSGI, SSR, Light Scattering, nuvens, Volumetric Fog) mudam na hora; resoluções, sombras, DOF e céu valem no próximo `scene.restart()` ou carregamento. Levanta `ValueError` se o nome não existir.
 
 ### skip_cutscene()
 
@@ -394,6 +400,8 @@ Nomes dos objetos que ainda podem ser criados com `convertObject()`.
 ### visible
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo</small>
+
+`False` esconde a cena: ela deixa de ser desenhada. Útil para uma cena de overlay (HUD) que deve sumir sem ser removida.
 
 ### worldSun
 

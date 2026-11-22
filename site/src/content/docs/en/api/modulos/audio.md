@@ -130,6 +130,10 @@ Peak with a slow fall, 0 to 1.
 
 <span class="ae-badge novo">new in Anastacio</span> <small>function</small>
 
+Frequency of the note being sung or played into the microphone, in Hz; 0 when there is no clear note.
+
+**Returns:** `float`
+
 ### microphoneRecordingSeconds()
 
 <span class="ae-badge novo">new in Anastacio</span> <small>function</small>

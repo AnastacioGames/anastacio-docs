@@ -103,8 +103,10 @@ def tipo_do_item(titulo, em_classe):
 def resumo_do_item(corpo):
     for linha in corpo.split("\n"):
         s = linha.strip()
-        if not s or s.startswith(("*(", "`", "**", ">", "```", "|", "-", ".. ")):
+        if not s or s.startswith(("*(", "**", ">", "```", "|", ".. ")):
             continue
+        if re.fullmatch(r"`[^`]*`", s) or s.startswith("- **`"):
+            continue  # selo de tipo (`função`) ou lista de parâmetros, não é descrição
         s = re.sub(r"\s+", " ", s)
         return s[:160] + ("…" if len(s) > 160 else "")
     return ""

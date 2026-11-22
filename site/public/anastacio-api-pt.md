@@ -268,6 +268,10 @@ Pico com queda lenta, de 0 a 1.
 
 *(novo na Anastacio)* `função`
 
+Frequência da nota que está sendo cantada ou tocada no microfone, em Hz; 0 quando não há nota clara.
+
+**Retorna:** `float`
+
 #### microphoneRecordingSeconds()
 
 *(novo na Anastacio)* `função`
@@ -800,25 +804,37 @@ Tipo de constraint a usar com `createConstraint`.
 
 #### POINTTOPOINT_CONSTRAINT
 
+Tipo de constraint para `createConstraint`, ponto a ponto: os dois corpos ficam presos por um ponto de pivô e podem girar livremente em volta dele (junta de bola).
+
 .. to do
 
 #### LINEHINGE_CONSTRAINT
+
+Tipo de constraint para `createConstraint`, dobradiça: os corpos giram em torno de um eixo comum.
 
 .. to do
 
 #### ANGULAR_CONSTRAINT
 
+Tipo de constraint para `createConstraint`, angular: igual à dobradiça, mas só limita a rotação, sem prender a posição.
+
 .. to do
 
 #### CONETWIST_CONSTRAINT
+
+Tipo de constraint para `createConstraint`, cone-twist: junta de ombro, que limita a abertura em cone e a torção.
 
 .. to do
 
 #### VEHICLE_CONSTRAINT
 
+Tipo de constraint para `createConstraint`, veículo: usado para criar um veículo (veja `getVehicleConstraint`).
+
 .. to do
 
 #### GENERIC_6DOF_CONSTRAINT
+
+Tipo de constraint para `createConstraint`, 6 graus de liberdade genérica: cada eixo de movimento e de rotação pode ser limitado.
 
 .. to do
 
@@ -1034,6 +1050,8 @@ Movimento horizontal do mouse.
 
 #### MOUSEY
 
+Movimento vertical do mouse.
+
 ### Teclas do teclado
 
 ### Letras
@@ -1140,6 +1158,8 @@ Tecla Y.
 
 #### ZKEY
 
+Tecla Z.
+
 ### Números
 
 #### ZEROKEY
@@ -1180,6 +1200,8 @@ Tecla 8 da fileira de números (não a do teclado numérico).
 
 #### NINEKEY
 
+Tecla 9 da fileira de números (não a do teclado numérico).
+
 ### Teclas modificadoras
 
 #### CAPSLOCKKEY
@@ -1208,6 +1230,8 @@ Tecla Shift da direita.
 
 #### LEFTSHIFTKEY
 
+Tecla Shift da esquerda.
+
 ### Setas
 
 #### LEFTARROWKEY
@@ -1223,6 +1247,8 @@ Seta para baixo.
 Seta para a direita.
 
 #### UPARROWKEY
+
+Seta para cima.
 
 ### Teclado numérico
 
@@ -1287,6 +1313,8 @@ Tecla - do teclado numérico.
 Tecla Enter do teclado numérico.
 
 #### PADPLUSKEY
+
+Tecla + do teclado numérico.
 
 ### Teclas de função
 
@@ -1363,6 +1391,8 @@ Tecla F17.
 Tecla F18.
 
 #### F19KEY
+
+Tecla F19.
 
 ### Outras teclas
 
@@ -2506,6 +2536,8 @@ Estado do sensor: continua ligado.
 
 #### KX_SENSOR_JUST_DEACTIVATED
 
+Estado do sensor: acabou de desligar neste quadro.
+
 ### Sensor de armature
 
 Veja `Range.types.KX_ArmatureSensor.type`
@@ -2610,6 +2642,8 @@ Sensor Radar: cone apontando para o eixo -Y do objeto.
 
 #### KX_RADAR_AXIS_NEG_Z
 
+Sensor Radar: cone apontando para o eixo -Z do objeto.
+
 ### Sensor de raio
 
 Veja `Range.types.KX_RaySensor`
@@ -2635,6 +2669,8 @@ Sensor Ray: raio lançado no eixo -X do objeto.
 Sensor Ray: raio lançado no eixo -Y do objeto.
 
 #### KX_RAY_AXIS_NEG_Z
+
+Sensor Ray: raio lançado no eixo -Z do objeto.
 
 ### Atuadores
 
@@ -2663,6 +2699,8 @@ Atuador Action: repete enquanto o sensor estiver ativo.
 Atuador Action: repete e, ao desligar, termina a volta atual.
 
 #### KX_ACTIONACT_PROPERTY
+
+Atuador Action: o quadro da animação vem de uma propriedade.
 
 ### Atuador de armature
 
@@ -2846,6 +2884,8 @@ Atuador Dynamic: desliga o modo corpo rígido.
 
 #### KX_DYN_SET_MASS
 
+Atuador Dynamic: muda a massa do objeto.
+
 ### Atuador de jogo
 
 Veja `Range.types.KX_GameActuator`
@@ -2872,6 +2912,8 @@ Atuador Game: salva as propriedades globais em arquivo.
 
 #### KX_GAME_LOADCFG
 
+Atuador Game: carrega as propriedades globais salvas.
+
 ### Atuador de mouse
 
 #### KX_ACT_MOUSE_OBJECT_AXIS_X
@@ -2884,6 +2926,8 @@ Atuador Mouse (look): gira em torno do eixo Y do objeto.
 
 #### KX_ACT_MOUSE_OBJECT_AXIS_Z
 
+Atuador Mouse (look): gira em torno do eixo Z do objeto.
+
 ### Atuador de parentesco
 
 #### KX_PARENT_REMOVE
@@ -2891,6 +2935,8 @@ Atuador Mouse (look): gira em torno do eixo Y do objeto.
 Atuador Parent: tira o objeto do pai.
 
 #### KX_PARENT_SET
+
+Atuador Parent: prende o objeto a um pai.
 
 ### Distribuições aleatórias
 
@@ -2934,6 +2980,8 @@ Atuador Random: decimal com distribuição normal (média e desvio).
 
 #### KX_RANDOMACT_FLOAT_NEGATIVE_EXPONENTIAL
 
+Atuador Random: decimal com distribuição exponencial negativa.
+
 ### Atuador de cena
 
 Veja `Range.types.KX_SceneActuator`
@@ -2967,6 +3015,8 @@ Atuador Scene: remove uma cena.
 Atuador Scene: pausa uma cena.
 
 #### KX_SCENE_RESUME
+
+Atuador Scene: continua uma cena pausada.
 
 ### Atuador de som
 
@@ -3004,6 +3054,8 @@ Atuador Sound: toca para frente e para trás em repetição.
 
 #### KX_SOUNDACT_LOOPBIDIRECTIONAL_STOP
 
+Atuador Sound: vai e volta enquanto o sensor estiver ativo.
+
 **Valor:** `6`
 
 ### Atuador de steering
@@ -3023,6 +3075,8 @@ Atuador Steering: foge do alvo.
 **Valor:** `2`
 
 #### KX_STEERING_PATHFOLLOWING
+
+Atuador Steering: segue o caminho do Navmesh até o alvo.
 
 **Valor:** `3`
 
@@ -3064,6 +3118,8 @@ Atuador Track To: eixo -Y do objeto aponta para o alvo.
 
 #### KX_TRACK_TRAXIS_NEG_Z
 
+Atuador Track To: eixo -Z do objeto aponta para o alvo.
+
 ### Diversos
 
 ### Filtro 2D
@@ -3075,6 +3131,8 @@ Atuador 2D Filter: desfoque.
 **Valor:** `2`
 
 #### RAS_2DFILTER_CUSTOMFILTER
+
+Atuador 2D Filter: shader GLSL próprio.
 
 Filtro personalizado; o código é definido pela propriedade shaderText.
 
@@ -3088,11 +3146,15 @@ Atuador 2D Filter: dilatação (clareia bordas).
 
 #### RAS_2DFILTER_DISABLED
 
+Atuador 2D Filter: desliga o filtro.
+
 Desliga o filtro que está ativo agora
 
 **Valor:** `-1`
 
 #### RAS_2DFILTER_ENABLED
+
+Atuador 2D Filter: liga o filtro.
 
 Liga o filtro que foi desligado antes
 
@@ -3130,6 +3192,8 @@ Cria e liga filtros prontos
 
 #### RAS_2DFILTER_NOFILTER
 
+Atuador 2D Filter: remove o filtro.
+
 Desliga e destrói o filtro que está ativo agora
 
 **Valor:** `0`
@@ -3154,9 +3218,13 @@ Atuador 2D Filter: nitidez.
 
 #### RAS_2DFILTER_SOBEL
 
+Atuador 2D Filter: detecção de bordas (Sobel).
+
 **Valor:** `7`
 
 #### RAS_2DFILTER_SOBEL
+
+Atuador 2D Filter: detecção de bordas (Sobel).
 
 **Valor:** `14`
 
@@ -3253,6 +3321,8 @@ Tipo de restrição de bone: Clamp To (prende a uma curva).
 Tipo de restrição de bone: Transformation.
 
 #### CONSTRAINT_TYPE_DISTLIMIT
+
+Tipo de restrição de bone: Limit Distance.
 
 Veja `Range.types.BL_ArmatureConstraint.ik_type`
 
@@ -3358,6 +3428,8 @@ Fator de mistura (blend) do material: cor de origem. Usado em setBlending().
 
 #### BL_ZERO
 
+Fator de mistura (blend) do material: zero (ignora a cor). Usado em setBlending().
+
 ### Estado da entrada
 
 Veja `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.types.SCA_MouseSensor`, `Range.types.SCA_KeyboardSensor`
@@ -3375,6 +3447,8 @@ Estado de tecla/botão: acabou de ser apertado.
 Estado de tecla/botão: continua apertado.
 
 #### KX_INPUT_JUST_RELEASED
+
+Estado de tecla/botão: acabou de ser solto.
 
 ### KX_GameObject
 
@@ -3423,6 +3497,8 @@ Botão esquerdo do mouse (para o sensor de mouse).
 Botão do meio do mouse (para o sensor de mouse).
 
 #### KX_MOUSE_BUT_RIGHT
+
+Botão direito do mouse (para o sensor de mouse).
 
 ### Modos de desenho da malha de navegação
 
@@ -3501,6 +3577,8 @@ Uniforme de shader com o tempo do jogo, para animar efeitos.
 Usa um timer como valor do uniform.
 
 #### SHD_TANGENT
+
+Tipo de atributo de vértice de um `BL_Shader`: a tangente do vértice. Valor `1`.
 
 ### Estados
 
@@ -3623,6 +3701,8 @@ Máscara do estado 28 dos logic bricks.
 Máscara do estado 29 dos logic bricks.
 
 #### KX_STATE30
+
+Máscara do estado 30 dos logic bricks.
 
 Veja `Range.types.KX_StateActuator.operation`
 
@@ -3900,43 +3980,63 @@ Botão lateral direito do mouse (polegar).
 
 #### KX_MOUSESENSORMODE_BUTTON6
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão 6 do mouse.
 
 #### KX_MOUSESENSORMODE_BUTTON7
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão 7 do mouse.
 
 #### KX_MOUSESENSORMODE_LEFTBUTTON
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão esquerdo do mouse.
 
 #### KX_MOUSESENSORMODE_LEFTTHUMBMOUSE
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão lateral esquerdo do mouse (polegar).
 
 #### KX_MOUSESENSORMODE_MIDDLEBUTTON
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão do meio do mouse.
 
 #### KX_MOUSESENSORMODE_MOVEMENT
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a movimento do mouse.
 
 #### KX_MOUSESENSORMODE_RIGHTBUTTON
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão direito do mouse.
 
 #### KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a botão lateral direito do mouse (polegar).
 
 #### KX_MOUSESENSORMODE_WHEELDOWN
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a roda do mouse para baixo.
 
 #### KX_MOUSESENSORMODE_WHEELUP
 
-*(sem documentação)* `constante`
+ `constante`
+
+Modo do sensor de mouse: reage a roda do mouse para cima.
 
 #### KX_MOVEMENT_ALL_AXIS
 
@@ -14632,6 +14732,8 @@ Tamanho da partícula no fim da vida.
 
 *(novo na Anastacio)* `atributo`
 
+Animação por quadros da textura da partícula, como tupla `(colunas, linhas, ciclos, aleatório)`. Ao atribuir, `ciclos` (padrão 1.0) e `aleatório` (padrão `False`) são opcionais: `ps.flipbook = (4, 4)`.
+
 #### fragmentShaderPath
 
  `atributo`
@@ -14683,6 +14785,8 @@ Mostra o painel de depuração do emissor durante o jogo.
 #### useObjectRotation
 
 *(novo na Anastacio)* `atributo`
+
+`True` faz gravidade, velocidade, direção, deslocamento e o eixo do vórtice seguirem a rotação do objeto dono.
 
 #### useVortex
 
@@ -16131,7 +16235,11 @@ Cria agora um objeto que ficou de fora no carregamento pela opção **Convert** 
 
 #### getQualityPreset()
 
-*(sem documentação)* `método`
+ `método`
+
+Nome do preset de qualidade global (`'CUSTOM'`, `'VERY_LOW'`, ..., `'AUTO'`).
+
+**Retorna:** `str`
 
 #### play_cutscene(sequence=0)
 
@@ -16163,9 +16271,11 @@ Libera um evento **Wait Trigger** da Cutscene esperando por `name`. `True` se el
 
 Reinicia a Cutscene ativa e remove os objetos que ela criou.
 
-#### setQualityPreset()
+#### setQualityPreset(name)
 
-*(sem documentação)* `método`
+ `método`
+
+Define o preset de qualidade global: `'CUSTOM'`, `'VERY_LOW'`, `'LOW'`, `'MEDIUM'`, `'HIGH'`, `'ULTRA'` ou `'AUTO'`. Passos e amostras (SSAO, SSGI, SSR, Light Scattering, nuvens, Volumetric Fog) mudam na hora; resoluções, sombras, DOF e céu valem no próximo `scene.restart()` ou carregamento. Levanta `ValueError` se o nome não existir.
 
 #### skip_cutscene()
 
@@ -16206,6 +16316,8 @@ Nomes dos objetos que ainda podem ser criados com `convertObject()`.
 #### visible
 
 *(novo na Anastacio)* `atributo`
+
+`False` esconde a cena: ela deixa de ser desenhada. Útil para uma cena de overlay (HUD) que deve sumir sem ser removida.
 
 #### worldSun
 
@@ -18415,6 +18527,8 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 #### fireCount
 
 *(novo na Anastacio)* `atributo · só leitura`
+
+Quantas vezes este brick disparou: o sensor conta as ativações (subidas) e o actuator conta as partidas; outros bricks devolvem 0. Somente leitura.
 
 ---
 

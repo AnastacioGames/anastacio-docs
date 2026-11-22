@@ -20,7 +20,7 @@
 "assinatura": "isLive()",
 "pagina": "Range.audio",
 "tipo": "function",
-"resumo": "",
+"resumo": "`True` enquanto o microfone está sendo ouvido.",
 "arquivo": "paginas/Range.audio.md"
 },
 {
@@ -28,7 +28,7 @@
 "assinatura": "isPlaying(module)",
 "pagina": "Range.audio",
 "tipo": "function",
-"resumo": "",
+"resumo": "`True` enquanto um som do módulo toca.",
 "arquivo": "paginas/Range.audio.md"
 },
 {
@@ -60,7 +60,7 @@
 "assinatura": "microphoneIsRecording()",
 "pagina": "Range.audio",
 "tipo": "function",
-"resumo": "",
+"resumo": "`True` enquanto grava.",
 "arquivo": "paginas/Range.audio.md"
 },
 {
@@ -92,7 +92,7 @@
 "assinatura": "microphonePitch()",
 "pagina": "Range.audio",
 "tipo": "function",
-"resumo": "",
+"resumo": "Frequência da nota que está sendo cantada ou tocada no microfone, em Hz; 0 quando não há nota clara.",
 "arquivo": "paginas/Range.audio.md"
 },
 {
@@ -324,7 +324,7 @@
 "assinatura": "getAppliedImpulse(constraintId)",
 "pagina": "Range.constraints",
 "tipo": "function",
-"resumo": "",
+"resumo": "- tipo: int",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -332,7 +332,7 @@
 "assinatura": "getVehicleConstraint(constraintId)",
 "pagina": "Range.constraints",
 "tipo": "function",
-"resumo": "",
+"resumo": "- tipo: int",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -340,7 +340,7 @@
 "assinatura": "getCharacter(gameobj)",
 "pagina": "Range.constraints",
 "tipo": "function",
-"resumo": "",
+"resumo": "- tipo: `KX_GameObject`",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -604,7 +604,7 @@
 "assinatura": "POINTTOPOINT_CONSTRAINT",
 "pagina": "Range.constraints",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de constraint para `createConstraint`, ponto a ponto: os dois corpos ficam presos por um ponto de pivô e podem girar livremente em volta dele (junta de bol…",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -612,7 +612,7 @@
 "assinatura": "LINEHINGE_CONSTRAINT",
 "pagina": "Range.constraints",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de constraint para `createConstraint`, dobradiça: os corpos giram em torno de um eixo comum.",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -620,7 +620,7 @@
 "assinatura": "ANGULAR_CONSTRAINT",
 "pagina": "Range.constraints",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de constraint para `createConstraint`, angular: igual à dobradiça, mas só limita a rotação, sem prender a posição.",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -628,7 +628,7 @@
 "assinatura": "CONETWIST_CONSTRAINT",
 "pagina": "Range.constraints",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de constraint para `createConstraint`, cone-twist: junta de ombro, que limita a abertura em cone e a torção.",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -636,7 +636,7 @@
 "assinatura": "VEHICLE_CONSTRAINT",
 "pagina": "Range.constraints",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de constraint para `createConstraint`, veículo: usado para criar um veículo (veja `getVehicleConstraint`).",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -644,7 +644,7 @@
 "assinatura": "GENERIC_6DOF_CONSTRAINT",
 "pagina": "Range.constraints",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de constraint para `createConstraint`, 6 graus de liberdade genérica: cada eixo de movimento e de rotação pode ser limitado.",
 "arquivo": "paginas/Range.constraints.md"
 },
 {
@@ -812,7 +812,7 @@
 "assinatura": "MOUSEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Movimento vertical do mouse.",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1020,7 +1020,7 @@
 "assinatura": "ZKEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tecla Z.",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1100,7 +1100,7 @@
 "assinatura": "NINEKEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tecla 9 da fileira de números (não a do teclado numérico).",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1156,7 +1156,7 @@
 "assinatura": "LEFTSHIFTKEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tecla Shift da esquerda.",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1188,7 +1188,7 @@
 "assinatura": "UPARROWKEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Seta para cima.",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1316,7 +1316,7 @@
 "assinatura": "PADPLUSKEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tecla + do teclado numérico.",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1468,7 +1468,7 @@
 "assinatura": "F19KEY",
 "pagina": "Range.events",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tecla F19.",
 "arquivo": "paginas/Range.events.md"
 },
 {
@@ -1860,7 +1860,7 @@
 "assinatura": "draw_rect_filled(x1, y1, x2, y2, r, g, b, a)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- desenhado acima de todas as janelas, para fades",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -1924,7 +1924,7 @@
 "assinatura": "image(texture_id, w, h)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- texture_id é um bind code OpenGL puro",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -2020,7 +2020,7 @@
 "assinatura": "push_item_width(width)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- >0 pixels, <0 alinhado à direita da borda da janela (-1 = largura total)",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -2028,7 +2028,7 @@
 "assinatura": "push_style_color(idx, r, g, b, a)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- idx é uma das constantes imgui.COL_*",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -2068,7 +2068,7 @@
 "assinatura": "set_cursor_pos(x, y)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- posição relativa à janela atual",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -2076,7 +2076,7 @@
 "assinatura": "set_game_ui_open(open)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- liga/desliga a entrada + libera o mouse para a UI de jogo desenhada em Python",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -2084,7 +2084,7 @@
 "assinatura": "set_next_item_width(width)",
 "pagina": "Range.imgui",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- mesma convenção de push_item_width, só para o próximo widget",
 "arquivo": "paginas/Range.imgui.md"
 },
 {
@@ -2612,7 +2612,7 @@
 "assinatura": "KX_SENSOR_JUST_DEACTIVATED",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Estado do sensor: acabou de desligar neste quadro.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -2756,7 +2756,7 @@
 "assinatura": "KX_RADAR_AXIS_NEG_Z",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Sensor Radar: cone apontando para o eixo -Z do objeto.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -2804,7 +2804,7 @@
 "assinatura": "KX_RAY_AXIS_NEG_Z",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Sensor Ray: raio lançado no eixo -Z do objeto.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -2852,7 +2852,7 @@
 "assinatura": "KX_ACTIONACT_PROPERTY",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Action: o quadro da animação vem de uma propriedade.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3156,7 +3156,7 @@
 "assinatura": "KX_DYN_SET_MASS",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Dynamic: muda a massa do objeto.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3204,7 +3204,7 @@
 "assinatura": "KX_GAME_LOADCFG",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Game: carrega as propriedades globais salvas.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3228,7 +3228,7 @@
 "assinatura": "KX_ACT_MOUSE_OBJECT_AXIS_Z",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Mouse (look): gira em torno do eixo Z do objeto.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3244,7 +3244,7 @@
 "assinatura": "KX_PARENT_SET",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Parent: prende o objeto a um pai.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3324,7 +3324,7 @@
 "assinatura": "KX_RANDOMACT_FLOAT_NEGATIVE_EXPONENTIAL",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Random: decimal com distribuição exponencial negativa.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3388,7 +3388,7 @@
 "assinatura": "KX_SCENE_RESUME",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Scene: continua uma cena pausada.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3436,7 +3436,7 @@
 "assinatura": "KX_SOUNDACT_LOOPBIDIRECTIONAL_STOP",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Sound: vai e volta enquanto o sensor estiver ativo.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3460,7 +3460,7 @@
 "assinatura": "KX_STEERING_PATHFOLLOWING",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Steering: segue o caminho do Navmesh até o alvo.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3532,7 +3532,7 @@
 "assinatura": "KX_TRACK_TRAXIS_NEG_Z",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador Track To: eixo -Z do objeto aponta para o alvo.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3548,7 +3548,7 @@
 "assinatura": "RAS_2DFILTER_CUSTOMFILTER",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "Filtro personalizado; o código é definido pela propriedade shaderText.",
+"resumo": "Atuador 2D Filter: shader GLSL próprio.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3564,7 +3564,7 @@
 "assinatura": "RAS_2DFILTER_DISABLED",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "Desliga o filtro que está ativo agora",
+"resumo": "Atuador 2D Filter: desliga o filtro.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3572,7 +3572,7 @@
 "assinatura": "RAS_2DFILTER_ENABLED",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "Liga o filtro que foi desligado antes",
+"resumo": "Atuador 2D Filter: liga o filtro.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3620,7 +3620,7 @@
 "assinatura": "RAS_2DFILTER_NOFILTER",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "Desliga e destrói o filtro que está ativo agora",
+"resumo": "Atuador 2D Filter: remove o filtro.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3652,7 +3652,7 @@
 "assinatura": "RAS_2DFILTER_SOBEL",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador 2D Filter: detecção de bordas (Sobel).",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3660,7 +3660,7 @@
 "assinatura": "RAS_2DFILTER_SOBEL",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Atuador 2D Filter: detecção de bordas (Sobel).",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3804,7 +3804,7 @@
 "assinatura": "CONSTRAINT_TYPE_DISTLIMIT",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "Veja `Range.types.BL_ArmatureConstraint.ik_type`",
+"resumo": "Tipo de restrição de bone: Limit Distance.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3964,7 +3964,7 @@
 "assinatura": "BL_ZERO",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Fator de mistura (blend) do material: zero (ignora a cor). Usado em setBlending().",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -3996,7 +3996,7 @@
 "assinatura": "KX_INPUT_JUST_RELEASED",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Estado de tecla/botão: acabou de ser solto.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4060,7 +4060,7 @@
 "assinatura": "KX_MOUSE_BUT_RIGHT",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Botão direito do mouse (para o sensor de mouse).",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4212,7 +4212,7 @@
 "assinatura": "SHD_TANGENT",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Tipo de atributo de vértice de um `BL_Shader`: a tangente do vértice. Valor `1`.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4452,7 +4452,7 @@
 "assinatura": "KX_STATE30",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "Veja `Range.types.KX_StateActuator.operation`",
+"resumo": "Máscara do estado 30 dos logic bricks.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4780,7 +4780,7 @@
 "assinatura": "KX_MOUSESENSORMODE_BUTTON6",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão 6 do mouse.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4788,7 +4788,7 @@
 "assinatura": "KX_MOUSESENSORMODE_BUTTON7",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão 7 do mouse.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4796,7 +4796,7 @@
 "assinatura": "KX_MOUSESENSORMODE_LEFTBUTTON",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão esquerdo do mouse.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4804,7 +4804,7 @@
 "assinatura": "KX_MOUSESENSORMODE_LEFTTHUMBMOUSE",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão lateral esquerdo do mouse (polegar).",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4812,7 +4812,7 @@
 "assinatura": "KX_MOUSESENSORMODE_MIDDLEBUTTON",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão do meio do mouse.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4820,7 +4820,7 @@
 "assinatura": "KX_MOUSESENSORMODE_MOVEMENT",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a movimento do mouse.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4828,7 +4828,7 @@
 "assinatura": "KX_MOUSESENSORMODE_RIGHTBUTTON",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão direito do mouse.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4836,7 +4836,7 @@
 "assinatura": "KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a botão lateral direito do mouse (polegar).",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4844,7 +4844,7 @@
 "assinatura": "KX_MOUSESENSORMODE_WHEELDOWN",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a roda do mouse para baixo.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -4852,7 +4852,7 @@
 "assinatura": "KX_MOUSESENSORMODE_WHEELUP",
 "pagina": "Range.logic",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo do sensor de mouse: reage a roda do mouse para cima.",
 "arquivo": "paginas/Range.logic--consts.md"
 },
 {
@@ -5036,7 +5036,7 @@
 "assinatura": "is_owner(obj)",
 "pagina": "Range.network",
 "tipo": "function",
-"resumo": "",
+"resumo": "`True` se este jogador é o dono do objeto.",
 "arquivo": "paginas/Range.network.md"
 },
 {
@@ -5140,7 +5140,7 @@
 "assinatura": "predict(obj, fn)",
 "pagina": "Range.network",
 "tipo": "function",
-"resumo": "",
+"resumo": "`fn(obj, input)` move o objeto por um tick com o input do dono (bytes): no servidor a cada tick e no cliente dono à frente do servidor (predição, corrigida pelo…",
 "arquivo": "paginas/Range.network.md"
 },
 {
@@ -5316,7 +5316,7 @@
 "assinatura": "status()",
 "pagina": "Range.network.steam",
 "tipo": "function",
-"resumo": "",
+"resumo": "`{'loaded': bool, 'ready': bool, 'steam_id': int}`: se a DLL carregou, se a Steam está pronta e o SteamID do jogador.",
 "arquivo": "paginas/Range.network.steam.md"
 },
 {
@@ -5748,7 +5748,7 @@
 "assinatura": "setMasterVolume(volume)",
 "pagina": "Range.render",
 "tipo": "function",
-"resumo": "",
+"resumo": "-- volume em [0, 1], aplicado ao dispositivo de áudio real da engine",
 "arquivo": "paginas/Range.render.md"
 },
 {
@@ -9580,7 +9580,7 @@
 "assinatura": "focusValid",
 "pagina": "KX_Camera",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` quando o foco achou um alvo neste frame.",
 "arquivo": "paginas/KX_Camera.md"
 },
 {
@@ -11460,7 +11460,7 @@
 "assinatura": "getDistanceTo(other)",
 "pagina": "KX_GameObject",
 "tipo": "method",
-"resumo": "",
+"resumo": "- tipo: `KX_GameObject` or list [x, y, z]",
 "arquivo": "paginas/KX_GameObject--funcs.md"
 },
 {
@@ -11636,7 +11636,7 @@
 "assinatura": "getCurvePoints()",
 "pagina": "KX_GameObject",
 "tipo": "method",
-"resumo": "",
+"resumo": "`getCurvePoints(world=True)`: pontos da primeira spline de um objeto Curve, como lista de `Vector`. Coordenadas do mundo por padrão; `world=False` devolve em co…",
 "arquivo": "paginas/KX_GameObject--funcs.md"
 },
 {
@@ -11700,7 +11700,7 @@
 "assinatura": "is_playing_take()",
 "pagina": "KX_GameObject",
 "tipo": "method",
-"resumo": "",
+"resumo": "`True` enquanto um Take do Rec Play move este objeto.",
 "arquivo": "paginas/KX_GameObject--funcs.md"
 },
 {
@@ -12164,7 +12164,7 @@
 "assinatura": "isDeformable",
 "pagina": "KX_GameObject",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` se o objeto tem as configurações de deformação ligadas (amassar, entortar, decalques).",
 "arquivo": "paginas/KX_GameObject--props.md"
 },
 {
@@ -12300,7 +12300,7 @@
 "assinatura": "activated",
 "pagina": "KX_InputTable",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` no frame em que a ação acabou de ser acionada.",
 "arquivo": "paginas/KX_InputTable.md"
 },
 {
@@ -12308,7 +12308,7 @@
 "assinatura": "active",
 "pagina": "KX_InputTable",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` enquanto a ação está acionada.",
 "arquivo": "paginas/KX_InputTable.md"
 },
 {
@@ -12316,7 +12316,7 @@
 "assinatura": "released",
 "pagina": "KX_InputTable",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` no frame em que a ação acabou de ser solta.",
 "arquivo": "paginas/KX_InputTable.md"
 },
 {
@@ -13116,7 +13116,7 @@
 "assinatura": "rayDirection",
 "pagina": "KX_MouseFocusSensor",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`rayTarget` - `raySource`, normalizado.",
 "arquivo": "paginas/KX_MouseFocusSensor.md"
 },
 {
@@ -13564,7 +13564,7 @@
 "assinatura": "burstMode",
 "pagina": "KX_ParticleSystem",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` emite em rajadas (explosões); `False` emite sem parar.",
 "arquivo": "paginas/KX_ParticleSystem.md"
 },
 {
@@ -13612,7 +13612,7 @@
 "assinatura": "debugUI",
 "pagina": "KX_ParticleSystem",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` quando o painel de depuração do sistema de partículas está aberto.",
 "arquivo": "paginas/KX_ParticleSystem.md"
 },
 {
@@ -13692,7 +13692,7 @@
 "assinatura": "flipbook",
 "pagina": "KX_ParticleSystem",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "Animação por quadros da textura da partícula, como tupla `(colunas, linhas, ciclos, aleatório)`. Ao atribuir, `ciclos` (padrão 1.0) e `aleatório` (padrão `False…",
 "arquivo": "paginas/KX_ParticleSystem.md"
 },
 {
@@ -13764,7 +13764,7 @@
 "assinatura": "useObjectRotation",
 "pagina": "KX_ParticleSystem",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` faz gravidade, velocidade, direção, deslocamento e o eixo do vórtice seguirem a rotação do objeto dono.",
 "arquivo": "paginas/KX_ParticleSystem.md"
 },
 {
@@ -14156,7 +14156,7 @@
 "assinatura": "hasVibration",
 "pagina": "KX_PythonJoystick",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` se o controle suporta vibração.",
 "arquivo": "paginas/KX_PythonJoystick.md"
 },
 {
@@ -14172,7 +14172,7 @@
 "assinatura": "isVibrating",
 "pagina": "KX_PythonJoystick",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` enquanto o controle está vibrando.",
 "arquivo": "paginas/KX_PythonJoystick.md"
 },
 {
@@ -14252,7 +14252,7 @@
 "assinatura": "available",
 "pagina": "KX_PythonMotion",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` enquanto os sensores estão mandando dados. Vira `False` quando nenhuma leitura chegou no último segundo (sem sensor, navegador de desktop, página em segu…",
 "arquivo": "paginas/KX_PythonMotion.md"
 },
 {
@@ -14556,7 +14556,7 @@
 "assinatura": "mesh",
 "pagina": "KX_ReplaceMeshActuator",
 "tipo": "attribute",
-"resumo": "Use None para desligar o atuador.",
+"resumo": "`MeshProxy` ou o nome da malha que vai substituir a atual.",
 "arquivo": "paginas/KX_ReplaceMeshActuator.md"
 },
 {
@@ -14820,7 +14820,7 @@
 "assinatura": "getQualityPreset()",
 "pagina": "KX_Scene",
 "tipo": "method",
-"resumo": "",
+"resumo": "Nome do preset de qualidade global (`'CUSTOM'`, `'VERY_LOW'`, ..., `'AUTO'`).",
 "arquivo": "paginas/KX_Scene.md"
 },
 {
@@ -14857,10 +14857,10 @@
 },
 {
 "nome": "setQualityPreset",
-"assinatura": "setQualityPreset()",
+"assinatura": "setQualityPreset(name)",
 "pagina": "KX_Scene",
 "tipo": "method",
-"resumo": "",
+"resumo": "Define o preset de qualidade global: `'CUSTOM'`, `'VERY_LOW'`, `'LOW'`, `'MEDIUM'`, `'HIGH'`, `'ULTRA'` ou `'AUTO'`. Passos e amostras (SSAO, SSGI, SSR, Light S…",
 "arquivo": "paginas/KX_Scene.md"
 },
 {
@@ -14916,7 +14916,7 @@
 "assinatura": "visible",
 "pagina": "KX_Scene",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`False` esconde a cena: ela deixa de ser desenhada. Útil para uma cena de overlay (HUD) que deve sumir sem ser removida.",
 "arquivo": "paginas/KX_Scene.md"
 },
 {
@@ -15252,7 +15252,7 @@
 "assinatura": "is3D",
 "pagina": "KX_Speaker",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` se o som é posicional (3D).",
 "arquivo": "paginas/KX_Speaker.md"
 },
 {
@@ -16636,7 +16636,7 @@
 "assinatura": "mode",
 "pagina": "SCA_ActuatorSensor",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`0` Active: verdadeiro enquanto o actuator monitorado está ativo. `1` Finished: dá um pulso quando o actuator termina (ex.: Wait, Action, Video).",
 "arquivo": "paginas/SCA_ActuatorSensor.md"
 },
 {
@@ -16740,7 +16740,7 @@
 "assinatura": "fireCount",
 "pagina": "SCA_ILogicBrick",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "Quantas vezes este brick disparou: o sensor conta as ativações (subidas) e o actuator conta as partidas; outros bricks devolvem 0. Somente leitura.",
 "arquivo": "paginas/SCA_ILogicBrick.md"
 },
 {
@@ -17036,7 +17036,7 @@
 "assinatura": "getButtonStatus(buttonIndex)",
 "pagina": "SCA_JoystickSensor",
 "tipo": "method",
-"resumo": "",
+"resumo": "- tipo: integer",
 "arquivo": "paginas/SCA_JoystickSensor.md"
 },
 {
@@ -17476,7 +17476,7 @@
 "assinatura": "waiting",
 "pagina": "SCA_WaitActuator",
 "tipo": "attribute",
-"resumo": "",
+"resumo": "`True` enquanto o actuator está contando.",
 "arquivo": "paginas/SCA_WaitActuator.md"
 },
 {

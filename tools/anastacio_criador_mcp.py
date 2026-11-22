@@ -64,6 +64,9 @@ def achar_programa(arg, env, nome):
     return caminho
 
 
+CLIENTE = {'nome': ''}  # quem está usando este MCP (vem do initialize); o editor mostra
+
+
 class Conexao:
     """Uma linha JSON por pedido, com token; uma linha JSON por resposta."""
 
@@ -73,7 +76,7 @@ class Conexao:
         self.canal = self.socket.makefile("rw", encoding="utf-8")
 
     def pedir(self, cmd, **dados):
-        self.canal.write(json.dumps(dict(dados, cmd=cmd, token=self.sessao["token"])) + "\n")
+        self.canal.write(json.dumps(dict(dados, cmd=cmd, token=self.sessao["token"], cliente=CLIENTE["nome"])) + "\n")
         self.canal.flush()
         linha = self.canal.readline()
         if not linha:
@@ -406,6 +409,7 @@ def esquema(props):
 def responder(msg):
     m, id_ = msg.get("method"), msg.get("id")
     if m == "initialize":
+        CLIENTE["nome"] = str((msg.get("params", {}).get("clientInfo") or {}).get("name") or "")
         return {"protocolVersion": msg.get("params", {}).get("protocolVersion", "2024-11-05"),
                 "capabilities": {"tools": {}}, "serverInfo": {"name": "anastacio-criador", "version": VERSAO}}
     if m == "tools/list":

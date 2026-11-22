@@ -91,6 +91,9 @@ try:
     ok(esperar(lambda: sessao.ler(arq), 90, 'sessão do editor'), 'liga e escreve a sessão na pasta do usuário')
     c = m.Conexao(arq)
     ok(c.pedir('ping')['modo'] == 'observar', 'começa em só observar')
+    ok(c.pedir('ping')['clientes'] == ['IA'], 'cliente sem nome aparece como IA')
+    m.CLIENTE['nome'] = 'codex-mcp-client'
+    ok(c.pedir('ping')['clientes'] == ['Codex'], 'o nome do cliente (Codex) é identificado')
     ok(c.pedir('cena')['cena'], 'observar permite ler a cena')
     ok(recusa(lambda: c.pedir('op', nome='object.select_all', args={'action': 'DESELECT'}), 'observar'), 'observar recusa op')
     ok(recusa(lambda: c.pedir('evento', tipo='MOUSEMOVE', valor='NOTHING', x=10, y=10), 'observar'), 'observar recusa evento')
@@ -164,6 +167,10 @@ try:
     parada.close()
     ok(c2.pedir('ping')['modo'] == 'controle' and c3.pedir('ping')['modo'] == 'controle'
        and c2.pedir('ping')['modo'] == 'controle', 'dois clientes ao mesmo tempo, sem derrubar um ao outro')
+    m.CLIENTE['nome'] = 'claude-code'
+    c3.pedir('ping')
+    ok(c2.pedir('ping')['clientes'] == ['Claude Code', 'Codex'] or c2.pedir('ping')['clientes'] == ['Claude Code'],
+       'os nomes de quem está conectado aparecem juntos')
 
     # fechar num editor do usuário só desliga o controle
     try:

@@ -1,0 +1,68 @@
+# SCA_PythonController
+
+Classe base: [`SCA_IController`](SCA_IController.md)
+
+> **Veja também:**
+[`KX_PythonComponent`](KX_PythonComponent.md), [`SCA_ISensor`](SCA_ISensor.md), [`SCA_IActuator`](SCA_IActuator.md), [`Range.logic`](Range.logic.md)
+
+Um controlador Python usa um script Python para ativar seus atuadores, com base nos seus sensores.
+
+```python
+# O começo comum de um script.
+import Range
+
+cont = Range.logic.getCurrentController()
+own = cont.owner
+
+if cont.sensors["Keyboard"].positive:
+    cont.activate("Motion")
+else:
+    cont.deactivate("Motion")
+```
+
+```python
+# Modo Module: a engine chama uma função e passa o controlador.
+def main(cont):
+    print(cont.owner.name, cont.script)
+```
+
+## owner
+
+O objeto ao qual o controlador está ligado.
+
+**Tipo:** `KX_GameObject`
+
+### script
+
+O valor desta variável depende do modo de execução.
+
+* No modo de execução 'Script', este valor contém o script Python inteiro numa única string (não o nome do script, como seria de esperar), que pode ser modificada para rodar outros scripts.
+* No modo de execução 'Module', este valor contém uma string de uma linha: o nome do módulo e a função, "module.func" ou "package.modile.func", em que os nomes de módulo são textblocks Python ou scripts externos.
+
+**Tipo:** string
+
+> **Note:**
+Depois que isto é definido, o nome do script usado nos avisos não muda mais.
+
+### mode
+
+o modo de execução deste controlador (somente leitura).
+
+* Script: 0, executa o `script` como código Python.
+* Module: 1, executa o `script` como módulo e função.
+
+**Tipo:** integer
+
+### activate(actuator)
+
+Ativa um atuador ligado a este controlador.
+
+- **`actuator`**: O atuador sobre o qual operar.
+  - tipo: actuator or the actuator name as a string
+
+### deactivate(actuator)
+
+Desativa um atuador ligado a este controlador.
+
+- **`actuator`**: O atuador sobre o qual operar.
+  - tipo: actuator or the actuator name as a string

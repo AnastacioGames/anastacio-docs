@@ -1,0 +1,36 @@
+# SCA_PropertyActuator
+
+Classe base: [`SCA_IActuator`](SCA_IActuator.md)
+
+Atuador Property
+
+```python
+# Troca a propriedade em que este atuador escreve.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Property"]
+
+cont.owner["score"] = 0
+act.propName = "score"
+act.value = "score + 10"
+cont.activate(act)
+```
+
+## propName
+
+a propriedade sobre a qual operar.
+
+**Tipo:** string
+
+### value
+
+o valor com que o atuador opera.
+
+**Tipo:** string
+
+### mode
+
+TODO - adicionar as constantes ao dicionário de game logic!.
+
+**Tipo:** integer

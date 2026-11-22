@@ -1,0 +1,186 @@
+# KX_PythonJoystick
+
+Classe base: [`EXP_PyObjectPlus`](EXP_PyObjectPlus.md)
+
+> **Veja também:**
+[`SCA_JoystickSensor`](SCA_JoystickSensor.md), [`Range.events`](Range.events.md), [`KX_InputSystem`](KX_InputSystem.md)
+
+Uma interface Python para um joystick.
+
+```python
+# Anda com o analógico esquerdo e pula com um botão.
+import Range
+
+joystick = Range.logic.joysticks[0]
+
+if joystick is not None:
+    x, y = joystick.axisValues[0], joystick.axisValues[1]
+    print(x, y)
+
+    if 0 in joystick.activeButtons:
+        print("Jump")
+```
+
+```python
+# Vibra por meio segundo.
+import Range
+
+joystick = Range.logic.joysticks[0]
+
+if joystick is not None and joystick.hasVibration:
+    joystick.strengthLeft = 0.8
+    joystick.strengthRight = 0.8
+    joystick.duration = 500
+    joystick.startVibration()
+```
+
+## name
+
+O nome dado ao joystick pelo sistema operacional (somente leitura)
+
+**Tipo:** string
+
+### activeButtons
+
+Uma lista dos valores dos botões ativos (somente leitura)
+
+**Tipo:** list
+
+### axisValues
+
+O estado dos eixos do joystick, como uma lista de `numAxis` valores (somente leitura).
+
+**Tipo:** list of ints.
+
+Cada um dá o valor de um eixo entre -1.0 e 1.0, conforme o quanto o eixo está empurrado; 0 quando solto. Os 2 primeiros valores são usados pela maioria dos joysticks e gamepads para o controle de direção. O 3º e o 4º só existem em alguns joysticks e podem ser usados para controles quaisquer.
+
+* esquerda:[-1.0, 0.0, ...]
+* direita:[1.0, 0.0, ...]
+* up:[0.0, -1.0, ...]
+* baixo:[0.0, 1.0, ...]
+
+### hatValues (Deprecated. Use :data:`activeButtons` instead)
+
+O estado dos hats do joystick, como uma lista de `numHats` valores (somente leitura).
+
+**Tipo:** list of ints
+
+Cada um dá a direção do hat de 1 a 12; 0 quando inativo.
+
+As direções do hat são estas...
+
+* 0:Nenhuma
+* 1:Up
+* 2:Direita
+* 4:Baixo
+* 8:Esquerda
+* 3:Cima - Direita
+* 6:Baixo - Direita
+* 12:Baixo - Esquerda
+* 9:Cima - Esquerda
+
+### numAxis
+
+O número de eixos do joystick neste índice (somente leitura).
+
+**Tipo:** integer
+
+### numButtons
+
+O número de botões do joystick neste índice (somente leitura).
+
+**Tipo:** integer
+
+### numHats (Deprecated. Use :data:`numButtons` instead)
+
+O número de hats do joystick neste índice (somente leitura).
+
+**Tipo:** integer
+
+### startVibration()
+
+Começa a vibração.
+
+**Retorna:** None
+
+### stopVibration()
+
+Para a vibração.
+
+**Retorna:** None
+
+### strengthLeft
+
+Força do motor de baixa frequência do joystick (em geral fica à esquerda).
+
+**Tipo:** float (0.0 to 1.0)
+
+### strengthRight
+
+Força do motor de alta frequência do joystick (em geral fica à direita).
+
+**Tipo:** float (0.0 to 1.0)
+
+### duration
+
+Duração da vibração em milissegundos.
+
+**Tipo:** integer (0 to infinite)
+
+### isVibrating
+
+Verifica o status da vibração do joystick
+
+**Tipo:** bool (true vibrating and false stopped)
+
+### hasVibration
+
+Verifica se o joystick suporta vibração
+
+**Tipo:** bool (true supported and false not supported)
+
+## Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### stopVibration()
+
+ `método`
+
+Para a vibração do controle.
+
+### duration
+
+ `atributo`
+
+Duração da vibração, em milissegundos.
+
+### hasVibration
+
+ `atributo · só leitura`
+
+`True` se o controle suporta vibração.
+
+### inputs
+
+ `atributo · só leitura`
+
+Dicionário `{botão: SCA_InputEvent}` com o estado de cada botão do controle.
+
+### isVibrating
+
+ `atributo · só leitura`
+
+`True` enquanto o controle está vibrando.
+
+### strengthLeft
+
+ `atributo`
+
+Força do motor de vibração esquerdo (0 a 1).
+
+### strengthRight
+
+ `atributo`
+
+Força do motor de vibração direito (0 a 1).

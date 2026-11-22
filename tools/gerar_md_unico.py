@@ -44,7 +44,8 @@ def ler_pagina(arq):
     return titulo, texto
 
 
-def limpar(texto, titulos):
+def limpar(texto, titulos, link=None):
+    link = link or (lambda destino: f"#{destino}")
     saida, em_codigo = [], False
     for linha in texto.split("\n"):
         if linha.startswith("```"):
@@ -70,7 +71,7 @@ def limpar(texto, titulos):
         # links entre páginas -> âncoras deste arquivo
         def troca(mm):
             alvo = mm.group(2).rstrip("/").split("/")[-1].split("#")[0].lower()
-            return f"[{mm.group(1)}](#{titulos[alvo]})" if alvo in titulos else mm.group(1)
+            return f"[{mm.group(1)}]({link(titulos[alvo])})" if alvo in titulos else mm.group(1)
         linha = re.sub(r"\[([^\]]*)\]\(((?:\.\./)+[^)]*)\)", troca, linha)
         # títulos descem dois níveis: página = ##, seções = ###, membros = ####
         h = re.match(r"^(#{1,4}) (.*)", linha)

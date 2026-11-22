@@ -1,0 +1,152 @@
+# KX_CharacterWrapper
+
+Classe base: [`EXP_PyObjectPlus`](EXP_PyObjectPlus.md)
+
+> **Veja também:**
+[`KX_GameObject`](KX_GameObject.md), [`Range.constraints`](Range.constraints.md)
+
+Um wrapper que expõe as opções de física de personagem.
+
+> **Note:**
+Quando o objeto do personagem é removido, todo método e atributo do wrapper gera `ReferenceError`. Suspender a física mantém o personagem, então o wrapper continua funcionando.
+
+```python
+# Anda e pula com um objeto Character.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+keys = Range.logic.keyboard.inputs
+
+speed = 0.1 if keys[Range.events.WKEY].active else 0.0
+character.walkDirection = (0.0, speed, 0.0)
+
+if keys[Range.events.SPACEKEY].activated and character.onGround:
+    character.jump()
+```
+
+```python
+# Abaixa, e levanta quando houver espaço.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+character = constraints.getCharacter(own)
+crouch = Range.logic.keyboard.inputs[Range.events.LEFTCTRLKEY].active
+
+if crouch:
+    character.posture = "CROUCH"
+elif character.canStand:
+    character.posture = "STAND"
+```
+
+```python
+# Permite pulo duplo.
+import Range
+from Range import constraints
+
+character = constraints.getCharacter(Range.logic.getCurrentController().owner)
+
+character.maxJumps = 2
+character.jumpSpeed = 8.0
+```
+
+## onGround
+
+Se o personagem está no chão ou não (somente leitura).
+
+**Tipo:** boolean
+
+### gravity
+
+O valor de gravidade usado para o personagem.
+
+**Tipo:** float
+
+### fallSpeed
+
+A velocidade de queda do personagem.
+
+**Tipo:** float
+
+### maxJumps
+
+O número máximo de pulos que o personagem pode dar antes de tocar o chão. O padrão é 1. 2 permite pulo duplo, e assim por diante.
+
+**Tipo:** int in [0, 255], default 1
+
+### jumpCount
+
+A contagem de pulos atual. Serve para ter lógicas diferentes para pulo simples e pulo duplo, por exemplo, uma animação diferente no segundo pulo.
+
+**Tipo:** int
+
+### jumpSpeed
+
+A velocidade de pulo do personagem.
+
+**Tipo:** float
+
+### maxSlope
+
+A inclinação máxima que o personagem consegue subir.
+
+**Tipo:** float
+
+### walkDirection
+
+A velocidade e a direção em que o personagem anda, em coordenadas do mundo. Use isto em vez de applyMovement() para mover o personagem do jeito certo.
+
+**Tipo:** Vector((x, y, z))
+
+### jump()
+
+O personagem pula com base na sua velocidade de pulo.
+
+### jumpDirection
+
+A direção em que o personagem pula.
+
+**Tipo:** Vector((x, y, z))
+
+### setVelocity(velocity, time, local=False)
+
+Define a velocidade linear do personagem por um período.
+
+Este método define a velocidade do personagem pelo centro de massa durante um período.
+
+- **`velocity`**: Vetor de velocidade linear.
+  - tipo: 3D Vector
+- **`time`**: Período em que a velocidade linear é aplicada.
+  - tipo: float
+- **`local`**: * False: velocidade "global", ou seja, relativa à orientação do mundo. * True: velocidade "local", ou seja, relativa à orientação do objeto.
+  - tipo: boolean
+
+### smoothMovement
+
+Suaviza o movimento causado pela direção de caminhada.
+
+**Tipo:** float (0.0 to 1.0)
+
+### posture
+
+Postura atual (a forma de colisão em uso). Atribuir pede uma nova postura; ficar em pé espera até haver espaço acima do personagem (veja `canStand`).
+
+**Tipo:** string, one of `'STAND'`, `'CROUCH'`, `'CRAWL'`, `'JUMP_TUCK'`
+
+### canStand
+
+True quando há espaço para ficar em pé a partir da postura atual.
+
+**Tipo:** boolean (read-only)
+
+### running
+
+Modo corrida: enquanto True o personagem anda com o fator Run Speed do objeto.
+
+**Tipo:** boolean
+
+### reset()
+
+Zera a velocidade e a direção de caminhada do personagem.

@@ -1,0 +1,56 @@
+# KX_GameActuator
+
+Base class: [`SCA_IActuator`](SCA_IActuator.md)
+
+The game actuator loads a new .blend file, restarts the current .blend file or quits the game.
+
+```python
+# Restart the game.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Game"]
+
+act.mode = Range.logic.KX_GAME_RESTART
+cont.activate(act)
+```
+
+```python
+# Open another game file.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Game"]
+
+act.mode = Range.logic.KX_GAME_START
+act.fileName = "//level2.range"
+cont.activate(act)
+```
+
+## fileName
+
+the new .blend file to load.
+
+**Type:** string
+
+### mode
+
+The mode of this actuator. Can be on of `these constants`
+
+**Type:** Int
+
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### extensionName
+
+ `attribute`
+
+File extension used by the save/load game modes.
+
+### saveLocation
+
+ `attribute`
+
+Folder where the actuator saves and loads the game.

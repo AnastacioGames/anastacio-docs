@@ -1,0 +1,143 @@
+# KX_NavMeshObject
+
+Base class: [`KX_GameObject`](KX_GameObject.md)
+
+> **See also:**
+[`KX_SteeringActuator`](KX_SteeringActuator.md)
+
+Python interface for using and controlling navigation meshes.
+
+A navigation mesh with a Boolean game property `dynamic_navmesh` set to True is built in tiles when the
+game starts, so obstacles can carve it at runtime. Objects with "Create Obstacle" carve it automatically;
+`addObstacle` adds any other object. Paths may differ slightly from the static navigation mesh.
+
+```python
+
+# Find a path from the object to the player.
+import Range
+
+scene = Range.logic.getCurrentScene()
+owner = Range.logic.getCurrentController().owner
+
+navmesh = scene.objects["Navmesh"]
+player = scene.objects["Player"]
+
+path = navmesh.findPath(owner.worldPosition, player.worldPosition)
+print(len(path), "points")
+```
+
+```python
+
+# Check for a wall on the way to the player: a factor below 1.0 means the ray stopped early.
+import Range
+
+scene = Range.logic.getCurrentScene()
+owner = Range.logic.getCurrentController().owner
+
+navmesh = scene.objects["Navmesh"]
+player = scene.objects["Player"]
+
+if navmesh.raycast(owner.worldPosition, player.worldPosition) < 1.0:
+    print("Something is in the way")
+```
+
+```python
+
+# Draw the navigation mesh to debug it. Run it every frame (Always sensor with True Pulse).
+import Range
+
+navmesh = Range.logic.getCurrentScene().objects["Navmesh"]
+navmesh.draw(Range.logic.RM_TRIS)
+```
+
+```python
+
+# Dynamic navigation mesh: a crate blocks the way, then frees it.
+import Range
+
+scene = Range.logic.getCurrentScene()
+navmesh = scene.objects["Navmesh"]
+crate = scene.objects["Crate"]
+
+if navmesh.dynamic:
+    navmesh.addObstacle(crate, 1.5)
+
+# Later, when the crate is gone:
+navmesh.removeObstacle(crate)
+```
+
+## dynamic
+
+True when the navigation mesh was built in tiles and obstacles can carve it (read-only).
+
+**Type:** boolean
+
+### version
+
+Incremented when the navigation mesh is rebuilt or finishes changing because of obstacles
+(read-only). Paths found with an older version may cross new obstacles.
+
+**Type:** integer
+
+### findPath(start, goal)
+
+Finds the path from start to goal points.
+
+- **`start`**: the start point
+- **`start`**: 3D Vector
+- **`goal`**: the goal point
+- **`start`**: 3D Vector
+
+**Returns:** a path as a list of points
+
+**Return type:** list of points
+
+### raycast(start, goal)
+
+Raycast from start to goal points.
+
+- **`start`**: the start point
+- **`start`**: 3D Vector
+- **`goal`**: the goal point
+- **`start`**: 3D Vector
+
+**Returns:** the hit factor
+
+**Return type:** float
+
+### draw(mode)
+
+Draws a debug mesh for the navigation mesh.
+On a dynamic navigation mesh, the obstacle cylinders are drawn in yellow.
+
+- **`mode`**: the drawing mode (one of `these constants`)
+- **`mode`**: integer
+
+**Returns:** None
+
+### rebuild()
+
+Rebuild the navigation mesh.
+
+**Returns:** None
+
+### addObstacle(object, radius=0.0)
+
+Makes the object carve every dynamic navigation mesh of its scene, following it when it moves.
+Calling it again changes the radius. It has no effect on static navigation meshes.
+
+- **`object`**: the obstacle, in the same scene as the navigation mesh
+  - type: `KX_GameObject` or string
+- **`radius`**: the world radius of the obstacle cylinder, 0.0 uses the object "Create Obstacle" radius or half its bounding box size
+  - type: float
+
+**Returns:** None
+
+### removeObstacle(object)
+
+Stops the object carving the dynamic navigation meshes, including objects with "Create Obstacle".
+
+- **`object`**: the obstacle
+  - type: `KX_GameObject` or string
+
+**Returns:** None

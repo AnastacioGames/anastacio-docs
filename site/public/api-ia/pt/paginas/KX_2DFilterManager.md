@@ -1,0 +1,220 @@
+# KX_2DFilterManager
+
+Classe base: [`EXP_PyObjectPlus`](EXP_PyObjectPlus.md)
+
+> **Veja também:**
+[`KX_2DFilter`](KX_2DFilter.md), [`KX_2DFilterOffScreen`](KX_2DFilterOffScreen.md), [`KX_Camera`](KX_Camera.md)
+
+Gerenciador de filtros 2D, usado para adicionar, remover e achar filtros numa cena.
+
+```python
+# Adiciona um filtro pronto e depois um personalizado.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+manager.addFilter(0, Range.logic.RAS_2DFILTER_SEPIA)
+
+GLSL = """
+uniform sampler2D bgl_RenderedTexture;
+in vec4 bgl_TexCoord;
+out vec4 fragColor;
+
+void main()
+{
+    fragColor = texture(bgl_RenderedTexture, bgl_TexCoord.xy) * 0.5;
+}
+"""
+manager.addFilter(1, Range.logic.RAS_2DFILTER_CUSTOMFILTER, GLSL)
+```
+
+```python
+# Remove um filtro.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+if manager.getFilter(0) is not None:
+    manager.removeFilter(0)
+```
+
+```python
+# Ajusta os efeitos das opções gráficas.
+import Range
+
+manager = Range.logic.getCurrentScene().filterManager
+
+manager.changeBloomValues(True, 0.6, 0.8)
+manager.changeFxaaValues(True)
+manager.changeGrainValues(True, 0.1)
+```
+
+## addFilter(index, type, fragmentProgram="", owner=None, mipmap=False)
+
+Adiciona um filtro no passe `index`, do tipo `type`, com o fragment program se for filtro personalizado.
+
+- **`index`**: O índice do passe do filtro.
+  - tipo: integer
+- **`type`**: O tipo do filtro, um destes: * `Range.logic.RAS_2DFILTER_BLUR` * `Range.logic.RAS_2DFILTER_DILATION` * `Range.logic.RAS_2DFILTER_EROSION` * `Range.logic.RAS_2DFILTER_SHARPEN` * `Range.logic.RAS_2DFILTER_LAPLACIAN` * `Range.logic.RAS_2DFILTER_PREWITT` * `Range.logic.RAS_2DFILTER_SOBEL` * `Range.logic.RAS_2DFILTER_GRAYSCALE` * `Range.logic.RAS_2DFILTER_SEPIA` * `Range.logic.RAS_2DFILTER_OUTLINE` * `Range.logic.RAS_2DFILTER_CUSTOMFILTER`
+  - tipo: integer
+- **`fragmentProgram`**: O fragment program do shader do filtro. Só é usado se `type` for `Range.logic.RAS_2DFILTER_CUSTOMFILTER`; se vazio ou omitido, o filtro é criado sem shader, esperando uma chamada a `BL_Shader.setSourceList` (opcional).
+  - tipo: string
+- **`owner`**: Objeto cujas propriedades de jogo alimentam os uniforms de mesmo nome, como no atuador Filter 2D (opcional).
+  - tipo: `KX_GameObject`
+- **`mipmap`**: Gera mipmaps da imagem de entrada do filtro (opcional).
+  - tipo: boolean
+
+**Retorna:** O filtro 2D.
+
+**Tipo do retorno:** `KX_2DFilter`
+
+### setBuiltinFilterEnabled(type, enabled=True)
+
+Liga ou desliga um filtro embutido, mantendo os valores atuais dele, como faz o atuador Filter 2D.
+
+- **`type`**: `Range.logic.RAS_2DFILTER_FXAA`, `RAS_2DFILTER_BLOOM`, `RAS_2DFILTER_TONEMAP`, `RAS_2DFILTER_SSAO`, `RAS_2DFILTER_LIGHTSCATTER` ou `RAS_2DFILTER_SSR`.
+  - tipo: integer
+- **`enabled`**: O novo estado.
+  - tipo: boolean
+
+**Retorna:** False quando o filtro não está disponível.
+
+**Tipo do retorno:** boolean
+
+### removeFilter(index)
+
+Remove o filtro do passe `index`.
+
+- **`index`**: O índice do passe do filtro.
+  - tipo: integer
+
+### getFilter(index)
+
+Devolve o filtro do passe `index`.
+
+**aviso:** Se o filtro 2D for adicionado por um `SCA_2DFilterActuator`, ele só fica disponível depois que o programa do filtro 2D for linkado. O script Python que pega o filtro precisa rodar um frame depois. Dá para usar um sensor Delay.
+
+- **`index`**: O índice do passe do filtro.
+  - tipo: integer
+
+**Retorna:** O filtro no passe indicado, ou None.
+
+**Tipo do retorno:** `KX_2DFilter` or None
+
+## Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### changeBloomValues(enabled, intensity, threshold)
+
+ `método`
+
+Liga/desliga o Bloom da cena e muda intensidade e limiar de brilho.
+
+### changeFxaaValues(enabled)
+
+ `método`
+
+Liga ou desliga o FXAA (anti-serrilhado) da cena.
+
+### changeGrainValues(enabled, strength)
+
+ `método`
+
+Liga/desliga o grão de filme e muda a força.
+
+### changeLightScatterValues(enabled, step_max, step_size, threshold, intensity)
+
+ `método`
+
+Liga/desliga os raios de luz (light scattering) e muda passos, tamanho do passo, limiar e intensidade.
+
+### changeSSAOValues(enabled, samples, strength, distance, attenuation)
+
+ `método`
+
+Liga/desliga a oclusão de ambiente (SSAO) e muda amostras, força, distância e atenuação.
+
+### changeSSGIValues(enabled, radius=3.0, strength=1.0, rays=4, steps=8, thickness=0.1, divisor=0)
+
+ `método`
+
+Liga/desliga a iluminação global em tela (SSGI) e muda seus parâmetros. `divisor` 1, 2 ou 4 muda a resolução do traçado; 0 mantém. O SSGI precisa estar ligado na cena antes do Play.
+
+### changeSSRValues(enabled, step_max, bias, max_distance)
+
+ `método`
+
+Liga/desliga os reflexos em tela (SSR) e muda passos, bias e distância máxima.
+
+### changeTonemapValues(enabled, exposure, gamma)
+
+ `método`
+
+Liga/desliga o tonemap e muda exposição e gamma.
+
+### compositor
+
+*(novo na Anastacio)* `atributo · só leitura`
+
+Filtro gerado pela árvore do Compositor da cena (Use Nodes). Nós Value e RGB mudam ao vivo com `compositor.setUniform()`. Só leitura.
+
+### fxaaEdgeThreshold
+
+*(novo na Anastacio)* `atributo`
+
+Contraste mínimo, relativo, para uma borda receber FXAA, de 0.0 a 1.0. Valores menores suavizam mais bordas.
+
+### fxaaEdgeThresholdMin
+
+*(novo na Anastacio)* `atributo`
+
+Contraste mínimo absoluto para o FXAA agir, de 0.0 a 1.0. Evita processar áreas escuras.
+
+### fxaaEnabled
+
+*(novo na Anastacio)* `atributo`
+
+Liga ou desliga o FXAA da cena (Scene > Post-process). `True` ou `False`.
+
+### fxaaSearchSteps
+
+*(novo na Anastacio)* `atributo`
+
+Número de passos da busca de bordas do FXAA (inteiro, a partir de 2). Mais passos pegam bordas mais longas e custam mais.
+
+### fxaaSubpix
+
+*(novo na Anastacio)* `atributo`
+
+Quanto o FXAA suaviza detalhes menores que um pixel, de 0.0 a 1.0.
+
+### grainEnabled
+
+*(novo na Anastacio)* `atributo`
+
+Liga ou desliga o grão de filme da cena.
+
+### grainStrength
+
+*(novo na Anastacio)* `atributo`
+
+Força do grão de filme, de 0.0 a 1.0.
+
+### taaEnabled
+
+*(novo na Anastacio)* `atributo`
+
+Liga ou desliga o TAA (anti-aliasing temporal) da cena (Render > TAA). `True` ou `False`. Suaviza bordas misturando quadros com a câmera levemente deslocada Em tela dividida e em estéreo só a nitidez é aplicada.
+
+### taaSharpen
+
+*(novo na Anastacio)* `atributo`
+
+Nitidez aplicada depois do TAA, de 0.0 a 1.0 (padrão 0.25). Compensa o leve desfoque da mistura de quadros.
+
+### taaUpscale
+
+*(novo na Anastacio)* `atributo`
+
+Upscaling temporal do TAA (Scene > TAA > Upscaling): `0` Off, `1` Quality, `2` Balanced, `3` Performance. A cena é desenhada menor e o TAA amplia para o tamanho da janela; cenas de HUD por cima ficam no tamanho da janela. Outro valor dá `ValueError`.

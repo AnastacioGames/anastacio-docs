@@ -1,0 +1,41 @@
+# SCA_ILogicBrick
+
+Base class: [`EXP_Value`](EXP_Value.md)
+
+Base class for all logic bricks.
+
+```python
+# Sensors, controllers and actuators know their object.
+import Range
+
+cont = Range.logic.getCurrentController()
+sensor = cont.sensors[0]
+
+print(sensor.owner.name, sensor.name, sensor.executePriority)
+```
+
+## executePriority
+
+This determines the order controllers are evaluated, and actuators are activated (lower priority is executed first).
+
+**Type:** executePriority: int
+
+### owner
+
+The game object this logic brick is attached to (read-only).
+
+**Type:** `KX_GameObject` or None in exceptional cases.
+
+### name
+
+The name of this logic brick (read-only).
+
+**Type:** string
+
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### fireCount
+
+*(new in Anastacio)* `attribute · read-only`

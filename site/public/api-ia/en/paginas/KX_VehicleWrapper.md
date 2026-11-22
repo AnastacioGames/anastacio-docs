@@ -1,0 +1,328 @@
+# KX_VehicleWrapper
+
+Base class: [`EXP_PyObjectPlus`](EXP_PyObjectPlus.md)
+
+> **See also:**
+[`KX_GameObject`](KX_GameObject.md), [`Range.constraints`](Range.constraints.md), [`KX_CharacterWrapper`](KX_CharacterWrapper.md)
+
+KX_VehicleWrapper
+
+TODO - description
+
+```python
+# Create a vehicle with four wheels. The wheel objects must be set to No Collision.
+import Range
+from Range import constraints
+
+scene = Range.logic.getCurrentScene()
+own = Range.logic.getCurrentController().owner
+
+vehicle = constraints.createVehicle(own.getPhysicsId())
+own["vehicle_id"] = vehicle.getConstraintId()
+
+wheels = (
+    ("WheelFL", (-1.0, 1.5, 0.0), True),
+    ("WheelFR", (1.0, 1.5, 0.0), True),
+    ("WheelRL", (-1.0, -1.5, 0.0), False),
+    ("WheelRR", (1.0, -1.5, 0.0), False),
+)
+
+for name, position, steering in wheels:
+    vehicle.addWheel(scene.objects[name], position, (0, 0, -1), (-1, 0, 0), 0.4, 0.5, steering)
+```
+
+```python
+# Drive it every frame.
+import Range
+from Range import constraints
+
+own = Range.logic.getCurrentController().owner
+vehicle = constraints.getVehicleConstraint(own["vehicle_id"])
+keys = Range.logic.keyboard.inputs
+
+force = -800.0 if keys[Range.events.WKEY].active else 0.0
+steer = 0.3 if keys[Range.events.AKEY].active else 0.0
+
+for wheel in range(vehicle.getNumWheels()):
+    vehicle.applyEngineForce(force, wheel)
+
+vehicle.setSteeringValue(steer, 0)
+vehicle.setSteeringValue(steer, 1)
+print(vehicle.getCurrentSpeedKmh())
+```
+
+```python
+# Adjust the suspension of each wheel.
+for wheel in range(vehicle.getNumWheels()):
+    vehicle.setSuspensionStiffness(20.0, wheel)
+    vehicle.setSuspensionDamping(2.0, wheel)
+    vehicle.setSuspensionCompression(4.0, wheel)
+    vehicle.setTyreFriction(2.0, wheel)
+```
+
+## addWheel(wheel, attachPos, downDir, axleDir, suspensionRestLength, wheelRadius, hasSteering)
+
+Add a wheel to the vehicle
+
+- **`wheel`**: The object to use as a wheel.
+  - type: `KX_GameObject` or a `KX_GameObject` name
+- **`attachPos`**: The position to attach the wheel, relative to the chassis object center.
+  - type: vector of 3 floats
+- **`downDir`**: The direction vector pointing down to where the vehicle should collide with the floor.
+  - type: vector of 3 floats
+- **`axleDir`**: The axis the wheel rotates around, relative to the chassis.
+  - type: vector of 3 floats
+- **`suspensionRestLength`**: The length of the suspension when no forces are being applied.
+  - type: float
+- **`wheelRadius`**: The radius of the wheel (half the diameter).
+  - type: float
+- **`hasSteering`**: True if the wheel should turn with steering, typically used in front wheels.
+  - type: boolean
+
+### applyBraking(force, wheelIndex)
+
+Apply a braking force to the specified wheel
+
+- **`force`**: the brake force
+  - type: float
+- **`wheelIndex`**: index of the wheel where the force needs to be applied
+  - type: integer
+
+### applyEngineForce(force, wheelIndex)
+
+Apply an engine force to the specified wheel
+
+- **`force`**: the engine force
+  - type: float
+- **`wheelIndex`**: index of the wheel where the force needs to be applied
+  - type: integer
+
+### getConstraintId()
+
+Get the constraint ID
+
+**Returns:** the constraint id
+
+**Return type:** integer
+
+### getConstraintType()
+
+Returns the constraint type.
+
+**Returns:** constraint type
+
+**Return type:** integer
+
+### getNumWheels()
+
+Returns the number of wheels.
+
+**Returns:** the number of wheels for this vehicle
+
+**Return type:** integer
+
+### getWheelOrientationQuaternion(wheelIndex)
+
+Returns the wheel orientation as a quaternion.
+
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+**Returns:** TODO Description
+
+**Return type:** TODO - type should be quat as per method name but from the code it looks like a matrix
+
+### getWheelPosition(wheelIndex)
+
+Returns the position of the specified wheel
+
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+**Returns:** position vector
+
+**Return type:** list[x, y, z]
+
+### getWheelRotation(wheelIndex)
+
+Returns the rotation of the specified wheel
+
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+**Returns:** the wheel rotation
+
+**Return type:** float
+
+### setRollInfluence(rollInfluece, wheelIndex)
+
+Set the specified wheel's roll influence.
+The higher the roll influence the more the vehicle will tend to roll over in corners.
+
+- **`rollInfluece`**: the wheel roll influence
+  - type: float
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+### setSteeringValue(steering, wheelIndex)
+
+Set the specified wheel's steering
+
+- **`steering`**: the wheel steering
+  - type: float
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+### setSuspensionCompression(compression, wheelIndex)
+
+Set the specified wheel's compression
+
+- **`compression`**: the wheel compression
+  - type: float
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+### setSuspensionDamping(damping, wheelIndex)
+
+Set the specified wheel's damping
+
+- **`damping`**: the wheel damping
+  - type: float
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+### setSuspensionStiffness(stiffness, wheelIndex)
+
+Set the specified wheel's stiffness
+
+- **`stiffness`**: the wheel stiffness
+  - type: float
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+### setTyreFriction(friction, wheelIndex)
+
+Set the specified wheel's tyre friction
+
+- **`friction`**: the tyre friction
+  - type: float
+- **`wheelIndex`**: the wheel index
+  - type: integer
+
+### rayMask
+
+Set ray cast mask.
+
+**Type:** bitfield
+
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### getCoordinateSystem()
+
+ `method`
+
+Vehicle axes `(right, up, forward)` (0=X, 1=Y, 2=Z).
+
+**Returns:** `tuple`
+
+### getCurrentSpeedKmh()
+
+ `method`
+
+Current speed in km/h.
+
+**Returns:** `float`
+
+### getCurrentSpeedMps()
+
+ `method`
+
+Current speed in meters per second.
+
+**Returns:** `float`
+
+### getForwardVector()
+
+ `method`
+
+Vehicle forward direction, in world space.
+
+**Returns:** `Vector`
+
+### getWheelConfig(wheelIndex)
+
+ `method`
+
+Wheel configuration: `connectionPoint`, `downDirection`, `axleDirection`, `suspensionRestLength`, `wheelRadius`, `hasSteering` and `isDriveWheel`.
+
+**Returns:** `dict`
+
+### getWheelState(wheelIndex)
+
+ `method`
+
+Wheel state this tick: world position and orientation, `rotation`, `isInContact`, contact point and normal, `suspensionForce` and more.
+
+**Returns:** `dict`
+
+### loadPreset(path)
+
+ `method`
+
+Loads a vehicle preset (file) and applies it to this vehicle.
+
+### rebuildPreset(path, wheelObjects)
+
+ `method`
+
+Rebuilds the wheels from the preset, using the given objects (one per wheel). Use Empties with **No Collision** physics as wheels.
+
+### resetSuspension()
+
+ `method`
+
+Puts the suspension back at rest (useful after teleporting the car).
+
+### savePreset(path)
+
+ `method`
+
+Saves the current vehicle setup to a preset file.
+
+### setCoordinateSystem(right, up, forward)
+
+ `method`
+
+Sets which axes (0=X, 1=Y, 2=Z) are right, up and forward. All three axes must be used without repeating.
+
+### setSuspensionRestLength(value, wheelIndex)
+
+*(new in Anastacio)* `method`
+
+Changes a wheel's suspension rest length (positive value). Applied on the next physics step.
+
+### setWheelIsDriveWheel(wheelIndex, isDriveWheel)
+
+ `method`
+
+Sets whether the wheel gets engine traction.
+
+### setWheelRadius(value, wheelIndex)
+
+*(new in Anastacio)* `method`
+
+Changes a wheel's radius (positive value). Applied on the next physics step.
+
+### constraint_id
+
+ `attribute · read-only`
+
+Id of the vehicle physics constraint.
+
+### constraint_type
+
+ `attribute · read-only`
+
+Type of the vehicle physics constraint.

@@ -1,0 +1,55 @@
+# KX_ParentActuator
+
+Classe base: [`SCA_IActuator`](SCA_IActuator.md)
+
+O atuador parent define ou remove o objeto pai de um objeto.
+
+```python
+# Prende o objeto em outro.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_SET
+act.object = Range.logic.getCurrentScene().objects["Hand"]
+act.ghost = True
+cont.activate(act)
+```
+
+```python
+# Solta.
+import Range
+
+cont = Range.logic.getCurrentController()
+act = cont.actuators["Parent"]
+
+act.mode = Range.logic.KX_PARENT_REMOVE
+cont.activate(act)
+```
+
+## object
+
+o objeto que este atuador define como pai.
+
+**Tipo:** `KX_GameObject` or None
+
+### mode
+
+O modo deste atuador.
+
+**Tipo:** integer from 0 to 1.
+
+### compound
+
+Se a forma do objeto deve ser adicionada à forma composta do pai ao fazer o parent.
+
+Só tem efeito se o pai já for uma forma composta.
+
+**Tipo:** boolean
+
+### ghost
+
+Se o objeto deve virar ghost ao fazer o parent. Só tem efeito se a forma não for adicionada à forma composta do pai.
+
+**Tipo:** boolean

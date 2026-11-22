@@ -70,6 +70,20 @@ Sempre que a engine ganhar funções novas:
 5. **Publicar**: commit + push na `main`. A Action `.github/workflows/deploy.yml` compila e publica no GitHub Pages.
    Na primeira vez: no GitHub, Settings > Pages > Source = **GitHub Actions**. Se o repositório ou o usuário não forem `AnastacioGames/anastacio-docs`, ajuste `SITE` e `BASE` em `site/astro.config.mjs`.
 
+## MCP do criador de jogos
+
+`tools/anastacio_criador_mcp.py` deixa uma IA ajudar a criar jogos no editor: descrever a cena, criar e mudar objetos, ver a tela, rodar o jogo e ler os erros. Só usa a biblioteca padrão. É diferente de `anastacio_api_mcp.py` (que serve a documentação) e não é a ferramenta interna dos agentes da engine (`tools/testes_engine/controle.py`).
+
+```
+claude mcp add anastacio-criador -- python tools/anastacio_criador_mcp.py --editor "C:/caminho/AnastacioEngine.exe" --runtime "C:/caminho/AnastacioRuntime.exe"
+```
+
+- **Modo A (este):** o MCP abre o editor com o projeto (`projeto_conectar`), com janela visível, carregando `tools/criador/servidor_editor.py`. Nada muda na engine. Se já existir um editor com o servidor aberto (arquivo de sessão), ele conecta nele.
+- **Segurança:** o servidor só escuta em 127.0.0.1, com token. `propriedade_ler`/`definir` aceitam só caminhos `bpy.a.b[0]["x"]` sem chamadas (`tools/criador/caminhos.py`). Código livre (`editor_py`, `jogo_py`) fica desligado; ligue com `ANASTACIO_CRIADOR_PY=1`. Na primeira alteração da sessão o MCP grava um backup em `<projeto>.backups/`.
+- **Os programas** são achados por `--editor`/`--runtime`, pelas variáveis `ANASTACIO_EDITOR`/`ANASTACIO_RUNTIME` ou pelo PATH. O instalador não é adivinhado.
+- **Teste:** `python tools/criador/teste_mcp.py` roda o MCP contra um editor falso que fala o mesmo protocolo (25 verificações). **Não testado:** o `servidor_editor.py` dentro do editor de verdade e o MCP num Claude Code real; precisam da engine instalada.
+- `tools/criador/servidor_jogo.py` é cópia do `servidor_jogo.py` da engine com `py` desligado por padrão.
+
 ## Regras do conteúdo
 
 - Nome principal do módulo é `Range`, com **R maiúsculo** (`import Range`, `from Range import logic`). A Range usou maiúscula para não confundir com a função `range()` do Python.

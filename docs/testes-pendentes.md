@@ -22,7 +22,7 @@ claude mcp add anastacio-api -- python tools/anastacio_api_mcp.py --lang pt
 - [x] **Propriedades:** `propriedade_ler` de `bpy.data.objects["Cube"].location` e `propriedade_definir` de `...location[0]` mudam o objeto. Recusa de caminho com chamada (`...remove(...)`) já foi testada com o editor falso.
 - [x] **Tela:** `editor_tela` devolve uma imagem legível (a tela de abertura não cobre a janela; se cobrir, ver `show_splash` em `servidor_editor.py`, que hoje não é mexido).
 - [x] **Entrada:** `editor_clicar` e `editor_tecla` agem no editor (precisa de `ANASTACIO_EVENT_SIMULATE=1`, que o MCP define).
-- [ ] **Recarregar arquivo:** abrir outro `.range` pelo editor e conferir que o servidor se religa (`load_post`) e o MCP volta a responder.
+- [x] **Recarregar arquivo:** abrir outro `.range` pelo editor e conferir que o servidor se religa (`load_post`) e o MCP volta a responder.
 - [x] **Fechar:** `editor_fechar` fecha sem salvar e sem criar `quit.blend`.
 - [x] **Código livre:** `editor_py` recusa por padrão; com `ANASTACIO_CRIADOR_PY=1` roda e devolve `resultado`.
 

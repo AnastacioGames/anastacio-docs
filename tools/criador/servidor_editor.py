@@ -124,9 +124,17 @@ def cmd_descrever(p):
     return {'nome': p['nome'], 'descricao': rna.description, 'propriedades': propriedades(rna)}
 
 
+# Operadores que trocam o arquivo inteiro. Com o contexto montado antes (janela, tela, área), o editor
+# fecha tudo ao carregar e o contexto passa a apontar para memória liberada: derruba o editor.
+CARREGAM_ARQUIVO = {'wm.open_mainfile', 'wm.revert_mainfile', 'wm.read_homefile',
+                    'wm.read_factory_settings', 'wm.recover_last_session', 'wm.recover_auto_save'}
+
+
 def cmd_op(p):
-    ctx = contexto(p.get('editor'))
     op = operador(p['nome'])
+    if p['nome'] in CARREGAM_ARQUIVO:
+        return {'estado': sorted(op('EXEC_DEFAULT', **p.get('args', {})))}
+    ctx = contexto(p.get('editor'))
     if p.get('modo'):
         bpy.ops.object.mode_set(ctx, mode=p['modo'])
     if not op.poll(ctx):

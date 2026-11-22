@@ -12,6 +12,7 @@ Ferramentas (as que mudam o projeto fazem um backup antes, na primeira vez da se
   editor_tela, editor_clicar, editor_tecla, editor_fechar
   jogo_abrir, jogo_estado, jogo_tecla, jogo_soltar, jogo_mouse, jogo_esperar, jogo_tela, jogo_fechar
   log_ler
+  jogo_objetos
   editor_py, jogo_py                        (código livre: desligado, ligue com ANASTACIO_CRIADOR_PY=1)
 
 Onde estão os programas (em ordem): --editor/--runtime, variáveis ANASTACIO_EDITOR/ANASTACIO_RUNTIME,
@@ -191,9 +192,18 @@ def jogo():
     return E.jogo
 
 
-def jogo_abrir(arquivo, largura=1280, altura=720):
+def jogo_abrir(arquivo=None, largura=1280, altura=720):
+    """Sem `arquivo`, roda uma cópia da cena aberta no editor, com o que ainda não foi salvo."""
     if E.jogo is not None:
         jogo_fechar()
+    PASTA.mkdir(parents=True, exist_ok=True)
+    aviso = ""
+    if not arquivo:
+        if E.editor is None:
+            raise RuntimeError("informe `arquivo` ou conecte no editor (projeto_conectar) para rodar a cena aberta")
+        arquivo = str(PASTA / f"jogo_copia_{int(time.time())}.range")
+        E.editor.pedir("copia_para_jogo", arquivo=arquivo)
+        aviso = "rodando uma cópia da cena aberta no editor (inclui o que não foi salvo). "
     runtime = achar_programa("--runtime", "ANASTACIO_RUNTIME", "AnastacioRuntime")
     PASTA.mkdir(parents=True, exist_ok=True)
     SESSAO_JOGO.unlink(missing_ok=True)
@@ -205,7 +215,7 @@ def jogo_abrir(arquivo, largura=1280, altura=720):
     E.logs["jogo"], E.processos["jogo"] = log, proc
     esperar_sessao(SESSAO_JOGO, proc, 90)
     E.jogo = Conexao(SESSAO_JOGO)
-    return "jogo aberto"
+    return aviso + "jogo aberto"
 
 
 def jogo_fechar():
@@ -326,9 +336,13 @@ F = {
     "editor_py": ("Executa Python livre no editor (variável `resultado` é devolvida). Desligado por padrão.",
                   {"codigo": ("string", True)},
                   lambda a: (exigir_py("editor"), mutar(lambda: js(editor().pedir("py", codigo=a["codigo"]))))[1]),
-    "jogo_abrir": ("Roda um jogo (.range) no Runtime com janela visível.",
-                   {"arquivo": ("string", True), "largura": ("integer", False), "altura": ("integer", False)},
-                   lambda a: jogo_abrir(a["arquivo"], a.get("largura", 1280), a.get("altura", 720))),
+    "jogo_abrir": ("Roda o jogo no Runtime com janela visível. Sem `arquivo`, roda uma cópia da cena aberta no editor "
+                   "(com as mudanças ainda não salvas); com `arquivo`, roda o .range do disco.",
+                   {"arquivo": ("string", False), "largura": ("integer", False), "altura": ("integer", False)},
+                   lambda a: jogo_abrir(a.get("arquivo"), a.get("largura", 1280), a.get("altura", 720))),
+    "jogo_objetos": ("Posição, rotação e escala dos objetos do jogo rodando (`filtro` por nome). Use para conferir "
+                     "que algo se moveu depois de apertar uma tecla.",
+                     {"filtro": ("string", False)}, lambda a: js(jogo().pedir("objetos", filtro=a.get("filtro", "")))),
     "jogo_estado": ("Frame, FPS, cenas, objetos e câmera do jogo rodando.", {}, lambda a: js(jogo().pedir("estado"))),
     "jogo_tecla": ("Aperta uma tecla no jogo (W, SPACE, LEFTMOUSE...) por `frames` quadros; `segurar` mantém.",
                    {"tecla": ("string", True), "frames": ("integer", False), "segurar": ("boolean", False)},

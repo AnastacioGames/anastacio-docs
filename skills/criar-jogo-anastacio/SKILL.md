@@ -20,9 +20,9 @@ Se as ferramentas MCP não estiverem disponíveis, diga isso ao usuário e mostr
 1. **Conectar:** `projeto_conectar` com o caminho do projeto. O editor abre com janela visível; o usuário acompanha.
 2. **Entender a cena antes de mexer:** `cena_descrever`, `objeto_descrever` e `editor_tela`.
 3. **Mudar em passos pequenos:** `op_executar` e `propriedade_definir`. Na primeira alteração o MCP grava um backup em `<projeto>.backups/`; informe o caminho ao usuário. Se o aviso disser que o projeto não foi salvo, peça para ele salvar antes.
-   **Scripts do jogo:** crie com `script_gravar` (nome e conteúdo, usando `Range`, nunca `bpy`) e ligue ao objeto com `script_ligar`. Nunca use os operadores `text.*` do editor: eles escrevem no texto ativo, que pode ser um script do usuário. `script_gravar` recusa nome que já existe; só use `sobrescrever` se o usuário autorizar.
+   **Scripts do jogo:** crie com `script_gravar` (nome e conteúdo, usando `Range`, nunca `bpy`) e ligue ao objeto com `script_ligar`. Nunca use os operadores `text.*` do editor: eles escrevem no texto ativo, que pode ser um script do usuário. Você pode regravar com o mesmo nome um script que criou nesta sessão (para corrigir); para um script que já existia no projeto, `script_gravar` recusa e só `sobrescrever` com autorização do usuário.
 4. **Conferir o resultado:** `editor_tela` depois de cada mudança visual, e `cena_descrever` quando a mudança não é visual.
-5. **Testar o jogo:** `jogo_abrir`, `jogo_tecla`, `jogo_estado`, `jogo_tela`, e `log_ler` com `qual="jogo"` para ver erros de script. Feche com `jogo_fechar`.
+5. **Testar o jogo:** `jogo_abrir` sem `arquivo` roda uma cópia da cena aberta no editor, inclusive o que ainda não foi salvo (use `arquivo` só para um .range do disco). Para provar que algo anda, `jogo_objetos` antes e depois de `jogo_tecla`. Depois: `jogo_tecla`, `jogo_estado`, `jogo_tela`, e `log_ler` com `qual="jogo"` para ver erros de script. Feche com `jogo_fechar`.
 6. **Salvar só quando o usuário aprovar:** `projeto_salvar`. Nunca salve por conta própria. `editor_fechar` não salva.
 
 ## Editor que o usuário já abriu

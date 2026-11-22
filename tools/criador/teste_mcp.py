@@ -63,6 +63,7 @@ def rodar_mcp(pasta, pedidos, env_extra=None, extra=()):
     env = dict(os.environ, **(env_extra or {}))
     env.pop("ANASTACIO_EDITOR", None)
     env.pop("ANASTACIO_RUNTIME", None)
+    env["ANASTACIO_CRIADOR_SESSAO_DIR"] = str(Path(pasta) / "sessao_usuario")  # não achar o editor real do usuário
     entrada = "\n".join(json.dumps(p) for p in pedidos) + "\n"
     r = subprocess.run([sys.executable, str(MCP), "--pasta", str(pasta), *extra], input=entrada,
                        capture_output=True, text=True, env=env, timeout=60)

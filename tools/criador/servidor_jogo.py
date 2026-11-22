@@ -63,6 +63,16 @@ def cmd_estado(_p):
             'janela': [render.getWindowWidth(), render.getWindowHeight()]}
 
 
+def cmd_objetos(p):
+    """Posição, rotação e escala dos objetos da cena atual (filtro por nome opcional; até 100)."""
+    filtro = p.get('filtro', '')
+    cena = logic.getCurrentScene()
+    return [{'nome': o.name, 'posicao': [round(v, 4) for v in o.worldPosition],
+             'rotacao': [round(v, 4) for v in o.worldOrientation.to_euler()],
+             'escala': [round(v, 4) for v in o.worldScale]}
+            for o in cena.objects if filtro in o.name][:100]
+
+
 def cmd_tecla(p):
     """Aperta agora e solta depois de `frames` (padrão 2); `segurar` mantém apertada."""
     c = codigo(p['tecla'])

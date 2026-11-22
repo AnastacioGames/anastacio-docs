@@ -108,16 +108,24 @@ try:
     # scripts: criar, não sobrescrever, ligar, e text.* do editor nunca
     r = c.pedir('script_gravar', nome='andar.py', conteudo='print("oi")\n')
     ok(r['criado'] and r['script'] == 'andar.py', 'script_gravar cria o script')
-    ok(recusa(lambda: c.pedir('script_gravar', nome='andar.py', conteudo='x'), 'já existe'),
-       'script_gravar não sobrescreve sem pedir')
-    ok(c.pedir('script_gravar', nome='andar.py', conteudo='print("novo")\n', sobrescrever=True)['criado'] is False,
-       'script_gravar sobrescreve quando autorizado')
+    ok(c.pedir('script_gravar', nome='andar.py', conteudo='print("v2")\n')['criado'] is False,
+       'script_gravar regrava sem pedir um script que a IA criou na sessão')
+    c.pedir('op', nome='text.new', editor='TEXT_EDITOR')
+    nome_alheio = [n for n in c.pedir('ler', caminho='bpy.data.texts') if n != 'andar.py'][0]
+    ok(recusa(lambda: c.pedir('script_gravar', nome=nome_alheio, conteudo='x'), 'não foi criado por você'),
+       'script_gravar não sobrescreve script alheio sem autorização')
+    ok(c.pedir('script_gravar', nome=nome_alheio, conteudo='x', sobrescrever=True)['criado'] is False,
+       'script_gravar sobrescreve alheio quando autorizado')
     ok(recusa(lambda: c.pedir('script_gravar', nome='../x', conteudo='x'), 'inválido'), 'nome de script inválido recusado')
     ok(recusa(lambda: c.pedir('op', nome='text.insert', args={'text': 'x'}), 'script_gravar'), 'text.insert bloqueado')
     obj = c.pedir('cena')['objetos'][0]['nome']
     lig = c.pedir('script_ligar', objeto=obj, script='andar.py')
     ok(lig.get('controlador'), 'script_ligar cria sensor e controlador')
     ok(c.pedir('script_ligar', objeto=obj, script='andar.py').get('aviso'), 'script_ligar não duplica')
+
+    copia = TMP / 'copia.range'
+    c.pedir('copia_para_jogo', arquivo=str(copia))
+    ok(copia.exists() and copia.stat().st_size > 0, 'copia_para_jogo grava a cena atual sem trocar o arquivo aberto')
 
     # cliente que pede e some sem ler
     info = json.loads(arq.read_text())

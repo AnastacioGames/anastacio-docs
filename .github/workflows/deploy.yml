@@ -29,6 +29,10 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: site/package-lock.json
+      # regera o .md único e a versão fatiada para IA (api-ia/) a partir das páginas já geradas;
+      # só biblioteca padrão. Assim o que o site publica nunca fica atrás das páginas.
+      - run: python3 tools/gerar_md_unico.py && python3 tools/gerar_api_ia.py
+        working-directory: .
       - run: npm ci
       - run: npx astro build
       # para o deploy se algum link interno estiver quebrado

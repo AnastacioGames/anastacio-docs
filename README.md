@@ -82,6 +82,8 @@ claude mcp add anastacio-criador -- python tools/anastacio_criador_mcp.py --edit
 - **Segurança:** o servidor só escuta em 127.0.0.1, com token. `propriedade_ler`/`definir` aceitam só caminhos `bpy.a.b[0]["x"]` sem chamadas (`tools/criador/caminhos.py`). Código livre (`editor_py`, `jogo_py`) fica desligado; ligue com `ANASTACIO_CRIADOR_PY=1`. Na primeira alteração da sessão o MCP grava um backup em `<projeto>.backups/`.
 - **Os programas** são achados por `--editor`/`--runtime`, pelas variáveis `ANASTACIO_EDITOR`/`ANASTACIO_RUNTIME` ou pelo PATH. O instalador não é adivinhado.
 - **Teste:** `python tools/criador/teste_mcp.py` roda o MCP contra um editor falso que fala o mesmo protocolo (25 verificações). **Não testado:** o `servidor_editor.py` dentro do editor de verdade e o MCP num Claude Code real; precisam da engine instalada.
+- **Testes pendentes com a engine:** [docs/testes-pendentes.md](docs/testes-pendentes.md).
+- **Skill para a IA:** `skills/criar-jogo-anastacio/SKILL.md` (copie para `.claude/skills/` do projeto do jogo).
 - `tools/criador/servidor_jogo.py` é cópia do `servidor_jogo.py` da engine com `py` desligado por padrão.
 
 ## Regras do conteúdo

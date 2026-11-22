@@ -24,6 +24,13 @@ Se as ferramentas MCP não estiverem disponíveis, diga isso ao usuário e mostr
 5. **Testar o jogo:** `jogo_abrir`, `jogo_tecla`, `jogo_estado`, `jogo_tela`, e `log_ler` com `qual="jogo"` para ver erros de script. Feche com `jogo_fechar`.
 6. **Salvar só quando o usuário aprovar:** `projeto_salvar`. Nunca salve por conta própria. `editor_fechar` não salva.
 
+## Editor que o usuário já abriu
+
+- Se o usuário já tem o editor aberto, peça para ele ativar o addon **Controle por IA** (Preferências > Add-ons) e clicar em Ligar; depois chame `projeto_conectar`. A resposta diz o modo.
+- Em **só observar** você só lê (`cena_descrever`, `objeto_descrever`, `editor_tela`, `propriedade_ler`, `op_listar`). Uma alteração recusada com a mensagem de modo observar **não é falha**: explique o que pretende fazer e peça para o usuário clicar em **Liberar edição**. Não tente outro caminho para contornar.
+- Não use `editor_fechar` para encerrar: num editor do usuário ele só desliga o controle.
+- Se a conexão cair, o usuário pode ter desligado o controle; peça para ligar de novo.
+
 ## Limites
 
 - `editor_py` e `jogo_py` (código livre) vêm desligados. Não tente contornar; se for realmente necessário, peça ao usuário para ligar `ANASTACIO_CRIADOR_PY=1`.

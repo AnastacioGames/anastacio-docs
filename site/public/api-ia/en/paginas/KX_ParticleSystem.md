@@ -164,6 +164,8 @@ Particle size at the end of its life.
 
 *(new in Anastacio)* `attribute`
 
+Flipbook animation of the particle texture, as a `(columns, rows, cycles, random)` tuple. When assigning, `cycles` (default 1.0) and `random` (default `False`) are optional: `ps.flipbook = (4, 4)`.
+
 ### fragmentShaderPath
 
  `attribute`
@@ -215,6 +217,8 @@ Shows the emitter debug panel during the game.
 ### useObjectRotation
 
 *(new in Anastacio)* `attribute`
+
+`True` makes gravity, velocity, direction, offset and the vortex axis follow the owner object rotation.
 
 ### useVortex
 

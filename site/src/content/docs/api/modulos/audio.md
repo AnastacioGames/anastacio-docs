@@ -130,6 +130,10 @@ Pico com queda lenta, de 0 a 1.
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>
 
+Frequência da nota que está sendo cantada ou tocada no microfone, em Hz; 0 quando não há nota clara.
+
+**Retorna:** `float`
+
 ### microphoneRecordingSeconds()
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>função</small>

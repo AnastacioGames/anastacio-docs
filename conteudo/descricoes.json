@@ -337,7 +337,18 @@
   "CONSTRAINT_TYPE_DAMPTRACK": "Tipo de restrição de bone: Damped Track.",
   "CONSTRAINT_TYPE_CHILDOF": "Tipo de restrição de bone: Child Of.",
   "CONSTRAINT_TYPE_PIVOT": "Tipo de restrição de bone: Pivot.",
-  "CONSTRAINT_TYPE_ACTION": "Tipo de restrição de bone: Action."
+  "CONSTRAINT_TYPE_ACTION": "Tipo de restrição de bone: Action.",
+  "KX_MOUSESENSORMODE_BUTTON6": "Modo do sensor de mouse: reage a botão 6 do mouse.",
+  "KX_MOUSESENSORMODE_BUTTON7": "Modo do sensor de mouse: reage a botão 7 do mouse.",
+  "KX_MOUSESENSORMODE_LEFTBUTTON": "Modo do sensor de mouse: reage a botão esquerdo do mouse.",
+  "KX_MOUSESENSORMODE_MIDDLEBUTTON": "Modo do sensor de mouse: reage a botão do meio do mouse.",
+  "KX_MOUSESENSORMODE_RIGHTBUTTON": "Modo do sensor de mouse: reage a botão direito do mouse.",
+  "KX_MOUSESENSORMODE_LEFTTHUMBMOUSE": "Modo do sensor de mouse: reage a botão lateral esquerdo do mouse (polegar).",
+  "KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE": "Modo do sensor de mouse: reage a botão lateral direito do mouse (polegar).",
+  "KX_MOUSESENSORMODE_WHEELUP": "Modo do sensor de mouse: reage a roda do mouse para cima.",
+  "KX_MOUSESENSORMODE_WHEELDOWN": "Modo do sensor de mouse: reage a roda do mouse para baixo.",
+  "KX_MOUSESENSORMODE_MOVEMENT": "Modo do sensor de mouse: reage a movimento do mouse.",
+  "SHD_TANGENT": "Tipo de atributo de vértice de um `BL_Shader`: a tangente do vértice. Valor `1`."
  },
  "KX_ParticleSystem": {
   "blendMode": "Como as partículas se misturam com a cena: `'ALPHA'` ou `'ADDITIVE'`. Valor desconhecido levanta `ValueError`.",
@@ -373,7 +384,9 @@
   "size": "Tamanho inicial das partículas.",
   "texture": "Caminho da imagem usada nas partículas. Vazio remove a textura.",
   "velocity": "Velocidade inicial das partículas.",
-  "velocityRandomness": "Variação aleatória da velocidade inicial (0 = todas iguais)."
+  "velocityRandomness": "Variação aleatória da velocidade inicial (0 = todas iguais).",
+  "flipbook": "Animação por quadros da textura da partícula, como tupla `(colunas, linhas, ciclos, aleatório)`. Ao atribuir, `ciclos` (padrão 1.0) e `aleatório` (padrão `False`) são opcionais: `ps.flipbook = (4, 4)`.",
+  "useObjectRotation": "`True` faz gravidade, velocidade, direção, deslocamento e o eixo do vórtice seguirem a rotação do objeto dono."
  },
  "Range.network": {
   "host": "host(port=0, max_players=0, room_name='', password='', dedicated=False, websocket_port=-1, transport='enet') -> bool\nAbre um servidor (sala). Valores zero ou vazios usam o painel Network da cena. `dedicated=True` não cria jogador local; `websocket_port` aceita clientes Web; `transport` é `'enet'` (LAN/IP) ou `'steam'`.",
@@ -623,7 +636,10 @@
   "worldSun": "Luz Sun ligada ao World (posição do sol do céu), ou `None`.",
   "skip_cutscene": "skip_cutscene()\nPula para o fim da Cutscene em andamento: falas, esperas, caminhos de câmera e fades são descartados; os outros eventos que faltam rodam (volta da câmera, destravar, troca de cena). Retorna `False` se nada estava tocando. Tab ou o botão Start do controle fazem o mesmo, a menos que `Range.logic.globalDict[\"cutscene_skip\"]` seja `False`.",
   "takes": "Nomes dos Takes do Rec Play da cena (só leitura).",
-  "play_take": "play_take(name) -> bool\nToca um Take do Rec Play em todos os atores. `True` se o Take existe."
+  "play_take": "play_take(name) -> bool\nToca um Take do Rec Play em todos os atores. `True` se o Take existe.",
+  "setQualityPreset": "setQualityPreset(name)\nDefine o preset de qualidade global: `'CUSTOM'`, `'VERY_LOW'`, `'LOW'`, `'MEDIUM'`, `'HIGH'`, `'ULTRA'` ou `'AUTO'`. Passos e amostras (SSAO, SSGI, SSR, Light Scattering, nuvens, Volumetric Fog) mudam na hora; resoluções, sombras, DOF e céu valem no próximo `scene.restart()` ou carregamento. Levanta `ValueError` se o nome não existir.",
+  "getQualityPreset": "getQualityPreset() -> str\nNome do preset de qualidade global (`'CUSTOM'`, `'VERY_LOW'`, ..., `'AUTO'`).",
+  "visible": "`False` esconde a cena: ela deixa de ser desenhada. Útil para uma cena de overlay (HUD) que deve sumir sem ser removida."
  },
  "KX_Speaker": {
   "GetActiveEffect": "GetActiveEffect() -> int\nEfeito de som ativo: 0 nenhum, 1 reverb.",
@@ -707,7 +723,13 @@
   "setSplitImpulse": "setSplitImpulse(enabled)\nResolve posição e velocidade dos contatos separadamente. Evita objetos \"pulando\" ao se separar.",
   "setSplitImpulsePenetrationThreshold": "setSplitImpulsePenetrationThreshold(value)\nPenetração a partir da qual o split impulse é usado (padrão -0.04).",
   "setSplitImpulseTurnErp": "setSplitImpulseTurnErp(value)\nCorreção de rotação do split impulse (padrão 0.1).",
-  "setWarmstartingFactor": "setWarmstartingFactor(value)\nQuanto o solver reaproveita o resultado do frame anterior (0.0 a 1.0)."
+  "setWarmstartingFactor": "setWarmstartingFactor(value)\nQuanto o solver reaproveita o resultado do frame anterior (0.0 a 1.0).",
+  "POINTTOPOINT_CONSTRAINT": "Tipo de constraint para `createConstraint`, ponto a ponto: os dois corpos ficam presos por um ponto de pivô e podem girar livremente em volta dele (junta de bola).",
+  "LINEHINGE_CONSTRAINT": "Tipo de constraint para `createConstraint`, dobradiça: os corpos giram em torno de um eixo comum.",
+  "ANGULAR_CONSTRAINT": "Tipo de constraint para `createConstraint`, angular: igual à dobradiça, mas só limita a rotação, sem prender a posição.",
+  "CONETWIST_CONSTRAINT": "Tipo de constraint para `createConstraint`, cone-twist: junta de ombro, que limita a abertura em cone e a torção.",
+  "VEHICLE_CONSTRAINT": "Tipo de constraint para `createConstraint`, veículo: usado para criar um veículo (veja `getVehicleConstraint`).",
+  "GENERIC_6DOF_CONSTRAINT": "Tipo de constraint para `createConstraint`, 6 graus de liberdade genérica: cada eixo de movimento e de rotação pode ser limitado."
  },
  "Range.events": {
   "JOYSTICKA": "Botão A do controle.",
@@ -804,7 +826,6 @@
   "RIGHTSHIFTKEY": "Tecla Shift da direita.",
   "ESCKEY": "Tecla Esc.",
   "TABKEY": "Tecla Tab.",
-  "RETKEY": "Tecla Enter (mesmo código de ENTERKEY).",
   "ENTERKEY": "Tecla Enter.",
   "SPACEKEY": "Barra de espaço.",
   "LINEFEEDKEY": "Tecla Line Feed (rara em teclados atuais).",
@@ -968,7 +989,8 @@
   "isLive": "isLive() -> bool\n`True` enquanto o microfone está sendo ouvido.",
   "voiceFx": "voiceFx(sound, preset, amount=1.0) -> aud.Sound\nAplica um efeito de voz; igual a `aud.voice_fx`.",
   "edit": "edit(sound, start=0, end=-1, fade_in=0, fade_out=0, normalize=False) -> aud.Sound\nCorta, aplica fades e normaliza um som; igual a `aud.edit`.",
-  "voicePresets": "voicePresets(live=False) -> list\nNomes dos efeitos de voz."
+  "voicePresets": "voicePresets(live=False) -> list\nNomes dos efeitos de voz.",
+  "microphonePitch": "microphonePitch() -> float\nFrequência da nota que está sendo cantada ou tocada no microfone, em Hz; 0 quando não há nota clara."
  },
  "KX_MicrophoneSensor": {
   "mode": "Modo: `0` falando (nível acima de `threshold`), `1` pico (um pulso, como palma ou sopro), `2` silêncio (depois de `hold` segundos abaixo de `threshold`).",
@@ -986,5 +1008,42 @@
   "volume": "Volume, de 0 a 4.",
   "maxSeconds": "Tempo máximo de gravação em segundos, de 0 a 600.",
   "useReverb": "Usa o reverb da área ou do World."
+ },
+ "Range.texture": {
+  "SOURCE_ERROR": "Status da fonte de vídeo ou imagem: erro ao abrir ou ler o arquivo ou dispositivo (valor -1). É um dos valores possíveis de `status`.",
+  "SOURCE_EMPTY": "Status da fonte: ainda sem conteúdo carregado (valor 0). É um dos valores possíveis de `status`.",
+  "SOURCE_READY": "Status da fonte: carregada e pronta para tocar (valor 1). É um dos valores possíveis de `status`.",
+  "SOURCE_PLAYING": "Status da fonte: em reprodução (valor 2). É um dos valores possíveis de `status`.",
+  "SOURCE_STOPPED": "Status da fonte: parada ou pausada depois de tocar (valor 3). É um dos valores possíveis de `status`.",
+  "IMB_BLEND_MIX": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Mistura normal: a origem é colocada por cima do destino conforme o alpha dela. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_ADD": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Soma as cores da origem às do destino (máximo 255). O alpha do destino não muda. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_SUB": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Subtrai as cores da origem das do destino (mínimo 0). O alpha do destino não muda. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_MUL": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Multiplica as cores do destino pelas da origem, o que escurece. O alpha do destino não muda. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_LIGHTEN": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Fica com o mais claro entre origem e destino em cada canal de cor. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_DARKEN": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Fica com o mais escuro entre origem e destino em cada canal de cor. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_ERASE_ALPHA": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Não mexe nas cores: diminui o alpha do destino conforme o alpha da origem, o que apaga a região. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_ADD_ALPHA": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Não mexe nas cores: aumenta o alpha do destino conforme o alpha da origem (máximo 255). O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_OVERLAY": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Overlay, como nos editores de imagem: multiplica nas sombras do destino e usa screen nas luzes. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_HARDLIGHT": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Hard Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_COLORBURN": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Color Burn, como nos editores de imagem: escurece o destino. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_LINEARBURN": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Linear Burn: soma origem e destino e subtrai 255 (mínimo 0), o que escurece. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_COLORDODGE": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Color Dodge, como nos editores de imagem: clareia o destino. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_SCREEN": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Screen: inverte, multiplica e inverte de novo, o que clareia. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_SOFTLIGHT": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Soft Light, como nos editores de imagem: versão suave do overlay. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_PINLIGHT": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pin Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_VIVIDLIGHT": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Vivid Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_LINEARLIGHT": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Linear Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_DIFFERENCE": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Diferença: valor absoluto da diferença entre origem e destino em cada canal. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_EXCLUSION": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Exclusão: parecida com a diferença, com menos contraste. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_HUE": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega o matiz da origem e mantém a saturação e o valor do destino. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_SATURATION": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega a saturação da origem e mantém o matiz e o valor do destino. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_LUMINOSITY": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega o valor (brilho) da origem e mantém o matiz e a saturação do destino. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_COLOR": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega o matiz e a saturação da origem e mantém o valor (brilho) do destino. O efeito é ponderado pelo alpha da imagem de origem; onde ele é 0, nada muda.",
+  "IMB_BLEND_COPY": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot` (valor padrão): copia a origem por cima do destino, com RGB e alpha, sem mesclar.",
+  "IMB_BLEND_COPY_RGB": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`: copia só as cores (RGB) da origem e mantém o alpha do destino.",
+  "IMB_BLEND_COPY_ALPHA": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`: copia só o alpha da origem e mantém as cores do destino."
+ },
+ "SCA_ILogicBrick": {
+  "fireCount": "Quantas vezes este brick disparou: o sensor conta as ativações (subidas) e o actuator conta as partidas; outros bricks devolvem 0. Somente leitura."
  }
 }

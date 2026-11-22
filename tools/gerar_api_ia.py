@@ -103,8 +103,10 @@ def tipo_do_item(titulo, em_classe):
 def resumo_do_item(corpo):
     for linha in corpo.split("\n"):
         s = linha.strip()
-        if not s or s.startswith(("*(", "`", "**", ">", "```", "|", "-", ".. ")):
+        if not s or s.startswith(("*(", "**", ">", "```", "|", ".. ")):
             continue
+        if re.fullmatch(r"`[^`]*`", s) or s.startswith("- **`"):
+            continue  # selo de tipo (`função`) ou lista de parâmetros, não é descrição
         s = re.sub(r"\s+", " ", s)
         return s[:160] + ("…" if len(s) > 160 else "")
     return ""
@@ -131,8 +133,8 @@ def resumo_da_pagina(pre):
 def gerar(lang):
     pasta, *_ = IDIOMAS[lang]
     T = TEXTOS[lang]
-    grupos = [(T["modulos"], True, sorted((pasta / "modulos").glob("*.md"))),
-              (T["tipos"], False, sorted((pasta / "types").glob("*.md")))]
+    grupos = [(T["modulos"], True, sorted((pasta / "modulos").glob("*.md"), key=lambda p: p.name.lower())),
+              (T["tipos"], False, sorted((pasta / "types").glob("*.md"), key=lambda p: p.name.lower()))]
     paginas = [(g, mod, a) + ler_pagina(a) for g, mod, arqs in grupos for a in arqs]
     titulos = {a.stem.lower(): t for _, _, a, t, _ in paginas}
     destino = SAIDA / lang

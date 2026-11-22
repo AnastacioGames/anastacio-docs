@@ -45,3 +45,5 @@ These items exist in the engine but were not in the Range documentation. The one
 
 <span class="ae-badge novo">new in Anastacio</span> <small>attribute · read-only</small>
 
+How many times this brick fired: a sensor counts its activations (rises) and an actuator counts its starts; other bricks return 0. Read-only.
+

@@ -125,6 +125,10 @@ Peak with a slow fall, 0 to 1.
 
 *(new in Anastacio)* `function`
 
+Frequency of the note being sung or played into the microphone, in Hz; 0 when there is no clear note.
+
+**Returns:** `float`
+
 ### microphoneRecordingSeconds()
 
 *(new in Anastacio)* `function`

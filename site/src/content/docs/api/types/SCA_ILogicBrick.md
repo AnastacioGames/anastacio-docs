@@ -45,3 +45,5 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 
 <span class="ae-badge novo">novo na Anastacio</span> <small>atributo · só leitura</small>
 
+Quantas vezes este brick disparou: o sensor conta as ativações (subidas) e o actuator conta as partidas; outros bricks devolvem 0. Somente leitura.
+

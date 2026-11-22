@@ -162,6 +162,8 @@ Horizontal mouse movement.
 
 ### MOUSEY
 
+Vertical mouse movement.
+
 ## Keyboard Keys
 
 ## Alphabet keys
@@ -268,6 +270,8 @@ Y key.
 
 ### ZKEY
 
+Z key.
+
 ## Number keys
 
 ### ZEROKEY
@@ -308,6 +312,8 @@ Y key.
 
 ### NINEKEY
 
+9 key on the number row (not the numpad).
+
 ## Modifiers Keys
 
 ### CAPSLOCKKEY
@@ -336,6 +342,8 @@ Right Shift key.
 
 ### LEFTSHIFTKEY
 
+Left Shift key.
+
 ## Arrow Keys
 
 ### LEFTARROWKEY
@@ -351,6 +359,8 @@ Down arrow.
 Right arrow.
 
 ### UPARROWKEY
+
+Up arrow.
 
 ## Numberpad Keys
 
@@ -415,6 +425,8 @@ Numpad - key.
 Numpad Enter key.
 
 ### PADPLUSKEY
+
+Numpad + key.
 
 ## Function Keys
 
@@ -491,6 +503,8 @@ F17 key.
 F18 key.
 
 ### F19KEY
+
+F19 key.
 
 ## Other Keys
 

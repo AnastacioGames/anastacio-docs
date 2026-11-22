@@ -268,6 +268,10 @@ Peak with a slow fall, 0 to 1.
 
 *(new in Anastacio)* `function`
 
+Frequency of the note being sung or played into the microphone, in Hz; 0 when there is no clear note.
+
+**Returns:** `float`
+
 #### microphoneRecordingSeconds()
 
 *(new in Anastacio)* `function`
@@ -811,25 +815,37 @@ Constraint type to be used with `createConstraint`.
 
 #### POINTTOPOINT_CONSTRAINT
 
+Constraint type for `createConstraint`, point to point: the two bodies are pinned at a pivot point and can rotate freely around it (ball joint).
+
 .. to do
 
 #### LINEHINGE_CONSTRAINT
+
+Constraint type for `createConstraint`, hinge: the bodies rotate around a shared axis.
 
 .. to do
 
 #### ANGULAR_CONSTRAINT
 
+Constraint type for `createConstraint`, angular: like the hinge, but it only limits rotation and does not pin the position.
+
 .. to do
 
 #### CONETWIST_CONSTRAINT
+
+Constraint type for `createConstraint`, cone twist: a shoulder-like joint that limits cone swing and twist.
 
 .. to do
 
 #### VEHICLE_CONSTRAINT
 
+Constraint type for `createConstraint`, vehicle: used to create a vehicle (see `getVehicleConstraint`).
+
 .. to do
 
 #### GENERIC_6DOF_CONSTRAINT
+
+Constraint type for `createConstraint`, generic 6 degrees of freedom: each movement and rotation axis can be limited.
 
 .. to do
 
@@ -1045,6 +1061,8 @@ Horizontal mouse movement.
 
 #### MOUSEY
 
+Vertical mouse movement.
+
 ### Keyboard Keys
 
 ### Alphabet keys
@@ -1151,6 +1169,8 @@ Y key.
 
 #### ZKEY
 
+Z key.
+
 ### Number keys
 
 #### ZEROKEY
@@ -1191,6 +1211,8 @@ Y key.
 
 #### NINEKEY
 
+9 key on the number row (not the numpad).
+
 ### Modifiers Keys
 
 #### CAPSLOCKKEY
@@ -1219,6 +1241,8 @@ Right Shift key.
 
 #### LEFTSHIFTKEY
 
+Left Shift key.
+
 ### Arrow Keys
 
 #### LEFTARROWKEY
@@ -1234,6 +1258,8 @@ Down arrow.
 Right arrow.
 
 #### UPARROWKEY
+
+Up arrow.
 
 ### Numberpad Keys
 
@@ -1298,6 +1324,8 @@ Numpad - key.
 Numpad Enter key.
 
 #### PADPLUSKEY
+
+Numpad + key.
 
 ### Function Keys
 
@@ -1374,6 +1402,8 @@ F17 key.
 F18 key.
 
 #### F19KEY
+
+F19 key.
 
 ### Other Keys
 
@@ -2562,6 +2592,8 @@ Sensor state: still on.
 
 #### KX_SENSOR_JUST_DEACTIVATED
 
+Sensor state: just turned off this frame.
+
 ### Armature Sensor
 
 See `Range.types.KX_ArmatureSensor.type`
@@ -2666,6 +2698,8 @@ Radar sensor: cone pointing along the object -Y axis.
 
 #### KX_RADAR_AXIS_NEG_Z
 
+Radar sensor: cone pointing along the object -Z axis.
+
 ### Ray Sensor
 
 See `Range.types.KX_RaySensor`
@@ -2691,6 +2725,8 @@ Ray sensor: ray cast along the object -X axis.
 Ray sensor: ray cast along the object -Y axis.
 
 #### KX_RAY_AXIS_NEG_Z
+
+Ray sensor: ray cast along the object -Z axis.
 
 ### Actuators
 
@@ -2719,6 +2755,8 @@ Action actuator: loops while the sensor is active.
 Action actuator: loops and, when turned off, finishes the current loop.
 
 #### KX_ACTIONACT_PROPERTY
+
+Action actuator: the animation frame comes from a property.
 
 ### Armature Actuator
 
@@ -2904,6 +2942,8 @@ Dynamic actuator: turns off rigid body mode.
 
 #### KX_DYN_SET_MASS
 
+Dynamic actuator: changes the object mass.
+
 ### Game Actuator
 
 See `Range.types.KX_GameActuator`
@@ -2930,6 +2970,8 @@ Game actuator: saves the global properties to a file.
 
 #### KX_GAME_LOADCFG
 
+Game actuator: loads the saved global properties.
+
 ### Mouse Actuator
 
 #### KX_ACT_MOUSE_OBJECT_AXIS_X
@@ -2942,6 +2984,8 @@ Mouse (look) actuator: rotates around the object Y axis.
 
 #### KX_ACT_MOUSE_OBJECT_AXIS_Z
 
+Mouse (look) actuator: rotates around the object Z axis.
+
 ### Parent Actuator
 
 #### KX_PARENT_REMOVE
@@ -2949,6 +2993,8 @@ Mouse (look) actuator: rotates around the object Y axis.
 Parent actuator: removes the object from its parent.
 
 #### KX_PARENT_SET
+
+Parent actuator: attaches the object to a parent.
 
 ### Random Distributions
 
@@ -2992,6 +3038,8 @@ Random actuator: float with a normal distribution (mean and deviation).
 
 #### KX_RANDOMACT_FLOAT_NEGATIVE_EXPONENTIAL
 
+Random actuator: float with a negative exponential distribution.
+
 ### Scene Actuator
 
 See `Range.types.KX_SceneActuator`
@@ -3025,6 +3073,8 @@ Scene actuator: removes a scene.
 Scene actuator: pauses a scene.
 
 #### KX_SCENE_RESUME
+
+Scene actuator: resumes a paused scene.
 
 ### Sound Actuator
 
@@ -3062,6 +3112,8 @@ Sound actuator: plays forward and backward in a loop.
 
 #### KX_SOUNDACT_LOOPBIDIRECTIONAL_STOP
 
+Sound actuator: ping-pong loop while the sensor is active.
+
 **Value:** `6`
 
 ### Steering Actuator
@@ -3081,6 +3133,8 @@ Steering actuator: runs away from the target.
 **Value:** `2`
 
 #### KX_STEERING_PATHFOLLOWING
+
+Steering actuator: follows the Navmesh path to the target.
 
 **Value:** `3`
 
@@ -3122,6 +3176,8 @@ Track To actuator: the object -Y axis points at the target.
 
 #### KX_TRACK_TRAXIS_NEG_Z
 
+Track To actuator: the object -Z axis points at the target.
+
 ### Various
 
 ### 2D Filter
@@ -3133,6 +3189,8 @@ Track To actuator: the object -Y axis points at the target.
 **Value:** `2`
 
 #### RAS_2DFILTER_CUSTOMFILTER
+
+2D Filter actuator: your own GLSL shader.
 
 Customer filter, the code code is set via shaderText property.
 
@@ -3146,11 +3204,15 @@ Customer filter, the code code is set via shaderText property.
 
 #### RAS_2DFILTER_DISABLED
 
+2D Filter actuator: disables the filter.
+
 Disable the filter that is currently active
 
 **Value:** `-1`
 
 #### RAS_2DFILTER_ENABLED
+
+2D Filter actuator: enables the filter.
 
 Enable the filter that was previously disabled
 
@@ -3188,6 +3250,8 @@ Create and enable preset filters
 
 #### RAS_2DFILTER_NOFILTER
 
+2D Filter actuator: removes the filter.
+
 Disable and destroy the filter that is currently active
 
 **Value:** `0`
@@ -3212,9 +3276,13 @@ Disable and destroy the filter that is currently active
 
 #### RAS_2DFILTER_SOBEL
 
+2D Filter actuator: edge detection (Sobel).
+
 **Value:** `7`
 
 #### RAS_2DFILTER_SOBEL
+
+2D Filter actuator: edge detection (Sobel).
 
 **Value:** `14`
 
@@ -3312,6 +3380,8 @@ Bone constraint type: Clamp To (sticks to a curve).
 Bone constraint type: Transformation.
 
 #### CONSTRAINT_TYPE_DISTLIMIT
+
+Bone constraint type: Limit Distance.
 
 See `Range.types.BL_ArmatureConstraint.ik_type`
 
@@ -3417,6 +3487,8 @@ Material blend factor: source color. Used in setBlending().
 
 #### BL_ZERO
 
+Material blend factor: zero (ignores the color). Used in setBlending().
+
 ### Input Status
 
 See `Range.types.SCA_PythonKeyboard`, `Range.types.SCA_PythonMouse`, `Range.types.SCA_MouseSensor`, `Range.types.SCA_KeyboardSensor`
@@ -3434,6 +3506,8 @@ Key/button state: just pressed.
 Key/button state: held down.
 
 #### KX_INPUT_JUST_RELEASED
+
+Key/button state: just released.
 
 ### KX_GameObject
 
@@ -3482,6 +3556,8 @@ Left mouse button (for the mouse sensor).
 Middle mouse button (for the mouse sensor).
 
 #### KX_MOUSE_BUT_RIGHT
+
+Right mouse button (for the mouse sensor).
 
 ### Navigation Mesh Draw Modes
 
@@ -3560,6 +3636,8 @@ Shader uniform with the game time, for animated effects.
 User a timer for the uniform value.
 
 #### SHD_TANGENT
+
+`BL_Shader` vertex attribute type: the vertex tangent. Value `1`.
 
 ### States
 
@@ -3682,6 +3760,8 @@ Mask for logic brick state 28.
 Mask for logic brick state 29.
 
 #### KX_STATE30
+
+Mask for logic brick state 30.
 
 See `Range.types.KX_StateActuator.operation`
 
@@ -3959,43 +4039,63 @@ Right side mouse button (thumb).
 
 #### KX_MOUSESENSORMODE_BUTTON6
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse button 6.
 
 #### KX_MOUSESENSORMODE_BUTTON7
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse button 7.
 
 #### KX_MOUSESENSORMODE_LEFTBUTTON
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to left mouse button.
 
 #### KX_MOUSESENSORMODE_LEFTTHUMBMOUSE
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to left thumb mouse button.
 
 #### KX_MOUSESENSORMODE_MIDDLEBUTTON
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to middle mouse button.
 
 #### KX_MOUSESENSORMODE_MOVEMENT
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse movement.
 
 #### KX_MOUSESENSORMODE_RIGHTBUTTON
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to right mouse button.
 
 #### KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to right thumb mouse button.
 
 #### KX_MOUSESENSORMODE_WHEELDOWN
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse wheel down.
 
 #### KX_MOUSESENSORMODE_WHEELUP
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse wheel up.
 
 #### KX_MOVEMENT_ALL_AXIS
 
@@ -6497,13 +6597,23 @@ ordinary runtime time errors are not written.
 
 #### SOURCE_ERROR
 
+Video or image source status: error opening or reading the file or device (value -1). One of the possible values of `status`.
+
 #### SOURCE_EMPTY
+
+Source status: nothing loaded yet (value 0). One of the possible values of `status`.
 
 #### SOURCE_READY
 
+Source status: loaded and ready to play (value 1). One of the possible values of `status`.
+
 #### SOURCE_PLAYING
 
+Source status: playing (value 2). One of the possible values of `status`.
+
 #### SOURCE_STOPPED
+
+Source status: stopped or paused after playing (value 3). One of the possible values of `status`.
 
 ### Image Blending Modes
 
@@ -6511,57 +6621,111 @@ See Wikipedia's [Blend Modes](https://en.wikipedia.org/wiki/Blend_modes) for ref
 
 #### IMB_BLEND_MIX
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Normal mix: the source is laid over the destination according to its alpha. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_ADD
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Adds the source colors to the destination (max 255). The destination alpha is unchanged. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_SUB
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Subtracts the source colors from the destination (min 0). The destination alpha is unchanged. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_MUL
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Multiplies the destination colors by the source, which darkens. The destination alpha is unchanged. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_LIGHTEN
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Keeps the lighter of source and destination in each color channel. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_DARKEN
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Keeps the darker of source and destination in each color channel. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_ERASE_ALPHA
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Leaves the colors alone: lowers the destination alpha by the source alpha, which erases the region. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_ADD_ALPHA
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Leaves the colors alone: raises the destination alpha by the source alpha (max 255). The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_OVERLAY
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Overlay, as in image editors: multiplies in the destination shadows and screens in the highlights. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_HARDLIGHT
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Hard Light, as in image editors. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_COLORBURN
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Color Burn, as in image editors: darkens the destination. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_LINEARBURN
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Linear Burn: adds source and destination and subtracts 255 (min 0), which darkens. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_COLORDODGE
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Color Dodge, as in image editors: lightens the destination. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_SCREEN
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Screen: inverts, multiplies and inverts again, which lightens. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_SOFTLIGHT
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Soft Light, as in image editors: a gentle version of overlay. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_PINLIGHT
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Pin Light, as in image editors. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_VIVIDLIGHT
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Vivid Light, as in image editors. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_LINEARLIGHT
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Linear Light, as in image editors. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_DIFFERENCE
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Difference: absolute difference between source and destination in each channel. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_EXCLUSION
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Exclusion: similar to difference, with lower contrast. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_HUE
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Takes the hue from the source and keeps the destination saturation and value. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_SATURATION
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Takes the saturation from the source and keeps the destination hue and value. The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_LUMINOSITY
 
+Blend mode for the `mode` argument of `ImageBuff.plot`. Takes the value (brightness) from the source and keeps the destination hue and saturation. The effect is weighted by the source image alpha; where it is 0, nothing changes.
+
 #### IMB_BLEND_COLOR
+
+Blend mode for the `mode` argument of `ImageBuff.plot`. Takes hue and saturation from the source and keeps the destination value (brightness). The effect is weighted by the source image alpha; where it is 0, nothing changes.
 
 #### IMB_BLEND_COPY
 
+Blend mode for the `mode` argument of `ImageBuff.plot` (default): copies the source over the destination, RGB and alpha, with no blending.
+
 #### IMB_BLEND_COPY_RGB
 
+Blend mode for the `mode` argument of `ImageBuff.plot`: copies only the source colors (RGB) and keeps the destination alpha.
+
 #### IMB_BLEND_COPY_ALPHA
+
+Blend mode for the `mode` argument of `ImageBuff.plot`: copies only the source alpha and keeps the destination colors.
 
 ---
 
@@ -14924,6 +15088,8 @@ Particle size at the end of its life.
 
 *(new in Anastacio)* `attribute`
 
+Flipbook animation of the particle texture, as a `(columns, rows, cycles, random)` tuple. When assigning, `cycles` (default 1.0) and `random` (default `False`) are optional: `ps.flipbook = (4, 4)`.
+
 #### fragmentShaderPath
 
  `attribute`
@@ -14975,6 +15141,8 @@ Shows the emitter debug panel during the game.
 #### useObjectRotation
 
 *(new in Anastacio)* `attribute`
+
+`True` makes gravity, velocity, direction, offset and the vortex axis follow the owner object rotation.
 
 #### useVortex
 
@@ -16461,7 +16629,11 @@ Creates now an object that was left out at load time by the **Convert** option (
 
 #### getQualityPreset()
 
-*(undocumented)* `method`
+ `method`
+
+Name of the global quality preset (`'CUSTOM'`, `'VERY_LOW'`, ..., `'AUTO'`).
+
+**Returns:** `str`
 
 #### play_cutscene(sequence=0)
 
@@ -16493,9 +16665,11 @@ Releases a Cutscene **Wait Trigger** event waiting for `name`. `True` if it was 
 
 Restarts the active Cutscene and removes the objects it created.
 
-#### setQualityPreset()
+#### setQualityPreset(name)
 
-*(undocumented)* `method`
+ `method`
+
+Sets the global quality preset: `'CUSTOM'`, `'VERY_LOW'`, `'LOW'`, `'MEDIUM'`, `'HIGH'`, `'ULTRA'` or `'AUTO'`. Steps and samples (SSAO, SSGI, SSR, Light Scattering, clouds, Volumetric Fog) change now; resolutions, shadows, DOF and sky apply on the next `scene.restart()` or load. Raises `ValueError` for an unknown name.
 
 #### skip_cutscene()
 
@@ -16536,6 +16710,8 @@ Names of the objects that can still be created with `convertObject()`.
 #### visible
 
 *(new in Anastacio)* `attribute`
+
+`False` hides the scene: it is no longer drawn. Useful for an overlay (HUD) scene that should disappear without being removed.
 
 #### worldSun
 
@@ -18787,6 +18963,8 @@ These items exist in the engine but were not in the Range documentation. The one
 #### fireCount
 
 *(new in Anastacio)* `attribute · read-only`
+
+How many times this brick fired: a sensor counts its activations (rises) and an actuator counts its starts; other bricks return 0. Read-only.
 
 ---
 

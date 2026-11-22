@@ -8,7 +8,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 
 | Página | Itens | Documentados | Pendentes | Novos na Anastacio |
 |---|---:|---:|---:|---:|
-| `Range.audio` | 37 | 36 | 1 | 37 |
+| `Range.audio` | 37 | 37 | 0 | 37 |
 | `Range.constraints` | 52 | 51 | 0 |  |
 | `Range.events` | 135 | 135 | 0 |  |
 | `Range.imgui` | 42 | 42 | 0 | 6 |
@@ -74,7 +74,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_NetworkMessageSensor` | 4 | 4 | 0 |  |
 | `KX_ObjectActuator` | 18 | 18 | 0 |  |
 | `KX_ParentActuator` | 4 | 4 | 0 |  |
-| `KX_ParticleSystem` | 36 | 34 | 2 | 14 |
+| `KX_ParticleSystem` | 36 | 36 | 0 | 14 |
 | `KX_PlanarMap` | 1 | 1 | 0 |  |
 | `KX_PolyProxy` | 20 | 20 | 0 |  |
 | `KX_PythonComponent` | 5 | 1 | 0 |  |
@@ -85,7 +85,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `KX_RadarSensor` | 5 | 5 | 0 |  |
 | `KX_RaySensor` | 14 | 14 | 0 | 3 |
 | `KX_ReplaceMeshActuator` | 4 | 4 | 0 |  |
-| `KX_Scene` | 43 | 40 | 3 | 3 |
+| `KX_Scene` | 43 | 43 | 0 | 3 |
 | `KX_SceneActuator` | 4 | 4 | 0 |  |
 | `KX_SoundActuator` | 17 | 17 | 0 |  |
 | `KX_Speaker` | 41 | 41 | 0 |  |
@@ -107,7 +107,7 @@ Gerado a partir do inventário da engine. **Pendentes** existem no código e ain
 | `SCA_AnimationEventSensor` | 0 | 0 | 0 |  |
 | `SCA_DelaySensor` | 5 | 5 | 0 |  |
 | `SCA_IController` | 4 | 4 | 0 |  |
-| `SCA_ILogicBrick` | 4 | 2 | 1 | 1 |
+| `SCA_ILogicBrick` | 4 | 3 | 0 | 1 |
 | `SCA_IObject` | 0 | 0 | 0 |  |
 | `SCA_ISensor` | 14 | 14 | 0 |  |
 | `SCA_InputEvent` | 8 | 8 | 0 |  |

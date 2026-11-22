@@ -352,25 +352,37 @@ Tipo de constraint a usar com `createConstraint`.
 
 ### POINTTOPOINT_CONSTRAINT
 
+Tipo de constraint para `createConstraint`, ponto a ponto: os dois corpos ficam presos por um ponto de pivô e podem girar livremente em volta dele (junta de bola).
+
 .. to do
 
 ### LINEHINGE_CONSTRAINT
+
+Tipo de constraint para `createConstraint`, dobradiça: os corpos giram em torno de um eixo comum.
 
 .. to do
 
 ### ANGULAR_CONSTRAINT
 
+Tipo de constraint para `createConstraint`, angular: igual à dobradiça, mas só limita a rotação, sem prender a posição.
+
 .. to do
 
 ### CONETWIST_CONSTRAINT
+
+Tipo de constraint para `createConstraint`, cone-twist: junta de ombro, que limita a abertura em cone e a torção.
 
 .. to do
 
 ### VEHICLE_CONSTRAINT
 
+Tipo de constraint para `createConstraint`, veículo: usado para criar um veículo (veja `getVehicleConstraint`).
+
 .. to do
 
 ### GENERIC_6DOF_CONSTRAINT
+
+Tipo de constraint para `createConstraint`, 6 graus de liberdade genérica: cada eixo de movimento e de rotação pode ser limitado.
 
 .. to do
 

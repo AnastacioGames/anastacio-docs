@@ -24,6 +24,8 @@ Sensor state: still on.
 
 ## KX_SENSOR_JUST_DEACTIVATED
 
+Sensor state: just turned off this frame.
+
 ## KX_ARMSENSOR_STATE_CHANGED
 
 Detect that the constraint is changing state (active/inactive)
@@ -118,6 +120,8 @@ Radar sensor: cone pointing along the object -Y axis.
 
 ## KX_RADAR_AXIS_NEG_Z
 
+Radar sensor: cone pointing along the object -Z axis.
+
 ## KX_RAY_AXIS_POS_X
 
 Ray sensor: ray cast along the object +X axis.
@@ -140,6 +144,8 @@ Ray sensor: ray cast along the object -Y axis.
 
 ## KX_RAY_AXIS_NEG_Z
 
+Ray sensor: ray cast along the object -Z axis.
+
 ## KX_ACTIONACT_PLAY
 
 Action actuator: plays the animation once.
@@ -161,6 +167,8 @@ Action actuator: loops while the sensor is active.
 Action actuator: loops and, when turned off, finishes the current loop.
 
 ## KX_ACTIONACT_PROPERTY
+
+Action actuator: the animation frame comes from a property.
 
 ## KX_ACT_ARMATURE_RUN
 
@@ -332,6 +340,8 @@ Dynamic actuator: turns off rigid body mode.
 
 ## KX_DYN_SET_MASS
 
+Dynamic actuator: changes the object mass.
+
 ## KX_GAME_LOAD
 
 Game actuator: loads another game file.
@@ -354,6 +364,8 @@ Game actuator: saves the global properties to a file.
 
 ## KX_GAME_LOADCFG
 
+Game actuator: loads the saved global properties.
+
 ## KX_ACT_MOUSE_OBJECT_AXIS_X
 
 Mouse (look) actuator: rotates around the object X axis.
@@ -364,11 +376,15 @@ Mouse (look) actuator: rotates around the object Y axis.
 
 ## KX_ACT_MOUSE_OBJECT_AXIS_Z
 
+Mouse (look) actuator: rotates around the object Z axis.
+
 ## KX_PARENT_REMOVE
 
 Parent actuator: removes the object from its parent.
 
 ## KX_PARENT_SET
+
+Parent actuator: attaches the object to a parent.
 
 ## KX_RANDOMACT_BOOL_CONST
 
@@ -408,6 +424,8 @@ Random actuator: float with a normal distribution (mean and deviation).
 
 ## KX_RANDOMACT_FLOAT_NEGATIVE_EXPONENTIAL
 
+Random actuator: float with a negative exponential distribution.
+
 ## KX_SCENE_RESTART
 
 Scene actuator: restarts the scene.
@@ -437,6 +455,8 @@ Scene actuator: removes a scene.
 Scene actuator: pauses a scene.
 
 ## KX_SCENE_RESUME
+
+Scene actuator: resumes a paused scene.
 
 ## KX_SOUNDACT_PLAYSTOP
 
@@ -470,6 +490,8 @@ Sound actuator: plays forward and backward in a loop.
 
 ## KX_SOUNDACT_LOOPBIDIRECTIONAL_STOP
 
+Sound actuator: ping-pong loop while the sensor is active.
+
 **Value:** `6`
 
 ## KX_STEERING_SEEK
@@ -485,6 +507,8 @@ Steering actuator: runs away from the target.
 **Value:** `2`
 
 ## KX_STEERING_PATHFOLLOWING
+
+Steering actuator: follows the Navmesh path to the target.
 
 **Value:** `3`
 
@@ -522,6 +546,8 @@ Track To actuator: the object -Y axis points at the target.
 
 ## KX_TRACK_TRAXIS_NEG_Z
 
+Track To actuator: the object -Z axis points at the target.
+
 ## RAS_2DFILTER_BLUR
 
 2D Filter actuator: blur.
@@ -529,6 +555,8 @@ Track To actuator: the object -Y axis points at the target.
 **Value:** `2`
 
 ## RAS_2DFILTER_CUSTOMFILTER
+
+2D Filter actuator: your own GLSL shader.
 
 Customer filter, the code code is set via shaderText property.
 
@@ -542,11 +570,15 @@ Customer filter, the code code is set via shaderText property.
 
 ## RAS_2DFILTER_DISABLED
 
+2D Filter actuator: disables the filter.
+
 Disable the filter that is currently active
 
 **Value:** `-1`
 
 ## RAS_2DFILTER_ENABLED
+
+2D Filter actuator: enables the filter.
 
 Enable the filter that was previously disabled
 
@@ -584,6 +616,8 @@ Create and enable preset filters
 
 ## RAS_2DFILTER_NOFILTER
 
+2D Filter actuator: removes the filter.
+
 Disable and destroy the filter that is currently active
 
 **Value:** `0`
@@ -608,9 +642,13 @@ Disable and destroy the filter that is currently active
 
 ## RAS_2DFILTER_SOBEL
 
+2D Filter actuator: edge detection (Sobel).
+
 **Value:** `7`
 
 ## RAS_2DFILTER_SOBEL
+
+2D Filter actuator: edge detection (Sobel).
 
 **Value:** `14`
 
@@ -697,6 +735,8 @@ Bone constraint type: Clamp To (sticks to a curve).
 Bone constraint type: Transformation.
 
 ## CONSTRAINT_TYPE_DISTLIMIT
+
+Bone constraint type: Limit Distance.
 
 See `Range.types.BL_ArmatureConstraint.ik_type`
 
@@ -800,6 +840,8 @@ Material blend factor: source color. Used in setBlending().
 
 ## BL_ZERO
 
+Material blend factor: zero (ignores the color). Used in setBlending().
+
 ## KX_INPUT_NONE
 
 Key/button state: released.
@@ -813,6 +855,8 @@ Key/button state: just pressed.
 Key/button state: held down.
 
 ## KX_INPUT_JUST_RELEASED
+
+Key/button state: just released.
 
 ## KX_ACTION_MODE_PLAY
 
@@ -853,6 +897,8 @@ Left mouse button (for the mouse sensor).
 Middle mouse button (for the mouse sensor).
 
 ## KX_MOUSE_BUT_RIGHT
+
+Right mouse button (for the mouse sensor).
 
 ## RM_WALLS
 
@@ -927,6 +973,8 @@ Shader uniform with the game time, for animated effects.
 User a timer for the uniform value.
 
 ## SHD_TANGENT
+
+`BL_Shader` vertex attribute type: the vertex tangent. Value `1`.
 
 ## KX_STATE1
 
@@ -1045,6 +1093,8 @@ Mask for logic brick state 28.
 Mask for logic brick state 29.
 
 ## KX_STATE30
+
+Mask for logic brick state 30.
 
 See `Range.types.KX_StateActuator.operation`
 
@@ -1188,43 +1238,63 @@ Right side mouse button (thumb).
 
 ## KX_MOUSESENSORMODE_BUTTON6
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse button 6.
 
 ## KX_MOUSESENSORMODE_BUTTON7
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse button 7.
 
 ## KX_MOUSESENSORMODE_LEFTBUTTON
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to left mouse button.
 
 ## KX_MOUSESENSORMODE_LEFTTHUMBMOUSE
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to left thumb mouse button.
 
 ## KX_MOUSESENSORMODE_MIDDLEBUTTON
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to middle mouse button.
 
 ## KX_MOUSESENSORMODE_MOVEMENT
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse movement.
 
 ## KX_MOUSESENSORMODE_RIGHTBUTTON
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to right mouse button.
 
 ## KX_MOUSESENSORMODE_RIGHTTHUMBMOUSE
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to right thumb mouse button.
 
 ## KX_MOUSESENSORMODE_WHEELDOWN
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse wheel down.
 
 ## KX_MOUSESENSORMODE_WHEELUP
 
-*(undocumented)* `constant`
+ `constant`
+
+Mouse sensor mode: reacts to mouse wheel up.
 
 ## KX_MOVEMENT_ALL_AXIS
 

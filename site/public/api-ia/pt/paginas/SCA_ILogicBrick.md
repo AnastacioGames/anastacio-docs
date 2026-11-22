@@ -39,3 +39,5 @@ Estes itens existem na engine mas não estavam na documentação da Range. Os ma
 ### fireCount
 
 *(novo na Anastacio)* `atributo · só leitura`
+
+Quantas vezes este brick disparou: o sensor conta as ativações (subidas) e o actuator conta as partidas; outros bricks devolvem 0. Somente leitura.

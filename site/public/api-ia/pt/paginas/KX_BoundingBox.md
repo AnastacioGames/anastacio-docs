@@ -1,0 +1,77 @@
+# KX_BoundingBox
+
+Classe base: [`EXP_PyObjectPlus`](EXP_PyObjectPlus.md)
+
+Uma caixa de volume de um game object. Usada para ler e alterar a caixa de volume ou AABB.
+
+```python
+
+from Range import logic
+from mathutils import Vector
+
+owner = logic.getCurrentController().owner
+box = owner.cullingBox
+
+# Desliga a atualização automática para permitir modificar a caixa.
+box.autoUpdate = False
+
+print(box)
+# Aumenta a altura da caixa em 1.
+box.max = box.max + Vector((0, 0, 1))
+
+print(box)
+```
+
+```python
+
+# Lê o tamanho da caixa do objeto.
+import Range
+
+box = Range.logic.getCurrentController().owner.cullingBox
+
+size = box.max - box.min
+print("Size:", size)
+print("Center:", box.center)
+print("Radius:", box.radius)
+print("Volume:", box.volume)
+```
+
+## min
+
+O ponto mínimo da bounding box nos eixos x, y e z.
+
+**Tipo:** `mathutils.Vector`
+
+### max
+
+O ponto máximo da bounding box nos eixos x, y e z.
+
+**Tipo:** `mathutils.Vector`
+
+### center
+
+O centro da bounding box (somente leitura).
+
+**Tipo:** `mathutils.Vector`
+
+### radius
+
+O raio da bounding box (somente leitura).
+
+**Tipo:** float
+
+### autoUpdate
+
+Permite atualizar a bounding box se a malha for modificada.
+
+**Tipo:** boolean
+
+## Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### volume
+
+ `atributo · só leitura`
+
+Volume da caixa delimitadora (largura × altura × profundidade).

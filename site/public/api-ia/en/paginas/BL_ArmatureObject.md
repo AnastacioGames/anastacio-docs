@@ -1,0 +1,79 @@
+# BL_ArmatureObject
+
+Base class: [`KX_GameObject`](KX_GameObject.md)
+
+> **See also:**
+[`BL_ArmatureChannel`](BL_ArmatureChannel.md), [`BL_ArmatureBone`](BL_ArmatureBone.md), [`BL_ArmatureConstraint`](BL_ArmatureConstraint.md), [`BL_ActionActuator`](BL_ActionActuator.md)
+
+An armature object.
+
+```python
+# Offset a bone on top of the animation.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+armature.setBoneRotationOffset("Spine", (0.2, 0.0, 0.0))
+```
+
+```python
+# Give the bone back to the animation.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+armature.clearBoneRotationOffset("Spine")
+```
+
+```python
+# List the channels.
+import Range
+
+armature = Range.logic.getCurrentController().owner
+
+for channel in armature.channels:
+    print(channel.name)
+```
+
+## constraints
+
+The list of armature constraint defined on this armature.
+Elements of the list can be accessed by index or string.
+The key format for string access is '<bone_name>:<constraint_name>'.
+
+**Type:** list of `BL_ArmatureConstraint`
+
+### channels
+
+The list of armature channels.
+Elements of the list can be accessed by index or name the bone.
+
+**Type:** list of `BL_ArmatureChannel`
+
+### update()
+
+Ensures that the armature will be updated on next graphic frame.
+
+This action is unecessary if a KX_ArmatureActuator with mode run is active
+or if an action is playing. Use this function in other cases. It must be called
+on each frame to ensure that the armature is updated continously.
+
+### draw()
+
+Draw lines that represent armature to view it in real time.
+
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### clearBoneRotationOffset(bone=None)
+
+ `method`
+
+Removes the extra rotation of one bone, or of all bones when `bone` is omitted.
+
+### setBoneRotationOffset(bone, rotation)
+
+ `method`
+
+Extra rotation for a bone on top of the playing actions, in the bone's local space. `rotation`: euler XYZ (3 floats, radians) or quaternion (4 floats, w x y z). Stays until `clearBoneRotationOffset()`.

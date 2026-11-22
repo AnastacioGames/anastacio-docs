@@ -1,0 +1,112 @@
+# KX_SteeringActuator
+
+Base class: [`SCA_IActuator`](SCA_IActuator.md)
+
+> **See also:**
+[`KX_NavMeshObject`](KX_NavMeshObject.md)
+
+Steering Actuator for navigation.
+
+```python
+# Follow the player using a navigation mesh.
+import Range
+
+cont = Range.logic.getCurrentController()
+scene = Range.logic.getCurrentScene()
+act = cont.actuators["Steering"]
+
+act.behavior = Range.logic.KX_STEERING_PATHFOLLOWING
+act.target = scene.objects["Player"]
+act.navmesh = scene.objects["Navmesh"]
+act.velocity = 3.0
+act.distance = 1.0
+cont.activate(act)
+```
+
+## behavior
+
+The steering behavior to use.
+
+**Type:** one of `these constants`
+
+### velocity
+
+Velocity magnitude
+
+**Type:** float
+
+### acceleration
+
+Max acceleration
+
+**Type:** float
+
+### turnspeed
+
+Max turn speed
+
+**Type:** float
+
+### distance
+
+Relax distance
+
+**Type:** float
+
+### target
+
+Target object
+
+**Type:** `KX_GameObject`
+
+### navmesh
+
+Navigation mesh
+
+**Type:** `KX_GameObject`
+
+### selfterminated
+
+Terminate when target is reached
+
+**Type:** boolean
+
+### enableVisualization
+
+Enable debug visualization
+
+**Type:** boolean
+
+### pathUpdatePeriod
+
+Path update period
+
+**Type:** int
+
+### path
+
+Path point list.
+
+**Type:** list of `mathutils.Vector`
+
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### facingMode
+
+ `attribute`
+
+Where the object turns while walking: 0 doesn't turn, 1 to 3 = +X, +Y, +Z axis, 4 to 6 = -X, -Y, -Z.
+
+### lockZVelocity
+
+ `attribute`
+
+Doesn't touch the object vertical (Z) velocity.
+
+### steeringVec
+
+ `attribute · read-only`
+
+Direction vector computed by the actuator this frame.

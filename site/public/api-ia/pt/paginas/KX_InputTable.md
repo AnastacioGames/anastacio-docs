@@ -1,0 +1,55 @@
+# KX_InputTable
+
+> **Veja também:**
+[`KX_InputSystem`](KX_InputSystem.md)
+
+Classe `Range.types.KX_InputTable`.
+
+```python
+# Usa uma ação sem saber qual tecla está ligada a ela.
+import Range
+
+maps = Range.logic.inputSystem.inputMaps
+jump = maps["Player"]["Jump"]
+
+if jump.activated:
+    print("Jump")
+```
+
+```python
+# Lê um eixo.
+import Range
+
+move = Range.logic.inputSystem.inputMaps["Player"]["Move"]
+
+if move.active:
+    print(move.values)
+```
+
+# Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### activated
+
+ `atributo · só leitura`
+
+`True` no frame em que a ação acabou de ser acionada.
+
+### active
+
+ `atributo · só leitura`
+
+`True` enquanto a ação está acionada.
+
+### released
+
+ `atributo · só leitura`
+
+`True` no frame em que a ação acabou de ser solta.
+
+### values
+
+ `atributo · só leitura`
+
+Valores atuais da ação: `True`/`False` num botão simples (`VECTOR1D`); tupla com 2 ou 3 números em eixos 2D ou 3D.

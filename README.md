@@ -58,6 +58,15 @@ Sempre que a engine ganhar funções novas:
 
    **Arquivo único para baixar:** depois de gerar, rode `python tools/gerar_md_unico.py`. Ele grava `site/public/anastacio-api-en.md` e `-pt.md` (índice + um título por função), publicados em `/anastacio-docs/anastacio-api-en.md`.
 
+   **Versão fatiada para IA:** rode também `python tools/gerar_api_ia.py`. Ele grava `site/public/api-ia/<pt|en>/` com `INDEX.md` (uma linha por classe/módulo), `paginas/` (uma por classe; as grandes viram visão geral + `--props`, `--funcs`, `--consts`), `busca.json` (um registro por item) e `GUIA.md`/`GUIDE.md` (regras e armadilhas, escritas à mão em `conteudo/guia-ia-<lang>.md`). Também grava `inventario/sem_descricao.md`, a fila de itens sem frase de descrição. O arquivo único de 450 KB é grande demais para o contexto de uma IA; use a versão fatiada. Publicada em `/anastacio-docs/api-ia/pt/`.
+
+   **Servidor MCP:** `tools/anastacio_api_mcp.py` (só biblioteca padrão) serve a versão fatiada com as ferramentas `api_guia`, `api_indice`, `api_buscar`, `api_pagina` e `api_item`. No Claude Code:
+   ```
+   claude mcp add anastacio-api -- python tools/anastacio_api_mcp.py --lang pt
+   claude mcp add anastacio-api -- python tools/anastacio_api_mcp.py --fonte https://anastaciogames.github.io/anastacio-docs/api-ia/pt/
+   ```
+   (a segunda forma lê a doc publicada, sem clonar o repositório). Ao mudar a API, regere e publique os dois conjuntos (`gerar_md_unico.py` e `gerar_api_ia.py`).
+
 5. **Publicar**: commit + push na `main`. A Action `.github/workflows/deploy.yml` compila e publica no GitHub Pages.
    Na primeira vez: no GitHub, Settings > Pages > Source = **GitHub Actions**. Se o repositório ou o usuário não forem `AnastacioGames/anastacio-docs`, ajuste `SITE` e `BASE` em `site/astro.config.mjs`.
 

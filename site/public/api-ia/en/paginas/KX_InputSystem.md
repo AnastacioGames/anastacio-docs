@@ -1,0 +1,68 @@
+# KX_InputSystem
+
+> **See also:**
+[`KX_InputTable`](KX_InputTable.md), [`KX_PythonKeyboard`](KX_PythonKeyboard.md), [`KX_PythonJoystick`](KX_PythonJoystick.md)
+
+Class `Range.types.KX_InputSystem`.
+
+```python
+# List the maps and the actions that were loaded.
+import Range
+
+for mapName, tables in Range.logic.inputSystem.inputMaps.items():
+    print(mapName, list(tables))
+```
+
+```python
+# Save a new sensitivity chosen in the options menu. Arguments: map, action, binding, value.
+import Range
+
+system = Range.logic.inputSystem
+
+if system.changeSensitivity("Player", "Jump", "keyboard", 0.5):
+    system.reloadInputMaps()
+```
+
+```python
+# Change the key of an action. The map is the file KeyMapping/Player.json, next to the game.
+import Range
+
+system = Range.logic.inputSystem
+
+if system.changeKeyMap("Player", "Jump", "keyboard", "BUTTON", Range.events.SPACEKEY):
+    system.reloadInputMaps()
+```
+
+# Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### changeJoystickIndex(inputMap, inputTable, name, value)
+
+ `method`
+
+Changes which gamepad (joystick index) an action uses.
+
+### changeKeyMap(inputMap, inputTable, name, keyType, value)
+
+ `method`
+
+Changes the key or button bound to an action. Use it for "rebind controls" menus.
+
+### changeSensitivity(inputMap, inputTable, name, value)
+
+ `method`
+
+Changes an action sensitivity (e.g. mouse or analog stick).
+
+### reloadInputMaps()
+
+ `method`
+
+Reloads the input maps from the file. It is slow; avoid calling it repeatedly.
+
+### inputMaps
+
+ `attribute · read-only`
+
+Dictionary `{map: {table: KX_InputTable}}` with all loaded input maps.

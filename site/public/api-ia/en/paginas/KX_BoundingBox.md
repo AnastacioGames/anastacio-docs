@@ -1,0 +1,77 @@
+# KX_BoundingBox
+
+Base class: [`EXP_PyObjectPlus`](EXP_PyObjectPlus.md)
+
+A bounding volume box of a game object. Used to get and alterate the volume box or AABB.
+
+```python
+
+from Range import logic
+from mathutils import Vector
+
+owner = logic.getCurrentController().owner
+box = owner.cullingBox
+
+# Disable auto update to allow modify the box.
+box.autoUpdate = False
+
+print(box)
+# Increase the height of the box of 1.
+box.max = box.max + Vector((0, 0, 1))
+
+print(box)
+```
+
+```python
+
+# Read the size of the box of the object.
+import Range
+
+box = Range.logic.getCurrentController().owner.cullingBox
+
+size = box.max - box.min
+print("Size:", size)
+print("Center:", box.center)
+print("Radius:", box.radius)
+print("Volume:", box.volume)
+```
+
+## min
+
+The minimal point in x, y and z axis of the bounding box.
+
+**Type:** `mathutils.Vector`
+
+### max
+
+The maximal point in x, y and z axis of the bounding box.
+
+**Type:** `mathutils.Vector`
+
+### center
+
+The center of the bounding box. (read only)
+
+**Type:** `mathutils.Vector`
+
+### radius
+
+The radius of the bounding box. (read only)
+
+**Type:** float
+
+### autoUpdate
+
+Allow to update the bounding box if the mesh is modified.
+
+**Type:** boolean
+
+## Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### volume
+
+ `attribute · read-only`
+
+Bounding box volume (width × height × depth).

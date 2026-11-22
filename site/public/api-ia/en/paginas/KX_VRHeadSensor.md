@@ -1,0 +1,65 @@
+# KX_VRHeadSensor
+
+Class `Range.types.KX_VRHeadSensor`.
+
+```python
+# Confirm with a nod of the head.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["VRHead"]
+
+sensor.mode = 4
+sensor.time = 1.0
+
+if sensor.positive:
+    print("Yes")
+```
+
+```python
+# Read the current rotation of the head.
+import Range
+
+sensor = Range.logic.getCurrentController().sensors["VRHead"]
+
+print(sensor.yaw, sensor.pitch, sensor.roll)
+```
+
+# Not in the Range documentation
+
+These items exist in the engine but were not in the Range documentation. The ones marked **new in Anastacio** were added by Anastacio Engine.
+
+### angle
+
+*(new in Anastacio)* `attribute`
+
+Angle, in radians, the head must turn for the gesture to count (0 to 1.6).
+
+### mode
+
+*(new in Anastacio)* `attribute`
+
+Detected gesture: 0 look up, 1 down, 2 tilt left, 3 right, 4 nod "yes", 5 shake "no".
+
+### pitch
+
+*(new in Anastacio)* `attribute · read-only`
+
+Current head up/down tilt.
+
+### roll
+
+*(new in Anastacio)* `attribute · read-only`
+
+Current head sideways tilt.
+
+### time
+
+*(new in Anastacio)* `attribute`
+
+Time in seconds to complete the gesture (0.05 to 10).
+
+### yaw
+
+*(new in Anastacio)* `attribute · read-only`
+
+Current head left/right turn.

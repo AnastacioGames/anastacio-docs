@@ -1,0 +1,80 @@
+# EXP_BaseListValue
+
+Classe `Range.types.EXP_BaseListValue`.
+
+```python
+# Procura um objeto sem erro caso ele não exista.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+door = objects.get("Door")
+if door is not None:
+    print(objects.index(door))
+```
+
+```python
+# Filtra por nome e propriedade. Os dois são expressões regulares.
+import Range
+
+objects = Range.logic.getCurrentScene().objects
+
+for enemy in objects.filter("Enemy.*", "life"):
+    print(enemy.name)
+```
+
+# Sem documentação da Range
+
+Estes itens existem na engine mas não estavam na documentação da Range. Os marcados **novo na Anastacio** foram adicionados pela Anastacio Engine.
+
+### append(item)
+
+ `método`
+
+Acrescenta um item no fim da lista. Só funciona em listas criadas pelo script; listas internas da engine (ex.: `scene.objects`) não podem ser alteradas.
+
+### count(item)
+
+ `método`
+
+Quantas vezes o item aparece na lista.
+
+**Retorna:** `int`
+
+### filter(name, prop='')
+
+ `método`
+
+Nova lista só com os itens cujo nome contém `name` e que têm a propriedade de jogo `prop`. Pelo menos um dos dois precisa ser preenchido.
+
+**Retorna:** `EXP_ListValue`
+
+### from_id(id)
+
+ `método`
+
+Procura o item pelo `id()` do Python. Útil para guardar a referência de um objeto como número.
+
+**Retorna:** `object`
+
+### get(key, default=None)
+
+ `método`
+
+Item com esse nome, ou `default` se não existir. Ex.: `scene.objects.get('Player')`.
+
+**Retorna:** `object`
+
+### index(item)
+
+ `método`
+
+Posição do item na lista. Dá erro se ele não estiver nela.
+
+**Retorna:** `int`
+
+### reverse()
+
+ `método`
+
+Inverte a ordem da lista. Só em listas criadas pelo script.

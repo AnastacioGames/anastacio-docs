@@ -89,7 +89,17 @@ def cmd_esperar(p):
 
 def cmd_tela(p):
     render.makeScreenshot(p['arquivo'])  # gravado no fim do frame
-    return adiar(3, lambda: os.path.exists(p['arquivo']) and p['arquivo'])
+    def pronto():
+        # O arquivo aparece antes de terminar de gravar: espera o tamanho parar de mudar.
+        ultimo, limite = -1, time.time() + 3
+        while time.time() < limite:
+            tam = os.path.getsize(p['arquivo']) if os.path.exists(p['arquivo']) else 0
+            if tam > 0 and tam == ultimo:
+                return p['arquivo']
+            ultimo = tam
+            time.sleep(0.1)
+        return False
+    return adiar(3, pronto)
 
 
 def cmd_fechar(_p):

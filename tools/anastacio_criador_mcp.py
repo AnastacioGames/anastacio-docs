@@ -242,13 +242,17 @@ def editor_clicar(x, y, botao="LEFTMOUSE"):
     evento("MOUSEMOVE", "NOTHING", x, y)
     time.sleep(0.15)
     evento(botao, "PRESS", x, y)
+    time.sleep(0.15)  # o editor precisa tratar cada evento num quadro; juntos, o clique se perde
     r = evento(botao, "RELEASE", x, y)
+    time.sleep(0.15)
     return f"clicou em ({x}, {y}): {r}"
 
 
 def editor_tecla(tecla, x=0, y=0):
     evento(tecla, "PRESS", x, y)
+    time.sleep(0.15)
     evento(tecla, "RELEASE", x, y)
+    time.sleep(0.15)
     return f"tecla {tecla} enviada"
 
 

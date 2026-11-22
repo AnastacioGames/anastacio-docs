@@ -21,22 +21,22 @@ claude mcp add anastacio-api -- python tools/anastacio_api_mcp.py --lang pt
 - [x] **Operadores:** `op_listar` com filtro `primitive`, `op_descrever mesh.primitive_cube_add` e `op_executar` criam um cubo na cena.
 - [x] **Propriedades:** `propriedade_ler` de `bpy.data.objects["Cube"].location` e `propriedade_definir` de `...location[0]` mudam o objeto. Recusa de caminho com chamada (`...remove(...)`) já foi testada com o editor falso.
 - [x] **Tela:** `editor_tela` devolve uma imagem legível (a tela de abertura não cobre a janela; se cobrir, ver `show_splash` em `servidor_editor.py`, que hoje não é mexido).
-- [ ] **Entrada:** `editor_clicar` e `editor_tecla` agem no editor (precisa de `ANASTACIO_EVENT_SIMULATE=1`, que o MCP define).
+- [x] **Entrada:** `editor_clicar` e `editor_tecla` agem no editor (precisa de `ANASTACIO_EVENT_SIMULATE=1`, que o MCP define).
 - [ ] **Recarregar arquivo:** abrir outro `.range` pelo editor e conferir que o servidor se religa (`load_post`) e o MCP volta a responder.
 - [x] **Fechar:** `editor_fechar` fecha sem salvar e sem criar `quit.blend`.
-- [ ] **Código livre:** `editor_py` recusa por padrão; com `ANASTACIO_CRIADOR_PY=1` roda e devolve `resultado`.
+- [x] **Código livre:** `editor_py` recusa por padrão; com `ANASTACIO_CRIADOR_PY=1` roda e devolve `resultado`.
 
 ## Jogo (`tools/criador/servidor_jogo.py`)
 
 - [x] `jogo_abrir` roda o projeto no Runtime, janela visível.
 - [x] `jogo_estado` mostra frame, FPS e cenas; `jogo_tecla` e `jogo_mouse` mexem no jogo; `jogo_tela` devolve imagem.
-- [ ] Erro de script no jogo aparece em `log_ler` com `qual="jogo"`.
-- [ ] O jogo fecha sozinho depois de 60 s sem conexão e quando o MCP sai.
+- [x] Erro de script no jogo aparece em `log_ler` com `qual="jogo"`.
+- [x] O jogo fecha sozinho depois de 60 s sem conexão e quando o MCP sai.
 
 ## MCP da documentação (`tools/anastacio_api_mcp.py`)
 
 - [x] No Claude Code real, as ferramentas `api_guia`, `api_indice`, `api_buscar`, `api_pagina` e `api_item` aparecem e respondem (testar com `worldPosition` e `KX_GameObject`).
-- [ ] Com `--fonte https://anastaciogames.github.io/anastacio-docs/api-ia/pt/` lê a doc publicada.
+- [x] Com `--fonte https://anastaciogames.github.io/anastacio-docs/api-ia/pt/` lê a doc publicada.
 - [x] Abrir no navegador (200 por curl) `.../api-ia/pt/INDEX.md` e `.../api-ia/pt/paginas/Range.texture--consts.md` (o ambiente de desenvolvimento não alcança o site).
 
 ## Skills

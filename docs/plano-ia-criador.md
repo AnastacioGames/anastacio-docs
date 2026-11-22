@@ -3,7 +3,7 @@
 Para seguir no chat do PC (Claude Code aberto no VS Code, com a engine instalada). Estado em 2026-11-22.
 
 - **Parte A:** o MCP abre o editor com o projeto (janela visível). **Escrita e testada só contra um editor falso.**
-- **Parte B:** a IA conecta no editor que o usuário já abriu. **Só o desenho abaixo; nada implementado.** Exige mudar a engine, então é seu (decisão de 2026-11-22: mexer na engine fica para depois).
+- **Parte B:** a IA conecta no editor que o usuário já abriu. **Implementada em 2026-11-22 (addon `anastacio_controle_ia`, branch `controle-ia` na engine); decisões: addon opcional, começa só observando, sessão na pasta do usuário, `py` só por variável de ambiente. Falta aceite visual.** Exige mudar a engine, então é seu (decisão de 2026-11-22: mexer na engine fica para depois).
 
 A e B usam as mesmas ferramentas e o mesmo protocolo. A diferença é só quem sobe o servidor dentro do editor.
 

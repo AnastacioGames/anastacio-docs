@@ -20,7 +20,8 @@ ou AnastacioEngine/AnastacioRuntime no PATH. O instalador não é adivinhado.
 Uso com Claude Code:
   claude mcp add anastacio-criador -- python tools/anastacio_criador_mcp.py --editor "C:/.../AnastacioEngine.exe"
 
-Conectar a um editor que já abriu o servidor (modo B, futuro): --sessao <arquivo de sessão>.
+Editor já aberto pelo usuário: ele liga "Controle por IA" (complemento da engine) e o MCP conecta sozinho.
+--sessao <arquivo de sessão> aponta para outro arquivo.
 """
 import base64
 import json
@@ -36,6 +37,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "criador"))
 import caminhos  # noqa: E402
+import sessao as sessoes  # noqa: E402
 
 VERSAO = "0.1.0"
 AQUI = Path(__file__).resolve().parent
@@ -50,6 +52,7 @@ def _arg(nome, padrao=None):
 
 PASTA = Path(_arg("--pasta") or Path(tempfile.gettempdir()) / "anastacio-criador")
 SESSAO_EDITOR = Path(_arg("--sessao") or PASTA / "sessao_editor.json")
+SESSAO_USUARIO = sessoes.sessao_usuario()
 SESSAO_JOGO = PASTA / "sessao_jogo.json"
 
 
@@ -73,7 +76,8 @@ class Conexao:
         self.canal.flush()
         linha = self.canal.readline()
         if not linha:
-            raise ConnectionError(f"o programa fechou ou caiu durante: {cmd}")
+            raise ConnectionError(f"o programa fechou, caiu ou o usuário desligou o Controle por IA durante: {cmd}. "
+                                  "Peça para ligar de novo no editor e chame projeto_conectar.")
         r = json.loads(linha)
         if not r.get("ok"):
             raise RuntimeError(r.get("erro") or "erro sem mensagem")
@@ -116,14 +120,21 @@ def conectar(projeto=None):
         except (OSError, ConnectionError, RuntimeError):
             E.editor = None
     PASTA.mkdir(parents=True, exist_ok=True)
-    if SESSAO_EDITOR.exists():  # um editor com o servidor já aberto (modo B) ou um nosso anterior
+    # Um editor que o usuário já abriu com "Controle por IA" ligado (pasta do usuário), ou um nosso anterior.
+    for arquivo in (SESSAO_USUARIO, SESSAO_EDITOR):
+        if not arquivo.exists():
+            continue
+        if sessoes.ler(arquivo) is None:  # processo morto: arquivo velho não engana
+            arquivo.unlink(missing_ok=True)
+            continue
         try:
-            c = Conexao(SESSAO_EDITOR)
-            c.pedir("ping")
+            c = Conexao(arquivo)
+            info = c.pedir("ping")
             E.editor = c
-            return "conectado a um editor já aberto"
+            E.backup_feito = False
+            return f"conectado a um editor já aberto (modo {info.get('modo', 'controle')})"
         except (OSError, ConnectionError, RuntimeError, ValueError):
-            SESSAO_EDITOR.unlink(missing_ok=True)
+            pass
     editor = achar_programa("--editor", "ANASTACIO_EDITOR", "AnastacioEngine")
     log = PASTA / f"editor_{int(time.time())}.log"
     args = [editor, "--window-geometry", "0", "0", "1500", "900"]

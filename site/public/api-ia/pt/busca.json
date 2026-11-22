@@ -6916,7 +6916,7 @@
 "assinatura": "SOURCE_ERROR",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Status da fonte de vídeo ou imagem: erro ao abrir ou ler o arquivo ou dispositivo (valor -1). É um dos valores possíveis de `status`.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6924,7 +6924,7 @@
 "assinatura": "SOURCE_EMPTY",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Status da fonte: ainda sem conteúdo carregado (valor 0). É um dos valores possíveis de `status`.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6932,7 +6932,7 @@
 "assinatura": "SOURCE_READY",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Status da fonte: carregada e pronta para tocar (valor 1). É um dos valores possíveis de `status`.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6940,7 +6940,7 @@
 "assinatura": "SOURCE_PLAYING",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Status da fonte: em reprodução (valor 2). É um dos valores possíveis de `status`.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6948,7 +6948,7 @@
 "assinatura": "SOURCE_STOPPED",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Status da fonte: parada ou pausada depois de tocar (valor 3). É um dos valores possíveis de `status`.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6956,7 +6956,7 @@
 "assinatura": "IMB_BLEND_MIX",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Mistura normal: a origem é colocada por cima do destino conforme o alpha dela. O efeito é pondera…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6964,7 +6964,7 @@
 "assinatura": "IMB_BLEND_ADD",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Soma as cores da origem às do destino (máximo 255). O alpha do destino não muda. O efeito é ponde…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6972,7 +6972,7 @@
 "assinatura": "IMB_BLEND_SUB",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Subtrai as cores da origem das do destino (mínimo 0). O alpha do destino não muda. O efeito é pon…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6980,7 +6980,7 @@
 "assinatura": "IMB_BLEND_MUL",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Multiplica as cores do destino pelas da origem, o que escurece. O alpha do destino não muda. O ef…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6988,7 +6988,7 @@
 "assinatura": "IMB_BLEND_LIGHTEN",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Fica com o mais claro entre origem e destino em cada canal de cor. O efeito é ponderado pelo alph…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -6996,7 +6996,7 @@
 "assinatura": "IMB_BLEND_DARKEN",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Fica com o mais escuro entre origem e destino em cada canal de cor. O efeito é ponderado pelo alp…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7004,7 +7004,7 @@
 "assinatura": "IMB_BLEND_ERASE_ALPHA",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Não mexe nas cores: diminui o alpha do destino conforme o alpha da origem, o que apaga a região. …",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7012,7 +7012,7 @@
 "assinatura": "IMB_BLEND_ADD_ALPHA",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Não mexe nas cores: aumenta o alpha do destino conforme o alpha da origem (máximo 255). O efeito …",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7020,7 +7020,7 @@
 "assinatura": "IMB_BLEND_OVERLAY",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Overlay, como nos editores de imagem: multiplica nas sombras do destino e usa screen nas luzes. O…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7028,7 +7028,7 @@
 "assinatura": "IMB_BLEND_HARDLIGHT",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Hard Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; ond…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7036,7 +7036,7 @@
 "assinatura": "IMB_BLEND_COLORBURN",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Color Burn, como nos editores de imagem: escurece o destino. O efeito é ponderado pelo alpha da i…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7044,7 +7044,7 @@
 "assinatura": "IMB_BLEND_LINEARBURN",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Linear Burn: soma origem e destino e subtrai 255 (mínimo 0), o que escurece. O efeito é ponderado…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7052,7 +7052,7 @@
 "assinatura": "IMB_BLEND_COLORDODGE",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Color Dodge, como nos editores de imagem: clareia o destino. O efeito é ponderado pelo alpha da i…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7060,7 +7060,7 @@
 "assinatura": "IMB_BLEND_SCREEN",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Screen: inverte, multiplica e inverte de novo, o que clareia. O efeito é ponderado pelo alpha da …",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7068,7 +7068,7 @@
 "assinatura": "IMB_BLEND_SOFTLIGHT",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Soft Light, como nos editores de imagem: versão suave do overlay. O efeito é ponderado pelo alpha…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7076,7 +7076,7 @@
 "assinatura": "IMB_BLEND_PINLIGHT",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pin Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; onde…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7084,7 +7084,7 @@
 "assinatura": "IMB_BLEND_VIVIDLIGHT",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Vivid Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; on…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7092,7 +7092,7 @@
 "assinatura": "IMB_BLEND_LINEARLIGHT",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Linear Light, como nos editores de imagem. O efeito é ponderado pelo alpha da imagem de origem; o…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7100,7 +7100,7 @@
 "assinatura": "IMB_BLEND_DIFFERENCE",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Diferença: valor absoluto da diferença entre origem e destino em cada canal. O efeito é ponderado…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7108,7 +7108,7 @@
 "assinatura": "IMB_BLEND_EXCLUSION",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Exclusão: parecida com a diferença, com menos contraste. O efeito é ponderado pelo alpha da image…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7116,7 +7116,7 @@
 "assinatura": "IMB_BLEND_HUE",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega o matiz da origem e mantém a saturação e o valor do destino. O efeito é ponderado pelo alpha…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7124,7 +7124,7 @@
 "assinatura": "IMB_BLEND_SATURATION",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega a saturação da origem e mantém o matiz e o valor do destino. O efeito é ponderado pelo alpha…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7132,7 +7132,7 @@
 "assinatura": "IMB_BLEND_LUMINOSITY",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega o valor (brilho) da origem e mantém o matiz e a saturação do destino. O efeito é ponderado p…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7140,7 +7140,7 @@
 "assinatura": "IMB_BLEND_COLOR",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`. Pega o matiz e a saturação da origem e mantém o valor (brilho) do destino. O efeito é ponderado p…",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7148,7 +7148,7 @@
 "assinatura": "IMB_BLEND_COPY",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot` (valor padrão): copia a origem por cima do destino, com RGB e alpha, sem mesclar.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7156,7 +7156,7 @@
 "assinatura": "IMB_BLEND_COPY_RGB",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`: copia só as cores (RGB) da origem e mantém o alpha do destino.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -7164,7 +7164,7 @@
 "assinatura": "IMB_BLEND_COPY_ALPHA",
 "pagina": "Range.texture",
 "tipo": "constant",
-"resumo": "",
+"resumo": "Modo de mesclagem para o argumento `mode` de `ImageBuff.plot`: copia só o alpha da origem e mantém as cores do destino.",
 "arquivo": "paginas/Range.texture--consts.md"
 },
 {
@@ -12368,6 +12368,14 @@
 "arquivo": "paginas/KX_LibLoadStatus.md"
 },
 {
+"nome": "bolt",
+"assinatura": "bolt",
+"pagina": "KX_LightningActuator",
+"tipo": "attribute",
+"resumo": "Liga o raio visível do relâmpago, além do clarão.",
+"arquivo": "paginas/KX_LightningActuator.md"
+},
+{
 "nome": "SPOT",
 "assinatura": "SPOT",
 "pagina": "KX_LightObject",
@@ -12574,14 +12582,6 @@
 "tipo": "attribute",
 "resumo": "Quando `False`, a sombra desta luz para de ser recalculada a cada frame (economiza GPU em cenas paradas).",
 "arquivo": "paginas/KX_LightObject.md"
-},
-{
-"nome": "bolt",
-"assinatura": "bolt",
-"pagina": "KX_LightningActuator",
-"tipo": "attribute",
-"resumo": "Liga o raio visível do relâmpago, além do clarão.",
-"arquivo": "paginas/KX_LightningActuator.md"
 },
 {
 "nome": "mesh",
@@ -15656,54 +15656,6 @@
 "arquivo": "paginas/KX_TrackToActuator.md"
 },
 {
-"nome": "angle",
-"assinatura": "angle",
-"pagina": "KX_VRHeadSensor",
-"tipo": "attribute",
-"resumo": "Ângulo, em radianos, que a cabeça precisa girar para o gesto contar (0 a 1.6).",
-"arquivo": "paginas/KX_VRHeadSensor.md"
-},
-{
-"nome": "mode",
-"assinatura": "mode",
-"pagina": "KX_VRHeadSensor",
-"tipo": "attribute",
-"resumo": "Gesto detectado: 0 olhar para cima, 1 para baixo, 2 inclinar à esquerda, 3 à direita, 4 acenar \"sim\", 5 balançar \"não\".",
-"arquivo": "paginas/KX_VRHeadSensor.md"
-},
-{
-"nome": "pitch",
-"assinatura": "pitch",
-"pagina": "KX_VRHeadSensor",
-"tipo": "attribute",
-"resumo": "Inclinação atual da cabeça para cima/baixo.",
-"arquivo": "paginas/KX_VRHeadSensor.md"
-},
-{
-"nome": "roll",
-"assinatura": "roll",
-"pagina": "KX_VRHeadSensor",
-"tipo": "attribute",
-"resumo": "Inclinação atual da cabeça para os lados.",
-"arquivo": "paginas/KX_VRHeadSensor.md"
-},
-{
-"nome": "time",
-"assinatura": "time",
-"pagina": "KX_VRHeadSensor",
-"tipo": "attribute",
-"resumo": "Tempo, em segundos, para completar o gesto (0.05 a 10).",
-"arquivo": "paginas/KX_VRHeadSensor.md"
-},
-{
-"nome": "yaw",
-"assinatura": "yaw",
-"pagina": "KX_VRHeadSensor",
-"tipo": "attribute",
-"resumo": "Giro atual da cabeça para a esquerda/direita.",
-"arquivo": "paginas/KX_VRHeadSensor.md"
-},
-{
 "nome": "addWheel",
 "assinatura": "addWheel(wheel, attachPos, downDir, axleDir, suspensionRestLength, wheelRadius, hasSteering)",
 "pagina": "KX_VehicleWrapper",
@@ -16296,6 +16248,54 @@
 "arquivo": "paginas/KX_VoiceActuator.md"
 },
 {
+"nome": "angle",
+"assinatura": "angle",
+"pagina": "KX_VRHeadSensor",
+"tipo": "attribute",
+"resumo": "Ângulo, em radianos, que a cabeça precisa girar para o gesto contar (0 a 1.6).",
+"arquivo": "paginas/KX_VRHeadSensor.md"
+},
+{
+"nome": "mode",
+"assinatura": "mode",
+"pagina": "KX_VRHeadSensor",
+"tipo": "attribute",
+"resumo": "Gesto detectado: 0 olhar para cima, 1 para baixo, 2 inclinar à esquerda, 3 à direita, 4 acenar \"sim\", 5 balançar \"não\".",
+"arquivo": "paginas/KX_VRHeadSensor.md"
+},
+{
+"nome": "pitch",
+"assinatura": "pitch",
+"pagina": "KX_VRHeadSensor",
+"tipo": "attribute",
+"resumo": "Inclinação atual da cabeça para cima/baixo.",
+"arquivo": "paginas/KX_VRHeadSensor.md"
+},
+{
+"nome": "roll",
+"assinatura": "roll",
+"pagina": "KX_VRHeadSensor",
+"tipo": "attribute",
+"resumo": "Inclinação atual da cabeça para os lados.",
+"arquivo": "paginas/KX_VRHeadSensor.md"
+},
+{
+"nome": "time",
+"assinatura": "time",
+"pagina": "KX_VRHeadSensor",
+"tipo": "attribute",
+"resumo": "Tempo, em segundos, para completar o gesto (0.05 a 10).",
+"arquivo": "paginas/KX_VRHeadSensor.md"
+},
+{
+"nome": "yaw",
+"assinatura": "yaw",
+"pagina": "KX_VRHeadSensor",
+"tipo": "attribute",
+"resumo": "Giro atual da cabeça para a esquerda/direita.",
+"arquivo": "paginas/KX_VRHeadSensor.md"
+},
+{
 "nome": "KX_MIST_QUADRATIC",
 "assinatura": "KX_MIST_QUADRATIC",
 "pagina": "KX_WorldInfo",
@@ -16744,6 +16744,70 @@
 "arquivo": "paginas/SCA_ILogicBrick.md"
 },
 {
+"nome": "status",
+"assinatura": "status",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "Lista dos estados da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_NONE` e `Range.logic.KX_INPUT_ACTIVE`. A lista sempre tem um valor. O prime…",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "queue",
+"assinatura": "queue",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "Lista dos eventos da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_JUST_ACTIVATED` e `Range.logic.KX_INPUT_JUST_RELEASED`. A lista pode estar …",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "values",
+"assinatura": "values",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "Lista dos valores da entrada desde o último frame. No teclado contém 1 ou 0; no mouse, a coordenada do mouse ou o movimento da roda. A lista sempre tem um valor…",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "inactive",
+"assinatura": "inactive",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "True se a entrada estava inativa desde o último frame.",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "active",
+"assinatura": "active",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "True se a entrada estava ativa desde o último frame.",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "activated",
+"assinatura": "activated",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "True se a entrada foi ativada desde o último frame.",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "released",
+"assinatura": "released",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "True se a entrada foi solta desde o último frame.",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
+"nome": "type",
+"assinatura": "type",
+"pagina": "SCA_InputEvent",
+"tipo": "attribute",
+"resumo": "O tipo da entrada. Uma `destas constantes`",
+"arquivo": "paginas/SCA_InputEvent.md"
+},
+{
 "nome": "usePosPulseMode",
 "assinatura": "usePosPulseMode",
 "pagina": "SCA_ISensor",
@@ -16854,70 +16918,6 @@
 "tipo": "attribute",
 "resumo": "Usa o tempo real (delta time) para os intervalos do sensor em vez de contar frames.",
 "arquivo": "paginas/SCA_ISensor.md"
-},
-{
-"nome": "status",
-"assinatura": "status",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "Lista dos estados da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_NONE` e `Range.logic.KX_INPUT_ACTIVE`. A lista sempre tem um valor. O prime…",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "queue",
-"assinatura": "queue",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "Lista dos eventos da entrada desde o último frame. Pode conter `Range.logic.KX_INPUT_JUST_ACTIVATED` e `Range.logic.KX_INPUT_JUST_RELEASED`. A lista pode estar …",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "values",
-"assinatura": "values",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "Lista dos valores da entrada desde o último frame. No teclado contém 1 ou 0; no mouse, a coordenada do mouse ou o movimento da roda. A lista sempre tem um valor…",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "inactive",
-"assinatura": "inactive",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "True se a entrada estava inativa desde o último frame.",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "active",
-"assinatura": "active",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "True se a entrada estava ativa desde o último frame.",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "activated",
-"assinatura": "activated",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "True se a entrada foi ativada desde o último frame.",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "released",
-"assinatura": "released",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "True se a entrada foi solta desde o último frame.",
-"arquivo": "paginas/SCA_InputEvent.md"
-},
-{
-"nome": "type",
-"assinatura": "type",
-"pagina": "SCA_InputEvent",
-"tipo": "attribute",
-"resumo": "O tipo da entrada. Uma `destas constantes`",
-"arquivo": "paginas/SCA_InputEvent.md"
 },
 {
 "nome": "axisValues",

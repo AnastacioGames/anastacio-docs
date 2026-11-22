@@ -131,8 +131,8 @@ def resumo_da_pagina(pre):
 def gerar(lang):
     pasta, *_ = IDIOMAS[lang]
     T = TEXTOS[lang]
-    grupos = [(T["modulos"], True, sorted((pasta / "modulos").glob("*.md"))),
-              (T["tipos"], False, sorted((pasta / "types").glob("*.md")))]
+    grupos = [(T["modulos"], True, sorted((pasta / "modulos").glob("*.md"), key=lambda p: p.name.lower())),
+              (T["tipos"], False, sorted((pasta / "types").glob("*.md"), key=lambda p: p.name.lower()))]
     paginas = [(g, mod, a) + ler_pagina(a) for g, mod, arqs in grupos for a in arqs]
     titulos = {a.stem.lower(): t for _, _, a, t, _ in paginas}
     destino = SAIDA / lang

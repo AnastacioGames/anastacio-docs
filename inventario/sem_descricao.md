@@ -1,43 +1,7 @@
 # Itens sem descrição em texto corrido
 
-130 de 2196 itens não têm uma frase de descrição (só assinatura, tipo ou parâmetros). A IA acerta menos nesses. Escreva a descrição em `conteudo/descricoes.json` ou na docstring do C++. Gerado por `tools/gerar_api_ia.py`.
+98 de 2196 itens não têm uma frase de descrição (só assinatura, tipo ou parâmetros). A IA acerta menos nesses. Escreva a descrição em `conteudo/descricoes.json` ou na docstring do C++. Gerado por `tools/gerar_api_ia.py`.
 
-
-## Range.texture (33)
-
-- `refresh()`
-- `SOURCE_ERROR`
-- `SOURCE_EMPTY`
-- `SOURCE_READY`
-- `SOURCE_PLAYING`
-- `SOURCE_STOPPED`
-- `IMB_BLEND_MIX`
-- `IMB_BLEND_ADD`
-- `IMB_BLEND_SUB`
-- `IMB_BLEND_MUL`
-- `IMB_BLEND_LIGHTEN`
-- `IMB_BLEND_DARKEN`
-- `IMB_BLEND_ERASE_ALPHA`
-- `IMB_BLEND_ADD_ALPHA`
-- `IMB_BLEND_OVERLAY`
-- `IMB_BLEND_HARDLIGHT`
-- `IMB_BLEND_COLORBURN`
-- `IMB_BLEND_LINEARBURN`
-- `IMB_BLEND_COLORDODGE`
-- `IMB_BLEND_SCREEN`
-- `IMB_BLEND_SOFTLIGHT`
-- `IMB_BLEND_PINLIGHT`
-- `IMB_BLEND_VIVIDLIGHT`
-- `IMB_BLEND_LINEARLIGHT`
-- `IMB_BLEND_DIFFERENCE`
-- `IMB_BLEND_EXCLUSION`
-- `IMB_BLEND_HUE`
-- `IMB_BLEND_SATURATION`
-- `IMB_BLEND_LUMINOSITY`
-- `IMB_BLEND_COLOR`
-- `IMB_BLEND_COPY`
-- `IMB_BLEND_COPY_RGB`
-- `IMB_BLEND_COPY_ALPHA`
 
 ## Range.logic (30)
 
@@ -176,6 +140,10 @@
 ## Range.network.steam (1)
 
 - `status()`
+
+## Range.texture (1)
+
+- `refresh()`
 
 ## KX_Camera (1)
 

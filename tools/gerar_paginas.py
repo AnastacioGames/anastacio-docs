@@ -450,6 +450,8 @@ def pagina_modulo(chave, info, docs):
     # item listado no rst sem texto: mostra a nossa descrição no lugar do selo
     selos = {n: extra.get(n) if i["status"] == "sem_doc" and extra.get(n) else s
              for n, i in info["itens"].items() if (s := selo_de(i))}
+    # idem para item que só existe no rst (ex.: constantes SOURCE_* e IMB_BLEND_*) e ficou sem texto
+    selos.update({n: extra[n] for n, i in info["itens"].items() if i["status"] == "so_no_rst" and extra.get(n)})
     corpo = ""
     if rst_nome and (RST / f"{rst_nome}.rst").exists():
         EM_MODULO[0] = True

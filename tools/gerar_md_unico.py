@@ -85,8 +85,8 @@ def limpar(texto, titulos, link=None):
 
 def gerar(lang):
     pasta, titulo, intro, rot_ind, rot_mod, rot_tip, resumo = IDIOMAS[lang]
-    grupos = [(rot_mod, sorted((pasta / "modulos").glob("*.md"))),
-              (rot_tip, sorted((pasta / "types").glob("*.md")))]
+    grupos = [(rot_mod, sorted((pasta / "modulos").glob("*.md"), key=lambda p: p.name.lower())),
+              (rot_tip, sorted((pasta / "types").glob("*.md"), key=lambda p: p.name.lower()))]
     paginas = [(g, a) + ler_pagina(a) for g, arqs in grupos for a in arqs]
     titulos = {a.stem.lower(): ancora(t) for _, a, t, _ in paginas}
 

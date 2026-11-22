@@ -41,8 +41,8 @@ claude mcp add anastacio-api -- python tools/anastacio_api_mcp.py --lang pt
 
 ## Skills
 
-- [ ] O skill `criar-jogo-anastacio` (`skills/`) é instalado em `.claude/skills/` de um projeto de jogo e dispara ao pedir "monta uma cena com um cubo que anda".
-- [ ] O skill `api-anastacio` (repo da engine) cai para a doc publicada quando o MCP não está instalado.
+- [x] O skill `criar-jogo-anastacio` (`skills/`) é instalado em `.claude/skills/` de um projeto de jogo e dispara ao pedir "monta uma cena com um cubo que anda".
+- [x] O skill `api-anastacio` (repo da engine) cai para a doc publicada quando o MCP não está instalado.
 
 ## Depois de passar tudo
 

@@ -162,6 +162,8 @@ try:
     c3 = m.Conexao(arq)
     ok(c3.pedir('ping')['arquivo'] is not None, 'conexão travada não prende a vaga')
     parada.close()
+    ok(c2.pedir('ping')['modo'] == 'controle' and c3.pedir('ping')['modo'] == 'controle'
+       and c2.pedir('ping')['modo'] == 'controle', 'dois clientes ao mesmo tempo, sem derrubar um ao outro')
 
     # fechar num editor do usuário só desliga o controle
     try:

@@ -300,6 +300,16 @@ F = {
     "propriedade_ler": ("Lê uma propriedade por caminho, ex.: bpy.data.objects[\"Cubo\"].location (sem chamadas).",
                         {"caminho": ("string", True)}, lambda a: (exigir_caminho(a["caminho"]),
                                                                   js(editor().pedir("ler", caminho=a["caminho"])))[1]),
+    "script_gravar": ("Cria um script (texto do projeto) pelo nome e grava o conteúdo (código do jogo com `Range`, não `bpy`). "
+                      "Só grava, não executa. Recusa se o nome já existe; `sobrescrever` só com autorização do usuário. "
+                      "Use esta ferramenta, nunca os operadores text.* do editor.",
+                      {"nome": ("string", True), "conteudo": ("string", True), "sobrescrever": ("boolean", False)},
+                      lambda a: mutar(lambda: js(editor().pedir("script_gravar", nome=a["nome"], conteudo=a["conteudo"],
+                                                                sobrescrever=bool(a.get("sobrescrever")))))),
+    "script_ligar": ("Liga um script já criado a um objeto (sensor Always + controlador Python em modo Script), "
+                     "para ele rodar todo quadro no jogo.",
+                     {"objeto": ("string", True), "script": ("string", True)},
+                     lambda a: mutar(lambda: js(editor().pedir("script_ligar", objeto=a["objeto"], script=a["script"])))),
     "propriedade_definir": ("Define uma propriedade por caminho. Faz backup antes, na primeira alteração.",
                             {"caminho": ("string", True), "valor": (None, True)},
                             lambda a: (exigir_caminho(a["caminho"]),

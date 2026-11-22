@@ -105,6 +105,20 @@ try:
     ok(c.pedir('definir', caminho='bpy.context.scene.frame_current', valor=7) == 7, 'definir em dados da cena passa')
     ok(recusa(lambda: c.pedir('py', codigo='resultado = 1'), 'ANASTACIO_CRIADOR_PY'), 'py continua desligado')
 
+    # scripts: criar, não sobrescrever, ligar, e text.* do editor nunca
+    r = c.pedir('script_gravar', nome='andar.py', conteudo='print("oi")\n')
+    ok(r['criado'] and r['script'] == 'andar.py', 'script_gravar cria o script')
+    ok(recusa(lambda: c.pedir('script_gravar', nome='andar.py', conteudo='x'), 'já existe'),
+       'script_gravar não sobrescreve sem pedir')
+    ok(c.pedir('script_gravar', nome='andar.py', conteudo='print("novo")\n', sobrescrever=True)['criado'] is False,
+       'script_gravar sobrescreve quando autorizado')
+    ok(recusa(lambda: c.pedir('script_gravar', nome='../x', conteudo='x'), 'inválido'), 'nome de script inválido recusado')
+    ok(recusa(lambda: c.pedir('op', nome='text.insert', args={'text': 'x'}), 'script_gravar'), 'text.insert bloqueado')
+    obj = c.pedir('cena')['objetos'][0]['nome']
+    lig = c.pedir('script_ligar', objeto=obj, script='andar.py')
+    ok(lig.get('controlador'), 'script_ligar cria sensor e controlador')
+    ok(c.pedir('script_ligar', objeto=obj, script='andar.py').get('aviso'), 'script_ligar não duplica')
+
     # cliente que pede e some sem ler
     info = json.loads(arq.read_text())
     s = socket.create_connection(('127.0.0.1', info['porta']))

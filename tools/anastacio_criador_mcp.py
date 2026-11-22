@@ -226,6 +226,11 @@ def log_ler(qual="editor", linhas=60):
     if not arq or not Path(arq).exists():
         return f"sem log de {qual} nesta sessão (o log só existe se o MCP abriu o programa)"
     texto = Path(arq).read_text(errors="replace").splitlines()
+    if qual == "jogo":
+        # No Windows o Runtime grava os erros de script neste arquivo, não na saída padrão.
+        rt = Path(tempfile.gettempdir()) / "range_runtime.log.txt"
+        if rt.exists():
+            texto += rt.read_text(errors="replace").splitlines()
     return "\n".join(texto[-max(1, min(int(linhas), 500)):]) or "(log vazio)"
 
 

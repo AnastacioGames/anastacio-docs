@@ -26,6 +26,7 @@ Editor já aberto pelo usuário: ele liga "Controle por IA" (complemento da engi
 --sessao <arquivo de sessão> aponta para outro arquivo.
 """
 import base64
+import hashlib
 import json
 import os
 import re
@@ -35,6 +36,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "criador"))
@@ -289,8 +291,19 @@ def _mesmo_arquivo(a, b):
         return False
 
 
+def _sha(arquivo):
+    h = hashlib.sha256()
+    with open(arquivo, "rb") as f:
+        for bloco in iter(lambda: f.read(1 << 20), b""):
+            h.update(bloco)
+    return h.hexdigest()
+
+
 def arquivo_em_uso(arquivo):
-    """Editores (o do usuário ou o nosso) que estão com `arquivo` aberto. Lista vazia se nenhum."""
+    """Editores com o Controle por IA ligado (o do usuário ou o nosso) que estão com `arquivo` aberto.
+
+    Lista vazia = nenhum DETECTADO. Um editor sem o Controle por IA ligado não aparece aqui. Se há um editor ligado mas ele não
+    responde, o estado é incerto e a função levanta erro em vez de dizer que o arquivo está livre."""
     achados = []
     for sessao_arq in (SESSAO_USUARIO, SESSAO_EDITOR):
         if not Path(sessao_arq).exists() or sessoes.ler(sessao_arq) is None:
@@ -299,8 +312,9 @@ def arquivo_em_uso(arquivo):
             c = Conexao(sessao_arq, timeout=5)
             aberto = c.pedir("ping").get("arquivo") or ""
             c.fechar()
-        except (OSError, ConnectionError, RuntimeError, ValueError):
-            continue
+        except (OSError, ConnectionError, RuntimeError, ValueError) as e:
+            raise RuntimeError(f"há um editor ligado que não respondeu ({e}); não dá para saber se o projeto está aberto. "
+                               "Tente de novo ou feche o editor") from e
         if aberto and _mesmo_arquivo(aberto, arquivo):
             achados.append(str(sessao_arq))
     return achados
@@ -311,43 +325,98 @@ def _copia_do_lote(arquivo):
     return p.with_name(p.stem + ".ia" + p.suffix)
 
 
+def _marca(copia):
+    c = Path(copia)
+    return c.with_name(c.name + ".lote.json")
+
+
+class _trava:
+    """Uma operação de lote por projeto de cada vez (lote_executar e lote_aplicar)."""
+
+    def __init__(self, origem):
+        o = Path(origem)
+        self.caminho = o.with_name(o.name + ".lote.lock")
+
+    def __enter__(self):
+        try:
+            if self.caminho.exists() and time.time() - self.caminho.stat().st_mtime > 900:
+                self.caminho.unlink()  # trava velha de um MCP que caiu
+            self.fd = os.open(str(self.caminho), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            raise RuntimeError("já há um lote em andamento neste projeto; espere terminar") from None
+        return self
+
+    def __exit__(self, *_):
+        os.close(self.fd)
+        self.caminho.unlink(missing_ok=True)
+
+
+def _rodar_editor_sem_janela(args, log, espera):
+    with open(log, "w") as f:
+        proc = subprocess.Popen(args, stdout=f, stderr=subprocess.STDOUT)
+        try:
+            return proc.wait(timeout=espera)
+        except subprocess.TimeoutExpired:
+            if sys.platform == "win32":  # derruba o editor e tudo que ele tenha aberto
+                subprocess.run(["taskkill", "/F", "/T", "/PID", str(proc.pid)], capture_output=True)
+            else:
+                proc.kill()
+            proc.wait()
+            raise
+
+
 def lote_executar(arquivo, passos, saida=None, espera=300):
     """Aplica `passos` numa CÓPIA do projeto, num editor sem janela. O original nunca é alterado."""
     origem = Path(arquivo)
-    if not origem.is_file():
-        raise FileNotFoundError(f"não achei o projeto: {arquivo}")
+    if not origem.is_file() or origem.is_symlink():
+        raise FileNotFoundError(f"não achei o projeto (ou é um link): {arquivo}")
     if not isinstance(passos, list) or not passos:
         raise ValueError("passos deve ser uma lista não vazia, ex.: "
                          '[{"cmd":"op","nome":"mesh.primitive_cube_add"},{"cmd":"definir","caminho":"bpy.data.objects[\\"Cube\\"].location","valor":[1,0,0]}]')
     destino = Path(saida) if saida else _copia_do_lote(origem)
     if _mesmo_arquivo(destino, origem):
         raise ValueError("a saída não pode ser o próprio projeto: o lote trabalha numa cópia")
-    if arquivo_em_uso(str(origem)):
-        raise RuntimeError("este projeto está aberto num editor (podem existir mudanças não salvas). Use a edição ao vivo "
-                           "(op_executar, propriedade_definir...) ou feche o arquivo no editor antes de usar o lote")
+    if destino.exists() or destino.is_symlink() or _marca(destino).exists():
+        raise FileExistsError(f"já existe {destino.name}: aplique (lote_aplicar) ou apague a cópia anterior antes de um novo lote")
     PASTA.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(origem, destino)
-    ident = int(time.time() * 1000)
-    spec, resultado = PASTA / f"lote_{ident}.json", PASTA / f"lote_{ident}_resultado.json"
-    spec.write_text(json.dumps(passos), encoding="utf-8")
-    log = PASTA / f"lote_{ident}.log"
-    editor_exe = achar_programa("--editor", "ANASTACIO_EDITOR", "AnastacioEngine")
-    args = [editor_exe, "-b", str(destino), "--python-exit-code", "1", "--python", str(LOTE_EDITOR), "--",
-            str(spec), str(resultado)]
-    E.logs["lote"] = log
-    try:
-        with log.open("w") as f:
-            subprocess.run(args, stdout=f, stderr=subprocess.STDOUT, timeout=espera, env=dict(os.environ))
-    except subprocess.TimeoutExpired:
-        destino.unlink(missing_ok=True)
-        raise TimeoutError(f"o lote passou de {espera} s e foi cancelado; a cópia foi apagada e o original está intacto")
-    if not resultado.exists():
-        destino.unlink(missing_ok=True)
-        raise RuntimeError("o editor sem janela fechou sem responder; veja log_ler(qual='lote'). O original está intacto")
-    r = json.loads(resultado.read_text(encoding="utf-8"))
-    if not r.get("ok"):
-        destino.unlink(missing_ok=True)
-        return f"o lote FALHOU e nada foi gravado: {r.get('erro')} ({r.get('executados', 0)} passos antes). O original está intacto."
+    with _trava(origem):
+        if arquivo_em_uso(str(origem)):
+            raise RuntimeError("este projeto está aberto num editor (podem existir mudanças não salvas). Use a edição ao vivo "
+                               "(op_executar, propriedade_definir...) ou feche o arquivo no editor antes de usar o lote")
+        hash_origem = _sha(origem)
+        ident = uuid.uuid4().hex
+        pasta_lote = PASTA / f"lote_{ident}"
+        pasta_lote.mkdir()
+        spec, resultado, log = pasta_lote / "passos.json", pasta_lote / "resultado.json", pasta_lote / "editor.log"
+        spec.write_text(json.dumps(passos), encoding="utf-8")
+        E.logs["lote"] = log
+        criou = False
+        try:
+            with open(origem, "rb") as de, open(destino, "xb") as para:  # "x": nunca sobrescreve
+                criou = True
+                shutil.copyfileobj(de, para)
+            editor_exe = achar_programa("--editor", "ANASTACIO_EDITOR", "AnastacioEngine")
+            args = [editor_exe, "-b", str(destino), "--python-exit-code", "1", "--python", str(LOTE_EDITOR), "--",
+                    str(spec), str(resultado), ident]
+            try:
+                codigo = _rodar_editor_sem_janela(args, log, espera)
+            except subprocess.TimeoutExpired:
+                raise TimeoutError(f"o lote passou de {espera} s e foi cancelado; a cópia foi apagada e o original está intacto")
+            r = json.loads(resultado.read_text(encoding="utf-8")) if resultado.exists() else {}
+            if codigo != 0 or r.get("ident") != ident:
+                raise RuntimeError("o editor sem janela não terminou direito (veja log_ler(qual='lote')). O original está intacto")
+            if not r.get("ok"):
+                raise RuntimeError(f"o lote FALHOU e nada foi gravado: {r.get('erro')} ({r.get('executados', 0)} passos antes). "
+                                   "O original está intacto.")
+            if _sha(origem) != hash_origem:
+                raise RuntimeError("o projeto original mudou enquanto o lote rodava; a cópia foi descartada. Refaça o lote")
+            marca = {"original": str(origem.resolve()), "hash_original": hash_origem, "hash_copia": _sha(destino), "ident": ident}
+            _marca(destino).write_text(json.dumps(marca), encoding="utf-8")
+            criou = False  # a cópia agora é o resultado entregue
+        except BaseException:
+            if criou:
+                destino.unlink(missing_ok=True)
+            raise
     return js({"copia": str(destino), "original_intacto": str(origem), "passos": r["executados"],
                "mudou": r["mudou"], "resultados": r["resultados"],
                "proximo": "Mostre o resumo ao usuário. Só com a aprovação dele, chame lote_aplicar para trocar o original pela cópia "
@@ -355,19 +424,34 @@ def lote_executar(arquivo, passos, saida=None, espera=300):
 
 
 def lote_aplicar(arquivo, copia=None):
-    """Troca o projeto pela cópia do lote, guardando antes um backup do original. Só com aprovação do usuário."""
+    """Troca o projeto pela cópia que lote_executar gerou, guardando antes um backup. Só com aprovação do usuário."""
     origem = Path(arquivo)
-    origem_copia = Path(copia) if copia else _copia_do_lote(origem)
-    if not origem.is_file() or not origem_copia.is_file():
+    nova = Path(copia) if copia else _copia_do_lote(origem)
+    if not origem.is_file() or origem.is_symlink() or not nova.is_file() or nova.is_symlink():
         raise FileNotFoundError("projeto ou cópia do lote não encontrados")
-    if arquivo_em_uso(str(origem)):
-        raise RuntimeError("o projeto está aberto num editor: feche-o (ou salve e feche) antes de trocar o arquivo, "
-                           "para não perder o que há lá")
-    pasta = origem.with_name(origem.stem + ".backups")
-    pasta.mkdir(exist_ok=True)
-    bk = pasta / (time.strftime("%Y%m%d-%H%M%S") + "-antes-do-lote" + origem.suffix)
-    shutil.copy2(origem, bk)
-    shutil.move(str(origem_copia), str(origem))
+    if not _marca(nova).is_file():
+        raise PermissionError("esta cópia não foi gerada por lote_executar (falta a marca do lote); não aplico arquivos soltos")
+    marca = json.loads(_marca(nova).read_text(encoding="utf-8"))
+    if not _mesmo_arquivo(marca.get("original", ""), origem):
+        raise PermissionError("esta cópia foi gerada a partir de outro projeto")
+    with _trava(origem):
+        if arquivo_em_uso(str(origem)):
+            raise RuntimeError("o projeto está aberto num editor: feche-o (ou salve e feche) antes de trocar o arquivo, "
+                               "para não perder o que há lá")
+        if _sha(origem) != marca["hash_original"]:
+            raise RuntimeError("o projeto mudou depois do lote (alguém salvou nele); refaça o lote para não perder essas mudanças")
+        if _sha(nova) != marca["hash_copia"]:
+            raise RuntimeError("a cópia do lote foi alterada depois de gerada; refaça o lote")
+        pasta = origem.with_name(origem.stem + ".backups")
+        pasta.mkdir(exist_ok=True)
+        bk = pasta / (time.strftime("%Y%m%d-%H%M%S") + "-" + marca["ident"][:6] + "-antes-do-lote" + origem.suffix)
+        with open(origem, "rb") as de, open(bk, "xb") as para:  # "x": nunca sobrescreve um backup
+            shutil.copyfileobj(de, para)
+        if _sha(bk) != marca["hash_original"]:
+            bk.unlink(missing_ok=True)
+            raise RuntimeError("o backup não confere com o original; nada foi trocado")
+        os.replace(str(nova), str(origem))  # troca atômica (a cópia fica ao lado do projeto, no mesmo volume)
+        _marca(nova).unlink(missing_ok=True)
     return f"projeto atualizado com o resultado do lote. Backup do original: {bk}"
 
 
@@ -419,8 +503,9 @@ F = {
     "propriedade_ler": ("Lê uma propriedade por caminho, ex.: bpy.data.objects[\"Cubo\"].location (sem chamadas).",
                         {"caminho": ("string", True)}, lambda a: (exigir_caminho(a["caminho"]),
                                                                   js(editor().pedir("ler", caminho=a["caminho"])))[1]),
-    "arquivo_em_uso": ("Diz se o arquivo está aberto num editor (o do usuário ou o do MCP). Use para escolher a via: aberto = "
-                       "edição ao vivo; fechado = lote (lote_executar).",
+    "arquivo_em_uso": ("Diz se o arquivo está aberto num editor com o Controle por IA ligado (o do usuário ou o do MCP). Um editor SEM o "
+                       "Controle por IA não é detectado: se houver dúvida, pergunte ao usuário. Aberto = edição ao vivo; "
+                       "fechado = lote (lote_executar).",
                        {"arquivo": ("string", True)},
                        lambda a: js({"aberto_em_editor": bool(arquivo_em_uso(a["arquivo"]))})),
     "lote_executar": ("Edição em segundo plano: aplica uma lista de `passos` numa CÓPIA do .range (nome.ia.range) num editor "

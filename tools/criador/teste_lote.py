@@ -48,6 +48,20 @@ def recusa(fn, trecho):
     return False
 
 
+def limpar():
+    COPIA.unlink(missing_ok=True)
+    m._marca(COPIA).unlink(missing_ok=True)
+
+
+def falhou(passos, trecho='FALHOU', **kw):
+    """O lote deve ser recusado/falhar com `trecho`, sem deixar cópia."""
+    try:
+        m.lote_executar(str(BASE), passos, **kw)
+    except Exception as e:
+        return trecho in str(e)
+    return False
+
+
 # projeto base: o da fábrica (Cube, Camera, Lamp) gravado em disco
 BASE = TMP / 'base.range'
 gerar = TMP / 'gerar.py'
@@ -75,24 +89,61 @@ r2 = json.loads(m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy.data.
 print(r2['resultados'])
 ok('andar.py' not in r2['resultados'][0], 'a cópia nova parte do original, não da cópia anterior')
 ok(Path(r['copia']) == COPIA, 'a cópia fica ao lado do original (nome.ia.range)')
+limpar()
 
 # 2. falhas não gravam nada
-ok(m.lote_executar(str(BASE), [{'cmd': 'op', 'nome': 'wm.addon_install'}]).startswith('o lote FALHOU'),
-   'operador de código bloqueado no lote')
-ok(not COPIA.exists() or hash_de(BASE) == h0, 'lote que falha não deixa mudança no original')
-ok(m.lote_executar(str(BASE), [{'cmd': 'evento', 'tipo': 'A'}]).startswith('o lote FALHOU'), 'passo desconhecido recusado')
-txt = m.lote_executar(str(BASE), [{'cmd': 'py', 'codigo': 'resultado = 1'}])
-ok(txt.startswith('o lote FALHOU') and 'ANASTACIO_CRIADOR_PY' in txt, 'py continua desligado no lote')
-txt = m.lote_executar(str(BASE), [{'cmd': 'definir', 'caminho': 'bpy.context.user_preferences.filepaths.script_directory',
-                                   'valor': 'C:/x'}])
-ok(txt.startswith('o lote FALHOU'), 'definir fora do projeto bloqueado no lote')
-ok(not COPIA.exists(), 'lote que falha apaga a cópia')
+ok(falhou([{'cmd': 'op', 'nome': 'wm.addon_install'}], 'ANASTACIO_CRIADOR_PY'), 'operador de código bloqueado no lote')
+ok(hash_de(BASE) == h0, 'lote que falha não deixa mudança no original')
+ok(falhou([{'cmd': 'evento', 'tipo': 'A'}], 'não permitido'), 'passo desconhecido recusado')
+ok(falhou([{'cmd': 'py', 'codigo': 'resultado = 1'}], 'ANASTACIO_CRIADOR_PY'), 'py continua desligado no lote')
+ok(falhou([{'cmd': 'definir', 'caminho': 'bpy.context.user_preferences.filepaths.script_directory', 'valor': 'C:/x'}],
+         'dados do projeto'), 'definir fora do projeto bloqueado no lote')
+ok(not COPIA.exists() and not m._marca(COPIA).exists(), 'lote que falha apaga a cópia')
 ok(recusa(lambda: m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy'}], saida=str(BASE)), 'próprio projeto'),
    'saída igual ao original recusada')
 ok(recusa(lambda: m.lote_executar(str(BASE), []), 'lista'), 'lote vazio recusado')
 ok(recusa(lambda: m.lote_executar(str(TMP / 'nao_existe.range'), [{'cmd': 'ler', 'caminho': 'bpy'}]), 'não achei'),
    'projeto inexistente recusado')
 ok(hash_de(BASE) == h0, 'depois de todas as falhas o original segue idêntico')
+
+# 2b. gravar arquivo por operador, saída existente, marca, lote concorrente
+for op in ('wm.save_as_mainfile', 'wm.save_mainfile', 'export_scene.obj', 'image.save_as', 'render.render'):
+    ok(falhou([{'cmd': 'op', 'nome': op, 'args': {'filepath': str(BASE)}}], 'ANASTACIO_CRIADOR_PY'),
+       'operador que grava arquivo bloqueado no lote: ' + op)
+ok(hash_de(BASE) == h0, 'nenhum operador conseguiu gravar no original')
+ok(m.lote_executar(str(BASE), [{'cmd': 'op', 'nome': 'object.select_all', 'args': {'action': 'DESELECT'}}]) is not None
+   and COPIA.exists(), 'lote sem mudanças reais ainda gera cópia')
+limpar()
+EXISTENTE = TMP / 'meu_outro_projeto.range'
+EXISTENTE.write_bytes(b'dados do usuario')
+ok(recusa(lambda: m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy'}], saida=str(EXISTENTE)), 'já existe'),
+   'saída que já existe é recusada')
+ok(EXISTENTE.read_bytes() == b'dados do usuario', 'a saída existente não foi sobrescrita nem apagada')
+r = json.loads(m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy.data.texts'}]))
+ok(recusa(lambda: m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy'}]), 'já existe'),
+   'cópia anterior ainda não aplicada não é sobrescrita por um novo lote')
+ok(COPIA.exists(), 'e a cópia anterior continua lá')
+(TMP / 'solto.range').write_bytes(b'solto')
+ok(recusa(lambda: m.lote_aplicar(str(BASE), str(TMP / 'solto.range')), 'marca'), 'lote_aplicar não aceita arquivo solto')
+trava = m._trava(BASE)
+with trava:
+    ok(recusa(lambda: m.lote_aplicar(str(BASE)), 'lote em andamento'), 'dois lotes no mesmo projeto: o segundo é recusado')
+ok(not trava.caminho.exists(), 'a trava é liberada')
+BASE.write_bytes(BASE.read_bytes() + b'\x00')  # alguém salvou no original depois do lote
+ok(recusa(lambda: m.lote_aplicar(str(BASE)), 'mudou depois do lote'), 'original que mudou depois do lote: a troca é recusada')
+BASE.write_bytes(BASE.read_bytes()[:-1])
+h0 = hash_de(BASE)
+ok(hash_de(BASE) == h0 and COPIA.exists(), 'original restaurado para seguir os testes')
+COPIA.unlink()
+m._marca(COPIA).unlink()
+
+# editor ligado que não responde: estado incerto, nunca "livre"
+sessao.escrever(sessao.sessao_usuario(), {'porta': 1, 'token': 'x', 'pid': os.getpid(),
+                                          'programa': sessao.nome_processo(os.getpid())})
+ok(recusa(lambda: m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy'}]), 'não respondeu'),
+   'editor ligado que não responde: o lote é recusado (estado incerto)')
+sessao.sessao_usuario().unlink()
+ok(not COPIA.exists(), 'recusa por estado incerto não deixa cópia')
 
 # 3. projeto aberto num editor: recusa lote e troca (editor falso que responde ao ping)
 servidor = socket.socket()
@@ -124,6 +175,7 @@ ok(bool(m.arquivo_em_uso(str(BASE))), 'arquivo_em_uso enxerga o projeto aberto n
 ok(recusa(lambda: m.lote_executar(str(BASE), [{'cmd': 'ler', 'caminho': 'bpy'}]), 'aberto num editor'),
    'projeto aberto no editor: o lote é recusado')
 COPIA.write_bytes(b'copia-de-teste')
+m._marca(COPIA).write_text(json.dumps({'original': str(BASE), 'hash_original': h0, 'hash_copia': hash_de(COPIA), 'ident': 'abcdef'}))
 ok(recusa(lambda: m.lote_aplicar(str(BASE)), 'aberto num editor'), 'projeto aberto no editor: a troca é recusada')
 ok(hash_de(BASE) == h0, 'recusas não mexeram no original')
 parar.set()
@@ -132,12 +184,14 @@ ok(not m.arquivo_em_uso(str(BASE)), 'depois de fechar, o projeto não está mais
 
 # 4. aplicar: backup do original e troca
 COPIA.unlink(missing_ok=True)
+m._marca(COPIA).unlink(missing_ok=True)
 m.lote_executar(str(BASE), [{'cmd': 'definir', 'caminho': 'bpy.data.objects["Cube"].location', 'valor': [5, 5, 5]}])
 h_copia = hash_de(COPIA)
 msg = m.lote_aplicar(str(BASE))
 backups = list((TMP / 'base.backups').glob('*-antes-do-lote.range'))
 ok(len(backups) == 1 and hash_de(backups[0]) == h0, 'lote_aplicar guarda o original em .backups')
 ok(hash_de(BASE) == h_copia and not COPIA.exists(), 'lote_aplicar troca o projeto pela cópia')
+ok(not m._marca(COPIA).exists(), 'a marca do lote some depois de aplicar')
 ok('Backup' in msg, 'lote_aplicar informa o backup')
 
 print('\n%s' % ('FALHAS: ' + ', '.join(falhas) if falhas else 'todas as verificações passaram'))

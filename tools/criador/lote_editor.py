@@ -15,8 +15,15 @@ import nucleo_editor as nucleo  # noqa: E402
 
 ARGS = sys.argv[sys.argv.index('--') + 1:]
 PASSOS, RESULTADO = ARGS[0], ARGS[1]
+IDENT = ARGS[2] if len(ARGS) > 2 else ''
 PERMITIDOS = {'op', 'definir', 'script_gravar', 'script_ligar', 'ler', 'py'}
 LIMITE_PASSOS = 500
+
+
+def foto_extra():
+    """Scripts (nome -> conteúdo), materiais e cenas: o que o resumo dos objetos não mostra."""
+    return {'scripts': {t.name: t.as_string() for t in bpy.data.texts},
+            'materiais': sorted(m.name for m in bpy.data.materials), 'cenas': sorted(c.name for c in bpy.data.scenes)}
 
 
 def foto():
@@ -27,22 +34,34 @@ def foto():
             for o in bpy.data.objects}
 
 
-def diferenca(antes, depois):
+def diferenca(antes, depois, extra_antes, extra_depois):
+    ea, ed = extra_antes['scripts'], extra_depois['scripts']
     return {'criados': sorted(set(depois) - set(antes)), 'removidos': sorted(set(antes) - set(depois)),
-            'alterados': sorted(n for n in set(antes) & set(depois) if antes[n] != depois[n])}
+            'alterados': sorted(n for n in set(antes) & set(depois) if antes[n] != depois[n]),
+            'scripts_criados': sorted(set(ed) - set(ea)), 'scripts_removidos': sorted(set(ea) - set(ed)),
+            'scripts_alterados': sorted(n for n in set(ea) & set(ed) if ea[n] != ed[n]),
+            'materiais_criados': sorted(set(extra_depois['materiais']) - set(extra_antes['materiais'])),
+            'materiais_removidos': sorted(set(extra_antes['materiais']) - set(extra_depois['materiais'])),
+            'cenas_criadas': sorted(set(extra_depois['cenas']) - set(extra_antes['cenas'])),
+            'cenas_removidas': sorted(set(extra_antes['cenas']) - set(extra_depois['cenas']))}
 
 
 def passo_op(p):
     if p['nome'] in nucleo.OPS_TEXTO_ATIVO:
         raise PermissionError('%s edita o texto ativo: use script_gravar' % p['nome'])
+    if nucleo.grava_arquivo(p['nome']) and not nucleo.PY_LIBERADO:
+        raise PermissionError('%s grava arquivos em caminhos livres: só com ANASTACIO_CRIADOR_PY=1' % p['nome'])
     if p['nome'] in nucleo.OPS_DE_CODIGO and not nucleo.PY_LIBERADO:
         raise PermissionError('%s executa código: só com ANASTACIO_CRIADOR_PY=1' % p['nome'])
     if p['nome'] in nucleo.CARREGAM_ARQUIVO:
         raise PermissionError('%s troca o arquivo aberto: não cabe num lote' % p['nome'])
     try:
-        return {'estado': sorted(nucleo.operador(p['nome'])('EXEC_DEFAULT', **(p.get('args') or {})))}
+        estado = sorted(nucleo.operador(p['nome'])('EXEC_DEFAULT', **(p.get('args') or {})))
     except RuntimeError as erro:  # poll falhou: sem contexto de janela
         raise RuntimeError('%s não roda sem janela (%s); faça esse passo ao vivo no editor' % (p['nome'], erro))
+    if 'FINISHED' not in estado:
+        raise RuntimeError('%s terminou como %s (não fez nada); faça esse passo ao vivo no editor' % (p['nome'], estado))
+    return {'estado': estado}
 
 
 def executar(passo):
@@ -56,11 +75,11 @@ def executar(passo):
 
 def principal():
     passos = json.loads(open(PASSOS, encoding='utf-8').read())
-    saida = {'ok': False, 'executados': 0}
+    saida = {'ok': False, 'executados': 0, 'ident': IDENT}
     try:
         if not isinstance(passos, list) or len(passos) > LIMITE_PASSOS:
             raise ValueError('passos deve ser uma lista de até %d itens' % LIMITE_PASSOS)
-        antes = foto()
+        antes, extra_antes = foto(), foto_extra()
         resultados = []
         for i, passo in enumerate(passos):
             try:
@@ -70,8 +89,9 @@ def principal():
                              detalhe=traceback.format_exc()[-600:])
                 raise
             saida['executados'] = i + 1
-        saida.update(ok=True, resultados=[nucleo.texto(r) for r in resultados], mudou=diferenca(antes, foto()))
-        bpy.ops.wm.save_mainfile(filepath=bpy.data.filepath)
+        mudou = diferenca(antes, foto(), extra_antes, foto_extra())
+        bpy.ops.wm.save_mainfile(filepath=bpy.data.filepath)  # só depois de gravar é que o lote conta como bem-sucedido
+        saida.update(ok=True, resultados=[nucleo.texto(r) for r in resultados], mudou=mudou)
     except Exception as erro:
         saida.setdefault('erro', str(erro))
     open(RESULTADO, 'w', encoding='utf-8').write(json.dumps(saida, ensure_ascii=False))

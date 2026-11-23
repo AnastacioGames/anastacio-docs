@@ -39,10 +39,10 @@ Há duas maneiras de editar. Escolha você mesmo e diga ao usuário qual usou e 
 | Muitas mudanças e depois conferir como ficou | **As duas**: lote na cópia, depois abra a cópia ao vivo para ver |
 
 Como usar o lote:
-1. `arquivo_em_uso` diz se o projeto está aberto. Aberto = use a via ao vivo (o lote recusa, para não perder o que não foi salvo).
+1. `arquivo_em_uso` diz se o projeto está aberto num editor com o Controle por IA ligado. Aberto = use a via ao vivo (o lote recusa, para não perder o que não foi salvo). Um editor sem o Controle por IA ligado **não é detectado**: se o usuário pode estar com o arquivo aberto, pergunte antes de usar o lote.
 2. `lote_executar` aplica a lista de passos numa cópia (`nome.ia.range`). **O original nunca é alterado**, e se um passo falhar nada é gravado. As proteções são as mesmas do editor ao vivo (código livre continua bloqueado).
 3. Mostre o resumo (criados, removidos, alterados) ao usuário.
-4. **Só com a aprovação dele**, `lote_aplicar` troca o original pela cópia, guardando um backup em `<projeto>.backups/`. Sem aprovação, deixe a cópia onde está.
+4. **Só com a aprovação dele**, `lote_aplicar` troca o original pela cópia, guardando um backup em `<projeto>.backups/`. A troca é recusada se o original mudou depois do lote (alguém salvou nele) ou se a cópia foi alterada; nesse caso refaça o lote. Sem aprovação, deixe a cópia onde está.
 5. Passos que dependem de ver a tela ou de clicar (`editor_clicar`, `editor_tela`, jogo rodando) não existem no lote: use a via ao vivo.
 
 ## Editor que o usuário já abriu

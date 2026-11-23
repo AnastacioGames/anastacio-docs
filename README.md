@@ -74,6 +74,8 @@ Sempre que a engine ganhar funções novas:
 
 `tools/anastacio_criador_mcp.py` deixa uma IA ajudar a criar jogos no editor: descrever a cena, criar e mudar objetos, ver a tela, rodar o jogo e ler os erros. Só usa a biblioteca padrão. É diferente de `anastacio_api_mcp.py` (que serve a documentação) e não é a ferramenta interna dos agentes da engine (`tools/testes_engine/controle.py`).
 
+Passo a passo de uso: [docs/exemplo-criar-jogo-com-ia.md](docs/exemplo-criar-jogo-com-ia.md).
+
 ```
 claude mcp add anastacio-criador -- python tools/anastacio_criador_mcp.py --editor "C:/caminho/AnastacioEngine.exe" --runtime "C:/caminho/AnastacioRuntime.exe"
 ```

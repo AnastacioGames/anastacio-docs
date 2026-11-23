@@ -29,6 +29,27 @@ Exemplo de pedido:
 5. **Roda o jogo** (`jogo_abrir`, sem arquivo, para rodar a cena aberta com o que ainda não foi salvo), aperta teclas (`jogo_tecla`) e confere se o Cube se moveu (`jogo_objetos`), com `jogo_tela` e o log do jogo se algo falhar.
 6. **Mostra o resultado e espera.** Ela não salva sozinha: você decide quando usar `projeto_salvar`.
 
+### Resultado de um teste real (2026-11-22)
+
+Seguindo esse roteiro, a IA criou o script abaixo, ligou ao `Cube` e rodou a cena. Com `jogo_tecla` ela apertou a seta direita e a seta para cima por 60 quadros cada, e `jogo_objetos` mostrou o `Cube` saindo de `(0, 0, 1)` para `(8.13, 0, 1)` e depois `(8.13, 8.13, 1)`, sem erros no log do jogo.
+
+```python
+import Range
+from Range import logic, events
+
+# Setas para cima/baixo movem o objeto no eixo Y (mundo), esquerda/direita no eixo X.
+own = logic.getCurrentController().owner
+teclas = logic.keyboard.inputs
+passo = 3.0 / max(logic.getAverageFrameRate(), 1.0)  # 3 unidades por segundo, independente do FPS
+
+dx = (1 if teclas[events.RIGHTARROWKEY].active else 0) - (1 if teclas[events.LEFTARROWKEY].active else 0)
+dy = (1 if teclas[events.UPARROWKEY].active else 0) - (1 if teclas[events.DOWNARROWKEY].active else 0)
+if dx or dy:
+    own.applyMovement((dx * passo, dy * passo, 0), False)
+```
+
+Observações do teste: o Cube andou mais do que as 3 unidades por segundo do script porque o teste aperta teclas em quadros simulados, e a câmera não o acompanha (o pedido de exemplo diz "a câmera olha para ele", mas o script não cobre isso). É um bom próximo passo para pedir à IA.
+
 ## 4. Quando terminar
 
 - Clique em **Travar** para voltar a só observar, ou em **Desligar** para encerrar a conexão. O botão **Ligar** continua no cabeçalho.

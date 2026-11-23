@@ -12,6 +12,7 @@ Ferramentas (as que mudam o projeto fazem um backup antes, na primeira vez da se
   editor_tela, editor_clicar, editor_tecla, editor_fechar
   jogo_abrir, jogo_estado, jogo_tecla, jogo_soltar, jogo_mouse, jogo_esperar, jogo_tela, jogo_fechar
   log_ler
+  arquivo_em_uso, lote_executar, lote_aplicar   (edição em segundo plano numa cópia do .range, sem janela)
   jogo_objetos
   editor_py, jogo_py                        (código livre: desligado, ligue com ANASTACIO_CRIADOR_PY=1)
 
@@ -44,6 +45,7 @@ VERSAO = "0.1.0"
 AQUI = Path(__file__).resolve().parent
 SERVIDOR_EDITOR = AQUI / "criador" / "servidor_editor.py"
 SERVIDOR_JOGO = AQUI / "criador" / "servidor_jogo.py"
+LOTE_EDITOR = AQUI / "criador" / "lote_editor.py"
 PY_LIBERADO = os.environ.get("ANASTACIO_CRIADOR_PY") == "1"
 
 
@@ -280,6 +282,95 @@ def editor_tecla(tecla, x=0, y=0):
     return f"tecla {tecla} enviada"
 
 
+def _mesmo_arquivo(a, b):
+    try:
+        return os.path.normcase(os.path.realpath(a)) == os.path.normcase(os.path.realpath(b))
+    except (OSError, ValueError):
+        return False
+
+
+def arquivo_em_uso(arquivo):
+    """Editores (o do usuário ou o nosso) que estão com `arquivo` aberto. Lista vazia se nenhum."""
+    achados = []
+    for sessao_arq in (SESSAO_USUARIO, SESSAO_EDITOR):
+        if not Path(sessao_arq).exists() or sessoes.ler(sessao_arq) is None:
+            continue
+        try:
+            c = Conexao(sessao_arq, timeout=5)
+            aberto = c.pedir("ping").get("arquivo") or ""
+            c.fechar()
+        except (OSError, ConnectionError, RuntimeError, ValueError):
+            continue
+        if aberto and _mesmo_arquivo(aberto, arquivo):
+            achados.append(str(sessao_arq))
+    return achados
+
+
+def _copia_do_lote(arquivo):
+    p = Path(arquivo)
+    return p.with_name(p.stem + ".ia" + p.suffix)
+
+
+def lote_executar(arquivo, passos, saida=None, espera=300):
+    """Aplica `passos` numa CÓPIA do projeto, num editor sem janela. O original nunca é alterado."""
+    origem = Path(arquivo)
+    if not origem.is_file():
+        raise FileNotFoundError(f"não achei o projeto: {arquivo}")
+    if not isinstance(passos, list) or not passos:
+        raise ValueError("passos deve ser uma lista não vazia, ex.: "
+                         '[{"cmd":"op","nome":"mesh.primitive_cube_add"},{"cmd":"definir","caminho":"bpy.data.objects[\\"Cube\\"].location","valor":[1,0,0]}]')
+    destino = Path(saida) if saida else _copia_do_lote(origem)
+    if _mesmo_arquivo(destino, origem):
+        raise ValueError("a saída não pode ser o próprio projeto: o lote trabalha numa cópia")
+    if arquivo_em_uso(str(origem)):
+        raise RuntimeError("este projeto está aberto num editor (podem existir mudanças não salvas). Use a edição ao vivo "
+                           "(op_executar, propriedade_definir...) ou feche o arquivo no editor antes de usar o lote")
+    PASTA.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(origem, destino)
+    ident = int(time.time() * 1000)
+    spec, resultado = PASTA / f"lote_{ident}.json", PASTA / f"lote_{ident}_resultado.json"
+    spec.write_text(json.dumps(passos), encoding="utf-8")
+    log = PASTA / f"lote_{ident}.log"
+    editor_exe = achar_programa("--editor", "ANASTACIO_EDITOR", "AnastacioEngine")
+    args = [editor_exe, "-b", str(destino), "--python-exit-code", "1", "--python", str(LOTE_EDITOR), "--",
+            str(spec), str(resultado)]
+    E.logs["lote"] = log
+    try:
+        with log.open("w") as f:
+            subprocess.run(args, stdout=f, stderr=subprocess.STDOUT, timeout=espera, env=dict(os.environ))
+    except subprocess.TimeoutExpired:
+        destino.unlink(missing_ok=True)
+        raise TimeoutError(f"o lote passou de {espera} s e foi cancelado; a cópia foi apagada e o original está intacto")
+    if not resultado.exists():
+        destino.unlink(missing_ok=True)
+        raise RuntimeError("o editor sem janela fechou sem responder; veja log_ler(qual='lote'). O original está intacto")
+    r = json.loads(resultado.read_text(encoding="utf-8"))
+    if not r.get("ok"):
+        destino.unlink(missing_ok=True)
+        return f"o lote FALHOU e nada foi gravado: {r.get('erro')} ({r.get('executados', 0)} passos antes). O original está intacto."
+    return js({"copia": str(destino), "original_intacto": str(origem), "passos": r["executados"],
+               "mudou": r["mudou"], "resultados": r["resultados"],
+               "proximo": "Mostre o resumo ao usuário. Só com a aprovação dele, chame lote_aplicar para trocar o original pela cópia "
+                          "(com backup)."})
+
+
+def lote_aplicar(arquivo, copia=None):
+    """Troca o projeto pela cópia do lote, guardando antes um backup do original. Só com aprovação do usuário."""
+    origem = Path(arquivo)
+    origem_copia = Path(copia) if copia else _copia_do_lote(origem)
+    if not origem.is_file() or not origem_copia.is_file():
+        raise FileNotFoundError("projeto ou cópia do lote não encontrados")
+    if arquivo_em_uso(str(origem)):
+        raise RuntimeError("o projeto está aberto num editor: feche-o (ou salve e feche) antes de trocar o arquivo, "
+                           "para não perder o que há lá")
+    pasta = origem.with_name(origem.stem + ".backups")
+    pasta.mkdir(exist_ok=True)
+    bk = pasta / (time.strftime("%Y%m%d-%H%M%S") + "-antes-do-lote" + origem.suffix)
+    shutil.copy2(origem, bk)
+    shutil.move(str(origem_copia), str(origem))
+    return f"projeto atualizado com o resultado do lote. Backup do original: {bk}"
+
+
 def pedir_liberacao(motivo, espera=60):
     """Mostra o aviso no editor e espera o clique do usuário (permitir/negar/expirar)."""
     r = editor().pedir("pedir_liberacao", motivo=motivo)
@@ -328,6 +419,22 @@ F = {
     "propriedade_ler": ("Lê uma propriedade por caminho, ex.: bpy.data.objects[\"Cubo\"].location (sem chamadas).",
                         {"caminho": ("string", True)}, lambda a: (exigir_caminho(a["caminho"]),
                                                                   js(editor().pedir("ler", caminho=a["caminho"])))[1]),
+    "arquivo_em_uso": ("Diz se o arquivo está aberto num editor (o do usuário ou o do MCP). Use para escolher a via: aberto = "
+                       "edição ao vivo; fechado = lote (lote_executar).",
+                       {"arquivo": ("string", True)},
+                       lambda a: js({"aberto_em_editor": bool(arquivo_em_uso(a["arquivo"]))})),
+    "lote_executar": ("Edição em segundo plano: aplica uma lista de `passos` numa CÓPIA do .range (nome.ia.range) num editor "
+                      "sem janela. O original nunca é alterado e nada é gravado se um passo falhar. Passos: "
+                      '{"cmd":"op","nome":"mesh.primitive_cube_add","args":{}}, {"cmd":"definir","caminho":"bpy.data.objects[\"Cube\"].location","valor":[1,0,0]}, '
+                      '{"cmd":"script_gravar","nome":"x.py","conteudo":"..."}, {"cmd":"ler","caminho":"..."}. Mesmas proteções do '
+                      "editor ao vivo. Recusa se o projeto estiver aberto num editor. Bom para mudanças repetitivas ou em "
+                      "quantidade; para o que precisa ser visto na tela, use a edição ao vivo.",
+                      {"arquivo": ("string", True), "passos": ("array", True), "saida": ("string", False)},
+                      lambda a: lote_executar(a["arquivo"], a["passos"], a.get("saida"))),
+    "lote_aplicar": ("Troca o projeto pela cópia gerada por lote_executar, guardando um backup do original em "
+                     "<projeto>.backups/. Chame SÓ depois de mostrar o resumo ao usuário e ele aprovar.",
+                     {"arquivo": ("string", True), "copia": ("string", False)},
+                     lambda a: lote_aplicar(a["arquivo"], a.get("copia"))),
     "pedir_liberacao": ("Em modo só observar, mostra um aviso no editor pedindo ao usuário para liberar a edição e espera a "
                         "resposta (até 60 s). Só o clique do usuário libera. Dê o motivo em uma frase.",
                         {"motivo": ("string", True)}, lambda a: pedir_liberacao(a["motivo"])),
@@ -401,6 +508,8 @@ def chamar(nome, args):
 
 def esquema(props):
     def um(t):
+        if t == "array":
+            return {"type": "array", "items": {"type": "object"}}
         return {"type": t} if t else {}
     return {"type": "object", "properties": {k: um(t) for k, (t, _) in props.items()},
             "required": [k for k, (_, obrig) in props.items() if obrig]}

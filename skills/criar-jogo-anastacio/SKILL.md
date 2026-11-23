@@ -25,6 +25,26 @@ Se as ferramentas MCP não estiverem disponíveis, diga isso ao usuário e mostr
 5. **Testar o jogo:** `jogo_abrir` sem `arquivo` roda uma cópia da cena aberta no editor, inclusive o que ainda não foi salvo (use `arquivo` só para um .range do disco). Para provar que algo anda, `jogo_objetos` antes e depois de `jogo_tecla`. Depois: `jogo_tecla`, `jogo_estado`, `jogo_tela`, e `log_ler` com `qual="jogo"` para ver erros de script. Feche com `jogo_fechar`.
 6. **Salvar só quando o usuário aprovar:** `projeto_salvar`. Nunca salve por conta própria. `editor_fechar` não salva.
 
+## Escolher a via: ao vivo ou em segundo plano
+
+Há duas maneiras de editar. Escolha você mesmo e diga ao usuário qual usou e por quê.
+
+| Situação | Via |
+|---|---|
+| O projeto está aberto no editor, ou o usuário quer acompanhar | **Ao vivo** (`op_executar`, `propriedade_definir`, `script_gravar`...) |
+| Mudança visual que precisa ser conferida na tela | **Ao vivo** |
+| Muitas mudanças repetitivas (renomear, aplicar material em todos, criar dezenas de objetos) | **Em segundo plano** (`lote_executar`) |
+| O arquivo não está aberto em nenhum editor | **Em segundo plano** |
+| Mudança grande ou arriscada | **Em segundo plano**, na cópia; mostre o resumo antes de trocar |
+| Muitas mudanças e depois conferir como ficou | **As duas**: lote na cópia, depois abra a cópia ao vivo para ver |
+
+Como usar o lote:
+1. `arquivo_em_uso` diz se o projeto está aberto. Aberto = use a via ao vivo (o lote recusa, para não perder o que não foi salvo).
+2. `lote_executar` aplica a lista de passos numa cópia (`nome.ia.range`). **O original nunca é alterado**, e se um passo falhar nada é gravado. As proteções são as mesmas do editor ao vivo (código livre continua bloqueado).
+3. Mostre o resumo (criados, removidos, alterados) ao usuário.
+4. **Só com a aprovação dele**, `lote_aplicar` troca o original pela cópia, guardando um backup em `<projeto>.backups/`. Sem aprovação, deixe a cópia onde está.
+5. Passos que dependem de ver a tela ou de clicar (`editor_clicar`, `editor_tela`, jogo rodando) não existem no lote: use a via ao vivo.
+
 ## Editor que o usuário já abriu
 
 - Se o usuário já tem o editor aberto, peça para ele ativar o addon **Controle por IA** (Preferências > Add-ons) e clicar em Ligar; depois chame `projeto_conectar`. A resposta diz o modo.

@@ -50,6 +50,10 @@ if dx or dy:
 
 Observações do teste: o Cube andou mais do que as 3 unidades por segundo do script porque o teste aperta teclas em quadros simulados, e a câmera não o acompanha (o pedido de exemplo diz "a câmera olha para ele", mas o script não cobre isso). É um bom próximo passo para pedir à IA.
 
+## Edição em segundo plano (arquivos grandes ou em lote)
+
+Para mudanças repetitivas ou em um arquivo que não está aberto, a IA pode editar uma **cópia** do projeto num editor sem janela (`lote_executar`). O original nunca é alterado: o resultado vai para `nome.ia.range`, com o resumo do que mudou. Você aprova, e só então `lote_aplicar` troca o arquivo, guardando um backup em `<projeto>.backups/`. Se o projeto estiver aberto no editor, o lote é recusado e a IA usa a edição ao vivo.
+
 ## 4. Quando terminar
 
 - Clique em **Travar** para voltar a só observar, ou em **Desligar** para encerrar a conexão. O botão **Ligar** continua no cabeçalho.

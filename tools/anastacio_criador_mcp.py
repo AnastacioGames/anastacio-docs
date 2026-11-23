@@ -336,19 +336,34 @@ class _trava:
     def __init__(self, origem):
         o = Path(origem)
         self.caminho = o.with_name(o.name + ".lote.lock")
+        self.dono = f"{os.getpid()}:{uuid.uuid4().hex}"
+
+    def _velha(self):
+        """Trava de um MCP que caiu: dono morto, ou arquivo ilegível e antigo."""
+        try:
+            pid = int(self.caminho.read_text().split(":")[0])
+        except (OSError, ValueError):
+            return time.time() - self.caminho.stat().st_mtime > 900
+        return not sessoes.pid_vivo(pid)
 
     def __enter__(self):
-        try:
-            if self.caminho.exists() and time.time() - self.caminho.stat().st_mtime > 900:
-                self.caminho.unlink()  # trava velha de um MCP que caiu
-            self.fd = os.open(str(self.caminho), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-        except FileExistsError:
-            raise RuntimeError("já há um lote em andamento neste projeto; espere terminar") from None
-        return self
+        for _ in range(2):
+            try:
+                with open(self.caminho, "x") as f:
+                    f.write(self.dono)
+                return self
+            except FileExistsError:
+                if not self._velha():
+                    break
+                self.caminho.unlink(missing_ok=True)
+        raise RuntimeError("já há um lote em andamento neste projeto; espere terminar")
 
     def __exit__(self, *_):
-        os.close(self.fd)
-        self.caminho.unlink(missing_ok=True)
+        try:  # só remove a trava se ainda for a nossa
+            if self.caminho.read_text() == self.dono:
+                self.caminho.unlink()
+        except OSError:
+            pass
 
 
 def _rodar_editor_sem_janela(args, log, espera):
@@ -376,7 +391,7 @@ def lote_executar(arquivo, passos, saida=None, espera=300):
     destino = Path(saida) if saida else _copia_do_lote(origem)
     if _mesmo_arquivo(destino, origem):
         raise ValueError("a saída não pode ser o próprio projeto: o lote trabalha numa cópia")
-    if destino.exists() or destino.is_symlink() or _marca(destino).exists():
+    if os.path.lexists(destino) or os.path.lexists(_marca(destino)):
         raise FileExistsError(f"já existe {destino.name}: aplique (lote_aplicar) ou apague a cópia anterior antes de um novo lote")
     PASTA.mkdir(parents=True, exist_ok=True)
     with _trava(origem):
@@ -411,7 +426,8 @@ def lote_executar(arquivo, passos, saida=None, espera=300):
             if _sha(origem) != hash_origem:
                 raise RuntimeError("o projeto original mudou enquanto o lote rodava; a cópia foi descartada. Refaça o lote")
             marca = {"original": str(origem.resolve()), "hash_original": hash_origem, "hash_copia": _sha(destino), "ident": ident}
-            _marca(destino).write_text(json.dumps(marca), encoding="utf-8")
+            with open(_marca(destino), "x", encoding="utf-8") as f:  # "x": não segue nem sobrescreve (links)
+                f.write(json.dumps(marca))
             criou = False  # a cópia agora é o resultado entregue
         except BaseException:
             if criou:
@@ -443,6 +459,8 @@ def lote_aplicar(arquivo, copia=None):
         if _sha(nova) != marca["hash_copia"]:
             raise RuntimeError("a cópia do lote foi alterada depois de gerada; refaça o lote")
         pasta = origem.with_name(origem.stem + ".backups")
+        if pasta.is_symlink():
+            raise PermissionError("a pasta de backups é um link; não uso")
         pasta.mkdir(exist_ok=True)
         bk = pasta / (time.strftime("%Y%m%d-%H%M%S") + "-" + marca["ident"][:6] + "-antes-do-lote" + origem.suffix)
         with open(origem, "rb") as de, open(bk, "xb") as para:  # "x": nunca sobrescreve um backup
@@ -509,7 +527,10 @@ F = {
                        {"arquivo": ("string", True)},
                        lambda a: js({"aberto_em_editor": bool(arquivo_em_uso(a["arquivo"]))})),
     "lote_executar": ("Edição em segundo plano: aplica uma lista de `passos` numa CÓPIA do .range (nome.ia.range) num editor "
-                      "sem janela. O original nunca é alterado e nada é gravado se um passo falhar. Passos: "
+                      "sem janela. O original nunca é alterado e nada é gravado se um passo falhar. Operadores de arquivos, "
+                      "janelas, render e preferências (wm, file, render, image, export_*...) ficam de fora: faça ao vivo. "
+                      "Limite conhecido: um editor SEM o Controle por IA ligado não é detectado, e a troca não é protegida "
+                      "contra alguém abrir e salvar o projeto no mesmo instante. Passos: "
                       '{"cmd":"op","nome":"mesh.primitive_cube_add","args":{}}, {"cmd":"definir","caminho":"bpy.data.objects[\"Cube\"].location","valor":[1,0,0]}, '
                       '{"cmd":"script_gravar","nome":"x.py","conteudo":"..."}, {"cmd":"ler","caminho":"..."}. Mesmas proteções do '
                       "editor ao vivo. Recusa se o projeto estiver aberto num editor. Bom para mudanças repetitivas ou em "

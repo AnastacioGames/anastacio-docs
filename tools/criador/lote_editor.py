@@ -16,21 +16,36 @@ import nucleo_editor as nucleo  # noqa: E402
 ARGS = sys.argv[sys.argv.index('--') + 1:]
 PASSOS, RESULTADO = ARGS[0], ARGS[1]
 IDENT = ARGS[2] if len(ARGS) > 2 else ''
+# Módulos de operadores que mexem com arquivos, janelas, render, texto ou preferências: não cabem num lote
+# (que roda sem janela, numa cópia). Para esses, use a edição ao vivo.
+MODULOS_FORA_DO_LOTE = {'wm', 'file', 'render', 'image', 'sound', 'screen', 'script', 'console', 'text', 'ui', 'buttons',
+                        'outliner', 'info', 'nla', 'sequencer', 'clip', 'cachefile'}
 PERMITIDOS = {'op', 'definir', 'script_gravar', 'script_ligar', 'ler', 'py'}
 LIMITE_PASSOS = 500
 
 
+def _arred(valores):
+    return tuple(round(v, 4) for v in valores)
+
+
 def foto_extra():
-    """Scripts (nome -> conteúdo), materiais e cenas: o que o resumo dos objetos não mostra."""
+    """Scripts (nome -> conteúdo), materiais (nome -> aparência) e cenas (nome -> ajustes): o que a foto dos objetos não mostra."""
     return {'scripts': {t.name: t.as_string() for t in bpy.data.texts},
-            'materiais': sorted(m.name for m in bpy.data.materials), 'cenas': sorted(c.name for c in bpy.data.scenes)}
+            'materiais': {m.name: (_arred(m.diffuse_color), _arred(m.specular_color), round(m.alpha, 4), m.use_shadeless,
+                                   tuple(s.texture.name for s in m.texture_slots if s and s.texture))
+                          for m in bpy.data.materials},
+            'cenas': {c.name: (c.frame_start, c.frame_end, c.render.fps, _arred(c.gravity), c.camera.name if c.camera else None)
+                      for c in bpy.data.scenes}}
 
 
 def foto():
     return {o.name: (tuple(round(v, 5) for v in o.location), tuple(round(v, 5) for v in o.rotation_euler),
                      tuple(round(v, 5) for v in o.scale), o.parent.name if o.parent else None,
                      o.data.name if getattr(o, 'data', None) else None,
-                     tuple(s.material.name for s in o.material_slots if s.material))
+                     tuple(s.material.name for s in o.material_slots if s.material),
+                     (len(o.data.vertices), round(sum(v.co.x + v.co.y + v.co.z for v in o.data.vertices), 3))
+                     if o.type == 'MESH' else None,
+                     tuple((p.name, str(p.value)) for p in o.game.properties))
             for o in bpy.data.objects}
 
 
@@ -42,13 +57,22 @@ def diferenca(antes, depois, extra_antes, extra_depois):
             'scripts_alterados': sorted(n for n in set(ea) & set(ed) if ea[n] != ed[n]),
             'materiais_criados': sorted(set(extra_depois['materiais']) - set(extra_antes['materiais'])),
             'materiais_removidos': sorted(set(extra_antes['materiais']) - set(extra_depois['materiais'])),
+            'materiais_alterados': sorted(n for n in set(extra_antes['materiais']) & set(extra_depois['materiais'])
+                                          if extra_antes['materiais'][n] != extra_depois['materiais'][n]),
             'cenas_criadas': sorted(set(extra_depois['cenas']) - set(extra_antes['cenas'])),
-            'cenas_removidas': sorted(set(extra_antes['cenas']) - set(extra_depois['cenas']))}
+            'cenas_removidas': sorted(set(extra_antes['cenas']) - set(extra_depois['cenas'])),
+            'cenas_alteradas': sorted(n for n in set(extra_antes['cenas']) & set(extra_depois['cenas'])
+                                      if extra_antes['cenas'][n] != extra_depois['cenas'][n]),
+            'nao_coberto_pelo_resumo': 'forma das malhas, propriedades de jogo, logic bricks, texturas e outros ajustes finos'}
 
 
 def passo_op(p):
     if p['nome'] in nucleo.OPS_TEXTO_ATIVO:
         raise PermissionError('%s edita o texto ativo: use script_gravar' % p['nome'])
+    modulo = p['nome'].split('.', 1)[0]
+    if modulo in MODULOS_FORA_DO_LOTE or modulo.startswith(('export_', 'import_')):
+        raise PermissionError('%s (módulo %s) mexe com arquivos, janelas ou preferências: não cabe num lote; '
+                              'faça ao vivo no editor' % (p['nome'], modulo))
     if nucleo.grava_arquivo(p['nome']) and not nucleo.PY_LIBERADO:
         raise PermissionError('%s grava arquivos em caminhos livres: só com ANASTACIO_CRIADOR_PY=1' % p['nome'])
     if p['nome'] in nucleo.OPS_DE_CODIGO and not nucleo.PY_LIBERADO:
@@ -90,7 +114,8 @@ def principal():
                 raise
             saida['executados'] = i + 1
         mudou = diferenca(antes, foto(), extra_antes, foto_extra())
-        bpy.ops.wm.save_mainfile(filepath=bpy.data.filepath)  # só depois de gravar é que o lote conta como bem-sucedido
+        if 'FINISHED' not in bpy.ops.wm.save_mainfile(filepath=bpy.data.filepath):  # só depois de gravar o lote vale
+            raise RuntimeError('não consegui gravar a cópia')
         saida.update(ok=True, resultados=[nucleo.texto(r) for r in resultados], mudou=mudou)
     except Exception as erro:
         saida.setdefault('erro', str(erro))

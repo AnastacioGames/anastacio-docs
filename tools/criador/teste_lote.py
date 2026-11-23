@@ -92,7 +92,7 @@ ok(Path(r['copia']) == COPIA, 'a cópia fica ao lado do original (nome.ia.range)
 limpar()
 
 # 2. falhas não gravam nada
-ok(falhou([{'cmd': 'op', 'nome': 'wm.addon_install'}], 'ANASTACIO_CRIADOR_PY'), 'operador de código bloqueado no lote')
+ok(falhou([{'cmd': 'op', 'nome': 'wm.addon_install'}], 'não cabe num lote'), 'operador de código bloqueado no lote')
 ok(hash_de(BASE) == h0, 'lote que falha não deixa mudança no original')
 ok(falhou([{'cmd': 'evento', 'tipo': 'A'}], 'não permitido'), 'passo desconhecido recusado')
 ok(falhou([{'cmd': 'py', 'codigo': 'resultado = 1'}], 'ANASTACIO_CRIADOR_PY'), 'py continua desligado no lote')
@@ -106,9 +106,15 @@ ok(recusa(lambda: m.lote_executar(str(TMP / 'nao_existe.range'), [{'cmd': 'ler',
    'projeto inexistente recusado')
 ok(hash_de(BASE) == h0, 'depois de todas as falhas o original segue idêntico')
 
+# o resumo percebe mudança de material
+r4 = json.loads(m.lote_executar(str(BASE), [{'cmd': 'definir', 'caminho': 'bpy.data.materials[0].diffuse_color', 'valor': [0.1, 0.2, 0.3]}],
+                                saida=str(TMP / 'mat.range')))
+ok(len(r4['mudou']['materiais_alterados']) == 1, 'o resumo mostra o material que mudou de cor')
+
 # 2b. gravar arquivo por operador, saída existente, marca, lote concorrente
-for op in ('wm.save_as_mainfile', 'wm.save_mainfile', 'export_scene.obj', 'image.save_as', 'render.render'):
-    ok(falhou([{'cmd': 'op', 'nome': op, 'args': {'filepath': str(BASE)}}], 'ANASTACIO_CRIADOR_PY'),
+for op in ('wm.save_as_mainfile', 'wm.save_mainfile', 'export_scene.obj', 'image.save_as', 'render.render', 'file.unpack_all',
+           'wm.link', 'wm.append'):
+    ok(falhou([{'cmd': 'op', 'nome': op, 'args': {'filepath': str(BASE)}}], 'não cabe num lote'),
        'operador que grava arquivo bloqueado no lote: ' + op)
 ok(hash_de(BASE) == h0, 'nenhum operador conseguiu gravar no original')
 ok(m.lote_executar(str(BASE), [{'cmd': 'op', 'nome': 'object.select_all', 'args': {'action': 'DESELECT'}}]) is not None
